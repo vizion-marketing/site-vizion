@@ -1,0 +1,328 @@
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { 
+  ArrowRight, 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Clock, 
+  ShieldCheck, 
+  Users,
+  ChevronDown,
+  Send
+} from "lucide-react";
+
+export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulation d'envoi
+    setTimeout(() => {
+      setIsSubmitting(false);
+      alert("Message envoyé avec succès !");
+    }, 1500);
+  };
+
+  return (
+    <main className="min-h-screen bg-black overflow-x-hidden font-['Inter'] selection:bg-[#EEFF41] selection:text-black">
+      {/* HERO SECTION - GRADIENT & CARBON TEXTURE */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-4 md:px-8 lg:px-12 overflow-hidden">
+        {/* Base Gradient Layer */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] z-0" />
+        
+        {/* Carbon Fibre Texture Overlay */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay pointer-events-none z-10" />
+
+        {/* Decorative Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] z-10" />
+
+        {/* Layout Container */}
+        <div className="relative z-20 max-w-[82.5rem] w-full grid grid-cols-1 lg:grid-cols-10 gap-8 items-stretch">
+          
+          {/* COLONNE GAUCHE - FORMULAIRE (55%) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 flex flex-col justify-center"
+          >
+            <div className="bg-black/20 backdrop-blur-md border border-white/10 rounded-[var(--radius-xl)] p-8 md:p-12 h-full flex flex-col">
+              
+              {/* Status Badge */}
+              <div className="flex items-center gap-3 mb-6">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[#EEFF41]"></span>
+                </span>
+                <span className="text-[10px] font-bold text-white/80 uppercase tracking-[0.2em]">
+                  Nous sommes disponibles
+                </span>
+              </div>
+
+              {/* Header Text */}
+              <h1 className="font-['Roboto'] font-[900] text-4xl md:text-5xl lg:text-6xl text-white uppercase tracking-tight leading-[0.95] mb-4">
+                Parlons de <br />
+                <span className="text-white/40">votre projet</span>
+              </h1>
+              <p className="text-white/60 text-lg mb-10 max-w-md leading-relaxed">
+                Une question, un projet ? Notre équipe est à votre écoute pour vous accompagner dans votre transformation digitale.
+              </p>
+
+              {/* Formulaire */}
+              <form onSubmit={handleSubmit} className="space-y-5 flex-grow">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Prénom *</label>
+                    <input 
+                      required
+                      type="text" 
+                      placeholder="Jean" 
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Nom *</label>
+                    <input 
+                      required
+                      type="text" 
+                      placeholder="Dupont" 
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Email professionnel *</label>
+                  <input 
+                    required
+                    type="email" 
+                    placeholder="contact@entreprise.com" 
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Entreprise</label>
+                    <input 
+                      type="text" 
+                      placeholder="Nom de votre entreprise" 
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Sujet *</label>
+                    <div className="relative">
+                      <select 
+                        required
+                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white appearance-none focus:outline-none focus:border-white/60 transition-all duration-300 cursor-pointer"
+                      >
+                        <option className="bg-zinc-900 text-white" value="">Sélectionnez un sujet</option>
+                        <option className="bg-zinc-900 text-white" value="conseil">Conseil Stratégique</option>
+                        <option className="bg-zinc-900 text-white" value="saas">Solutions SaaS</option>
+                        <option className="bg-zinc-900 text-white" value="formation">Formation</option>
+                        <option className="bg-zinc-900 text-white" value="partenariat">Partenariat</option>
+                        <option className="bg-zinc-900 text-white" value="autre">Autre</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Message *</label>
+                  <textarea 
+                    required
+                    rows={4}
+                    placeholder="Décrivez brièvement votre projet ou votre demande..." 
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300 resize-none"
+                  />
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
+                  className="w-full bg-white text-black font-['Roboto'] font-[900] uppercase text-sm tracking-widest h-14 rounded-xl flex items-center justify-center gap-3 hover:bg-[#EEFF41] hover:shadow-[0_0_30px_rgba(238,255,65,0.3)] transition-all duration-300 mt-6 group disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    <>
+                      Envoyer le message
+                      <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
+                </motion.button>
+                
+                <p className="text-[10px] text-white/30 text-center mt-4">
+                  En envoyant ce formulaire, vous acceptez notre{" "}
+                  <Link href="#" className="underline hover:text-white/50 transition-colors">
+                    politique de confidentialité
+                  </Link>.
+                </p>
+              </form>
+            </div>
+          </motion.div>
+
+          {/* COLONNE DROITE - PHOTO (45%) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-4 relative group min-h-[600px] hidden lg:block"
+          >
+            {/* Decorative Corners */}
+            <div className="absolute top-[-12px] right-[-12px] w-20 h-20 border-t-2 border-r-2 border-[#EEFF41]/40 z-30 transition-all duration-500 group-hover:w-24 group-hover:h-24" />
+            <div className="absolute bottom-[-12px] left-[-12px] w-16 h-16 border-b-2 border-l-2 border-white/40 z-30 transition-all duration-500 group-hover:w-20 group-hover:h-20" />
+
+            {/* Main Image Container */}
+            <div className="relative h-full w-full rounded-[var(--radius-xl)] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 ease-out shadow-2xl">
+              <Image 
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2787&auto=format&fit=crop"
+                alt="Notre expert commercial"
+                fill
+                className="object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                priority
+              />
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500" />
+
+              {/* Floating Contact Card */}
+              <div className="absolute bottom-6 inset-x-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl space-y-4">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-white font-['Roboto'] font-[900] text-lg uppercase tracking-tight leading-tight">Lucas Gonzalez</h3>
+                    <p className="text-[#EEFF41] text-[10px] font-bold uppercase tracking-[0.15em]">Directeur Commercial</p>
+                  </div>
+                  <div className="bg-[#EEFF41] text-black text-[9px] font-black px-2.5 py-1 rounded-lg tracking-tight uppercase flex items-center gap-1.5">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-black"></span>
+                    </span>
+                    Réponse 24h
+                  </div>
+                </div>
+
+                <div className="space-y-2.5 pt-2 border-t border-white/10">
+                  <a href="mailto:contact@stratedge.fr" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
+                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
+                      <Mail className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-sm">contact@stratedge.fr</span>
+                  </a>
+                  <a href="tel:+33145678900" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
+                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
+                      <Phone className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-sm">+33 (0)1 45 67 89 00</span>
+                  </a>
+                  <div className="flex items-center gap-3 text-white/80">
+                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5">
+                      <MapPin className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-sm">128 Rue de la Boétie, 75008 Paris</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Floating Decorative Elements */}
+        <motion.div 
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-32 right-[5%] w-48 h-48 border border-white/5 rounded-full blur-[2px] pointer-events-none hidden xl:block z-10" 
+        />
+        <motion.div 
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-32 left-[3%] w-32 h-32 border border-white/5 rounded-full blur-[2px] pointer-events-none hidden xl:block z-10" 
+        />
+      </section>
+
+      {/* SECTION BONUS - NOS ENGAGEMENTS */}
+      <section className="bg-[#F2F2F2] py-24 relative">
+        <div className="max-w-[82.5rem] mx-auto px-6 lg:px-12">
+          {/* Section Header */}
+          <div className="mb-16">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 mb-4 block">
+              Pourquoi nous choisir
+            </span>
+            <h2 className="font-['Roboto'] font-[900] text-4xl md:text-5xl uppercase tracking-tight text-black leading-[0.95]">
+              Nos engagements
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            {/* Card 1 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 }}
+              className="bg-white p-8 rounded-[var(--radius-xl)] border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-[#EEFF41] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
+                <Clock className="w-7 h-7" />
+              </div>
+              <h3 className="font-['Roboto'] font-[900] uppercase text-xl text-black tracking-tight mb-3">Réactivité 24h</h3>
+              <p className="text-black/60 leading-relaxed">
+                Le temps est votre ressource la plus précieuse. Nous garantissons une première réponse sous 24h ouvrées maximum.
+              </p>
+              <div className="h-1 w-12 bg-black/10 group-hover:w-full group-hover:bg-[#EEFF41] transition-all duration-500 mt-6" />
+            </motion.div>
+
+            {/* Card 2 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white p-8 rounded-[var(--radius-xl)] border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-[#EEFF41] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
+                <ShieldCheck className="w-7 h-7" />
+              </div>
+              <h3 className="font-['Roboto'] font-[900] uppercase text-xl text-black tracking-tight mb-3">Expertise B2B</h3>
+              <p className="text-black/60 leading-relaxed">
+                Spécialistes des environnements complexes, nous comprenons les enjeux de croissance propres aux PME et ETI.
+              </p>
+              <div className="h-1 w-12 bg-black/10 group-hover:w-full group-hover:bg-[#EEFF41] transition-all duration-500 mt-6" />
+            </motion.div>
+
+            {/* Card 3 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white p-8 rounded-[var(--radius-xl)] border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-[#EEFF41] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
+                <Users className="w-7 h-7" />
+              </div>
+              <h3 className="font-['Roboto'] font-[900] uppercase text-xl text-black tracking-tight mb-3">Partenariat long-terme</h3>
+              <p className="text-black/60 leading-relaxed">
+                Nous ne sommes pas un simple prestataire. Nous devenons votre partenaire stratégique pour une croissance durable.
+              </p>
+              <div className="h-1 w-12 bg-black/10 group-hover:w-full group-hover:bg-[#EEFF41] transition-all duration-500 mt-6" />
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

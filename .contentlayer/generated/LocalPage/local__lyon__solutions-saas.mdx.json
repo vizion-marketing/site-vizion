@@ -1,0 +1,24 @@
+{
+  "title": "Solutions SaaS à Lyon",
+  "description": "Développement de solutions SaaS à Lyon. Experts cloud et applications métier pour entreprises lyonnaises et rhônalpines.",
+  "city": "Lyon",
+  "service": "Solutions SaaS",
+  "region": "Auvergne-Rhône-Alpes",
+  "heroTitle": "Solutions SaaS à Lyon",
+  "heroSubtitle": "L'excellence technique au service de votre croissance\r",
+  "body": {
+    "raw": "\r\n## Développement SaaS à Lyon\r\n\r\nNotre équipe lyonnaise conçoit des solutions cloud performantes pour les entreprises de la région Auvergne-Rhône-Alpes.\r\n\r\n### L'écosystème tech lyonnais\r\n\r\nLyon est devenu un hub technologique majeur en France. Nous sommes fiers de contribuer à cet écosystème dynamique.\r\n\r\n### Nos expertises SaaS\r\n\r\n- Applications web sur mesure\r\n- Plateformes e-commerce B2B\r\n- Outils de gestion métier\r\n- Intégrations API et automatisation\r\n\r\n### Avantages de travailler avec nous\r\n\r\n- **Équipe locale** - Interlocuteurs dédiés à Lyon\r\n- **Agilité** - Méthodologie adaptée aux PME et ETI\r\n- **Support** - Assistance réactive en français\r\n\r\n## Nos références régionales\r\n\r\nNous accompagnons des entreprises lyonnaises de tous secteurs : industrie, santé, services, commerce.\r\n",
+    "code": "var Component=(()=>{var h=Object.create;var i=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,S=Object.prototype.hasOwnProperty;var y=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),v=(t,e)=>{for(var r in e)i(t,r,{get:e[r],enumerable:!0})},l=(t,e,r,o)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let s of m(e))!S.call(t,s)&&s!==r&&i(t,s,{get:()=>e[s],enumerable:!(o=p(e,s))||o.enumerable});return t};var x=(t,e,r)=>(r=t!=null?h(g(t)):{},l(e||!t||!t.__esModule?i(r,\"default\",{value:t,enumerable:!0}):r,t)),f=t=>l(i({},\"__esModule\",{value:!0}),t);var a=y((j,c)=>{c.exports=_jsx_runtime});var A={};v(A,{default:()=>d,frontmatter:()=>L});var n=x(a()),L={title:\"Solutions SaaS \\xE0 Lyon\",description:\"D\\xE9veloppement de solutions SaaS \\xE0 Lyon. Experts cloud et applications m\\xE9tier pour entreprises lyonnaises et rh\\xF4nalpines.\",city:\"Lyon\",service:\"Solutions SaaS\",region:\"Auvergne-Rh\\xF4ne-Alpes\",heroTitle:\"Solutions SaaS \\xE0 Lyon\",heroSubtitle:\"L'excellence technique au service de votre croissance\"};function u(t){let e={h2:\"h2\",h3:\"h3\",li:\"li\",p:\"p\",strong:\"strong\",ul:\"ul\",...t.components};return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(e.h2,{children:\"D\\xE9veloppement SaaS \\xE0 Lyon\"}),`\n`,(0,n.jsx)(e.p,{children:\"Notre \\xE9quipe lyonnaise con\\xE7oit des solutions cloud performantes pour les entreprises de la r\\xE9gion Auvergne-Rh\\xF4ne-Alpes.\"}),`\n`,(0,n.jsx)(e.h3,{children:\"L'\\xE9cosyst\\xE8me tech lyonnais\"}),`\n`,(0,n.jsx)(e.p,{children:\"Lyon est devenu un hub technologique majeur en France. Nous sommes fiers de contribuer \\xE0 cet \\xE9cosyst\\xE8me dynamique.\"}),`\n`,(0,n.jsx)(e.h3,{children:\"Nos expertises SaaS\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Applications web sur mesure\"}),`\n`,(0,n.jsx)(e.li,{children:\"Plateformes e-commerce B2B\"}),`\n`,(0,n.jsx)(e.li,{children:\"Outils de gestion m\\xE9tier\"}),`\n`,(0,n.jsx)(e.li,{children:\"Int\\xE9grations API et automatisation\"}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{children:\"Avantages de travailler avec nous\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"\\xC9quipe locale\"}),\" - Interlocuteurs d\\xE9di\\xE9s \\xE0 Lyon\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Agilit\\xE9\"}),\" - M\\xE9thodologie adapt\\xE9e aux PME et ETI\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Support\"}),\" - Assistance r\\xE9active en fran\\xE7ais\"]}),`\n`]}),`\n`,(0,n.jsx)(e.h2,{children:\"Nos r\\xE9f\\xE9rences r\\xE9gionales\"}),`\n`,(0,n.jsx)(e.p,{children:\"Nous accompagnons des entreprises lyonnaises de tous secteurs : industrie, sant\\xE9, services, commerce.\"})]})}function d(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(u,{...t})}):u(t)}return f(A);})();\n;return Component;"
+  },
+  "_id": "local/lyon/solutions-saas.mdx",
+  "_raw": {
+    "sourceFilePath": "local/lyon/solutions-saas.mdx",
+    "sourceFileName": "solutions-saas.mdx",
+    "sourceFileDir": "local/lyon",
+    "contentType": "mdx",
+    "flattenedPath": "local/lyon/solutions-saas"
+  },
+  "type": "LocalPage",
+  "slug": "lyon/solutions-saas",
+  "url": "/local/lyon/solutions-saas"
+}

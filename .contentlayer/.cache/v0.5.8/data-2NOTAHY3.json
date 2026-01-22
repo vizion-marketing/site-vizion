@@ -1,0 +1,132 @@
+{
+  "cacheItemsMap": {
+    "blog/choisir-solution-saas.mdx": {
+      "document": {
+        "title": "Comment choisir la bonne solution SaaS pour votre entreprise",
+        "description": "Guide complet pour sélectionner une solution SaaS adaptée à vos besoins - critères, pièges à éviter et bonnes pratiques.",
+        "date": "2024-02-10T00:00:00.000Z",
+        "author": "Thomas Martin",
+        "category": "Tech",
+        "tags": [
+          "SaaS",
+          "guide",
+          "choix logiciel",
+          "cloud"
+        ],
+        "featuredImage": "/images/blog/saas-selection.jpg\r",
+        "draft": false,
+        "body": {
+          "raw": "\r\n## Pourquoi le choix du SaaS est crucial\r\n\r\nSélectionner le bon outil SaaS impacte directement la productivité et les coûts de votre entreprise.\r\n\r\n## Les critères essentiels\r\n\r\n### 1. Fonctionnalités\r\n\r\nListez vos besoins essentiels vs. nice to have. Évitez les solutions surchargées.\r\n\r\n### 2. Intégration\r\n\r\nVérifiez la compatibilité avec votre stack existant :\r\n- APIs disponibles\r\n- Connecteurs natifs\r\n- Webhooks\r\n\r\n### 3. Sécurité\r\n\r\nPoints à vérifier :\r\n- Certifications (SOC2, ISO 27001)\r\n- Localisation des données\r\n- Chiffrement\r\n\r\n### 4. Scalabilité et pricing\r\n\r\nAnticipez votre croissance et comprenez le modèle de tarification.\r\n\r\n## Les pièges à éviter\r\n\r\n- Ne pas impliquer les utilisateurs finaux\r\n- Sous-estimer les coûts cachés (formation, intégration)\r\n- Ignorer les conditions de sortie (export de données)\r\n\r\n## Notre recommandation\r\n\r\nTestez toujours en conditions réelles avec un POC avant de vous engager.\r\n",
+          "code": "var Component=(()=>{var u=Object.create;var o=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,v=Object.prototype.hasOwnProperty;var S=(i,e)=>()=>(e||i((e={exports:{}}).exports,e),e.exports),f=(i,e)=>{for(var t in e)o(i,t,{get:e[t],enumerable:!0})},l=(i,e,t,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of m(e))!v.call(i,r)&&r!==t&&o(i,r,{get:()=>e[r],enumerable:!(s=p(e,r))||s.enumerable});return i};var x=(i,e,t)=>(t=i!=null?u(g(i)):{},l(e||!i||!i.__esModule?o(t,\"default\",{value:i,enumerable:!0}):t,i)),b=i=>l(o({},\"__esModule\",{value:!0}),i);var a=S((z,c)=>{c.exports=_jsx_runtime});var j={};f(j,{default:()=>h,frontmatter:()=>C});var n=x(a()),C={title:\"Comment choisir la bonne solution SaaS pour votre entreprise\",description:\"Guide complet pour s\\xE9lectionner une solution SaaS adapt\\xE9e \\xE0 vos besoins - crit\\xE8res, pi\\xE8ges \\xE0 \\xE9viter et bonnes pratiques.\",date:\"2024-02-10\",author:\"Thomas Martin\",category:\"Tech\",tags:[\"SaaS\",\"guide\",\"choix logiciel\",\"cloud\"],featuredImage:\"/images/blog/saas-selection.jpg\"};function d(i){let e={h2:\"h2\",h3:\"h3\",li:\"li\",p:\"p\",ul:\"ul\",...i.components};return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(e.h2,{children:\"Pourquoi le choix du SaaS est crucial\"}),`\n`,(0,n.jsx)(e.p,{children:\"S\\xE9lectionner le bon outil SaaS impacte directement la productivit\\xE9 et les co\\xFBts de votre entreprise.\"}),`\n`,(0,n.jsx)(e.h2,{children:\"Les crit\\xE8res essentiels\"}),`\n`,(0,n.jsx)(e.h3,{children:\"1. Fonctionnalit\\xE9s\"}),`\n`,(0,n.jsx)(e.p,{children:\"Listez vos besoins essentiels vs. nice to have. \\xC9vitez les solutions surcharg\\xE9es.\"}),`\n`,(0,n.jsx)(e.h3,{children:\"2. Int\\xE9gration\"}),`\n`,(0,n.jsx)(e.p,{children:\"V\\xE9rifiez la compatibilit\\xE9 avec votre stack existant :\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"APIs disponibles\"}),`\n`,(0,n.jsx)(e.li,{children:\"Connecteurs natifs\"}),`\n`,(0,n.jsx)(e.li,{children:\"Webhooks\"}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{children:\"3. S\\xE9curit\\xE9\"}),`\n`,(0,n.jsx)(e.p,{children:\"Points \\xE0 v\\xE9rifier :\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Certifications (SOC2, ISO 27001)\"}),`\n`,(0,n.jsx)(e.li,{children:\"Localisation des donn\\xE9es\"}),`\n`,(0,n.jsx)(e.li,{children:\"Chiffrement\"}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{children:\"4. Scalabilit\\xE9 et pricing\"}),`\n`,(0,n.jsx)(e.p,{children:\"Anticipez votre croissance et comprenez le mod\\xE8le de tarification.\"}),`\n`,(0,n.jsx)(e.h2,{children:\"Les pi\\xE8ges \\xE0 \\xE9viter\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Ne pas impliquer les utilisateurs finaux\"}),`\n`,(0,n.jsx)(e.li,{children:\"Sous-estimer les co\\xFBts cach\\xE9s (formation, int\\xE9gration)\"}),`\n`,(0,n.jsx)(e.li,{children:\"Ignorer les conditions de sortie (export de donn\\xE9es)\"}),`\n`]}),`\n`,(0,n.jsx)(e.h2,{children:\"Notre recommandation\"}),`\n`,(0,n.jsx)(e.p,{children:\"Testez toujours en conditions r\\xE9elles avec un POC avant de vous engager.\"})]})}function h(i={}){let{wrapper:e}=i.components||{};return e?(0,n.jsx)(e,{...i,children:(0,n.jsx)(d,{...i})}):d(i)}return b(j);})();\n;return Component;"
+        },
+        "_id": "blog/choisir-solution-saas.mdx",
+        "_raw": {
+          "sourceFilePath": "blog/choisir-solution-saas.mdx",
+          "sourceFileName": "choisir-solution-saas.mdx",
+          "sourceFileDir": "blog",
+          "contentType": "mdx",
+          "flattenedPath": "blog/choisir-solution-saas"
+        },
+        "type": "Post",
+        "slug": "choisir-solution-saas",
+        "url": "/blog/choisir-solution-saas"
+      },
+      "documentHash": "1769082648074",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    },
+    "blog/transformation-digitale-2024.mdx": {
+      "document": {
+        "title": "Les tendances de la transformation digitale en 2024",
+        "description": "Découvrez les grandes tendances qui façonnent la transformation digitale des entreprises en 2024 - IA, automatisation, data.",
+        "date": "2024-01-15T00:00:00.000Z",
+        "author": "Marie Dupont",
+        "category": "Stratégie",
+        "tags": [
+          "transformation digitale",
+          "tendances",
+          "IA",
+          2024
+        ],
+        "featuredImage": "/images/blog/tendances-2024.jpg\r",
+        "draft": false,
+        "body": {
+          "raw": "\r\n## Introduction\r\n\r\nLa transformation digitale continue d'évoluer rapidement. Voici les tendances majeures à suivre en 2024.\r\n\r\n## 1. L'IA générative au cœur des processus\r\n\r\nL'intelligence artificielle générative révolutionne la création de contenu, le service client et l'automatisation des tâches répétitives.\r\n\r\n### Applications concrètes\r\n\r\n- Génération automatique de rapports\r\n- Chatbots intelligents\r\n- Création de contenus marketing\r\n\r\n## 2. L'hyperautomatisation\r\n\r\nAu-delà du RPA, les entreprises adoptent une approche globale d'automatisation combinant IA, machine learning et orchestration.\r\n\r\n## 3. La data comme actif stratégique\r\n\r\nLes entreprises qui maîtrisent leurs données prennent un avantage concurrentiel décisif.\r\n\r\n### Points clés\r\n\r\n- Gouvernance des données\r\n- Qualité et fiabilité\r\n- Exploitation via l'analytics\r\n\r\n## Conclusion\r\n\r\nCes tendances ne sont pas des options mais des nécessités pour rester compétitif. Commencez dès maintenant votre réflexion stratégique.\r\n",
+          "code": "var Component=(()=>{var h=Object.create;var r=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,f=Object.prototype.hasOwnProperty;var v=(t,n)=>()=>(n||t((n={exports:{}}).exports,n),n.exports),x=(t,n)=>{for(var i in n)r(t,i,{get:n[i],enumerable:!0})},o=(t,n,i,s)=>{if(n&&typeof n==\"object\"||typeof n==\"function\")for(let a of p(n))!f.call(t,a)&&a!==i&&r(t,a,{get:()=>n[a],enumerable:!(s=m(n,a))||s.enumerable});return t};var L=(t,n,i)=>(i=t!=null?h(g(t)):{},o(n||!t||!t.__esModule?r(i,\"default\",{value:t,enumerable:!0}):i,t)),j=t=>o(r({},\"__esModule\",{value:!0}),t);var c=v((I,l)=>{l.exports=_jsx_runtime});var C={};x(C,{default:()=>u,frontmatter:()=>A});var e=L(c()),A={title:\"Les tendances de la transformation digitale en 2024\",description:\"D\\xE9couvrez les grandes tendances qui fa\\xE7onnent la transformation digitale des entreprises en 2024 - IA, automatisation, data.\",date:\"2024-01-15\",author:\"Marie Dupont\",category:\"Strat\\xE9gie\",tags:[\"transformation digitale\",\"tendances\",\"IA\",2024],featuredImage:\"/images/blog/tendances-2024.jpg\"};function d(t){let n={h2:\"h2\",h3:\"h3\",li:\"li\",p:\"p\",ul:\"ul\",...t.components};return(0,e.jsxs)(e.Fragment,{children:[(0,e.jsx)(n.h2,{children:\"Introduction\"}),`\n`,(0,e.jsx)(n.p,{children:\"La transformation digitale continue d'\\xE9voluer rapidement. Voici les tendances majeures \\xE0 suivre en 2024.\"}),`\n`,(0,e.jsx)(n.h2,{children:\"1. L'IA g\\xE9n\\xE9rative au c\\u0153ur des processus\"}),`\n`,(0,e.jsx)(n.p,{children:\"L'intelligence artificielle g\\xE9n\\xE9rative r\\xE9volutionne la cr\\xE9ation de contenu, le service client et l'automatisation des t\\xE2ches r\\xE9p\\xE9titives.\"}),`\n`,(0,e.jsx)(n.h3,{children:\"Applications concr\\xE8tes\"}),`\n`,(0,e.jsxs)(n.ul,{children:[`\n`,(0,e.jsx)(n.li,{children:\"G\\xE9n\\xE9ration automatique de rapports\"}),`\n`,(0,e.jsx)(n.li,{children:\"Chatbots intelligents\"}),`\n`,(0,e.jsx)(n.li,{children:\"Cr\\xE9ation de contenus marketing\"}),`\n`]}),`\n`,(0,e.jsx)(n.h2,{children:\"2. L'hyperautomatisation\"}),`\n`,(0,e.jsx)(n.p,{children:\"Au-del\\xE0 du RPA, les entreprises adoptent une approche globale d'automatisation combinant IA, machine learning et orchestration.\"}),`\n`,(0,e.jsx)(n.h2,{children:\"3. La data comme actif strat\\xE9gique\"}),`\n`,(0,e.jsx)(n.p,{children:\"Les entreprises qui ma\\xEEtrisent leurs donn\\xE9es prennent un avantage concurrentiel d\\xE9cisif.\"}),`\n`,(0,e.jsx)(n.h3,{children:\"Points cl\\xE9s\"}),`\n`,(0,e.jsxs)(n.ul,{children:[`\n`,(0,e.jsx)(n.li,{children:\"Gouvernance des donn\\xE9es\"}),`\n`,(0,e.jsx)(n.li,{children:\"Qualit\\xE9 et fiabilit\\xE9\"}),`\n`,(0,e.jsx)(n.li,{children:\"Exploitation via l'analytics\"}),`\n`]}),`\n`,(0,e.jsx)(n.h2,{children:\"Conclusion\"}),`\n`,(0,e.jsx)(n.p,{children:\"Ces tendances ne sont pas des options mais des n\\xE9cessit\\xE9s pour rester comp\\xE9titif. Commencez d\\xE8s maintenant votre r\\xE9flexion strat\\xE9gique.\"})]})}function u(t={}){let{wrapper:n}=t.components||{};return n?(0,e.jsx)(n,{...t,children:(0,e.jsx)(d,{...t})}):d(t)}return j(C);})();\n;return Component;"
+        },
+        "_id": "blog/transformation-digitale-2024.mdx",
+        "_raw": {
+          "sourceFilePath": "blog/transformation-digitale-2024.mdx",
+          "sourceFileName": "transformation-digitale-2024.mdx",
+          "sourceFileDir": "blog",
+          "contentType": "mdx",
+          "flattenedPath": "blog/transformation-digitale-2024"
+        },
+        "type": "Post",
+        "slug": "transformation-digitale-2024",
+        "url": "/blog/transformation-digitale-2024"
+      },
+      "documentHash": "1769082640373",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    },
+    "local/paris/conseil-digital.mdx": {
+      "document": {
+        "title": "Conseil Digital à Paris",
+        "description": "Cabinet de conseil digital à Paris. Accompagnement stratégique et solutions sur mesure pour entreprises parisiennes.",
+        "city": "Paris",
+        "service": "Conseil Digital",
+        "region": "Île-de-France",
+        "heroTitle": "Votre partenaire digital à Paris",
+        "heroSubtitle": "Expertise locale, vision globale pour votre transformation numérique\r",
+        "body": {
+          "raw": "\r\n## Conseil Digital à Paris\r\n\r\nBasés au coeur de Paris, nous accompagnons les entreprises franciliennes dans leur transformation digitale depuis plus de 10 ans.\r\n\r\n### Pourquoi choisir un cabinet parisien ?\r\n\r\n- **Proximité** - Rencontres en présentiel et réactivité\r\n- **Écosystème** - Connexion avec l'écosystème tech parisien\r\n- **Expertise** - Connaissance du marché local et de ses spécificités\r\n\r\n### Nos services à Paris\r\n\r\n- Audit de maturité digitale\r\n- Définition de stratégie numérique\r\n- Accompagnement à la transformation\r\n- Formation des équipes\r\n\r\n### Secteurs d'expertise\r\n\r\nNous intervenons auprès de startups, PME et grands groupes dans tous les secteurs : finance, retail, industrie, services.\r\n\r\n## Contactez-nous\r\n\r\nRencontrons-nous dans nos bureaux parisiens pour discuter de votre projet.\r\n",
+          "code": "var Component=(()=>{var h=Object.create;var t=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var f=(i,e)=>()=>(e||i((e={exports:{}}).exports,e),e.exports),P=(i,e)=>{for(var r in e)t(i,r,{get:e[r],enumerable:!0})},a=(i,e,r,o)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let s of m(e))!x.call(i,s)&&s!==r&&t(i,s,{get:()=>e[s],enumerable:!(o=p(e,s))||o.enumerable});return i};var v=(i,e,r)=>(r=i!=null?h(g(i)):{},a(e||!i||!i.__esModule?t(r,\"default\",{value:i,enumerable:!0}):r,i)),C=i=>a(t({},\"__esModule\",{value:!0}),i);var c=f((b,l)=>{l.exports=_jsx_runtime});var j={};P(j,{default:()=>u,frontmatter:()=>_});var n=v(c()),_={title:\"Conseil Digital \\xE0 Paris\",description:\"Cabinet de conseil digital \\xE0 Paris. Accompagnement strat\\xE9gique et solutions sur mesure pour entreprises parisiennes.\",city:\"Paris\",service:\"Conseil Digital\",region:\"\\xCEle-de-France\",heroTitle:\"Votre partenaire digital \\xE0 Paris\",heroSubtitle:\"Expertise locale, vision globale pour votre transformation num\\xE9rique\"};function d(i){let e={h2:\"h2\",h3:\"h3\",li:\"li\",p:\"p\",strong:\"strong\",ul:\"ul\",...i.components};return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(e.h2,{children:\"Conseil Digital \\xE0 Paris\"}),`\n`,(0,n.jsx)(e.p,{children:\"Bas\\xE9s au coeur de Paris, nous accompagnons les entreprises franciliennes dans leur transformation digitale depuis plus de 10 ans.\"}),`\n`,(0,n.jsx)(e.h3,{children:\"Pourquoi choisir un cabinet parisien ?\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Proximit\\xE9\"}),\" - Rencontres en pr\\xE9sentiel et r\\xE9activit\\xE9\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"\\xC9cosyst\\xE8me\"}),\" - Connexion avec l'\\xE9cosyst\\xE8me tech parisien\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Expertise\"}),\" - Connaissance du march\\xE9 local et de ses sp\\xE9cificit\\xE9s\"]}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{children:\"Nos services \\xE0 Paris\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Audit de maturit\\xE9 digitale\"}),`\n`,(0,n.jsx)(e.li,{children:\"D\\xE9finition de strat\\xE9gie num\\xE9rique\"}),`\n`,(0,n.jsx)(e.li,{children:\"Accompagnement \\xE0 la transformation\"}),`\n`,(0,n.jsx)(e.li,{children:\"Formation des \\xE9quipes\"}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{children:\"Secteurs d'expertise\"}),`\n`,(0,n.jsx)(e.p,{children:\"Nous intervenons aupr\\xE8s de startups, PME et grands groupes dans tous les secteurs : finance, retail, industrie, services.\"}),`\n`,(0,n.jsx)(e.h2,{children:\"Contactez-nous\"}),`\n`,(0,n.jsx)(e.p,{children:\"Rencontrons-nous dans nos bureaux parisiens pour discuter de votre projet.\"})]})}function u(i={}){let{wrapper:e}=i.components||{};return e?(0,n.jsx)(e,{...i,children:(0,n.jsx)(d,{...i})}):d(i)}return C(j);})();\n;return Component;"
+        },
+        "_id": "local/paris/conseil-digital.mdx",
+        "_raw": {
+          "sourceFilePath": "local/paris/conseil-digital.mdx",
+          "sourceFileName": "conseil-digital.mdx",
+          "sourceFileDir": "local/paris",
+          "contentType": "mdx",
+          "flattenedPath": "local/paris/conseil-digital"
+        },
+        "type": "LocalPage",
+        "slug": "paris/conseil-digital",
+        "url": "/local/paris/conseil-digital"
+      },
+      "documentHash": "1769082627390",
+      "hasWarnings": false,
+      "documentTypeName": "LocalPage"
+    },
+    "local/lyon/solutions-saas.mdx": {
+      "document": {
+        "title": "Solutions SaaS à Lyon",
+        "description": "Développement de solutions SaaS à Lyon. Experts cloud et applications métier pour entreprises lyonnaises et rhônalpines.",
+        "city": "Lyon",
+        "service": "Solutions SaaS",
+        "region": "Auvergne-Rhône-Alpes",
+        "heroTitle": "Solutions SaaS à Lyon",
+        "heroSubtitle": "L'excellence technique au service de votre croissance\r",
+        "body": {
+          "raw": "\r\n## Développement SaaS à Lyon\r\n\r\nNotre équipe lyonnaise conçoit des solutions cloud performantes pour les entreprises de la région Auvergne-Rhône-Alpes.\r\n\r\n### L'écosystème tech lyonnais\r\n\r\nLyon est devenu un hub technologique majeur en France. Nous sommes fiers de contribuer à cet écosystème dynamique.\r\n\r\n### Nos expertises SaaS\r\n\r\n- Applications web sur mesure\r\n- Plateformes e-commerce B2B\r\n- Outils de gestion métier\r\n- Intégrations API et automatisation\r\n\r\n### Avantages de travailler avec nous\r\n\r\n- **Équipe locale** - Interlocuteurs dédiés à Lyon\r\n- **Agilité** - Méthodologie adaptée aux PME et ETI\r\n- **Support** - Assistance réactive en français\r\n\r\n## Nos références régionales\r\n\r\nNous accompagnons des entreprises lyonnaises de tous secteurs : industrie, santé, services, commerce.\r\n",
+          "code": "var Component=(()=>{var h=Object.create;var i=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,S=Object.prototype.hasOwnProperty;var y=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),v=(t,e)=>{for(var r in e)i(t,r,{get:e[r],enumerable:!0})},l=(t,e,r,o)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let s of m(e))!S.call(t,s)&&s!==r&&i(t,s,{get:()=>e[s],enumerable:!(o=p(e,s))||o.enumerable});return t};var x=(t,e,r)=>(r=t!=null?h(g(t)):{},l(e||!t||!t.__esModule?i(r,\"default\",{value:t,enumerable:!0}):r,t)),f=t=>l(i({},\"__esModule\",{value:!0}),t);var a=y((j,c)=>{c.exports=_jsx_runtime});var A={};v(A,{default:()=>d,frontmatter:()=>L});var n=x(a()),L={title:\"Solutions SaaS \\xE0 Lyon\",description:\"D\\xE9veloppement de solutions SaaS \\xE0 Lyon. Experts cloud et applications m\\xE9tier pour entreprises lyonnaises et rh\\xF4nalpines.\",city:\"Lyon\",service:\"Solutions SaaS\",region:\"Auvergne-Rh\\xF4ne-Alpes\",heroTitle:\"Solutions SaaS \\xE0 Lyon\",heroSubtitle:\"L'excellence technique au service de votre croissance\"};function u(t){let e={h2:\"h2\",h3:\"h3\",li:\"li\",p:\"p\",strong:\"strong\",ul:\"ul\",...t.components};return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(e.h2,{children:\"D\\xE9veloppement SaaS \\xE0 Lyon\"}),`\n`,(0,n.jsx)(e.p,{children:\"Notre \\xE9quipe lyonnaise con\\xE7oit des solutions cloud performantes pour les entreprises de la r\\xE9gion Auvergne-Rh\\xF4ne-Alpes.\"}),`\n`,(0,n.jsx)(e.h3,{children:\"L'\\xE9cosyst\\xE8me tech lyonnais\"}),`\n`,(0,n.jsx)(e.p,{children:\"Lyon est devenu un hub technologique majeur en France. Nous sommes fiers de contribuer \\xE0 cet \\xE9cosyst\\xE8me dynamique.\"}),`\n`,(0,n.jsx)(e.h3,{children:\"Nos expertises SaaS\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Applications web sur mesure\"}),`\n`,(0,n.jsx)(e.li,{children:\"Plateformes e-commerce B2B\"}),`\n`,(0,n.jsx)(e.li,{children:\"Outils de gestion m\\xE9tier\"}),`\n`,(0,n.jsx)(e.li,{children:\"Int\\xE9grations API et automatisation\"}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{children:\"Avantages de travailler avec nous\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"\\xC9quipe locale\"}),\" - Interlocuteurs d\\xE9di\\xE9s \\xE0 Lyon\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Agilit\\xE9\"}),\" - M\\xE9thodologie adapt\\xE9e aux PME et ETI\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Support\"}),\" - Assistance r\\xE9active en fran\\xE7ais\"]}),`\n`]}),`\n`,(0,n.jsx)(e.h2,{children:\"Nos r\\xE9f\\xE9rences r\\xE9gionales\"}),`\n`,(0,n.jsx)(e.p,{children:\"Nous accompagnons des entreprises lyonnaises de tous secteurs : industrie, sant\\xE9, services, commerce.\"})]})}function d(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(u,{...t})}):u(t)}return f(A);})();\n;return Component;"
+        },
+        "_id": "local/lyon/solutions-saas.mdx",
+        "_raw": {
+          "sourceFilePath": "local/lyon/solutions-saas.mdx",
+          "sourceFileName": "solutions-saas.mdx",
+          "sourceFileDir": "local/lyon",
+          "contentType": "mdx",
+          "flattenedPath": "local/lyon/solutions-saas"
+        },
+        "type": "LocalPage",
+        "slug": "lyon/solutions-saas",
+        "url": "/local/lyon/solutions-saas"
+      },
+      "documentHash": "1769082633255",
+      "hasWarnings": false,
+      "documentTypeName": "LocalPage"
+    }
+  }
+}

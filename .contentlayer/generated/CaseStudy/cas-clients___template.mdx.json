@@ -1,0 +1,125 @@
+{
+  "title": "Titre du cas client - Résultat principal",
+  "description": "Description courte (150-160 caractères) optimisée SEO",
+  "sector": "Franchise",
+  "sectorIcon": "Building2",
+  "company": "Nom de l'entreprise",
+  "companyLogo": "/images/cas-clients/logo-company.png",
+  "heroImage": "/images/cas-clients/hero-company.jpg",
+  "executiveSummary": "En 2-3 phrases, résumez le défi, la solution et les résultats. Ce texte doit convaincre un décideur de lire la suite.",
+  "projectDuration": "6 mois",
+  "projectYear": "2024",
+  "context": "Description détaillée du contexte de l'entreprise, son marché, sa taille, ses enjeux stratégiques avant notre intervention. Soyez précis sur la situation initiale.",
+  "challenges": [
+    "Premier défi business identifié",
+    "Deuxième défi technique ou organisationnel",
+    "Troisième défi lié au marché ou à la concurrence",
+    "Quatrième défi opérationnel"
+  ],
+  "approachPhases": [
+    {
+      "phase": "Phase 1",
+      "title": "Audit & Diagnostic",
+      "description": "Description de cette phase et des actions menées",
+      "deliverables": [
+        "Livrable 1 de cette phase",
+        "Livrable 2 de cette phase"
+      ]
+    },
+    {
+      "phase": "Phase 2",
+      "title": "Stratégie & Conception",
+      "description": "Description de cette phase",
+      "deliverables": [
+        "Livrable 1",
+        "Livrable 2"
+      ]
+    },
+    {
+      "phase": "Phase 3",
+      "title": "Déploiement & Activation",
+      "description": "Description de cette phase",
+      "deliverables": [
+        "Livrable 1",
+        "Livrable 2"
+      ]
+    },
+    {
+      "phase": "Phase 4",
+      "title": "Optimisation & Scale",
+      "description": "Description de cette phase",
+      "deliverables": [
+        "Livrable 1",
+        "Livrable 2"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "value": "+200%",
+      "label": "Croissance leads",
+      "trend": "up"
+    },
+    {
+      "value": "6 mois",
+      "label": "Time-to-market",
+      "trend": "neutral"
+    },
+    {
+      "value": "-40%",
+      "label": "Coût acquisition",
+      "trend": "down"
+    },
+    {
+      "value": "x3",
+      "label": "Pipeline commercial",
+      "trend": "up"
+    }
+  ],
+  "resultsDetails": "Paragraphe détaillant les résultats obtenus, les impacts business mesurables, le ROI, et les bénéfices à long terme pour le client.",
+  "testimonial": {
+    "quote": "Citation longue et impactante du client, décrivant son expérience de collaboration et les résultats obtenus. Cette citation doit être authentique et spécifique.",
+    "author": "Prénom Nom",
+    "role": "Fonction, Titre",
+    "company": "Nom de l'entreprise",
+    "photo": "/images/cas-clients/testimonial-photo.jpg"
+  },
+  "deliverables": [
+    {
+      "title": "Livrable 1",
+      "description": "Description courte du livrable et de sa valeur",
+      "icon": "FileText"
+    },
+    {
+      "title": "Livrable 2",
+      "description": "Description courte",
+      "icon": "BarChart3"
+    },
+    {
+      "title": "Livrable 3",
+      "description": "Description courte",
+      "icon": "Settings"
+    }
+  ],
+  "publishedAt": "2024-01-15T00:00:00.000Z",
+  "featured": false,
+  "order": 1,
+  "metaTitle": "Titre SEO optimisé - Cas Client Stratège",
+  "metaDescription": "Meta description SEO de 150-160 caractères pour les résultats Google\n",
+  "body": {
+    "raw": "\r\n## Le contexte\r\n\r\nDéveloppez ici le contexte complet du client : son secteur d'activité, sa position sur le marché, ses ambitions de croissance, et la situation qui a mené à notre collaboration.\r\n\r\nSoyez précis sur les chiffres et les enjeux business pour crédibiliser l'étude de cas auprès de décideurs B2B exigeants.\r\n\r\n{/* IMAGE CONTEXTE : Photo de l'entreprise, de l'équipe, ou visuel représentant le secteur */}\r\n![Contexte de l'entreprise - Description de l'image](/images/cas-clients/company-context.jpg)\r\n\r\n## Les défis identifiés\r\n\r\nAvant notre intervention, [Nom de l'entreprise] faisait face à plusieurs obstacles majeurs qui freinaient sa croissance :\r\n\r\n### Défi 1 : [Titre du défi]\r\n\r\nDescription détaillée du premier défi, ses impacts business, et pourquoi il était critique à résoudre.\r\n\r\n### Défi 2 : [Titre du défi]\r\n\r\nDescription du deuxième défi avec des éléments quantifiables si possible.\r\n\r\n### Défi 3 : [Titre du défi]\r\n\r\nDescription du troisième défi.\r\n\r\n## Notre approche\r\n\r\nNotre méthodologie s'est articulée autour de 4 phases clés, garantissant une transformation progressive et maîtrisée.\r\n\r\n> Notre conviction : une transformation réussie repose sur un diagnostic précis, une stratégie claire, et une exécution rigoureuse.\r\n\r\n{/* IMAGE MÉTHODOLOGIE : Schéma de la méthodologie, timeline visuelle, ou captures d'écran des outils */}\r\n![Notre méthodologie d'accompagnement](/images/cas-clients/methodology-diagram.jpg)\r\n\r\n### Aperçu des livrables\r\n\r\n{/* GALERIE D'ASSETS : Screenshots des livrables, dashboards, interfaces créées */}\r\n![Dashboard de pilotage](/images/cas-clients/deliverable-dashboard.jpg)\r\n\r\n![Kit marketing créé](/images/cas-clients/deliverable-marketing-kit.jpg)\r\n\r\n## Les résultats obtenus\r\n\r\nAprès [durée] de collaboration, les résultats ont dépassé les objectifs initiaux :\r\n\r\n- **[Métrique 1]** : Explication et contexte\r\n- **[Métrique 2]** : Explication et contexte  \r\n- **[Métrique 3]** : Explication et contexte\r\n\r\n{/* IMAGE RÉSULTATS : Graphique d'évolution, capture du dashboard de résultats, comparatif avant/après */}\r\n![Évolution des performances - Avant vs Après](/images/cas-clients/results-graph.jpg)\r\n\r\n## Impact à long terme\r\n\r\nAu-delà des métriques immédiates, cette transformation a permis à [Nom de l'entreprise] de :\r\n\r\n1. [Bénéfice stratégique 1]\r\n2. [Bénéfice stratégique 2]\r\n3. [Bénéfice stratégique 3]\r\n\r\n## Ce qu'on retient\r\n\r\nLes facteurs clés de succès de cette mission :\r\n\r\n- **Alignement stratégique** : Direction et équipes alignées sur les objectifs\r\n- **Méthodologie éprouvée** : Notre framework adapté au contexte spécifique\r\n- **Accompagnement continu** : Présence et réactivité tout au long du projet\r\n\r\n{/* \r\n============================================\r\nGUIDE IMAGES - BONNES PRATIQUES\r\n============================================\r\n\r\nEMPLACEMENTS STRATÉGIQUES POUR LES IMAGES :\r\n\r\n1. APRÈS LE CONTEXTE\r\n   - Photo de l'entreprise/équipe\r\n   - Visuel du secteur d'activité\r\n   - Situation \"avant\" si disponible\r\n\r\n2. DANS L'APPROCHE / MÉTHODOLOGIE  \r\n   - Schéma de la méthodologie\r\n   - Timeline visuelle du projet\r\n   - Captures d'écran des outils utilisés\r\n\r\n3. APERÇU DES LIVRABLES (section dédiée)\r\n   - Screenshots des dashboards créés\r\n   - Visuels des kits marketing\r\n   - Interfaces des solutions déployées\r\n   - Exemples de contenus produits\r\n\r\n4. RÉSULTATS\r\n   - Graphiques d'évolution\r\n   - Comparatifs avant/après\r\n   - Captures des métriques clés\r\n\r\nFORMAT RECOMMANDÉ :\r\n- Largeur : 1200px minimum\r\n- Format : JPG ou PNG\r\n- Ratio : 16:9 ou 4:3\r\n- Poids : < 500Ko (optimisé)\r\n\r\nNOMMAGE : /images/cas-clients/[slug]-[description].jpg\r\nExemple : /images/cas-clients/easyvirtual-dashboard.jpg\r\n\r\nSYNTAXE MDX :\r\n![Texte alternatif descriptif](/images/cas-clients/nom-image.jpg)\r\n\r\n*/}\r\n",
+    "code": "var Component=(()=>{var p=Object.create;var s=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,b=Object.prototype.hasOwnProperty;var f=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),v=(t,e)=>{for(var n in e)s(t,n,{get:e[n],enumerable:!0})},l=(t,e,n,a)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of m(e))!b.call(t,r)&&r!==n&&s(t,r,{get:()=>e[r],enumerable:!(a=h(e,r))||a.enumerable});return t};var x=(t,e,n)=>(n=t!=null?p(g(t)):{},l(e||!t||!t.__esModule?s(n,\"default\",{value:t,enumerable:!0}):n,t)),D=t=>l(s({},\"__esModule\",{value:!0}),t);var c=f((C,o)=>{o.exports=_jsx_runtime});var j={};v(j,{default:()=>u,frontmatter:()=>q});var i=x(c()),q={title:\"Titre du cas client - R\\xE9sultat principal\",description:\"Description courte (150-160 caract\\xE8res) optimis\\xE9e SEO\",sector:\"Franchise\",sectorIcon:\"Building2\",company:\"Nom de l'entreprise\",companyLogo:\"/images/cas-clients/logo-company.png\",heroImage:\"/images/cas-clients/hero-company.jpg\",executiveSummary:\"En 2-3 phrases, r\\xE9sumez le d\\xE9fi, la solution et les r\\xE9sultats. Ce texte doit convaincre un d\\xE9cideur de lire la suite.\",projectDuration:\"6 mois\",projectYear:\"2024\",context:\"Description d\\xE9taill\\xE9e du contexte de l'entreprise, son march\\xE9, sa taille, ses enjeux strat\\xE9giques avant notre intervention. Soyez pr\\xE9cis sur la situation initiale.\",challenges:[\"Premier d\\xE9fi business identifi\\xE9\",\"Deuxi\\xE8me d\\xE9fi technique ou organisationnel\",\"Troisi\\xE8me d\\xE9fi li\\xE9 au march\\xE9 ou \\xE0 la concurrence\",\"Quatri\\xE8me d\\xE9fi op\\xE9rationnel\"],approachPhases:[{phase:\"Phase 1\",title:\"Audit & Diagnostic\",description:\"Description de cette phase et des actions men\\xE9es\",deliverables:[\"Livrable 1 de cette phase\",\"Livrable 2 de cette phase\"]},{phase:\"Phase 2\",title:\"Strat\\xE9gie & Conception\",description:\"Description de cette phase\",deliverables:[\"Livrable 1\",\"Livrable 2\"]},{phase:\"Phase 3\",title:\"D\\xE9ploiement & Activation\",description:\"Description de cette phase\",deliverables:[\"Livrable 1\",\"Livrable 2\"]},{phase:\"Phase 4\",title:\"Optimisation & Scale\",description:\"Description de cette phase\",deliverables:[\"Livrable 1\",\"Livrable 2\"]}],metrics:[{value:\"+200%\",label:\"Croissance leads\",trend:\"up\"},{value:\"6 mois\",label:\"Time-to-market\",trend:\"neutral\"},{value:\"-40%\",label:\"Co\\xFBt acquisition\",trend:\"down\"},{value:\"x3\",label:\"Pipeline commercial\",trend:\"up\"}],resultsDetails:\"Paragraphe d\\xE9taillant les r\\xE9sultats obtenus, les impacts business mesurables, le ROI, et les b\\xE9n\\xE9fices \\xE0 long terme pour le client.\",testimonial:{quote:\"Citation longue et impactante du client, d\\xE9crivant son exp\\xE9rience de collaboration et les r\\xE9sultats obtenus. Cette citation doit \\xEAtre authentique et sp\\xE9cifique.\",author:\"Pr\\xE9nom Nom\",role:\"Fonction, Titre\",company:\"Nom de l'entreprise\",photo:\"/images/cas-clients/testimonial-photo.jpg\"},deliverables:[{title:\"Livrable 1\",description:\"Description courte du livrable et de sa valeur\",icon:\"FileText\"},{title:\"Livrable 2\",description:\"Description courte\",icon:\"BarChart3\"},{title:\"Livrable 3\",description:\"Description courte\",icon:\"Settings\"}],publishedAt:\"2024-01-15\",featured:!1,order:1,metaTitle:\"Titre SEO optimis\\xE9 - Cas Client Strat\\xE8ge\",metaDescription:`Meta description SEO de 150-160 caract\\xE8res pour les r\\xE9sultats Google\n`};function d(t){let e={blockquote:\"blockquote\",h2:\"h2\",h3:\"h3\",img:\"img\",li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",ul:\"ul\",...t.components};return(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)(e.h2,{children:\"Le contexte\"}),`\n`,(0,i.jsx)(e.p,{children:\"D\\xE9veloppez ici le contexte complet du client : son secteur d'activit\\xE9, sa position sur le march\\xE9, ses ambitions de croissance, et la situation qui a men\\xE9 \\xE0 notre collaboration.\"}),`\n`,(0,i.jsx)(e.p,{children:\"Soyez pr\\xE9cis sur les chiffres et les enjeux business pour cr\\xE9dibiliser l'\\xE9tude de cas aupr\\xE8s de d\\xE9cideurs B2B exigeants.\"}),`\n`,`\n`,(0,i.jsx)(e.p,{children:(0,i.jsx)(e.img,{src:\"/images/cas-clients/company-context.jpg\",alt:\"Contexte de l'entreprise - Description de l'image\"})}),`\n`,(0,i.jsx)(e.h2,{children:\"Les d\\xE9fis identifi\\xE9s\"}),`\n`,(0,i.jsx)(e.p,{children:\"Avant notre intervention, [Nom de l'entreprise] faisait face \\xE0 plusieurs obstacles majeurs qui freinaient sa croissance :\"}),`\n`,(0,i.jsx)(e.h3,{children:\"D\\xE9fi 1 : [Titre du d\\xE9fi]\"}),`\n`,(0,i.jsx)(e.p,{children:\"Description d\\xE9taill\\xE9e du premier d\\xE9fi, ses impacts business, et pourquoi il \\xE9tait critique \\xE0 r\\xE9soudre.\"}),`\n`,(0,i.jsx)(e.h3,{children:\"D\\xE9fi 2 : [Titre du d\\xE9fi]\"}),`\n`,(0,i.jsx)(e.p,{children:\"Description du deuxi\\xE8me d\\xE9fi avec des \\xE9l\\xE9ments quantifiables si possible.\"}),`\n`,(0,i.jsx)(e.h3,{children:\"D\\xE9fi 3 : [Titre du d\\xE9fi]\"}),`\n`,(0,i.jsx)(e.p,{children:\"Description du troisi\\xE8me d\\xE9fi.\"}),`\n`,(0,i.jsx)(e.h2,{children:\"Notre approche\"}),`\n`,(0,i.jsx)(e.p,{children:\"Notre m\\xE9thodologie s'est articul\\xE9e autour de 4 phases cl\\xE9s, garantissant une transformation progressive et ma\\xEEtris\\xE9e.\"}),`\n`,(0,i.jsxs)(e.blockquote,{children:[`\n`,(0,i.jsx)(e.p,{children:\"Notre conviction : une transformation r\\xE9ussie repose sur un diagnostic pr\\xE9cis, une strat\\xE9gie claire, et une ex\\xE9cution rigoureuse.\"}),`\n`]}),`\n`,`\n`,(0,i.jsx)(e.p,{children:(0,i.jsx)(e.img,{src:\"/images/cas-clients/methodology-diagram.jpg\",alt:\"Notre m\\xE9thodologie d'accompagnement\"})}),`\n`,(0,i.jsx)(e.h3,{children:\"Aper\\xE7u des livrables\"}),`\n`,`\n`,(0,i.jsx)(e.p,{children:(0,i.jsx)(e.img,{src:\"/images/cas-clients/deliverable-dashboard.jpg\",alt:\"Dashboard de pilotage\"})}),`\n`,(0,i.jsx)(e.p,{children:(0,i.jsx)(e.img,{src:\"/images/cas-clients/deliverable-marketing-kit.jpg\",alt:\"Kit marketing cr\\xE9\\xE9\"})}),`\n`,(0,i.jsx)(e.h2,{children:\"Les r\\xE9sultats obtenus\"}),`\n`,(0,i.jsx)(e.p,{children:\"Apr\\xE8s [dur\\xE9e] de collaboration, les r\\xE9sultats ont d\\xE9pass\\xE9 les objectifs initiaux :\"}),`\n`,(0,i.jsxs)(e.ul,{children:[`\n`,(0,i.jsxs)(e.li,{children:[(0,i.jsx)(e.strong,{children:\"[M\\xE9trique 1]\"}),\" : Explication et contexte\"]}),`\n`,(0,i.jsxs)(e.li,{children:[(0,i.jsx)(e.strong,{children:\"[M\\xE9trique 2]\"}),\" : Explication et contexte\"]}),`\n`,(0,i.jsxs)(e.li,{children:[(0,i.jsx)(e.strong,{children:\"[M\\xE9trique 3]\"}),\" : Explication et contexte\"]}),`\n`]}),`\n`,`\n`,(0,i.jsx)(e.p,{children:(0,i.jsx)(e.img,{src:\"/images/cas-clients/results-graph.jpg\",alt:\"\\xC9volution des performances - Avant vs Apr\\xE8s\"})}),`\n`,(0,i.jsx)(e.h2,{children:\"Impact \\xE0 long terme\"}),`\n`,(0,i.jsx)(e.p,{children:\"Au-del\\xE0 des m\\xE9triques imm\\xE9diates, cette transformation a permis \\xE0 [Nom de l'entreprise] de :\"}),`\n`,(0,i.jsxs)(e.ol,{children:[`\n`,(0,i.jsx)(e.li,{children:\"[B\\xE9n\\xE9fice strat\\xE9gique 1]\"}),`\n`,(0,i.jsx)(e.li,{children:\"[B\\xE9n\\xE9fice strat\\xE9gique 2]\"}),`\n`,(0,i.jsx)(e.li,{children:\"[B\\xE9n\\xE9fice strat\\xE9gique 3]\"}),`\n`]}),`\n`,(0,i.jsx)(e.h2,{children:\"Ce qu'on retient\"}),`\n`,(0,i.jsx)(e.p,{children:\"Les facteurs cl\\xE9s de succ\\xE8s de cette mission :\"}),`\n`,(0,i.jsxs)(e.ul,{children:[`\n`,(0,i.jsxs)(e.li,{children:[(0,i.jsx)(e.strong,{children:\"Alignement strat\\xE9gique\"}),\" : Direction et \\xE9quipes align\\xE9es sur les objectifs\"]}),`\n`,(0,i.jsxs)(e.li,{children:[(0,i.jsx)(e.strong,{children:\"M\\xE9thodologie \\xE9prouv\\xE9e\"}),\" : Notre framework adapt\\xE9 au contexte sp\\xE9cifique\"]}),`\n`,(0,i.jsxs)(e.li,{children:[(0,i.jsx)(e.strong,{children:\"Accompagnement continu\"}),\" : Pr\\xE9sence et r\\xE9activit\\xE9 tout au long du projet\"]}),`\n`]}),`\n`]})}function u(t={}){let{wrapper:e}=t.components||{};return e?(0,i.jsx)(e,{...t,children:(0,i.jsx)(d,{...t})}):d(t)}return D(j);})();\n;return Component;"
+  },
+  "_id": "cas-clients/_template.mdx",
+  "_raw": {
+    "sourceFilePath": "cas-clients/_template.mdx",
+    "sourceFileName": "_template.mdx",
+    "sourceFileDir": "cas-clients",
+    "contentType": "mdx",
+    "flattenedPath": "cas-clients/_template"
+  },
+  "type": "CaseStudy",
+  "slug": "_template",
+  "url": "/cas-clients/_template",
+  "readingTime": "3 min de lecture"
+}

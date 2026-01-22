@@ -1,0 +1,29 @@
+import { withContentlayer } from "next-contentlayer2";
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  // Optimisations de performance
+  images: {
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.pravatar.cc",
+      },
+    ],
+    // Pour export statique, décommenter la ligne suivante :
+    // unoptimized: true,
+  },
+  // Pour export statique (Netlify, GitHub Pages, etc.), décommenter :
+  // output: "export",
+  // trailingSlash: true,
+  // Configuration Turbopack (Next.js 16+)
+  turbopack: {},
+};
+
+export default withContentlayer(nextConfig);

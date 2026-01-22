@@ -1,0 +1,252 @@
+[
+  {
+    "title": "Conseil Stratégique",
+    "description": "Définissez une stratégie digitale alignée sur vos objectifs business. Audit, roadmap et accompagnement personnalisé pour votre transformation numérique.",
+    "template": "service",
+    "heroTitle": "Conseil Stratégique Digital",
+    "heroSubtitle": "Une vision claire pour une transformation réussie. Nous transformons vos défis en avantages compétitifs grâce à une expertise analytique et une vision de marché sans compromis.",
+    "ctaText": "Demander un audit gratuit",
+    "ctaLink": "/contact",
+    "order": 1,
+    "category": "Conseil & Accompagnement",
+    "icon": "Lightbulb",
+    "tags": [
+      "Stratégie",
+      "Croissance",
+      "ROI Optimization",
+      "Transformation Digitale"
+    ],
+    "metrics": [
+      {
+        "value": "2x",
+        "label": "ROI moyen constaté"
+      },
+      {
+        "value": "6 mois",
+        "label": "Accompagnement type"
+      },
+      {
+        "value": "100%",
+        "label": "Solutions sur mesure"
+      }
+    ],
+    "features": [
+      {
+        "icon": "Target",
+        "title": "Analyse de Marché",
+        "description": "Études approfondies de votre écosystème pour identifier les opportunités de croissance inexploitées et anticiper les évolutions du marché."
+      },
+      {
+        "icon": "BarChart3",
+        "title": "Optimisation ROI",
+        "description": "Audit complet de vos flux financiers et opérationnels pour maximiser chaque euro investi dans votre transformation digitale."
+      },
+      {
+        "icon": "Layers",
+        "title": "Design Organisationnel",
+        "description": "Restructuration de vos équipes et processus pour une agilité et une efficacité décuplées face aux enjeux numériques."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Gestion des Risques",
+        "description": "Identification proactive et mitigation des menaces potentielles pour sécuriser votre avenir et protéger vos investissements."
+      }
+    ],
+    "process": [
+      {
+        "title": "Audit & Diagnostic",
+        "description": "Immersion totale dans votre business pour comprendre vos enjeux réels, analyser votre maturité digitale et identifier les opportunités."
+      },
+      {
+        "title": "Définition du Cap",
+        "description": "Élaboration d'une feuille de route claire avec des KPIs mesurables, des jalons précis et des quick wins identifiés."
+      },
+      {
+        "title": "Exécution Tactique",
+        "description": "Mise en œuvre agile des recommandations par nos experts dédiés, avec des sprints réguliers et une communication transparente."
+      },
+      {
+        "title": "Mesure & Optimisation",
+        "description": "Analyse continue des résultats et ajustements stratégiques en temps réel pour garantir l'atteinte de vos objectifs."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Comment se déroule le premier contact ?",
+        "answer": "Nous organisons une session de découverte de 45 minutes pour évaluer vos besoins et la compatibilité de notre approche avec vos objectifs. Cette première consultation est gratuite et sans engagement."
+      },
+      {
+        "question": "Quels secteurs couvrez-vous ?",
+        "answer": "Bien que multisectoriels, nous excellons particulièrement dans la Tech, la Finance, le Retail haut de gamme et les entreprises de services B2B. Notre méthodologie s'adapte à chaque contexte."
+      },
+      {
+        "question": "Proposez-vous un suivi post-mission ?",
+        "answer": "Oui, chaque mission inclut un trimestre de suivi pour garantir la pérennité des transformations opérées. Nous restons disponibles pour ajuster la stratégie si nécessaire."
+      },
+      {
+        "question": "Quel est le budget moyen d'une intervention ?",
+        "answer": "Nos honoraires sont indexés sur la complexité et la valeur créée. Un devis personnalisé est fourni après l'audit initial gratuit. Nous proposons des formules adaptées aux PME comme aux grandes entreprises."
+      }
+    ],
+    "testimonial": {
+      "quote": "L'équipe a su identifier les leviers de croissance que nous n'avions pas vus. En 8 mois, notre CA digital a augmenté de 180%.",
+      "author": "Marie Dupont",
+      "role": "Directrice Générale",
+      "company": "TechScale"
+    },
+    "relatedCaseStudies": [
+      "fintech-b2b",
+      "franchise-services-domicile"
+    ],
+    "metaTitle": "Conseil Stratégique Digital | Transformation & Croissance",
+    "metaDescription": "Experts en conseil stratégique digital. Audit de maturité, roadmap sur mesure et accompagnement pour accélérer votre transformation numérique. ROI garanti.",
+    "keywords": [
+      "conseil stratégique digital",
+      "transformation digitale",
+      "audit numérique",
+      "stratégie digitale entreprise",
+      "accompagnement digital",
+      "roadmap digitale\r"
+    ],
+    "body": {
+      "raw": "\r\n## Ce que nous proposons\r\n\r\nNotre service de conseil stratégique vous accompagne dans la définition et l'exécution de votre transformation digitale. Dans un monde saturé de données, la clarté est votre plus grand atout.\r\n\r\nNous ne nous contentons pas de donner des conseils ; nous bâtissons des structures résilientes capables d'absorber les chocs du marché tout en maintenant une trajectoire de croissance agressive.\r\n\r\n### Audit et Diagnostic\r\n\r\nAnalyse approfondie de votre maturité digitale, identification des opportunités et des freins. Nous examinons chaque aspect de votre organisation pour dresser un état des lieux précis et actionnable.\r\n\r\n### Roadmap Stratégique\r\n\r\nDéfinition d'une feuille de route claire avec des jalons mesurables et des quick wins. Chaque étape est conçue pour générer de la valeur rapidement tout en préparant les fondations de votre croissance long terme.\r\n\r\n### Accompagnement Continu\r\n\r\nSuivi régulier et ajustements pour garantir l'atteinte de vos objectifs. Nos experts restent à vos côtés pour piloter le changement et surmonter les obstacles.\r\n\r\n## Bénéfices\r\n\r\n- **Vision claire et partagée** de votre transformation avec l'ensemble de vos parties prenantes\r\n- **Priorisation des investissements** technologiques basée sur le ROI et l'impact business\r\n- **Réduction des risques** et accélération du time-to-market grâce à une méthodologie éprouvée\r\n- **Montée en compétences** de vos équipes sur les enjeux digitaux\r\n- **Avantage concurrentiel** durable grâce à une stratégie différenciante\r\n",
+      "code": "var Component=(()=>{var p=Object.create;var r=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var g=Object.getOwnPropertyNames;var v=Object.getPrototypeOf,h=Object.prototype.hasOwnProperty;var f=(i,e)=>()=>(e||i((e={exports:{}}).exports,e),e.exports),q=(i,e)=>{for(var n in e)r(i,n,{get:e[n],enumerable:!0})},a=(i,e,n,o)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let s of g(e))!h.call(i,s)&&s!==n&&r(i,s,{get:()=>e[s],enumerable:!(o=m(e,s))||o.enumerable});return i};var x=(i,e,n)=>(n=i!=null?p(v(i)):{},a(e||!i||!i.__esModule?r(n,\"default\",{value:i,enumerable:!0}):n,i)),b=i=>a(r({},\"__esModule\",{value:!0}),i);var c=f((y,u)=>{u.exports=_jsx_runtime});var C={};q(C,{default:()=>d,frontmatter:()=>j});var t=x(c()),j={title:\"Conseil Strat\\xE9gique\",description:\"D\\xE9finissez une strat\\xE9gie digitale align\\xE9e sur vos objectifs business. Audit, roadmap et accompagnement personnalis\\xE9 pour votre transformation num\\xE9rique.\",template:\"service\",heroTitle:\"Conseil Strat\\xE9gique Digital\",heroSubtitle:\"Une vision claire pour une transformation r\\xE9ussie. Nous transformons vos d\\xE9fis en avantages comp\\xE9titifs gr\\xE2ce \\xE0 une expertise analytique et une vision de march\\xE9 sans compromis.\",ctaText:\"Demander un audit gratuit\",ctaLink:\"/contact\",order:1,category:\"Conseil & Accompagnement\",icon:\"Lightbulb\",tags:[\"Strat\\xE9gie\",\"Croissance\",\"ROI Optimization\",\"Transformation Digitale\"],metrics:[{value:\"2x\",label:\"ROI moyen constat\\xE9\"},{value:\"6 mois\",label:\"Accompagnement type\"},{value:\"100%\",label:\"Solutions sur mesure\"}],features:[{icon:\"Target\",title:\"Analyse de March\\xE9\",description:\"\\xC9tudes approfondies de votre \\xE9cosyst\\xE8me pour identifier les opportunit\\xE9s de croissance inexploit\\xE9es et anticiper les \\xE9volutions du march\\xE9.\"},{icon:\"BarChart3\",title:\"Optimisation ROI\",description:\"Audit complet de vos flux financiers et op\\xE9rationnels pour maximiser chaque euro investi dans votre transformation digitale.\"},{icon:\"Layers\",title:\"Design Organisationnel\",description:\"Restructuration de vos \\xE9quipes et processus pour une agilit\\xE9 et une efficacit\\xE9 d\\xE9cupl\\xE9es face aux enjeux num\\xE9riques.\"},{icon:\"ShieldCheck\",title:\"Gestion des Risques\",description:\"Identification proactive et mitigation des menaces potentielles pour s\\xE9curiser votre avenir et prot\\xE9ger vos investissements.\"}],process:[{title:\"Audit & Diagnostic\",description:\"Immersion totale dans votre business pour comprendre vos enjeux r\\xE9els, analyser votre maturit\\xE9 digitale et identifier les opportunit\\xE9s.\"},{title:\"D\\xE9finition du Cap\",description:\"\\xC9laboration d'une feuille de route claire avec des KPIs mesurables, des jalons pr\\xE9cis et des quick wins identifi\\xE9s.\"},{title:\"Ex\\xE9cution Tactique\",description:\"Mise en \\u0153uvre agile des recommandations par nos experts d\\xE9di\\xE9s, avec des sprints r\\xE9guliers et une communication transparente.\"},{title:\"Mesure & Optimisation\",description:\"Analyse continue des r\\xE9sultats et ajustements strat\\xE9giques en temps r\\xE9el pour garantir l'atteinte de vos objectifs.\"}],faqs:[{question:\"Comment se d\\xE9roule le premier contact ?\",answer:\"Nous organisons une session de d\\xE9couverte de 45 minutes pour \\xE9valuer vos besoins et la compatibilit\\xE9 de notre approche avec vos objectifs. Cette premi\\xE8re consultation est gratuite et sans engagement.\"},{question:\"Quels secteurs couvrez-vous ?\",answer:\"Bien que multisectoriels, nous excellons particuli\\xE8rement dans la Tech, la Finance, le Retail haut de gamme et les entreprises de services B2B. Notre m\\xE9thodologie s'adapte \\xE0 chaque contexte.\"},{question:\"Proposez-vous un suivi post-mission ?\",answer:\"Oui, chaque mission inclut un trimestre de suivi pour garantir la p\\xE9rennit\\xE9 des transformations op\\xE9r\\xE9es. Nous restons disponibles pour ajuster la strat\\xE9gie si n\\xE9cessaire.\"},{question:\"Quel est le budget moyen d'une intervention ?\",answer:\"Nos honoraires sont index\\xE9s sur la complexit\\xE9 et la valeur cr\\xE9\\xE9e. Un devis personnalis\\xE9 est fourni apr\\xE8s l'audit initial gratuit. Nous proposons des formules adapt\\xE9es aux PME comme aux grandes entreprises.\"}],testimonial:{quote:\"L'\\xE9quipe a su identifier les leviers de croissance que nous n'avions pas vus. En 8 mois, notre CA digital a augment\\xE9 de 180%.\",author:\"Marie Dupont\",role:\"Directrice G\\xE9n\\xE9rale\",company:\"TechScale\"},relatedCaseStudies:[\"fintech-b2b\",\"franchise-services-domicile\"],metaTitle:\"Conseil Strat\\xE9gique Digital | Transformation & Croissance\",metaDescription:\"Experts en conseil strat\\xE9gique digital. Audit de maturit\\xE9, roadmap sur mesure et accompagnement pour acc\\xE9l\\xE9rer votre transformation num\\xE9rique. ROI garanti.\",keywords:[\"conseil strat\\xE9gique digital\",\"transformation digitale\",\"audit num\\xE9rique\",\"strat\\xE9gie digitale entreprise\",\"accompagnement digital\",\"roadmap digitale\"]};function l(i){let e={h2:\"h2\",h3:\"h3\",li:\"li\",p:\"p\",strong:\"strong\",ul:\"ul\",...i.components};return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.h2,{children:\"Ce que nous proposons\"}),`\n`,(0,t.jsx)(e.p,{children:\"Notre service de conseil strat\\xE9gique vous accompagne dans la d\\xE9finition et l'ex\\xE9cution de votre transformation digitale. Dans un monde satur\\xE9 de donn\\xE9es, la clart\\xE9 est votre plus grand atout.\"}),`\n`,(0,t.jsx)(e.p,{children:\"Nous ne nous contentons pas de donner des conseils ; nous b\\xE2tissons des structures r\\xE9silientes capables d'absorber les chocs du march\\xE9 tout en maintenant une trajectoire de croissance agressive.\"}),`\n`,(0,t.jsx)(e.h3,{children:\"Audit et Diagnostic\"}),`\n`,(0,t.jsx)(e.p,{children:\"Analyse approfondie de votre maturit\\xE9 digitale, identification des opportunit\\xE9s et des freins. Nous examinons chaque aspect de votre organisation pour dresser un \\xE9tat des lieux pr\\xE9cis et actionnable.\"}),`\n`,(0,t.jsx)(e.h3,{children:\"Roadmap Strat\\xE9gique\"}),`\n`,(0,t.jsx)(e.p,{children:\"D\\xE9finition d'une feuille de route claire avec des jalons mesurables et des quick wins. Chaque \\xE9tape est con\\xE7ue pour g\\xE9n\\xE9rer de la valeur rapidement tout en pr\\xE9parant les fondations de votre croissance long terme.\"}),`\n`,(0,t.jsx)(e.h3,{children:\"Accompagnement Continu\"}),`\n`,(0,t.jsx)(e.p,{children:\"Suivi r\\xE9gulier et ajustements pour garantir l'atteinte de vos objectifs. Nos experts restent \\xE0 vos c\\xF4t\\xE9s pour piloter le changement et surmonter les obstacles.\"}),`\n`,(0,t.jsx)(e.h2,{children:\"B\\xE9n\\xE9fices\"}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Vision claire et partag\\xE9e\"}),\" de votre transformation avec l'ensemble de vos parties prenantes\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Priorisation des investissements\"}),\" technologiques bas\\xE9e sur le ROI et l'impact business\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"R\\xE9duction des risques\"}),\" et acc\\xE9l\\xE9ration du time-to-market gr\\xE2ce \\xE0 une m\\xE9thodologie \\xE9prouv\\xE9e\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Mont\\xE9e en comp\\xE9tences\"}),\" de vos \\xE9quipes sur les enjeux digitaux\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Avantage concurrentiel\"}),\" durable gr\\xE2ce \\xE0 une strat\\xE9gie diff\\xE9renciante\"]}),`\n`]})]})}function d(i={}){let{wrapper:e}=i.components||{};return e?(0,t.jsx)(e,{...i,children:(0,t.jsx)(l,{...i})}):l(i)}return b(C);})();\n;return Component;"
+    },
+    "_id": "pages/services/conseil-strategique.mdx",
+    "_raw": {
+      "sourceFilePath": "pages/services/conseil-strategique.mdx",
+      "sourceFileName": "conseil-strategique.mdx",
+      "sourceFileDir": "pages/services",
+      "contentType": "mdx",
+      "flattenedPath": "pages/services/conseil-strategique"
+    },
+    "type": "Page",
+    "slug": "services/conseil-strategique",
+    "url": "/services/conseil-strategique"
+  },
+  {
+    "title": "Solutions SaaS & Web",
+    "description": "Développement et intégration de solutions SaaS adaptées à vos processus métier. Applications robustes, scalables et centrées sur l'expérience utilisateur.",
+    "template": "service",
+    "heroTitle": "Solutions SaaS Sur Mesure",
+    "heroSubtitle": "Des outils performants pour automatiser et optimiser vos opérations. Développement d'applications robustes, scalables et centrées sur l'expérience utilisateur finale.",
+    "ctaText": "Voir nos réalisations",
+    "ctaLink": "/cas-clients",
+    "order": 2,
+    "category": "Développement & Intégration",
+    "icon": "Cpu",
+    "tags": [
+      "Développement",
+      "Cloud",
+      "API",
+      "Full-Stack"
+    ],
+    "metrics": [
+      {
+        "value": "99.9%",
+        "label": "Uptime garanti"
+      },
+      {
+        "value": "< 200ms",
+        "label": "Temps de réponse"
+      },
+      {
+        "value": "∞",
+        "label": "Scalabilité"
+      }
+    ],
+    "features": [
+      {
+        "icon": "Code",
+        "title": "Développement Full-Stack",
+        "description": "Applications web et mobiles modernes avec les dernières technologies. Code propre, testé et documenté pour une maintenance facilitée."
+      },
+      {
+        "icon": "Cloud",
+        "title": "Architecture Cloud Native",
+        "description": "Infrastructure scalable et résiliente sur AWS, GCP ou Azure. Déploiement automatisé et monitoring en temps réel."
+      },
+      {
+        "icon": "Plug",
+        "title": "Intégration API & Systèmes",
+        "description": "Connexion fluide avec vos outils existants (CRM, ERP, outils métier). APIs RESTful et webhooks pour une interopérabilité totale."
+      },
+      {
+        "icon": "Palette",
+        "title": "Design System & UX",
+        "description": "Interfaces utilisateur intuitives et élégantes. Systèmes de design cohérents pour une expérience utilisateur optimale."
+      }
+    ],
+    "process": [
+      {
+        "title": "Discovery & Specs",
+        "description": "Analyse de vos besoins fonctionnels et techniques. Rédaction des spécifications détaillées et validation du périmètre avec vos équipes."
+      },
+      {
+        "title": "Architecture & Design",
+        "description": "Conception de l'architecture technique et des maquettes UX/UI. Choix technologiques validés ensemble pour une stack moderne et pérenne."
+      },
+      {
+        "title": "Développement Agile",
+        "description": "Sprints de développement de 2 semaines avec démos régulières. Livraisons incrémentales pour un feedback continu et des ajustements rapides."
+      },
+      {
+        "title": "Déploiement & Support",
+        "description": "Mise en production progressive et formation de vos équipes. Support technique et maintenance évolutive inclus."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Quelles technologies utilisez-vous ?",
+        "answer": "Nous travaillons avec les stacks les plus modernes et éprouvées : React/Next.js, Vue.js pour le frontend, Node.js, Python, Go pour le backend, et AWS, GCP ou Azure pour le cloud. Le choix final dépend de vos contraintes et objectifs."
+      },
+      {
+        "question": "Combien de temps pour développer une application ?",
+        "answer": "Un MVP fonctionnel peut être livré en 2-3 mois. Une application complète prend généralement 4-8 mois selon la complexité. Nous privilégions les livraisons incrémentales pour vous apporter de la valeur rapidement."
+      },
+      {
+        "question": "Proposez-vous de la maintenance ?",
+        "answer": "Oui, nous proposons des contrats de maintenance incluant : corrections de bugs, mises à jour de sécurité, évolutions fonctionnelles mineures et support technique. Des forfaits adaptés à chaque projet sont disponibles."
+      },
+      {
+        "question": "Pouvez-vous reprendre un projet existant ?",
+        "answer": "Absolument. Nous réalisons d'abord un audit technique pour évaluer la qualité du code existant, puis nous proposons un plan de reprise avec les actions prioritaires à mener."
+      }
+    ],
+    "testimonial": {
+      "quote": "Notre plateforme SaaS a été livrée dans les délais avec une qualité exceptionnelle. L'équipe a su s'adapter à nos contraintes métier tout en proposant des solutions innovantes.",
+      "author": "Thomas Martin",
+      "role": "CTO",
+      "company": "DataFlow"
+    },
+    "relatedCaseStudies": [
+      "saas-marketing-automation",
+      "fintech-b2b"
+    ],
+    "metaTitle": "Solutions SaaS & Développement Web Sur Mesure | Applications Cloud",
+    "metaDescription": "Développement de solutions SaaS et applications web sur mesure. Stack moderne, architecture cloud native et UX optimisée. Accompagnement de A à Z.",
+    "keywords": [
+      "développement SaaS",
+      "solutions cloud",
+      "application web sur mesure",
+      "développement full-stack",
+      "intégration API",
+      "architecture cloud native\r"
+    ],
+    "body": {
+      "raw": "\r\n## Notre expertise SaaS\r\n\r\nConception, développement et déploiement de solutions cloud adaptées à vos enjeux métier. Nous créons des applications qui transforment vos processus et génèrent un avantage concurrentiel durable.\r\n\r\n### Développement Custom\r\n\r\nApplications web et mobiles conçues pour vos besoins spécifiques. Nous ne faisons pas de compromis sur la qualité du code : chaque ligne est pensée pour la performance, la sécurité et la maintenabilité.\r\n\r\n### Intégration\r\n\r\nConnexion fluide avec vos outils existants (CRM, ERP, outils métier). Nous concevons des architectures ouvertes qui s'intègrent parfaitement dans votre écosystème technologique.\r\n\r\n### Maintenance et Évolution\r\n\r\nSupport continu et évolutions fonctionnelles pour accompagner votre croissance. Votre application évolue avec vos besoins, sans jamais compromettre sa stabilité.\r\n\r\n## Technologies\r\n\r\nNotre stack technologique est choisie pour sa maturité, ses performances et sa pérennité :\r\n\r\n- **Frontend** — React, Next.js, Vue.js, TypeScript\r\n- **Backend** — Node.js, Python, Go, Rust\r\n- **Cloud** — AWS, Google Cloud, Azure, Vercel\r\n- **Data** — PostgreSQL, MongoDB, Redis, Elasticsearch\r\n- **DevOps** — Docker, Kubernetes, CI/CD, Terraform\r\n\r\n## Pourquoi nous choisir ?\r\n\r\n- **Code de qualité** : Tests automatisés, revue de code, documentation complète\r\n- **Sécurité by design** : OWASP, chiffrement, audits réguliers\r\n- **Performance** : Optimisation continue, monitoring temps réel\r\n- **Agilité** : Méthodologie adaptée, communication transparente\r\n",
+      "code": "var Component=(()=>{var d=Object.create;var s=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var h=Object.getOwnPropertyNames;var v=Object.getPrototypeOf,g=Object.prototype.hasOwnProperty;var S=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),f=(n,e)=>{for(var o in e)s(n,o,{get:e[o],enumerable:!0})},a=(n,e,o,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of h(e))!g.call(n,i)&&i!==o&&s(n,i,{get:()=>e[i],enumerable:!(r=m(e,i))||r.enumerable});return n};var b=(n,e,o)=>(o=n!=null?d(v(n)):{},a(e||!n||!n.__esModule?s(o,\"default\",{value:n,enumerable:!0}):o,n)),q=n=>a(s({},\"__esModule\",{value:!0}),n);var c=S((A,l)=>{l.exports=_jsx_runtime});var C={};f(C,{default:()=>p,frontmatter:()=>x});var t=b(c()),x={title:\"Solutions SaaS & Web\",description:\"D\\xE9veloppement et int\\xE9gration de solutions SaaS adapt\\xE9es \\xE0 vos processus m\\xE9tier. Applications robustes, scalables et centr\\xE9es sur l'exp\\xE9rience utilisateur.\",template:\"service\",heroTitle:\"Solutions SaaS Sur Mesure\",heroSubtitle:\"Des outils performants pour automatiser et optimiser vos op\\xE9rations. D\\xE9veloppement d'applications robustes, scalables et centr\\xE9es sur l'exp\\xE9rience utilisateur finale.\",ctaText:\"Voir nos r\\xE9alisations\",ctaLink:\"/cas-clients\",order:2,category:\"D\\xE9veloppement & Int\\xE9gration\",icon:\"Cpu\",tags:[\"D\\xE9veloppement\",\"Cloud\",\"API\",\"Full-Stack\"],metrics:[{value:\"99.9%\",label:\"Uptime garanti\"},{value:\"< 200ms\",label:\"Temps de r\\xE9ponse\"},{value:\"\\u221E\",label:\"Scalabilit\\xE9\"}],features:[{icon:\"Code\",title:\"D\\xE9veloppement Full-Stack\",description:\"Applications web et mobiles modernes avec les derni\\xE8res technologies. Code propre, test\\xE9 et document\\xE9 pour une maintenance facilit\\xE9e.\"},{icon:\"Cloud\",title:\"Architecture Cloud Native\",description:\"Infrastructure scalable et r\\xE9siliente sur AWS, GCP ou Azure. D\\xE9ploiement automatis\\xE9 et monitoring en temps r\\xE9el.\"},{icon:\"Plug\",title:\"Int\\xE9gration API & Syst\\xE8mes\",description:\"Connexion fluide avec vos outils existants (CRM, ERP, outils m\\xE9tier). APIs RESTful et webhooks pour une interop\\xE9rabilit\\xE9 totale.\"},{icon:\"Palette\",title:\"Design System & UX\",description:\"Interfaces utilisateur intuitives et \\xE9l\\xE9gantes. Syst\\xE8mes de design coh\\xE9rents pour une exp\\xE9rience utilisateur optimale.\"}],process:[{title:\"Discovery & Specs\",description:\"Analyse de vos besoins fonctionnels et techniques. R\\xE9daction des sp\\xE9cifications d\\xE9taill\\xE9es et validation du p\\xE9rim\\xE8tre avec vos \\xE9quipes.\"},{title:\"Architecture & Design\",description:\"Conception de l'architecture technique et des maquettes UX/UI. Choix technologiques valid\\xE9s ensemble pour une stack moderne et p\\xE9renne.\"},{title:\"D\\xE9veloppement Agile\",description:\"Sprints de d\\xE9veloppement de 2 semaines avec d\\xE9mos r\\xE9guli\\xE8res. Livraisons incr\\xE9mentales pour un feedback continu et des ajustements rapides.\"},{title:\"D\\xE9ploiement & Support\",description:\"Mise en production progressive et formation de vos \\xE9quipes. Support technique et maintenance \\xE9volutive inclus.\"}],faqs:[{question:\"Quelles technologies utilisez-vous ?\",answer:\"Nous travaillons avec les stacks les plus modernes et \\xE9prouv\\xE9es : React/Next.js, Vue.js pour le frontend, Node.js, Python, Go pour le backend, et AWS, GCP ou Azure pour le cloud. Le choix final d\\xE9pend de vos contraintes et objectifs.\"},{question:\"Combien de temps pour d\\xE9velopper une application ?\",answer:\"Un MVP fonctionnel peut \\xEAtre livr\\xE9 en 2-3 mois. Une application compl\\xE8te prend g\\xE9n\\xE9ralement 4-8 mois selon la complexit\\xE9. Nous privil\\xE9gions les livraisons incr\\xE9mentales pour vous apporter de la valeur rapidement.\"},{question:\"Proposez-vous de la maintenance ?\",answer:\"Oui, nous proposons des contrats de maintenance incluant : corrections de bugs, mises \\xE0 jour de s\\xE9curit\\xE9, \\xE9volutions fonctionnelles mineures et support technique. Des forfaits adapt\\xE9s \\xE0 chaque projet sont disponibles.\"},{question:\"Pouvez-vous reprendre un projet existant ?\",answer:\"Absolument. Nous r\\xE9alisons d'abord un audit technique pour \\xE9valuer la qualit\\xE9 du code existant, puis nous proposons un plan de reprise avec les actions prioritaires \\xE0 mener.\"}],testimonial:{quote:\"Notre plateforme SaaS a \\xE9t\\xE9 livr\\xE9e dans les d\\xE9lais avec une qualit\\xE9 exceptionnelle. L'\\xE9quipe a su s'adapter \\xE0 nos contraintes m\\xE9tier tout en proposant des solutions innovantes.\",author:\"Thomas Martin\",role:\"CTO\",company:\"DataFlow\"},relatedCaseStudies:[\"saas-marketing-automation\",\"fintech-b2b\"],metaTitle:\"Solutions SaaS & D\\xE9veloppement Web Sur Mesure | Applications Cloud\",metaDescription:\"D\\xE9veloppement de solutions SaaS et applications web sur mesure. Stack moderne, architecture cloud native et UX optimis\\xE9e. Accompagnement de A \\xE0 Z.\",keywords:[\"d\\xE9veloppement SaaS\",\"solutions cloud\",\"application web sur mesure\",\"d\\xE9veloppement full-stack\",\"int\\xE9gration API\",\"architecture cloud native\"]};function u(n){let e={h2:\"h2\",h3:\"h3\",li:\"li\",p:\"p\",strong:\"strong\",ul:\"ul\",...n.components};return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.h2,{children:\"Notre expertise SaaS\"}),`\n`,(0,t.jsx)(e.p,{children:\"Conception, d\\xE9veloppement et d\\xE9ploiement de solutions cloud adapt\\xE9es \\xE0 vos enjeux m\\xE9tier. Nous cr\\xE9ons des applications qui transforment vos processus et g\\xE9n\\xE8rent un avantage concurrentiel durable.\"}),`\n`,(0,t.jsx)(e.h3,{children:\"D\\xE9veloppement Custom\"}),`\n`,(0,t.jsx)(e.p,{children:\"Applications web et mobiles con\\xE7ues pour vos besoins sp\\xE9cifiques. Nous ne faisons pas de compromis sur la qualit\\xE9 du code : chaque ligne est pens\\xE9e pour la performance, la s\\xE9curit\\xE9 et la maintenabilit\\xE9.\"}),`\n`,(0,t.jsx)(e.h3,{children:\"Int\\xE9gration\"}),`\n`,(0,t.jsx)(e.p,{children:\"Connexion fluide avec vos outils existants (CRM, ERP, outils m\\xE9tier). Nous concevons des architectures ouvertes qui s'int\\xE8grent parfaitement dans votre \\xE9cosyst\\xE8me technologique.\"}),`\n`,(0,t.jsx)(e.h3,{children:\"Maintenance et \\xC9volution\"}),`\n`,(0,t.jsx)(e.p,{children:\"Support continu et \\xE9volutions fonctionnelles pour accompagner votre croissance. Votre application \\xE9volue avec vos besoins, sans jamais compromettre sa stabilit\\xE9.\"}),`\n`,(0,t.jsx)(e.h2,{children:\"Technologies\"}),`\n`,(0,t.jsx)(e.p,{children:\"Notre stack technologique est choisie pour sa maturit\\xE9, ses performances et sa p\\xE9rennit\\xE9 :\"}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Frontend\"}),\" \\u2014 React, Next.js, Vue.js, TypeScript\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Backend\"}),\" \\u2014 Node.js, Python, Go, Rust\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Cloud\"}),\" \\u2014 AWS, Google Cloud, Azure, Vercel\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Data\"}),\" \\u2014 PostgreSQL, MongoDB, Redis, Elasticsearch\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"DevOps\"}),\" \\u2014 Docker, Kubernetes, CI/CD, Terraform\"]}),`\n`]}),`\n`,(0,t.jsx)(e.h2,{children:\"Pourquoi nous choisir ?\"}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Code de qualit\\xE9\"}),\" : Tests automatis\\xE9s, revue de code, documentation compl\\xE8te\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"S\\xE9curit\\xE9 by design\"}),\" : OWASP, chiffrement, audits r\\xE9guliers\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Performance\"}),\" : Optimisation continue, monitoring temps r\\xE9el\"]}),`\n`,(0,t.jsxs)(e.li,{children:[(0,t.jsx)(e.strong,{children:\"Agilit\\xE9\"}),\" : M\\xE9thodologie adapt\\xE9e, communication transparente\"]}),`\n`]})]})}function p(n={}){let{wrapper:e}=n.components||{};return e?(0,t.jsx)(e,{...n,children:(0,t.jsx)(u,{...n})}):u(n)}return q(C);})();\n;return Component;"
+    },
+    "_id": "pages/services/solutions-saas.mdx",
+    "_raw": {
+      "sourceFilePath": "pages/services/solutions-saas.mdx",
+      "sourceFileName": "solutions-saas.mdx",
+      "sourceFileDir": "pages/services",
+      "contentType": "mdx",
+      "flattenedPath": "pages/services/solutions-saas"
+    },
+    "type": "Page",
+    "slug": "services/solutions-saas",
+    "url": "/services/solutions-saas"
+  }
+]
