@@ -238,19 +238,18 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Agence Marketing Toulouse | Vizion - Experts B2B PME & ETI",
-    description: "Agence marketing Toulouse spécialisée B2B. Vizion accompagne +70 PME et ETI : stratégie commerciale, lead generation, CRM automation. Basés à Labège, Occitanie.",
+    title: "Agence Marketing Toulouse | Vizion - Marketing Stratégique",
+    description: "Agence marketing à Toulouse. Vizion vous aide à vendre plus : stratégie commerciale, acquisition clients, outils sur mesure. +70 entreprises accompagnées depuis 2021.",
     keywords: [
       "agence marketing Toulouse",
-      "agence marketing B2B Toulouse",
-      "marketing B2B Toulouse",
+      "agence marketing stratégique Toulouse",
+      "marketing Toulouse",
       "agence growth Toulouse",
-      "marketing PME Toulouse",
-      "marketing ETI Toulouse",
-      "lead generation Toulouse",
+      "stratégie commerciale Toulouse",
+      "acquisition clients Toulouse",
       "agence digitale Toulouse",
-      "smarketing",
-      "alignement sales marketing"
+      "marketing PME",
+      "consultant marketing Toulouse"
     ],
     ogImage: "/og-image.jpg"
   },
@@ -259,32 +258,32 @@ export const homeContent: HomeContent = {
   // HERO SECTION
   // --------------------------------------------------------------------------
   hero: {
-    badge: "AGENCE MARKETING B2B — TOULOUSE, OCCITANIE",
-    h1: "AGENCE MARKETING TOULOUSE SPÉCIALISTE B2B",
+    badge: "AGENCE MARKETING STRATÉGIQUE — TOULOUSE",
+    h1: "VOTRE AGENCE MARKETING À TOULOUSE",
     h1Highlight: "TOULOUSE",
-    baseline: "Chez Vizion nous fusionons stratégies de croissance, déploiement opérationnel et Intelligence Artificielle pour remettre le Marketing au service de ce qui compte vraiment : la vente.",
+    baseline: "Vous cherchez une agence qui comprend vraiment vos enjeux ? Chez Vizion, on ne fait pas de joli PowerPoint. On vous aide à vendre plus, avec des actions concrètes et des outils sur mesure.",
     badges: [
-      "Réactivité garantie en 24h",
-      "Expertise B2B et Franchise",
-      "Partenariat Long-Terme"
+      "Réponse sous 24h",
+      "70+ entreprises accompagnées",
+      "Basés à Toulouse depuis 2021"
     ],
     cta: {
-      primary: { text: "Parlons de votre projet", href: "/contact" },
-      secondary: { text: "Parcourir nos cas clients", href: "/cas-clients" }
+      primary: { text: "Discutons de vos enjeux", href: "/contact" },
+      secondary: { text: "Voir nos résultats", href: "/cas-clients" }
     },
-    socialProof: "+70 DIRECTIONS MARKETING NOUS ONT DÉJA FAIT CONFIANCE"
+    socialProof: "+70 ENTREPRISES NOUS FONT CONFIANCE"
   },
 
   // --------------------------------------------------------------------------
   // PREUVE SOCIALE
   // --------------------------------------------------------------------------
   preuveSociale: {
-    surtitre: "[ NOS STRATEGIES MARKETING PAYANTES ]",
-    h2: "ILS ONT FAIT DE NOUS LE PARTENAIRE DE LEUR CROISSANCE",
-    h2Highlight: "CROISSANCE",
-    description: "Nous croyons fermement que de bons résultats ne peuvent pas être obtenus sans un véritable engagement. C'est pourquoi nous considérons chaque projet comme le nôtre. Faire confiance à Vizion, c'est faire confiance à un partenaire réellement investi dans votre croissance.",
-    trustBanner: "Depuis 2021, plus de 70 directions Marketing et directions générales nous ont fait confiance",
-    trustBannerHighlight: "70 directions Marketing",
+    surtitre: "[ CE QU'ON A FAIT POUR EUX ]",
+    h2: "DES RÉSULTATS, PAS DES PROMESSES",
+    h2Highlight: "RÉSULTATS",
+    description: "On préfère vous montrer ce qu'on sait faire plutôt que de vous vendre du rêve. Voici quelques exemples concrets de ce qu'on a réalisé avec nos clients.",
+    trustBanner: "Depuis 2021, plus de 70 entreprises nous ont fait confiance pour leur croissance",
+    trustBannerHighlight: "70 entreprises",
 
     clients: [
       {
@@ -340,50 +339,50 @@ export const homeContent: HomeContent = {
   // 5 PILIERS
   // --------------------------------------------------------------------------
   piliers: {
-    surtitre: "NOTRE SAVOIR-FAIRE EN 5 PILIERS",
-    h2: "NOTRE VISION D'UNE AGENCE MARKETING B2B",
-    description: "Nous avons structuré notre approche autour de 5 piliers qui répondent chacun à vos problématiques concrètes. De votre stratégie à vos automatisations, nous couvrons l'intégralité de votre chaîne de valeur.",
-    badgeText: "Notre méthode",
-    badgeStatus: "SMARKETING",
+    surtitre: "CE QU'ON SAIT FAIRE",
+    h2: "CINQ DOMAINES D'EXPERTISE",
+    description: "On ne fait pas tout, mais ce qu'on fait, on le fait bien. Voici les cinq domaines sur lesquels on peut vous aider concrètement.",
+    badgeText: "Notre approche",
+    badgeStatus: "PRAGMATIQUE",
     piliers: [
       {
         numero: "01",
         surtitre: "STRATÉGIE",
-        titre: "Stratégie & Product Marketing",
-        description: "Nous commençons par comprendre votre marché, votre produit et vos enjeux. Ensemble, nous définissons la trajectoire et positionnons votre offre pour qu'elle devienne l'évidence aux yeux de vos prospects.",
+        titre: "Stratégie & Positionnement",
+        description: "Avant de foncer, on prend le temps de comprendre votre marché et vos clients. On définit ensemble un plan clair pour que votre offre parle vraiment à ceux qui en ont besoin.",
         services: ["Audit Stratégique", "Positionnement", "Product Marketing", "Go-to-Market", "Workshops", "Formation"],
         cta: "DÉFINIR VOTRE STRATÉGIE"
       },
       {
         numero: "02",
         surtitre: "CONVERSION",
-        titre: "Assets Digitaux & Conversion",
-        description: "Nous créons des interfaces haute performance pensées pour vos cibles B2B. Nos sites, landing pages et tunnels sont conçus pour transformer vos visiteurs en opportunités qualifiées.",
-        services: ["Landing Pages", "Sites Web B2B", "Tunnels de Conversion", "Optimisation UX", "Tests A/B"]
+        titre: "Sites & Landing Pages",
+        description: "On crée des sites et des pages qui convertissent. Pas juste des vitrines jolies : des outils qui transforment vos visiteurs en prospects qualifiés.",
+        services: ["Landing Pages", "Sites Web", "Tunnels de Conversion", "Optimisation UX", "Tests A/B"]
       },
       {
         numero: "03",
-        surtitre: "SALES ENABLEMENT",
-        titre: "Sales Enablement & LinkedIn",
-        description: "Nous donnons les super-pouvoirs à vos commerciaux pour raccourcir vos cycles de vente. Notre expertise LinkedIn, personal branding et création de supports fait la différence.",
-        services: ["LinkedIn for Growth", "Personal Branding", "Supports Commerciaux", "Argumentaires", "Social Selling"]
+        surtitre: "COMMERCIAL",
+        titre: "LinkedIn & Sales",
+        description: "On aide vos commerciaux à être plus efficaces. Profils LinkedIn qui attirent, contenus qui engagent, supports qui aident à conclure.",
+        services: ["LinkedIn", "Personal Branding", "Supports Commerciaux", "Argumentaires", "Social Selling"]
       },
       {
         numero: "04",
         surtitre: "ACQUISITION",
-        titre: "Growth & Campagnes",
-        description: "Nous générons un flux régulier d'opportunités qualifiées pour votre équipe commerciale. Nous activons les canaux qui fonctionnent vraiment pour votre cible spécifique.",
-        services: ["Emailing B2B", "SEO Technique", "LinkedIn Ads", "Google Ads", "ABM", "Content Marketing"]
+        titre: "Campagnes & SEO",
+        description: "On vous amène des prospects qualifiés. SEO, publicité ciblée, emailing : on active les canaux qui marchent pour votre activité.",
+        services: ["Emailing", "SEO", "LinkedIn Ads", "Google Ads", "Content Marketing"]
       },
       {
         numero: "05",
-        surtitre: "VIBE CODING",
-        titre: "Automation, CRM & Micro-SaaS",
-        description: "Nous mettons notre expertise technique au service de votre productivité. Nous implémentons vos CRM, automatisons vos process et développons des micro-SaaS sur mesure pour vos besoins.",
-        services: ["Setup CRM", "Automatisations", "Micro-SaaS", "Vibe Coding", "Intégrations", "Workflows"]
+        surtitre: "OUTILS",
+        titre: "Automation & Outils Sur Mesure",
+        description: "On vous fait gagner du temps. Configuration CRM, automatisation des tâches répétitives, et si besoin, on développe des outils sur mesure pour vos process.",
+        services: ["Setup CRM", "Automatisations", "Outils sur mesure", "Intégrations", "Workflows"]
       }
     ],
-    ctaText: "Rejoignez les PME et ETI à qui nous avons permis d'aligner leur croissance.",
+    ctaText: "Rejoignez les 70+ entreprises qu'on accompagne.",
     socialProofText: "+70 clients nous font confiance",
     cta: {
       secondary: { text: "Voir nos résultats", href: "/cas-clients" },
@@ -396,13 +395,13 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   iaHighlight: {
     surtitre: "Ce qui nous différencie",
-    h2: "NOTRE APPROCHE VIBE CODING : NOUS CRÉONS VOS OUTILS",
-    h2Highlight: "VIBE CODING",
-    introduction: "Le Vibe Coding, c'est notre capacité à développer des outils et micro-SaaS sur mesure pour votre entreprise en un temps record. Là où d'autres agences se contentent de recommander des solutions existantes, nous préférons créer celles dont vous avez vraiment besoin.",
+    h2: "ON CRÉE VOS OUTILS SUR MESURE",
+    h2Highlight: "SUR MESURE",
+    introduction: "Quand les logiciels du marché ne collent pas à vos besoins, on vous en crée un. Pas de compromis avec des solutions génériques : on développe exactement ce qu'il vous faut.",
     whyImportant: [
-      "Nous développons des micro-SaaS sur mesure pour résoudre VOS problèmes métier spécifiques.",
-      "Notre vitesse d'exécution est inédite : de votre idée au produit en quelques jours.",
-      "Nous intégrons l'IA à chaque étape pour multiplier votre productivité."
+      "On développe des outils adaptés à VOS process, pas l'inverse.",
+      "De l'idée au produit fonctionnel en quelques jours.",
+      "L'IA nous permet d'aller vite sans sacrifier la qualité."
     ],
     useCases: [
       {
@@ -452,10 +451,10 @@ export const homeContent: HomeContent = {
   // QUAND COMMENCER
   // --------------------------------------------------------------------------
   quandCommencer: {
-    surtitre: "COMMENT NOUS POUVONS VOUS AIDER",
-    h2: "DEUX FAÇONS DE TRAVAILLER AVEC NOUS",
-    h2Highlight: "TRAVAILLER AVEC NOUS",
-    description: "Nous nous adaptons à vos besoins et à votre maturité. Voici comment notre équipe peut vous accompagner concrètement.",
+    surtitre: "COMMENT ON TRAVAILLE",
+    h2: "DEUX FAÇONS DE BOSSER ENSEMBLE",
+    h2Highlight: "BOSSER ENSEMBLE",
+    description: "Selon vos besoins, on peut intervenir sur un projet précis ou vous accompagner dans la durée. Voici comment ça marche.",
     scenarios: [
       {
         number: "01",
@@ -507,15 +506,15 @@ export const homeContent: HomeContent = {
   // À PROPOS
   // --------------------------------------------------------------------------
   aPropos: {
-    surtitre: "NOTRE HISTOIRE",
-    h2: "POURQUOI NOUS AVONS CRÉÉ VIZION",
-    h2Highlight: "CRÉÉ VIZION",
+    surtitre: "QUI ON EST",
+    h2: "POURQUOI ON A CRÉÉ VIZION",
+    h2Highlight: "VIZION",
     paragraphs: [
-      "Nous avons créé Vizion parce que nous en avions assez de voir des agences vendre de l'opérationnel superflu à leurs clients. Des impressions LinkedIn, des likes, des rapports PowerPoint de 50 pages... Pendant que les vrais sujets — votre vente, votre pipe, votre CA — passaient à la trappe.",
-      "Notre vision est simple : remettre le marketing au service de ce qu'il aurait toujours dû être — votre croissance commerciale. Nous ne croyons pas aux vanity metrics ni au buzz éphémère. Nous croyons aux actions qui alimentent votre pipe et qui se mesurent en euros."
+      "On en avait marre de voir des agences facturer des rapports PowerPoint de 50 pages pendant que les vrais sujets — vos ventes, votre chiffre d'affaires — passaient à la trappe.",
+      "Notre approche est simple : le marketing doit servir à vendre, pas à produire des likes. On mesure notre succès en euros générés pour vous, pas en impressions."
     ],
     founderQuote: {
-      quote: "Nous pensons que le marketing B2B n'est pas de la magie, c'est de la mécanique de précision. Notre rôle est de régler votre moteur de croissance.",
+      quote: "Le marketing, ce n'est pas de la magie. C'est du travail bien fait, avec les bons outils, au bon moment.",
       name: "Lucas Gonzalez",
       role: "Fondateur — Vizion"
     },
@@ -617,38 +616,38 @@ export const homeContent: HomeContent = {
   // FAQ
   // --------------------------------------------------------------------------
   faq: {
-    surtitre: "[ VOS QUESTIONS, NOS RÉPONSES ]",
+    surtitre: "[ QUESTIONS FRÉQUENTES ]",
     h2: "CE QUE VOUS VOULEZ SAVOIR",
     h2Highlight: "SAVOIR",
-    description: "Nous croyons à la transparence. Voici les réponses aux questions que vous vous posez légitimement avant de nous confier votre croissance.",
+    description: "On joue la transparence. Voici les réponses aux questions qu'on nous pose le plus souvent.",
     questions: [
       {
-        question: "Quels types d'entreprises accompagnez-vous ?",
-        answer: "Nous sommes spécialisés B2B. Nous travaillons avec des PME, des ETI, des réseaux de franchise et des boîtes Tech/SaaS. Si vous vendez aux professionnels et que vous avez de l'ambition, nous sommes faits pour travailler ensemble."
+        question: "Avec quels types d'entreprises travaillez-vous ?",
+        answer: "On travaille principalement avec des entreprises qui vendent à d'autres entreprises : PME, ETI, réseaux de franchise, éditeurs de logiciels. Si vous avez un produit ou service de qualité et l'ambition de grandir, on peut probablement vous aider."
       },
       {
-        question: "PME vs ETI : adaptez-vous votre dispositif ?",
-        answer: "Évidemment. Pour une PME, nous visons le 'Quick Win' et l'efficacité immédiate avec des équipes légères. Pour une ETI, nous structurons des processus plus complets, nous coordonnons plusieurs équipes et nous travaillons sur la conduite du changement."
+        question: "Vous adaptez votre approche selon la taille ?",
+        answer: "Oui. Avec une PME, on va droit au but avec des actions rapides et efficaces. Avec une structure plus grande, on prend le temps de coordonner, former et accompagner le changement. Le budget et les délais ne sont pas les mêmes, on s'adapte."
       },
       {
-        question: "Quand pouvons-nous espérer des résultats ?",
-        answer: "Nous ne vendons pas du rêve. Les premiers signaux (amélioration des taux de conversion par exemple) arrivent en 30 jours. Pour une stratégie de fond (SEO, Brand), comptez 3 à 6 mois. Nous définissons ensemble ces horizons dès le début de notre collaboration."
+        question: "En combien de temps voit-on des résultats ?",
+        answer: "Ça dépend du sujet. Sur de l'opérationnel (refonte site, campagne), comptez 30-60 jours pour voir les premiers effets. Sur du fond (SEO, notoriété), plutôt 3 à 6 mois. On vous le dit clairement dès le départ."
       },
       {
-        question: "Gérez-vous l'international ?",
-        answer: "Oui. Nous accompagnons des entreprises françaises dans leur export et des groupes étrangers sur le marché français. Notre équipe est capable d'opérer en anglais et de s'adapter aux spécificités de vos marchés cibles."
+        question: "Vous travaillez sur d'autres villes que Toulouse ?",
+        answer: "Oui. On est basés à Toulouse mais on travaille avec des clients partout en France et à l'étranger. Visio, déplacements ponctuels si besoin : on s'organise."
       },
       {
-        question: "L'IA, c'est du gadget ou c'est vraiment utile ?",
-        answer: "Chez nous, l'IA n'est pas un gadget marketing. C'est un outil de production que nous maîtrisons. Nous l'utilisons pour analyser vos données, scorer vos leads et produire vos contenus plus vite. Mais nous croyons que la stratégie doit rester 100% humaine."
+        question: "L'IA, vous l'utilisez vraiment ?",
+        answer: "Oui, au quotidien. Pour produire plus vite, analyser vos données, créer vos outils. Mais la stratégie et les décisions restent 100% humaines. L'IA est un outil, pas une fin en soi."
       },
       {
-        question: "Quelle est la durée d'engagement avec vous ?",
-        answer: "Nous sommes flexibles. Du 'One-shot' pour un audit ou une mission ponctuelle, à l'accompagnement mensuel (minimum 3 mois pour être sérieux), jusqu'au partenariat annuel. Tout est clair, contractuel et sans surprise."
+        question: "Quelle durée d'engagement minimum ?",
+        answer: "On est flexibles. Mission ponctuelle, accompagnement de 3 mois minimum pour du suivi sérieux, ou partenariat long terme. On s'adapte à vos besoins. Pas d'engagement caché, tout est clair dès le départ."
       }
     ],
-    ctaText: "Vous avez une question spécifique ? Nous vous répondons en direct.",
-    ctaButton: { text: "Parlons-en", href: "/contact" }
+    ctaText: "Une autre question ? On vous répond directement.",
+    ctaButton: { text: "Nous contacter", href: "/contact" }
   },
 
   // --------------------------------------------------------------------------
@@ -678,18 +677,18 @@ export const homeContent: HomeContent = {
   // FINAL CTA
   // --------------------------------------------------------------------------
   finalCta: {
-    trustBadge: "+70 clients nous font confiance",
-    h2: "NOUS SOMMES PRÊTS À VOUS ACCOMPAGNER",
-    h2Highlight: "VOUS ACCOMPAGNER",
-    description: "Nous croyons que votre croissance ne doit pas être laissée au hasard. Rejoignez les entreprises qui nous ont fait confiance. Parlons de vos enjeux et de vos problématiques lors d'un premier échange.",
+    trustBadge: "+70 entreprises accompagnées",
+    h2: "ON EN PARLE ?",
+    h2Highlight: "PARLE",
+    description: "Si vous êtes arrivé jusqu'ici, c'est que vous cherchez peut-être quelqu'un pour vous aider. Prenons 15 minutes pour en discuter. Pas de pitch commercial, juste un échange pour voir si on peut vous être utiles.",
     cta: {
-      primary: { text: "Parlons de votre projet", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" }
+      primary: { text: "Prendre rendez-vous", href: "/contact" },
+      secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
     },
     trustElements: [
-      "Nous répondons sous 24h",
-      "Sans engagement",
-      "Notre audit préliminaire est offert"
+      "Réponse sous 24h",
+      "Échange sans engagement",
+      "Premier audit offert"
     ]
   }
 };
@@ -702,9 +701,9 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://by-vizion.com/#organization",
-  "name": "Vizion - Agence Marketing B2B",
+  "name": "Vizion - Agence Marketing Toulouse",
   "alternateName": "Vizion",
-  "description": "Agence marketing B2B spécialisée PME et ETI. Stratégie commerciale, lead generation, CRM automation et growth marketing. Plus de 70 entreprises accompagnées en France.",
+  "description": "Agence marketing stratégique à Toulouse. Stratégie commerciale, acquisition clients, outils sur mesure. Plus de 70 entreprises accompagnées depuis 2021.",
   "url": "https://by-vizion.com",
   "logo": {
     "@type": "ImageObject",
