@@ -798,3 +798,180 @@ h3, .h3 {
   outline: none;
   box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(0, 0, 0, 0.1);
 }
+
+/* === Z-ANGLE SECTION TRANSITIONS === */
+/* Reversed Z / Angle Cut Divider - Inspired by Vizion logo */
+
+.z-angle-divider {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  background: transparent;
+  z-index: 10;
+}
+
+.z-angle-divider--sm {
+  height: 80px;
+}
+
+.z-angle-divider--lg {
+  height: 160px;
+}
+
+/* The SVG line that draws on scroll */
+.z-angle-line {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: drawLine 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.z-angle-divider[data-visible="true"] .z-angle-line {
+  stroke-dashoffset: 0;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Angle cut background shapes */
+.z-angle-cut {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
+}
+
+.z-angle-cut--reverse {
+  clip-path: polygon(0 30%, 100% 100%, 100% 100%, 0 100%);
+}
+
+.z-angle-cut--steep {
+  clip-path: polygon(0 0, 100% 0, 100% 15%, 0 100%);
+}
+
+/* From dark to light section */
+.z-angle-dark-to-light {
+  background: linear-gradient(117deg, #B7B7B7 0%, #000 50.77%, #6D6D6D 100.58%);
+}
+
+/* From light to dark section */
+.z-angle-light-to-dark .z-angle-cut {
+  background: var(--bg-grey);
+}
+
+/* Animated accent line */
+.z-accent-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.15), rgba(0,0,0,0.3), rgba(0,0,0,0.15), transparent);
+  transform-origin: left center;
+  transform: rotate(-8deg) scaleX(0);
+  animation: expandLine 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+.z-accent-line--light {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), rgba(255,255,255,0.4), rgba(255,255,255,0.2), transparent);
+}
+
+@keyframes expandLine {
+  to {
+    transform: rotate(-8deg) scaleX(1);
+  }
+}
+
+/* Diagonal slash transition */
+.diagonal-slash {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-top: -50px;
+  margin-bottom: -50px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.diagonal-slash svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.diagonal-slash-line {
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 1;
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.diagonal-slash-line--accent {
+  stroke: rgba(0, 0, 0, 0.2);
+  stroke-width: 2;
+}
+
+.diagonal-slash[data-visible="true"] .diagonal-slash-line {
+  stroke-dashoffset: 0;
+}
+
+/* Reversed Z pattern - Full implementation */
+.reversed-z-transition {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: visible;
+  z-index: 15;
+}
+
+.reversed-z-transition svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.reversed-z-path {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.12);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 5000;
+  stroke-dashoffset: 5000;
+  transition: stroke-dashoffset 2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reversed-z-path--bold {
+  stroke: rgba(0, 0, 0, 0.25);
+  stroke-width: 3;
+}
+
+.reversed-z-path--light {
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.reversed-z-transition[data-visible="true"] .reversed-z-path {
+  stroke-dashoffset: 0;
+}
+
+/* Glow effect on the line */
+.reversed-z-glow {
+  filter: blur(8px);
+  opacity: 0.5;
+}
+
+/* Decorative dot at intersection */
+.z-intersection-dot {
+  fill: rgba(0, 0, 0, 0.15);
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: 1s;
+}
+
+.reversed-z-transition[data-visible="true"] .z-intersection-dot {
+  transform: scale(1);
+}
