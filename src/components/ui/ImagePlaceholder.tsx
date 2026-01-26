@@ -8,7 +8,7 @@ interface ImagePlaceholderProps {
   height: number;
   label: string;
   className?: string;
-  rounded?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
   variant?: 'light' | 'dark';
 }
 
@@ -21,6 +21,7 @@ const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
   variant = 'light',
 }) => {
   const roundedClass = {
+    none: 'rounded-none',
     sm: 'rounded-sm',
     md: 'rounded-md',
     lg: 'rounded-lg',

@@ -281,8 +281,8 @@ export const homeContent: HomeContent = {
     surtitre: "[ CE QU'ON A FAIT POUR EUX ]",
     h2: "DES RÉSULTATS, PAS DES PROMESSES",
     h2Highlight: "RÉSULTATS",
-    description: "On préfère vous montrer ce qu'on sait faire plutôt que de vous vendre du rêve. Voici quelques exemples concrets de ce qu'on a réalisé avec nos clients.",
-    trustBanner: "Depuis 2021, plus de 70 entreprises nous ont fait confiance pour leur croissance",
+    description: "En tant qu'agence marketing à Toulouse, on préfère vous montrer ce qu'on sait faire plutôt que de vous vendre du rêve. Voici quelques exemples concrets de ce qu'on a réalisé avec nos clients.",
+    trustBanner: "Depuis 2021, plus de 70 entreprises ont fait confiance à notre agence marketing toulousaine",
     trustBannerHighlight: "70 entreprises",
 
     clients: [
@@ -339,9 +339,9 @@ export const homeContent: HomeContent = {
   // 5 PILIERS
   // --------------------------------------------------------------------------
   piliers: {
-    surtitre: "CE QU'ON SAIT FAIRE",
+    surtitre: "NOS SERVICES — AGENCE MARKETING TOULOUSE",
     h2: "CINQ DOMAINES D'EXPERTISE",
-    description: "On ne fait pas tout, mais ce qu'on fait, on le fait bien. Voici les cinq domaines sur lesquels on peut vous aider concrètement.",
+    description: "Notre agence marketing à Toulouse ne fait pas tout, mais ce qu'on fait, on le fait bien. Voici les cinq domaines sur lesquels on peut vous aider concrètement.",
     badgeText: "Notre approche",
     badgeStatus: "PRAGMATIQUE",
     piliers: [
@@ -382,8 +382,8 @@ export const homeContent: HomeContent = {
         services: ["Setup CRM", "Automatisations", "Outils sur mesure", "Intégrations", "Workflows"]
       }
     ],
-    ctaText: "Rejoignez les 70+ entreprises qu'on accompagne.",
-    socialProofText: "+70 clients nous font confiance",
+    ctaText: "Rejoignez les 70+ entreprises accompagnées par notre agence marketing à Toulouse.",
+    socialProofText: "+70 clients nous font confiance à Toulouse et en France",
     cta: {
       secondary: { text: "Voir nos résultats", href: "/cas-clients" },
       primary: { text: "Parlons de vos enjeux", href: "/contact" }
@@ -394,14 +394,14 @@ export const homeContent: HomeContent = {
   // IA HIGHLIGHT - VIBE CODING
   // --------------------------------------------------------------------------
   iaHighlight: {
-    surtitre: "Ce qui nous différencie",
-    h2: "ON CRÉE VOS OUTILS SUR MESURE",
-    h2Highlight: "SUR MESURE",
-    introduction: "Quand les logiciels du marché ne collent pas à vos besoins, on vous en crée un. Pas de compromis avec des solutions génériques : on développe exactement ce qu'il vous faut.",
+    surtitre: "CE QUI NOUS DIFFÉRENCIE",
+    h2: "UNE AGENCE MARKETING À TOULOUSE PIONNIÈRE DE L'IA",
+    h2Highlight: "TOULOUSE",
+    introduction: "Vizion n'est pas une agence marketing comme les autres à Toulouse. On fait partie des premières agences en France à intégrer l'IA dans nos méthodes de travail — pour le marketing comme pour les sales. Concrètement : on vous fait gagner du temps, on crée vos outils sur mesure, et on accélère vos résultats.",
     whyImportant: [
-      "On développe des outils adaptés à VOS process, pas l'inverse.",
-      "De l'idée au produit fonctionnel en quelques jours.",
-      "L'IA nous permet d'aller vite sans sacrifier la qualité."
+      "Une agence marketing à Toulouse qui utilise vraiment l'IA au quotidien.",
+      "Des outils sur mesure développés en quelques jours pour vos équipes.",
+      "Marketing et commercial alignés : vos sales gagnent du temps, pas de la complexité."
     ],
     useCases: [
       {
@@ -451,10 +451,10 @@ export const homeContent: HomeContent = {
   // QUAND COMMENCER
   // --------------------------------------------------------------------------
   quandCommencer: {
-    surtitre: "COMMENT ON TRAVAILLE",
+    surtitre: "COMMENT ON TRAVAILLE — TOULOUSE & FRANCE",
     h2: "DEUX FAÇONS DE BOSSER ENSEMBLE",
     h2Highlight: "BOSSER ENSEMBLE",
-    description: "Selon vos besoins, on peut intervenir sur un projet précis ou vous accompagner dans la durée. Voici comment ça marche.",
+    description: "Notre agence marketing à Toulouse s'adapte à vos besoins : intervention sur un projet précis ou accompagnement dans la durée. Voici comment ça marche.",
     scenarios: [
       {
         number: "01",
@@ -506,12 +506,12 @@ export const homeContent: HomeContent = {
   // À PROPOS
   // --------------------------------------------------------------------------
   aPropos: {
-    surtitre: "QUI ON EST",
+    surtitre: "AGENCE MARKETING TOULOUSAINE",
     h2: "POURQUOI ON A CRÉÉ VIZION",
     h2Highlight: "VIZION",
     paragraphs: [
-      "On en avait marre de voir des agences facturer des rapports PowerPoint de 50 pages pendant que les vrais sujets — vos ventes, votre chiffre d'affaires — passaient à la trappe.",
-      "Notre approche est simple : le marketing doit servir à vendre, pas à produire des likes. On mesure notre succès en euros générés pour vous, pas en impressions."
+      "On en avait marre de voir des agences marketing facturer des rapports PowerPoint de 50 pages pendant que les vrais sujets — vos ventes, votre chiffre d'affaires — passaient à la trappe.",
+      "Notre agence marketing à Toulouse a une approche simple : le marketing doit servir à vendre, pas à produire des likes. On mesure notre succès en euros générés pour vous, pas en impressions."
     ],
     founderQuote: {
       quote: "Le marketing, ce n'est pas de la magie. C'est du travail bien fait, avec les bons outils, au bon moment.",
@@ -520,7 +520,7 @@ export const homeContent: HomeContent = {
     },
     photoCaption: {
       label: "Notre équipe",
-      title: "Basés dans le Sud-Ouest"
+      title: "Agence marketing basée à Toulouse"
     },
     valeursTitre: "NOS VALEURS",
     valeurs: [
@@ -547,10 +547,10 @@ export const homeContent: HomeContent = {
   // ÉQUIPE / INTELLIGENCE COLLECTIVE
   // --------------------------------------------------------------------------
   equipe: {
-    surtitre: "NOTRE ÉQUIPE À VOTRE SERVICE",
+    surtitre: "L'ÉQUIPE DE NOTRE AGENCE MARKETING À TOULOUSE",
     h2: "NOUS MOBILISONS NOS EXPERTS POUR VOUS",
     h2Highlight: "NOS EXPERTS",
-    description: "Nous avons conçu notre modèle pour vous offrir le meilleur. Vous bénéficiez d'un Directeur de Mission qui comprend vos enjeux, et qui active nos meilleurs spécialistes pour chaque phase de votre projet.",
+    description: "Notre agence marketing toulousaine a conçu son modèle pour vous offrir le meilleur. Vous bénéficiez d'un Directeur de Mission qui comprend vos enjeux, et qui active nos meilleurs spécialistes pour chaque phase de votre projet.",
     modelExplanation: {
       director: "Votre Directeur de Mission (Notre Copilote)",
       squads: "Nos Experts Spécialisés (L'Exécution)"
@@ -616,10 +616,10 @@ export const homeContent: HomeContent = {
   // FAQ
   // --------------------------------------------------------------------------
   faq: {
-    surtitre: "[ QUESTIONS FRÉQUENTES ]",
+    surtitre: "[ FAQ — AGENCE MARKETING TOULOUSE ]",
     h2: "CE QUE VOUS VOULEZ SAVOIR",
     h2Highlight: "SAVOIR",
-    description: "On joue la transparence. Voici les réponses aux questions qu'on nous pose le plus souvent.",
+    description: "Notre agence marketing à Toulouse joue la transparence. Voici les réponses aux questions qu'on nous pose le plus souvent.",
     questions: [
       {
         question: "Avec quels types d'entreprises travaillez-vous ?",
@@ -634,8 +634,8 @@ export const homeContent: HomeContent = {
         answer: "Ça dépend du sujet. Sur de l'opérationnel (refonte site, campagne), comptez 30-60 jours pour voir les premiers effets. Sur du fond (SEO, notoriété), plutôt 3 à 6 mois. On vous le dit clairement dès le départ."
       },
       {
-        question: "Vous travaillez sur d'autres villes que Toulouse ?",
-        answer: "Oui. On est basés à Toulouse mais on travaille avec des clients partout en France et à l'étranger. Visio, déplacements ponctuels si besoin : on s'organise."
+        question: "Votre agence marketing travaille sur d'autres villes que Toulouse ?",
+        answer: "Oui. Notre agence marketing est basée à Toulouse (Labège), mais on travaille avec des clients partout en France et à l'étranger. Visio, déplacements ponctuels si besoin : on s'organise."
       },
       {
         question: "L'IA, vous l'utilisez vraiment ?",
@@ -654,7 +654,7 @@ export const homeContent: HomeContent = {
   // CAS CLIENTS
   // --------------------------------------------------------------------------
   casClients: {
-    surtitre: "CE QUE NOUS AVONS RÉALISÉ",
+    surtitre: "ÉTUDES DE CAS — AGENCE MARKETING TOULOUSE",
     h2: "NOS SUCCÈS AVEC NOS CLIENTS",
     ctaText: "Découvrir nos études de cas",
     cases: [
@@ -677,10 +677,10 @@ export const homeContent: HomeContent = {
   // FINAL CTA
   // --------------------------------------------------------------------------
   finalCta: {
-    trustBadge: "+70 entreprises accompagnées",
+    trustBadge: "+70 entreprises accompagnées depuis Toulouse",
     h2: "ON EN PARLE ?",
     h2Highlight: "PARLE",
-    description: "Si vous êtes arrivé jusqu'ici, c'est que vous cherchez peut-être quelqu'un pour vous aider. Prenons 15 minutes pour en discuter. Pas de pitch commercial, juste un échange pour voir si on peut vous être utiles.",
+    description: "Si vous cherchez une agence marketing à Toulouse qui comprend vos enjeux, prenons 15 minutes pour en discuter. Pas de pitch commercial, juste un échange pour voir si on peut vous être utiles.",
     cta: {
       primary: { text: "Prendre rendez-vous", href: "/contact" },
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
