@@ -238,8 +238,8 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Vizion | Agence Marketing B2B Toulouse - PME & ETI",
-    description: "Vizion, votre agence marketing B2B à Toulouse. Spécialistes croissance PME et ETI : stratégie, lead generation, CRM. +70 clients en Occitanie et France.",
+    title: "Agence Marketing Toulouse | Vizion - Experts B2B PME & ETI",
+    description: "Agence marketing Toulouse spécialisée B2B. Vizion accompagne +70 PME et ETI : stratégie commerciale, lead generation, CRM automation. Basés à Labège, Occitanie.",
     keywords: [
       "agence marketing Toulouse",
       "agence marketing B2B Toulouse",
@@ -259,9 +259,9 @@ export const homeContent: HomeContent = {
   // HERO SECTION
   // --------------------------------------------------------------------------
   hero: {
-    badge: "AGENCE MARKETING B2B — TOULOUSE ET PARIS",
-    h1: "L'AGENCE MARKETING TOULOUSAINE SPECIALISTE DU B2B",
-    h1Highlight: "B2B",
+    badge: "AGENCE MARKETING B2B — TOULOUSE, OCCITANIE",
+    h1: "AGENCE MARKETING TOULOUSE SPÉCIALISTE B2B",
+    h1Highlight: "TOULOUSE",
     baseline: "Chez Vizion nous fusionons stratégies de croissance, déploiement opérationnel et Intelligence Artificielle pour remettre le Marketing au service de ce qui compte vraiment : la vente.",
     badges: [
       "Réactivité garantie en 24h",
@@ -453,31 +453,12 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   quandCommencer: {
     surtitre: "COMMENT NOUS POUVONS VOUS AIDER",
-    h2: "TROIS FAÇONS DE TRAVAILLER AVEC NOUS",
+    h2: "DEUX FAÇONS DE TRAVAILLER AVEC NOUS",
     h2Highlight: "TRAVAILLER AVEC NOUS",
     description: "Nous nous adaptons à vos besoins et à votre maturité. Voici comment notre équipe peut vous accompagner concrètement.",
     scenarios: [
       {
         number: "01",
-        badge: "DIAGNOSTIC",
-        title: "Audit & Feuille de Route",
-        subtitle: "Nous analysons avant d'agir",
-        description: "Nous plongeons dans votre situation actuelle : votre cycle de vente, vos outils, votre équipe, votre concurrence. Vous repartez avec notre diagnostic et un plan d'action priorisé.",
-        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800",
-        whenToChoose: [
-          "Vous ne savez pas par où commencer",
-          "Vos actions marketing manquent de cohérence",
-          "Vous voulez valider votre stratégie avant d'investir",
-          "Vous changez de positionnement ou de cible"
-        ],
-        deliverables: ["Notre audit complet", "Roadmap 90 jours", "Actions prioritaires"],
-        duration: "3 à 4 semaines",
-        investment: "À partir de 8K€",
-        idealFor: "PME & ETI qui veulent y voir clair",
-        cta: "Demander notre audit"
-      },
-      {
-        number: "02",
         badge: "PROJET",
         title: "Mission Sur-Mesure",
         subtitle: "Votre objectif, notre équipe dédiée",
@@ -496,10 +477,10 @@ export const homeContent: HomeContent = {
         cta: "Discuter de votre projet"
       },
       {
-        number: "03",
+        number: "02",
         badge: "ACCOMPAGNEMENT",
         title: "Direction Marketing Externalisée",
-        subtitle: "Nous devenons votre partenaire",
+        subtitle: "Nous devenons votre partenaire stratégique",
         description: "Vous n'avez pas de directeur marketing ? Nous prenons ce rôle. Notre équipe gère votre stratégie, coordonne vos actions, pilote vos prestataires et vous présente un reporting mensuel.",
         image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800",
         whenToChoose: [
@@ -512,7 +493,7 @@ export const homeContent: HomeContent = {
         duration: "Engagement 6+ mois",
         investment: "À partir de 4K€/mois",
         idealFor: "ETI & Scale-ups en croissance",
-        cta: "En savoir plus"
+        cta: "Découvrir notre accompagnement"
       }
     ],
     bottomCta: {
@@ -719,25 +700,103 @@ export const homeContent: HomeContent = {
 
 export const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "LocalBusiness",
+  "@id": "https://by-vizion.com/#organization",
   "name": "Vizion - Agence Marketing B2B",
   "alternateName": "Vizion",
   "description": "Agence marketing B2B spécialisée PME et ETI. Stratégie commerciale, lead generation, CRM automation et growth marketing. Plus de 70 entreprises accompagnées en France.",
   "url": "https://by-vizion.com",
-  "logo": "https://by-vizion.com/logo-vizion.svg",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://by-vizion.com/logo-vizion.svg",
+    "width": 200,
+    "height": 60
+  },
+  "image": "https://by-vizion.com/og-image.jpg",
+  "telephone": "+33750836543",
+  "email": "contact@by-vizion.com",
   "sameAs": [
-    "https://www.linkedin.com/company/vizion-marketing"
+    "https://www.linkedin.com/company/vizion-marketing-b2b/"
   ],
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Toulouse",
+    "streetAddress": "815 La Pyrénéenne",
+    "addressLocality": "Labège",
     "addressRegion": "Occitanie",
+    "postalCode": "31670",
     "addressCountry": "FR"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.5416,
+    "longitude": 1.5102
+  },
   "priceRange": "€€€",
-  "areaServed": {
-    "@type": "Country",
-    "name": "France"
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Virement bancaire, Carte de crédit",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Toulouse"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Occitanie"
+    },
+    {
+      "@type": "Country",
+      "name": "France"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "5",
+    "reviewCount": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Client Vérifié"
+      },
+      "datePublished": "2024-12-15",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Excellente agence, très professionnelle et à l'écoute. Résultats concrets sur notre stratégie marketing B2B."
+    }
+  ],
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Lucas Gonzalez",
+      "jobTitle": "Co-fondateur & Expert Influence"
+    },
+    {
+      "@type": "Person",
+      "name": "Hugo Schuppe",
+      "jobTitle": "Co-fondateur & Expert Growth"
+    }
+  ],
+  "foundingDate": "2021",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "minValue": 2,
+    "maxValue": 10
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -747,28 +806,40 @@ export const organizationSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Stratégie Marketing B2B"
+          "name": "Stratégie & Product Marketing",
+          "description": "Définition de la trajectoire et du message pour le marché B2B"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Lead Generation B2B"
+          "name": "Assets Digitaux & Conversion",
+          "description": "Landing pages, sites web optimisés, tunnels de conversion"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "CRM & Marketing Automation"
+          "name": "Sales Enablement & LinkedIn",
+          "description": "LinkedIn for Growth, supports commerciaux, personal branding"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Growth Marketing B2B"
+          "name": "Growth & Campagnes",
+          "description": "Campagnes d'emailing, acquisition multicanale, SEO"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Automation, CRM & Micro-SaaS",
+          "description": "Implémentation CRM, Automatisations, Développement Micro-SaaS via Vibe Coding"
         }
       }
     ]

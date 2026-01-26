@@ -81,27 +81,38 @@ body {
 
 /* === TYPOGRAPHY DESIGN SYSTEM === */
 
-/* H1 - Titres principaux */
+/* H1 - Titres principaux - More impactful */
 h1, .h1 {
   color: var(--color-black);
   font-family: var(--font-heading);
-  font-size: 64px;
+  font-size: clamp(48px, 8vw, 72px);
   font-style: normal;
   font-weight: 900;
-  line-height: 58.8px; /* 91.875% */
-  letter-spacing: -2.24px;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
 }
 
-/* H2 - Titres de sections */
+/* H2 - Titres de sections - Tighter tracking */
 h2, .h2 {
   color: var(--color-black);
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: clamp(32px, 5vw, 52px);
   font-style: normal;
   font-weight: 900;
-  line-height: 54px; /* 112.5% */
-  letter-spacing: -1.68px;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+/* H3 - Sous-titres */
+h3, .h3 {
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
@@ -357,24 +368,24 @@ h2, .h2 {
 
 /* Accent Button - Glassmorphism with brand color */
 .btn-accent {
-  background: rgba(238, 255, 65, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   color: #000;
-  border: 1px solid rgba(238, 255, 65, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow:
-    0 4px 24px -1px rgba(238, 255, 65, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.3) inset,
-    0 1px 0 0 rgba(255, 255, 255, 0.4) inset;
+    0 4px 24px -1px rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+    0 1px 0 0 rgba(255, 255, 255, 0.6) inset;
 }
 
 .btn-accent:hover {
-  background: rgba(238, 255, 65, 1);
+  background: rgba(255, 255, 255, 1);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 32px -4px rgba(238, 255, 65, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.4) inset,
-    0 1px 0 0 rgba(255, 255, 255, 0.5) inset;
+    0 8px 32px -4px rgba(255, 255, 255, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+    0 1px 0 0 rgba(255, 255, 255, 0.7) inset;
 }
 
 /* === PROSE STYLES (MDX content) === */
@@ -683,4 +694,107 @@ h2, .h2 {
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* === MODERN UI ENHANCEMENTS === */
+
+/* Grain/Noise Texture Overlay */
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* Light grain for white sections */
+.grain-light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.018;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+/* Section Divider Line */
+.section-divider {
+  position: relative;
+}
+.section-divider::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 1200px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.06) 20%, rgba(0,0,0,0.06) 80%, transparent 100%);
+}
+
+/* Enhanced Card Hover */
+.card-hover-glow {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover-glow:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+/* Card with subtle border glow on hover */
+.card-border-glow {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(0,0,0,0.08) 0%, transparent 50%, rgba(0,0,0,0.04) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+.card-border-glow:hover::before {
+  opacity: 1;
+}
+.card-border-glow:hover {
+  transform: translateY(-2px);
+}
+
+/* Smooth stagger animation for lists */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* Decorative gradient line */
+.gradient-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+}
+
+/* Modern focus ring */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(0, 0, 0, 0.1);
 }

@@ -127,11 +127,11 @@ function SocialProofTabs() {
 
   return (
     <section
-      className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#E8E8E8] relative overflow-hidden"
+      className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#E8E8E8] relative overflow-hidden grain-light section-divider"
       aria-label="Témoignages clients agence marketing Toulouse"
     >
       {/* Ambient background effects */}
-      <div className="absolute top-0 left-1/4 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-[#EEFF41]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-gradient-to-br from-amber-200/10 via-yellow-100/5 to-transparent rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[200px] sm:w-[400px] h-[200px] sm:h-[400px] bg-black/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -143,7 +143,7 @@ function SocialProofTabs() {
             viewport={{ once: true }}
             className="flex items-center gap-2 mb-3 sm:mb-4"
           >
-            <div className="h-4 w-1 bg-[#EEFF41] rounded-full" />
+            <div className="h-4 w-1 bg-gradient-to-b from-white via-amber-200 to-amber-400/50 rounded-full shadow-[0_0_8px_rgba(251,191,36,0.3)]" />
             <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40">
               {homeContent.preuveSociale.surtitre}
             </span>
@@ -186,7 +186,7 @@ function SocialProofTabs() {
                   <span className={`font-['Roboto'] font-black text-sm uppercase tracking-tight block ${
                     activeClient === client.id ? "text-white" : "text-black/80"
                   }`}>
-                    {client.name}
+                    {client.category}
                   </span>
                 </button>
               ))}
@@ -215,18 +215,19 @@ function SocialProofTabs() {
                       <span className={`font-['Roboto'] font-black text-lg uppercase tracking-tight block transition-colors duration-200 ${
                         activeClient === client.id ? "text-white" : "text-black/80"
                       }`}>
-                        {client.name}
-                      </span>
-                      <span className={`text-[10px] font-bold uppercase tracking-wider transition-colors duration-200 ${
-                        activeClient === client.id ? "text-[#EEFF41]" : "text-black/40"
-                      }`}>
                         {client.category}
+                      </span>
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-wider transition-colors duration-200"
+                        style={{ color: activeClient === client.id ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}
+                      >
+                        {client.name}
                       </span>
                     </div>
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                      activeClient === client.id ? "bg-[#EEFF41]" : "bg-black/5 opacity-0 group-hover:opacity-100"
+                      activeClient === client.id ? "bg-white/20 backdrop-blur-sm border border-white/10 shadow-[0_0_12px_rgba(255,255,255,0.1)]" : "bg-black/5 opacity-0 group-hover:opacity-100"
                     }`}>
-                      <ArrowRight size={14} className={activeClient === client.id ? "text-black" : "text-black/40"} />
+                      <ArrowRight size={14} className={activeClient === client.id ? "text-white" : "text-black/40"} />
                     </div>
                   </div>
                 </motion.button>
@@ -243,7 +244,7 @@ function SocialProofTabs() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white/90 backdrop-blur-xl border border-black/5 rounded-xl sm:rounded-2xl overflow-hidden shadow-xl"
+                className="bg-white/90 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg overflow-hidden shadow-sm"
               >
                 {/* Visual Header */}
                 <div className="relative aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] w-full group overflow-hidden">
@@ -259,7 +260,7 @@ function SocialProofTabs() {
                   {/* Metric Badge - Glassmorphism Overlay */}
                   <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
                     <div className="space-y-1.5 sm:space-y-2">
-                      <span className="inline-block px-2.5 sm:px-3 py-1 sm:py-1.5 bg-[#EEFF41] text-black text-[9px] sm:text-[10px] font-bold uppercase tracking-wider rounded-lg shadow-lg shadow-[#EEFF41]/20">
+                      <span className="inline-block px-2.5 sm:px-3 py-1 sm:py-1.5 bg-white/90 backdrop-blur-md text-black text-[9px] sm:text-[10px] font-bold uppercase tracking-wider rounded-lg shadow-lg border border-white/20">
                         {currentCase.badge}
                       </span>
                       <h3 className="text-white text-xl sm:text-2xl font-['Roboto'] font-black uppercase leading-tight drop-shadow-lg">
@@ -268,10 +269,10 @@ function SocialProofTabs() {
                     </div>
 
                     <div className="bg-black/40 backdrop-blur-md border border-white/20 p-3 sm:p-4 rounded-xl sm:text-right min-w-[120px] sm:min-w-[140px]">
-                      <span className="text-2xl sm:text-3xl md:text-4xl font-['Roboto'] font-[900] text-[#EEFF41] block leading-none mb-1 drop-shadow-lg">
+                      <span className="text-2xl sm:text-3xl md:text-4xl font-['Roboto'] font-[900] text-white block leading-none mb-1 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                         {currentCase.metric}
                       </span>
-                      <span className="text-[9px] sm:text-[10px] font-bold text-white/70 uppercase tracking-wider">
+                      <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.8)' }}>
                         {currentCase.metricLabel}
                       </span>
                     </div>
@@ -283,7 +284,7 @@ function SocialProofTabs() {
                   <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8">
                     <div className="flex-1">
                       <span className="inline-flex items-center gap-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-black/40 mb-2 sm:mb-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#EEFF41]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-amber-300 to-amber-500 shadow-[0_0_6px_rgba(251,191,36,0.4)]" />
                         Vision Stratégique
                       </span>
                       <p className="text-base sm:text-lg font-['Inter'] text-black/70 leading-relaxed">
@@ -300,10 +301,10 @@ function SocialProofTabs() {
                       </div>
                       <Link
                         href={`/cas-clients/${currentCase.slug}`}
-                        className="group flex items-center justify-center gap-2 bg-black text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl text-[10px] sm:text-[11px] font-bold uppercase tracking-wider hover:bg-black/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                        className="group flex items-center justify-center gap-2 h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] bg-black text-white rounded-full hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)]"
                       >
                         Voir le case study
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform text-[#EEFF41]" />
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" style={{ color: 'rgba(255,255,255,0.8)' }} />
                       </Link>
                     </div>
                   </div>
@@ -320,14 +321,16 @@ function SocialProofTabs() {
           viewport={{ once: true }}
           className="mt-12 sm:mt-16 md:mt-20 lg:mt-24"
         >
-          <div className="bg-gradient-to-br from-black via-black/95 to-black/90 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 relative overflow-hidden shadow-2xl">
+          <div className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg p-5 sm:p-8 md:p-12 relative overflow-hidden shadow-2xl">
+            {/* Carbon fibre pattern */}
+            <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
             {/* Subtle glow effect */}
-            <div className="absolute top-0 right-0 w-[150px] sm:w-[300px] h-[150px] sm:h-[300px] bg-[#EEFF41]/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[150px] sm:w-[300px] h-[150px] sm:h-[300px] bg-gradient-to-br from-white/10 via-amber-100/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
               <div className="lg:col-span-8">
-                <Quote className="text-[#EEFF41] opacity-50 mb-4 sm:mb-6" size={32} strokeWidth={2} />
-                <blockquote className="text-lg sm:text-xl md:text-2xl font-['Inter'] font-medium leading-relaxed text-white/90 mb-6 sm:mb-8 tracking-tight">
+                <Quote className="mb-4 sm:mb-6" size={32} strokeWidth={2} style={{ color: 'rgba(255,255,255,0.8)' }} />
+                <blockquote className="text-lg sm:text-xl md:text-2xl font-['Inter'] font-medium leading-relaxed mb-6 sm:mb-8 tracking-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
                   &ldquo;{homeContent.preuveSociale.testimonial.quote}&rdquo;
                 </blockquote>
 
@@ -338,16 +341,16 @@ function SocialProofTabs() {
                       alt={homeContent.preuveSociale.testimonial.name}
                       className="w-11 h-11 sm:w-14 sm:h-14 object-cover rounded-full border-2 border-white/20 grayscale hover:grayscale-0 transition-all duration-300 shadow-lg"
                     />
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-[#EEFF41] rounded-full flex items-center justify-center shadow-lg shadow-[#EEFF41]/30">
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center shadow-lg shadow-white/20 border border-white/20">
                       <CheckCircle2 size={10} className="text-black sm:hidden" />
                       <CheckCircle2 size={12} className="text-black hidden sm:block" />
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-['Roboto'] font-black uppercase tracking-wider text-xs sm:text-sm text-white">
+                    <h4 className="font-['Roboto'] font-black uppercase tracking-wider text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
                       {homeContent.preuveSociale.testimonial.name}
                     </h4>
-                    <p className="text-white/40 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mt-0.5">
+                    <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mt-0.5" style={{ color: 'rgba(255,255,255,0.8)' }}>
                       {homeContent.preuveSociale.testimonial.role}
                     </p>
                   </div>
@@ -356,8 +359,8 @@ function SocialProofTabs() {
 
               <div className="lg:col-span-4 flex justify-center lg:justify-end">
                 <div className="w-full max-w-[200px] sm:max-w-[240px] p-5 sm:p-8 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-xl text-center shadow-lg">
-                  <div className="text-[#EEFF41] text-3xl sm:text-4xl font-['Roboto'] font-black mb-1 sm:mb-2 drop-shadow-lg">98%</div>
-                  <p className="text-white/50 text-[9px] sm:text-[10px] font-black uppercase tracking-widest leading-tight">
+                  <div className="text-3xl sm:text-4xl font-['Roboto'] font-black mb-1 sm:mb-2 drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]" style={{ color: 'rgba(255,255,255,0.8)' }}>98%</div>
+                  <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest leading-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
                     Taux de satisfaction<br/>client post-campagne
                   </p>
                 </div>
@@ -406,9 +409,12 @@ function FAQSection() {
 
   return (
     <section
-      className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 bg-white"
+      className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative overflow-hidden grain-light section-divider"
       aria-label="Questions fréquentes agence marketing Toulouse"
     >
+      {/* Ambient glow */}
+      <div className="absolute top-0 right-[10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-gradient-to-bl from-amber-50/30 via-orange-50/10 to-transparent rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-[5%] w-[200px] sm:w-[400px] h-[200px] sm:h-[400px] bg-gradient-to-tr from-slate-100/40 to-transparent rounded-full blur-[100px] pointer-events-none" />
       {/* JSON-LD Schema for SEO */}
       <script
         type="application/ld+json"
@@ -419,7 +425,7 @@ function FAQSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
           {/* Left - Header */}
           <div className="lg:col-span-4">
-            <div className="lg:sticky lg:top-24 bg-white/60 backdrop-blur-xl border border-black/5 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm">
+            <div className="lg:sticky lg:top-24 bg-white/60 backdrop-blur-xl border border-black/10 rounded-lg sm:rounded-xl p-5 sm:p-8 shadow-sm">
               <motion.span
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -448,7 +454,7 @@ function FAQSection() {
 
               <Link
                 href={homeContent.faq.ctaButton.href}
-                className="inline-flex items-center gap-2 bg-black text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group w-full sm:w-auto justify-center"
+                className="inline-flex items-center gap-2 h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] rounded-full transition-all duration-300 active:scale-95 bg-black text-white border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:bg-black/90 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 group w-full sm:w-auto justify-center"
               >
                 {homeContent.faq.ctaButton.text}
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -466,10 +472,10 @@ function FAQSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className={`rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 ${
+                  className={`rounded-md sm:rounded-lg overflow-hidden transition-all duration-300 ${
                     openIndex === index
-                      ? 'bg-white shadow-lg border border-black/10'
-                      : 'bg-white/80 backdrop-blur-xl border border-black/5 shadow-sm hover:shadow-md'
+                      ? 'bg-white shadow-sm border border-black/15'
+                      : 'bg-white/80 backdrop-blur-xl border border-black/10 shadow-sm hover:shadow-md'
                   }`}
                 >
                   <button
@@ -480,7 +486,7 @@ function FAQSection() {
                       {faq.question}
                     </span>
                     <div
-                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-md sm:rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                         openIndex === index
                           ? 'bg-black text-white'
                           : 'bg-white/80 backdrop-blur-sm border border-black/5 text-black group-hover:bg-white group-hover:shadow-sm'
@@ -547,14 +553,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-            className="w-full lg:max-w-[720px] lg:min-h-[700px] xl:min-h-[750px] bg-black/20 backdrop-blur-md rounded-2xl sm:rounded-[var(--radius-xl)] p-5 sm:p-8 md:p-12 shadow-2xl relative z-10 flex flex-col justify-between border border-white/10"
+            className="w-full lg:max-w-[720px] lg:min-h-[700px] xl:min-h-[750px] bg-black/20 backdrop-blur-md rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 shadow-2xl relative z-10 flex flex-col justify-between border border-white/10"
           >
             <div className="flex items-center gap-2 mb-3 sm:mb-4">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#EEFF41]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-50"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-white via-amber-100 to-amber-200 shadow-[0_0_8px_rgba(255,255,255,0.5)]"></span>
               </span>
-              <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.1em] text-white/60 uppercase">
+              <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.1em] uppercase" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 {homeContent.hero.badge}
               </span>
             </div>
@@ -563,21 +569,21 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               {homeContent.hero.h1}
             </h1>
 
-            <p className="text-white text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-6 max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-6 max-w-2xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
               {homeContent.hero.baseline}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-white/10">
               {homeContent.hero.badges.map((item, i) => (
-                <div key={i} className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold uppercase tracking-tight text-white/70">
-                  <CheckCircle2 size={14} className="text-white shrink-0" />
+                <div key={i} className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold uppercase tracking-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                  <CheckCircle2 size={14} className="shrink-0" style={{ color: 'rgba(255,255,255,0.8)' }} />
                   {item}
                 </div>
               ))}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <Link href={homeContent.hero.cta.primary.href} className="h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-[#EEFF41]/90 backdrop-blur-xl text-black border border-[#EEFF41]/50 shadow-[0_4px_24px_-1px_rgba(238,255,65,0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:bg-[#EEFF41] hover:shadow-[0_8px_32px_-4px_rgba(238,255,65,0.4),inset_0_1px_0_0_rgba(255,255,255,0.4)] hover:-translate-y-0.5">
+              <Link href={homeContent.hero.cta.primary.href} className="h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35),inset_0_1px_0_0_rgba(255,255,255,0.6)] hover:-translate-y-0.5">
                 {homeContent.hero.cta.primary.text} <ArrowRight size={16} />
               </Link>
               <Link href={homeContent.hero.cta.secondary.href} className="h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center rounded-full transition-all duration-300 active:scale-95 bg-white/10 backdrop-blur-xl text-white border border-white/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.2)] hover:bg-white/20 hover:border-white/30 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:-translate-y-0.5">
@@ -592,11 +598,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Client" className="w-full h-full object-cover grayscale" />
                   </div>
                 ))}
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-[#EEFF41]/30 bg-white flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-black shadow-[0_0_10px_rgba(238,255,65,0.2)]">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/30 bg-white flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-black shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                   +70
                 </div>
               </div>
-              <div className="text-[9px] sm:text-[10px] font-bold text-white/60 tracking-widest uppercase">
+              <div className="text-[9px] sm:text-[10px] font-bold tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 {homeContent.hero.socialProof}
               </div>
             </div>
@@ -616,8 +622,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
             />
             {/* Decorative frame elements */}
-            <div className="absolute top-8 right-8 w-12 xl:w-16 h-12 xl:h-16 border-t-2 border-r-2 border-[#EEFF41]/40 z-20" />
-            <div className="absolute bottom-8 left-8 w-12 xl:w-16 h-12 xl:h-16 border-b-2 border-l-2 border-[#EEFF41]/40 z-20" />
+            <div className="absolute top-8 right-8 w-12 xl:w-16 h-12 xl:h-16 border-t-2 border-r-2 border-white/30 z-20" />
+            <div className="absolute bottom-8 left-8 w-12 xl:w-16 h-12 xl:h-16 border-b-2 border-l-2 border-white/30 z-20" />
           </motion.div>
         </div>
       </section>
@@ -627,13 +633,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
       {/* 5 PILIERS SECTION - PREMIUM GLASSMORPHISM */}
       <section
-        className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 bg-[#F2F2F2] relative overflow-hidden"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#EAEAEA] relative overflow-hidden grain-light section-divider"
         aria-label="Services agence marketing B2B Toulouse"
       >
         {/* Background ambient light - Enhanced with multiple gradients */}
-        <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-[#EEFF41]/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-[#EEFF41]/5 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-white/30 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-gradient-to-br from-amber-100/15 via-orange-50/8 to-transparent rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-gradient-to-tl from-slate-200/20 via-white/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-white/20 rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Header - Refined */}
@@ -675,33 +681,35 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="md:col-span-2 lg:col-span-7 lg:row-span-2 bg-gradient-to-br from-black via-[#0A0A0A] to-black/95 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-10 flex flex-col min-h-[400px] sm:min-h-[450px] lg:min-h-[550px] relative overflow-hidden group shadow-2xl shadow-[#EEFF41]/5 hover:shadow-[#EEFF41]/10 transition-all duration-300"
+              className="md:col-span-2 lg:col-span-7 lg:row-span-2 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg p-5 sm:p-8 md:p-10 flex flex-col min-h-[400px] sm:min-h-[450px] lg:min-h-[550px] relative overflow-hidden group shadow-2xl shadow-black/30 hover:shadow-black/40 hover:border-white/20 transition-all duration-300"
             >
+              {/* Carbon fibre pattern */}
+              <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
               {/* Inner glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-[#EEFF41]/[0.02] pointer-events-none rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-white/[0.01] pointer-events-none rounded-xl" />
 
               <div className="relative z-10 flex-1 flex flex-col">
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-5 sm:mb-8">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#EEFF41] flex items-center justify-center shadow-lg shadow-[#EEFF41]/20">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-white/20">
                     <span className="font-black text-xs sm:text-sm text-black">{homeContent.piliers.piliers[0].numero}</span>
                   </div>
                   <div className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg">
-                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/60">
+                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em]" style={{ color: 'rgba(255,255,255,0.8)' }}>
                       {homeContent.piliers.piliers[0].surtitre}
                     </span>
                   </div>
                 </div>
 
-                <h3 className="font-['Roboto'] font-[900] text-[24px] sm:text-[28px] md:text-[32px] lg:text-[40px] leading-tight uppercase text-white mb-4 sm:mb-6 group-hover:text-[#EEFF41] transition-colors duration-300">
+                <h3 className="font-['Roboto'] font-[900] text-[24px] sm:text-[28px] md:text-[32px] lg:text-[40px] leading-tight uppercase mb-4 sm:mb-6 group-hover:opacity-90 transition-opacity duration-300" style={{ color: 'rgba(255,255,255,0.8)' }}>
                   {homeContent.piliers.piliers[0].titre}
                 </h3>
-                <p className="text-white/60 text-sm sm:text-base font-['Inter'] leading-relaxed mb-5 sm:mb-8 max-w-lg">
+                <p className="text-sm sm:text-base font-['Inter'] leading-relaxed mb-5 sm:mb-8 max-w-lg" style={{ color: 'rgba(255,255,255,0.8)' }}>
                   {homeContent.piliers.piliers[0].description}
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-10">
                   {homeContent.piliers.piliers[0].services.map((item) => (
-                    <span key={item} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 text-white/70 text-[9px] sm:text-[10px] font-bold rounded-lg uppercase tracking-wide hover:bg-white/15 hover:border-white/20 transition-all duration-200">
+                    <span key={item} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 text-[9px] sm:text-[10px] font-bold rounded-lg uppercase tracking-wide hover:bg-white/15 hover:border-white/20 transition-all duration-200" style={{ color: 'rgba(255,255,255,0.8)' }}>
                       {item}
                     </span>
                   ))}
@@ -733,11 +741,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i }}
-                className={`${span} bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 flex flex-col group shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}
+                className={`${span} bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg p-4 sm:p-5 md:p-7 flex flex-col group shadow-sm card-hover-glow transition-all duration-300`}
               >
                 <div className="flex items-start justify-between mb-4 sm:mb-6">
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-black/5 flex items-center justify-center group-hover:bg-[#EEFF41] group-hover:border-[#EEFF41] group-hover:shadow-lg group-hover:shadow-[#EEFF41]/20 transition-all duration-300">
-                    <Icon className="text-black" size={18} strokeWidth={2.5} />
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-black/5 backdrop-blur-sm border border-black/5 flex items-center justify-center group-hover:bg-black group-hover:border-black group-hover:shadow-lg group-hover:shadow-black/20 transition-all duration-300">
+                    <Icon className="text-black group-hover:text-white transition-colors" size={18} strokeWidth={2.5} />
                   </div>
                   <span className="text-[11px] sm:text-[12px] font-black text-black/10 group-hover:text-black/25 transition-colors">0{idx + 1}</span>
                 </div>
@@ -753,7 +761,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   {idx === 4 && (
                     <div className="flex items-center gap-2 bg-black text-white px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl shadow-lg">
                       <span className="text-[8px] sm:text-[9px] font-bold opacity-50 uppercase">ROI</span>
-                      <span className="text-[11px] sm:text-xs font-black text-[#EEFF41]">x4.5</span>
+                      <span className="text-[11px] sm:text-xs font-black text-white">x4.5</span>
                     </div>
                   )}
                 </div>
@@ -766,7 +774,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="mt-10 sm:mt-12 md:mt-16 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-white/80 backdrop-blur-xl border border-black/5 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 shadow-lg"
+            className="mt-10 sm:mt-12 md:mt-16 p-4 sm:p-6 md:p-8 rounded-md sm:rounded-lg bg-white/80 backdrop-blur-xl border border-black/10 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 shadow-sm"
           >
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left">
               <div className="flex -space-x-3">
@@ -785,13 +793,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 w-full md:w-auto">
               <Link
                 href={homeContent.piliers.cta.secondary.href}
-                className="w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-3.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-black bg-black/5 backdrop-blur-sm border border-black/5 rounded-xl hover:bg-black/10 hover:border-black/10 transition-all text-center"
+                className="w-full sm:w-auto h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] text-black bg-black/5 backdrop-blur-sm border border-black/10 rounded-full hover:bg-black/10 hover:border-black/15 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 flex items-center justify-center"
               >
                 {homeContent.piliers.cta.secondary.text}
               </Link>
               <Link
                 href={homeContent.piliers.cta.primary.href}
-                className="w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-3.5 bg-black text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-xl hover:bg-black/90 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                className="w-full sm:w-auto h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] bg-black text-white rounded-full hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)]"
               >
                 {homeContent.piliers.cta.primary.text} <ArrowRight size={14} />
               </Link>
@@ -804,11 +812,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       {/* SEO: Expertise Vibe Coding et IA de l'agence marketing Toulouse */}
       {/* Images: 800x320px (5:2) pour les visuels slider */}
       <section
-        className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 bg-black relative overflow-hidden"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] relative overflow-hidden"
         aria-label="Expertise IA et Vibe Coding agence marketing Toulouse"
       >
+        {/* Carbon fibre pattern */}
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
         {/* Subtle glow */}
-        <div className="absolute top-0 right-0 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-[#EEFF41]/5 rounded-full blur-[150px]" />
+        <div className="absolute top-0 right-0 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-gradient-to-bl from-white/10 via-amber-100/5 to-transparent rounded-full blur-[150px]" />
 
         <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Header */}
@@ -817,10 +827,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/40 mb-3 sm:mb-4"
+              className="inline-flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-3 sm:mb-4"
+              style={{ color: 'rgba(255,255,255,0.8)' }}
             >
-              <Brain size={14} className="text-[#EEFF41] sm:hidden" />
-              <Brain size={16} className="text-[#EEFF41] hidden sm:block" />
+              <Brain size={14} className="text-white sm:hidden" />
+              <Brain size={16} className="text-white hidden sm:block" />
               {homeContent.iaHighlight.surtitre}
             </motion.span>
             <motion.h2
@@ -836,7 +847,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-white/60 text-base sm:text-lg font-['Inter'] leading-relaxed"
+              className="text-base sm:text-lg font-['Inter'] leading-relaxed"
+              style={{ color: 'rgba(255,255,255,0.8)' }}
             >
               {homeContent.iaHighlight.introduction}
             </motion.p>
@@ -855,14 +867,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 {homeContent.iaHighlight.whyImportant.map((item: string, i: number) => (
                   <div
                     key={i}
-                    className="p-3 sm:p-4 md:p-5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl hover:border-[#EEFF41]/30 hover:-translate-y-0.5 transition-all duration-300 group"
+                    className="p-3 sm:p-4 md:p-5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg shadow-lg hover:shadow-xl hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 group"
                   >
                     <div className="flex items-start gap-3 sm:gap-4">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#EEFF41]/10 backdrop-blur-sm border border-[#EEFF41]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#EEFF41] transition-colors">
-                        <CheckCircle2 size={12} className="text-[#EEFF41] group-hover:text-black sm:hidden" />
-                        <CheckCircle2 size={14} className="text-[#EEFF41] group-hover:text-black hidden sm:block" />
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md sm:rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white transition-colors">
+                        <CheckCircle2 size={12} className="text-white group-hover:text-black sm:hidden" />
+                        <CheckCircle2 size={14} className="text-white group-hover:text-black hidden sm:block" />
                       </div>
-                      <p className="text-white/60 font-['Inter'] text-xs sm:text-sm leading-relaxed group-hover:text-white transition-colors">
+                      <p className="font-['Inter'] text-xs sm:text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>
                         {item}
                       </p>
                     </div>
@@ -871,7 +883,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                 <Link
                   href="/contact"
-                  className="mt-3 sm:mt-4 w-full h-[46px] sm:h-[52px] px-4 sm:px-6 text-[12px] sm:text-[13px] font-['Inter'] font-semibold tracking-[-0.01em] inline-flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-[#EEFF41]/90 backdrop-blur-xl text-black border border-[#EEFF41]/50 shadow-[0_4px_24px_-1px_rgba(238,255,65,0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:bg-[#EEFF41] hover:shadow-[0_8px_32px_-4px_rgba(238,255,65,0.4),inset_0_1px_0_0_rgba(255,255,255,0.4)] hover:-translate-y-0.5 group"
+                  className="mt-3 sm:mt-4 w-full h-[46px] sm:h-[52px] px-4 sm:px-6 text-[12px] sm:text-[13px] font-['Inter'] font-semibold tracking-[-0.01em] inline-flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35)] hover:-translate-y-0.5 group"
                 >
                   Explorer l&apos;IA avec nous
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -888,8 +900,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="bg-gradient-to-br from-[#0A0A0A] via-[#111] to-[#0A0A0A] backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden"
+                  className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg shadow-2xl overflow-hidden relative"
                 >
+                  {/* Carbon fibre pattern */}
+                  <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none" />
                   {(() => {
                     const useCases = homeContent.iaHighlight.useCases;
                     const current = useCases[currentIASlide];
@@ -923,7 +937,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                           {/* Tags overlay */}
                           <div className="absolute top-3 sm:top-6 left-3 sm:left-6 flex flex-wrap gap-1.5 sm:gap-2">
                             {current.tags.map((tag: string, idx: number) => (
-                              <span key={idx} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 text-[9px] sm:text-[10px] font-bold text-[#EEFF41] uppercase tracking-wider rounded-lg sm:rounded-xl">
+                              <span key={idx} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 text-[9px] sm:text-[10px] font-bold text-white uppercase tracking-wider rounded-md sm:rounded-lg">
                                 {tag}
                               </span>
                             ))}
@@ -932,10 +946,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                           {/* Metric overlay */}
                           {current.metric && (
                             <div className="absolute bottom-3 sm:bottom-6 right-3 sm:right-6 text-right">
-                              <span className="text-2xl sm:text-4xl md:text-5xl font-['Roboto'] font-[900] text-[#EEFF41] block leading-none">
+                              <span className="text-2xl sm:text-4xl md:text-5xl font-['Roboto'] font-[900] text-white block leading-none drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
                                 {current.metric}
                               </span>
-                              <span className="text-[9px] sm:text-[10px] font-bold text-white/60 uppercase tracking-wider">
+                              <span className="text-[9px] sm:text-[10px] font-bold text-white/90 uppercase tracking-wider">
                                 Impact mesuré
                               </span>
                             </div>
@@ -944,19 +958,19 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                         {/* Content */}
                         <div className="p-4 sm:p-6 md:p-8 lg:p-10">
-                          <h3 className="font-['Roboto'] font-[900] text-xl sm:text-2xl md:text-3xl uppercase text-white mb-3 sm:mb-4">
+                          <h3 className="font-['Roboto'] font-[900] text-xl sm:text-2xl md:text-3xl uppercase mb-3 sm:mb-4" style={{ color: 'rgba(255,255,255,0.8)' }}>
                             {current.title}
                           </h3>
-                          <p className="text-white/60 font-['Inter'] text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
+                          <p className="font-['Inter'] text-sm sm:text-base leading-relaxed mb-4 sm:mb-6" style={{ color: 'rgba(255,255,255,0.8)' }}>
                             {current.description}
                           </p>
 
                           {/* Example quote */}
-                          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-5 mb-6 sm:mb-8">
-                            <span className="text-[9px] sm:text-[10px] font-bold text-[#EEFF41] uppercase tracking-[0.15em] mb-1.5 sm:mb-2 block">
+                          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg p-3 sm:p-5 mb-6 sm:mb-8">
+                            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] mb-1.5 sm:mb-2 block" style={{ color: 'rgba(255,255,255,0.8)' }}>
                               Exemple concret
                             </span>
-                            <p className="text-white/80 font-['Inter'] italic text-xs sm:text-sm">
+                            <p className="font-['Inter'] italic text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
                               &ldquo;{current.example}&rdquo;
                             </p>
                           </div>
@@ -969,7 +983,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                                   key={idx}
                                   onClick={() => setCurrentIASlide(idx)}
                                   className={`h-1 sm:h-1.5 transition-all duration-300 rounded-full ${
-                                    idx === currentIASlide ? 'w-6 sm:w-8 bg-[#EEFF41]' : 'w-1 sm:w-1.5 bg-white/20 hover:bg-white/40'
+                                    idx === currentIASlide ? 'w-6 sm:w-8 bg-white shadow-[0_0_10px_rgba(255,255,255,0.3)]' : 'w-1 sm:w-1.5 bg-white/20 hover:bg-white/40'
                                   }`}
                                   aria-label={`Cas d'usage ${idx + 1}`}
                                 />
@@ -986,7 +1000,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                               </button>
                               <button
                                 onClick={nextSlide}
-                                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#EEFF41]/90 backdrop-blur-xl border border-[#EEFF41]/50 shadow-[0_4px_16px_-1px_rgba(238,255,65,0.3),inset_0_1px_0_0_rgba(255,255,255,0.3)] flex items-center justify-center text-black hover:bg-[#EEFF41] hover:shadow-[0_6px_20px_-2px_rgba(238,255,65,0.4)] transition-all duration-300"
+                                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white backdrop-blur-xl border border-white/50 shadow-[0_4px_16px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] flex items-center justify-center text-black hover:bg-white/95 hover:shadow-[0_6px_20px_-2px_rgba(255,255,255,0.35)] transition-all duration-300"
                                 aria-label="Cas d'usage suivant"
                               >
                                 <ChevronRight size={16} className="sm:hidden" />
@@ -1009,10 +1023,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       {/* SEO: Offres et tarifs agence marketing Toulouse */}
       {/* Images: 400x240px (5:3) pour les visuels des offres */}
       <section
-        className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 bg-white"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-white via-[#FEFEFE] to-[#FAFAF8] relative overflow-hidden grain-light section-divider"
         aria-label="Offres et formules agence marketing Toulouse"
       >
-        <div className="max-w-[82.5rem] mx-auto">
+        {/* Ambient glow */}
+        <div className="absolute top-[15%] left-[-5%] w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-gradient-to-br from-blue-50/20 via-slate-50/10 to-transparent rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[0%] w-[250px] sm:w-[450px] h-[250px] sm:h-[450px] bg-gradient-to-tl from-amber-50/15 via-orange-50/8 to-transparent rounded-full blur-[110px] pointer-events-none" />
+        <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Header */}
           <div className="max-w-3xl mb-10 sm:mb-12 md:mb-16 lg:mb-20">
             <motion.span
@@ -1043,7 +1060,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {homeContent.quandCommencer.scenarios.map((scenario, index) => {
               const isFeatured = index === 1;
               return (
@@ -1053,12 +1070,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className={`group flex flex-col overflow-hidden ${
+                  className={`group flex flex-col overflow-hidden relative ${
                     isFeatured
-                      ? 'bg-gradient-to-br from-black via-[#111] to-black/95 backdrop-blur-xl border-2 border-[#EEFF41] rounded-xl sm:rounded-2xl shadow-2xl shadow-[#EEFF41]/10 text-white md:col-span-2 lg:col-span-1'
-                      : 'bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300'
+                      ? 'bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border-2 border-white/30 rounded-md sm:rounded-lg shadow-2xl shadow-black/30 text-white'
+                      : 'bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm card-hover-glow transition-all duration-300'
                   }`}
                 >
+                  {/* Carbon fibre pattern for featured card */}
+                  {isFeatured && <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none z-0" />}
                   {/* Image Container */}
                   <div className="relative aspect-[16/10] sm:aspect-[5/3] w-full overflow-hidden">
                     <Image
@@ -1071,8 +1090,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                     {/* Badge */}
                     <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
-                      <span className={`px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest rounded-lg sm:rounded-xl shadow-lg ${
-                        isFeatured ? 'bg-[#EEFF41] text-black' : 'bg-black text-white'
+                      <span className={`px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest rounded-md sm:rounded-lg shadow-lg ${
+                        isFeatured ? 'bg-white text-black' : 'bg-black text-white'
                       }`}>
                         {scenario.badge}
                       </span>
@@ -1080,8 +1099,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                     {isFeatured && (
                       <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                        <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 rounded-lg sm:rounded-xl">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#EEFF41] animate-pulse" />
+                        <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 rounded-md sm:rounded-lg">
+                          <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
                           <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white">
                             Populaire
                           </span>
@@ -1092,37 +1111,40 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                   {/* Content */}
                   <div className="p-4 sm:p-6 md:p-7 flex flex-col flex-grow">
-                    <h3 className={`font-['Roboto'] font-[900] text-lg sm:text-xl uppercase mb-1 sm:mb-1.5 ${
-                      isFeatured ? 'text-white' : 'text-black'
-                    }`}>
+                    <h3
+                      className="font-['Roboto'] font-[900] text-lg sm:text-xl uppercase mb-1 sm:mb-1.5"
+                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}
+                    >
                       {scenario.title}
                     </h3>
-                    <p className={`text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.1em] mb-3 sm:mb-4 ${
-                      isFeatured ? 'text-[#EEFF41]' : 'text-black/50'
-                    }`}>
+                    <p
+                      className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.1em] mb-3 sm:mb-4"
+                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.5)' }}
+                    >
                       {scenario.subtitle}
                     </p>
-                    <p className={`text-xs sm:text-sm font-['Inter'] leading-relaxed mb-4 sm:mb-6 flex-grow ${
-                      isFeatured ? 'text-white/70' : 'text-black/60'
-                    }`}>
+                    <p
+                      className="text-xs sm:text-sm font-['Inter'] leading-relaxed mb-4 sm:mb-6 flex-grow"
+                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.6)' }}
+                    >
                       {scenario.description}
                     </p>
 
                     {/* Metadata Section - Premium glassmorphism */}
                     <div className={`space-y-2 sm:space-y-2.5 p-3 sm:p-4 mb-4 sm:mb-6 ${
-                      isFeatured ? 'bg-white/10 backdrop-blur-md border border-white/10 rounded-lg sm:rounded-xl' : 'bg-white/50 backdrop-blur-sm border border-black/5 rounded-lg sm:rounded-xl'
+                      isFeatured ? 'bg-white/10 backdrop-blur-md border border-white/10 rounded-md sm:rounded-lg' : 'bg-white/50 backdrop-blur-sm border border-black/5 rounded-md sm:rounded-lg'
                     }`}>
                       <div className="flex justify-between items-center">
-                        <span className={`text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider ${isFeatured ? 'text-white/40' : 'text-black/40'}`}>Durée</span>
-                        <span className={`text-[11px] sm:text-xs font-bold ${isFeatured ? 'text-white' : 'text-black'}`}>{scenario.duration}</span>
+                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Durée</span>
+                        <span className="text-[11px] sm:text-xs font-bold" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}>{scenario.duration}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className={`text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider ${isFeatured ? 'text-white/40' : 'text-black/40'}`}>Budget</span>
-                        <span className={`text-[11px] sm:text-xs font-bold ${isFeatured ? 'text-[#EEFF41]' : 'text-black'}`}>{scenario.investment}</span>
+                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Budget</span>
+                        <span className="text-[11px] sm:text-xs font-bold" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}>{scenario.investment}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className={`text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider ${isFeatured ? 'text-white/40' : 'text-black/40'}`}>Cible</span>
-                        <span className={`text-[10px] sm:text-[11px] font-medium truncate ml-4 ${isFeatured ? 'text-white/60' : 'text-black/50'}`}>{scenario.idealFor}</span>
+                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Cible</span>
+                        <span className="text-[10px] sm:text-[11px] font-medium truncate ml-4" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.5)' }}>{scenario.idealFor}</span>
                       </div>
                     </div>
 
@@ -1130,7 +1152,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                       href="/contact"
                       className={`w-full h-[44px] sm:h-[48px] text-[11px] sm:text-[12px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 ${
                         isFeatured
-                          ? 'bg-[#EEFF41]/90 backdrop-blur-xl text-black border border-[#EEFF41]/50 shadow-[0_4px_24px_-1px_rgba(238,255,65,0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:bg-[#EEFF41] hover:shadow-[0_8px_32px_-4px_rgba(238,255,65,0.4),inset_0_1px_0_0_rgba(255,255,255,0.4)] hover:-translate-y-0.5'
+                          ? 'bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35)] hover:-translate-y-0.5'
                           : 'bg-black/90 backdrop-blur-xl text-white border border-white/10 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:bg-black hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.2)] hover:-translate-y-0.5'
                       }`}
                     >
@@ -1173,10 +1195,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       {/* SEO: Présentation agence marketing Toulouse - équipe et valeurs */}
       {/* Images: 500x600px (5:6) pour photo équipe, 56x56px cercle pour avatar fondateur */}
       <section
-        className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 bg-[#F2F2F2]"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-bl from-[#F8F8F8] via-[#F2F2F2] to-[#EBEBEB] relative overflow-hidden grain-light section-divider"
         aria-label="À propos de Vizion agence marketing Toulouse"
       >
-        <div className="max-w-[82.5rem] mx-auto">
+        {/* Ambient glow */}
+        <div className="absolute top-[10%] left-[5%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-gradient-to-br from-violet-50/15 via-indigo-50/8 to-transparent rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[350px] sm:w-[550px] h-[350px] sm:h-[550px] bg-gradient-to-tl from-amber-50/12 via-orange-50/6 to-transparent rounded-full blur-[130px] pointer-events-none" />
+        <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Main Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 mb-12 sm:mb-16 md:mb-20">
             {/* Text Content */}
@@ -1202,8 +1227,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               </div>
 
               {/* Founder Quote - Premium Glassmorphism Card */}
-              <div className="bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl sm:rounded-2xl shadow-lg p-5 sm:p-8 md:p-10">
-                <Quote className="text-[#EEFF41] mb-4 sm:mb-6" size={20} strokeWidth={2.5} fill="currentColor" />
+              <div className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm p-5 sm:p-8 md:p-10">
+                <Quote className="text-black/20 mb-4 sm:mb-6" size={20} strokeWidth={2.5} fill="currentColor" />
                 <blockquote className="text-base sm:text-lg md:text-xl font-['Inter'] font-medium leading-relaxed text-black mb-5 sm:mb-6 md:mb-8">
                   &ldquo;{homeContent.aPropos.founderQuote.quote}&rdquo;
                 </blockquote>
@@ -1238,7 +1263,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               className="lg:col-span-5"
             >
               <div className="flex flex-col gap-3 sm:gap-4">
-                <div className="relative aspect-[4/3] sm:aspect-[5/6] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-[#F2F2F2]">
+                <div className="relative aspect-[4/3] sm:aspect-[5/6] rounded-md sm:rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-[#F2F2F2]">
                   <ImagePlaceholder
                     width={500}
                     height={600}
@@ -1249,7 +1274,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 </div>
 
                 {/* Caption Card - Premium Glassmorphism */}
-                <div className="bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl sm:rounded-2xl shadow-md p-4 sm:p-6">
+                <div className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm p-4 sm:p-6">
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] text-black/40 mb-1 block">
                     {homeContent.aPropos.photoCaption.label}
                   </span>
@@ -1273,23 +1298,23 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {homeContent.aPropos.valeurs.map((value, i) => {
                 const icons = [
-                  <Star key={0} size={16} className="sm:hidden" />,
-                  <Zap key={1} size={16} className="sm:hidden" />,
-                  <Shield key={2} size={16} className="sm:hidden" />,
-                  <Lightbulb key={3} size={16} className="sm:hidden" />
+                  <Star key="sm-0" size={16} className="sm:hidden" />,
+                  <Zap key="sm-1" size={16} className="sm:hidden" />,
+                  <Shield key="sm-2" size={16} className="sm:hidden" />,
+                  <Lightbulb key="sm-3" size={16} className="sm:hidden" />
                 ];
                 const iconsLg = [
-                  <Star key={0} size={18} className="hidden sm:block" />,
-                  <Zap key={1} size={18} className="hidden sm:block" />,
-                  <Shield key={2} size={18} className="hidden sm:block" />,
-                  <Lightbulb key={3} size={18} className="hidden sm:block" />
+                  <Star key="lg-0" size={18} className="hidden sm:block" />,
+                  <Zap key="lg-1" size={18} className="hidden sm:block" />,
+                  <Shield key="lg-2" size={18} className="hidden sm:block" />,
+                  <Lightbulb key="lg-3" size={18} className="hidden sm:block" />
                 ];
                 return (
                   <div
                     key={i}
-                    className="bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl sm:rounded-2xl shadow-sm p-3 sm:p-5 group hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                    className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm p-3 sm:p-5 group card-hover-glow transition-all duration-300"
                   >
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-black/5 backdrop-blur-sm flex items-center justify-center mb-3 sm:mb-4 text-black group-hover:bg-[#EEFF41] transition-colors">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-md sm:rounded-lg bg-black/5 backdrop-blur-sm flex items-center justify-center mb-3 sm:mb-4 text-black group-hover:bg-black group-hover:text-white transition-colors">
                       {icons[i]}
                       {iconsLg[i]}
                     </div>
@@ -1311,10 +1336,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       {/* SEO: Équipe agence marketing Toulouse - experts B2B */}
       {/* Images: 260x320px (13:16) pour portraits membres */}
       <section
-        className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 bg-white"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative overflow-hidden grain-light section-divider"
         aria-label="Équipe agence marketing Toulouse"
       >
-        <div className="max-w-[82.5rem] mx-auto">
+        {/* Ambient glow */}
+        <div className="absolute top-[20%] right-[5%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-gradient-to-bl from-rose-50/20 via-pink-50/10 to-transparent rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[15%] left-[10%] w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-gradient-to-tr from-slate-100/30 to-transparent rounded-full blur-[100px] pointer-events-none" />
+        <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Header */}
           <div className="max-w-3xl mb-10 sm:mb-12 md:mb-16">
             <motion.span
@@ -1352,7 +1380,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <span className="text-[10px] sm:text-xs font-bold uppercase">{homeContent.equipe.modelExplanation.director}</span>
             </div>
             <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/60 backdrop-blur-md border border-black/5 rounded-lg text-black/30 font-bold shadow-sm text-sm">+</span>
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-[#EEFF41]/90 backdrop-blur-xl text-black px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border border-[#EEFF41]/50 shadow-[0_4px_16px_-1px_rgba(238,255,65,0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)]">
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-white backdrop-blur-xl text-black px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border border-black/10 shadow-[0_4px_16px_-1px_rgba(0,0,0,0.08),inset_0_1px_0_0_rgba(255,255,255,0.5)]">
               <Rocket size={12} className="sm:hidden" />
               <Rocket size={14} className="hidden sm:block" />
               <span className="text-[10px] sm:text-xs font-bold uppercase">{homeContent.equipe.modelExplanation.squads}</span>
@@ -1374,7 +1402,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   transition={{ delay: i * 0.05 }}
                   className="flex-shrink-0 w-[220px] sm:w-[260px] md:w-auto snap-center group"
                 >
-                  <div className="bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl sm:rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm overflow-hidden card-hover-glow transition-all duration-300">
                     {/* Portrait - 260x320px (13:16) */}
                     <div className="relative aspect-[13/16] w-full overflow-hidden bg-[#F2F2F2]">
                       <ImagePlaceholder
@@ -1387,7 +1415,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                       {/* Badge - Glassmorphism SaaS style */}
                       <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                        <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/90 backdrop-blur-md border border-black/5 text-black text-[9px] sm:text-[10px] font-bold uppercase tracking-tight rounded-lg sm:rounded-xl shadow-md">
+                        <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/90 backdrop-blur-md border border-black/5 text-black text-[9px] sm:text-[10px] font-bold uppercase tracking-tight rounded-md sm:rounded-lg shadow-md">
                           {member.specialty}
                         </span>
                       </div>
@@ -1431,10 +1459,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       {/* SEO: Articles marketing B2B Toulouse - expertise et conseils */}
       {/* Images: 400x225px (16:9) pour thumbnails articles */}
       <section
-        className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 bg-[#F2F2F2]"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-tr from-[#F5F5F5] via-[#F0F0F0] to-[#E8E8E8] relative overflow-hidden grain-light section-divider"
         aria-label="Articles marketing B2B agence Toulouse"
       >
-        <div className="max-w-[82.5rem] mx-auto">
+        {/* Ambient glow */}
+        <div className="absolute top-[25%] right-[10%] w-[280px] sm:w-[480px] h-[280px] sm:h-[480px] bg-gradient-to-bl from-cyan-50/15 via-sky-50/8 to-transparent rounded-full blur-[110px] pointer-events-none" />
+        <div className="absolute bottom-[5%] left-[0%] w-[320px] sm:w-[520px] h-[320px] sm:h-[520px] bg-gradient-to-tr from-slate-200/25 via-gray-100/15 to-transparent rounded-full blur-[120px] pointer-events-none" />
+        <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 sm:mb-12 md:mb-16">
             <div className="max-w-2xl">
@@ -1457,7 +1488,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-black bg-white/70 backdrop-blur-sm border border-black/5 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 hover:text-black/70 hover:shadow-md transition-all duration-300 group mt-4 sm:mt-6 md:mt-0"
+              className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-black bg-white/70 backdrop-blur-sm border border-black/5 rounded-md sm:rounded-lg px-3 sm:px-4 py-2 hover:text-black/70 hover:shadow-md transition-all duration-300 group mt-4 sm:mt-6 md:mt-0"
             >
               {homeContent.blog.ctaText}
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -1474,7 +1505,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="group bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl sm:rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  className="group bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm overflow-hidden card-hover-glow transition-all duration-300"
                 >
                   {/* Image - 400x225px (16:9) */}
                   <Link href={`/blog/${post.slug}`} className="block relative overflow-hidden">
@@ -1542,7 +1573,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             ) : (
               // Placeholder cards
               [1, 2, 3].map((i) => (
-                <div key={i} className="bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl sm:rounded-2xl shadow-md overflow-hidden">
+                <div key={i} className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm overflow-hidden">
                   <div className="aspect-video w-full bg-black/5" />
                   <div className="p-4 sm:p-6">
                     <div className="h-3 sm:h-4 bg-black/5 rounded-lg w-1/4 mb-3 sm:mb-4" />
@@ -1563,47 +1594,52 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       {/* FINAL CTA */}
       {/* SEO: Call-to-action agence marketing Toulouse - contact */}
       <section
-        className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 bg-[#F2F2F2]"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-[#F5F5F5] via-[#F0F0F0] to-[#EAEAEA] relative overflow-hidden"
         aria-label="Contactez l'agence marketing Toulouse"
       >
-        <div className="max-w-[82.5rem] mx-auto">
+        {/* Ambient glow */}
+        <div className="absolute top-[15%] left-[15%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-gradient-to-br from-emerald-50/12 via-teal-50/6 to-transparent rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[10%] w-[280px] sm:w-[480px] h-[280px] sm:h-[480px] bg-gradient-to-tl from-amber-50/15 via-yellow-50/8 to-transparent rounded-full blur-[110px] pointer-events-none" />
+        <div className="max-w-[82.5rem] mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-black via-[#0A0A0A] to-black/95 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-10 md:p-12 lg:p-20 text-center relative overflow-hidden"
+            className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-lg sm:rounded-xl shadow-2xl p-6 sm:p-10 md:p-12 lg:p-20 text-center relative overflow-hidden"
           >
+            {/* Carbon fibre pattern */}
+            <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
             {/* Subtle inner glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#EEFF41]/5 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
             <div className="relative z-10 max-w-3xl mx-auto">
               {/* Trust badge - glassmorphism */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg sm:rounded-xl shadow-lg mb-5 sm:mb-8">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-md sm:rounded-lg shadow-lg mb-5 sm:mb-8">
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={8} className="fill-[#EEFF41] text-[#EEFF41] sm:hidden" />
+                    <Star key={i} size={8} className="fill-white text-white sm:hidden" />
                   ))}
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={10} className="fill-[#EEFF41] text-[#EEFF41] hidden sm:block" />
+                    <Star key={i} size={10} className="fill-white text-white hidden sm:block" />
                   ))}
                 </div>
-                <span className="text-[9px] sm:text-[10px] font-bold text-white/70 uppercase tracking-widest">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.8)' }}>
                   {homeContent.finalCta.trustBadge}
                 </span>
               </div>
 
-              <h2 className="font-['Roboto'] font-[900] text-[24px] sm:text-[32px] md:text-[38px] lg:text-[44px] leading-tight tracking-tight uppercase text-white mb-4 sm:mb-6">
+              <h2 className="font-['Roboto'] font-[900] text-[24px] sm:text-[32px] md:text-[38px] lg:text-[44px] leading-tight tracking-tight uppercase mb-4 sm:mb-6" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 {homeContent.finalCta.h2}
               </h2>
-              <p className="text-white/60 text-sm sm:text-base md:text-lg font-['Inter'] leading-relaxed mb-8 sm:mb-10 md:mb-12">
+              <p className="text-sm sm:text-base md:text-lg font-['Inter'] leading-relaxed mb-8 sm:mb-10 md:mb-12" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 {homeContent.finalCta.description}
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 md:mb-12">
                 <Link
                   href={homeContent.finalCta.cta.primary.href}
-                  className="w-full sm:w-auto h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] inline-flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-[#EEFF41]/90 backdrop-blur-xl text-black border border-[#EEFF41]/50 shadow-[0_4px_24px_-1px_rgba(238,255,65,0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:bg-[#EEFF41] hover:shadow-[0_8px_32px_-4px_rgba(238,255,65,0.4),inset_0_1px_0_0_rgba(255,255,255,0.4)] hover:-translate-y-0.5 group"
+                  className="w-full sm:w-auto h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] inline-flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35)] hover:-translate-y-0.5 group"
                 >
                   {homeContent.finalCta.cta.primary.text}
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -1619,9 +1655,9 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               {/* Trust elements - subtle glassmorphism */}
               <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-x-6 md:gap-x-8 gap-y-2 sm:gap-y-4 pt-6 sm:pt-8 md:pt-10 border-t border-white/10">
                 {homeContent.finalCta.trustElements.map((element, i) => (
-                  <div key={i} className="flex items-center gap-1.5 sm:gap-2.5 px-2 sm:px-3 py-1 sm:py-1.5 bg-white/5 backdrop-blur-sm rounded-lg border border-white/5 text-white/50 text-xs sm:text-sm">
-                    <CheckCircle2 size={12} className="text-[#EEFF41] sm:hidden" />
-                    <CheckCircle2 size={15} className="text-[#EEFF41] hidden sm:block" />
+                  <div key={i} className="flex items-center gap-1.5 sm:gap-2.5 px-2 sm:px-3 py-1 sm:py-1.5 bg-white/5 backdrop-blur-sm rounded-lg border border-white/5 text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                    <CheckCircle2 size={12} className="sm:hidden" style={{ color: 'rgba(255,255,255,0.8)' }} />
+                    <CheckCircle2 size={15} className="hidden sm:block" style={{ color: 'rgba(255,255,255,0.8)' }} />
                     <span className="font-medium tracking-tight">{element}</span>
                   </div>
                 ))}

@@ -32,11 +32,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://by-vizion.com"),
   title: {
-    default: "Vizion | Agence Marketing B2B Toulouse - Stratégie & Growth PME ETI",
+    default: "Agence Marketing Toulouse | Vizion - Experts B2B PME & ETI",
     template: "%s | Vizion - Agence Marketing Toulouse",
   },
   description:
-    "Vizion, agence marketing B2B basée à Toulouse. Spécialistes PME et ETI : stratégie commerciale, lead generation, CRM automation. +70 clients accompagnés en Occitanie et France.",
+    "Agence marketing Toulouse spécialisée B2B. Vizion accompagne +70 PME et ETI : stratégie commerciale, lead generation, CRM automation. Basés à Labège, Occitanie.",
   keywords: [
     "agence marketing Toulouse",
     "agence marketing B2B Toulouse",
