@@ -64,7 +64,7 @@ export function Header({ caseStudies = [] }: HeaderProps) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -224,6 +224,7 @@ export function Header({ caseStudies = [] }: HeaderProps) {
             height={32}
             className="h-7 md:h-8 w-auto"
             priority
+            fetchPriority="high"
           />
         </Link>
 

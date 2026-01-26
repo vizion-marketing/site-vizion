@@ -58,10 +58,8 @@
 @theme inline {
   --color-background: var(--color-bg);
   --color-foreground: var(--color-text);
-  --font-sans: var(--font-body);
-  --font-serif: var(--font-heading);
-  --font-roboto: var(--font-roboto);
-  --font-inter: var(--font-inter);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-roboto);
 }
 
 /* Base styles */
@@ -799,82 +797,8 @@ h3, .h3 {
   box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
-/* === SECTION ANGLE CUT - EMBOÎTEMENT === */
-/* Effet de découpe diagonale pour créer un emboîtement visuel entre sections */
-
-/* Section avec bas en angle (pointe vers le bas à droite) */
-.section-angle-bottom {
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 100%);
-  margin-bottom: -60px;
-  padding-bottom: calc(60px + 2rem);
-}
-
-/* Section avec haut en angle (suit l'angle de la section précédente) */
-.section-angle-top {
-  position: relative;
-  clip-path: polygon(0 60px, 100% 0, 100% 100%, 0 100%);
-  padding-top: calc(60px + 2rem);
-}
-
-/* Section avec les deux angles (milieu de page) */
-.section-angle-both {
-  position: relative;
-  clip-path: polygon(0 60px, 100% 0, 100% calc(100% - 60px), 0 100%);
-  margin-bottom: -60px;
-  padding-top: calc(60px + 2rem);
-  padding-bottom: calc(60px + 2rem);
-}
-
-/* Variantes inversées (angle dans l'autre sens) */
-.section-angle-bottom-reverse {
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 60px));
-  margin-bottom: -60px;
-  padding-bottom: calc(60px + 2rem);
-}
-
-.section-angle-top-reverse {
-  position: relative;
-  clip-path: polygon(0 0, 100% 60px, 100% 100%, 0 100%);
-  padding-top: calc(60px + 2rem);
-}
-
-/* Angles plus prononcés (80px) */
-.section-angle-bottom-lg {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), 0 100%);
-  margin-bottom: -80px;
-  padding-bottom: calc(80px + 2rem);
-}
-
-.section-angle-top-lg {
-  clip-path: polygon(0 80px, 100% 0, 100% 100%, 0 100%);
-  padding-top: calc(80px + 2rem);
-}
-
-/* Angles subtils (40px) */
-.section-angle-bottom-sm {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
-  margin-bottom: -40px;
-  padding-bottom: calc(40px + 2rem);
-}
-
-.section-angle-top-sm {
-  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
-  padding-top: calc(40px + 2rem);
-}
-
-/* Z-Index pour l'empilement correct */
-.section-angle-bottom,
-.section-angle-bottom-reverse,
-.section-angle-bottom-lg,
-.section-angle-bottom-sm {
-  z-index: 2;
-}
-
-.section-angle-top,
-.section-angle-top-reverse,
-.section-angle-top-lg,
-.section-angle-top-sm {
-  z-index: 1;
+/* === BODY OVERFLOW FIX === */
+/* Prevent horizontal scroll from diagonal dividers */
+html, body {
+  overflow-x: hidden;
 }

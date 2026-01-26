@@ -24,6 +24,13 @@ const nextConfig: NextConfig = {
   // trailingSlash: true,
   // Configuration Turbopack (Next.js 16+)
   turbopack: {},
+  // Optimisations de production
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
 };
 
 export default withContentlayer(nextConfig);

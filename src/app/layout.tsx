@@ -1,32 +1,27 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display, Roboto, Inter } from "next/font/google";
+import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { MotionProvider } from "@/components/MotionProvider";
 import { allCaseStudies } from "contentlayer/generated";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const dmSerif = DM_Serif_Display({
-  variable: "--font-dm-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
+// Optimisation: seulement 2 polices au lieu de 4
+// Roboto pour les titres, Inter pour le corps
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
+  display: "swap",
+  preload: true,
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -88,12 +83,13 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${dmSans.variable} ${dmSerif.variable} ${roboto.variable} ${inter.variable} antialiased`}>
-        <Header caseStudies={caseStudiesForNav} />
-        <main>{children}</main>
-        <Footer />
+      <body className={`${roboto.variable} ${inter.variable} antialiased`}>
+        <MotionProvider>
+          <Header caseStudies={caseStudiesForNav} />
+          <main>{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

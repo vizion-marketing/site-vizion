@@ -53,6 +53,30 @@ function formatDate(dateString: string): string {
 // FAQ Data from content file
 const faqData = homeContent.faq.questions;
 
+// Diagonal Divider Component - Placed at bottom of sections (inside)
+function SectionDiagonalBottom({
+  fillColor = '#F2F2F2',
+  direction = 'left'
+}: {
+  fillColor?: string;
+  direction?: 'left' | 'right'
+}) {
+  return (
+    <div className="absolute bottom-0 left-0 w-full h-6 sm:h-8 md:h-10 pointer-events-none z-20">
+      <svg
+        className="w-full h-full block"
+        viewBox="0 0 1440 40"
+        preserveAspectRatio="none"
+      >
+        <polygon
+          points={direction === 'left' ? "0,40 1440,0 1440,40" : "0,0 1440,40 0,40"}
+          fill={fillColor}
+        />
+      </svg>
+    </div>
+  );
+}
+
 // Animation Variants
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -127,7 +151,7 @@ function SocialProofTabs() {
 
   return (
     <section
-      className="section-angle-top section-angle-bottom-reverse py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#E8E8E8] relative grain-light"
+      className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#E8E8E8] relative grain-light"
       aria-label="Témoignages clients agence marketing Toulouse"
     >
       {/* Ambient background effects */}
@@ -398,6 +422,8 @@ function SocialProofTabs() {
           </Link>
         </div>
       </div>
+      {/* Diagonal bottom → next section (Piliers gray) */}
+      <SectionDiagonalBottom fillColor="#F2F2F2" direction="right" />
     </section>
   );
 }
@@ -409,7 +435,7 @@ function FAQSection() {
 
   return (
     <section
-      className="section-angle-top-reverse section-angle-bottom py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative grain-light"
+      className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative grain-light"
       aria-label="Questions fréquentes agence marketing Toulouse"
     >
       {/* Ambient glow */}
@@ -526,6 +552,8 @@ function FAQSection() {
           </div>
         </div>
       </div>
+      {/* Diagonal bottom → next section (Final CTA gray) */}
+      <SectionDiagonalBottom fillColor="#F0F0F0" direction="left" />
     </section>
   );
 }
@@ -543,7 +571,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       />
 
       {/* HERO SECTION */}
-      <section className="section-angle-bottom relative pt-20 sm:pt-24 md:pt-[100px] pb-16 sm:pb-20 md:pb-[80px] px-4 sm:px-6 md:px-12 bg-[#B7B7B7] bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] flex items-center min-h-[100svh] lg:min-h-[95vh]">
+      <section className="relative pt-20 sm:pt-24 md:pt-[100px] pb-16 sm:pb-20 md:pb-[80px] px-4 sm:px-6 md:px-12 bg-[#B7B7B7] bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] flex items-center min-h-[100svh] lg:min-h-[95vh]">
         {/* Pattern texture overlay */}
         <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
 
@@ -626,14 +654,17 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="absolute bottom-8 left-8 w-12 xl:w-16 h-12 xl:h-16 border-b-2 border-l-2 border-white/30 z-20" />
           </motion.div>
         </div>
+        {/* Diagonal bottom → next section (gray) */}
+        <SectionDiagonalBottom fillColor="#F2F2F2" direction="left" />
       </section>
 
       {/* SOCIAL PROOF SECTION - Tabs Interactifs */}
       <SocialProofTabs />
 
+
       {/* 5 PILIERS SECTION - PREMIUM GLASSMORPHISM */}
       <section
-        className="section-angle-top-reverse section-angle-bottom py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#EAEAEA] relative grain-light"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#EAEAEA] relative grain-light"
         aria-label="Services agence marketing B2B Toulouse"
       >
         {/* Background ambient light - Enhanced with multiple gradients */}
@@ -806,13 +837,15 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
           </motion.div>
         </div>
+        {/* Diagonal bottom → next section (IA Highlight dark) */}
+        <SectionDiagonalBottom fillColor="#B7B7B7" direction="left" />
       </section>
 
       {/* SECTION IA HIGHLIGHT */}
       {/* SEO: Expertise Vibe Coding et IA de l'agence marketing Toulouse */}
       {/* Images: 800x320px (5:2) pour les visuels slider */}
       <section
-        className="section-angle-top section-angle-bottom-reverse py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] relative"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] relative"
         aria-label="Expertise IA et Vibe Coding agence marketing Toulouse"
       >
         {/* Carbon fibre pattern */}
@@ -1017,13 +1050,15 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
           </div>
         </div>
+        {/* Diagonal bottom → next section (Quand Commencer white) */}
+        <SectionDiagonalBottom fillColor="#FFFFFF" direction="right" />
       </section>
 
       {/* SECTION QUAND COMMENCER */}
       {/* SEO: Offres et tarifs agence marketing Toulouse */}
       {/* Images: 400x240px (5:3) pour les visuels des offres */}
       <section
-        className="section-angle-top-reverse section-angle-bottom py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-white via-[#FEFEFE] to-[#FAFAF8] relative grain-light"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-white via-[#FEFEFE] to-[#FAFAF8] relative grain-light"
         aria-label="Offres et formules agence marketing Toulouse"
       >
         {/* Ambient glow */}
@@ -1189,13 +1224,15 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </Link>
           </motion.div>
         </div>
+        {/* Diagonal bottom → next section (À Propos gray) */}
+        <SectionDiagonalBottom fillColor="#F2F2F2" direction="left" />
       </section>
 
       {/* SECTION À PROPOS DE VIZION */}
       {/* SEO: Présentation agence marketing Toulouse - équipe et valeurs */}
       {/* Images: 500x600px (5:6) pour photo équipe, 56x56px cercle pour avatar fondateur */}
       <section
-        className="section-angle-top section-angle-bottom-reverse py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-bl from-[#F8F8F8] via-[#F2F2F2] to-[#EBEBEB] relative grain-light"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-bl from-[#F8F8F8] via-[#F2F2F2] to-[#EBEBEB] relative grain-light"
         aria-label="À propos de Vizion agence marketing Toulouse"
       >
         {/* Ambient glow */}
@@ -1330,13 +1367,15 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
           </motion.div>
         </div>
+        {/* Diagonal bottom → next section (Équipe white) */}
+        <SectionDiagonalBottom fillColor="#FFFFFF" direction="right" />
       </section>
 
       {/* SECTION ÉQUIPE */}
       {/* SEO: Équipe agence marketing Toulouse - experts B2B */}
       {/* Images: 260x320px (13:16) pour portraits membres */}
       <section
-        className="section-angle-top-reverse section-angle-bottom py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative grain-light"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative grain-light"
         aria-label="Équipe agence marketing Toulouse"
       >
         {/* Ambient glow */}
@@ -1453,13 +1492,15 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
           </div>
         </div>
+        {/* Diagonal bottom → next section (Blog gray) */}
+        <SectionDiagonalBottom fillColor="#F0F0F0" direction="left" />
       </section>
 
       {/* SECTION BLOG */}
       {/* SEO: Articles marketing B2B Toulouse - expertise et conseils */}
       {/* Images: 400x225px (16:9) pour thumbnails articles */}
       <section
-        className="section-angle-top section-angle-bottom-reverse py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-tr from-[#F5F5F5] via-[#F0F0F0] to-[#E8E8E8] relative grain-light"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-tr from-[#F5F5F5] via-[#F0F0F0] to-[#E8E8E8] relative grain-light"
         aria-label="Articles marketing B2B agence Toulouse"
       >
         {/* Ambient glow */}
@@ -1586,15 +1627,18 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             )}
           </div>
         </div>
+        {/* Diagonal bottom → next section (FAQ white) */}
+        <SectionDiagonalBottom fillColor="#FFFFFF" direction="right" />
       </section>
 
       {/* SECTION FAQ */}
       <FAQSection />
 
+
       {/* FINAL CTA */}
       {/* SEO: Call-to-action agence marketing Toulouse - contact */}
       <section
-        className="section-angle-top py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-[#F5F5F5] via-[#F0F0F0] to-[#EAEAEA] relative"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-[#F5F5F5] via-[#F0F0F0] to-[#EAEAEA] relative"
         aria-label="Contactez l'agence marketing Toulouse"
       >
         {/* Ambient glow */}
