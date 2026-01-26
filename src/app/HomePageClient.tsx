@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Zap,
@@ -66,80 +66,6 @@ const staggerContainer = {
   whileInView: { transition: { staggerChildren: 0.1 } }
 };
 
-// Reversed Z Divider Component - Animated line transition between sections
-// Creates a diagonal line pattern inspired by the Vizion logo
-interface ReversedZDividerProps {
-  variant?: 'dark-to-light' | 'light-to-dark' | 'light-to-light';
-  className?: string;
-}
-
-function ReversedZDivider({ variant = 'light-to-light', className = '' }: ReversedZDividerProps) {
-  const dividerRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (dividerRef.current) {
-      observer.observe(dividerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const strokeColor = variant === 'dark-to-light'
-    ? 'rgba(255, 255, 255, 0.25)'
-    : 'rgba(0, 0, 0, 0.1)';
-
-  const strokeColorBold = variant === 'dark-to-light'
-    ? 'rgba(255, 255, 255, 0.4)'
-    : 'rgba(0, 0, 0, 0.2)';
-
-  return (
-    <div
-      ref={dividerRef}
-      className={`reversed-z-transition ${className}`}
-      data-visible={isVisible}
-      aria-hidden="true"
-    >
-      <svg
-        viewBox="0 0 1440 150"
-        preserveAspectRatio="none"
-        className="w-full h-full"
-      >
-        {/* Glow layer for the main line */}
-        <path
-          d="M0 75 L480 75 L960 130 L1440 130"
-          className="reversed-z-path reversed-z-glow"
-          style={{ stroke: strokeColor }}
-        />
-        {/* Main reversed Z line - diagonal cut from left-center to right-bottom */}
-        <path
-          d="M0 75 L480 75 L960 130 L1440 130"
-          className="reversed-z-path"
-          style={{ stroke: strokeColor }}
-        />
-        {/* Bold accent on the diagonal */}
-        <path
-          d="M480 75 L960 130"
-          className="reversed-z-path reversed-z-path--bold"
-          style={{ stroke: strokeColorBold, strokeDasharray: 2000, strokeDashoffset: isVisible ? 0 : 2000 }}
-        />
-        {/* Intersection dots */}
-        <circle cx="480" cy="75" r="4" className="z-intersection-dot" style={{ fill: strokeColorBold }} />
-        <circle cx="960" cy="130" r="4" className="z-intersection-dot" style={{ fill: strokeColorBold }} />
-      </svg>
-    </div>
-  );
-}
-
 // Client Cases Data for Social Proof Tabs
 const clientCases = [
   {
@@ -201,7 +127,7 @@ function SocialProofTabs() {
 
   return (
     <section
-      className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#E8E8E8] relative overflow-hidden grain-light section-divider"
+      className="section-angle-top section-angle-bottom-reverse py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#E8E8E8] relative grain-light"
       aria-label="Témoignages clients agence marketing Toulouse"
     >
       {/* Ambient background effects */}
@@ -483,7 +409,7 @@ function FAQSection() {
 
   return (
     <section
-      className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative overflow-hidden grain-light section-divider"
+      className="section-angle-top-reverse section-angle-bottom py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative grain-light"
       aria-label="Questions fréquentes agence marketing Toulouse"
     >
       {/* Ambient glow */}
@@ -617,7 +543,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       />
 
       {/* HERO SECTION */}
-      <section className="relative pt-20 sm:pt-24 md:pt-[100px] pb-16 sm:pb-20 md:pb-[80px] px-4 sm:px-6 md:px-12 bg-[#B7B7B7] bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] flex items-center min-h-[100svh] lg:min-h-[95vh] overflow-visible">
+      <section className="section-angle-bottom relative pt-20 sm:pt-24 md:pt-[100px] pb-16 sm:pb-20 md:pb-[80px] px-4 sm:px-6 md:px-12 bg-[#B7B7B7] bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] flex items-center min-h-[100svh] lg:min-h-[95vh]">
         {/* Pattern texture overlay */}
         <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
 
@@ -702,18 +628,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* Z-ANGLE TRANSITION: Hero → Social Proof */}
-      <ReversedZDivider variant="dark-to-light" className="-mt-12 mb-0" />
-
       {/* SOCIAL PROOF SECTION - Tabs Interactifs */}
       <SocialProofTabs />
 
-      {/* Z-ANGLE TRANSITION: Social Proof → Piliers */}
-      <ReversedZDivider variant="light-to-light" className="-mt-8 -mb-8" />
-
       {/* 5 PILIERS SECTION - PREMIUM GLASSMORPHISM */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#EAEAEA] relative overflow-hidden grain-light section-divider"
+        className="section-angle-top-reverse section-angle-bottom py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#EAEAEA] relative grain-light"
         aria-label="Services agence marketing B2B Toulouse"
       >
         {/* Background ambient light - Enhanced with multiple gradients */}
@@ -888,14 +808,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* Z-ANGLE TRANSITION: Piliers → IA Highlight */}
-      <ReversedZDivider variant="light-to-dark" className="-mt-8 -mb-8" />
-
       {/* SECTION IA HIGHLIGHT */}
       {/* SEO: Expertise Vibe Coding et IA de l'agence marketing Toulouse */}
       {/* Images: 800x320px (5:2) pour les visuels slider */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] relative overflow-hidden"
+        className="section-angle-top section-angle-bottom-reverse py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] relative"
         aria-label="Expertise IA et Vibe Coding agence marketing Toulouse"
       >
         {/* Carbon fibre pattern */}
@@ -1102,14 +1019,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* Z-ANGLE TRANSITION: IA Highlight → Quand Commencer */}
-      <ReversedZDivider variant="dark-to-light" className="-mt-8 -mb-8" />
-
       {/* SECTION QUAND COMMENCER */}
       {/* SEO: Offres et tarifs agence marketing Toulouse */}
       {/* Images: 400x240px (5:3) pour les visuels des offres */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-white via-[#FEFEFE] to-[#FAFAF8] relative overflow-hidden grain-light section-divider"
+        className="section-angle-top-reverse section-angle-bottom py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-white via-[#FEFEFE] to-[#FAFAF8] relative grain-light"
         aria-label="Offres et formules agence marketing Toulouse"
       >
         {/* Ambient glow */}
@@ -1277,14 +1191,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* Z-ANGLE TRANSITION: Quand Commencer → À Propos */}
-      <ReversedZDivider variant="light-to-light" className="-mt-8 -mb-8" />
-
       {/* SECTION À PROPOS DE VIZION */}
       {/* SEO: Présentation agence marketing Toulouse - équipe et valeurs */}
       {/* Images: 500x600px (5:6) pour photo équipe, 56x56px cercle pour avatar fondateur */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-bl from-[#F8F8F8] via-[#F2F2F2] to-[#EBEBEB] relative overflow-hidden grain-light section-divider"
+        className="section-angle-top section-angle-bottom-reverse py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-bl from-[#F8F8F8] via-[#F2F2F2] to-[#EBEBEB] relative grain-light"
         aria-label="À propos de Vizion agence marketing Toulouse"
       >
         {/* Ambient glow */}
@@ -1421,14 +1332,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* Z-ANGLE TRANSITION: À Propos → Équipe */}
-      <ReversedZDivider variant="light-to-light" className="-mt-8 -mb-8" />
-
       {/* SECTION ÉQUIPE */}
       {/* SEO: Équipe agence marketing Toulouse - experts B2B */}
       {/* Images: 260x320px (13:16) pour portraits membres */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative overflow-hidden grain-light section-divider"
+        className="section-angle-top-reverse section-angle-bottom py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-white to-[#FAFAF8] relative grain-light"
         aria-label="Équipe agence marketing Toulouse"
       >
         {/* Ambient glow */}
@@ -1547,14 +1455,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* Z-ANGLE TRANSITION: Équipe → Blog */}
-      <ReversedZDivider variant="light-to-light" className="-mt-8 -mb-8" />
-
       {/* SECTION BLOG */}
       {/* SEO: Articles marketing B2B Toulouse - expertise et conseils */}
       {/* Images: 400x225px (16:9) pour thumbnails articles */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-tr from-[#F5F5F5] via-[#F0F0F0] to-[#E8E8E8] relative overflow-hidden grain-light section-divider"
+        className="section-angle-top section-angle-bottom-reverse py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-tr from-[#F5F5F5] via-[#F0F0F0] to-[#E8E8E8] relative grain-light"
         aria-label="Articles marketing B2B agence Toulouse"
       >
         {/* Ambient glow */}
@@ -1683,19 +1588,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* Z-ANGLE TRANSITION: Blog → FAQ */}
-      <ReversedZDivider variant="light-to-light" className="-mt-8 -mb-8" />
-
       {/* SECTION FAQ */}
       <FAQSection />
-
-      {/* Z-ANGLE TRANSITION: FAQ → Final CTA */}
-      <ReversedZDivider variant="light-to-light" className="-mt-8 -mb-8" />
 
       {/* FINAL CTA */}
       {/* SEO: Call-to-action agence marketing Toulouse - contact */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-[#F5F5F5] via-[#F0F0F0] to-[#EAEAEA] relative overflow-hidden"
+        className="section-angle-top py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-[#F5F5F5] via-[#F0F0F0] to-[#EAEAEA] relative"
         aria-label="Contactez l'agence marketing Toulouse"
       >
         {/* Ambient glow */}
