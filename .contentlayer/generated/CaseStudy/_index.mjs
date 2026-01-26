@@ -7,6 +7,5 @@ import casClients__fintechB2bMdx from './cas-clients__fintech-b2b.mdx.json' with
 import casClients__franchiseServicesDomicileMdx from './cas-clients__franchise-services-domicile.mdx.json' with { type: 'json' }
 import casClients__reseauLocalSeoMdx from './cas-clients__reseau-local-seo.mdx.json' with { type: 'json' }
 import casClients__saasMarketingAutomationMdx from './cas-clients__saas-marketing-automation.mdx.json' with { type: 'json' }
-import casClients___templateMdx from './cas-clients___template.mdx.json' with { type: 'json' }
 
-export const allCaseStudies = [casClients__cabinetConseilRhMdx, casClients__easyvirtualToursFranchiseMdx, casClients__etiManufacturingMdx, casClients__fintechB2bMdx, casClients__franchiseServicesDomicileMdx, casClients__reseauLocalSeoMdx, casClients__saasMarketingAutomationMdx, casClients___templateMdx]
+export const allCaseStudies = [casClients__cabinetConseilRhMdx, casClients__easyvirtualToursFranchiseMdx, casClients__etiManufacturingMdx, casClients__fintechB2bMdx, casClients__franchiseServicesDomicileMdx, casClients__reseauLocalSeoMdx, casClients__saasMarketingAutomationMdx]

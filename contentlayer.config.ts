@@ -1,4 +1,5 @@
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
+import remarkGfm from "remark-gfm";
 
 // Schema pour les pages vitrine (accueil, services, cas clients)
 export const Page = defineDocumentType(() => ({
@@ -65,17 +66,78 @@ export const Page = defineDocumentType(() => ({
       default: [],
     },
     
-    // Témoignage client (optionnel)
+    // Témoignage client unique (legacy - optionnel)
     // Format: { quote: "...", author: "...", role: "...", company: "...", photo: "..." }
     testimonial: { type: "json" },
-    
+
     // Cas clients liés (slugs des études de cas)
     relatedCaseStudies: {
       type: "list",
       of: { type: "string" },
       default: [],
     },
-    
+
+    // === NOUVEAUX CHAMPS SERVICES V2 (refonte SEO/conversion) ===
+
+    // Pain points / Problématiques clients
+    // Format: { icon: "AlertCircle", title: "...", description: "..." }
+    painPoints: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+    },
+
+    // Processus amélioré avec durées et livrables
+    // Format: { title: "...", description: "...", duration: "2 semaines", deliverables: ["..."] }
+    processSteps: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+    },
+
+    // Section investissement - Ce qui est inclus
+    investmentIncludes: {
+      type: "list",
+      of: { type: "string" },
+      default: [],
+    },
+
+    // Garantie (texte affiché dans la section investissement)
+    guarantee: { type: "string" },
+
+    // Témoignages multiples (avec photos et ratings)
+    // Format: { quote: "...", author: "...", role: "...", company: "...", photo: "...", rating: 5 }
+    testimonials: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+    },
+
+    // Points de comparaison (Vizion vs alternatives)
+    // Format: { aspect: "...", vizion: "...", alternative: "..." }
+    comparisonPoints: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+    },
+
+    // Profil idéal pour ce service
+    idealFor: {
+      type: "list",
+      of: { type: "string" },
+      default: [],
+    },
+
+    // Profil non idéal (transparence)
+    notIdealFor: {
+      type: "list",
+      of: { type: "string" },
+      default: [],
+    },
+
+    // URL vidéo hero (optionnel)
+    heroVideoUrl: { type: "string" },
+
     // SEO
     metaTitle: { type: "string" },
     metaDescription: { type: "string" },
@@ -113,55 +175,81 @@ export const LocalPage = defineDocumentType(() => ({
     
     // Hero section - Benefits pills
     benefits: { type: "list", of: { type: "string" }, default: [] },
-    
-    // Section 2: Client logos
+
+    // NEW SEO STRUCTURE - Section 2: Problématiques locales
+    problematiques: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+    },
+    problematiquesTitle: { type: "string" },
+    problematiquesSubtitle: { type: "string" },
+
+    // NEW SEO STRUCTURE - Section 3: Services locaux
+    services: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+    },
+
+    // NEW SEO STRUCTURE - Section 4: Preuve sociale locale
     clientLogos: {
       type: "list",
       of: { type: "json" },
       default: [],
     },
-    
-    // Section 4: AI Use Cases
-    aiUseCases: {
+
+    // NEW SEO STRUCTURE - Section 5: Zone d'intervention
+    zones: { type: "list", of: { type: "string" }, default: [] },
+    zoneDescription: { type: "string" },
+
+    // NEW SEO STRUCTURE - Section 6: Pourquoi nous (USP locaux)
+    uspItems: {
       type: "list",
       of: { type: "json" },
       default: [],
     },
-    
-    // Section 5: Situations / When to work with us
-    situations: {
-      type: "list",
-      of: { type: "json" },
-      default: [],
-    },
-    
-    // Section 6: Featured Cases (testimonials with metrics)
+
+    // Section 7: Featured Cases (testimonials with metrics)
     featuredCases: {
       type: "list",
       of: { type: "json" },
       default: [],
     },
-    
-    // Section 7: About content
-    aboutContent: { type: "string" },
-    aboutImage: { type: "string" },
-    
-    // Section 8: Experts
+
+    // Section 8: Piliers / Méthode (garde les piliers existants)
+    // Utilise PillarsInteractive existant
+
+    // Section 9: Experts
     experts: {
       type: "list",
       of: { type: "json" },
       default: [],
     },
-    
-    // Section 9: FAQ locale (questions/réponses)
+
+    // Section 10: FAQ locale (questions/réponses)
     faq: {
       type: "list",
       of: { type: "json" },
       default: [],
     },
-    
-    // Section 10: CTA Final - Reassurance points
+
+    // Section 11: CTA Final - Reassurance points
     reassurancePoints: { type: "list", of: { type: "string" }, default: [] },
+
+    // Legacy fields (backward compatibility)
+    aiUseCases: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+    },
+    situations: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+    },
+    aboutContent: { type: "string" },
+    aboutImage: { type: "string" },
     
     // Legacy fields (for backward compatibility)
     localUSP: { type: "string" },
@@ -360,10 +448,10 @@ export const Post = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Page, LocalPage, Post, CaseTemplate, CaseStudy],
+  documentTypes: [Page, Post, CaseTemplate, CaseStudy],
   disableImportAliasWarning: true,
   mdx: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [],
   },
 });

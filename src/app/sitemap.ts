@@ -1,33 +1,45 @@
 import { MetadataRoute } from "next";
+import { allPosts, allCaseStudies } from "contentlayer/generated";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://exemple.com";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://by-vizion.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Static pages
-  const staticPages = [
-    "",
-    "/services",
-    "/services/conseil-strategique",
-    "/services/solutions-saas",
-    "/cas-clients",
-    "/cas-clients/startup-fintech",
-    "/cas-clients/industrie-4-0",
-    "/cas-clients/retail-omnicanal",
-    "/blog",
-    "/blog/transformation-digitale-2024",
-    "/blog/choisir-solution-saas",
-    "/blog/categorie/strategie",
-    "/blog/categorie/tech",
-    "/contact",
-    "/local/paris/conseil-digital",
-    "/local/lyon/solutions-saas",
-    "/local/marseille/transformation-digitale",
+  const staticRoutes = [
+    { route: "", priority: 1, changeFrequency: "weekly" as const },
+    { route: "/cas-clients", priority: 0.9, changeFrequency: "monthly" as const },
+    { route: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
+    { route: "/contact", priority: 0.8, changeFrequency: "monthly" as const },
+    { route: "/mentions-legales", priority: 0.3, changeFrequency: "yearly" as const },
+    { route: "/confidentialite", priority: 0.3, changeFrequency: "yearly" as const },
   ];
 
-  return staticPages.map((route) => ({
+  const staticPages = staticRoutes.map(({ route, priority, changeFrequency }) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : route.includes("/blog/") ? 0.7 : 0.8,
+    changeFrequency,
+    priority,
   }));
+
+  // Dynamic blog posts
+  const blogPages = allPosts
+    .filter((post) => !post.draft && !post._raw.sourceFileName.startsWith("_"))
+    .map((post) => ({
+      url: `${baseUrl}${post.url}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+
+  // Dynamic case studies
+  const caseStudyPages = allCaseStudies
+    .filter((cs) => !cs._raw.sourceFileName.startsWith("_"))
+    .map((cs) => ({
+      url: `${baseUrl}${cs.url}`,
+      lastModified: new Date(cs.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }));
+
+  return [...staticPages, ...blogPages, ...caseStudyPages];
 }

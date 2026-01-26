@@ -108,6 +108,7 @@ export interface QuandCommencerScenario {
   title: string;
   subtitle: string;
   description: string;
+  image: string;
   whenToChoose: string[];
   deliverables: string[];
   duration: string;
@@ -237,18 +238,19 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Vizion | Agence Marketing B2B & SaaS | Stratégie Digitale PME & ETI",
-    description: "Cabinet de conseil marketing B2B spécialisé en stratégie digitale, growth marketing et CRM automation pour PME et ETI. +70 entreprises accompagnées. ROI mesurable.",
+    title: "Vizion | Agence Marketing B2B Toulouse - PME & ETI",
+    description: "Vizion, votre agence marketing B2B à Toulouse. Spécialistes croissance PME et ETI : stratégie, lead generation, CRM. +70 clients en Occitanie et France.",
     keywords: [
-      "agence marketing B2B",
-      "marketing PME ETI",
-      "growth marketing B2B",
-      "CRM automation",
-      "stratégie digitale B2B",
-      "lead generation B2B",
-      "marketing SaaS",
-      "conseil marketing Paris",
-      "transformation digitale PME"
+      "agence marketing Toulouse",
+      "agence marketing B2B Toulouse",
+      "marketing B2B Toulouse",
+      "agence growth Toulouse",
+      "marketing PME Toulouse",
+      "marketing ETI Toulouse",
+      "lead generation Toulouse",
+      "agence digitale Toulouse",
+      "smarketing",
+      "alignement sales marketing"
     ],
     ogImage: "/og-image.jpg"
   },
@@ -257,75 +259,76 @@ export const homeContent: HomeContent = {
   // HERO SECTION
   // --------------------------------------------------------------------------
   hero: {
-    badge: "STATUT SYSTÈME : OPTIMISATION_FLUX_ACTIVE",
-    h1: "ON (RE)STRUCTURE LE PARCOURS DE VENTE DES PME & ETI B2B",
-    h1Highlight: "(RE)",
-    baseline: "Vous méritez un marketing qui sert directement votre performance commerciale. Nous fusionnons stratégie de haut niveau et puissance de l'IA pour auditer, bâtir et accélérer votre croissance plus vite que n'importe quelle agence traditionnelle.",
+    badge: "AGENCE MARKETING B2B — TOULOUSE ET PARIS",
+    h1: "L'AGENCE MARKETING TOULOUSAINE SPECIALISTE DU B2B",
+    h1Highlight: "B2B",
+    baseline: "Chez Vizion nous fusionons stratégies de croissance, déploiement opérationnel et Intelligence Artificielle pour remettre le Marketing au service de ce qui compte vraiment : la vente.",
     badges: [
       "Réactivité garantie en 24h",
-      "Expertise B2B & Franchise",
+      "Expertise B2B et Franchise",
       "Partenariat Long-Terme"
     ],
     cta: {
-      primary: { text: "Découvrir notre approche", href: "/contact" },
-      secondary: { text: "Voir nos résultats", href: "/services" }
+      primary: { text: "Parlons de votre projet", href: "/contact" },
+      secondary: { text: "Parcourir nos cas clients", href: "/cas-clients" }
     },
-    socialProof: "ILS NOUS FONT CONFIANCE POUR LEUR CROISSANCE (+70 CLIENTS)"
+    socialProof: "+70 DIRECTIONS MARKETING NOUS ONT DÉJA FAIT CONFIANCE"
   },
 
   // --------------------------------------------------------------------------
   // PREUVE SOCIALE
   // --------------------------------------------------------------------------
   preuveSociale: {
-    surtitre: "[ INDEX 02 — PREUVE SOCIALE ]",
-    h2: "ILS NOUS ONT FAIT CONFIANCE",
-    h2Highlight: "CONFIANCE",
-    description: "Notre approche méthodologique a permis à des leaders de l'industrie de redéfinir leurs standards opérationnels et d'accélérer leur mise sur le marché.",
-    trustBanner: "Au total, c'est + de 70 directions générales et directions marketing qui nous ont fait confiance.",
-    trustBannerHighlight: "+ de 70 directions générales et directions marketing",
+    surtitre: "[ NOS STRATEGIES MARKETING PAYANTES ]",
+    h2: "ILS ONT FAIT DE NOUS LE PARTENAIRE DE LEUR CROISSANCE",
+    h2Highlight: "CROISSANCE",
+    description: "Nous croyons fermement que de bons résultats ne peuvent pas être obtenus sans un véritable engagement. C'est pourquoi nous considérons chaque projet comme le nôtre. Faire confiance à Vizion, c'est faire confiance à un partenaire réellement investi dans votre croissance.",
+    trustBanner: "Depuis 2021, plus de 70 directions Marketing et directions générales nous ont fait confiance",
+    trustBannerHighlight: "70 directions Marketing",
+
     clients: [
-      { 
-        type: "growth", 
+      {
+        type: "growth",
         value: "25",
-        subtitle: "Agences en France",
-        title: "De l'unité pilote au réseau national", 
+        subtitle: "Franchises déployées",
+        title: "De 0 à 25 franchises en 1 an",
         logo: "easyVirtual.tours",
-        category: "Franchise Immobilier",
+        category: "Direction Marketing Externalisée",
         slug: "easyvirtual-tours-franchise",
-        bg: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000"
+        bg: "/images/clients/easyvirtual-bg.jpg"
       },
-      { 
-        type: "metric", 
-        value: "1M", 
-        label: "Vues cumulées", 
+      {
+        type: "metric",
+        value: "+1000%",
+        label: "Trafic SEO en 3 mois",
         logo: "Ensenat Coaching",
-        category: "Personal Branding LinkedIn",
-        slug: "cabinet-conseil-rh"
+        category: "SEO & Content Marketing",
+        slug: "ensenat-coaching"
       },
-      { 
+      {
         type: "minimal",
-        logo: "Eldo Wallet", 
-        category: "Go-to-Market Fintech",
+        logo: "Eldo Wallet",
+        category: "Go-to-Market & Sales",
         slug: "fintech-b2b",
         bg: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800"
       },
-      { 
+      {
         type: "testimonial",
         slug: null
       },
-      { 
-        type: "metric", 
-        value: "x3", 
-        label: "Pipeline Commercial", 
-        logo: "DataFlow Analytics",
-        category: "SaaS B2B Marketing",
-        slug: "saas-marketing-automation"
+      {
+        type: "metric",
+        value: "1M",
+        label: "Vues LinkedIn",
+        logo: "Olivier Bas",
+        category: "Personal Branding LinkedIn",
+        slug: "olivier-bas-linkedin"
       }
     ],
     testimonial: {
-      quote: "L'intervention de l'équipe a été le catalyseur indispensable de notre pivot stratégique.",
-      name: "JEAN-BAPTISTE VALLIER",
-      role: "Directeur Opérations — Global Tech"
+      quote: "C'est vraiment un bonheur de les avoir au quotidien. Vizion est réellement investie dans notre croissance, ils font partie de l'équipe.",
+      name: "CLÉMENT",
+      role: "Co-fondateur — easyVirtual.tours"
     },
     logos: [
       "TechCorp", "InnovateLab", "DataFlow", "CloudSync", "FinanceHub",
@@ -337,109 +340,109 @@ export const homeContent: HomeContent = {
   // 5 PILIERS
   // --------------------------------------------------------------------------
   piliers: {
-    surtitre: "NOTRE APPROCHE",
-    h2: "ON INTERVIENT SUR 5 PILLIERS POUR AMÉLIORER VOTRE PERFORMANCE MARKETING & COMMERCIALE",
-    description: "Une méthodologie structurée pour transformer votre organisation en machine de croissance prévisible, alignant stratégie, outils et exécution.",
-    badgeText: "Moteur de croissance",
-    badgeStatus: "ACTIF",
+    surtitre: "NOTRE SAVOIR-FAIRE EN 5 PILIERS",
+    h2: "NOTRE VISION D'UNE AGENCE MARKETING B2B",
+    description: "Nous avons structuré notre approche autour de 5 piliers qui répondent chacun à vos problématiques concrètes. De votre stratégie à vos automatisations, nous couvrons l'intégralité de votre chaîne de valeur.",
+    badgeText: "Notre méthode",
+    badgeStatus: "SMARKETING",
     piliers: [
       {
         numero: "01",
-        surtitre: "VISION & STRATÉGIE",
-        titre: "Aligner vos objectifs business sur votre roadmap.",
-        description: "Définition des KPIs critiques, analyse de la valeur perçue et structuration du cycle de vente pour maximiser le pipe commercial.",
-        services: ["Audit 360°", "Modélisation Funnel", "Scorecards KPIs", "Roadmap Trimestrielle", "Analyse Concurrentielle", "Positioning Workshop"],
-        cta: "L'ANALYSE DES KPIs & ROADMAP"
+        surtitre: "STRATÉGIE",
+        titre: "Stratégie & Product Marketing",
+        description: "Nous commençons par comprendre votre marché, votre produit et vos enjeux. Ensemble, nous définissons la trajectoire et positionnons votre offre pour qu'elle devienne l'évidence aux yeux de vos prospects.",
+        services: ["Audit Stratégique", "Positionnement", "Product Marketing", "Go-to-Market", "Workshops", "Formation"],
+        cta: "DÉFINIR VOTRE STRATÉGIE"
       },
       {
         numero: "02",
-        surtitre: "MARKETING PRODUIT",
-        titre: "Marketing Produit",
-        description: "Alignez vos forces de vente avec des supports percutants.",
-        services: ["Landing Pages", "Pitch Decks", "Battlecards", "Copywriting", "Case Studies"]
+        surtitre: "CONVERSION",
+        titre: "Assets Digitaux & Conversion",
+        description: "Nous créons des interfaces haute performance pensées pour vos cibles B2B. Nos sites, landing pages et tunnels sont conçus pour transformer vos visiteurs en opportunités qualifiées.",
+        services: ["Landing Pages", "Sites Web B2B", "Tunnels de Conversion", "Optimisation UX", "Tests A/B"]
       },
       {
         numero: "03",
-        surtitre: "ACTIVATION",
-        titre: "Activation",
-        description: "Maximisez la conversion de chaque visiteur sur votre plateforme.",
-        services: ["UX/UI Audit", "A/B Testing", "CRO", "Tunnels"]
+        surtitre: "SALES ENABLEMENT",
+        titre: "Sales Enablement & LinkedIn",
+        description: "Nous donnons les super-pouvoirs à vos commerciaux pour raccourcir vos cycles de vente. Notre expertise LinkedIn, personal branding et création de supports fait la différence.",
+        services: ["LinkedIn for Growth", "Personal Branding", "Supports Commerciaux", "Argumentaires", "Social Selling"]
       },
       {
         numero: "04",
-        surtitre: "GROWTH & LEAD GEN",
-        titre: "Growth & Lead Gen",
-        description: "Générez des opportunités qualifiées en continu.",
-        services: ["INBOUND", "SEO", "OUTBOUND"]
+        surtitre: "ACQUISITION",
+        titre: "Growth & Campagnes",
+        description: "Nous générons un flux régulier d'opportunités qualifiées pour votre équipe commerciale. Nous activons les canaux qui fonctionnent vraiment pour votre cible spécifique.",
+        services: ["Emailing B2B", "SEO Technique", "LinkedIn Ads", "Google Ads", "ABM", "Content Marketing"]
       },
       {
         numero: "05",
-        surtitre: "CRM & AUTOMATION",
-        titre: "CRM & Automation",
-        description: "Libérez vos équipes des tâches répétitives.",
-        services: ["Workflows", "Email Auto", "Lead Scoring", "Zapier/Make"]
+        surtitre: "VIBE CODING",
+        titre: "Automation, CRM & Micro-SaaS",
+        description: "Nous mettons notre expertise technique au service de votre productivité. Nous implémentons vos CRM, automatisons vos process et développons des micro-SaaS sur mesure pour vos besoins.",
+        services: ["Setup CRM", "Automatisations", "Micro-SaaS", "Vibe Coding", "Intégrations", "Workflows"]
       }
     ],
-    ctaText: "Rejoingnez +70 clients qui ont déjà optimisé leur cycle de croissance stratégique.",
-    socialProofText: "+70 clients",
+    ctaText: "Rejoignez les PME et ETI à qui nous avons permis d'aligner leur croissance.",
+    socialProofText: "+70 clients nous font confiance",
     cta: {
-      secondary: { text: "Découvrir nos expertises", href: "/expertises" },
-      primary: { text: "Démarrer votre audit", href: "/audit" }
+      secondary: { text: "Voir nos résultats", href: "/cas-clients" },
+      primary: { text: "Parlons de vos enjeux", href: "/contact" }
     }
   },
 
   // --------------------------------------------------------------------------
-  // IA HIGHLIGHT
+  // IA HIGHLIGHT - VIBE CODING
   // --------------------------------------------------------------------------
   iaHighlight: {
-    surtitre: "Intelligence Artificielle",
-    h2: "L'IA AU SERVICE DE VOTRE CROISSANCE",
-    h2Highlight: "CROISSANCE",
-    introduction: "L'intelligence artificielle n'est plus une option pour les entreprises B2B ambitieuses, c'est un levier de compétitivité majeur. Nous intégrons l'IA à chaque étape de votre stratégie marketing et commerciale pour vous permettre d'aller plus vite, plus fort, et plus loin que vos concurrents.",
+    surtitre: "Ce qui nous différencie",
+    h2: "NOTRE APPROCHE VIBE CODING : NOUS CRÉONS VOS OUTILS",
+    h2Highlight: "VIBE CODING",
+    introduction: "Le Vibe Coding, c'est notre capacité à développer des outils et micro-SaaS sur mesure pour votre entreprise en un temps record. Là où d'autres agences se contentent de recommander des solutions existantes, nous préférons créer celles dont vous avez vraiment besoin.",
     whyImportant: [
-      "Les entreprises qui adoptent l'IA aujourd'hui prennent une longueur d'avance décisive sur leur marché.",
-      "L'IA permet de réduire les coûts opérationnels de 40 à 70% tout en augmentant la qualité et la vitesse d'exécution.",
-      "Vos concurrents l'utilisent déjà. Ne pas agir maintenant, c'est prendre du retard difficile à rattraper."
+      "Nous développons des micro-SaaS sur mesure pour résoudre VOS problèmes métier spécifiques.",
+      "Notre vitesse d'exécution est inédite : de votre idée au produit en quelques jours.",
+      "Nous intégrons l'IA à chaque étape pour multiplier votre productivité."
     ],
     useCases: [
       {
-        title: "Génération de contenu à grande échelle",
-        description: "Créez des articles de blog, landing pages, emails et posts LinkedIn optimisés SEO en quelques minutes au lieu de plusieurs jours.",
-        example: "Un client SaaS a multiplié par 5 sa production de contenu en passant de 2 articles/mois à 10, générant +150% de trafic organique en 6 mois.",
-        metric: "x5 production",
-        tags: ["Content Marketing", "SEO", "Productivité"],
+        title: "Micro-SaaS sur mesure",
+        description: "Vous avez un process métier inefficace ? Nous vous développons un outil dédié en quelques jours. Nous refusons les compromis avec des solutions génériques qui ne correspondent pas à votre réalité.",
+        example: "Nous avons accompagné un client industriel qui passait 4h/jour sur un process de qualification manuel. Nous lui avons créé un outil de scoring automatisé — résultat : 15h/semaine gagnées.",
+        metric: "15h/sem gagnées",
+        tags: ["Vibe Coding", "Micro-SaaS", "Productivité"],
         image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200"
       },
       {
-        title: "Qualification de leads automatisée",
-        description: "L'IA analyse le comportement des visiteurs, leur profil LinkedIn, et leur engagement pour scorer automatiquement vos leads et prioriser les plus prometteurs.",
-        example: "Une ETI industrielle a réduit de 60% le temps de qualification de ses commerciaux, augmentant le taux de conversion de 35%.",
-        metric: "-60% temps",
-        tags: ["Lead Scoring", "CRM", "Automation"],
+        title: "Automatisations complexes",
+        description: "Nous connectons vos outils entre eux et automatisons vos tâches répétitives. CRM, facturation, onboarding client — nous rendons votre quotidien plus fluide.",
+        example: "Nous avons aidé une ETI à automatiser 80% de son onboarding client, passant de 2 semaines à 3 jours tout en améliorant la satisfaction.",
+        metric: "-80% temps onboarding",
+        tags: ["Automation", "CRM", "Efficacité"],
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200"
       },
       {
-        title: "Personnalisation à l'échelle",
-        description: "Adaptez automatiquement vos messages commerciaux, emails et landing pages selon le profil, le secteur et les besoins spécifiques de chaque prospect.",
-        example: "Une franchise de services a automatisé la personnalisation de ses campagnes outbound pour 25 agences, doublant le taux de réponse.",
-        metric: "x2 taux de réponse",
-        tags: ["Outbound", "Personnalisation", "Conversion"],
+        title: "Content à l'échelle",
+        description: "Nous accélérons votre production de contenu grâce à l'IA : articles, emails, posts LinkedIn. Plus de volume pour votre marque, même niveau d'exigence, validé par nos experts.",
+        example: "Nous avons permis à un client SaaS de multiplier par 5 sa production de contenu, générant +150% de trafic organique qualifié en 6 mois.",
+        metric: "x5 production",
+        tags: ["Content Marketing", "SEO", "IA"],
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200"
       },
       {
-        title: "Analyse prédictive des performances",
-        description: "Anticipez les résultats de vos campagnes, identifiez les opportunités et ajustez votre stratégie en temps réel grâce à l'analyse prédictive IA.",
-        example: "Un éditeur SaaS a optimisé son budget ads en redirigeant 40K€ vers les canaux à plus fort ROI identifiés par l'IA, générant +85% de MRR additionnel.",
-        metric: "+85% MRR",
-        tags: ["Analytics", "Prédictif", "ROI"],
+        title: "Scoring & qualification IA",
+        description: "Nous utilisons l'IA pour analyser les signaux faibles de vos prospects. Vos commerciaux ne contactent ainsi que ceux prêts à signer. Nous éliminons le temps perdu.",
+        example: "Nous avons aidé une ETI industrielle à réduire de 60% son temps de qualification, permettant à ses sales de se concentrer sur le closing.",
+        metric: "-60% temps qualification",
+        tags: ["Lead Scoring", "Sales", "IA"],
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200"
       },
       {
-        title: "Chatbots intelligents et qualification",
-        description: "Déployez des assistants conversationnels capables de qualifier les prospects 24/7, répondre aux questions techniques et prendre des rendez-vous automatiquement.",
-        example: "Un cabinet de conseil a automatisé 70% de sa qualification initiale, libérant 15h/semaine à ses commerciaux pour se concentrer sur les closing.",
-        metric: "-70% qualification manuelle",
-        tags: ["Chatbot", "Lead Gen", "Support"],
+        title: "Dashboards & reporting",
+        description: "Nous créons des tableaux de bord sur mesure qui agrègent vos données en temps réel. Nous automatisons votre reporting pour que vous puissiez agir plutôt que compiler.",
+        example: "Nous avons remplacé 5 rapports Excel manuels par un dashboard unifié pour un client, avec alertes automatiques sur ses KPIs critiques.",
+        metric: "5 rapports → 1 dashboard",
+        tags: ["Data", "Reporting", "Vibe Coding"],
         image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=1200"
       }
     ]
@@ -449,70 +452,73 @@ export const homeContent: HomeContent = {
   // QUAND COMMENCER
   // --------------------------------------------------------------------------
   quandCommencer: {
-    surtitre: "Votre prochaine étape",
-    h2: "Trois façons de travailler avec nous",
-    h2Highlight: "travailler avec nous",
-    description: "Chaque entreprise est unique. Voici les trois modes de collaboration que nous proposons pour répondre précisément à vos enjeux.",
+    surtitre: "COMMENT NOUS POUVONS VOUS AIDER",
+    h2: "TROIS FAÇONS DE TRAVAILLER AVEC NOUS",
+    h2Highlight: "TRAVAILLER AVEC NOUS",
+    description: "Nous nous adaptons à vos besoins et à votre maturité. Voici comment notre équipe peut vous accompagner concrètement.",
     scenarios: [
       {
         number: "01",
-        badge: "AUDIT & STRATÉGIE",
-        title: "Poser les fondations",
-        subtitle: "Diagnostic complet et feuille de route",
-        description: "Avant d'accélérer, il faut comprendre où vous en êtes. Notre audit 360° analyse votre positionnement, vos process et vos outils pour construire une stratégie sur-mesure.",
+        badge: "DIAGNOSTIC",
+        title: "Audit & Feuille de Route",
+        subtitle: "Nous analysons avant d'agir",
+        description: "Nous plongeons dans votre situation actuelle : votre cycle de vente, vos outils, votre équipe, votre concurrence. Vous repartez avec notre diagnostic et un plan d'action priorisé.",
+        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800",
         whenToChoose: [
           "Vous ne savez pas par où commencer",
           "Vos actions marketing manquent de cohérence",
-          "Vous voulez optimiser avant d'investir davantage",
-          "Vous changez de direction ou de cible marché"
+          "Vous voulez valider votre stratégie avant d'investir",
+          "Vous changez de positionnement ou de cible"
         ],
-        deliverables: ["Audit complet", "Roadmap stratégique", "Quick wins identifiés"],
+        deliverables: ["Notre audit complet", "Roadmap 90 jours", "Actions prioritaires"],
         duration: "3 à 4 semaines",
         investment: "À partir de 8K€",
-        idealFor: "ETI & PME en croissance ou transformation",
-        cta: "Demander un audit"
+        idealFor: "PME & ETI qui veulent y voir clair",
+        cta: "Demander notre audit"
       },
       {
         number: "02",
-        badge: "PROJET SUR-MESURE",
-        title: "Exécution ciblée",
-        subtitle: "Un projet, une équipe dédiée",
-        description: "Vous avez un besoin marketing spécifique ? Nous concevons et déployons des solutions adaptées à votre contexte : refonte digitale, campagne d'acquisition, lancement produit...",
+        badge: "PROJET",
+        title: "Mission Sur-Mesure",
+        subtitle: "Votre objectif, notre équipe dédiée",
+        description: "Vous avez un projet précis ? Refonte de site, campagne d'acquisition, mise en place CRM... Nous montons l'équipe qu'il faut et nous livrons.",
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800",
         whenToChoose: [
-          "Vous avez identifié un besoin précis mais manquez de ressources",
-          "Vous souhaitez externaliser une expertise pointue",
-          "Vous préparez un lancement ou un temps fort commercial",
-          "Vous avez besoin de renfort sur un projet stratégique"
+          "Vous avez un projet défini mais pas les ressources",
+          "Vous devez avancer vite sur un sujet technique",
+          "Vous préparez un lancement ou un temps fort",
+          "Vous avez besoin d'expertise ponctuelle"
         ],
-        deliverables: ["Solution personnalisée", "Équipe projet dédiée", "Livraison clé en main"],
+        deliverables: ["Livrable clé en main", "Notre équipe projet dédiée", "Suivi et ajustements"],
         duration: "4 à 12 semaines",
         investment: "Sur devis",
-        idealFor: "PME & ETI avec un enjeu identifié",
-        cta: "Discuter de mon projet"
+        idealFor: "PME & ETI avec un projet identifié",
+        cta: "Discuter de votre projet"
       },
       {
         number: "03",
-        badge: "PARTENAIRE LONG TERME",
-        title: "Direction marketing externalisée",
-        subtitle: "Un CMO et son équipe à vos côtés",
-        description: "Bénéficiez d'un directeur marketing senior à temps partagé, soutenu par nos escadrons d'experts. Stratégie, pilotage et exécution en continu pour une croissance durable.",
+        badge: "ACCOMPAGNEMENT",
+        title: "Direction Marketing Externalisée",
+        subtitle: "Nous devenons votre partenaire",
+        description: "Vous n'avez pas de directeur marketing ? Nous prenons ce rôle. Notre équipe gère votre stratégie, coordonne vos actions, pilote vos prestataires et vous présente un reporting mensuel.",
+        image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800",
         whenToChoose: [
-          "Vous n'avez pas de direction marketing en interne",
-          "Vous voulez scaler sans recruter immédiatement",
-          "Vous cherchez un regard externe stratégique permanent",
-          "Vous avez besoin d'agilité et d'expertise variée"
+          "Vous n'avez pas de direction marketing",
+          "Vous voulez structurer sans recruter un CMO",
+          "Vous cherchez un regard externe et stratégique",
+          "Vous avez besoin de compétences variées"
         ],
-        deliverables: ["Pilotage continu", "Reporting mensuel", "Équipe modulable"],
+        deliverables: ["Notre pilotage mensuel", "Reporting clair", "Équipe modulable"],
         duration: "Engagement 6+ mois",
         investment: "À partir de 4K€/mois",
-        idealFor: "ETI & Scale-ups ambitieuses",
-        cta: "Explorer ce modèle"
+        idealFor: "ETI & Scale-ups en croissance",
+        cta: "En savoir plus"
       }
     ],
     bottomCta: {
-      text: "Pas sûr de ce qui vous correspond ?",
-      subtext: "Prenez 15 minutes avec nous pour en discuter. C'est gratuit et sans engagement.",
-      button: { text: "Réserver un appel découverte", href: "/contact" }
+      text: "Vous ne savez pas par où commencer ?",
+      subtext: "Nous en discutons 15 minutes avec vous. Gratuit, sans engagement.",
+      button: { text: "Parlons-en ensemble", href: "/contact" }
     }
   },
 
@@ -520,39 +526,39 @@ export const homeContent: HomeContent = {
   // À PROPOS
   // --------------------------------------------------------------------------
   aPropos: {
-    surtitre: "À propos de Vizion",
-    h2: "Notre histoire",
-    h2Highlight: "histoire",
+    surtitre: "NOTRE HISTOIRE",
+    h2: "POURQUOI NOUS AVONS CRÉÉ VIZION",
+    h2Highlight: "CRÉÉ VIZION",
     paragraphs: [
-      "Vizion est née d'un constat simple : les PME et ETI B2B méritent un accompagnement marketing de haut niveau, habituellement réservé aux grands groupes. Nous avons créé une structure agile qui combine l'expertise stratégique d'un cabinet de conseil avec la réactivité d'une équipe intégrée.",
-      "Depuis notre création, nous avons accompagné plus de 70 entreprises dans leur transformation marketing et commerciale, avec un seul objectif : générer des résultats mesurables et durables."
+      "Nous avons créé Vizion parce que nous en avions assez de voir des agences vendre de l'opérationnel superflu à leurs clients. Des impressions LinkedIn, des likes, des rapports PowerPoint de 50 pages... Pendant que les vrais sujets — votre vente, votre pipe, votre CA — passaient à la trappe.",
+      "Notre vision est simple : remettre le marketing au service de ce qu'il aurait toujours dû être — votre croissance commerciale. Nous ne croyons pas aux vanity metrics ni au buzz éphémère. Nous croyons aux actions qui alimentent votre pipe et qui se mesurent en euros."
     ],
     founderQuote: {
-      quote: "Notre mission est de démocratiser l'excellence marketing pour les entreprises B2B ambitieuses.",
+      quote: "Nous pensons que le marketing B2B n'est pas de la magie, c'est de la mécanique de précision. Notre rôle est de régler votre moteur de croissance.",
       name: "Lucas Gonzalez",
-      role: "Fondateur & CEO — Vizion"
+      role: "Fondateur — Vizion"
     },
     photoCaption: {
       label: "Notre équipe",
-      title: "Une équipe passionnée par la croissance"
+      title: "Basés dans le Sud-Ouest"
     },
-    valeursTitre: "Nos valeurs",
+    valeursTitre: "NOS VALEURS",
     valeurs: [
       {
-        title: "Excellence opérationnelle",
-        description: "Nous visons l'excellence dans chaque livrable, chaque interaction, chaque résultat."
+        title: "Proximité",
+        description: "Nous travaillons avec vous, pas pour vous. Nous sommes accessibles, réactifs et investis dans votre réussite."
       },
       {
-        title: "Agilité & Réactivité",
-        description: "Notre structure légère nous permet de réagir en 24h et de nous adapter en temps réel."
+        title: "Apprentissage Constant",
+        description: "Le marketing évolue vite. Nous nous formons en continu pour vous apporter ce qui fonctionne vraiment."
       },
       {
-        title: "Transparence totale",
-        description: "Pas de jargon, pas de surprises. Des rapports clairs et des résultats mesurables."
+        title: "Parler Vrai",
+        description: "Nous bannissons le jargon et les promesses en l'air. Nous vous disons ce qui va marcher et ce qui ne marchera pas."
       },
       {
-        title: "Innovation continue",
-        description: "Nous testons, adoptons et maîtrisons les outils et méthodes les plus avancés."
+        title: "Résultats Concrets",
+        description: "Nous mesurons tout. Si une action ne génère pas de business pour vous, nous arrêtons et nous ajustons."
       }
     ]
   },
@@ -561,15 +567,15 @@ export const homeContent: HomeContent = {
   // ÉQUIPE / INTELLIGENCE COLLECTIVE
   // --------------------------------------------------------------------------
   equipe: {
-    surtitre: "Notre modèle",
-    h2: "L'intelligence collective",
-    h2Highlight: "collective",
-    description: "Un directeur marketing externalisé qui challenge vos idées, accompagné d'escadrons de consultants freelance déployés sur mesure pour chaque mission. Chaque expert pilote son sujet avec passion et expertise.",
+    surtitre: "NOTRE ÉQUIPE À VOTRE SERVICE",
+    h2: "NOUS MOBILISONS NOS EXPERTS POUR VOUS",
+    h2Highlight: "NOS EXPERTS",
+    description: "Nous avons conçu notre modèle pour vous offrir le meilleur. Vous bénéficiez d'un Directeur de Mission qui comprend vos enjeux, et qui active nos meilleurs spécialistes pour chaque phase de votre projet.",
     modelExplanation: {
-      director: "Directeur Marketing Externalisé",
-      squads: "Escadrons sur mesure"
+      director: "Votre Directeur de Mission (Notre Copilote)",
+      squads: "Nos Experts Spécialisés (L'Exécution)"
     },
-    scrollHint: "Faites défiler pour découvrir l'équipe",
+    scrollHint: "Découvrez notre équipe",
     members: [
       {
         name: "Marie Dupont",
@@ -620,68 +626,68 @@ export const homeContent: HomeContent = {
   // BLOG
   // --------------------------------------------------------------------------
   blog: {
-    surtitre: "Ressources",
-    h2: "Nos derniers articles",
-    h2Highlight: "articles",
-    ctaText: "Voir tous les articles"
+    surtitre: "NOS RESSOURCES POUR VOUS",
+    h2: "CE QUE NOUS PARTAGEONS",
+    h2Highlight: "PARTAGEONS",
+    ctaText: "Découvrir toutes nos ressources"
   },
 
   // --------------------------------------------------------------------------
   // FAQ
   // --------------------------------------------------------------------------
   faq: {
-    surtitre: "[ FAQ ]",
-    h2: "Questions fréquentes",
-    h2Highlight: "fréquentes",
-    description: "Retrouvez les réponses aux questions les plus courantes sur notre accompagnement et notre méthodologie.",
+    surtitre: "[ VOS QUESTIONS, NOS RÉPONSES ]",
+    h2: "CE QUE VOUS VOULEZ SAVOIR",
+    h2Highlight: "SAVOIR",
+    description: "Nous croyons à la transparence. Voici les réponses aux questions que vous vous posez légitimement avant de nous confier votre croissance.",
     questions: [
       {
-        question: "Quelles industries B2B accompagnez-vous ?",
-        answer: "Nous accompagnons principalement les PME et ETI B2B dans les secteurs du SaaS, de l'industrie, des services professionnels, de la franchise et de la tech. Notre expertise couvre aussi bien les startups en phase de scale que les entreprises établies souhaitant moderniser leur approche marketing et commerciale."
+        question: "Quels types d'entreprises accompagnez-vous ?",
+        answer: "Nous sommes spécialisés B2B. Nous travaillons avec des PME, des ETI, des réseaux de franchise et des boîtes Tech/SaaS. Si vous vendez aux professionnels et que vous avez de l'ambition, nous sommes faits pour travailler ensemble."
       },
       {
-        question: "Comment s'adapte votre approche aux PME vs ETI ?",
-        answer: "Notre méthodologie est modulaire. Pour les PME, nous privilégions des actions à fort impact et ROI rapide avec des ressources optimisées. Pour les ETI, nous déployons des stratégies plus structurées avec une coordination multi-équipes et des processus de transformation plus profonds. Dans les deux cas, nous adaptons notre stack technologique et nos KPIs aux enjeux spécifiques de chaque structure."
+        question: "PME vs ETI : adaptez-vous votre dispositif ?",
+        answer: "Évidemment. Pour une PME, nous visons le 'Quick Win' et l'efficacité immédiate avec des équipes légères. Pour une ETI, nous structurons des processus plus complets, nous coordonnons plusieurs équipes et nous travaillons sur la conduite du changement."
       },
       {
-        question: "Quel est le délai moyen pour voir des résultats ?",
-        answer: "Les premiers résultats tangibles apparaissent généralement entre 30 et 90 jours selon le type de mission. Les quick wins (optimisation de landing pages, amélioration du taux de conversion) peuvent montrer des résultats en quelques semaines. Les stratégies de fond (SEO, content marketing, restructuration CRM) produisent des résultats durables sur 3 à 6 mois."
+        question: "Quand pouvons-nous espérer des résultats ?",
+        answer: "Nous ne vendons pas du rêve. Les premiers signaux (amélioration des taux de conversion par exemple) arrivent en 30 jours. Pour une stratégie de fond (SEO, Brand), comptez 3 à 6 mois. Nous définissons ensemble ces horizons dès le début de notre collaboration."
       },
       {
-        question: "Travaillez-vous avec des entreprises internationales ?",
-        answer: "Oui, nous accompagnons des entreprises françaises avec des ambitions internationales ainsi que des filiales françaises de groupes étrangers. Notre équipe maîtrise les spécificités des marchés européens et peut déployer des stratégies multi-pays en coordination avec vos équipes locales."
+        question: "Gérez-vous l'international ?",
+        answer: "Oui. Nous accompagnons des entreprises françaises dans leur export et des groupes étrangers sur le marché français. Notre équipe est capable d'opérer en anglais et de s'adapter aux spécificités de vos marchés cibles."
       },
       {
-        question: "Comment intégrez-vous l'IA dans vos services ?",
-        answer: "L'IA est intégrée à chaque étape de notre méthodologie : analyse prédictive pour le scoring des leads, génération de contenu assistée pour accélérer la production, personnalisation dynamique des parcours clients, automatisation intelligente des workflows. Nous formons également vos équipes à l'utilisation de ces outils pour maximiser votre autonomie."
+        question: "L'IA, c'est du gadget ou c'est vraiment utile ?",
+        answer: "Chez nous, l'IA n'est pas un gadget marketing. C'est un outil de production que nous maîtrisons. Nous l'utilisons pour analyser vos données, scorer vos leads et produire vos contenus plus vite. Mais nous croyons que la stratégie doit rester 100% humaine."
       },
       {
-        question: "Quelle est la durée d'engagement minimum ?",
-        answer: "Nous proposons différentes formules selon vos besoins : missions ponctuelles (audit, projet spécifique), accompagnement mensuel (minimum 3 mois recommandé pour des résultats durables), ou partenariat annuel avec direction marketing externalisée. Chaque engagement inclut une période d'onboarding et des points de revue réguliers."
+        question: "Quelle est la durée d'engagement avec vous ?",
+        answer: "Nous sommes flexibles. Du 'One-shot' pour un audit ou une mission ponctuelle, à l'accompagnement mensuel (minimum 3 mois pour être sérieux), jusqu'au partenariat annuel. Tout est clair, contractuel et sans surprise."
       }
     ],
-    ctaText: "Vous avez d'autres questions ? Notre équipe est là pour vous répondre.",
-    ctaButton: { text: "Nous contacter", href: "/contact" }
+    ctaText: "Vous avez une question spécifique ? Nous vous répondons en direct.",
+    ctaButton: { text: "Parlons-en", href: "/contact" }
   },
 
   // --------------------------------------------------------------------------
   // CAS CLIENTS
   // --------------------------------------------------------------------------
   casClients: {
-    surtitre: "Nos réalisations",
-    h2: "Succès clients",
-    ctaText: "Voir tous les cas clients",
+    surtitre: "CE QUE NOUS AVONS RÉALISÉ",
+    h2: "NOS SUCCÈS AVEC NOS CLIENTS",
+    ctaText: "Découvrir nos études de cas",
     cases: [
       {
         slug: "fintech-b2b",
         titre: "Eldo Wallet",
-        description: "Go-to-market structuré pour une fintech B2B : de 0 à 1000 clients et 850K€ MRR en 12 mois grâce au content marketing et partenariats stratégiques.",
+        description: "Nous avons structuré le go-to-market de cette fintech B2B : passage de 0 à 1000 clients et 850K€ MRR en 12 mois. Une exécution que nous avons menée sans faille.",
         categorie: "SaaS B2B"
       },
       {
         slug: "eti-manufacturing",
         titre: "Précision Industries",
-        description: "Digitalisation du parcours commercial d'une ETI industrielle de 250M€ CA : CRM, e-commerce B2B, automatisation. -30% coût acquisition, +45% productivité.",
+        description: "Nous avons accompagné la digitalisation complète de cette ETI industrielle (250M€ CA). Résultat : -30% coût d'acquisition et des commerciaux enfin équipés pour vendre.",
         categorie: "Industrie B2B"
       }
     ]
@@ -691,18 +697,18 @@ export const homeContent: HomeContent = {
   // FINAL CTA
   // --------------------------------------------------------------------------
   finalCta: {
-    trustBadge: "+70 clients satisfaits",
-    h2: "Prêt à transformer votre marketing ?",
-    h2Highlight: "votre marketing",
-    description: "Rejoignez les entreprises B2B qui ont choisi l'excellence. Prenez rendez-vous pour un premier échange stratégique gratuit et sans engagement.",
+    trustBadge: "+70 clients nous font confiance",
+    h2: "NOUS SOMMES PRÊTS À VOUS ACCOMPAGNER",
+    h2Highlight: "VOUS ACCOMPAGNER",
+    description: "Nous croyons que votre croissance ne doit pas être laissée au hasard. Rejoignez les entreprises qui nous ont fait confiance. Parlons de vos enjeux et de vos problématiques lors d'un premier échange.",
     cta: {
-      primary: { text: "Réserver un appel stratégique", href: "/contact" },
-      secondary: { text: "Découvrir nos services", href: "/services" }
+      primary: { text: "Parlons de votre projet", href: "/contact" },
+      secondary: { text: "Voir nos cas clients", href: "/cas-clients" }
     },
     trustElements: [
-      "Réponse sous 24h",
+      "Nous répondons sous 24h",
       "Sans engagement",
-      "Audit gratuit inclus"
+      "Notre audit préliminaire est offert"
     ]
   }
 };
@@ -714,16 +720,18 @@ export const homeContent: HomeContent = {
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Vizion",
-  "description": "Cabinet de conseil marketing B2B spécialisé en stratégie digitale, growth marketing et CRM automation pour PME et ETI.",
-  "url": "https://vizion.fr",
-  "logo": "https://vizion.fr/logo.png",
+  "name": "Vizion - Agence Marketing B2B",
+  "alternateName": "Vizion",
+  "description": "Agence marketing B2B spécialisée PME et ETI. Stratégie commerciale, lead generation, CRM automation et growth marketing. Plus de 70 entreprises accompagnées en France.",
+  "url": "https://by-vizion.com",
+  "logo": "https://by-vizion.com/logo-vizion.svg",
   "sameAs": [
     "https://www.linkedin.com/company/vizion-marketing"
   ],
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Paris",
+    "addressLocality": "Toulouse",
+    "addressRegion": "Occitanie",
     "addressCountry": "FR"
   },
   "priceRange": "€€€",
@@ -733,13 +741,20 @@ export const organizationSchema = {
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Services Marketing B2B",
+    "name": "Services Agence Marketing B2B",
     "itemListElement": [
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
           "name": "Stratégie Marketing B2B"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Lead Generation B2B"
         }
       },
       {
@@ -753,7 +768,7 @@ export const organizationSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Growth Marketing & Lead Generation"
+          "name": "Growth Marketing B2B"
         }
       }
     ]

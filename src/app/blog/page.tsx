@@ -4,11 +4,11 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ArrowRight, 
-  Search, 
-  Mail, 
-  ChevronLeft, 
+import {
+  ArrowRight,
+  Search,
+  Mail,
+  ChevronLeft,
   ChevronRight,
   Clock,
   Calendar,
@@ -19,6 +19,7 @@ import {
   TrendingUp
 } from "lucide-react";
 import { allPosts } from "contentlayer/generated";
+import { ImagePlaceholder } from "@/components/ui";
 
 // Fixed categories for the blog
 const categories = [
@@ -161,12 +162,19 @@ export default function BlogPage() {
                               className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                             />
                           ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-[#B7B7B7] to-[#6D6D6D]" />
+                            <ImagePlaceholder
+                              width={300}
+                              height={200}
+                              label="Image article"
+                              rounded="sm"
+                              variant="dark"
+                              className="w-full h-full"
+                            />
                           )}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                          
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+
                           {/* Badge */}
-                          <div className="absolute top-3 left-3">
+                          <div className="absolute top-3 left-3 z-10">
                             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white text-black text-[9px] font-black uppercase tracking-wider rounded-full">
                               <Star size={10} className="fill-black" />
                               Rédac
@@ -207,12 +215,19 @@ export default function BlogPage() {
                               className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                             />
                           ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-[#B7B7B7] to-[#6D6D6D]" />
+                            <ImagePlaceholder
+                              width={300}
+                              height={200}
+                              label="Image article"
+                              rounded="sm"
+                              variant="dark"
+                              className="w-full h-full"
+                            />
                           )}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                          
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+
                           {/* Badge */}
-                          <div className="absolute top-3 left-3">
+                          <div className="absolute top-3 left-3 z-10">
                             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#EEFF41] text-black text-[9px] font-black uppercase tracking-wider rounded-full">
                               <TrendingUp size={10} />
                               Populaire
@@ -256,11 +271,18 @@ export default function BlogPage() {
                           className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-[#B7B7B7] to-[#6D6D6D]" />
+                        <ImagePlaceholder
+                          width={500}
+                          height={600}
+                          label="Image article à la une"
+                          rounded="sm"
+                          variant="dark"
+                          className="w-full h-full"
+                        />
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
                     </div>
-                    
+
                     {/* Badge - Top */}
                     <div className="absolute top-6 left-6 z-10">
                       <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#EEFF41] text-black text-[10px] font-black uppercase tracking-wider rounded-full shadow-[0_0_20px_rgba(238,255,65,0.3)]">
@@ -398,11 +420,15 @@ export default function BlogPage() {
                             className="object-cover group-hover:scale-105 transition-transform duration-700"
                           />
                         ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D]">
-                            <div className="w-full h-full opacity-30 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-                          </div>
+                          <ImagePlaceholder
+                            width={400}
+                            height={225}
+                            label="Image article"
+                            rounded="sm"
+                            className="w-full h-full"
+                          />
                         )}
-                        
+
                         {/* Category badge on image */}
                         <div className="absolute top-4 left-4">
                           <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm text-black text-[9px] font-black uppercase tracking-wider rounded-full">

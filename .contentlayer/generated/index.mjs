@@ -5,13 +5,12 @@ export { isType } from 'contentlayer2/client'
 // NOTE During development Contentlayer imports from `.mjs` files to improve HMR speeds.
 // During (production) builds Contentlayer it imports from `.json` files to improve build performance.
 import allPages from './Page/_index.json' with { type: 'json' }
-import allLocalPages from './LocalPage/_index.json' with { type: 'json' }
 import allPosts from './Post/_index.json' with { type: 'json' }
 import allCaseTemplates from './CaseTemplate/_index.json' with { type: 'json' }
 import allCaseStudies from './CaseStudy/_index.json' with { type: 'json' }
 
-export { allPages, allLocalPages, allPosts, allCaseTemplates, allCaseStudies }
+export { allPages, allPosts, allCaseTemplates, allCaseStudies }
 
-export const allDocuments = [...allPages, ...allLocalPages, ...allPosts, ...allCaseTemplates, ...allCaseStudies]
+export const allDocuments = [...allPages, ...allPosts, ...allCaseTemplates, ...allCaseStudies]
 
 

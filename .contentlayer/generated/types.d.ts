@@ -62,39 +62,6 @@ export type CaseTemplate = {
   slug: string
 }
 
-export type LocalPage = {
-  /** File path relative to `contentDirPath` */
-  _id: string
-  _raw: Local.RawDocumentData
-  type: 'LocalPage'
-  title: string
-  description: string
-  city: string
-  region: string
-  heroTitle?: string | undefined
-  heroSubtitle?: string | undefined
-  featuredImage?: string | undefined
-  benefits: string[]
-  clientLogos: any[]
-  aiUseCases: any[]
-  situations: any[]
-  featuredCases: any[]
-  aboutContent?: string | undefined
-  aboutImage?: string | undefined
-  experts: any[]
-  faq: any[]
-  reassurancePoints: string[]
-  localUSP?: string | undefined
-  sectors: string[]
-  clientCount: number
-  badges: string[]
-  testimonials: any[]
-  /** MDX file body */
-  body: MDX
-  slug: string
-  url: string
-}
-
 export type Page = {
   /** File path relative to `contentDirPath` */
   _id: string
@@ -118,6 +85,15 @@ export type Page = {
   faqs: any[]
   testimonial?: any | undefined
   relatedCaseStudies: string[]
+  painPoints: any[]
+  processSteps: any[]
+  investmentIncludes: string[]
+  guarantee?: string | undefined
+  testimonials: any[]
+  comparisonPoints: any[]
+  idealFor: string[]
+  notIdealFor: string[]
+  heroVideoUrl?: string | undefined
   metaTitle?: string | undefined
   metaDescription?: string | undefined
   keywords: string[]
@@ -159,8 +135,8 @@ export type Post = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = CaseStudy | CaseTemplate | LocalPage | Page | Post
-export type DocumentTypeNames = 'CaseStudy' | 'CaseTemplate' | 'LocalPage' | 'Page' | 'Post'
+export type DocumentTypes = CaseStudy | CaseTemplate | Page | Post
+export type DocumentTypeNames = 'CaseStudy' | 'CaseTemplate' | 'Page' | 'Post'
 
 export type NestedTypes = never
 export type NestedTypeNames = never
@@ -168,7 +144,6 @@ export type NestedTypeNames = never
 export type DataExports = {
   allDocuments: DocumentTypes[]
   allPages: Page[]
-  allLocalPages: LocalPage[]
   allPosts: Post[]
   allCaseTemplates: CaseTemplate[]
   allCaseStudies: CaseStudy[]
@@ -193,7 +168,6 @@ declare global {
 export type DocumentTypeMap = {
   CaseStudy: CaseStudy
   CaseTemplate: CaseTemplate
-  LocalPage: LocalPage
   Page: Page
   Post: Post
 }

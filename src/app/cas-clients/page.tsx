@@ -2,14 +2,17 @@ import { Metadata } from "next";
 import { allCaseStudies } from "contentlayer/generated";
 import { CasClientsContent } from "./CasClientsContent";
 
+const SITE_URL = "https://by-vizion.com";
+const SITE_NAME = "Vizion";
+
 export const metadata: Metadata = {
   title: "Cas Clients | Études de cas B2B",
   description: "Découvrez nos études de cas B2B : franchise, SaaS, services, industrie, business local. Des résultats concrets et mesurables pour des PME et ETI.",
   openGraph: {
     title: "Cas Clients | Études de cas B2B",
     description: "Découvrez nos études de cas B2B : franchise, SaaS, services, industrie, business local. Des résultats concrets et mesurables.",
-    url: "https://stratege.marketing/cas-clients",
-    siteName: "Stratège",
+    url: `${SITE_URL}/cas-clients`,
+    siteName: SITE_NAME,
     type: "website",
   },
   twitter: {
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
     description: "Découvrez nos études de cas B2B : franchise, SaaS, services, industrie, business local.",
   },
   alternates: {
-    canonical: "https://stratege.marketing/cas-clients",
+    canonical: `${SITE_URL}/cas-clients`,
   },
 };
 
@@ -39,7 +42,7 @@ export default function CasClientsPage() {
     "@type": "CollectionPage",
     name: "Cas Clients B2B",
     description: "Collection d'études de cas B2B démontrant notre expertise en marketing et croissance commerciale.",
-    url: "https://stratege.marketing/cas-clients",
+    url: `${SITE_URL}/cas-clients`,
     mainEntity: {
       "@type": "ItemList",
       itemListElement: sortedCaseStudies.map((caseStudy, index) => ({
@@ -49,7 +52,7 @@ export default function CasClientsPage() {
           "@type": "Article",
           name: caseStudy.title,
           description: caseStudy.description,
-          url: `https://stratege.marketing${caseStudy.url}`,
+          url: `${SITE_URL}${caseStudy.url}`,
         },
       })),
     },

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ArrowRight, 
+import {
+  ArrowRight,
   ChevronRight,
   Building2,
   Code,
@@ -19,6 +19,7 @@ import {
   Wallet
 } from "lucide-react";
 import { CaseStudy } from "contentlayer/generated";
+import { ImagePlaceholder } from "@/components/ui";
 
 // Sector configuration
 const sectors = [
@@ -169,18 +170,28 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   {/* Image placeholder */}
-                  <div className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] p-8 lg:p-12 flex flex-col justify-between min-h-[300px] lg:min-h-[400px] relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-                    <div className="relative z-10">
-                      <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-[10px] font-bold tracking-widest uppercase text-white">
-                        <Star size={12} className="fill-[#EEFF41] text-[#EEFF41]" />
-                        {featuredCase.sector}
-                      </span>
-                    </div>
-                    <div className="relative z-10">
-                      <span className="font-['Roboto'] font-black text-4xl lg:text-5xl text-white uppercase">
-                        {featuredCase.company}
-                      </span>
+                  <div className="relative min-h-[300px] lg:min-h-[400px] overflow-hidden">
+                    <ImagePlaceholder
+                      width={700}
+                      height={400}
+                      label={`Visuel cas client ${featuredCase.company}`}
+                      rounded="sm"
+                      variant="dark"
+                      className="w-full h-full absolute inset-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-between z-10">
+                      <div>
+                        <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-[10px] font-bold tracking-widest uppercase text-white">
+                          <Star size={12} className="fill-[#EEFF41] text-[#EEFF41]" />
+                          {featuredCase.sector}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="font-['Roboto'] font-black text-4xl lg:text-5xl text-white uppercase">
+                          {featuredCase.company}
+                        </span>
+                      </div>
                     </div>
                   </div>
                   
@@ -291,10 +302,21 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                     exit="exit"
                     transition={{ duration: 0.3, delay: idx * 0.05 }}
                   >
-                    <Link 
+                    <Link
                       href={caseStudy.url}
                       className="block bg-white border border-neutral-100 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
                     >
+                      {/* Card Image */}
+                      <div className="relative">
+                        <ImagePlaceholder
+                          width={400}
+                          height={200}
+                          label={`Visuel ${caseStudy.company}`}
+                          rounded="sm"
+                          className="w-full"
+                        />
+                      </div>
+
                       {/* Card Header */}
                       <div className="p-6 pb-0">
                         <div className="flex items-center justify-between mb-4">

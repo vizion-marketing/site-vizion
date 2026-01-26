@@ -40,17 +40,8 @@ const sectorIcons: Record<string, React.ReactNode> = {
 
 const baseNavigation: NavItem[] = [
   { label: "Accueil", href: "/" },
-  {
-    label: "Services",
-    href: "/services",
-    children: [
-      { label: "Conseil Stratégique", description: "Accompagnement de votre vision numérique.", href: "/services/conseil-strategique" },
-      { label: "Solutions SaaS", description: "Outils sur-mesure pour votre croissance.", href: "/services/solutions-saas" },
-    ],
-  },
   { label: "Cas Clients", href: "/cas-clients", isCasClients: true },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export function Header({ caseStudies = [] }: HeaderProps) {
@@ -221,14 +212,19 @@ export function Header({ caseStudies = [] }: HeaderProps) {
       }`}
     >
       <div className="container-wide flex items-center justify-between">
-        {/* Logo - Roboto 900 Uppercase */}
-        <Link 
-          href="/" 
-          className="relative z-10 flex items-center gap-2 group transition-transform duration-300 hover:scale-[1.02]"
+        {/* Logo */}
+        <Link
+          href="/"
+          className="relative z-10 flex items-center group transition-transform duration-300 hover:scale-[1.02]"
         >
-          <span className="text-xl md:text-2xl font-[900] uppercase tracking-tighter text-white font-['Roboto']">
-            Conseil<span className="opacity-40">Digital</span>
-          </span>
+          <Image
+            src="/logo-vizion.svg"
+            alt="Vizion - Agence Marketing B2B"
+            width={120}
+            height={32}
+            className="h-7 md:h-8 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -297,9 +293,9 @@ export function Header({ caseStudies = [] }: HeaderProps) {
 
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-4">
-          <Link 
-            href="/contact" 
-            className="hidden md:inline-flex items-center px-7 py-2.5 rounded-[var(--radius-md)] text-[15px] font-['Inter'] font-bold transition-all duration-300 hover:shadow-lg active:scale-95 bg-white text-black hover:bg-white/90"
+          <Link
+            href="/contact"
+            className="hidden md:inline-flex items-center px-7 py-3 rounded-full text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] transition-all duration-300 active:scale-95 bg-white/10 backdrop-blur-xl text-white border border-white/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.2)] hover:bg-white/20 hover:border-white/30 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:-translate-y-0.5"
           >
             Nous contacter
           </Link>
@@ -437,7 +433,7 @@ export function Header({ caseStudies = [] }: HeaderProps) {
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full flex justify-center py-4 rounded-[var(--radius-md)] font-black uppercase tracking-wide bg-white text-black hover:bg-white/90"
+                  className="w-full flex justify-center py-4 rounded-full font-semibold tracking-[-0.01em] bg-white/10 backdrop-blur-xl text-white border border-white/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.2)] hover:bg-white/20 hover:border-white/30 transition-all duration-300"
                 >
                   Nous Contacter
                 </Link>

@@ -2,21 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 const footerLinks = {
-  services: [
-    { name: 'Conseil Stratégique', href: '/services/conseil-strategique' },
-    { name: 'Solutions SaaS', href: '/services/solutions-saas' },
-  ],
   entreprise: [
-    { name: 'À propos', href: '/a-propos' },
     { name: 'Cas clients', href: '/cas-clients' },
     { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
   ],
-  contact: [
-    { name: 'Contactez-nous', href: '/contact' },
-  ]
 };
 
 export function Footer() {
@@ -27,50 +21,52 @@ export function Footer() {
       <div className="container-wide px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
           <div className="lg:col-span-4 flex flex-col gap-10">
-            <Link href="/" className="font-['Roboto'] text-2xl font-[900] uppercase tracking-tighter text-black">
-              Conseil<span className="text-black/30">Digital</span>
+            <Link href="/" className="block">
+              <Image
+                src="/logo-vizion.svg"
+                alt="Vizion - Agence Marketing B2B"
+                width={120}
+                height={32}
+                className="h-8 w-auto brightness-0"
+              />
             </Link>
-            
+
             <div className="flex flex-col gap-5">
-              <div className="flex items-center gap-4 text-black/80 group cursor-pointer">
+              <a href="mailto:contact@by-vizion.com" className="flex items-center gap-4 text-black/80 group cursor-pointer hover:text-black transition-colors">
                 <div className="w-10 h-10 flex items-center justify-center border border-black/10 rounded-full group-hover:bg-black group-hover:text-white transition-all">
                   <Mail size={16} />
                 </div>
-                <span className="font-['Inter'] text-sm">contact@conseildigital.fr</span>
-              </div>
-              <div className="flex items-center gap-4 text-black/80 group cursor-pointer">
+                <span className="font-['Inter'] text-sm">contact@by-vizion.com</span>
+              </a>
+              <a href="tel:+33750836543" className="flex items-center gap-4 text-black/80 group cursor-pointer hover:text-black transition-colors">
                 <div className="w-10 h-10 flex items-center justify-center border border-black/10 rounded-full group-hover:bg-black group-hover:text-white transition-all">
                   <Phone size={16} />
                 </div>
-                <span className="font-['Inter'] text-sm">+33 (0)1 23 45 67 89</span>
+                <span className="font-['Inter'] text-sm">07 50 83 65 43</span>
+              </a>
+              <div className="flex items-center gap-4 text-black/80">
+                <div className="w-10 h-10 flex items-center justify-center border border-black/10 rounded-full">
+                  <MapPin size={16} />
+                </div>
+                <span className="font-['Inter'] text-sm">815 La Pyrénéenne, 31670 Labège</span>
               </div>
             </div>
 
             <div className="flex gap-4">
-              <Link href="#" className="w-11 h-11 border border-black/10 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300">
-                <Twitter size={18} />
-              </Link>
-              <Link href="#" className="w-11 h-11 border border-black/10 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300">
+              <a
+                href="https://www.linkedin.com/company/vizion-marketing-b2b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 border border-black/10 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
+              >
                 <Linkedin size={18} />
-              </Link>
+              </a>
             </div>
           </div>
 
-          <div className="lg:col-span-4 grid grid-cols-2 gap-8">
+          <div className="lg:col-span-4">
             <div className="flex flex-col gap-6">
-              <h4 className="surtitre text-black">Services</h4>
-              <ul className="flex flex-col gap-3">
-                {footerLinks.services.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="font-['Inter'] text-sm text-black/60 hover:text-black transition-colors">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col gap-6">
-              <h4 className="surtitre text-black">Entreprise</h4>
+              <h4 className="surtitre text-black">Navigation</h4>
               <ul className="flex flex-col gap-3">
                 {footerLinks.entreprise.map((link) => (
                   <li key={link.name}>
@@ -86,35 +82,30 @@ export function Footer() {
           <div className="lg:col-span-4">
             <div className="card-white p-8 flex flex-col gap-6 shadow-sm">
               <div className="flex flex-col gap-2">
-                <h4 className="surtitre text-black">Newsletter</h4>
+                <h4 className="surtitre text-black">Une question ?</h4>
                 <p className="font-['Inter'] text-xs text-black/50 leading-relaxed">
-                  Recevez nos dernières analyses stratégiques directement.
+                  Notre équipe est disponible pour échanger sur vos projets de croissance B2B.
                 </p>
               </div>
-              <form className="flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="votre@email.com"
-                  className="w-full px-4 py-3 bg-[#F2F2F2] border-none text-sm font-['Inter'] focus:ring-1 focus:ring-black outline-none rounded-md"
-                  required
-                />
-                <button type="submit" className="btn-primary w-full py-4 text-xs tracking-widest font-[900]">
-                  S&apos;INSCRIRE
-                </button>
-              </form>
+              <Link
+                href="/contact"
+                className="btn-primary w-full py-4 text-xs tracking-widest font-[900] text-center"
+              >
+                NOUS CONTACTER
+              </Link>
             </div>
           </div>
         </div>
 
         <div className="border-t border-black/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="surtitre text-black/40">
-            © {currentYear} CONSEIL DIGITAL. TOUS DROITS RÉSERVÉS.
+            © {currentYear} VIZION. TOUS DROITS RÉSERVÉS.
           </p>
           <div className="flex gap-8">
-            <Link href="#" className="surtitre text-black/40 hover:text-black transition-colors">
+            <Link href="/mentions-legales" className="surtitre text-black/40 hover:text-black transition-colors">
               Mentions Légales
             </Link>
-            <Link href="#" className="surtitre text-black/40 hover:text-black transition-colors">
+            <Link href="/confidentialite" className="surtitre text-black/40 hover:text-black transition-colors">
               Confidentialité
             </Link>
           </div>

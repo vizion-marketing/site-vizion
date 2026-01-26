@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: [homeContent.seo.ogImage],
   },
   alternates: {
-    canonical: "https://vizion.fr",
+    canonical: "https://by-vizion.com",
   },
   robots: {
     index: true,

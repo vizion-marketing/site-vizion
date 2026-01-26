@@ -4,29 +4,61 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  ArrowRight, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  ShieldCheck, 
+import {
+  ArrowRight,
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  ShieldCheck,
   Users,
   ChevronDown,
   Send
 } from "lucide-react";
+import { ImagePlaceholder } from "@/components/ui";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulation d'envoi
-    setTimeout(() => {
+    setFormStatus('idle');
+    setErrorMessage('');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get('firstName') as string,
+      lastName: formData.get('lastName') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string,
+      subject: formData.get('subject') as string,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Une erreur est survenue');
+      }
+
+      setFormStatus('success');
+      e.currentTarget.reset();
+    } catch (error) {
+      setFormStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Une erreur est survenue');
+    } finally {
       setIsSubmitting(false);
-      alert("Message envoyé avec succès !");
-    }, 1500);
+    }
   };
 
   return (
@@ -76,22 +108,42 @@ export default function ContactPage() {
 
               {/* Formulaire */}
               <form onSubmit={handleSubmit} className="space-y-5 flex-grow">
+                {/* Success Message */}
+                {formStatus === 'success' && (
+                  <div className="bg-[#EEFF41]/20 border border-[#EEFF41]/40 rounded-xl p-4 mb-4">
+                    <p className="text-[#EEFF41] text-sm font-medium">
+                      Message envoyé avec succès ! Nous vous répondrons sous 24h.
+                    </p>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {formStatus === 'error' && (
+                  <div className="bg-red-500/20 border border-red-500/40 rounded-xl p-4 mb-4">
+                    <p className="text-red-400 text-sm font-medium">
+                      {errorMessage}
+                    </p>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Prénom *</label>
-                    <input 
+                    <input
                       required
-                      type="text" 
-                      placeholder="Jean" 
+                      name="firstName"
+                      type="text"
+                      placeholder="Jean"
                       className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Nom *</label>
-                    <input 
+                    <input
                       required
-                      type="text" 
-                      placeholder="Dupont" 
+                      name="lastName"
+                      type="text"
+                      placeholder="Dupont"
                       className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                     />
                   </div>
@@ -99,10 +151,11 @@ export default function ContactPage() {
 
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Email professionnel *</label>
-                  <input 
+                  <input
                     required
-                    type="email" 
-                    placeholder="contact@entreprise.com" 
+                    name="email"
+                    type="email"
+                    placeholder="contact@entreprise.com"
                     className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                   />
                 </div>
@@ -110,17 +163,19 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Entreprise</label>
-                    <input 
-                      type="text" 
-                      placeholder="Nom de votre entreprise" 
+                    <input
+                      name="company"
+                      type="text"
+                      placeholder="Nom de votre entreprise"
                       className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Sujet *</label>
                     <div className="relative">
-                      <select 
+                      <select
                         required
+                        name="subject"
                         className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white appearance-none focus:outline-none focus:border-white/60 transition-all duration-300 cursor-pointer"
                       >
                         <option className="bg-zinc-900 text-white" value="">Sélectionnez un sujet</option>
@@ -137,19 +192,20 @@ export default function ContactPage() {
 
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Message *</label>
-                  <textarea 
+                  <textarea
                     required
+                    name="message"
                     rows={4}
-                    placeholder="Décrivez brièvement votre projet ou votre demande..." 
+                    placeholder="Décrivez brièvement votre projet ou votre demande..."
                     className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300 resize-none"
                   />
                 </div>
 
                 <motion.button
-                  whileHover={{ scale: 1.01 }}
+                  whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}
-                  className="w-full bg-white text-black font-['Roboto'] font-[900] uppercase text-sm tracking-widest h-14 rounded-xl flex items-center justify-center gap-3 hover:bg-[#EEFF41] hover:shadow-[0_0_30px_rgba(238,255,65,0.3)] transition-all duration-300 mt-6 group disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full h-14 rounded-full flex items-center justify-center gap-3 mt-6 group disabled:opacity-70 disabled:cursor-not-allowed text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] transition-all duration-300 bg-[#EEFF41]/90 backdrop-blur-xl text-black border border-[#EEFF41]/50 shadow-[0_4px_24px_-1px_rgba(238,255,65,0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:bg-[#EEFF41] hover:shadow-[0_8px_32px_-4px_rgba(238,255,65,0.4),inset_0_1px_0_0_rgba(255,255,255,0.4)]"
                 >
                   {isSubmitting ? (
                     <>
@@ -166,7 +222,7 @@ export default function ContactPage() {
                 
                 <p className="text-[10px] text-white/30 text-center mt-4">
                   En envoyant ce formulaire, vous acceptez notre{" "}
-                  <Link href="#" className="underline hover:text-white/50 transition-colors">
+                  <Link href="/confidentialite" className="underline hover:text-white/50 transition-colors">
                     politique de confidentialité
                   </Link>.
                 </p>
@@ -186,16 +242,17 @@ export default function ContactPage() {
             <div className="absolute bottom-[-12px] left-[-12px] w-16 h-16 border-b-2 border-l-2 border-white/40 z-30 transition-all duration-500 group-hover:w-20 group-hover:h-20" />
 
             {/* Main Image Container */}
-            <div className="relative h-full w-full rounded-[var(--radius-xl)] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 ease-out shadow-2xl">
-              <Image 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2787&auto=format&fit=crop"
-                alt="Notre expert commercial"
-                fill
-                className="object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
-                priority
+            <div className="relative h-full w-full rounded-[var(--radius-xl)] overflow-hidden transition-all duration-700 ease-out shadow-2xl">
+              <ImagePlaceholder
+                width={400}
+                height={600}
+                label="Portrait expert commercial"
+                rounded="xl"
+                variant="dark"
+                className="w-full h-full"
               />
               {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
 
               {/* Floating Contact Card */}
               <div className="absolute bottom-6 inset-x-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl space-y-4">
@@ -214,23 +271,23 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2.5 pt-2 border-t border-white/10">
-                  <a href="mailto:contact@stratedge.fr" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
+                  <a href="mailto:contact@by-vizion.com" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
                     <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
                       <Mail className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-sm">contact@stratedge.fr</span>
+                    <span className="text-sm">contact@by-vizion.com</span>
                   </a>
-                  <a href="tel:+33145678900" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
+                  <a href="tel:+33750836543" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
                     <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
                       <Phone className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-sm">+33 (0)1 45 67 89 00</span>
+                    <span className="text-sm">07 50 83 65 43</span>
                   </a>
                   <div className="flex items-center gap-3 text-white/80">
                     <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5">
                       <MapPin className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-sm">128 Rue de la Boétie, 75008 Paris</span>
+                    <span className="text-sm">815 La Pyrénéenne, 31670 Labège</span>
                   </div>
                 </div>
               </div>

@@ -30,23 +30,32 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://by-vizion.com"),
   title: {
-    default: "Votre Partenaire Digital | Conseil & Solutions SaaS",
-    template: "%s | Conseil & Solutions SaaS",
+    default: "Vizion | Agence Marketing B2B Toulouse - Stratégie & Growth PME ETI",
+    template: "%s | Vizion - Agence Marketing Toulouse",
   },
   description:
-    "Cabinet de conseil digital et solutions SaaS sur mesure. Accompagnement stratégique et expertise technique pour votre transformation numérique.",
+    "Vizion, agence marketing B2B basée à Toulouse. Spécialistes PME et ETI : stratégie commerciale, lead generation, CRM automation. +70 clients accompagnés en Occitanie et France.",
   keywords: [
-    "conseil digital",
-    "transformation digitale",
-    "solutions SaaS",
-    "stratégie numérique",
+    "agence marketing Toulouse",
+    "agence marketing B2B Toulouse",
+    "marketing B2B PME Toulouse",
+    "agence growth Toulouse",
+    "lead generation B2B Toulouse",
+    "agence marketing Occitanie",
+    "stratégie commerciale B2B",
+    "marketing B2B ETI",
   ],
-  authors: [{ name: "Votre Entreprise" }],
+  authors: [{ name: "Vizion" }],
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    siteName: "Conseil & Solutions SaaS",
+    siteName: "Vizion",
+    url: "https://by-vizion.com",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
