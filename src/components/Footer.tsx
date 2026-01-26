@@ -57,6 +57,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/vizion-marketing-b2b/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Suivez Vizion sur LinkedIn"
                 className="w-11 h-11 border border-black/10 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
               >
                 <Linkedin size={18} />
