@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { 
   ArrowLeft, 
@@ -449,9 +450,11 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-xl bg-[#F2F2F2] overflow-hidden">
                     {caseStudy.testimonial.photo ? (
-                      <img 
-                        src={caseStudy.testimonial.photo} 
+                      <Image
+                        src={caseStudy.testimonial.photo}
                         alt={caseStudy.testimonial.author}
+                        width={64}
+                        height={64}
                         className="w-full h-full object-cover"
                       />
                     ) : (

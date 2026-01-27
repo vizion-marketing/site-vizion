@@ -623,7 +623,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/20 bg-white/10 overflow-hidden">
-                    <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Client" className="w-full h-full object-cover grayscale" />
+                    <Image src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Client" width={40} height={40} className="w-full h-full object-cover grayscale" />
                   </div>
                 ))}
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/30 bg-white flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-black shadow-[0_0_15px_rgba(255,255,255,0.3)]">
@@ -811,7 +811,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="flex -space-x-3">
                 {[5, 6, 7].map((i) => (
                   <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden shadow-md ring-1 ring-black/5">
-                    <img src={`https://i.pravatar.cc/150?u=${i+30}`} alt="Client" className="w-full h-full object-cover" />
+                    <Image src={`https://i.pravatar.cc/150?u=${i+30}`} alt="Client" width={40} height={40} className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
