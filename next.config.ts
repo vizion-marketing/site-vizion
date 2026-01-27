@@ -27,6 +27,7 @@ const nextConfig: NextConfig = {
   // Optimisations de production
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
+    optimizeCss: true,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",

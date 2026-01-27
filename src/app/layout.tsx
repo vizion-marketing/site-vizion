@@ -13,7 +13,8 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
   display: "swap",
-  preload: true,
+  preload: false,
+  adjustFontFallback: true,
 });
 
 const inter = Inter({
@@ -22,6 +23,7 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
   display: "swap",
   preload: true,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -80,10 +82,6 @@ export default function RootLayout({
 
   return (
     <html lang="fr">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body className={`${roboto.variable} ${inter.variable} antialiased`}>
         <MotionProvider>
           <Header caseStudies={caseStudiesForNav} />
