@@ -1728,10 +1728,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 </p>
               </div>
 
-              {/* Local Landmarks */}
+              {/* Métropole Toulousaine - Primary Zone */}
               <div className="bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl p-6 sm:p-8 shadow-sm">
                 <h3 className="font-['Roboto'] font-black text-lg sm:text-xl uppercase tracking-tight text-black mb-4">
-                  Zones desservies
+                  Métropole Toulousaine
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {[
@@ -1742,7 +1742,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     { city: 'Ramonville', zip: '31520', landmark: 'Canal du Midi, CNES' },
                   ].map((zone, i) => (
                     <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-black/[0.02] border border-black/5">
-                      <div className="w-2 h-2 rounded-full bg-black/20 mt-1.5 shrink-0" />
+                      <div className="w-2 h-2 rounded-full bg-black mt-1.5 shrink-0" />
                       <div>
                         <span className="font-['Roboto'] font-bold text-sm text-black block">
                           {zone.city} <span className="font-normal text-black/40">({zone.zip})</span>
@@ -1754,10 +1754,40 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 </div>
               </div>
 
-              {/* Trust local */}
-              <p className="text-black/40 text-xs sm:text-sm font-['Inter'] leading-relaxed">
-                <strong className="text-black/60">+70 entreprises</strong> de la métropole toulousaine nous font confiance : PME, ETI et startups de l&apos;Aerospace Valley, de la santé et du numérique.
-              </p>
+              {/* Région Occitanie - Secondary Zone */}
+              <div className="bg-white/60 backdrop-blur-xl border border-black/5 rounded-xl p-6 sm:p-8 shadow-sm">
+                <h3 className="font-['Roboto'] font-black text-base sm:text-lg uppercase tracking-tight text-black mb-3">
+                  Interventions en Occitanie
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { city: 'Montauban', zip: '82000' },
+                    { city: 'Albi', zip: '81000' },
+                    { city: 'Castres', zip: '81100' },
+                    { city: 'Auch', zip: '32000' },
+                    { city: 'Tarbes', zip: '65000' },
+                    { city: 'Carcassonne', zip: '11000' },
+                    { city: 'Montpellier', zip: '34000' },
+                    { city: 'Nîmes', zip: '30000' },
+                    { city: 'Perpignan', zip: '66000' },
+                  ].map((zone, i) => (
+                    <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-full bg-black/[0.03] border border-black/5 text-xs font-['Inter']">
+                      <span className="font-semibold text-black/70">{zone.city}</span>
+                      <span className="text-black/40 ml-1">({zone.zip})</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Trust + Remote */}
+              <div className="space-y-2">
+                <p className="text-black/40 text-xs sm:text-sm font-['Inter'] leading-relaxed">
+                  <strong className="text-black/60">+70 entreprises</strong> de la métropole toulousaine et de l&apos;Aerospace Valley nous font confiance : PME, ETI et startups de l&apos;industrie, de la santé et du numérique.
+                </p>
+                <p className="text-black/40 text-xs sm:text-sm font-['Inter'] leading-relaxed">
+                  <strong className="text-black/60">Accompagnement à distance</strong> pour les entreprises B2B partout en France — Paris, Lyon, Bordeaux, Marseille et au-delà.
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
