@@ -1612,16 +1612,16 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
           {/* Model Pills */}
           <div className="flex flex-wrap items-center justify-start gap-2 sm:gap-4 mb-8 sm:mb-12">
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-black/90 backdrop-blur-xl text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border border-white/10 shadow-[0_4px_16px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-black/90 backdrop-blur-xl text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border border-white/10 shadow-[0_4px_16px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:shadow-[0_6px_20px_-1px_rgba(0,0,0,0.3)] hover:-translate-y-0.5">
               <Users size={12} className="sm:hidden" />
               <Users size={14} className="hidden sm:block" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase">{homeContent.equipe.modelExplanation.director}</span>
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wide">{homeContent.equipe.modelExplanation.director}</span>
             </div>
             <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/60 backdrop-blur-md border border-black/5 rounded-lg text-black/30 font-bold shadow-sm text-sm">+</span>
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-white backdrop-blur-xl text-black px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border border-black/10 shadow-[0_4px_16px_-1px_rgba(0,0,0,0.08),inset_0_1px_0_0_rgba(255,255,255,0.5)]">
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-white backdrop-blur-xl text-black px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border border-black/10 shadow-[0_4px_16px_-1px_rgba(0,0,0,0.08),inset_0_1px_0_0_rgba(255,255,255,0.5)] transition-all duration-300 hover:shadow-[0_6px_20px_-1px_rgba(0,0,0,0.12)] hover:-translate-y-0.5">
               <Rocket size={12} className="sm:hidden" />
               <Rocket size={14} className="hidden sm:block" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase">{homeContent.equipe.modelExplanation.squads}</span>
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wide">{homeContent.equipe.modelExplanation.squads}</span>
             </div>
           </div>
 
