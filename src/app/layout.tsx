@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto, Inter } from "next/font/google";
+import { Roboto, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -23,6 +23,15 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
   display: "swap",
   preload: true,
+  adjustFontFallback: true,
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: false,
   adjustFontFallback: true,
 });
 
@@ -82,7 +91,7 @@ export default function RootLayout({
 
   return (
     <html lang="fr">
-      <body className={`${roboto.variable} ${inter.variable} antialiased`}>
+      <body className={`${roboto.variable} ${inter.variable} ${playfair.variable} antialiased`}>
         <MotionProvider>
           <Header caseStudies={caseStudiesForNav} />
           <main>{children}</main>

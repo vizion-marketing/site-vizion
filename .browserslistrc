@@ -1,0 +1,10 @@
+# Cible uniquement les navigateurs modernes (ES2020+)
+# Élimine les polyfills pour Array.at, Object.fromEntries, etc.
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions
+not dead
+not IE 11
+not op_mini all
+> 0.5%

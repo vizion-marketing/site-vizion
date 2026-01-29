@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useInView } from "framer-motion";
+import CountUp from "react-countup";
 import {
   Zap,
   ArrowRight,
@@ -63,7 +64,7 @@ function SectionDiagonalBottom({
   direction?: 'left' | 'right'
 }) {
   return (
-    <div className="absolute bottom-0 left-0 w-full h-6 sm:h-8 md:h-10 pointer-events-none z-20">
+    <div className="absolute bottom-0 left-0 w-full h-8 sm:h-12 md:h-16 pointer-events-none z-20 translate-y-[1px]">
       <svg
         className="w-full h-full block"
         viewBox="0 0 1440 40"
@@ -78,18 +79,63 @@ function SectionDiagonalBottom({
   );
 }
 
-// Animation Variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] }
-};
+// Diagonal Divider Component - Placed at top of dark sections (clips the previous section color)
+function SectionDiagonalTop({
+  fillColor = '#F2F2F2',
+  direction = 'left'
+}: {
+  fillColor?: string;
+  direction?: 'left' | 'right'
+}) {
+  return (
+    <div className="absolute top-0 left-0 w-full h-8 sm:h-12 md:h-16 pointer-events-none z-10 -translate-y-[1px]">
+      <svg
+        className="w-full h-full block"
+        viewBox="0 0 1440 40"
+        preserveAspectRatio="none"
+      >
+        <polygon
+          points={direction === 'left' ? "0,0 1440,0 0,40" : "1440,0 1440,40 0,0"}
+          fill={fillColor}
+        />
+      </svg>
+    </div>
+  );
+}
 
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.1 } }
-};
+// Animated Counter Component
+function AnimatedCounter({
+  end,
+  prefix = '',
+  suffix = '',
+  duration = 2,
+  className = ''
+}: {
+  end: number;
+  prefix?: string;
+  suffix?: string;
+  duration?: number;
+  className?: string;
+}) {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <span ref={ref} className={className}>
+      {isInView ? (
+        <CountUp
+          end={end}
+          duration={duration}
+          prefix={prefix}
+          suffix={suffix}
+          separator=" "
+        />
+      ) : (
+        `${prefix}0${suffix}`
+      )}
+    </span>
+  );
+}
 
 // Client Cases Data for Social Proof Tabs
 const clientCases = [
@@ -177,6 +223,7 @@ function SocialProofTabs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
             className="font-['Roboto'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-tight uppercase text-black mb-4 sm:mb-6"
           >
             {homeContent.preuveSociale.h2}
@@ -185,7 +232,7 @@ function SocialProofTabs() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
             className="text-black/60 text-base sm:text-lg md:text-xl font-['Inter'] leading-relaxed max-w-2xl"
           >
             {homeContent.preuveSociale.description}
@@ -225,7 +272,7 @@ function SocialProofTabs() {
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
+                  transition={{ delay: index * 0.12, type: "spring", stiffness: 300, damping: 25 }}
                   onClick={() => setActiveClient(client.id)}
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.995 }}
@@ -326,10 +373,10 @@ function SocialProofTabs() {
                       </div>
                       <Link
                         href={`/cas-clients/${currentCase.slug}`}
-                        className="group flex items-center justify-center gap-2 h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] bg-black text-white rounded-full hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)]"
+                        className="btn-glow group flex items-center justify-center gap-2 h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] bg-black text-white rounded-full hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)]"
                       >
                         Voir le case study
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" style={{ color: 'rgba(255,255,255,0.8)' }} />
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform arrow-hover" style={{ color: 'rgba(255,255,255,0.8)' }} />
                       </Link>
                     </div>
                   </div>
@@ -344,6 +391,7 @@ function SocialProofTabs() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
           className="mt-12 sm:mt-16 md:mt-20 lg:mt-24"
         >
           <div className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg p-5 sm:p-8 md:p-12 relative overflow-hidden shadow-2xl">
@@ -354,7 +402,7 @@ function SocialProofTabs() {
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
               <div className="lg:col-span-8">
-                <Quote className="mb-4 sm:mb-6" size={32} strokeWidth={2} style={{ color: 'rgba(255,255,255,0.8)' }} />
+                <Quote className="mb-4 sm:mb-6" size={32} strokeWidth={2} style={{ color: 'rgba(183, 135, 38, 0.6)' }} />
                 <blockquote className="text-lg sm:text-xl md:text-2xl font-['Inter'] font-medium leading-relaxed mb-6 sm:mb-8 tracking-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
                   &ldquo;{homeContent.preuveSociale.testimonial.quote}&rdquo;
                 </blockquote>
@@ -459,14 +507,16 @@ function FAQSection() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
+                className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
               >
+                <span className="w-5 h-[1px] bg-gradient-to-r from-[#B78726]/60 to-transparent" />
                 {homeContent.faq.surtitre}
               </motion.span>
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
                 className="font-['Roboto'] font-[900] text-[24px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-[1.1] tracking-tight uppercase text-black mb-4 sm:mb-6"
               >
                 {homeContent.faq.h2}
@@ -475,7 +525,7 @@ function FAQSection() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
+                transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
                 className="text-black/60 text-sm sm:text-base font-['Inter'] leading-relaxed mb-5 sm:mb-8"
               >
                 {homeContent.faq.description}
@@ -483,10 +533,10 @@ function FAQSection() {
 
               <Link
                 href={homeContent.faq.ctaButton.href}
-                className="inline-flex items-center gap-2 h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] rounded-full transition-all duration-300 active:scale-95 bg-black text-white border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:bg-black/90 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 group w-full sm:w-auto justify-center"
+                className="btn-glow inline-flex items-center gap-2 h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] rounded-full transition-all duration-300 active:scale-95 bg-black text-white border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:bg-black/90 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 group w-full sm:w-auto justify-center"
               >
                 {homeContent.faq.ctaButton.text}
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform arrow-hover" />
               </Link>
             </div>
           </div>
@@ -500,7 +550,7 @@ function FAQSection() {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
+                  transition={{ delay: index * 0.12, type: "spring", stiffness: 300, damping: 25 }}
                   className={`rounded-md sm:rounded-lg overflow-hidden transition-all duration-300 ${
                     openIndex === index
                       ? 'bg-white shadow-sm border border-black/15'
@@ -661,6 +711,8 @@ const PortfolioAssetCard = ({
 function AssetsPortfolioSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] py-20 sm:py-28 md:py-36 px-4 sm:px-6 md:px-12">
+      {/* Diagonal top overlay - covers gap from previous section */}
+      <SectionDiagonalTop fillColor="#D0D0D0" direction="left" />
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div
@@ -800,7 +852,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-white/10">
               {homeContent.hero.badges.map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold uppercase tracking-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                  <CheckCircle2 size={14} className="shrink-0" style={{ color: 'rgba(255,255,255,0.8)' }} />
+                  <CheckCircle2 size={14} className="shrink-0" style={{ color: 'rgba(183, 135, 38, 0.7)' }} />
                   {item}
                 </div>
               ))}
@@ -823,7 +875,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   </div>
                 ))}
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/30 bg-white flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-black shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                  +70
+                  <AnimatedCounter end={70} prefix="+" duration={2.5} />
                 </div>
               </div>
               <div className="text-[9px] sm:text-[10px] font-bold tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.8)' }}>
@@ -857,10 +909,46 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       {/* SOCIAL PROOF SECTION - Tabs Interactifs */}
       <SocialProofTabs />
 
+      {/* LOGO WALL - Clients de confiance */}
+      <section className="py-12 sm:py-16 md:py-20 bg-[#F8F8F8] overflow-hidden relative">
+        <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 mb-8 sm:mb-10">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-black/40"
+          >
+            Ils nous font confiance
+          </motion.p>
+        </div>
+        <div className="relative">
+          {/* Gradient masks */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-[#F8F8F8] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-[#F8F8F8] to-transparent z-10 pointer-events-none" />
+          {/* Logo marquee */}
+          <div className="flex logo-marquee">
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="flex items-center gap-12 sm:gap-16 md:gap-20 px-6 sm:px-8">
+                {/* Placeholder logos - À remplacer par les vrais logos */}
+                {['easyVirtual', 'Ensenat', 'Eldo Wallet', 'Olivier Bas', 'Client 5', 'Client 6', 'Client 7', 'Client 8'].map((name, i) => (
+                  <div
+                    key={`${setIndex}-${i}`}
+                    className="logo-item flex-shrink-0 h-8 sm:h-10 px-4 sm:px-6 flex items-center justify-center"
+                  >
+                    <span className="text-sm sm:text-base font-['Roboto'] font-bold uppercase tracking-wide text-black/30 whitespace-nowrap">
+                      {name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 5 PILIERS SECTION - PREMIUM GLASSMORPHISM */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#EAEAEA] relative grain-light"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-[#F8F8F8] via-[#F2F2F2] to-[#C8C8C8] relative grain-light"
         aria-label="Services agence marketing B2B Toulouse"
       >
         {/* Background ambient light - Enhanced with multiple gradients */}
@@ -877,7 +965,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               viewport={{ once: true }}
               className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4"
             >
-              <div className="h-[1px] w-6 sm:w-8 bg-black/20" />
+              <div className="h-[1px] w-6 sm:w-8 bg-gradient-to-r from-[#B78726]/60 to-[#B78726]/20" />
               <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.25em] text-black/50">
                 {homeContent.piliers.surtitre}
               </span>
@@ -886,6 +974,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
               className="font-['Roboto'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1] tracking-tight uppercase text-black mb-4 sm:mb-6 md:mb-8"
             >
               {homeContent.piliers.h2}
@@ -894,7 +983,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
               className="text-black/60 text-base sm:text-lg font-['Inter'] leading-relaxed max-w-2xl"
             >
               {homeContent.piliers.description}
@@ -908,6 +997,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
               className="md:col-span-2 lg:col-span-7 lg:row-span-2 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg p-5 sm:p-8 md:p-10 flex flex-col min-h-[400px] sm:min-h-[450px] lg:min-h-[550px] relative overflow-hidden group shadow-2xl shadow-black/30 hover:shadow-black/40 hover:border-white/20 transition-all duration-300"
             >
               {/* Carbon fibre pattern */}
@@ -968,13 +1058,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i }}
-                className={`${span} bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg p-4 sm:p-5 md:p-7 flex flex-col group shadow-sm card-hover-glow transition-all duration-300`}
+                className={`${span} bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg p-4 sm:p-5 md:p-7 flex flex-col group shadow-sm card-lift transition-all duration-300`}
               >
                 <div className="flex items-start justify-between mb-4 sm:mb-6">
                   <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-black/5 backdrop-blur-sm border border-black/5 flex items-center justify-center group-hover:bg-black group-hover:border-black group-hover:shadow-lg group-hover:shadow-black/20 transition-all duration-300">
                     <Icon className="text-black group-hover:text-white transition-colors" size={18} strokeWidth={2.5} />
                   </div>
-                  <span className="text-[11px] sm:text-[12px] font-black text-black/10 group-hover:text-black/25 transition-colors">0{idx + 1}</span>
+                  <span className="text-[11px] sm:text-[12px] font-black text-[#B78726]/30 group-hover:text-[#B78726]/50 transition-colors">0{idx + 1}</span>
                 </div>
                 <h4 className="font-['Roboto'] font-black text-base sm:text-lg uppercase mb-2 sm:mb-3 tracking-tight text-black">{homeContent.piliers.piliers[idx].titre}</h4>
                 <p className="text-[13px] sm:text-[14px] text-black/60 font-['Inter'] leading-relaxed mb-4 sm:mb-6 flex-1">{homeContent.piliers.piliers[idx].description}</p>
@@ -1001,6 +1091,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
             className="mt-10 sm:mt-12 md:mt-16 p-4 sm:p-6 md:p-8 rounded-md sm:rounded-lg bg-white/80 backdrop-blur-xl border border-black/10 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 shadow-sm"
           >
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left">
@@ -1026,15 +1117,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               </Link>
               <Link
                 href={homeContent.piliers.cta.primary.href}
-                className="w-full sm:w-auto h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] bg-black text-white rounded-full hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)]"
+                className="btn-glow w-full sm:w-auto h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] bg-black text-white rounded-full hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)]"
               >
-                {homeContent.piliers.cta.primary.text} <ArrowRight size={14} />
+                {homeContent.piliers.cta.primary.text} <ArrowRight size={14} className="arrow-hover" />
               </Link>
             </div>
           </motion.div>
         </div>
-        {/* Diagonal bottom → next section (IA Highlight) */}
-        <SectionDiagonalBottom fillColor="#B7B7B7" direction="left" />
       </section>
 
       {/* SECTION IA HIGHLIGHT */}
@@ -1044,6 +1133,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] relative"
         aria-label="Expertise IA et Vibe Coding agence marketing Toulouse"
       >
+        {/* Diagonal top overlay - covers gap from previous section */}
+        <SectionDiagonalTop fillColor="#C8C8C8" direction="left" />
         {/* Carbon fibre pattern */}
         <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
         {/* Subtle glow */}
@@ -1067,6 +1158,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
               className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-white mb-4 sm:mb-6"
             >
               {homeContent.iaHighlight.h2}
@@ -1075,7 +1167,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
               className="text-base sm:text-lg font-['Inter'] leading-relaxed"
               style={{ color: 'rgba(255,255,255,0.8)' }}
             >
@@ -1254,7 +1346,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       {/* SEO: Offres et tarifs agence marketing Toulouse */}
       {/* Images: 400x240px (5:3) pour les visuels des offres */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-white via-[#FEFEFE] to-[#FAFAF8] relative grain-light"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-[#FEFEFE] to-[#D0D0D0] relative grain-light"
         aria-label="Offres et formules agence marketing Toulouse"
       >
         {/* Ambient glow */}
@@ -1267,14 +1359,16 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
+              className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
             >
+              <span className="w-5 h-[1px] bg-gradient-to-r from-[#B78726]/60 to-transparent" />
               {homeContent.quandCommencer.surtitre}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
               className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black mb-4 sm:mb-6"
             >
               {homeContent.quandCommencer.h2}
@@ -1283,7 +1377,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
               className="text-black/60 text-base sm:text-lg font-['Inter'] leading-relaxed"
             >
               {homeContent.quandCommencer.description}
@@ -1304,7 +1398,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   className={`group flex flex-col overflow-hidden relative ${
                     isFeatured
                       ? 'bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border-2 border-white/30 rounded-md sm:rounded-lg shadow-2xl shadow-black/30 text-white'
-                      : 'bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm card-hover-glow transition-all duration-300'
+                      : 'bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm card-lift transition-all duration-300'
                   }`}
                 >
                   {/* Carbon fibre pattern for featured card */}
@@ -1331,7 +1425,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     {isFeatured && (
                       <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
                         <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 rounded-md sm:rounded-lg">
-                          <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B78726] animate-pulse shadow-[0_0_8px_rgba(183,135,38,0.6)]" />
                           <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white">
                             Populaire
                           </span>
@@ -1401,6 +1495,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
             className="mt-10 sm:mt-12 md:mt-16 pt-8 sm:pt-10 md:pt-12 border-t border-black/5 flex flex-col items-center gap-4 sm:gap-6 md:flex-row md:justify-between md:gap-8"
           >
             <div className="text-center md:text-left">
@@ -1420,8 +1515,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </Link>
           </motion.div>
         </div>
-        {/* Diagonal bottom → next section (Assets Portfolio) */}
-        <SectionDiagonalBottom fillColor="#B7B7B7" direction="left" />
       </section>
 
       {/* ASSETS PORTFOLIO SECTION */}
@@ -1445,9 +1538,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
               className="lg:col-span-7"
             >
-              <span className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4">
+              <span className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4">
+                <span className="w-5 h-[1px] bg-gradient-to-r from-[#B78726]/60 to-transparent" />
                 {homeContent.aPropos.surtitre}
               </span>
               <h2 className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black mb-5 sm:mb-6 md:mb-8">
@@ -1464,7 +1559,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
               {/* Founder Quote - Premium Glassmorphism Card */}
               <div className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm p-5 sm:p-8 md:p-10">
-                <Quote className="text-black/20 mb-4 sm:mb-6" size={20} strokeWidth={2.5} fill="currentColor" />
+                <Quote className="mb-4 sm:mb-6" size={20} strokeWidth={2.5} fill="currentColor" style={{ color: 'rgba(183, 135, 38, 0.35)' }} />
                 <blockquote className="text-base sm:text-lg md:text-xl font-['Inter'] font-medium leading-relaxed text-black mb-5 sm:mb-6 md:mb-8">
                   &ldquo;{homeContent.aPropos.founderQuote.quote}&rdquo;
                 </blockquote>
@@ -1495,7 +1590,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
               className="lg:col-span-5"
             >
               <div className="flex flex-col gap-3 sm:gap-4">
@@ -1527,6 +1622,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
           >
             <h3 className="font-['Roboto'] font-black text-base sm:text-lg uppercase mb-4 sm:mb-6 text-center text-black">
               {homeContent.aPropos.valeursTitre}
@@ -1548,7 +1644,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 return (
                   <div
                     key={i}
-                    className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm p-3 sm:p-5 group card-hover-glow transition-all duration-300"
+                    className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm p-3 sm:p-5 group card-lift transition-all duration-300"
                   >
                     <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-md sm:rounded-lg bg-black/5 backdrop-blur-sm flex items-center justify-center mb-3 sm:mb-4 text-black group-hover:bg-black group-hover:text-white transition-colors">
                       {icons[i]}
@@ -1587,14 +1683,16 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
+              className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
             >
+              <span className="w-5 h-[1px] bg-gradient-to-r from-[#B78726]/60 to-transparent" />
               {homeContent.equipe.surtitre}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
               className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black mb-4 sm:mb-6"
             >
               {homeContent.equipe.h2}
@@ -1603,7 +1701,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
               className="text-black/60 text-base sm:text-lg font-['Inter'] leading-relaxed"
             >
               {homeContent.equipe.description}
@@ -1637,10 +1735,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
+                  transition={{ delay: i * 0.12, type: "spring", stiffness: 300, damping: 25 }}
                   className="flex-shrink-0 w-[220px] sm:w-[260px] md:w-auto snap-center group"
                 >
-                  <div className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm overflow-hidden card-hover-glow transition-all duration-300">
+                  <div className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm overflow-hidden card-lift transition-all duration-300">
                     {/* Portrait - 260x320px (13:16) */}
                     <div className="relative aspect-[13/16] w-full overflow-hidden bg-[#F2F2F2]">
                       <ImagePlaceholder
@@ -1691,8 +1789,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
           </div>
         </div>
-        {/* Diagonal bottom → next section (Blog gray) */}
-        <SectionDiagonalBottom fillColor="#F0F0F0" direction="left" />
       </section>
 
       {/* SECTION BLOG */}
@@ -1702,6 +1798,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-tr from-[#F5F5F5] via-[#F0F0F0] to-[#E8E8E8] relative grain-light"
         aria-label="Articles marketing B2B agence Toulouse"
       >
+        {/* Diagonal top overlay - covers gap from previous section (Équipe) */}
+        <SectionDiagonalTop fillColor="#FAFAF8" direction="left" />
         {/* Ambient glow */}
         <div className="absolute top-[25%] right-[10%] w-[280px] sm:w-[480px] h-[280px] sm:h-[480px] bg-gradient-to-bl from-cyan-50/15 via-sky-50/8 to-transparent rounded-full blur-[110px] pointer-events-none" />
         <div className="absolute bottom-[5%] left-[0%] w-[320px] sm:w-[520px] h-[320px] sm:h-[520px] bg-gradient-to-tr from-slate-200/25 via-gray-100/15 to-transparent rounded-full blur-[120px] pointer-events-none" />
@@ -1713,14 +1811,16 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
+                className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
               >
+                <span className="w-5 h-[1px] bg-gradient-to-r from-[#B78726]/60 to-transparent" />
                 {homeContent.blog.surtitre}
               </motion.span>
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
                 className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black"
               >
                 {homeContent.blog.h2}
@@ -1744,8 +1844,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm overflow-hidden card-hover-glow transition-all duration-300"
+                  transition={{ delay: i * 0.15, type: "spring", stiffness: 300, damping: 25 }}
+                  className="group bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm overflow-hidden card-lift transition-all duration-300"
                 >
                   {/* Image - 400x225px (16:9) */}
                   <Link href={`/blog/${post.slug}`} className="block relative overflow-hidden">
@@ -1851,7 +1951,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               viewport={{ once: true }}
               className="flex items-center gap-2 mb-3 sm:mb-4"
             >
-              <div className="h-4 w-1 bg-gradient-to-b from-black/10 via-black/30 to-black/50 rounded-full" />
+              <div className="h-4 w-1 bg-gradient-to-b from-[#B78726]/30 via-[#B78726]/60 to-[#B78726]/40 rounded-full" />
               <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40">
                 Notre zone d&apos;intervention
               </span>
@@ -1860,6 +1960,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
               className="font-['Roboto'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-tight uppercase text-black mb-4 sm:mb-6"
             >
               Votre agence marketing à Toulouse et en Occitanie
@@ -1868,7 +1969,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
               className="text-black/60 text-base sm:text-lg md:text-xl font-['Inter'] leading-relaxed max-w-2xl"
             >
               Basés à <strong>Labège (31670)</strong>, au cœur du technopôle toulousain, nous accompagnons les entreprises B2B de toute la région Occitanie.
@@ -1882,6 +1983,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
               className="relative rounded-xl overflow-hidden shadow-xl border border-black/5 h-[300px] sm:h-[400px] lg:h-full lg:min-h-[450px]"
             >
               <iframe
@@ -1902,7 +2004,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
               className="flex flex-col gap-6"
             >
               {/* Address Card */}
@@ -1983,7 +2085,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   <strong className="text-black/60">+70 entreprises</strong> de la métropole toulousaine et de l&apos;Aerospace Valley nous font confiance : PME, ETI et startups de l&apos;industrie, de la santé et du numérique.
                 </p>
                 <p className="text-black/40 text-xs sm:text-sm font-['Inter'] leading-relaxed">
-                  <strong className="text-black/60">Accompagnement à distance</strong> pour les entreprises B2B partout en France — Paris, Lyon, Bordeaux, Marseille et au-delà.
+                  <strong className="text-black/60">Accompagnement à distance</strong> pour les entreprises B2B partout en France : Paris, Lyon, Bordeaux, Marseille et au-delà.
                 </p>
               </div>
             </motion.div>
@@ -2008,6 +2110,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
             className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-lg sm:rounded-xl shadow-2xl p-6 sm:p-10 md:p-12 lg:p-20 text-center relative overflow-hidden"
           >
             {/* Carbon fibre pattern */}

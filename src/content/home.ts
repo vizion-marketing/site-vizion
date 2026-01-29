@@ -258,7 +258,7 @@ export const homeContent: HomeContent = {
   // HERO SECTION
   // --------------------------------------------------------------------------
   hero: {
-    badge: "AGENCE MARKETING STRATÉGIQUE — TOULOUSE",
+    badge: "AGENCE MARKETING STRATÉGIQUE • TOULOUSE",
     h1: "VOTRE AGENCE MARKETING À TOULOUSE",
     h1Highlight: "TOULOUSE",
     baseline: "Vous cherchez une agence qui comprend vraiment vos enjeux ? Chez Vizion, on ne fait pas de joli PowerPoint. On vous aide à vendre plus, avec des actions concrètes et des outils sur mesure.",
@@ -327,7 +327,7 @@ export const homeContent: HomeContent = {
     testimonial: {
       quote: "C'est vraiment un bonheur de les avoir au quotidien. Vizion est réellement investie dans notre croissance, ils font partie de l'équipe.",
       name: "CLÉMENT",
-      role: "Co-fondateur — easyVirtual.tours"
+      role: "Co-fondateur, easyVirtual.tours"
     },
     logos: [
       "TechCorp", "InnovateLab", "DataFlow", "CloudSync", "FinanceHub",
@@ -339,7 +339,7 @@ export const homeContent: HomeContent = {
   // 5 PILIERS
   // --------------------------------------------------------------------------
   piliers: {
-    surtitre: "NOS SERVICES — AGENCE MARKETING TOULOUSE",
+    surtitre: "NOS SERVICES • AGENCE MARKETING TOULOUSE",
     h2: "CINQ DOMAINES D'EXPERTISE",
     description: "Notre agence marketing à Toulouse ne fait pas tout, mais ce qu'on fait, on le fait bien. Voici les cinq domaines sur lesquels on peut vous aider concrètement.",
     badgeText: "Notre approche",
@@ -397,7 +397,7 @@ export const homeContent: HomeContent = {
     surtitre: "CE QUI NOUS DIFFÉRENCIE",
     h2: "UNE AGENCE MARKETING À TOULOUSE PIONNIÈRE DE L'IA",
     h2Highlight: "TOULOUSE",
-    introduction: "Vizion n'est pas une agence marketing comme les autres à Toulouse. On fait partie des premières agences en France à intégrer l'IA dans nos méthodes de travail — pour le marketing comme pour les sales. Concrètement : on vous fait gagner du temps, on crée vos outils sur mesure, et on accélère vos résultats.",
+    introduction: "Vizion n'est pas une agence marketing comme les autres à Toulouse. On fait partie des premières agences en France à intégrer l'IA dans nos méthodes de travail, pour le marketing comme pour les sales. Concrètement : on vous fait gagner du temps, on crée vos outils sur mesure, et on accélère vos résultats.",
     whyImportant: [
       "Une agence marketing à Toulouse qui utilise vraiment l'IA au quotidien.",
       "Des outils sur mesure développés en quelques jours pour vos équipes.",
@@ -407,14 +407,14 @@ export const homeContent: HomeContent = {
       {
         title: "Micro-SaaS sur mesure",
         description: "Vous avez un process métier inefficace ? Nous vous développons un outil dédié en quelques jours. Nous refusons les compromis avec des solutions génériques qui ne correspondent pas à votre réalité.",
-        example: "Nous avons accompagné un client industriel qui passait 4h/jour sur un process de qualification manuel. Nous lui avons créé un outil de scoring automatisé — résultat : 15h/semaine gagnées.",
+        example: "Nous avons accompagné un client industriel qui passait 4h/jour sur un process de qualification manuel. Nous lui avons créé un outil de scoring automatisé. Résultat : 15h/semaine gagnées.",
         metric: "15h/sem gagnées",
         tags: ["Vibe Coding", "Micro-SaaS", "Productivité"],
         image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200"
       },
       {
         title: "Automatisations complexes",
-        description: "Nous connectons vos outils entre eux et automatisons vos tâches répétitives. CRM, facturation, onboarding client — nous rendons votre quotidien plus fluide.",
+        description: "Nous connectons vos outils entre eux et automatisons vos tâches répétitives. CRM, facturation, onboarding client... Nous rendons votre quotidien plus fluide.",
         example: "Nous avons aidé une ETI à automatiser 80% de son onboarding client, passant de 2 semaines à 3 jours tout en améliorant la satisfaction.",
         metric: "-80% temps onboarding",
         tags: ["Automation", "CRM", "Efficacité"],
@@ -451,7 +451,7 @@ export const homeContent: HomeContent = {
   // QUAND COMMENCER
   // --------------------------------------------------------------------------
   quandCommencer: {
-    surtitre: "COMMENT ON TRAVAILLE — TOULOUSE & FRANCE",
+    surtitre: "COMMENT ON TRAVAILLE • TOULOUSE & FRANCE",
     h2: "DEUX FAÇONS DE BOSSER ENSEMBLE",
     h2Highlight: "BOSSER ENSEMBLE",
     description: "Notre agence marketing à Toulouse s'adapte à vos besoins : intervention sur un projet précis ou accompagnement dans la durée. Voici comment ça marche.",
@@ -506,17 +506,18 @@ export const homeContent: HomeContent = {
   // À PROPOS
   // --------------------------------------------------------------------------
   aPropos: {
-    surtitre: "AGENCE MARKETING TOULOUSAINE",
-    h2: "POURQUOI ON A CRÉÉ VIZION",
-    h2Highlight: "VIZION",
+    surtitre: "POURQUOI ON A CRÉÉ VIZION",
+    h2: "« ON VOULAIT METTRE TOULOUSE SUR LA CARTE DU MARKETING »",
+    h2Highlight: "TOULOUSE",
     paragraphs: [
-      "On en avait marre de voir des agences marketing facturer des rapports PowerPoint de 50 pages pendant que les vrais sujets — vos ventes, votre chiffre d'affaires — passaient à la trappe.",
-      "Notre agence marketing à Toulouse a une approche simple : le marketing doit servir à vendre, pas à produire des likes. On mesure notre succès en euros générés pour vous, pas en impressions."
+      "On a vu trop de dirigeants toulousains se faire balader. Des agences parisiennes qui facturent des fortunes pour des conseils génériques, livrés par des équipes qui ne connaissent ni votre marché, ni vos clients, ni même le nom de votre rue. Ça nous a frustrés.",
+      "Parce qu'à Toulouse, des agences de com', il y en a des dizaines. Mais des agences qui parlent stratégie produit, cycles de vente B2B, alignement sales-marketing ? Quasi aucune. Ce niveau d'accompagnement, il fallait aller le chercher à Paris. On a voulu changer ça.",
+      "Alors on s'est associés : un expert en marketing produit et stratégie commerciale, un spécialiste Growth et solutions techniques. Deux profils complémentaires, une même conviction : l'Occitanie mérite des partenaires à la hauteur de ses ambitions. Pas des prestataires. Des gens qui comprennent vos enjeux, parce qu'on vit ici, à côté de vous."
     ],
     founderQuote: {
-      quote: "Le marketing, ce n'est pas de la magie. C'est du travail bien fait, avec les bons outils, au bon moment.",
+      quote: "Notre objectif n'a jamais été de devenir la plus grosse agence de la région. C'est d'être celle qu'on recommande quand les enjeux sont sérieux.",
       name: "Lucas Gonzalez",
-      role: "Fondateur — Vizion"
+      role: "Fondateur, Vizion"
     },
     photoCaption: {
       label: "Notre équipe",
@@ -616,7 +617,7 @@ export const homeContent: HomeContent = {
   // FAQ
   // --------------------------------------------------------------------------
   faq: {
-    surtitre: "[ FAQ — AGENCE MARKETING TOULOUSE ]",
+    surtitre: "[ FAQ • AGENCE MARKETING TOULOUSE ]",
     h2: "CE QUE VOUS VOULEZ SAVOIR",
     h2Highlight: "SAVOIR",
     description: "Notre agence marketing à Toulouse joue la transparence. Voici les réponses aux questions qu'on nous pose le plus souvent.",
@@ -654,7 +655,7 @@ export const homeContent: HomeContent = {
   // CAS CLIENTS
   // --------------------------------------------------------------------------
   casClients: {
-    surtitre: "ÉTUDES DE CAS — AGENCE MARKETING TOULOUSE",
+    surtitre: "ÉTUDES DE CAS • AGENCE MARKETING TOULOUSE",
     h2: "NOS SUCCÈS AVEC NOS CLIENTS",
     ctaText: "Découvrir nos études de cas",
     cases: [
