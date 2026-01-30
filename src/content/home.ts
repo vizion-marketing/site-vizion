@@ -759,6 +759,14 @@ export const organizationSchema = {
       "name": "France"
     }
   ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "5",
+    "reviewCount": "5"
+  },
   "founder": [
     {
       "@type": "Person",
