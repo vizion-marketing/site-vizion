@@ -819,7 +819,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/20 bg-white/10 overflow-hidden">
-                    <Image src={`https://i.pravatar.cc/40?img=${i + 10}`} alt="Client" width={40} height={40} className="w-full h-full object-cover grayscale" />
+                    <Image src={`https://i.pravatar.cc/40?img=${i + 10}`} alt={`Client accompagné par Vizion agence marketing Toulouse`} width={40} height={40} className="w-full h-full object-cover grayscale" />
                   </div>
                 ))}
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/30 bg-white flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-black shadow-[0_0_15px_rgba(255,255,255,0.3)]">
@@ -839,9 +839,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             transition={{ duration: 1, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
             className="hidden lg:block absolute top-1/2 -translate-y-1/2 right-0 w-[400px] xl:w-[550px] h-[600px] xl:h-[750px] z-30 group"
           >
-            <img
+            <Image
               src="/hero-binoculars.png"
-              alt="Strategie"
+              alt="Vizion agence marketing Toulouse — stratégie et performance commerciale B2B"
+              width={550}
+              height={750}
+              priority
               className="w-full h-full object-cover shadow-2xl"
               style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
             />
@@ -1007,7 +1010,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="flex -space-x-3">
                 {[5, 6, 7].map((i) => (
                   <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden shadow-md ring-1 ring-black/5">
-                    <Image src={`https://i.pravatar.cc/40?u=${i+30}`} alt="Client" width={40} height={40} className="w-full h-full object-cover" />
+                    <Image src={`https://i.pravatar.cc/40?u=${i+30}`} alt={`Entreprise cliente Vizion marketing B2B Toulouse`} width={40} height={40} className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>

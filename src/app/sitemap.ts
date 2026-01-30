@@ -14,9 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: "/confidentialite", priority: 0.3, changeFrequency: "yearly" as const },
   ];
 
+  // Date de dernière mise à jour significative du site
+  const siteLastUpdated = new Date("2025-01-30");
+
   const staticPages = staticRoutes.map(({ route, priority, changeFrequency }) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    lastModified: siteLastUpdated,
     changeFrequency,
     priority,
   }));

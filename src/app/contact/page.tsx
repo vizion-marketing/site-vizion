@@ -62,7 +62,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black overflow-x-hidden font-['Inter'] selection:bg-[#EEFF41] selection:text-black">
+    <div className="min-h-screen bg-black overflow-x-hidden font-['Inter'] selection:bg-[#EEFF41] selection:text-black">
       {/* HERO SECTION - GRADIENT & CARBON TEXTURE */}
       <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-4 md:px-8 lg:px-12 overflow-hidden">
         {/* Base Gradient Layer */}
@@ -380,6 +380,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -36,7 +36,7 @@ function extractHeadings(content: string): TOCHeading[] {
 }
 
 // Constants
-const SITE_URL = "https://vizion.fr";
+const SITE_URL = "https://by-vizion.com";
 const SITE_NAME = "Vizion";
 
 type Props = {
