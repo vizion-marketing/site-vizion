@@ -718,7 +718,8 @@ export const organizationSchema = {
   "telephone": "+33750836543",
   "email": "contact@by-vizion.com",
   "sameAs": [
-    "https://www.linkedin.com/company/vizion-marketing-b2b/"
+    "https://www.linkedin.com/company/vizion-marketing-b2b/",
+    "https://www.google.com/maps/place/Vizion+-+Agence+marketing+%C3%A0+Toulouse/data=!4m2!3m1!1s0x12aebf7b484ea1db:0x2813cc3baa5dfad4"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -756,30 +757,6 @@ export const organizationSchema = {
     {
       "@type": "Country",
       "name": "France"
-    }
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "5",
-    "reviewCount": "5"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Client Vérifié"
-      },
-      "datePublished": "2024-12-15",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "Excellente agence, très professionnelle et à l'écoute. Résultats concrets sur notre stratégie marketing."
     }
   ],
   "founder": [

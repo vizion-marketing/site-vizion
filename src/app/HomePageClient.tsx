@@ -1885,7 +1885,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               className="relative rounded-xl overflow-hidden shadow-xl border border-black/5 h-[300px] sm:h-[400px] lg:h-full lg:min-h-[450px]"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.8876543210!2d1.5234567890!3d43.5456789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7b7a8d%3A0x8b9b8c8d8e8f8a8b!2s815%20La%20Pyr%C3%A9n%C3%A9enne%2C%2031670%20Lab%C3%A8ge!5e0!3m2!1sfr!2sfr!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.8!2d1.5102!3d43.5416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebf7b484ea1db%3A0x2813cc3baa5dfad4!2sVizion%20-%20Agence%20marketing%20%C3%A0%20Toulouse!5e0!3m2!1sfr!2sfr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
