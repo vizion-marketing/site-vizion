@@ -506,11 +506,11 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   aPropos: {
     surtitre: "NOTRE CONVICTION",
-    h2: "POURQUOI VIZION EXISTE",
-    h2Highlight: "VIZION",
+    h2: "COGITO ERGO SUM",
+    h2Highlight: "COGITO",
     paragraphs: [
-      "Le marketing s'est perdu. Trop souvent cantonné à la communication, aux vanity metrics ou aux tactiques déconnectées du terrain, il a oublié sa raison d'être : faciliter vos ventes.",
-      "Chez Vizion, nous ramenons le marketing à sa mission originelle. Il doit servir votre stratégie d'entreprise, équiper vos commerciaux, raccourcir vos cycles de décision. Pas produire des contenus que personne ne lit."
+      "Vizion existe parce qu'on réfléchit avant d'agir. Dans un monde où tout le monde veut aller vite, produire plus, automatiser tout — nous, on prend le temps de comprendre. Votre marché, vos enjeux, ce qui bloque vraiment.",
+      "On ne se contente pas d'exécuter. On cherche, on challenge, on trouve des solutions là où d'autres appliquent des recettes. Les marchés complexes, les positionnements flous, les problèmes que personne n'a su résoudre — c'est exactement là qu'on est bons."
     ],
     founderQuote: {
       quote: "On refuse des clients. Pas par arrogance — parce qu'on sait que si le positionnement n'est pas clair, rien de ce qu'on produira ne servira. On préfère dire non que livrer du vide.",
