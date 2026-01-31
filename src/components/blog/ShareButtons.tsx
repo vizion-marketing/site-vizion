@@ -25,7 +25,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
   };
 
   return (
-    <div className="mt-16 pt-8 border-t border-zinc-100 flex items-center justify-between">
+    <div className="mt-8 sm:mt-16 pt-6 sm:pt-8 border-t border-zinc-100 flex flex-wrap items-center justify-between gap-4">
       <span className="text-[11px] font-medium uppercase tracking-[1.65px] text-zinc-400">
         Partager cet article
       </span>

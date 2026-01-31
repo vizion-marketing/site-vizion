@@ -26,7 +26,7 @@ export function ArticleHero({
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-40 pb-24 lg:pt-56 lg:pb-48 bg-gradient-to-br from-[#B7B7B7] via-black to-[#6D6D6D] overflow-hidden">
+      <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-56 lg:pb-48 bg-gradient-to-br from-[#B7B7B7] via-black to-[#6D6D6D] overflow-hidden">
         {/* Carbon texture overlay */}
         <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none" />
         
@@ -38,7 +38,7 @@ export function ArticleHero({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-black/20 backdrop-blur-md border border-white/10 rounded-[var(--radius-xl)] p-8 lg:p-16 relative overflow-hidden group"
+            className="bg-black/20 backdrop-blur-md border border-white/10 rounded-[var(--radius-xl)] p-5 sm:p-8 lg:p-16 relative overflow-hidden group"
           >
             {/* Internal Accent Border */}
             <div className="absolute inset-0 border border-white/5 m-1 rounded-[calc(var(--radius-xl)-4px)] pointer-events-none" />
@@ -61,7 +61,7 @@ export function ArticleHero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mb-10 text-[36px] md:text-[56px] lg:text-[72px] font-black leading-[0.95] uppercase tracking-[-3px] text-white font-['Roboto'] max-w-4xl"
+              className="mb-6 sm:mb-10 text-[28px] sm:text-[36px] md:text-[56px] lg:text-[72px] font-black leading-[0.95] uppercase tracking-[-1.5px] sm:tracking-[-2px] lg:tracking-[-3px] text-white font-['Roboto'] max-w-4xl"
             >
               {title}
             </motion.h1>
@@ -71,7 +71,7 @@ export function ArticleHero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-wrap items-center gap-x-10 gap-y-6 text-white/60 text-sm font-['Inter'] border-t border-white/10 pt-10"
+              className="flex flex-wrap items-center gap-x-5 sm:gap-x-10 gap-y-4 sm:gap-y-6 text-white/60 text-sm font-['Inter'] border-t border-white/10 pt-6 sm:pt-10"
             >
               <div className="flex items-center gap-3 transition-colors hover:text-white">
                 <div className="p-2 rounded-lg bg-white/5 border border-white/5"><Calendar size={18} className="text-white/40" /></div>
@@ -122,7 +122,7 @@ export function ArticleHero({
             <div className="absolute -inset-8 bg-gradient-to-r from-white/0 via-white/5 to-white/0 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
             
             {/* Multi-layered Shadow Container */}
-            <div className="relative aspect-[21/9] rounded-[var(--radius-xl)] overflow-hidden border border-white/10 bg-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_20px_50px_-12px_rgba(0,0,0,0.8),0_40px_100px_-20px_rgba(0,0,0,0.6)]">
+            <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-[var(--radius-xl)] overflow-hidden border border-white/10 bg-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_20px_50px_-12px_rgba(0,0,0,0.8),0_40px_100px_-20px_rgba(0,0,0,0.6)]">
               {/* Background Grid Pattern */}
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none z-10" />
               

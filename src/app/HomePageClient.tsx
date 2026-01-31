@@ -492,7 +492,7 @@ function FAQSection() {
           </div>
 
           {/* Right - Accordion */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8" role="region" aria-label="Questions fréquentes">
             <div className="space-y-2 sm:space-y-3">
               {faqData.map((faq, index) => (
                 <motion.div
@@ -508,7 +508,10 @@ function FAQSection() {
                   }`}
                 >
                   <button
+                    id={`faq-question-${index}`}
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    aria-expanded={openIndex === index}
+                    aria-controls={`faq-answer-${index}`}
                     className="w-full p-3 sm:p-4 md:p-5 flex items-center justify-between text-left group gap-3"
                   >
                     <span className="font-['Roboto'] font-bold text-xs sm:text-sm tracking-tight text-black group-hover:text-black/80 transition-colors pr-2">
@@ -537,6 +540,9 @@ function FAQSection() {
                   </button>
 
                   <motion.div
+                    id={`faq-answer-${index}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${index}`}
                     initial={false}
                     animate={{
                       height: openIndex === index ? 'auto' : 0,
@@ -777,7 +783,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-            className="w-full lg:max-w-[720px] lg:min-h-[700px] xl:min-h-[750px] bg-black/20 backdrop-blur-md rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 shadow-2xl relative z-10 flex flex-col justify-between border border-white/10"
+            className="w-full lg:max-w-[720px] lg:min-h-[700px] xl:min-h-[750px] bg-black/20 backdrop-blur-md rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 shadow-2xl relative z-10 flex flex-col justify-between border border-white/10 overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3 sm:mb-4">
               <span className="relative flex h-2 w-2">
@@ -819,7 +825,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/20 bg-white/10 overflow-hidden">
-                    <Image src={`https://i.pravatar.cc/40?img=${i + 10}`} alt="Client" width={40} height={40} className="w-full h-full object-cover grayscale" />
+                    <Image src={`https://i.pravatar.cc/40?img=${i + 10}`} alt={`Client accompagné par Vizion agence marketing Toulouse`} width={40} height={40} className="w-full h-full object-cover grayscale" />
                   </div>
                 ))}
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/30 bg-white flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-black shadow-[0_0_15px_rgba(255,255,255,0.3)]">
@@ -839,9 +845,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             transition={{ duration: 1, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
             className="hidden lg:block absolute top-1/2 -translate-y-1/2 right-0 w-[400px] xl:w-[550px] h-[600px] xl:h-[750px] z-30 group"
           >
-            <img
+            <Image
               src="/hero-binoculars.png"
-              alt="Strategie"
+              alt="Vizion agence marketing Toulouse — stratégie et performance commerciale B2B"
+              width={550}
+              height={750}
+              priority
               className="w-full h-full object-cover shadow-2xl"
               style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
             />
@@ -913,7 +922,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               {/* Carbon fibre pattern */}
               <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
               {/* Inner glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-white/[0.01] pointer-events-none rounded-xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-white/[0.01] pointer-events-none" />
 
               <div className="relative z-10 flex-1 flex flex-col">
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-5 sm:mb-8">
@@ -1007,7 +1016,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="flex -space-x-3">
                 {[5, 6, 7].map((i) => (
                   <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden shadow-md ring-1 ring-black/5">
-                    <Image src={`https://i.pravatar.cc/40?u=${i+30}`} alt="Client" width={40} height={40} className="w-full h-full object-cover" />
+                    <Image src={`https://i.pravatar.cc/40?u=${i+30}`} alt={`Entreprise cliente Vizion marketing B2B Toulouse`} width={40} height={40} className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
@@ -1885,7 +1894,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               className="relative rounded-xl overflow-hidden shadow-xl border border-black/5 h-[300px] sm:h-[400px] lg:h-full lg:min-h-[450px]"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.8876543210!2d1.5234567890!3d43.5456789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7b7a8d%3A0x8b9b8c8d8e8f8a8b!2s815%20La%20Pyr%C3%A9n%C3%A9enne%2C%2031670%20Lab%C3%A8ge!5e0!3m2!1sfr!2sfr!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.8!2d1.5102!3d43.5416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebf7b484ea1db%3A0x2813cc3baa5dfad4!2sVizion%20-%20Agence%20marketing%20%C3%A0%20Toulouse!5e0!3m2!1sfr!2sfr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

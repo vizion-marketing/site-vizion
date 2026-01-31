@@ -408,32 +408,56 @@ h3, .h3 {
 }
 
 .prose h2 {
-  font-size: 2.25rem;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
   line-height: 1.15;
-  letter-spacing: -1.5px;
-  margin-top: 3.5rem;
-  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #f4f4f5;
+}
+
+@media (min-width: 640px) {
+  .prose h2 {
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1.5px;
+  }
 }
 
 .prose h2::before {
   content: '';
   position: absolute;
-  left: -2rem;
+  left: -1rem;
   top: 0.5rem;
-  width: 4px;
-  height: 2rem;
+  width: 3px;
+  height: 1.5rem;
   background: linear-gradient(180deg, #000 0%, #B7B7B7 100%);
   border-radius: 2px;
 }
 
-.prose h3 { 
-  font-size: 1.5rem;
+@media (min-width: 1024px) {
+  .prose h2::before {
+    left: -2rem;
+    width: 4px;
+    height: 2rem;
+  }
+}
+
+.prose h3 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
   line-height: 1.3;
-  letter-spacing: -0.75px;
-  margin-top: 2.75rem;
-  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .prose h3 {
+    margin-top: 2.75rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.75px;
+  }
 }
 
 .prose h4 { 
@@ -477,19 +501,34 @@ h3, .h3 {
 /* Lists with better visual hierarchy */
 .prose ul,
 .prose ol {
-  margin-top: 1.75rem;
-  margin-bottom: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   padding-left: 0;
   list-style: none;
+}
+
+@media (min-width: 640px) {
+  .prose ul,
+  .prose ol {
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
 }
 
 .prose ul > li,
 .prose ol > li {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1.5rem;
   margin-bottom: 0.875rem;
   line-height: 1.85;
   color: #3f3f46;
+}
+
+@media (min-width: 640px) {
+  .prose ul > li,
+  .prose ol > li {
+    padding-left: 2rem;
+  }
 }
 
 .prose ul > li::before {
@@ -525,8 +564,8 @@ h3, .h3 {
 /* Blockquote with premium styling */
 .prose blockquote {
   border-left: none;
-  padding: 2rem;
-  margin: 3rem 0;
+  padding: 1.25rem;
+  margin: 2rem 0;
   font-style: normal;
   background: #fafafa;
   border-radius: 0;
@@ -534,24 +573,46 @@ h3, .h3 {
   border-left: 3px solid var(--color-black);
 }
 
+@media (min-width: 640px) {
+  .prose blockquote {
+    padding: 2rem;
+    margin: 3rem 0;
+  }
+}
+
 .prose blockquote::before {
   content: '"';
   position: absolute;
-  top: 1rem;
-  left: 1.5rem;
-  font-size: 4rem;
+  top: 0.5rem;
+  left: 0.75rem;
+  font-size: 2.5rem;
   font-family: Georgia, serif;
   color: #e4e4e7;
   line-height: 1;
 }
 
+@media (min-width: 640px) {
+  .prose blockquote::before {
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+  }
+}
+
 .prose blockquote p {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.75;
   color: #27272a;
   font-weight: 500;
-  padding-left: 2rem;
+  padding-left: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .prose blockquote p {
+    font-size: 1.125rem;
+    padding-left: 2rem;
+  }
 }
 
 /* Code blocks with better styling */
@@ -607,11 +668,18 @@ h3, .h3 {
   background: linear-gradient(90deg, transparent, #e4e4e7, transparent);
 }
 
-/* Tables in prose */
+/* Tables in prose - scrollable on mobile */
+.prose .table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 2.5rem 0;
+}
+
 .prose table {
   width: 100%;
-  margin: 2.5rem 0;
+  margin: 0;
   border-collapse: collapse;
+  min-width: 480px;
 }
 
 .prose th {

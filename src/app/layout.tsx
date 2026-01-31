@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MotionProvider } from "@/components/MotionProvider";
+import { CookieConsent } from "@/components/CookieConsent";
 import { allCaseStudies } from "contentlayer/generated";
 
 // Optimisation: seulement 2 polices au lieu de 4
@@ -45,14 +46,28 @@ export const metadata: Metadata = {
     "consultant marketing Toulouse",
   ],
   authors: [{ name: "Vizion" }],
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
     siteName: "Vizion",
     url: "https://by-vizion.com",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Vizion — Agence Marketing Toulouse",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -87,6 +102,7 @@ export default function RootLayout({
           <Header caseStudies={caseStudiesForNav} />
           <main>{children}</main>
           <Footer />
+          <CookieConsent gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         </MotionProvider>
       </body>
     </html>

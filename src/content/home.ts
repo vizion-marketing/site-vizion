@@ -260,11 +260,11 @@ export const homeContent: HomeContent = {
     badge: "AGENCE MARKETING TOULOUSE — STRATÉGIE",
     h1: "VOTRE AGENCE MARKETING À TOULOUSE",
     h1Highlight: "TOULOUSE",
-    baseline: "Chez Vizion, nous croyons que le marketing doit servir vos ventes. Notre agence vous accompagne dans vos moments de transformation : lancement, innovation, restructuration, accélération. Votre directeur marketing dédié pilote l'ensemble de vos travaux, de la stratégie jusqu'au terrain commercial.",
+    baseline: "Le marketing s'est perdu dans les vanity metrics et les tactiques creuses. Nous, on le ramène là où il compte : sur le terrain commercial. Positionnement, outils de vente, acquisition — un directeur marketing dédié pilote tout, de la stratégie jusqu'au closing.",
     badges: [
-      "Directeur marketing dédié",
-      "70+ entreprises accompagnées",
-      "Basés à Toulouse depuis 2021"
+      "Un directeur marketing dédié",
+      "+70 entreprises transformées",
+      "Toulouse, depuis 2021"
     ],
     cta: {
       primary: { text: "Parlons de vos enjeux", href: "/contact" },
@@ -280,7 +280,7 @@ export const homeContent: HomeContent = {
     surtitre: "[ NOS RÉALISATIONS ]",
     h2: "DES RÉSULTATS MESURABLES POUR NOS CLIENTS",
     h2Highlight: "MESURABLES",
-    description: "Nous accompagnons les entreprises dans leurs moments stratégiques. Voici comment nous avons aidé nos clients à atteindre leurs objectifs.",
+    description: "On ne parle pas de reach ou d'impressions. On parle de franchises ouvertes, de MRR généré, de pipelines remplis. Voici ce que ça donne concrètement.",
     trustBanner: "Depuis 2021, plus de 70 entreprises à Toulouse et en France nous font confiance pour leurs enjeux marketing et commerciaux",
     trustBannerHighlight: "70 entreprises",
 
@@ -340,7 +340,7 @@ export const homeContent: HomeContent = {
   piliers: {
     surtitre: "LES SERVICES DE L'AGENCE",
     h2: "CINQ PILIERS POUR VOTRE PERFORMANCE COMMERCIALE",
-    description: "Nous intervenons sur cinq domaines complémentaires, guidés par une seule ambition : faciliter vos ventes. Chaque intervention est conçue pour raccourcir vos cycles de décision et équiper vos équipes commerciales.",
+    description: "Cinq domaines, une seule obsession : que vos commerciaux aient ce qu'il faut pour closer. Chaque intervention raccourcit vos cycles de décision et élimine les frictions entre le marketing et le terrain.",
     badgeText: "Notre approche",
     badgeStatus: "STRATÉGIQUE",
     piliers: [
@@ -348,7 +348,7 @@ export const homeContent: HomeContent = {
         numero: "01",
         surtitre: "STRATÉGIE",
         titre: "Stratégie & Marketing Produit",
-        description: "Nous définissons votre positionnement et structurons votre architecture de message. Identification des leviers de croissance, construction d'une proposition de valeur différenciante. Audits complets et roadmaps marketing alignées sur vos objectifs business.",
+        description: "Avant de produire quoi que ce soit, on clarifie le fond. Qui vous êtes sur votre marché, pourquoi on vous choisit vous plutôt qu'un autre, et comment le formuler pour que ça convertisse. C'est la base de tout le reste.",
         services: ["Audit marketing & commercial", "Positionnement stratégique", "Architecture de message", "Roadmap marketing", "Plan de mise en marché", "Ateliers stratégiques"],
         cta: "DÉFINIR VOTRE STRATÉGIE"
       },
@@ -356,32 +356,32 @@ export const homeContent: HomeContent = {
         numero: "02",
         surtitre: "DIGITAL",
         titre: "Actifs Digitaux & Conversion",
-        description: "Conception de sites web premium et landing pages de haute qualité, pensés pour convertir. Interfaces adaptées à vos cycles de décision, visuels sur mesure, attention portée à chaque détail. Chaque actif digital sert votre stratégie.",
+        description: "Un site qui ne génère pas de leads, c'est une vitrine qui coûte de l'argent. Nous concevons des interfaces qui travaillent pour vous : chaque page a un objectif, chaque parcours est pensé pour des décideurs pressés avec des cycles longs.",
         services: ["Sites web premium", "Landing pages à conversion", "Visuels & design sur mesure", "Tunnels d'acquisition", "Pages institutionnelles", "Optimisation UX/UI"]
       },
       {
         numero: "03",
         surtitre: "VENTE",
         titre: "Aide à la Vente & Influence",
-        description: "Renforcement de l'efficacité commerciale en créant les outils nécessaires à chaque phase du cycle de vente. Présentations commerciales premium, pitch decks stratégiques, one-pagers percutants, argumentaires structurés. Accompagnement jusqu'aux phases de négociation et de closing.",
+        description: "Vos commerciaux perdent des deals parce qu'ils manquent d'outils, pas de talent. On leur donne de quoi convaincre à chaque étape : du premier rendez-vous au closing. Pitch decks, argumentaires, one-pagers — des armes, pas des plaquettes.",
         services: ["Présentations commerciales premium", "Pitch decks stratégiques", "One-pagers & sales sheets", "Argumentaires structurés", "Stratégies LinkedIn", "Contenus d'influence"]
       },
       {
         numero: "04",
         surtitre: "ACQUISITION",
         titre: "Acquisition & Génération d'Opportunités",
-        description: "Génération d'un flux régulier d'opportunités commerciales qualifiées. Campagnes d'emailing à fort taux de conversion, workflows de lead nurturing, activation des canaux pertinents pour votre marché : LinkedIn Ads, Google Ads, SEO technique et contenu.",
+        description: "Pas de trafic pour le plaisir. On construit des machines d'acquisition qui remplissent votre pipeline de prospects qualifiés. Emailing, LinkedIn Ads, Google Ads, SEO — chaque canal est activé parce qu'il fait sens pour votre marché, pas parce que c'est à la mode.",
         services: ["Campagnes emailing avancées", "Lead nurturing automation", "LinkedIn Ads & Google Ads", "Référencement SEO", "Content marketing", "Webinaires & événements"]
       },
       {
         numero: "05",
         surtitre: "SYSTÈMES",
         titre: "Automatisation & CRM",
-        description: "Structuration des systèmes d'information marketing et commerciaux pour soutenir votre croissance. Déploiement et configuration de CRM performants (HubSpot, Pipedrive, Go High Level), automatisations sur mesure qui industrialisent vos processus. Intégrations, workflows, dashboards conçus pour votre réalité opérationnelle.",
+        description: "La meilleure stratégie du monde ne sert à rien si personne ne la met en œuvre. Hugo et son équipe câblent vos systèmes pour que tout roule : CRM, automatisations, intégrations, dashboards. Le genre de travail invisible qui fait tourner la machine.",
         services: ["Déploiement CRM (HubSpot, Pipedrive, GHL)", "Automatisations avancées", "Intégrations API sur mesure", "Workflows métier personnalisés", "Dashboards & reporting", "Migration de données"]
       }
     ],
-    ctaText: "Rejoignez les 70+ entreprises qui ont fait confiance à notre expertise stratégique.",
+    ctaText: "70+ entreprises ont structuré leur marketing avec nous. À votre tour ?",
     socialProofText: "+70 entreprises accompagnées depuis 2021",
     cta: {
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" },
@@ -396,11 +396,11 @@ export const homeContent: HomeContent = {
     surtitre: "CE QUI DIFFÉRENCIE L'AGENCE",
     h2: "L'INTELLIGENCE ARTIFICIELLE AU SERVICE DU MARKETING",
     h2Highlight: "MARKETING",
-    introduction: "Chez Vizion, nous intégrons l'intelligence artificielle dans nos méthodologies et dans celles de nos clients. Son déploiement est réfléchi : nous l'utilisons là où elle apporte une valeur ajoutée réelle, pas de manière systématique. Cette approche permet d'accélérer l'exécution tout en préservant la qualité stratégique.",
+    introduction: "On ne met pas \"IA\" sur notre site pour faire moderne. On l'utilise parce qu'elle nous permet de faire en 2 heures ce qui prenait 2 semaines. Mais la stratégie, le positionnement, les décisions — ça reste humain. L'IA est un levier, pas un argument commercial.",
     whyImportant: [
-      "L'IA permet de créer des contenus d'acquisition en une fraction du temps habituel.",
-      "Nous trions et enrichissons des listes de prospection pour prioriser les comptes à fort potentiel.",
-      "Nous personnalisons les approches commerciales à l'échelle, sans sacrifier la pertinence."
+      "Contenus d'acquisition créés en une fraction du temps — sans sacrifier la pertinence.",
+      "Listes de prospection triées et enrichies pour que vos commerciaux visent juste.",
+      "Approches personnalisées à l'échelle, comme si chaque email était écrit à la main."
     ],
     useCases: [
       {
@@ -506,14 +506,14 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   aPropos: {
     surtitre: "NOTRE CONVICTION",
-    h2: "POURQUOI VIZION EXISTE",
-    h2Highlight: "VIZION",
+    h2: "COGITO ERGO SUM",
+    h2Highlight: "COGITO",
     paragraphs: [
-      "Le marketing s'est perdu. Trop souvent cantonné à la communication, aux vanity metrics ou aux tactiques déconnectées du terrain, il a oublié sa raison d'être : faciliter vos ventes.",
-      "Chez Vizion, nous ramenons le marketing à sa mission originelle. Il doit servir votre stratégie d'entreprise, équiper vos commerciaux, raccourcir vos cycles de décision. Pas produire des contenus que personne ne lit."
+      "Vizion existe parce qu'on réfléchit avant d'agir. Dans un monde où tout le monde veut aller vite, produire plus, automatiser tout — nous, on prend le temps de comprendre. Votre marché, vos enjeux, ce qui bloque vraiment.",
+      "On ne se contente pas d'exécuter. On cherche, on challenge, on trouve des solutions là où d'autres appliquent des recettes. Les marchés complexes, les positionnements flous, les problèmes que personne n'a su résoudre — c'est exactement là qu'on est bons."
     ],
     founderQuote: {
-      quote: "Le marketing doit servir la stratégie de l'entreprise, équiper les commerciaux, raccourcir les cycles de décision. Pas produire des contenus que personne ne lit.",
+      quote: "On refuse des clients. Pas par arrogance — parce qu'on sait que si le positionnement n'est pas clair, rien de ce qu'on produira ne servira. On préfère dire non que livrer du vide.",
       name: "Lucas Gonzalez",
       role: "Co-fondateur — Vizion"
     },
@@ -549,7 +549,7 @@ export const homeContent: HomeContent = {
     surtitre: "L'ÉQUIPE",
     h2: "UNE STRUCTURE HYBRIDE, SOLIDE ET AGILE",
     h2Highlight: "HYBRIDE",
-    description: "Nous nous appuyons sur une équipe interne structurée et un réseau de consultants experts, mobilisés selon les besoins spécifiques de chaque projet. Ce modèle hybride garantit à la fois la continuité d'accompagnement et l'accès à des compétences pointues. Chaque client bénéficie d'un interlocuteur unique : un directeur marketing dédié qui pilote l'ensemble des travaux et assure le lien avec les équipes dirigeantes.",
+    description: "Pas de turnover sur vos projets, pas d'interlocuteur qui change tous les mois. Un directeur marketing dédié pilote tout et mobilise les bons experts au bon moment. Le meilleur des deux mondes : la stabilité d'une équipe interne, l'agilité d'un réseau de spécialistes.",
     modelExplanation: {
       director: "Votre Directeur Marketing Dédié",
       squads: "Nos Experts Spécialisés"
@@ -618,7 +618,7 @@ export const homeContent: HomeContent = {
     surtitre: "[ FAQ ]",
     h2: "QUESTIONS FRÉQUENTES",
     h2Highlight: "FRÉQUENTES",
-    description: "Nous communiquons avec transparence sur nos modalités d'intervention. Voici les réponses aux questions les plus fréquentes.",
+    description: "Les questions qu'on nous pose le plus souvent. On répond sans langue de bois.",
     questions: [
       {
         question: "Pourquoi choisir une agence marketing à Toulouse comme Vizion ?",
@@ -683,7 +683,7 @@ export const homeContent: HomeContent = {
     trustBadge: "+70 entreprises à Toulouse et en France nous font confiance",
     h2: "ÉCHANGEONS SUR VOS ENJEUX",
     h2Highlight: "ENJEUX",
-    description: "Vous recherchez une agence marketing à Toulouse qui comprend vos enjeux ? Vous traversez un moment stratégique et le marketing devient un enjeu de performance commerciale ? Nous vous proposons un échange de 15 minutes pour identifier si nous pouvons vous accompagner.",
+    description: "Lancement, repositionnement, accélération — si le marketing est devenu un sujet stratégique pour votre entreprise, on devrait se parler. 15 minutes pour comprendre votre situation et voir si on peut vous aider.",
     cta: {
       primary: { text: "Parlons de votre projet", href: "/contact" },
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
@@ -718,7 +718,8 @@ export const organizationSchema = {
   "telephone": "+33750836543",
   "email": "contact@by-vizion.com",
   "sameAs": [
-    "https://www.linkedin.com/company/vizion-marketing-b2b/"
+    "https://www.linkedin.com/company/vizion-marketing-b2b/",
+    "https://www.google.com/maps/place/Vizion+-+Agence+marketing+%C3%A0+Toulouse/data=!4m2!3m1!1s0x12aebf7b484ea1db:0x2813cc3baa5dfad4"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -766,22 +767,6 @@ export const organizationSchema = {
     "ratingCount": "5",
     "reviewCount": "5"
   },
-  "review": [
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Client Vérifié"
-      },
-      "datePublished": "2024-12-15",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "Excellente agence, très professionnelle et à l'écoute. Résultats concrets sur notre stratégie marketing."
-    }
-  ],
   "founder": [
     {
       "@type": "Person",
