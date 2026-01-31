@@ -777,7 +777,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-            className="w-full lg:max-w-[720px] lg:min-h-[700px] xl:min-h-[750px] bg-black/20 backdrop-blur-md rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 shadow-2xl relative z-10 flex flex-col justify-between border border-white/10"
+            className="w-full lg:max-w-[720px] lg:min-h-[700px] xl:min-h-[750px] bg-black/20 backdrop-blur-md rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 shadow-2xl relative z-10 flex flex-col justify-between border border-white/10 overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3 sm:mb-4">
               <span className="relative flex h-2 w-2">
@@ -916,7 +916,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               {/* Carbon fibre pattern */}
               <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
               {/* Inner glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-white/[0.01] pointer-events-none rounded-xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-white/[0.01] pointer-events-none" />
 
               <div className="relative z-10 flex-1 flex flex-col">
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-5 sm:mb-8">
