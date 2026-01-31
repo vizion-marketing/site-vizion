@@ -492,7 +492,7 @@ function FAQSection() {
           </div>
 
           {/* Right - Accordion */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8" role="region" aria-label="Questions fréquentes">
             <div className="space-y-2 sm:space-y-3">
               {faqData.map((faq, index) => (
                 <motion.div
@@ -508,7 +508,10 @@ function FAQSection() {
                   }`}
                 >
                   <button
+                    id={`faq-question-${index}`}
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    aria-expanded={openIndex === index}
+                    aria-controls={`faq-answer-${index}`}
                     className="w-full p-3 sm:p-4 md:p-5 flex items-center justify-between text-left group gap-3"
                   >
                     <span className="font-['Roboto'] font-bold text-xs sm:text-sm tracking-tight text-black group-hover:text-black/80 transition-colors pr-2">
@@ -537,6 +540,9 @@ function FAQSection() {
                   </button>
 
                   <motion.div
+                    id={`faq-answer-${index}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${index}`}
                     initial={false}
                     animate={{
                       height: openIndex === index ? 'auto' : 0,

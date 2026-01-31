@@ -347,10 +347,12 @@ export default function BlogPage() {
         <div className="max-w-[82.5rem] mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             {/* Left - Categories */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filtrer par catégorie">
               {categories.map((cat) => (
                 <button
                   key={cat}
+                  role="tab"
+                  aria-selected={activeCategory === cat}
                   onClick={() => handleCategoryChange(cat)}
                   className={`px-5 py-2.5 text-[11px] font-black uppercase tracking-wider transition-all duration-300 rounded-full border ${
                     activeCategory === cat
@@ -369,7 +371,8 @@ export default function BlogPage() {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/30" />
                 <input
-                  type="text"
+                  type="search"
+                  aria-label="Rechercher des articles"
                   placeholder="Rechercher..."
                   value={searchQuery}
                   onChange={(e) => {
@@ -486,8 +489,9 @@ export default function BlogPage() {
 
           {/* PAGINATION */}
           {totalPages > 1 && (
-            <div className="mt-12 sm:mt-16 flex items-center justify-center gap-2 sm:gap-3 overflow-x-auto">
+            <nav className="mt-12 sm:mt-16 flex items-center justify-center gap-2 sm:gap-3 overflow-x-auto" aria-label="Pagination des articles">
               <button
+                aria-label="Page précédente"
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
                 className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-xl border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
@@ -498,6 +502,8 @@ export default function BlogPage() {
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
                 <button
                   key={num}
+                  aria-label={`Page ${num}`}
+                  aria-current={num === currentPage ? "page" : undefined}
                   onClick={() => setCurrentPage(num)}
                   className={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-xl text-sm font-black transition-all ${
                     num === currentPage
@@ -510,13 +516,14 @@ export default function BlogPage() {
               ))}
 
               <button
+                aria-label="Page suivante"
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
                 className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-xl border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ChevronRight size={18} />
               </button>
-            </div>
+            </nav>
           )}
         </div>
       </section>
@@ -555,18 +562,47 @@ export default function BlogPage() {
 
               <form
                 className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-8"
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const form = e.currentTarget;
+                  const input = form.querySelector('input[type="email"]') as HTMLInputElement;
+                  const btn = form.querySelector('button') as HTMLButtonElement;
+                  if (!input?.value) return;
+                  btn.disabled = true;
+                  btn.textContent = '...';
+                  try {
+                    const res = await fetch('/api/newsletter', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ email: input.value }),
+                    });
+                    if (res.ok) {
+                      input.value = '';
+                      btn.textContent = 'Inscrit !';
+                      setTimeout(() => { btn.textContent = "S'inscrire"; btn.disabled = false; }, 3000);
+                    } else {
+                      const data = await res.json();
+                      btn.textContent = data.error || 'Erreur';
+                      setTimeout(() => { btn.textContent = "S'inscrire"; btn.disabled = false; }, 3000);
+                    }
+                  } catch {
+                    btn.textContent = 'Erreur réseau';
+                    setTimeout(() => { btn.textContent = "S'inscrire"; btn.disabled = false; }, 3000);
+                  }
+                }}
               >
                 <div className="relative flex-grow">
                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
                   <input
                     type="email"
+                    required
+                    aria-label="Votre adresse email"
                     placeholder="votre@email.com"
                     className="w-full bg-white/10 border border-white/20 rounded-xl px-12 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-all backdrop-blur-sm"
                   />
                 </div>
-                <button className="bg-white text-black font-['Roboto'] font-black uppercase text-[12px] tracking-widest px-8 py-4 rounded-xl hover:bg-[#EEFF41] hover:shadow-[0_0_30px_rgba(238,255,65,0.4)] transition-all flex items-center justify-center gap-2">
-                  S'inscrire <ArrowRight size={14} />
+                <button type="submit" className="bg-white text-black font-['Roboto'] font-black uppercase text-[12px] tracking-widest px-8 py-4 rounded-xl hover:bg-[#EEFF41] hover:shadow-[0_0_30px_rgba(238,255,65,0.4)] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-wait">
+                  S&apos;inscrire <ArrowRight size={14} />
                 </button>
               </form>
 

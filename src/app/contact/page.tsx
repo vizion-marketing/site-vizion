@@ -29,6 +29,13 @@ export default function ContactPage() {
     setErrorMessage('');
 
     const formData = new FormData(e.currentTarget);
+
+    // Honeypot: si rempli = bot
+    if (formData.get('website')) {
+      setFormStatus('success');
+      return;
+    }
+
     const data = {
       firstName: formData.get('firstName') as string,
       lastName: formData.get('lastName') as string,
@@ -108,9 +115,15 @@ export default function ContactPage() {
 
               {/* Formulaire */}
               <form onSubmit={handleSubmit} className="space-y-5 flex-grow">
+                {/* Honeypot anti-spam — invisible pour les humains */}
+                <div className="absolute opacity-0 h-0 overflow-hidden" aria-hidden="true">
+                  <label htmlFor="website">Ne pas remplir</label>
+                  <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+                </div>
+
                 {/* Success Message */}
                 {formStatus === 'success' && (
-                  <div className="bg-[#EEFF41]/20 border border-[#EEFF41]/40 rounded-xl p-4 mb-4">
+                  <div className="bg-[#EEFF41]/20 border border-[#EEFF41]/40 rounded-xl p-4 mb-4" role="status">
                     <p className="text-[#EEFF41] text-sm font-medium">
                       Message envoyé avec succès ! Nous vous répondrons sous 24h.
                     </p>
@@ -119,7 +132,7 @@ export default function ContactPage() {
 
                 {/* Error Message */}
                 {formStatus === 'error' && (
-                  <div className="bg-red-500/20 border border-red-500/40 rounded-xl p-4 mb-4">
+                  <div className="bg-red-500/20 border border-red-500/40 rounded-xl p-4 mb-4" role="alert">
                     <p className="text-red-400 text-sm font-medium">
                       {errorMessage}
                     </p>
@@ -128,9 +141,10 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Prénom *</label>
+                    <label htmlFor="firstName" className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Prénom *</label>
                     <input
                       required
+                      id="firstName"
                       name="firstName"
                       type="text"
                       placeholder="Jean"
@@ -138,9 +152,10 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Nom *</label>
+                    <label htmlFor="lastName" className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Nom *</label>
                     <input
                       required
+                      id="lastName"
                       name="lastName"
                       type="text"
                       placeholder="Dupont"
@@ -150,9 +165,10 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Email professionnel *</label>
+                  <label htmlFor="email" className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Email professionnel *</label>
                   <input
                     required
+                    id="email"
                     name="email"
                     type="email"
                     placeholder="contact@entreprise.com"
@@ -162,8 +178,9 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Entreprise</label>
+                    <label htmlFor="company" className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Entreprise</label>
                     <input
+                      id="company"
                       name="company"
                       type="text"
                       placeholder="Nom de votre entreprise"
@@ -171,10 +188,11 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Sujet *</label>
+                    <label htmlFor="subject" className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Sujet *</label>
                     <div className="relative">
                       <select
                         required
+                        id="subject"
                         name="subject"
                         className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white appearance-none focus:outline-none focus:border-white/60 transition-all duration-300 cursor-pointer"
                       >
@@ -191,9 +209,10 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Message *</label>
+                  <label htmlFor="message" className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Message *</label>
                   <textarea
                     required
+                    id="message"
                     name="message"
                     rows={4}
                     placeholder="Décrivez brièvement votre projet ou votre demande..."
@@ -202,6 +221,7 @@ export default function ContactPage() {
                 </div>
 
                 <motion.button
+                  type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}

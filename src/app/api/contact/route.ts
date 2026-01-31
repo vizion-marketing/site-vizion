@@ -9,11 +9,25 @@ interface ContactFormData {
   message: string;
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 export async function POST(request: Request) {
   try {
     const body: ContactFormData = await request.json();
 
-    const { firstName, lastName, email, company, subject, message } = body;
+    const firstName = escapeHtml(body.firstName?.trim() || "");
+    const lastName = escapeHtml(body.lastName?.trim() || "");
+    const email = body.email?.trim() || "";
+    const company = escapeHtml(body.company?.trim() || "");
+    const subject = body.subject?.trim() || "";
+    const message = escapeHtml(body.message?.trim() || "");
 
     // Validation
     if (!firstName || !lastName || !email || !subject || !message) {
