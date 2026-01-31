@@ -282,14 +282,14 @@ export default async function BlogPostPage({ params }: Props) {
         />
 
         {/* Main Content */}
-        <section className="py-24 lg:py-40 bg-white relative">
+        <section className="py-12 sm:py-16 lg:py-40 bg-white relative">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#f4f4f5_1px,transparent_1px),linear-gradient(to_bottom,#f4f4f5_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none" />
-          
-          <div className="container mx-auto px-6 relative z-10">
+
+          <div className="container mx-auto px-4 sm:px-6 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 max-w-[90rem] mx-auto">
               {/* Sidebar Left - Table of Contents & Author */}
-              <aside className="lg:col-span-3 order-2 lg:order-1">
+              <aside className="hidden lg:block lg:col-span-3 lg:order-1">
                 <div className="lg:sticky lg:top-24 space-y-12">
                   {/* Table of Contents */}
                   {headings.length > 0 && <TableOfContents headings={headings} />}
@@ -302,7 +302,7 @@ export default async function BlogPostPage({ params }: Props) {
               {/* Article Content - Center */}
               <div className="lg:col-span-6 order-1 lg:order-2">
                 {/* Content wrapper with subtle shadow */}
-                <div className="bg-white rounded-lg p-8 lg:p-12 shadow-sm border border-zinc-100">
+                <div className="bg-white rounded-lg p-4 sm:p-6 lg:p-12 shadow-sm border border-zinc-100">
                   <article className="prose prose-zinc prose-lg lg:prose-xl max-w-none">
                     <MDXContent code={post.body.code} />
                   </article>

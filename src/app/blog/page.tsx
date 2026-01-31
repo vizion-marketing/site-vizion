@@ -102,7 +102,7 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-white font-['Inter'] selection:bg-black selection:text-white">
       {/* HERO SECTION - Style Homepage */}
-      <section className="relative pt-[120px] pb-[80px] px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] overflow-hidden">
+      <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-[120px] md:pb-[80px] px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] overflow-hidden">
         {/* Pattern texture overlay */}
         <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
         
@@ -129,7 +129,7 @@ export default function BlogPage() {
                   </span>
                 </div>
                 
-                <h1 className="font-['Roboto'] font-[900] text-[56px] md:text-[80px] lg:text-[100px] leading-[0.9] tracking-tight uppercase text-white mb-4">
+                <h1 className="font-['Roboto'] font-[900] text-[36px] sm:text-[56px] md:text-[80px] lg:text-[100px] leading-[0.9] tracking-tight uppercase text-white mb-4">
                   <span className="relative inline-block">
                     <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[14px] bg-[#EEFF41] -z-10"></span>
                     Blog
@@ -257,10 +257,10 @@ export default function BlogPage() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.15, ease: [0.19, 1, 0.22, 1] }}
-                className="lg:col-span-5 hidden lg:block relative"
+                className="lg:col-span-5 relative"
               >
                 <Link href={`/blog/${featuredPost.slug}`} className="group block h-full">
-                  <div className="relative h-full rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
+                  <div className="relative h-full min-h-[320px] sm:min-h-[400px] lg:min-h-0 rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
                     {/* Image - Full height */}
                     <div className="absolute inset-0">
                       {featuredPost.featuredImage ? (
@@ -343,7 +343,7 @@ export default function BlogPage() {
       </section>
 
       {/* FILTERS SECTION */}
-      <section className="bg-white py-10 px-6 md:px-12 border-b border-black/5">
+      <section className="bg-white py-6 sm:py-10 px-4 sm:px-6 md:px-12 border-b border-black/5">
         <div className="max-w-[82.5rem] mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             {/* Left - Categories */}
@@ -391,7 +391,7 @@ export default function BlogPage() {
       </section>
 
       {/* ARTICLES GRID */}
-      <section className="bg-[#F9F9F9] py-20 px-6 md:px-12">
+      <section className="bg-[#F9F9F9] py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12">
         <div className="max-w-[82.5rem] mx-auto">
           {paginatedPosts.length > 0 ? (
             <motion.div
@@ -486,20 +486,20 @@ export default function BlogPage() {
 
           {/* PAGINATION */}
           {totalPages > 1 && (
-            <div className="mt-16 flex items-center justify-center gap-3">
+            <div className="mt-12 sm:mt-16 flex items-center justify-center gap-2 sm:gap-3 overflow-x-auto">
               <button
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="w-12 h-12 flex items-center justify-center rounded-xl border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-xl border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ChevronLeft size={18} />
               </button>
-              
+
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
                 <button
                   key={num}
                   onClick={() => setCurrentPage(num)}
-                  className={`w-12 h-12 flex items-center justify-center rounded-xl text-sm font-black transition-all ${
+                  className={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-xl text-sm font-black transition-all ${
                     num === currentPage
                       ? "bg-black text-white shadow-[0_0_20px_rgba(0,0,0,0.15)]"
                       : "border border-black/10 hover:border-black hover:bg-black hover:text-white"
@@ -508,11 +508,11 @@ export default function BlogPage() {
                   {num.toString().padStart(2, "0")}
                 </button>
               ))}
-              
+
               <button
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="w-12 h-12 flex items-center justify-center rounded-xl border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-xl border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ChevronRight size={18} />
               </button>
@@ -522,13 +522,13 @@ export default function BlogPage() {
       </section>
 
       {/* CTA NEWSLETTER - Style Homepage */}
-      <section className="py-24 px-6 md:px-12 bg-[#F2F2F2]">
+      <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-[#F2F2F2]">
         <div className="max-w-[82.5rem] mx-auto">
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-[var(--radius-xl)] p-12 md:p-20 relative overflow-hidden"
+            className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-[var(--radius-xl)] p-6 sm:p-10 md:p-20 relative overflow-hidden"
           >
             {/* Pattern texture overlay */}
             <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
@@ -546,7 +546,7 @@ export default function BlogPage() {
                 <span className="text-[10px] font-black text-white uppercase tracking-wider">Newsletter exclusive</span>
               </div>
 
-              <h2 className="font-['Roboto'] font-[900] text-[40px] md:text-[56px] leading-[1] tracking-tight uppercase mb-6 text-white">
+              <h2 className="font-['Roboto'] font-[900] text-[28px] sm:text-[40px] md:text-[56px] leading-[1] tracking-tight uppercase mb-6 text-white">
                 Restez à la <span className="relative inline-block"><span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[10px] bg-[#EEFF41] -z-10"></span>pointe</span>
               </h2>
               <p className="text-white/70 text-lg md:text-xl mb-10 max-w-xl mx-auto">

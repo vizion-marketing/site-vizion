@@ -19,62 +19,62 @@ export function ArticleNav({ prevPost, nextPost }: ArticleNavProps) {
 
   return (
     <section className="bg-[#F2F2F2] border-y border-zinc-200">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 max-w-[82.5rem] mx-auto">
           {/* Previous Post */}
           {prevPost ? (
             <Link
               href={`/blog/${prevPost.slug}`}
-              className="group flex items-center gap-8 py-12 px-4 hover:bg-white transition-colors border-b md:border-b-0 md:border-r border-zinc-200"
+              className="group flex items-center gap-4 sm:gap-8 py-8 sm:py-12 px-2 sm:px-4 hover:bg-white transition-colors border-b md:border-b-0 md:border-r border-zinc-200"
             >
               <motion.div
                 whileHover={{ x: -4 }}
-                className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-300 group-hover:bg-black group-hover:border-black transition-all"
+                className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-full border border-zinc-300 group-hover:bg-black group-hover:border-black transition-all"
               >
                 <ArrowLeft
-                  size={20}
+                  size={18}
                   className="group-hover:text-white transition-colors"
                 />
               </motion.div>
               <div className="flex-1 min-w-0">
-                <span className="text-[11px] font-medium uppercase tracking-[1.65px] text-zinc-400 block mb-2">
+                <span className="text-[11px] font-medium uppercase tracking-[1.65px] text-zinc-400 block mb-1 sm:mb-2">
                   Précédent
                 </span>
-                <p className="text-lg font-black uppercase tracking-tight font-['Roboto'] line-clamp-2 group-hover:text-zinc-600 transition-colors">
+                <p className="text-base sm:text-lg font-black uppercase tracking-tight font-['Roboto'] line-clamp-2 group-hover:text-zinc-600 transition-colors">
                   {prevPost.title}
                 </p>
               </div>
             </Link>
           ) : (
-            <div className="py-12 px-4 border-b md:border-b-0 md:border-r border-zinc-200" />
+            <div className="py-8 sm:py-12 px-2 sm:px-4 border-b md:border-b-0 md:border-r border-zinc-200" />
           )}
 
           {/* Next Post */}
           {nextPost ? (
             <Link
               href={`/blog/${nextPost.slug}`}
-              className="group flex items-center justify-end gap-8 py-12 px-4 hover:bg-white transition-colors"
+              className="group flex items-center justify-end gap-4 sm:gap-8 py-8 sm:py-12 px-2 sm:px-4 hover:bg-white transition-colors"
             >
               <div className="flex-1 min-w-0 text-right">
-                <span className="text-[11px] font-medium uppercase tracking-[1.65px] text-zinc-400 block mb-2">
+                <span className="text-[11px] font-medium uppercase tracking-[1.65px] text-zinc-400 block mb-1 sm:mb-2">
                   Suivant
                 </span>
-                <p className="text-lg font-black uppercase tracking-tight font-['Roboto'] line-clamp-2 group-hover:text-zinc-600 transition-colors">
+                <p className="text-base sm:text-lg font-black uppercase tracking-tight font-['Roboto'] line-clamp-2 group-hover:text-zinc-600 transition-colors">
                   {nextPost.title}
                 </p>
               </div>
               <motion.div
                 whileHover={{ x: 4 }}
-                className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-300 group-hover:bg-black group-hover:border-black transition-all"
+                className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-full border border-zinc-300 group-hover:bg-black group-hover:border-black transition-all"
               >
                 <ArrowRight
-                  size={20}
+                  size={18}
                   className="group-hover:text-white transition-colors"
                 />
               </motion.div>
             </Link>
           ) : (
-            <div className="py-12 px-4" />
+            <div className="py-8 sm:py-12 px-2 sm:px-4" />
           )}
         </div>
       </div>
