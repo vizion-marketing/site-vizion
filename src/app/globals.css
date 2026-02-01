@@ -147,7 +147,12 @@ h3, .h3 {
   color: var(--bg-white) !important;
 }
 
-/* Ensure white text on all dark gradient backgrounds */
+/* Ensure white text on all dark backgrounds */
+.bg-black h1,
+.bg-black h2,
+.bg-black h3,
+.bg-black .h1,
+.bg-black .h2,
 [class*="bg-gradient-to"][class*="from-[#B7B7B7]"] h1,
 [class*="bg-gradient-to"][class*="from-[#B7B7B7]"] h2,
 [class*="bg-gradient-to"][class*="from-[#B7B7B7]"] h3,

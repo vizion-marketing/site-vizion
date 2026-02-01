@@ -767,83 +767,101 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       />
 
       {/* HERO SECTION */}
-      <section className="relative pt-20 sm:pt-24 md:pt-[100px] pb-16 sm:pb-20 md:pb-[80px] px-4 sm:px-6 md:px-12 bg-[#B7B7B7] bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] flex items-center min-h-[100svh] lg:min-h-[95vh]">
-        {/* Pattern texture overlay */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+      <section className="relative pt-20 sm:pt-24 md:pt-[80px] pb-10 sm:pb-12 md:pb-[40px] px-4 sm:px-6 md:px-12 bg-black flex items-center min-h-[100svh] overflow-hidden grain-overlay">
+        {/* Premium Mesh Gradient Background - Left Half Only */}
+        <div
+          className="absolute top-0 left-0 w-1/2 h-full pointer-events-none z-0"
+          style={{
+            background: `
+              radial-gradient(at 40% 50%, rgba(238, 255, 65, 0.08) 0%, transparent 50%),
+              radial-gradient(at 10% 15%, rgba(238, 255, 65, 0.05) 0%, transparent 40%),
+              radial-gradient(at 60% 85%, rgba(238, 255, 65, 0.04) 0%, transparent 45%),
+              radial-gradient(at 20% 75%, rgba(238, 255, 65, 0.04) 0%, transparent 40%)
+            `
+          }}
+        />
 
-        <div className="max-w-[82.5rem] mx-auto w-full relative z-10">
-          {/* CONTENT CARD */}
+        <div className="max-w-[82.5rem] mx-auto w-full relative z-10 lg:grid lg:grid-cols-2 lg:gap-6 lg:items-stretch">
+          {/* CONTENT AREA */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-            className="w-full lg:max-w-[720px] lg:min-h-[700px] xl:min-h-[750px] bg-black/20 backdrop-blur-md rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 shadow-2xl relative z-10 flex flex-col justify-between border border-white/10"
+            className="w-full p-4 sm:p-6 md:p-8 relative z-10 flex flex-col justify-center gap-4"
           >
-            <div className="flex items-center gap-2 mb-3 sm:mb-4">
+            <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-50"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-white via-amber-100 to-amber-200 shadow-[0_0_8px_rgba(255,255,255,0.5)]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-50"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#EEFF41] via-[#EEFF41]/80 to-[#EEFF41]/50 shadow-[0_0_8px_rgba(238,255,65,0.5)]"></span>
               </span>
               <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.1em] uppercase" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 {homeContent.hero.badge}
               </span>
             </div>
 
-            <h1 className="font-['Roboto'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-tight uppercase text-white mb-3 sm:mb-4">
+            <h1 className="font-['Roboto'] font-[900] text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-[1.08] tracking-[0.02em] uppercase text-white">
               {homeContent.hero.h1}
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-6 max-w-2xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
+            <p className="text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
               {homeContent.hero.baseline}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-white/10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pb-4 border-b border-white/10">
               {homeContent.hero.badges.map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold uppercase tracking-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                  <CheckCircle2 size={14} className="shrink-0" style={{ color: 'rgba(255,255,255,0.8)' }} />
+                  <CheckCircle2 size={14} className="shrink-0" style={{ color: '#EEFF41' }} />
                   {item}
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <Link href={homeContent.hero.cta.primary.href} className="h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35),inset_0_1px_0_0_rgba(255,255,255,0.6)] hover:-translate-y-0.5">
+            <div className="flex flex-col sm:flex-row gap-2.5 mt-4">
+              <Link href={homeContent.hero.cta.primary.href} className="h-[44px] sm:h-[48px] px-5 sm:px-7 text-[13px] sm:text-[14px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35),inset_0_1px_0_0_rgba(255,255,255,0.6)] hover:-translate-y-0.5">
                 {homeContent.hero.cta.primary.text} <ArrowRight size={16} />
               </Link>
-              <Link href={homeContent.hero.cta.secondary.href} className="h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center rounded-full transition-all duration-300 active:scale-95 bg-white/10 backdrop-blur-xl text-white border border-white/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.2)] hover:bg-white/20 hover:border-white/30 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:-translate-y-0.5">
+              <Link href={homeContent.hero.cta.secondary.href} className="h-[44px] sm:h-[48px] px-5 sm:px-7 text-[13px] sm:text-[14px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center rounded-full transition-all duration-300 active:scale-95 bg-white/10 backdrop-blur-xl text-white border border-white/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.2)] hover:bg-white/20 hover:border-white/30 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:-translate-y-0.5">
                 {homeContent.hero.cta.secondary.text}
               </Link>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/20 bg-white/10 overflow-hidden">
-                    <Image src={`https://i.pravatar.cc/40?img=${i + 10}`} alt="Client" width={40} height={40} className="w-full h-full object-cover grayscale" />
+            {/* Logo slider */}
+            <div className="relative overflow-hidden w-full mt-4" style={{ maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)' }}>
+              <div className="flex animate-scroll-left gap-8 w-max">
+                {[...Array(2)].map((_, setIndex) => (
+                  <div key={setIndex} className="flex gap-8 items-center shrink-0">
+                    {[
+                      { name: "easyVirtual.tours", src: "/images/clients/easyvirtual.svg" },
+                      { name: "Eldo Wallet", src: "/images/clients/eldo.svg" },
+                      { name: "Ensenat Coaching", src: "/images/clients/ensenat.svg" },
+                      { name: "Olivier Bas", src: "/images/clients/olivierbas.svg" },
+                      { name: "Précision Industries", src: "/images/clients/precision.svg" },
+                      { name: "SaaS Corp", src: "/images/clients/saas.svg" },
+                    ].map((logo) => (
+                      <img
+                        key={`${setIndex}-${logo.name}`}
+                        src={logo.src}
+                        alt={logo.name}
+                        className="h-6 sm:h-7 w-auto opacity-50 hover:opacity-80 transition-opacity brightness-0 invert"
+                      />
+                    ))}
                   </div>
                 ))}
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/30 bg-white flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-black shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                  +70
-                </div>
-              </div>
-              <div className="text-[9px] sm:text-[10px] font-bold tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                {homeContent.hero.socialProof}
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT IMAGE - IMMERSIVE & OVERLAPPING */}
+          {/* RIGHT IMAGE */}
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
-            className="hidden lg:block absolute top-1/2 -translate-y-1/2 right-0 w-[400px] xl:w-[550px] h-[600px] xl:h-[750px] z-30 group"
+            className="hidden lg:block relative z-30 group overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl"
           >
             <img
               src="/hero-binoculars.png"
               alt="Strategie"
-              className="w-full h-full object-cover shadow-2xl"
-              style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+              className="absolute inset-0 w-full h-full object-cover"
             />
             {/* Decorative frame elements */}
             <div className="absolute top-8 right-8 w-12 xl:w-16 h-12 xl:h-16 border-t-2 border-r-2 border-white/30 z-20" />

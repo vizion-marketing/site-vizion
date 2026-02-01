@@ -238,17 +238,19 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Agence Marketing Toulouse | Vizion — Marketing Stratégique",
-    description: "Agence marketing Toulouse spécialisée en stratégie marketing. Vizion accompagne les PME et ETI dans leurs moments de transformation : lancement, innovation, restructuration. Directeur marketing dédié. +70 entreprises accompagnées.",
+    title: "Agence de Marketing Stratégique à Toulouse | Vizion",
+    description: "Vizion, agence de marketing stratégique à Toulouse. Nous concevons des stratégies marketing alignées sur vos objectifs business et les déployons jusqu'au terrain commercial. PME, ETI, scale-ups : lancement, repositionnement, accélération. Directeur marketing dédié. +70 entreprises accompagnées.",
     keywords: [
-      "agence marketing toulouse",
+      "agence de marketing stratégique toulouse",
       "agence marketing stratégique toulouse",
-      "conseil marketing toulouse",
+      "marketing stratégique toulouse",
+      "agence marketing toulouse",
+      "conseil en marketing stratégique toulouse",
       "directeur marketing externalisé toulouse",
       "marketing produit toulouse",
-      "consultant marketing toulouse",
-      "accompagnement marketing toulouse",
-      "marketing intelligence artificielle toulouse"
+      "sales enablement toulouse",
+      "consultant marketing stratégique toulouse",
+      "accompagnement marketing B2B toulouse"
     ],
     ogImage: "/og-image.jpg"
   },
@@ -257,14 +259,14 @@ export const homeContent: HomeContent = {
   // HERO SECTION
   // --------------------------------------------------------------------------
   hero: {
-    badge: "AGENCE MARKETING TOULOUSE — STRATÉGIE",
-    h1: "VOTRE AGENCE MARKETING À TOULOUSE",
-    h1Highlight: "TOULOUSE",
-    baseline: "Chez Vizion, nous croyons que le marketing doit servir vos ventes. Notre agence vous accompagne dans vos moments de transformation : lancement, innovation, restructuration, accélération. Votre directeur marketing dédié pilote l'ensemble de vos travaux, de la stratégie jusqu'au terrain commercial.",
+    badge: "AGENCE DE MARKETING STRATÉGIQUE — TOULOUSE",
+    h1: "VOTRE AGENCE DE MARKETING STRATÉGIQUE À TOULOUSE",
+    h1Highlight: "STRATÉGIQUE",
+    baseline: "Le marketing doit servir vos ventes, pas produire des contenus que personne ne lit. Nous concevons des stratégies alignées sur vos objectifs business et les déployons jusqu'au terrain commercial.",
     badges: [
       "Directeur marketing dédié",
       "70+ entreprises accompagnées",
-      "Basés à Toulouse depuis 2021"
+      "Stratégie → terrain commercial"
     ],
     cta: {
       primary: { text: "Parlons de vos enjeux", href: "/contact" },
@@ -278,11 +280,11 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   preuveSociale: {
     surtitre: "[ NOS RÉALISATIONS ]",
-    h2: "DES RÉSULTATS MESURABLES POUR NOS CLIENTS",
+    h2: "DES RÉSULTATS MESURABLES, DU POSITIONNEMENT AU CLOSING",
     h2Highlight: "MESURABLES",
-    description: "Nous accompagnons les entreprises dans leurs moments stratégiques. Voici comment nous avons aidé nos clients à atteindre leurs objectifs.",
-    trustBanner: "Depuis 2021, plus de 70 entreprises à Toulouse et en France nous font confiance pour leurs enjeux marketing et commerciaux",
-    trustBannerHighlight: "70 entreprises",
+    description: "Notre agence de marketing stratégique à Toulouse intervient dans les moments qui comptent : lancement, repositionnement, accélération. Voici comment notre approche, de la stratégie jusqu'au terrain commercial, transforme les résultats de nos clients.",
+    trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing stratégique à Toulouse et en France",
+    trustBannerHighlight: "70 PME, ETI et scale-ups",
 
     clients: [
       {
@@ -338,9 +340,9 @@ export const homeContent: HomeContent = {
   // 5 PILIERS
   // --------------------------------------------------------------------------
   piliers: {
-    surtitre: "LES SERVICES DE L'AGENCE",
-    h2: "CINQ PILIERS POUR VOTRE PERFORMANCE COMMERCIALE",
-    description: "Nous intervenons sur cinq domaines complémentaires, guidés par une seule ambition : faciliter vos ventes. Chaque intervention est conçue pour raccourcir vos cycles de décision et équiper vos équipes commerciales.",
+    surtitre: "NOS EXPERTISES EN MARKETING STRATÉGIQUE",
+    h2: "CINQ PILIERS AU SERVICE DE VOTRE PERFORMANCE COMMERCIALE",
+    description: "Notre agence de marketing stratégique intervient sur cinq domaines complémentaires, guidés par une seule ambition : faciliter vos ventes. Nous ne sommes pas une agence d'exécution. Chaque intervention est conçue pour raccourcir vos cycles de décision et équiper vos équipes commerciales.",
     badgeText: "Notre approche",
     badgeStatus: "STRATÉGIQUE",
     piliers: [
@@ -348,30 +350,30 @@ export const homeContent: HomeContent = {
         numero: "01",
         surtitre: "STRATÉGIE",
         titre: "Stratégie & Marketing Produit",
-        description: "Nous définissons votre positionnement et structurons votre architecture de message. Identification des leviers de croissance, construction d'une proposition de valeur différenciante. Audits complets et roadmaps marketing alignées sur vos objectifs business.",
-        services: ["Audit marketing & commercial", "Positionnement stratégique", "Architecture de message", "Roadmap marketing", "Plan de mise en marché", "Ateliers stratégiques"],
+        description: "Le socle de toute notre intervention. Nous définissons votre positionnement et structurons votre architecture de message pour que chaque action marketing serve vos objectifs business. Audits stratégiques, proposition de valeur différenciante, plans de mise en marché : tout part d'ici.",
+        services: ["Audit marketing & positionnement", "Architecture de message", "Plan de mise en marché", "Proposition de valeur", "Roadmap marketing stratégique", "Ateliers et formations"],
         cta: "DÉFINIR VOTRE STRATÉGIE"
       },
       {
         numero: "02",
         surtitre: "DIGITAL",
         titre: "Actifs Digitaux & Conversion",
-        description: "Conception de sites web premium et landing pages de haute qualité, pensés pour convertir. Interfaces adaptées à vos cycles de décision, visuels sur mesure, attention portée à chaque détail. Chaque actif digital sert votre stratégie.",
-        services: ["Sites web premium", "Landing pages à conversion", "Visuels & design sur mesure", "Tunnels d'acquisition", "Pages institutionnelles", "Optimisation UX/UI"]
+        description: "Chaque actif digital intervient au bon moment, pour les bonnes raisons, au service d'une stratégie définie. Sites web, landing pages, tunnels d'acquisition : nous concevons des interfaces adaptées aux cycles de décision longs du B2B, pas des vitrines décoratives.",
+        services: ["Sites web B2B performants", "Landing pages de conversion", "Tunnels d'acquisition", "Pages institutionnelles", "Visuels stratégiques", "Optimisation UX/UI"]
       },
       {
         numero: "03",
         surtitre: "VENTE",
-        titre: "Aide à la Vente & Influence",
-        description: "Renforcement de l'efficacité commerciale en créant les outils nécessaires à chaque phase du cycle de vente. Présentations commerciales premium, pitch decks stratégiques, one-pagers percutants, argumentaires structurés. Accompagnement jusqu'aux phases de négociation et de closing.",
-        services: ["Présentations commerciales premium", "Pitch decks stratégiques", "One-pagers & sales sheets", "Argumentaires structurés", "Stratégies LinkedIn", "Contenus d'influence"]
+        titre: "Sales Enablement & Influence",
+        description: "C'est ce qui nous distingue : nous intervenons jusqu'aux phases de négociation et de closing. Présentations commerciales, pitch decks, argumentaires structurés, supports d'aide à la décision. Nous dotons vos équipes commerciales des outils nécessaires à la conversion.",
+        services: ["Présentations commerciales", "Pitch decks stratégiques", "Argumentaires de vente", "Supports d'aide à la décision", "Stratégies LinkedIn", "Personal branding dirigeant"]
       },
       {
         numero: "04",
         surtitre: "ACQUISITION",
         titre: "Acquisition & Génération d'Opportunités",
-        description: "Génération d'un flux régulier d'opportunités commerciales qualifiées. Campagnes d'emailing à fort taux de conversion, workflows de lead nurturing, activation des canaux pertinents pour votre marché : LinkedIn Ads, Google Ads, SEO technique et contenu.",
-        services: ["Campagnes emailing avancées", "Lead nurturing automation", "LinkedIn Ads & Google Ads", "Référencement SEO", "Content marketing", "Webinaires & événements"]
+        description: "Génération d'un flux régulier d'opportunités commerciales qualifiées via des dispositifs ciblés. Nous activons les canaux pertinents pour votre marché et construisons des systèmes d'acquisition reproductibles, pas des campagnes ponctuelles sans lendemain.",
+        services: ["Campagnes d'emailing avancées", "Lead nurturing automatisé", "LinkedIn Ads & Google Ads", "Référencement SEO", "Content marketing B2B", "Lead magnets & acquisition"]
       },
       {
         numero: "05",
@@ -381,7 +383,7 @@ export const homeContent: HomeContent = {
         services: ["Déploiement CRM (HubSpot, Pipedrive, GHL)", "Automatisations avancées", "Intégrations API sur mesure", "Workflows métier personnalisés", "Dashboards & reporting", "Migration de données"]
       }
     ],
-    ctaText: "Rejoignez les 70+ entreprises qui ont fait confiance à notre expertise stratégique.",
+    ctaText: "Rejoignez les 70+ entreprises qui ont structuré leur marketing stratégique avec Vizion.",
     socialProofText: "+70 entreprises accompagnées depuis 2021",
     cta: {
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" },
@@ -393,10 +395,10 @@ export const homeContent: HomeContent = {
   // IA HIGHLIGHT - VIBE CODING
   // --------------------------------------------------------------------------
   iaHighlight: {
-    surtitre: "CE QUI DIFFÉRENCIE L'AGENCE",
-    h2: "L'INTELLIGENCE ARTIFICIELLE AU SERVICE DU MARKETING",
-    h2Highlight: "MARKETING",
-    introduction: "Chez Vizion, nous intégrons l'intelligence artificielle dans nos méthodologies et dans celles de nos clients. Son déploiement est réfléchi : nous l'utilisons là où elle apporte une valeur ajoutée réelle, pas de manière systématique. Cette approche permet d'accélérer l'exécution tout en préservant la qualité stratégique.",
+    surtitre: "CE QUI DIFFÉRENCIE NOTRE AGENCE DE MARKETING STRATÉGIQUE",
+    h2: "L'IA COMME LEVIER, PAS COMME ARGUMENT",
+    h2Highlight: "LEVIER",
+    introduction: "Notre agence de marketing stratégique intègre l'intelligence artificielle dans ses méthodologies et dans celles de ses clients. Le déploiement est réfléchi : nous l'utilisons là où elle apporte une valeur ajoutée mesurable, pas de manière systématique. La stratégie et les décisions restent pilotées par l'expertise humaine.",
     whyImportant: [
       "L'IA permet de créer des contenus d'acquisition en une fraction du temps habituel.",
       "Nous trions et enrichissons des listes de prospection pour prioriser les comptes à fort potentiel.",
@@ -451,9 +453,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   quandCommencer: {
     surtitre: "COMMENT NOUS TRAVAILLONS",
-    h2: "DEUX MODES D'ACCOMPAGNEMENT",
+    h2: "DEUX MODES D'ACCOMPAGNEMENT EN MARKETING STRATÉGIQUE",
     h2Highlight: "ACCOMPAGNEMENT",
-    description: "Nous adaptons notre intervention à vos besoins : mission stratégique sur un enjeu précis ou accompagnement dans la durée. Dans les deux cas, un directeur marketing dédié pilote l'ensemble de vos travaux.",
+    description: "Nous adaptons notre intervention à vos besoins : mission ciblée sur un enjeu précis ou direction marketing externalisée dans la durée. Dans les deux cas, un directeur marketing dédié pilote l'ensemble de vos travaux — pas un chef de projet, un expert capable de dialoguer avec vos équipes dirigeantes.",
     scenarios: [
       {
         number: "01",
@@ -506,20 +508,20 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   aPropos: {
     surtitre: "NOTRE CONVICTION",
-    h2: "POURQUOI VIZION EXISTE",
-    h2Highlight: "VIZION",
+    h2: "DES STRATÈGES, PAS UNE AGENCE D'EXÉCUTION",
+    h2Highlight: "STRATÈGES",
     paragraphs: [
-      "Le marketing s'est perdu. Trop souvent cantonné à la communication, aux vanity metrics ou aux tactiques déconnectées du terrain, il a oublié sa raison d'être : faciliter vos ventes.",
-      "Chez Vizion, nous ramenons le marketing à sa mission originelle. Il doit servir votre stratégie d'entreprise, équiper vos commerciaux, raccourcir vos cycles de décision. Pas produire des contenus que personne ne lit."
+      "Le marketing s'est perdu. Trop souvent cantonné à la communication, aux vanity metrics ou aux tactiques déconnectées du terrain, il a oublié sa raison d'être : faciliter la vente.",
+      "Vizion n'est pas une agence que l'on consulte pour produire un logo ou refaire une plaquette. Nous sommes des stratèges. Nous concevons des feuilles de route marketing alignées sur vos objectifs business, et nous les déployons jusqu'au terrain commercial. Chaque livrable intervient au bon moment, pour les bonnes raisons, au service d'une stratégie définie."
     ],
     founderQuote: {
-      quote: "Le marketing doit servir la stratégie de l'entreprise, équiper les commerciaux, raccourcir les cycles de décision. Pas produire des contenus que personne ne lit.",
+      quote: "Nous challengeons les demandes, nous questionnons les priorités, nous refusons de produire pour produire. Le marketing doit servir la stratégie de l'entreprise et raccourcir les cycles de décision.",
       name: "Lucas Gonzalez",
       role: "Co-fondateur — Vizion"
     },
     photoCaption: {
       label: "Vizion",
-      title: "Agence de marketing stratégique — Toulouse"
+      title: "Agence de marketing stratégique à Toulouse"
     },
     valeursTitre: "NOS ENGAGEMENTS",
     valeurs: [
@@ -549,7 +551,7 @@ export const homeContent: HomeContent = {
     surtitre: "L'ÉQUIPE",
     h2: "UNE STRUCTURE HYBRIDE, SOLIDE ET AGILE",
     h2Highlight: "HYBRIDE",
-    description: "Nous nous appuyons sur une équipe interne structurée et un réseau de consultants experts, mobilisés selon les besoins spécifiques de chaque projet. Ce modèle hybride garantit à la fois la continuité d'accompagnement et l'accès à des compétences pointues. Chaque client bénéficie d'un interlocuteur unique : un directeur marketing dédié qui pilote l'ensemble des travaux et assure le lien avec les équipes dirigeantes.",
+    description: "Notre agence de marketing stratégique s'appuie sur une équipe interne structurée et un réseau de consultants experts, mobilisés selon les besoins de chaque projet. Le meilleur des deux modèles : continuité d'accompagnement et accès à des compétences pointues. Chaque client bénéficie d'un directeur marketing dédié — pas un chef de projet, un expert du marketing stratégique capable de dialoguer avec vos équipes dirigeantes.",
     modelExplanation: {
       director: "Votre Directeur Marketing Dédié",
       squads: "Nos Experts Spécialisés"
@@ -616,37 +618,37 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   faq: {
     surtitre: "[ FAQ ]",
-    h2: "QUESTIONS FRÉQUENTES",
+    h2: "QUESTIONS FRÉQUENTES SUR NOTRE AGENCE",
     h2Highlight: "FRÉQUENTES",
-    description: "Nous communiquons avec transparence sur nos modalités d'intervention. Voici les réponses aux questions les plus fréquentes.",
+    description: "Nous communiquons avec transparence sur nos modalités d'intervention. Voici les réponses aux questions les plus fréquentes sur notre agence de marketing stratégique à Toulouse.",
     questions: [
       {
-        question: "Pourquoi choisir une agence marketing à Toulouse comme Vizion ?",
-        answer: "Vizion est une agence marketing à Toulouse spécialisée en stratégie marketing. Contrairement aux agences généralistes, nous intervenons spécifiquement auprès des PME et ETI qui traversent des moments stratégiques : lancement, innovation, restructuration, accélération. Chaque client bénéficie d'un directeur marketing dédié qui pilote l'ensemble des travaux."
+        question: "Qu'est-ce qu'une agence de marketing stratégique ?",
+        answer: "Une agence de marketing stratégique conçoit des feuilles de route marketing alignées sur les objectifs business de l'entreprise, contrairement aux agences d'exécution qui produisent des livrables sans cadre stratégique. Chez Vizion, chaque action marketing — positionnement, architecture de message, sales enablement, acquisition — s'inscrit dans une stratégie définie. Nous intervenons de la conception jusqu'au terrain commercial, y compris dans les phases de négociation et de closing."
+      },
+      {
+        question: "Pourquoi choisir Vizion comme agence de marketing stratégique à Toulouse ?",
+        answer: "Vizion se distingue par trois caractéristiques : un directeur marketing dédié (pas un chef de projet) qui pilote l'ensemble de vos travaux et dialogue avec vos équipes dirigeantes ; une intervention couvrant tout le cycle commercial, du positionnement jusqu'aux outils d'aide à la vente ; et une intégration réfléchie de l'intelligence artificielle là où elle apporte une valeur ajoutée mesurable. Plus de 70 PME, ETI et scale-ups nous font confiance depuis 2021."
       },
       {
         question: "Avec quels types d'entreprises travaillez-vous ?",
-        answer: "Nous travaillons principalement avec des PME de 10 à 250 collaborateurs, des ETI et des scale-ups en phase de croissance. Nos clients évoluent dans l'industrie, les technologies, l'édition de logiciels et les services à forte valeur ajoutée."
+        answer: "Nous travaillons avec des PME de 10 à 250 collaborateurs, des ETI et des scale-ups en phase de croissance. Nos clients évoluent dans l'industrie, les technologies, l'édition de logiciels et les services B2B à forte valeur ajoutée. Nous collaborons avec des dirigeants qui ont compris que le marketing n'est pas une solution miracle : construire une présence sur son marché demande du temps, de l'itération et un engagement dans la durée."
       },
       {
-        question: "Quelle est la durée typique d'un accompagnement ?",
-        answer: "Cela dépend de la nature de l'intervention. Une mission stratégique ciblée s'étend sur 8 à 16 semaines. Un accompagnement en direction marketing externalisée nécessite un engagement minimum de 6 mois pour garantir la continuité et l'efficacité. Nous communiquons les délais réalistes dès le cadrage du projet."
-      },
-      {
-        question: "Quel est l'investissement à prévoir pour une agence marketing ?",
-        answer: "Nos clients investissent généralement entre 4 500 € et 15 000 € par mois, selon la nature et l'ampleur de l'accompagnement. Chaque projet fait l'objet d'un cadrage précis et d'un devis détaillé."
+        question: "Quelle est la différence entre une mission stratégique et une direction marketing externalisée ?",
+        answer: "La mission stratégique ciblée (8 à 16 semaines) intervient sur un enjeu précis : lancement de produit, repositionnement, structuration d'une offre. La direction marketing externalisée (engagement minimum 6 mois, à partir de 4 500 €/mois) est un accompagnement dans la durée où nous endossons le rôle de votre direction marketing. Dans les deux cas, un directeur marketing dédié pilote l'ensemble des travaux."
       },
       {
         question: "Intervenez-vous uniquement à Toulouse ?",
-        answer: "Basée à Toulouse, Vizion accompagne des clients partout en France et à l'international. Nous adaptons nos modalités d'intervention : visioconférences, déplacements ponctuels selon les besoins du projet. La proximité avec Toulouse reste un atout pour nos clients locaux."
+        answer: "Notre agence de marketing stratégique est basée à Toulouse, mais nous accompagnons des clients partout en France et à l'international. Nous adaptons nos modalités d'intervention : sessions en présentiel, visioconférences, déplacements ponctuels selon les besoins du projet. La proximité avec Toulouse et l'Occitanie reste un atout pour nos clients locaux."
       },
       {
-        question: "Comment intégrez-vous l'intelligence artificielle ?",
-        answer: "Nous intégrons l'IA là où elle apporte une valeur ajoutée mesurable : production de contenus d'acquisition, tri et enrichissement de listes de prospection, personnalisation des approches commerciales à l'échelle. Le déploiement est réfléchi, pas systématique. La stratégie et les décisions restent pilotées par l'expertise humaine."
+        question: "Comment intégrez-vous l'intelligence artificielle dans votre approche ?",
+        answer: "L'IA est un levier, pas un argument. Nous l'intégrons là où elle apporte une valeur ajoutée mesurable : création de lead magnets et contenus d'acquisition en une fraction du temps, tri et enrichissement de listes de prospection pour prioriser les comptes à fort potentiel, personnalisation des approches commerciales à l'échelle. La stratégie et les décisions restent pilotées par l'expertise humaine."
       },
       {
         question: "Travaillez-vous avec les équipes marketing internes ?",
-        answer: "Oui. Nous travaillons main dans la main avec les équipes internes. Notre rôle n'est pas de les remplacer, mais de les renforcer : apporter une expertise complémentaire, structurer les processus, transférer les compétences. La pédagogie fait partie intégrante de notre approche."
+        answer: "Nous travaillons aux côtés des directions marketing, pas à leur place. Notre rôle est de renforcer vos équipes : apporter une expertise complémentaire en marketing stratégique, structurer les processus, transférer les compétences. La pédagogie fait partie intégrante de notre approche. Un accompagnement réussi, c'est une équipe interne plus autonome à la fin du projet."
       }
     ],
     ctaText: "Une autre question ? Échangeons directement.",
@@ -681,9 +683,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   finalCta: {
     trustBadge: "+70 entreprises à Toulouse et en France nous font confiance",
-    h2: "ÉCHANGEONS SUR VOS ENJEUX",
-    h2Highlight: "ENJEUX",
-    description: "Vous recherchez une agence marketing à Toulouse qui comprend vos enjeux ? Vous traversez un moment stratégique et le marketing devient un enjeu de performance commerciale ? Nous vous proposons un échange de 15 minutes pour identifier si nous pouvons vous accompagner.",
+    h2: "ÉCHANGEONS SUR VOS ENJEUX STRATÉGIQUES",
+    h2Highlight: "STRATÉGIQUES",
+    description: "Vous traversez un moment stratégique — lancement, repositionnement, accélération — et le marketing devient un enjeu de performance commerciale ? Notre agence de marketing stratégique à Toulouse vous propose un échange de 15 minutes pour identifier si nous pouvons vous accompagner.",
     cta: {
       primary: { text: "Parlons de votre projet", href: "/contact" },
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
@@ -704,9 +706,9 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://by-vizion.com/#organization",
-  "name": "Vizion — Agence Marketing Toulouse",
-  "alternateName": ["Vizion", "Agence Marketing Toulouse Vizion", "Vizion Marketing"],
-  "description": "Agence marketing à Toulouse spécialisée en stratégie marketing. Vizion accompagne les PME et ETI dans leurs moments de transformation : lancement de produit, innovation, restructuration, accélération. Marketing au service de la performance commerciale. Plus de 70 entreprises accompagnées depuis 2021.",
+  "name": "Vizion — Agence de Marketing Stratégique à Toulouse",
+  "alternateName": ["Vizion", "Vizion Marketing Stratégique", "Agence Marketing Stratégique Toulouse"],
+  "description": "Agence de marketing stratégique à Toulouse. Vizion conçoit des stratégies marketing alignées sur les objectifs business des PME, ETI et scale-ups, et les déploie jusqu'au terrain commercial. Lancement de produit, repositionnement, accélération de croissance. Plus de 70 entreprises accompagnées depuis 2021.",
   "url": "https://by-vizion.com",
   "logo": {
     "@type": "ImageObject",
