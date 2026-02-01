@@ -549,8 +549,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   equipe: {
     surtitre: "L'ÉQUIPE",
-    h2: "UNE STRUCTURE HYBRIDE, SOLIDE ET AGILE",
-    h2Highlight: "HYBRIDE",
+    h2: "LES MEILLEURS TALENTS DE TOULOUSE ET D'AILLEURS, À VOTRE DISPOSITION.",
+    h2Highlight: "TALENTS",
     description: "Notre agence de marketing stratégique s'appuie sur une équipe interne structurée et un réseau de consultants experts, mobilisés selon les besoins de chaque projet. Le meilleur des deux modèles : continuité d'accompagnement et accès à des compétences pointues. Chaque client bénéficie d'un directeur marketing dédié — pas un chef de projet, un expert du marketing stratégique capable de dialoguer avec vos équipes dirigeantes.",
     modelExplanation: {
       director: "Votre Directeur Marketing Dédié",
