@@ -262,14 +262,14 @@ export const homeContent: HomeContent = {
     badge: "AGENCE DE MARKETING STRATÉGIQUE — TOULOUSE",
     h1: "VOTRE AGENCE DE MARKETING STRATÉGIQUE À TOULOUSE",
     h1Highlight: "STRATÉGIQUE",
-    baseline: "Le marketing doit servir vos ventes, pas produire des contenus que personne ne lit. Nous concevons des stratégies alignées sur vos objectifs business et les déployons jusqu'au terrain commercial.",
+    baseline: "Votre performance marketing et commerciale repose sur quatre leviers : des décisions éclairées, des canaux efficaces, des processus optimisés et des équipes marketing et commerciales qui parlent le même langage. Chez Vizion, nous les construisons avec vous.",
     badges: [
-      "Directeur marketing dédié",
-      "70+ entreprises accompagnées",
-      "Stratégie → terrain commercial"
+      "Décisions éclairées",
+      "Canaux marketing efficaces",
+      "Process commerciaux optimisés"
     ],
     cta: {
-      primary: { text: "Parlons de vos enjeux", href: "/contact" },
+      primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES DEPUIS 2021"
@@ -340,46 +340,46 @@ export const homeContent: HomeContent = {
   // 5 PILIERS
   // --------------------------------------------------------------------------
   piliers: {
-    surtitre: "NOS EXPERTISES EN MARKETING STRATÉGIQUE",
-    h2: "CINQ PILIERS AU SERVICE DE VOTRE PERFORMANCE COMMERCIALE",
-    description: "Notre agence de marketing stratégique intervient sur cinq domaines complémentaires, guidés par une seule ambition : faciliter vos ventes. Nous ne sommes pas une agence d'exécution. Chaque intervention est conçue pour raccourcir vos cycles de décision et équiper vos équipes commerciales.",
+    surtitre: "NOS DOMAINES D'INTERVENTION",
+    h2: "CINQ LEVIERS AU SERVICE DE VOTRE PERFORMANCE MARKETING ET COMMERCIALE",
+    description: "Notre agence intervient sur cinq domaines complémentaires pour améliorer votre performance marketing et commerciale. Des canaux plus efficaces, des décisions mieux informées, des processus optimisés et des équipes alignées : chaque intervention est conçue pour produire des résultats mesurables.",
     badgeText: "Notre approche",
     badgeStatus: "STRATÉGIQUE",
     piliers: [
       {
         numero: "01",
-        surtitre: "STRATÉGIE",
-        titre: "Stratégie & Marketing Produit",
-        description: "Le socle de toute notre intervention. Nous définissons votre positionnement et structurons votre architecture de message pour que chaque action marketing serve vos objectifs business. Audits stratégiques, proposition de valeur différenciante, plans de mise en marché : tout part d'ici.",
+        surtitre: "PRODUCT MARKETING",
+        titre: "Construisez un narratif produit irrésistible",
+        description: "Votre offre mérite mieux qu'un descriptif de fonctionnalités. Nous structurons votre positionnement, votre proposition de valeur et votre architecture de message pour que votre produit résonne sur son marché. De l'audit stratégique au plan de mise en marché, chaque décision est alignée sur vos objectifs business.",
         services: ["Audit marketing & positionnement", "Architecture de message", "Plan de mise en marché", "Proposition de valeur", "Roadmap marketing stratégique", "Ateliers et formations"],
         cta: "DÉFINIR VOTRE STRATÉGIE"
       },
       {
         numero: "02",
-        surtitre: "DIGITAL",
-        titre: "Actifs Digitaux & Conversion",
-        description: "Chaque actif digital intervient au bon moment, pour les bonnes raisons, au service d'une stratégie définie. Sites web, landing pages, tunnels d'acquisition : nous concevons des interfaces adaptées aux cycles de décision longs du B2B, pas des vitrines décoratives.",
+        surtitre: "ACTIFS DIGITAUX & CONVERSION",
+        titre: "Transformez vos interfaces en leviers de conversion",
+        description: "Un site web B2B n'est pas une vitrine : c'est un actif commercial. Nous concevons des interfaces adaptées aux cycles de décision longs et aux parcours multi-interlocuteurs. Chaque page, chaque tunnel d'acquisition intervient au bon moment du parcours pour guider vos prospects vers la conversion.",
         services: ["Sites web B2B performants", "Landing pages de conversion", "Tunnels d'acquisition", "Pages institutionnelles", "Visuels stratégiques", "Optimisation UX/UI"]
       },
       {
         numero: "03",
-        surtitre: "VENTE",
-        titre: "Sales Enablement & Influence",
-        description: "C'est ce qui nous distingue : nous intervenons jusqu'aux phases de négociation et de closing. Présentations commerciales, pitch decks, argumentaires structurés, supports d'aide à la décision. Nous dotons vos équipes commerciales des outils nécessaires à la conversion.",
+        surtitre: "SALES ENABLEMENT",
+        titre: "Armez vos commerciaux pour closer plus vite",
+        description: "C'est ce qui nous distingue : nous intervenons jusqu'aux phases de négociation et de closing. Présentations commerciales, pitch decks, argumentaires structurés, supports d'aide à la décision. Vos équipes commerciales disposent des outils nécessaires pour convaincre à chaque étape du cycle de vente.",
         services: ["Présentations commerciales", "Pitch decks stratégiques", "Argumentaires de vente", "Supports d'aide à la décision", "Stratégies LinkedIn", "Personal branding dirigeant"]
       },
       {
         numero: "04",
-        surtitre: "ACQUISITION",
-        titre: "Acquisition & Génération d'Opportunités",
-        description: "Génération d'un flux régulier d'opportunités commerciales qualifiées via des dispositifs ciblés. Nous activons les canaux pertinents pour votre marché et construisons des systèmes d'acquisition reproductibles, pas des campagnes ponctuelles sans lendemain.",
+        surtitre: "ACQUISITION & LEAD GENERATION",
+        titre: "Générez un flux prévisible d'opportunités qualifiées",
+        description: "Exit les campagnes ponctuelles sans lendemain. Nous construisons des systèmes d'acquisition reproductibles qui alimentent votre pipeline commercial en continu. Les bons canaux, les bons messages, les bons dispositifs pour votre marché.",
         services: ["Campagnes d'emailing avancées", "Lead nurturing automatisé", "LinkedIn Ads & Google Ads", "Référencement SEO", "Content marketing B2B", "Lead magnets & acquisition"]
       },
       {
         numero: "05",
-        surtitre: "SYSTÈMES",
-        titre: "Automatisation & CRM",
-        description: "Structuration des systèmes d'information marketing et commerciaux pour soutenir votre croissance. Déploiement et configuration de CRM performants (HubSpot, Pipedrive, Go High Level), automatisations sur mesure qui industrialisent vos processus. Intégrations, workflows, dashboards conçus pour votre réalité opérationnelle.",
+        surtitre: "AUTOMATISATION & CRM",
+        titre: "Industrialisez vos processus pour scaler sans friction",
+        description: "Vos outils doivent soutenir votre croissance, pas la freiner. Déploiement CRM, automatisations sur mesure, intégrations API, dashboards temps réel : nous structurons vos systèmes d'information marketing et commerciaux. Chaque workflow est conçu pour votre réalité opérationnelle.",
         services: ["Déploiement CRM (HubSpot, Pipedrive, GHL)", "Automatisations avancées", "Intégrations API sur mesure", "Workflows métier personnalisés", "Dashboards & reporting", "Migration de données"]
       }
     ],
@@ -549,8 +549,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   equipe: {
     surtitre: "L'ÉQUIPE",
-    h2: "UNE STRUCTURE HYBRIDE, SOLIDE ET AGILE",
-    h2Highlight: "HYBRIDE",
+    h2: "LES MEILLEURS TALENTS DE LA VILLE ROSE ET D'AILLEURS, À VOTRE SERVICE",
+    h2Highlight: "VILLE ROSE",
     description: "Notre agence de marketing stratégique s'appuie sur une équipe interne structurée et un réseau de consultants experts, mobilisés selon les besoins de chaque projet. Le meilleur des deux modèles : continuité d'accompagnement et accès à des compétences pointues. Chaque client bénéficie d'un directeur marketing dédié — pas un chef de projet, un expert du marketing stratégique capable de dialoguer avec vos équipes dirigeantes.",
     modelExplanation: {
       director: "Votre Directeur Marketing Dédié",

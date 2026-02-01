@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --webpack",
     "build": "contentlayer2 build && next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.4.0",
     "clsx": "^2.1.1",
     "contentlayer2": "^0.5.8",
+    "critters": "^0.0.25",
     "framer-motion": "^12.28.1",
     "lucide-react": "^0.562.0",
     "next": "16.1.4",
