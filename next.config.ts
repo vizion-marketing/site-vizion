@@ -22,8 +22,8 @@ const nextConfig: NextConfig = {
   // Pour export statique (Netlify, GitHub Pages, etc.), décommenter :
   // output: "export",
   // trailingSlash: true,
-  // Configuration Turbopack (Next.js 16+) - On utilise --webpack à la place à cause d'un bug Windows
-  // turbopack: {},
+  // Configuration Turbopack (Next.js 16+)
+  turbopack: {},
   // Optimisations de production
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
