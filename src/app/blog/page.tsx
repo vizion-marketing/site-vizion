@@ -20,15 +20,10 @@ import {
 } from "lucide-react";
 import { allPosts } from "contentlayer/generated";
 import { ImagePlaceholder } from "@/components/ui";
+import { BLOG_CATEGORIES } from "@/config/site";
 
-// Fixed categories for the blog
-const categories = [
-  "Tous",
-  "Actualité",
-  "IA for Sales",
-  "Product Marketing",
-  "Vente",
-];
+// Categories from centralized config
+const categories: string[] = [...BLOG_CATEGORIES];
 
 // Format date
 function formatDate(dateString: string): string {

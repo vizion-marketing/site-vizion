@@ -42,67 +42,6 @@ export type CaseStudy = {
   readingTime: string
 }
 
-export type CaseTemplate = {
-  /** File path relative to `contentDirPath` */
-  _id: string
-  _raw: Local.RawDocumentData
-  type: 'CaseTemplate'
-  id: string
-  title: string
-  sector: string
-  sectorIcon?: string | undefined
-  challenge: string
-  solution: string
-  results: any[]
-  quote?: string | undefined
-  quoteAuthor?: string | undefined
-  quoteRole?: string | undefined
-  /** MDX file body */
-  body: MDX
-  slug: string
-}
-
-export type Page = {
-  /** File path relative to `contentDirPath` */
-  _id: string
-  _raw: Local.RawDocumentData
-  type: 'Page'
-  title: string
-  description: string
-  template: 'home' | 'service' | 'case-study' | 'default'
-  heroTitle?: string | undefined
-  heroSubtitle?: string | undefined
-  ctaText?: string | undefined
-  ctaLink?: string | undefined
-  featuredImage?: string | undefined
-  order: number
-  category?: string | undefined
-  icon?: string | undefined
-  tags: string[]
-  metrics: any[]
-  features: any[]
-  process: any[]
-  faqs: any[]
-  testimonial?: any | undefined
-  relatedCaseStudies: string[]
-  painPoints: any[]
-  processSteps: any[]
-  investmentIncludes: string[]
-  guarantee?: string | undefined
-  testimonials: any[]
-  comparisonPoints: any[]
-  idealFor: string[]
-  notIdealFor: string[]
-  heroVideoUrl?: string | undefined
-  metaTitle?: string | undefined
-  metaDescription?: string | undefined
-  keywords: string[]
-  /** MDX file body */
-  body: MDX
-  slug: string
-  url: string
-}
-
 export type Post = {
   /** File path relative to `contentDirPath` */
   _id: string
@@ -135,17 +74,15 @@ export type Post = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = CaseStudy | CaseTemplate | Page | Post
-export type DocumentTypeNames = 'CaseStudy' | 'CaseTemplate' | 'Page' | 'Post'
+export type DocumentTypes = CaseStudy | Post
+export type DocumentTypeNames = 'CaseStudy' | 'Post'
 
 export type NestedTypes = never
 export type NestedTypeNames = never
 
 export type DataExports = {
   allDocuments: DocumentTypes[]
-  allPages: Page[]
   allPosts: Post[]
-  allCaseTemplates: CaseTemplate[]
   allCaseStudies: CaseStudy[]
 }
 
@@ -167,8 +104,6 @@ declare global {
 
 export type DocumentTypeMap = {
   CaseStudy: CaseStudy
-  CaseTemplate: CaseTemplate
-  Page: Page
   Post: Post
 }
 

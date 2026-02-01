@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = caseStudy.metaTitle || `${caseStudy.title} | Cas Client`;
   const description = caseStudy.metaDescription || caseStudy.description;
-  const url = `https://stratege.marketing/cas-clients/${slug}`;
+  const url = `https://by-vizion.com/cas-clients/${slug}`;
 
   return {
     title,
@@ -92,17 +92,17 @@ export default async function CaseStudyPage({ params }: Props) {
     author: {
       "@type": "Organization",
       name: "Stratège",
-      url: "https://stratege.marketing",
+      url: "https://by-vizion.com",
     },
     publisher: {
       "@type": "Organization",
       name: "Stratège",
-      url: "https://stratege.marketing",
+      url: "https://by-vizion.com",
     },
     datePublished: caseStudy.publishedAt,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://stratege.marketing/cas-clients/${slug}`,
+      "@id": `https://by-vizion.com/cas-clients/${slug}`,
     },
     about: {
       "@type": "Organization",

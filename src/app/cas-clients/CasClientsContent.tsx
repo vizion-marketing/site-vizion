@@ -31,10 +31,8 @@ const sectors = [
   { id: "Business Local", label: "Business Local", icon: MapPin },
 ];
 
-// Sector icon mapping
-const sectorIconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  Building2, Code, Briefcase, Factory, MapPin, Wallet, Users
-};
+// Sector icon mapping (centralized)
+import { sectorIconMap } from "@/lib/sectors";
 
 // Animation variants
 const fadeInUp = {

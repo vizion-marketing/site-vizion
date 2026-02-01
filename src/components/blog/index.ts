@@ -1,7 +1,8 @@
 // Blog Components
 export { ArticleHero } from "./ArticleHero";
 export { TableOfContents } from "./TableOfContents";
-export type { TOCHeading } from "./TableOfContents";
+export { extractHeadings } from "@/lib/blog";
+export type { TOCHeading } from "@/lib/blog";
 export { ResourcesLibrary } from "./ResourcesLibrary";
 export type { Resource } from "./ResourcesLibrary";
 export { AuthorBio } from "./AuthorBio";

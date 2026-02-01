@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
+import { SITE_CONFIG } from '@/config/site';
 
 const footerLinks = {
   entreprise: [
@@ -32,29 +33,29 @@ export function Footer() {
             </Link>
 
             <div className="flex flex-col gap-5">
-              <a href="mailto:contact@by-vizion.com" className="flex items-center gap-4 text-black/80 group cursor-pointer hover:text-black transition-colors">
+              <a href={`mailto:${SITE_CONFIG.contact.email}`} className="flex items-center gap-4 text-black/80 group cursor-pointer hover:text-black transition-colors">
                 <div className="w-10 h-10 flex items-center justify-center border border-black/10 rounded-full group-hover:bg-black group-hover:text-white transition-all">
                   <Mail size={16} />
                 </div>
-                <span className="font-['Inter'] text-sm">contact@by-vizion.com</span>
+                <span className="font-['Inter'] text-sm">{SITE_CONFIG.contact.email}</span>
               </a>
-              <a href="tel:+33750836543" className="flex items-center gap-4 text-black/80 group cursor-pointer hover:text-black transition-colors">
+              <a href={`tel:${SITE_CONFIG.contact.phoneTel}`} className="flex items-center gap-4 text-black/80 group cursor-pointer hover:text-black transition-colors">
                 <div className="w-10 h-10 flex items-center justify-center border border-black/10 rounded-full group-hover:bg-black group-hover:text-white transition-all">
                   <Phone size={16} />
                 </div>
-                <span className="font-['Inter'] text-sm">07 50 83 65 43</span>
+                <span className="font-['Inter'] text-sm">{SITE_CONFIG.contact.phone}</span>
               </a>
               <div className="flex items-center gap-4 text-black/80">
                 <div className="w-10 h-10 flex items-center justify-center border border-black/10 rounded-full">
                   <MapPin size={16} />
                 </div>
-                <span className="font-['Inter'] text-sm">815 La Pyrénéenne, 31670 Labège</span>
+                <span className="font-['Inter'] text-sm">{SITE_CONFIG.contact.address}</span>
               </div>
             </div>
 
             <div className="flex gap-4">
               <a
-                href="https://www.linkedin.com/company/vizion-marketing-b2b/"
+                href={SITE_CONFIG.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Suivez Vizion sur LinkedIn"
