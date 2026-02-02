@@ -13,31 +13,9 @@ import {
   ShareButtons,
 } from "@/components/blog";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
-import type { Resource, TOCHeading } from "@/components/blog";
-
-// Server-side function to extract headings from MDX content
-function extractHeadings(content: string): TOCHeading[] {
-  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
-  const headings: TOCHeading[] = [];
-  let match;
-
-  while ((match = headingRegex.exec(content)) !== null) {
-    const level = match[1].length;
-    const text = match[2].trim();
-    const id = text
-      .toLowerCase()
-      .replace(/[^a-z0-9àâäéèêëïîôùûüç\s-]/gi, "")
-      .replace(/\s+/g, "-");
-
-    headings.push({ id, text, level });
-  }
-
-  return headings;
-}
-
-// Constants
-const SITE_URL = "https://vizion.fr";
-const SITE_NAME = "Vizion";
+import { extractHeadings } from "@/lib/mdx";
+import type { Resource } from "@/components/blog";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 type Props = {
   params: Promise<{ slug: string }>;

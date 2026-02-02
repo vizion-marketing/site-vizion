@@ -26,7 +26,7 @@ export function ArticleCTA({
   return (
     <section className="py-24 lg:py-40 bg-gradient-to-tr from-black to-zinc-800 relative overflow-hidden">
       {/* Pattern texture overlay */}
-      <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+      <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
 
       <div className="container mx-auto px-6 relative z-10 text-center">
         <motion.div

@@ -69,7 +69,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] z-0" />
         
         {/* Carbon Fibre Texture Overlay */}
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay pointer-events-none z-10" />
+        <div className="absolute inset-0 bg-[url('/carbon-fibre.png')] opacity-20 mix-blend-overlay pointer-events-none z-10" />
 
         {/* Decorative Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] z-10" />

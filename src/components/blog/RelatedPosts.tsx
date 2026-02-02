@@ -67,7 +67,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-500">
-                      <div className="w-full h-full opacity-30 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+                      <div className="w-full h-full opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
                     </div>
                   )}
                 </div>

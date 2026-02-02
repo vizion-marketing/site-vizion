@@ -4,7 +4,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X, ArrowRight, Building2, Code, Briefcase, MapPin, Factory } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { sectorIcons } from "@/lib/sectorIcons";
 
 // Types pour les cas clients
 interface CaseStudyNav {
@@ -27,15 +28,6 @@ interface NavItem {
   children?: { label: string; description: string; href: string }[];
   isCasClients?: boolean;
 }
-
-// Icônes par secteur
-const sectorIcons: Record<string, React.ReactNode> = {
-  "Franchise": <Building2 className="w-4 h-4" />,
-  "SaaS B2B": <Code className="w-4 h-4" />,
-  "Services B2B": <Briefcase className="w-4 h-4" />,
-  "Business Local": <MapPin className="w-4 h-4" />,
-  "Industrie B2B": <Factory className="w-4 h-4" />,
-};
 
 
 const baseNavigation: NavItem[] = [

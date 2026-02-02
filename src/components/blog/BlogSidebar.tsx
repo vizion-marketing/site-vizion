@@ -33,7 +33,7 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
         className="relative group overflow-hidden rounded-[1rem] p-6 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] border border-white/10 shadow-2xl"
       >
         {/* Carbon Texture Overlay */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('/carbon-fibre.png')]" />
         
         {/* Shine Effect */}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

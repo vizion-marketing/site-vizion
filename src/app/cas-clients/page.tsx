@@ -1,29 +1,13 @@
-import { Metadata } from "next";
 import { allCaseStudies } from "contentlayer/generated";
 import { CasClientsContent } from "./CasClientsContent";
+import { createMetadata } from "@/lib/metadata";
+import { SITE_URL } from "@/lib/constants";
 
-const SITE_URL = "https://by-vizion.com";
-const SITE_NAME = "Vizion";
-
-export const metadata: Metadata = {
+export const metadata = createMetadata({
   title: "Cas Clients | Études de cas B2B",
   description: "Découvrez nos études de cas B2B : franchise, SaaS, services, industrie, business local. Des résultats concrets et mesurables pour des PME et ETI.",
-  openGraph: {
-    title: "Cas Clients | Études de cas B2B",
-    description: "Découvrez nos études de cas B2B : franchise, SaaS, services, industrie, business local. Des résultats concrets et mesurables.",
-    url: `${SITE_URL}/cas-clients`,
-    siteName: SITE_NAME,
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Cas Clients | Études de cas B2B",
-    description: "Découvrez nos études de cas B2B : franchise, SaaS, services, industrie, business local.",
-  },
-  alternates: {
-    canonical: `${SITE_URL}/cas-clients`,
-  },
-};
+  path: "/cas-clients",
+});
 
 export default function CasClientsPage() {
   // Sort case studies by order, then by featured
@@ -65,10 +49,10 @@ export default function CasClientsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
-      <CasClientsContent 
-        caseStudies={sortedCaseStudies} 
-        featuredCase={featuredCase} 
+
+      <CasClientsContent
+        caseStudies={sortedCaseStudies}
+        featuredCase={featuredCase}
       />
     </>
   );

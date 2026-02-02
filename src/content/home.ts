@@ -280,9 +280,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   preuveSociale: {
     surtitre: "[ NOS RÉALISATIONS ]",
-    h2: "DES RÉSULTATS MESURABLES, DU POSITIONNEMENT AU CLOSING",
-    h2Highlight: "MESURABLES",
-    description: "Notre agence de marketing stratégique à Toulouse intervient dans les moments qui comptent : lancement, repositionnement, accélération. Voici comment notre approche, de la stratégie jusqu'au terrain commercial, transforme les résultats de nos clients.",
+    h2: "UNE AGENCE HABITUÉE AUX INDUSTRIES ET PROBLÈMES COMPLEXES",
+    h2Highlight: "COMPLEXES",
+    description: "PropTech, hygiène industrielle, SaaS, retail, ressources humaines — nous intervenons là où le marketing exige une compréhension fine du métier, du marché et des cycles de décision longs.",
     trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing stratégique à Toulouse et en France",
     trustBannerHighlight: "70 PME, ETI et scale-ups",
 

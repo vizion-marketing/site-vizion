@@ -28,7 +28,7 @@ export function ArticleHero({
       {/* Hero Section */}
       <section className="relative pt-40 pb-24 lg:pt-56 lg:pb-48 bg-gradient-to-br from-[#B7B7B7] via-black to-[#6D6D6D] overflow-hidden">
         {/* Carbon texture overlay */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none" />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')] pointer-events-none" />
         
         {/* Decorative Light Rays */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.08),transparent_50%)] pointer-events-none" />

@@ -3,14 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { 
-  ArrowLeft, 
-  ArrowRight, 
-  CheckCircle2, 
-  Quote, 
+import {
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle2,
+  Quote,
   Clock,
   Calendar,
-  Building2,
   TrendingUp,
   TrendingDown,
   Minus,
@@ -30,40 +29,19 @@ import {
   ShoppingCart,
   MapPin,
   Star,
-  Users,
-  Briefcase,
-  Factory,
-  Code,
-  Wallet,
+  Building2,
   Handshake,
   Rocket
 } from "lucide-react";
 import { CaseStudy } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer2/hooks";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { sectorIconMap } from "@/lib/sectorIcons";
 
 // Icon mapping
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   BookOpen, Target, Zap, FileText, BarChart3, Settings, GraduationCap, Palette,
-  Globe, User, PenTool, Database, ShoppingCart, MapPin, Star, Users, Briefcase,
-  Factory, Code, Wallet, Building2, Handshake, Rocket, TrendingUp
-};
-
-// Sector icon mapping
-const sectorIconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  Building2, Code, Briefcase, Factory, MapPin, Wallet, Users
-};
-
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] }
-};
-
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.1 } }
+  Globe, User, PenTool, Database, ShoppingCart, MapPin, Star, Building2, Handshake, Rocket, TrendingUp
 };
 
 // Get trend icon
@@ -139,7 +117,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
       {/* HERO SECTION */}
       <section className="relative pt-[120px] pb-[60px] md:pt-[140px] md:pb-[80px] px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] overflow-hidden">
         {/* Pattern texture overlay */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
         
         <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Breadcrumb */}
@@ -316,7 +294,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                     viewport={{ once: true }}
                     className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-2xl p-6 relative overflow-hidden"
                   >
-                    <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+                    <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
                     <div className="relative z-10">
                       <h3 className="font-['Roboto'] font-black text-sm uppercase tracking-wider text-white mb-4">
                         Livrables clés
@@ -572,7 +550,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
             viewport={{ once: true }}
             className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-3xl p-8 md:p-16 text-center relative overflow-hidden"
           >
-            <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+            <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
             
             <div className="relative z-10">
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-[11px] font-bold tracking-widest uppercase text-white mb-6">

@@ -6,54 +6,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   ChevronRight,
-  Building2,
-  Code,
-  Briefcase,
-  Factory,
-  MapPin,
   Filter,
   X,
   Star,
   TrendingUp,
-  Users,
-  Wallet
+  Building2,
 } from "lucide-react";
 import { CaseStudy } from "contentlayer/generated";
 import { ImagePlaceholder } from "@/components/ui";
-
-// Sector configuration
-const sectors = [
-  { id: "all", label: "Tous", icon: null },
-  { id: "Franchise", label: "Franchise", icon: Building2 },
-  { id: "SaaS B2B", label: "SaaS B2B", icon: Code },
-  { id: "Services B2B", label: "Services B2B", icon: Briefcase },
-  { id: "Industrie B2B", label: "Industrie B2B", icon: Factory },
-  { id: "Business Local", label: "Business Local", icon: MapPin },
-];
-
-// Sector icon mapping
-const sectorIconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  Building2, Code, Briefcase, Factory, MapPin, Wallet, Users
-};
-
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] }
-};
-
-const staggerContainer = {
-  initial: {},
-  animate: { transition: { staggerChildren: 0.1 } }
-};
-
-const cardVariant = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 }
-};
+import { fadeInUp, staggerContainer, cardVariant } from "@/lib/animations";
+import { sectors, sectorIconMap } from "@/lib/sectorIcons";
 
 interface CasClientsContentProps {
   caseStudies: CaseStudy[];
@@ -74,7 +36,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
       {/* HERO SECTION */}
       <section className="relative pt-[120px] pb-[80px] md:pt-[140px] md:pb-[100px] px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] overflow-hidden">
         {/* Pattern texture overlay */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
         
         <div className="max-w-[82.5rem] mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
@@ -414,7 +376,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
             viewport={{ once: true }}
             className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-3xl p-8 md:p-16 text-center relative overflow-hidden"
           >
-            <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+            <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
             
             <div className="relative z-10">
               <h2 className="font-['Roboto'] font-[900] text-[32px] md:text-[48px] leading-[1.1] tracking-tight uppercase mb-6 text-white">

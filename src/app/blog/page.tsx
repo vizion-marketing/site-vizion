@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { allPosts } from "contentlayer/generated";
 import { ImagePlaceholder } from "@/components/ui";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 // Fixed categories for the blog
 const categories = [
@@ -39,19 +40,6 @@ function formatDate(dateString: string): string {
     year: "numeric",
   });
 }
-
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] }
-};
-
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.1 } }
-};
 
 // Posts per page
 const POSTS_PER_PAGE = 6;
@@ -104,7 +92,7 @@ export default function BlogPage() {
       {/* HERO SECTION - Style Homepage */}
       <section className="relative pt-[120px] pb-[80px] px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] overflow-hidden">
         {/* Pattern texture overlay */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
         
         <div className="max-w-[82.5rem] mx-auto w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
@@ -531,7 +519,7 @@ export default function BlogPage() {
             className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-[var(--radius-xl)] p-12 md:p-20 relative overflow-hidden"
           >
             {/* Pattern texture overlay */}
-            <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+            <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
             
             {/* Decorative elements */}
             <div className="absolute top-8 left-8 w-24 h-24 border-t-2 border-l-2 border-[#EEFF41]/20" />

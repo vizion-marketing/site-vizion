@@ -139,11 +139,7 @@ h3, .h3 {
 .bg-gradient-hero h3,
 .bg-gradient-hero .h1,
 .bg-gradient-hero .h2,
-.card-hero h1,
-.card-hero h2,
-.card-hero h3,
-.card-hero .h1,
-.card-hero .h2 {
+.bg-gradient-hero .h3 {
   color: var(--bg-white) !important;
 }
 
@@ -223,18 +219,6 @@ h3, .h3 {
 
 /* === CARD COMPONENTS === */
 
-/* Carte sur fond gris */
-.card-grey {
-  display: flex;
-  padding: var(--card-padding-grey);
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--card-gap);
-  background: var(--bg-grey);
-  border-radius: var(--radius-lg);
-  transition: box-shadow var(--transition-base), transform var(--transition-base);
-}
-
 /* Carte sur fond blanc */
 .card-white {
   display: flex;
@@ -247,23 +231,8 @@ h3, .h3 {
   transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
-/* Carte avec gradient (pour mise en avant) */
-.card-hero {
-  display: flex;
-  padding: var(--card-padding-grey);
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--card-gap);
-  background: var(--bg-gradient-hero);
-  border-radius: var(--radius-lg);
-  color: var(--bg-white);
-  transition: box-shadow var(--transition-base), transform var(--transition-base);
-}
-
 /* Card hover effects */
-.card-grey:hover,
-.card-white:hover,
-.card-hero:hover {
+.card-white:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
 }
@@ -319,76 +288,6 @@ h3, .h3 {
 
 .btn-primary:active {
   transform: translateY(0);
-}
-
-/* Secondary Button - Glassmorphism Light */
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  color: var(--color-black);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow:
-    0 2px 16px -1px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-  box-shadow:
-    0 4px 24px -2px rgba(0, 0, 0, 0.12),
-    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
-}
-
-.btn-secondary:active {
-  transform: translateY(0);
-}
-
-/* Glassmorphism Button for Dark backgrounds */
-.btn-glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow:
-    0 4px 24px -1px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
-    0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
-}
-
-.btn-glass:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
-  box-shadow:
-    0 8px 32px -4px rgba(0, 0, 0, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
-    0 1px 0 0 rgba(255, 255, 255, 0.3) inset;
-}
-
-/* Accent Button - Glassmorphism with brand color */
-.btn-accent {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  color: #000;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow:
-    0 4px 24px -1px rgba(255, 255, 255, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.5) inset,
-    0 1px 0 0 rgba(255, 255, 255, 0.6) inset;
-}
-
-.btn-accent:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: translateY(-2px);
-  box-shadow:
-    0 8px 32px -4px rgba(255, 255, 255, 0.35),
-    0 0 0 1px rgba(255, 255, 255, 0.6) inset,
-    0 1px 0 0 rgba(255, 255, 255, 0.7) inset;
 }
 
 /* === PROSE STYLES (MDX content) === */

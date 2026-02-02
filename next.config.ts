@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "i.pravatar.cc",
       },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
     ],
     // Pour export statique, décommenter la ligne suivante :
     // unoptimized: true,

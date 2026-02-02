@@ -25,6 +25,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { homeContent, faqSchema, organizationSchema } from "@/content/home";
 import { ImagePlaceholder } from "@/components/ui";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 // Types
 interface Post {
@@ -79,72 +80,103 @@ function SectionDiagonalBottom({
   );
 }
 
-// Animation Variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] }
-};
-
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.1 } }
-};
-
 // Client Cases Data for Social Proof Tabs
 const clientCases = [
   {
     id: 'easyvirtual',
     name: 'easyVirtual.tours',
-    badge: 'Filiale easyJet',
-    metric: '0 → 25',
-    metricLabel: 'Franchises en 1 an',
-    problematique: "Assurer le déploiement en franchise d'une filiale d'easyJet et la soutenir dans sa croissance nationale.",
+    intro: "Une filiale du groupe easyJet lance un concept de visites virtuelles immobilières et vise un déploiement en franchise sur le territoire national.",
+    problematique: "Découvrez comment nous avons accompagné une filiale du groupe Easy dans son développement national et international.",
+    stats: [
+      { value: '0 → 25', label: 'Franchises en 1 an' },
+      { value: '3', label: 'Pays couverts' },
+      { value: '100%', label: 'Outils de vente livrés' },
+    ],
     actions: ['Positionnement de marque franchise', 'Création des outils d\'aide à la vente', 'Déploiement du plan marketing national', 'Mise en place du CRM et automatisations'],
-    category: 'Direction Marketing Externalisée',
-    tags: ['Direction Marketing', 'Franchise', 'Déploiement'],
+    category: 'PropTech',
     slug: 'franchise-services-domicile',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
+    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=easyVirtual',
   },
   {
     id: 'ensenat',
     name: 'Ensenat Coaching',
-    badge: 'Sport Premium',
-    metric: '+1000%',
-    metricLabel: 'Trafic SEO en 3 mois',
-    problematique: "Restructurer le marketing d'un groupe de salles de sport premium pour limiter les coûts et générer du revenu.",
+    intro: "Un groupe de salles de sport premium multi-sites fait face à des coûts marketing élevés et un manque de visibilité locale.",
+    problematique: "Découvrez comment nous avons aidé Ensenat Coaching à rationaliser ses coûts marketing pour une meilleure performance.",
+    stats: [
+      { value: '+1000%', label: 'Trafic SEO en 3 mois' },
+      { value: '-40%', label: 'Coûts marketing' },
+      { value: '5', label: 'Sites optimisés' },
+    ],
     actions: ['Audit SEO technique et sémantique', 'Stratégie de contenu locale multi-sites', 'Optimisation des pages de conversion', 'Reporting et suivi de performance'],
-    category: 'SEO & Content Marketing',
-    tags: ['SEO', 'Content', 'Performance'],
+    category: 'Groupe Multi-Marques',
     slug: 'reseau-local-seo',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop',
+    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=Ensenat',
   },
   {
-    id: 'eldo',
-    name: 'Eldo Wallet',
-    badge: 'Fintech B2B',
-    metric: '0 → 10K€',
-    metricLabel: 'MRR atteint',
-    problematique: "Appuyer les équipes d'Eldo Wallet dans leur stratégie commerciale et go-to-market B2B.",
-    actions: ['Définition du positionnement B2B', 'Construction du pitch deck investisseurs', 'Stratégie d\'acquisition outbound', 'Mise en place du pipeline commercial'],
-    category: 'Go-to-Market & Sales',
-    tags: ['GTM', 'Sales', 'Fintech'],
-    slug: 'fintech-b2b',
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800&auto=format&fit=crop',
+    id: 'elis',
+    name: 'Groupe Elis',
+    intro: "Le leader européen de l'hygiène et du bien-être au travail cherche à accélérer sa croissance externe en identifiant des cibles d'acquisition.",
+    problematique: "Découvrez comment nous avons accompagné le groupe Elis dans l'identification de cédants potentiels.",
+    stats: [
+      { value: '12', label: 'Cédants identifiés' },
+      { value: '3', label: 'Secteurs cartographiés' },
+      { value: '200+', label: 'Entreprises analysées' },
+    ],
+    actions: ['Cartographie du marché cible', 'Identification et qualification des cédants', 'Stratégie d\'approche personnalisée', 'Mise en relation et suivi'],
+    category: 'Hygiène',
+    slug: 'eti-manufacturing',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
+    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=Elis',
   },
   {
     id: 'olivier',
     name: 'Olivier Bas',
-    badge: 'VP Havas Paris',
-    metric: '1M',
-    metricLabel: 'Vues LinkedIn générées',
-    problematique: "Générer de la visibilité LinkedIn pour le Vice-Président d'Havas Paris et asseoir son personal branding.",
+    intro: "Le Vice-Président d'Havas Paris souhaite structurer sa présence LinkedIn pour asseoir son expertise et générer des opportunités.",
+    problematique: "Découvrez comment nous avons accompagné le Vice-Président d'Havas Paris dans sa stratégie de personal branding.",
+    stats: [
+      { value: '1M', label: 'Vues LinkedIn' },
+      { value: '15K+', label: 'Nouveaux abonnés' },
+      { value: '48', label: 'Posts publiés' },
+    ],
     actions: ['Stratégie éditoriale LinkedIn', 'Rédaction et publication régulière', 'Développement du réseau ciblé', 'Analyse des performances et itération'],
-    category: 'Personal Branding LinkedIn',
-    tags: ['LinkedIn', 'Personal Branding', 'Influence'],
+    category: 'Ressources Humaines',
     slug: 'cabinet-conseil-rh',
     image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
+    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=Havas',
+  },
+  {
+    id: 'ecard',
+    name: 'e-card',
+    intro: "Un éditeur de cartes de visite digitales peine à se différencier sur un marché saturé et doit repositionner son offre.",
+    problematique: "Découvrez comment nous avons accompagné e-card dans leur repositionnement marketing.",
+    stats: [
+      { value: 'Nouveau', label: 'Positionnement marché' },
+      { value: '3x', label: 'Leads qualifiés' },
+      { value: '100%', label: 'Refonte message' },
+    ],
+    actions: ['Audit de positionnement', 'Redéfinition de la proposition de valeur', 'Refonte de l\'architecture de message', 'Déploiement de la nouvelle stratégie'],
+    category: 'SaaS',
+    slug: 'saas-marketing-automation',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop',
+    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=e-card',
+  },
+  {
+    id: 'eldo',
+    name: 'Eldo Wallet',
+    intro: "Une startup fintech lance un portefeuille numérique B2B et doit construire sa stratégie d'acquisition de zéro.",
+    problematique: "Découvrez comment nous avons accompagné Eldo Wallet dans leur stratégie go-to-market.",
+    stats: [
+      { value: '0 → 10K€', label: 'MRR atteint' },
+      { value: '50+', label: 'Prospects qualifiés' },
+      { value: '1', label: 'Pitch deck investisseurs' },
+    ],
+    actions: ['Définition du positionnement B2B', 'Construction du pitch deck investisseurs', 'Stratégie d\'acquisition outbound', 'Mise en place du pipeline commercial'],
+    category: 'Retail',
+    slug: 'fintech-b2b',
+    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800&auto=format&fit=crop',
+    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=Eldo',
   }
 ];
 
@@ -203,24 +235,24 @@ function SocialProofTabs() {
         </div>
 
         <div className="flex flex-col gap-6 sm:gap-8">
-          {/* Tab Navigation */}
-          <div className="flex overflow-x-auto pb-4 gap-4 sm:gap-5 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          {/* Tab Navigation — wrapped grid on mobile, inline on desktop */}
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:overflow-x-auto sm:pb-4 sm:gap-4 md:gap-5 sm:no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {clientCases.map((client, index) => (
               <button
                 key={client.id}
                 onClick={() => setActiveClient(client.id)}
-                className={`flex-shrink-0 group flex items-center gap-3 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 whitespace-nowrap ${
+                className={`group flex items-center justify-center sm:justify-start gap-2 sm:gap-3 px-3 sm:px-6 py-2.5 sm:py-3 rounded-[8px] transition-all duration-300 sm:flex-shrink-0 sm:whitespace-nowrap ${
                   activeClient === client.id
-                    ? "bg-[#0a0a0a] text-white shadow-[0_8px_30px_-10px_rgba(0,0,0,0.3)] border-b-2 border-[#c8ff00]"
-                    : "bg-transparent text-[#1a1a1a] hover:bg-[#e8e8e8]"
+                    ? "bg-[#0a0a0a] text-white border border-[#c8ff00]/30"
+                    : "bg-white/60 sm:bg-transparent text-[#1a1a1a] hover:bg-[#e8e8e8] border border-black/5 sm:border-black/0 sm:hover:border-black/5"
                 }`}
               >
-                <span className={`font-['Roboto'] font-[900] text-xs leading-none transition-colors duration-300 ${
+                <span className={`font-['Roboto'] font-[900] text-[10px] sm:text-xs leading-none transition-colors duration-300 ${
                   activeClient === client.id ? "text-[#c8ff00]" : "text-black/20 group-hover:text-[#c8ff00]"
                 }`}>
                   0{index + 1}
                 </span>
-                <span className="font-['Inter'] font-medium text-[13px] sm:text-[14px] leading-none">
+                <span className="font-['Inter'] font-medium text-[11px] sm:text-[14px] leading-none">
                   {client.category}
                 </span>
               </button>
@@ -237,75 +269,60 @@ function SocialProofTabs() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 relative"
             >
-              {/* CELL 1: PROBLEM & INFO (2 Cols) */}
-              <div className="md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-[14px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-6 sm:p-8 lg:p-12 flex flex-col justify-between min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] bg-white">
+              {/* CELL 1: TITRE / PROBLÉMATIQUE + STATS (2 Cols) */}
+              <div className="md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-[8px] border border-black/10 p-5 sm:p-8 lg:p-12 flex flex-col justify-between min-h-[280px] sm:min-h-[380px] lg:min-h-[440px] bg-white">
                 <div className="absolute inset-0 grain-light opacity-30 pointer-events-none" />
-                <div className="absolute -bottom-12 -right-12 text-[120px] sm:text-[180px] lg:text-[240px] font-['Roboto'] font-black text-black/[0.03] select-none pointer-events-none leading-none">
+                <div className="absolute -bottom-12 -right-12 text-[80px] sm:text-[180px] lg:text-[240px] font-['Roboto'] font-black text-black/[0.03] select-none pointer-events-none leading-none">
                   0{clientCases.findIndex(c => c.id === activeClient) + 1}
                 </div>
 
                 <div className="relative z-10">
-                  <div className="flex items-center gap-2.5 mb-8">
+                  <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
                     <div className="w-2 h-2 rounded-full bg-[#c8ff00]" />
                     <span className="text-[10px] font-bold tracking-[0.1em] uppercase text-[#6b6b6b]">
-                      {currentCase.badge}
+                      {currentCase.category}
                     </span>
                   </div>
 
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-['Roboto'] font-black uppercase leading-[0.85] tracking-[-0.02em] mb-4 sm:mb-6 text-[#1a1a1a]">
-                    {currentCase.name}
-                  </h3>
-
-                  <div className="w-16 sm:w-24 h-px bg-black/10 mb-5 sm:mb-8" />
-
-                  <p className="text-sm sm:text-base font-['Inter'] text-[#6b6b6b] leading-[1.6] max-w-2xl mb-6 sm:mb-10">
-                    {currentCase.problematique}
+                  <p className="text-xs sm:text-sm font-['Inter'] text-[#999] leading-relaxed mb-3 sm:mb-5 max-w-xl">
+                    {currentCase.intro}
                   </p>
+
+                  <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-['Roboto'] font-[900] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a]">
+                    {currentCase.problematique}
+                  </h3>
                 </div>
 
-                <div className="flex flex-wrap gap-2 relative z-10">
-                  {currentCase.tags.map((tag, i) => (
-                    <span key={i} className="px-4 py-1.5 bg-black/[0.03] border border-black/[0.06] text-[#6b6b6b] text-[10px] font-['Inter'] font-semibold uppercase tracking-wider rounded-full">
-                      {tag}
-                    </span>
+                {/* Stats row */}
+                <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-3 mt-6 sm:mt-8">
+                  {currentCase.stats.map((stat, i) => (
+                    <div key={i} className="bg-[#fafaf8] border border-black/[0.06] rounded-[8px] p-3 sm:p-4 lg:p-5 flex flex-col gap-1 sm:gap-1.5">
+                      <span className="text-lg sm:text-2xl lg:text-3xl font-['Roboto'] font-[900] tracking-[-0.02em] text-[#1a1a1a] leading-none">
+                        {stat.value}
+                      </span>
+                      <span className="text-[8px] sm:text-[9px] lg:text-[10px] font-['Inter'] font-semibold uppercase tracking-wider text-[#999] leading-tight">
+                        {stat.label}
+                      </span>
+                    </div>
                   ))}
                 </div>
               </div>
 
-              {/* CELL 2: METRIC (1 Col) */}
-              <div className="md:col-span-1 lg:col-span-1 bg-[#0a0a0a] rounded-[14px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-6 sm:p-8 flex flex-col justify-center items-center text-center relative group min-h-[240px] sm:min-h-[280px]">
-                <div className="absolute inset-0 grain-overlay opacity-20 pointer-events-none" />
-                <div className="absolute inset-0 bg-[#c8ff00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                {/* Decorative Ring & Glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 opacity-20">
-                  <div className="absolute inset-0 bg-[#c8ff00] blur-[60px] rounded-full animate-pulse" />
-                  <svg className="w-full h-full text-[#c8ff00] rotate-[-90deg]" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" />
-                    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="100 300" />
-                  </svg>
-                </div>
-
-                <div className="relative z-10">
-                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-[#c8ff00]/60 mb-4">
-                    Performance Index
-                  </div>
-                  <div className="text-5xl sm:text-7xl lg:text-8xl font-['Roboto'] font-black leading-none mb-3 tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-b from-white to-white/30">
-                    {currentCase.metric}
-                  </div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                    <div className="w-1 h-1 rounded-full bg-[#c8ff00]" />
-                    <div className="text-[10px] font-black uppercase tracking-[0.1em] text-white/80">
-                      {currentCase.metricLabel}
-                    </div>
-                  </div>
-                </div>
+              {/* CELL 2: LOGO CLIENT (1 Col) — image plein bloc */}
+              <div className="relative rounded-[8px] overflow-hidden border border-black/10 bg-[#0a0a0a] min-h-[200px] sm:min-h-[280px] md:min-h-0 flex items-center justify-center">
+                <Image
+                  src={currentCase.logo}
+                  alt={`Logo ${currentCase.name}`}
+                  fill
+                  className="object-contain p-8 sm:p-12 lg:p-14"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </div>
 
               {/* CELL 3: ACTIONS (1 Col) */}
-              <div className="md:col-span-1 lg:col-span-1 bg-[#0a0a0a] rounded-[14px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-6 sm:p-8 lg:p-10 flex flex-col relative">
+              <div className="md:col-span-1 lg:col-span-1 bg-[#0a0a0a] rounded-[8px] overflow-hidden border border-black/10 p-5 sm:p-8 lg:p-10 flex flex-col relative">
                 <div className="absolute inset-0 grain-overlay opacity-20 pointer-events-none" />
-                <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-white/40 mb-8 flex items-center gap-2">
+                <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-white/40 mb-4 sm:mb-8 flex items-center gap-2">
                   <span className="w-4 h-px bg-white/20" /> Stratégie &amp; Impact
                 </h4>
                 <ul className="flex-1 space-y-0 divide-y divide-white/5">
@@ -320,7 +337,7 @@ function SocialProofTabs() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+                <div className="mt-4 sm:mt-8 pt-4 sm:pt-6 border-t border-white/5 flex items-center justify-between">
                   <div className="text-[9px] font-bold text-white/30 uppercase tracking-widest">Execution</div>
                   <div className="flex gap-1">
                     {[1,2,3,4].map(dot => <div key={dot} className="w-3 h-1 rounded-full bg-[#c8ff00]" />)}
@@ -329,7 +346,7 @@ function SocialProofTabs() {
               </div>
 
               {/* CELL 4: IMAGE & CTA (2 Cols) */}
-              <div className="md:col-span-2 lg:col-span-2 relative group aspect-[16/9] md:aspect-[2/1] lg:aspect-auto lg:min-h-[280px] rounded-[14px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+              <div className="md:col-span-2 lg:col-span-2 relative group aspect-[16/10] sm:aspect-[16/9] md:aspect-[2/1] lg:aspect-auto lg:min-h-[280px] rounded-[8px] overflow-hidden border border-black/10">
                 <Image
                   src={currentCase.image}
                   alt={currentCase.name}
@@ -340,7 +357,7 @@ function SocialProofTabs() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
                 {/* Floating Tag */}
-                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center gap-2">
+                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 px-3 sm:px-4 py-1 sm:py-1.5 rounded-[8px] bg-white/10 backdrop-blur-xl border border-white/20 flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#c8ff00] animate-pulse" />
                   <span className="text-[10px] font-bold uppercase tracking-widest text-white">Voir l&apos;étude</span>
                 </div>
@@ -348,7 +365,7 @@ function SocialProofTabs() {
                 <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-end items-start">
                   <Link
                     href={`/cas-clients/${currentCase.slug}`}
-                    className="h-[40px] sm:h-[48px] px-5 sm:px-7 text-[12px] sm:text-[14px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] transition-all duration-300 hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35)] hover:-translate-y-0.5"
+                    className="h-[40px] sm:h-[48px] px-5 sm:px-7 text-[12px] sm:text-[14px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-[8px] bg-white text-black border border-white/50 transition-all duration-300 hover:bg-white/95 hover:-translate-y-0.5"
                   >
                     <span>Découvrir le cas complet</span>
                     <ArrowRight size={16} />
@@ -359,30 +376,14 @@ function SocialProofTabs() {
           </AnimatePresence>
         </div>
 
-        {/* Trust Ecosystem - Clean Minimalist with Hover Effects */}
-        <div className="mt-8 sm:mt-10 md:mt-12 pt-5 sm:pt-6 md:pt-8 border-t border-black/5 flex flex-col items-center gap-6 sm:gap-8 md:flex-row md:justify-between">
-          <div className="flex flex-col gap-0.5 text-center md:text-left">
-            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-black/30">Partnership Network</span>
-            <p className="text-[11px] sm:text-[12px] font-medium text-black/50">Écosystème de marques leaders</p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-            {['easyJet', 'Havas', 'Elis', 'BNP', 'Salesforce'].map((logo, i) => (
-              <span
-                key={i}
-                className="font-['Roboto'] font-black text-base sm:text-lg uppercase tracking-tight text-black/20 hover:text-black/60 transition-all duration-300 cursor-default hover:-translate-y-0.5"
-              >
-                {logo}
-              </span>
-            ))}
-          </div>
-
+        {/* CTA vers cas clients */}
+        <div className="mt-8 sm:mt-10 md:mt-12 flex justify-center">
           <Link
             href="/cas-clients"
-            className="group flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-black hover:text-black/70 transition-all"
+            className="group flex items-center gap-2 sm:gap-3 text-[11px] sm:text-[13px] font-['Inter'] font-semibold uppercase tracking-wider text-black hover:text-black/70 transition-all"
           >
-            <span>Découvrir tous nos succès</span>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-white border border-black/5 shadow-sm flex items-center justify-center group-hover:bg-black group-hover:text-white group-hover:shadow-md group-hover:-translate-y-0.5 transition-all duration-300">
+            <span>Découvrir tous nos cas clients</span>
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-[8px] bg-black border border-black text-white flex items-center justify-center group-hover:bg-transparent group-hover:text-black group-hover:-translate-y-0.5 transition-all duration-300">
               <ArrowRight size={12} />
             </div>
           </Link>
@@ -976,7 +977,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               className="md:col-span-2 lg:col-span-7 lg:row-span-2 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg p-5 sm:p-8 md:p-10 flex flex-col min-h-[400px] sm:min-h-[450px] lg:min-h-[550px] relative overflow-hidden group shadow-2xl shadow-black/30 hover:shadow-black/40 hover:border-white/20 transition-all duration-300"
             >
               {/* Carbon fibre pattern */}
-              <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+              <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
               {/* Inner glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-white/[0.01] pointer-events-none rounded-xl" />
 
@@ -1110,7 +1111,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         aria-label="Expertise IA et Vibe Coding agence marketing Toulouse"
       >
         {/* Carbon fibre pattern */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
         {/* Subtle glow */}
         <div className="absolute top-0 right-0 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-gradient-to-bl from-white/10 via-[#EEFF41]/5 to-transparent rounded-full blur-[150px]" />
 
@@ -1197,7 +1198,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg shadow-2xl overflow-hidden relative"
                 >
                   {/* Carbon fibre pattern */}
-                  <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none" />
+                  <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')] pointer-events-none" />
                   {(() => {
                     const useCases = homeContent.iaHighlight.useCases;
                     const current = useCases[currentIASlide];
@@ -1373,7 +1374,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   }`}
                 >
                   {/* Carbon fibre pattern for featured card */}
-                  {isFeatured && <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none z-0" />}
+                  {isFeatured && <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')] pointer-events-none z-0" />}
                   {/* Image Container */}
                   <div className="relative aspect-[16/10] sm:aspect-[5/3] w-full overflow-hidden">
                     <Image
@@ -2076,7 +2077,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-lg sm:rounded-xl shadow-2xl p-6 sm:p-10 md:p-12 lg:p-20 text-center relative overflow-hidden"
           >
             {/* Carbon fibre pattern */}
-            <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+            <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
             {/* Subtle inner glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
