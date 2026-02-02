@@ -349,37 +349,37 @@ export const homeContent: HomeContent = {
       {
         numero: "01",
         surtitre: "PRODUCT MARKETING",
-        titre: "Construisez un narratif produit irrésistible",
-        description: "Votre offre mérite mieux qu'un descriptif de fonctionnalités. Nous structurons votre positionnement, votre proposition de valeur et votre architecture de message pour que votre produit résonne sur son marché. De l'audit stratégique au plan de mise en marché, chaque décision est alignée sur vos objectifs business.",
+        titre: "Construisez un discours produit qui convertit",
+        description: "Votre produit est complexe. Vos prospects décrochent avant de comprendre sa valeur. Vous avez besoin d'un partenaire capable de se mettre à votre niveau technique — et de traduire cette expertise en un discours clair, percutant, compris par tous vos interlocuteurs. Nous structurons votre positionnement, votre proposition de valeur et votre architecture de message. Résultat : un narratif produit qui accélère chaque conversation commerciale.",
         services: ["Audit marketing & positionnement", "Architecture de message", "Plan de mise en marché", "Proposition de valeur", "Roadmap marketing stratégique", "Ateliers et formations"],
         cta: "DÉFINIR VOTRE STRATÉGIE"
       },
       {
         numero: "02",
         surtitre: "ACTIFS DIGITAUX & CONVERSION",
-        titre: "Transformez vos interfaces en leviers de conversion",
-        description: "Un site web B2B n'est pas une vitrine : c'est un actif commercial. Nous concevons des interfaces adaptées aux cycles de décision longs et aux parcours multi-interlocuteurs. Chaque page, chaque tunnel d'acquisition intervient au bon moment du parcours pour guider vos prospects vers la conversion.",
+        titre: "Transformez votre site en machine à générer des leads",
+        description: "Votre site web existe, mais il ne génère ni leads, ni confiance. Les visiteurs passent, lisent, et repartent sans agir. Nous concevons des interfaces pensées pour les cycles de décision longs du B2B — chaque page guide vos prospects vers l'action au bon moment. Résultat : un actif digital qui travaille pour vous, 24h/24.",
         services: ["Sites web B2B performants", "Landing pages de conversion", "Tunnels d'acquisition", "Pages institutionnelles", "Visuels stratégiques", "Optimisation UX/UI"]
       },
       {
         numero: "03",
         surtitre: "SALES ENABLEMENT",
-        titre: "Armez vos commerciaux pour closer plus vite",
-        description: "C'est ce qui nous distingue : nous intervenons jusqu'aux phases de négociation et de closing. Présentations commerciales, pitch decks, argumentaires structurés, supports d'aide à la décision. Vos équipes commerciales disposent des outils nécessaires pour convaincre à chaque étape du cycle de vente.",
+        titre: "Donnez à vos commerciaux les armes pour closer",
+        description: "Vos commerciaux passent plus de temps à fabriquer leurs supports qu'à vendre. Les présentations sont incohérentes, les argumentaires improvisés. Nous créons les outils qui font la différence en rendez-vous : pitch decks, argumentaires structurés, supports d'aide à la décision. Résultat : des cycles de vente plus courts et un taux de closing en hausse.",
         services: ["Présentations commerciales", "Pitch decks stratégiques", "Argumentaires de vente", "Supports d'aide à la décision", "Stratégies LinkedIn", "Personal branding dirigeant"]
       },
       {
         numero: "04",
         surtitre: "ACQUISITION & LEAD GENERATION",
-        titre: "Générez un flux prévisible d'opportunités qualifiées",
-        description: "Exit les campagnes ponctuelles sans lendemain. Nous construisons des systèmes d'acquisition reproductibles qui alimentent votre pipeline commercial en continu. Les bons canaux, les bons messages, les bons dispositifs pour votre marché.",
+        titre: "Générez un flux régulier d'opportunités qualifiées",
+        description: "Votre croissance dépend de quelques clients historiques et du bouche-à-oreille. Quand le pipe se tarit, c'est la panique. Nous construisons des systèmes d'acquisition reproductibles — les bons canaux, les bons messages, les bons dispositifs pour votre marché. Résultat : un pipeline commercial alimenté en continu, sans dépendre du hasard.",
         services: ["Campagnes d'emailing avancées", "Lead nurturing automatisé", "LinkedIn Ads & Google Ads", "Référencement SEO", "Content marketing B2B", "Lead magnets & acquisition"]
       },
       {
         numero: "05",
         surtitre: "AUTOMATISATION & CRM",
-        titre: "Industrialisez vos processus pour scaler sans friction",
-        description: "Vos outils doivent soutenir votre croissance, pas la freiner. Déploiement CRM, automatisations sur mesure, intégrations API, dashboards temps réel : nous structurons vos systèmes d'information marketing et commerciaux. Chaque workflow est conçu pour votre réalité opérationnelle.",
+        titre: "Industrialisez vos processus pour scaler sereinement",
+        description: "Vos équipes jonglent entre les outils, les tâches manuelles et les données dispersées. Ce qui fonctionnait à 10 clients ne tient plus à 50. Nous structurons vos systèmes d'information marketing et commerciaux : CRM, automatisations, intégrations, dashboards. Résultat : des processus fiables qui soutiennent votre croissance au lieu de la freiner.",
         services: ["Déploiement CRM (HubSpot, Pipedrive, GHL)", "Automatisations avancées", "Intégrations API sur mesure", "Workflows métier personnalisés", "Dashboards & reporting", "Migration de données"]
       }
     ],
