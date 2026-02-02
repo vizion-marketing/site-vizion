@@ -1036,9 +1036,16 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 transition={{ delay: 0.1 * i }}
                 className={`${span} bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg p-4 sm:p-5 md:p-7 flex flex-col group shadow-sm card-hover-glow transition-all duration-300`}
               >
-                <div className="flex items-start justify-between mb-4 sm:mb-6">
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-black/5 backdrop-blur-sm border border-black/5 flex items-center justify-center group-hover:bg-black group-hover:border-black group-hover:shadow-lg group-hover:shadow-black/20 transition-all duration-300">
-                    <Icon className="text-black group-hover:text-white transition-colors" size={18} strokeWidth={2.5} />
+                <div className="flex items-start justify-between mb-3 sm:mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-black/5 backdrop-blur-sm border border-black/5 flex items-center justify-center group-hover:bg-black group-hover:border-black group-hover:shadow-lg group-hover:shadow-black/20 transition-all duration-300">
+                      <Icon className="text-black group-hover:text-white transition-colors" size={18} strokeWidth={2.5} />
+                    </div>
+                    <div className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-black/5 backdrop-blur-sm border border-black/10 rounded-lg">
+                      <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/60">
+                        {homeContent.piliers.piliers[idx].surtitre}
+                      </span>
+                    </div>
                   </div>
                   <span className="text-[11px] sm:text-[12px] font-black text-black/10 group-hover:text-black/25 transition-colors">0{idx + 1}</span>
                 </div>
