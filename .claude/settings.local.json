@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(npx next dev)",
+      "Bash(ping:*)",
+      "Bash(powershell:*)",
+      "Bash(claude mcp add gemini-design-mcp --env API_KEY=AIzaSyDCSYEDxD-nGKtA04XmAswbkGs6YRjVNCU -- npx -y gemini-design-mcp@latest)",
+      "mcp__gemini-design-mcp__modify_frontend",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(npx next build:*)",
+      "Bash(git push:*)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Lucas Gonzalez\\OneDrive\\Bureau\\Apps\\site-vizion"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "gemini-design-mcp"
+  ]
+}
