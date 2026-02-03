@@ -152,8 +152,8 @@ const clientCases = [
   {
     id: 'easyvirtual',
     name: 'easyVirtual.tours',
-    intro: "Une filiale du groupe easyJet lance un concept de visites virtuelles immobilières et vise un déploiement en franchise sur le territoire national.",
-    problematique: "Découvrez comment nous avons accompagné une filiale du groupe Easy dans son développement national et international.",
+    intro: "Une filiale du groupe easyJet lance un concept de visites virtuelles immobilières et nous confie son déploiement national en franchise.",
+    problematique: "De 0 à 25 franchises en moins d'un an pour une filiale d'easyJet",
     stats: [
       { value: '0 → 25', label: 'Franchises en 1 an' },
       { value: '3', label: 'Pays couverts' },
@@ -169,7 +169,7 @@ const clientCases = [
     id: 'ensenat',
     name: 'Ensenat Coaching',
     intro: "Un groupe de salles de sport premium multi-sites fait face à des coûts marketing élevés et un manque de visibilité locale.",
-    problematique: "Découvrez comment nous avons aidé Ensenat Coaching à rationaliser ses coûts marketing pour une meilleure performance.",
+    problematique: "+1000% de trafic SEO en 3 mois et -40% de coûts marketing pour un groupe de salles de sport",
     stats: [
       { value: '+1000%', label: 'Trafic SEO en 3 mois' },
       { value: '-40%', label: 'Coûts marketing' },
@@ -185,7 +185,7 @@ const clientCases = [
     id: 'elis',
     name: 'Groupe Elis',
     intro: "Le leader européen de l'hygiène et du bien-être au travail cherche à accélérer sa croissance externe en identifiant des cibles d'acquisition.",
-    problematique: "Découvrez comment nous avons accompagné le groupe Elis dans l'identification de cédants potentiels.",
+    problematique: "12 cédants identifiés sur 200+ entreprises analysées pour le groupe Elis",
     stats: [
       { value: '12', label: 'Cédants identifiés' },
       { value: '3', label: 'Secteurs cartographiés' },
@@ -201,7 +201,7 @@ const clientCases = [
     id: 'olivier',
     name: 'Olivier Bas',
     intro: "Le Vice-Président d'Havas Paris souhaite structurer sa présence LinkedIn pour asseoir son expertise et générer des opportunités.",
-    problematique: "Découvrez comment nous avons accompagné le Vice-Président d'Havas Paris dans sa stratégie de personal branding.",
+    problematique: "1 million de vues LinkedIn et 15 000 abonnés pour le VP d'Havas Paris",
     stats: [
       { value: '1M', label: 'Vues LinkedIn' },
       { value: '15K+', label: 'Nouveaux abonnés' },
@@ -217,7 +217,7 @@ const clientCases = [
     id: 'ecard',
     name: 'e-card',
     intro: "Un éditeur de cartes de visite digitales peine à se différencier sur un marché saturé et doit repositionner son offre.",
-    problematique: "Découvrez comment nous avons accompagné e-card dans leur repositionnement marketing.",
+    problematique: "x3 sur les leads qualifiés après un repositionnement complet pour e-card",
     stats: [
       { value: 'Nouveau', label: 'Positionnement marché' },
       { value: '3x', label: 'Leads qualifiés' },
@@ -233,7 +233,7 @@ const clientCases = [
     id: 'eldo',
     name: 'Eldo Wallet',
     intro: "Une startup fintech lance un portefeuille numérique B2B et doit construire sa stratégie d'acquisition de zéro.",
-    problematique: "Découvrez comment nous avons accompagné Eldo Wallet dans leur stratégie go-to-market.",
+    problematique: "De 0 à 10K€ de MRR et 50+ prospects qualifiés pour une fintech B2B",
     stats: [
       { value: '0 → 10K€', label: 'MRR atteint' },
       { value: '50+', label: 'Prospects qualifiés' },
@@ -362,13 +362,13 @@ function SocialProofTabs() {
                     </span>
                   </div>
 
-                  <p className="text-xs sm:text-sm font-['Inter'] text-[#999] leading-relaxed mb-3 sm:mb-5 max-w-xl">
-                    {currentCase.intro}
-                  </p>
-
-                  <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-['Roboto'] font-[900] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a]">
+                  <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-['Roboto'] font-[900] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-5">
                     {currentCase.problematique}
                   </h3>
+
+                  <p className="text-xs sm:text-sm font-['Inter'] text-[#999] leading-relaxed max-w-xl">
+                    {currentCase.intro}
+                  </p>
                 </div>
 
                 {/* Stats row */}
