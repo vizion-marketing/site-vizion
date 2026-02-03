@@ -917,7 +917,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
-            className="relative z-30 group overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl aspect-[4/3] lg:aspect-auto"
+            className="relative z-30 group overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl aspect-[4/3] lg:aspect-auto my-6 lg:my-0"
           >
             <img
               src="/hero-binoculars.png"
