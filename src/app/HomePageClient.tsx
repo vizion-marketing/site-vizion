@@ -786,7 +786,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               })()}
             </h1>
 
-            <p className="text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
               {homeContent.hero.baseline}
             </p>
 
