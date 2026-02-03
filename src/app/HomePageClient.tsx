@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   Zap,
@@ -26,6 +26,73 @@ import Image from "next/image";
 import { homeContent, faqSchema, organizationSchema } from "@/content/home";
 import { ImagePlaceholder } from "@/components/ui";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+
+// Scramble text animation component
+const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*";
+
+function ScrambleText({ text, className }: { text: string; className?: string }) {
+  const [displayed, setDisplayed] = useState(text.split("").map(() => SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]));
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  const frameRef = useRef<number>(0);
+  const resolvedRef = useRef(0);
+
+  const animate = useCallback(() => {
+    const target = text;
+    const totalFrames = target.length * 3;
+
+    const step = () => {
+      frameRef.current++;
+      const progress = frameRef.current / totalFrames;
+      const resolved = Math.floor(progress * target.length);
+
+      if (resolved > resolvedRef.current) resolvedRef.current = resolved;
+
+      setDisplayed(
+        target.split("").map((char, i) => {
+          if (char === " " || char === "," || char === "-" || char === "'") return char;
+          if (i < resolvedRef.current) return char;
+          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+        })
+      );
+
+      if (resolvedRef.current < target.length) {
+        requestAnimationFrame(step);
+      } else {
+        setDisplayed(target.split(""));
+      }
+    };
+
+    frameRef.current = 0;
+    resolvedRef.current = 0;
+    requestAnimationFrame(step);
+  }, [text]);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStarted) {
+          setHasStarted(true);
+          animate();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [hasStarted, animate]);
+
+  return (
+    <span ref={ref} className={className}>
+      {displayed.map((char, i) => (
+        <span key={i} className={i < resolvedRef.current ? "" : "opacity-70"}>
+          {char}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 // Types
 interface Post {
@@ -220,7 +287,18 @@ function SocialProofTabs() {
               viewport={{ once: true }}
               className="font-['Roboto'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] uppercase text-[#1a1a1a]"
             >
-              {homeContent.preuveSociale.h2}
+              {(() => {
+                const h2 = homeContent.preuveSociale.h2;
+                const highlight = homeContent.preuveSociale.h2Highlight;
+                const parts = h2.split(highlight);
+                return (
+                  <>
+                    {parts[0]}
+                    <ScrambleText text={highlight} className="text-[#c8ff00]" />
+                    {parts[1]}
+                  </>
+                );
+              })()}
             </motion.h2>
           </div>
           <motion.p
