@@ -771,30 +771,15 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 return (
                   <>
                     {parts[0]}
-                    <span className="relative inline-block px-[0.1em] py-[0.05em]">
+                    <motion.span
+                      className="inline"
+                      style={{ backgroundSize: '200% 100%', backgroundClip: 'text', WebkitBackgroundClip: 'text' }}
+                      initial={{ color: 'rgba(255,255,255,1)', backgroundImage: 'linear-gradient(90deg, #EEFF41 0%, #EEFF41 0%, rgba(255,255,255,1) 0%)' }}
+                      animate={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, #EEFF41 0%, #EEFF41 100%, rgba(255,255,255,1) 100%)' }}
+                      transition={{ duration: 1.2, delay: 1, ease: 'easeOut' }}
+                    >
                       {highlight}
-                      <motion.svg
-                        className="absolute top-[-15%] left-[-6%] w-[112%] h-[130%] pointer-events-none"
-                        viewBox="0 0 200 80"
-                        fill="none"
-                        preserveAspectRatio="none"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.8 }}
-                      >
-                        <motion.path
-                          d="M30 8 C60 2, 140 -2, 175 8 C200 16, 205 35, 190 52 C175 68, 120 76, 60 72 C20 69, -5 55, 5 38 C10 25, 20 12, 30 8 Z"
-                          stroke="#EEFF41"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          fill="none"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 1, delay: 1, ease: "easeOut" }}
-                        />
-                      </motion.svg>
-                    </span>
+                    </motion.span>
                     {parts[1]}
                   </>
                 );
