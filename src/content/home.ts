@@ -341,7 +341,7 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   piliers: {
     surtitre: "NOS DOMAINES D'INTERVENTION",
-    h2: "CINQ LEVIERS AU SERVICE DE VOTRE PERFORMANCE MARKETING ET COMMERCIALE",
+    h2: "C'EST POURQUOI NOUS AVONS DÉVELOPPÉ UNE EXPERTISE AUTOUR DE 5 ENJEUX COMMERCIAUX ET MARKETING",
     description: "Notre agence intervient sur cinq domaines complémentaires pour améliorer votre performance marketing et commerciale. Des canaux plus efficaces, des décisions mieux informées, des processus optimisés et des équipes alignées : chaque intervention est conçue pour produire des résultats mesurables.",
     badgeText: "Notre approche",
     badgeStatus: "STRATÉGIQUE",
