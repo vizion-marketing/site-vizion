@@ -282,7 +282,7 @@ export const homeContent: HomeContent = {
     surtitre: "[ NOS RÉALISATIONS ]",
     h2: "BIENVENUE CHEZ VIZION, L'AGENCE TOULOUSAINE QUI AVANCE À CONTRE-COURANT",
     h2Highlight: "CONTRE-COURANT",
-    description: "Comme vous, de nombreuses entreprises sont un jour tombées sur ces lignes. Parmi elles, certaines ont décidé de nous faire confiance. Voici leur histoire.",
+    description: "Quand nous avons fondé Vizion en 2021, c'était pour bâtir l'agence que nous aurions aimé trouver : une agence où les stratégies sont imaginées sur mesure pour s'adapter à votre secteur, vos enjeux, vos cycles de vente — pas de méthodes préconstruites, pas de recettes toutes faites. Depuis, plus de 70 entreprises se sont reconnues dans cette Vizion.",
     trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing stratégique à Toulouse et en France",
     trustBannerHighlight: "70 PME, ETI et scale-ups",
 
