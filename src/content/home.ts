@@ -280,7 +280,7 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   preuveSociale: {
     surtitre: "[ NOS RÉALISATIONS ]",
-    h2: "BIENVENUE CHEZ VIZION, L'AGENCE TOULOUSAINE QUI AVANCE À CONTRE-COURANT",
+    h2: "BIENVENUE CHEZ VIZION, L'AGENCE MARKETING TOULOUSAINE QUI AVANCE À CONTRE-COURANT",
     h2Highlight: "CONTRE-COURANT",
     description: "Quand nous avons fondé Vizion en 2021, nous voulions bâtir le modèle d'agence avec laquelle nous aurions aimé collaborer : exigeante, proche de ses clients, et qui place la stratégie au-dessus de la simple exécution. En 3 ans, plus de 70 entreprises dans plus de 15 secteurs d'activités différents se sont reconnues dans cette Vizion. Voici leur histoire.",
     trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing stratégique à Toulouse et en France",
@@ -341,7 +341,7 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   piliers: {
     surtitre: "NOS DOMAINES D'INTERVENTION",
-    h2: "C'EST POURQUOI NOUS AVONS DÉVELOPPÉ UNE EXPERTISE AUTOUR DE 5 ENJEUX COMMERCIAUX ET MARKETING MAJEURS",
+    h2: "AVEC LE TEMPS, NOUS AVONS DÉVELOPPÉ UNE EXPERTISE AUTOUR DE 5 ENJEUX COMMERCIAUX ET MARKETING MAJEURS",
     description: "Notre agence intervient sur cinq domaines complémentaires pour améliorer votre performance marketing et commerciale. Des canaux plus efficaces, des décisions mieux informées, des processus optimisés et des équipes alignées : chaque intervention est conçue pour produire des résultats mesurables.",
     badgeText: "Notre approche",
     badgeStatus: "STRATÉGIQUE",
