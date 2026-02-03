@@ -771,11 +771,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 return (
                   <>
                     {parts[0]}
-                    <span className="relative inline-block">
+                    <span className="relative inline-block px-[0.1em] py-[0.05em]">
                       {highlight}
                       <motion.svg
-                        className="absolute -bottom-1 sm:-bottom-2 left-[-4%] w-[108%] h-[0.45em]"
-                        viewBox="0 0 200 20"
+                        className="absolute top-[-15%] left-[-6%] w-[112%] h-[130%] pointer-events-none"
+                        viewBox="0 0 200 80"
                         fill="none"
                         preserveAspectRatio="none"
                         initial={{ opacity: 0 }}
@@ -783,25 +783,15 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                         transition={{ delay: 0.8 }}
                       >
                         <motion.path
-                          d="M3 14 C20 8, 40 5, 60 7 C80 9, 95 4, 120 6 C140 8, 160 3, 180 8 C190 10, 195 12, 197 11"
+                          d="M30 8 C60 2, 140 -2, 175 8 C200 16, 205 35, 190 52 C175 68, 120 76, 60 72 C20 69, -5 55, 5 38 C10 25, 20 12, 30 8 Z"
                           stroke="#EEFF41"
-                          strokeWidth="3"
+                          strokeWidth="2.5"
                           strokeLinecap="round"
+                          strokeLinejoin="round"
                           fill="none"
                           initial={{ pathLength: 0 }}
                           animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-                        />
-                        <motion.path
-                          d="M5 16 C25 10, 50 8, 75 10 C100 12, 130 6, 155 9 C175 11, 190 14, 196 13"
-                          stroke="#EEFF41"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          fill="none"
-                          opacity="0.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
+                          transition={{ duration: 1, delay: 1, ease: "easeOut" }}
                         />
                       </motion.svg>
                     </span>
