@@ -282,7 +282,7 @@ export const homeContent: HomeContent = {
     surtitre: "[ NOS RÉALISATIONS ]",
     h2: "BIENVENUE CHEZ VIZION, L'AGENCE TOULOUSAINE QUI AVANCE À CONTRE-COURANT",
     h2Highlight: "CONTRE-COURANT",
-    description: "Nous pensons que le marketing doit servir la stratégie de l'entreprise, pas l'inverse. Depuis 2021, nous accompagnons des dirigeants de PME, ETI et scale-ups qui veulent un marketing aligné sur leurs objectifs business — pas des campagnes déconnectées du terrain. Positionnement, sales enablement, acquisition : chaque action est pensée pour raccourcir vos cycles de vente et accélérer votre croissance.",
+    description: "Comme vous, de nombreuses entreprises ont parcouru ces lignes. Parmi elles, nombreuses sont celles avec qui nous avons écrit un bout d'histoire. On vous raconte ça.",
     trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing stratégique à Toulouse et en France",
     trustBannerHighlight: "70 PME, ETI et scale-ups",
 
