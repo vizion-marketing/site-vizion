@@ -836,7 +836,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="absolute top-10 left-12 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-md p-4 shadow-lg"
+              className="hidden lg:block absolute top-10 left-12 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-md p-4 shadow-lg"
             >
               <svg width="96" height="48" viewBox="0 0 96 48" fill="none">
                 <defs>
@@ -874,7 +874,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="absolute bottom-20 left-5 z-20"
+              className="hidden lg:block absolute bottom-20 left-5 z-20"
             >
               <a
                 href="tel:+33750836543"
@@ -904,7 +904,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="absolute bottom-36 right-5 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-md p-4 shadow-lg"
+              className="hidden lg:block absolute bottom-36 right-5 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-md p-4 shadow-lg"
             >
               <div className="flex items-center gap-3">
                 <div className="text-white font-['Roboto'] font-black text-2xl leading-none">+70</div>
