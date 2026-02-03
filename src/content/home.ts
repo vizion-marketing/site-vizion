@@ -280,7 +280,7 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   preuveSociale: {
     surtitre: "[ NOS RÉALISATIONS ]",
-    h2: "CHEZ VIZION, NOUS SOMMES HABITUÉS AUX PRODUITS ET PROBLÉMATIQUES COMPLEXES",
+    h2: "C'EST POURQUOI NOUS AVONS DÉVELOPPÉ UNE EXPERTISE SUR LES PRODUITS ET PROBLÉMATIQUES COMPLEXES",
     h2Highlight: "COMPLEXES",
     description: "PropTech, hygiène industrielle, SaaS, retail, ressources humaines — nous intervenons là où le marketing exige une compréhension fine du métier, du marché et des cycles de décision longs.",
     trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing stratégique à Toulouse et en France",
