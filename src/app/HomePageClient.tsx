@@ -773,9 +773,9 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     {parts[0]}
                     <motion.span
                       className="inline"
-                      style={{ backgroundSize: '200% 100%', backgroundClip: 'text', WebkitBackgroundClip: 'text' }}
-                      initial={{ color: 'rgba(255,255,255,1)', backgroundImage: 'linear-gradient(90deg, #EEFF41 0%, #EEFF41 0%, rgba(255,255,255,1) 0%)' }}
-                      animate={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, #EEFF41 0%, #EEFF41 100%, rgba(255,255,255,1) 100%)' }}
+                      style={{ backgroundClip: 'text', WebkitBackgroundClip: 'text', backgroundImage: 'linear-gradient(90deg, #EEFF41 0%, rgba(255,255,255,0.3) 100%)' }}
+                      initial={{ color: 'rgba(255,255,255,1)' }}
+                      animate={{ color: 'transparent' }}
                       transition={{ duration: 1.2, delay: 1, ease: 'easeOut' }}
                     >
                       {highlight}
