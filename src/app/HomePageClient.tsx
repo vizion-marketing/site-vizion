@@ -764,7 +764,51 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
 
             <h1 className="font-['Roboto'] font-[900] text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-[1.08] tracking-[0.02em] uppercase text-white">
-              {homeContent.hero.h1}
+              {(() => {
+                const h1 = homeContent.hero.h1;
+                const highlight = homeContent.hero.h1Highlight;
+                const parts = h1.split(highlight);
+                return (
+                  <>
+                    {parts[0]}
+                    <span className="relative inline-block">
+                      {highlight}
+                      <motion.svg
+                        className="absolute -bottom-1 sm:-bottom-2 left-[-4%] w-[108%] h-[0.45em]"
+                        viewBox="0 0 200 20"
+                        fill="none"
+                        preserveAspectRatio="none"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8 }}
+                      >
+                        <motion.path
+                          d="M3 14 C20 8, 40 5, 60 7 C80 9, 95 4, 120 6 C140 8, 160 3, 180 8 C190 10, 195 12, 197 11"
+                          stroke="#EEFF41"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          fill="none"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                        />
+                        <motion.path
+                          d="M5 16 C25 10, 50 8, 75 10 C100 12, 130 6, 155 9 C175 11, 190 14, 196 13"
+                          stroke="#EEFF41"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          fill="none"
+                          opacity="0.5"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
+                        />
+                      </motion.svg>
+                    </span>
+                    {parts[1]}
+                  </>
+                );
+              })()}
             </h1>
 
             <p className="text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
