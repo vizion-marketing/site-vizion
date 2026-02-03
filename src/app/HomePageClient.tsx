@@ -294,7 +294,7 @@ function SocialProofTabs() {
                 return (
                   <>
                     {parts[0]}
-                    <ScrambleText text={highlight} className="text-[#c8ff00]" />
+                    <ScrambleText text={highlight} />
                     {parts[1]}
                   </>
                 );
