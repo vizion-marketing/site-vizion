@@ -280,9 +280,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   preuveSociale: {
     surtitre: "[ NOS RÉALISATIONS ]",
-    h2: "BIENVENUE CHEZ VIZION, L'AGENCE TOULOUSAINE QUI AIME LES ENJEUX ET LES SECTEURS COMPLEXES",
-    h2Highlight: "COMPLEXES",
-    description: "PropTech, hygiène industrielle, SaaS, retail, ressources humaines — nous intervenons là où le marketing exige une compréhension fine du métier, du marché et des cycles de décision longs.",
+    h2: "BIENVENUE CHEZ VIZION, L'AGENCE TOULOUSAINE QUI VA VOUS FAIRE AIMER LE MARKETING",
+    h2Highlight: "MARKETING",
+    description: "Depuis 2021, nous accompagnons des PME, ETI et scale-ups dans des secteurs aussi variés que la PropTech, l'hygiène industrielle, le SaaS ou les ressources humaines. Notre promesse : un marketing qui vous ressemble, ancré dans la réalité de votre métier.",
     trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing stratégique à Toulouse et en France",
     trustBannerHighlight: "70 PME, ETI et scale-ups",
 
