@@ -643,7 +643,7 @@ function AssetsPortfolioSection() {
         <div className="mb-12 md:mb-20">
           <span className="text-[11px] font-normal uppercase tracking-[1.65px] text-[#F2F2F2] opacity-70 mb-4 block">Portfolio d&apos;Expertise</span>
           <h2 className="font-['Roboto'] font-black text-[clamp(32px,5vw,52px)] leading-[1.05] tracking-[-0.035em] uppercase text-white max-w-3xl">
-            Des supports <span className="text-[#B7B7B7]">impactants</span> pour votre croissance B2B
+            Nous produisons des assets marketing de <span className="text-[#B7B7B7]">haute qualité</span> pour bâtir votre autorité sur votre marché
           </h2>
         </div>
 
