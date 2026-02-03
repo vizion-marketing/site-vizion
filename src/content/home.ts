@@ -262,7 +262,7 @@ export const homeContent: HomeContent = {
     badge: "AGENCE DE MARKETING STRATÉGIQUE — TOULOUSE",
     h1: "VOTRE AGENCE DE MARKETING STRATÉGIQUE À TOULOUSE",
     h1Highlight: "STRATÉGIQUE",
-    baseline: "Votre performance marketing et commerciale repose sur quatre leviers : des décisions éclairées, des canaux efficaces, des processus optimisés et des équipes marketing et commerciales qui parlent le même langage. Chez Vizion, nous les construisons avec vous.",
+    baseline: "Nous imaginons et opérons des stratégies de croissance sur mesure — adaptées à chaque secteur, chaque enjeu, chaque cycle de vente.",
     badges: [
       "Décisions éclairées",
       "Canaux marketing efficaces",
@@ -282,7 +282,7 @@ export const homeContent: HomeContent = {
     surtitre: "[ NOS RÉALISATIONS ]",
     h2: "BIENVENUE CHEZ VIZION, L'AGENCE TOULOUSAINE QUI AVANCE À CONTRE-COURANT",
     h2Highlight: "CONTRE-COURANT",
-    description: "Quand nous avons fondé Vizion en 2021, nous voulions bâtir le modèle d'agence avec laquelle nous aurions aimé collaborer : exigeante, proche de ses clients, et qui place la stratégie au-dessus de la simple exécution. Depuis, nous imaginons et opérons des stratégies de croissance sur mesure — adaptées à chaque secteur, chaque enjeu, chaque cycle de vente. En 3 ans, plus de 70 entreprises dans plus de 15 secteurs d'activités différents se sont reconnues dans cette Vizion. Voici leur histoire.",
+    description: "Quand nous avons fondé Vizion en 2021, nous voulions bâtir le modèle d'agence avec laquelle nous aurions aimé collaborer : exigeante, proche de ses clients, et qui place la stratégie au-dessus de la simple exécution. En 3 ans, plus de 70 entreprises dans plus de 15 secteurs d'activités différents se sont reconnues dans cette Vizion. Voici leur histoire.",
     trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing stratégique à Toulouse et en France",
     trustBannerHighlight: "70 PME, ETI et scale-ups",
 
