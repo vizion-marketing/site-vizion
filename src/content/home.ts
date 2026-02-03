@@ -350,7 +350,7 @@ export const homeContent: HomeContent = {
         numero: "01",
         surtitre: "DIRECTION MARKETING EXTERNALISÉE",
         titre: "Nous imaginons et opérons des stratégies de croissance sur le long terme",
-        description: "Votre produit est technique. Vos prospects décrochent avant d'en comprendre la valeur. Vous avez besoin d'un partenaire capable de se mettre à votre niveau — et de traduire cette expertise en un discours clair, compris par tous vos interlocuteurs. Nous structurons votre positionnement, votre proposition de valeur et votre architecture de message. Résultat : un narratif produit qui accélère chaque conversation commerciale.",
+        description: "Vous n'avez pas de direction marketing en interne — ou celle que vous avez manque de bande passante pour structurer la stratégie. Les actions s'enchaînent sans fil conducteur, les prestataires se multiplient sans pilote. Nous prenons le rôle de votre directeur marketing dédié : feuille de route, coordination des actions, lien avec vos équipes dirigeantes. Résultat : une stratégie marketing alignée sur vos objectifs business, exécutée dans la durée.",
         services: ["Audit marketing & positionnement", "Architecture de message", "Plan de mise en marché", "Proposition de valeur", "Roadmap marketing stratégique", "Ateliers et formations"],
         cta: "DÉFINIR VOTRE STRATÉGIE"
       },
@@ -358,29 +358,29 @@ export const homeContent: HomeContent = {
         numero: "02",
         surtitre: "PRODUCT MARKETING",
         titre: "Nous construisons des narratifs produits irrésistibles",
-        description: "Votre site existe, mais il ne génère ni leads, ni confiance. Les visiteurs passent, lisent, et repartent sans agir. Nous concevons des interfaces pensées pour les cycles de décision longs du B2B — chaque page guide vos prospects vers l'action au bon moment. Résultat : un actif digital qui convertit en continu, même quand vos équipes dorment.",
-        services: ["Sites web B2B performants", "Landing pages de conversion", "Tunnels d'acquisition", "Pages institutionnelles", "Visuels stratégiques", "Optimisation UX/UI"]
+        description: "Votre produit est technique. Vos prospects décrochent avant d'en comprendre la valeur. Vous avez besoin d'un partenaire capable de se mettre à votre niveau — et de traduire cette expertise en un discours clair, compris par tous vos interlocuteurs. Nous structurons votre positionnement, votre proposition de valeur et votre architecture de message. Résultat : un narratif produit qui accélère chaque conversation commerciale.",
+        services: ["Positionnement produit", "Architecture de message", "Proposition de valeur", "Plan de mise en marché", "Analyse concurrentielle", "Storytelling produit"]
       },
       {
         numero: "03",
         surtitre: "CONTENT MARKETING",
         titre: "Nous créons des contenus d'autorité pour faire de vous une référence sur votre marché",
-        description: "Vos commerciaux passent plus de temps à fabriquer leurs supports qu'à vendre. Les présentations sont incohérentes, les argumentaires improvisés. Nous créons les outils qui font la différence en rendez-vous : pitch decks, argumentaires structurés, supports d'aide à la décision. Résultat : des cycles de vente plus courts et un taux de closing en hausse.",
-        services: ["Présentations commerciales", "Pitch decks stratégiques", "Argumentaires de vente", "Supports d'aide à la décision", "Stratégies LinkedIn", "Personal branding dirigeant"]
+        description: "Votre expertise est réelle, mais personne ne le sait. Vos concurrents publient, prennent la parole, occupent le terrain — pendant que vous restez invisible. Nous concevons des contenus stratégiques qui démontrent votre savoir-faire et attirent vos cibles vers vous. Résultat : une position de référence sur votre marché et un flux régulier de prospects entrants.",
+        services: ["Stratégie éditoriale", "Articles d'expertise SEO", "Lead magnets & livres blancs", "Stratégies LinkedIn", "Personal branding dirigeant", "Content marketing B2B"]
       },
       {
         numero: "04",
         surtitre: "GROWTH",
         titre: "Nous activons et optimisons les bons canaux de croissance",
         description: "Votre croissance repose sur quelques clients historiques et sur le hasard. Quand le pipe se tarit, c'est la panique. Nous construisons des systèmes d'acquisition reproductibles — les bons canaux, les bons messages, les bons dispositifs pour votre marché. Résultat : un pipeline commercial alimenté en continu, de manière prévisible.",
-        services: ["Campagnes d'emailing avancées", "Lead nurturing automatisé", "LinkedIn Ads & Google Ads", "Référencement SEO", "Content marketing B2B", "Lead magnets & acquisition"]
+        services: ["Campagnes d'emailing avancées", "Lead nurturing automatisé", "LinkedIn Ads & Google Ads", "Référencement SEO", "Tunnels d'acquisition", "Landing pages de conversion"]
       },
       {
         numero: "05",
         surtitre: "SALES ENABLEMENT",
         titre: "Nous équipons vos commerciaux des meilleurs outils pour convaincre",
-        description: "Vos équipes jonglent entre les outils, les tâches manuelles et les données dispersées. Ce qui fonctionnait à 10 clients ne tient plus à 50. Nous structurons vos systèmes d'information marketing et commerciaux : CRM, automatisations, intégrations, dashboards. Résultat : des processus fiables qui soutiennent votre croissance au lieu de la freiner.",
-        services: ["Déploiement CRM (HubSpot, Pipedrive, GHL)", "Automatisations avancées", "Intégrations API sur mesure", "Workflows métier personnalisés", "Dashboards & reporting", "Migration de données"]
+        description: "Vos commerciaux passent plus de temps à fabriquer leurs supports qu'à vendre. Les présentations sont incohérentes, les argumentaires improvisés. Nous créons les outils qui font la différence en rendez-vous : pitch decks, argumentaires structurés, supports d'aide à la décision. Résultat : des cycles de vente plus courts et un taux de closing en hausse.",
+        services: ["Présentations commerciales", "Pitch decks stratégiques", "Argumentaires de vente", "Supports d'aide à la décision", "CRM & automatisations", "Outils de prospection"]
       }
     ],
     ctaText: "Rejoignez les 70+ entreprises qui ont structuré leur marketing stratégique avec Vizion.",
