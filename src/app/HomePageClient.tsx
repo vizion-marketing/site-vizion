@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   Zap,
@@ -26,6 +26,73 @@ import Image from "next/image";
 import { homeContent, faqSchema, organizationSchema } from "@/content/home";
 import { ImagePlaceholder } from "@/components/ui";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+
+// Scramble text animation component
+const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*";
+
+function ScrambleText({ text, className }: { text: string; className?: string }) {
+  const [displayed, setDisplayed] = useState(text.split("").map(() => SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]));
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  const frameRef = useRef<number>(0);
+  const resolvedRef = useRef(0);
+
+  const animate = useCallback(() => {
+    const target = text;
+    const totalFrames = target.length * 3;
+
+    const step = () => {
+      frameRef.current++;
+      const progress = frameRef.current / totalFrames;
+      const resolved = Math.floor(progress * target.length);
+
+      if (resolved > resolvedRef.current) resolvedRef.current = resolved;
+
+      setDisplayed(
+        target.split("").map((char, i) => {
+          if (char === " " || char === "," || char === "-" || char === "'") return char;
+          if (i < resolvedRef.current) return char;
+          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+        })
+      );
+
+      if (resolvedRef.current < target.length) {
+        requestAnimationFrame(step);
+      } else {
+        setDisplayed(target.split(""));
+      }
+    };
+
+    frameRef.current = 0;
+    resolvedRef.current = 0;
+    requestAnimationFrame(step);
+  }, [text]);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStarted) {
+          setHasStarted(true);
+          animate();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [hasStarted, animate]);
+
+  return (
+    <span ref={ref} className={className}>
+      {displayed.map((char, i) => (
+        <span key={i} className={i < resolvedRef.current ? "" : "opacity-70"}>
+          {char}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 // Types
 interface Post {
@@ -85,8 +152,8 @@ const clientCases = [
   {
     id: 'easyvirtual',
     name: 'easyVirtual.tours',
-    intro: "Une filiale du groupe easyJet lance un concept de visites virtuelles immobilières et vise un déploiement en franchise sur le territoire national.",
-    problematique: "Découvrez comment nous avons accompagné une filiale du groupe Easy dans son développement national et international.",
+    intro: "Une filiale du groupe easyJet lance un concept de visites virtuelles immobilières et nous confie son déploiement national en franchise.",
+    problematique: "De 0 à 25 franchises en moins d'un an pour une filiale d'easyJet",
     stats: [
       { value: '0 → 25', label: 'Franchises en 1 an' },
       { value: '3', label: 'Pays couverts' },
@@ -102,7 +169,7 @@ const clientCases = [
     id: 'ensenat',
     name: 'Ensenat Coaching',
     intro: "Un groupe de salles de sport premium multi-sites fait face à des coûts marketing élevés et un manque de visibilité locale.",
-    problematique: "Découvrez comment nous avons aidé Ensenat Coaching à rationaliser ses coûts marketing pour une meilleure performance.",
+    problematique: "+1000% de trafic SEO en 3 mois et -40% de coûts marketing pour un groupe de salles de sport",
     stats: [
       { value: '+1000%', label: 'Trafic SEO en 3 mois' },
       { value: '-40%', label: 'Coûts marketing' },
@@ -118,7 +185,7 @@ const clientCases = [
     id: 'elis',
     name: 'Groupe Elis',
     intro: "Le leader européen de l'hygiène et du bien-être au travail cherche à accélérer sa croissance externe en identifiant des cibles d'acquisition.",
-    problematique: "Découvrez comment nous avons accompagné le groupe Elis dans l'identification de cédants potentiels.",
+    problematique: "12 cédants identifiés sur 200+ entreprises analysées pour le groupe Elis",
     stats: [
       { value: '12', label: 'Cédants identifiés' },
       { value: '3', label: 'Secteurs cartographiés' },
@@ -134,7 +201,7 @@ const clientCases = [
     id: 'olivier',
     name: 'Olivier Bas',
     intro: "Le Vice-Président d'Havas Paris souhaite structurer sa présence LinkedIn pour asseoir son expertise et générer des opportunités.",
-    problematique: "Découvrez comment nous avons accompagné le Vice-Président d'Havas Paris dans sa stratégie de personal branding.",
+    problematique: "1 million de vues LinkedIn et 15 000 abonnés pour le VP d'Havas Paris",
     stats: [
       { value: '1M', label: 'Vues LinkedIn' },
       { value: '15K+', label: 'Nouveaux abonnés' },
@@ -150,7 +217,7 @@ const clientCases = [
     id: 'ecard',
     name: 'e-card',
     intro: "Un éditeur de cartes de visite digitales peine à se différencier sur un marché saturé et doit repositionner son offre.",
-    problematique: "Découvrez comment nous avons accompagné e-card dans leur repositionnement marketing.",
+    problematique: "x3 sur les leads qualifiés après un repositionnement complet pour e-card",
     stats: [
       { value: 'Nouveau', label: 'Positionnement marché' },
       { value: '3x', label: 'Leads qualifiés' },
@@ -166,7 +233,7 @@ const clientCases = [
     id: 'eldo',
     name: 'Eldo Wallet',
     intro: "Une startup fintech lance un portefeuille numérique B2B et doit construire sa stratégie d'acquisition de zéro.",
-    problematique: "Découvrez comment nous avons accompagné Eldo Wallet dans leur stratégie go-to-market.",
+    problematique: "De 0 à 10K€ de MRR et 50+ prospects qualifiés pour une fintech B2B",
     stats: [
       { value: '0 → 10K€', label: 'MRR atteint' },
       { value: '50+', label: 'Prospects qualifiés' },
@@ -220,7 +287,18 @@ function SocialProofTabs() {
               viewport={{ once: true }}
               className="font-['Roboto'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] uppercase text-[#1a1a1a]"
             >
-              {homeContent.preuveSociale.h2}
+              {(() => {
+                const h2 = homeContent.preuveSociale.h2;
+                const highlight = homeContent.preuveSociale.h2Highlight;
+                const parts = h2.split(highlight);
+                return (
+                  <>
+                    {parts[0]}
+                    <ScrambleText text={highlight} />
+                    {parts[1]}
+                  </>
+                );
+              })()}
             </motion.h2>
           </div>
           <motion.p
@@ -284,13 +362,13 @@ function SocialProofTabs() {
                     </span>
                   </div>
 
-                  <p className="text-xs sm:text-sm font-['Inter'] text-[#999] leading-relaxed mb-3 sm:mb-5 max-w-xl">
-                    {currentCase.intro}
-                  </p>
-
-                  <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-['Roboto'] font-[900] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a]">
+                  <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-['Roboto'] font-[900] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-5">
                     {currentCase.problematique}
                   </h3>
+
+                  <p className="text-xs sm:text-sm font-['Inter'] text-[#999] leading-relaxed max-w-xl">
+                    {currentCase.intro}
+                  </p>
                 </div>
 
                 {/* Stats row */}
@@ -643,7 +721,7 @@ function AssetsPortfolioSection() {
         <div className="mb-12 md:mb-20">
           <span className="text-[11px] font-normal uppercase tracking-[1.65px] text-[#F2F2F2] opacity-70 mb-4 block">Portfolio d&apos;Expertise</span>
           <h2 className="font-['Roboto'] font-black text-[clamp(32px,5vw,52px)] leading-[1.05] tracking-[-0.035em] uppercase text-white max-w-3xl">
-            Des supports <span className="text-[#B7B7B7]">impactants</span> pour votre croissance B2B
+            Nous produisons des assets marketing de <span className="text-[#B7B7B7]">haute qualité</span> pour bâtir votre autorité sur votre marché
           </h2>
         </div>
 
@@ -712,8 +790,8 @@ function AssetsPortfolioSection() {
         </div>
       </div>
 
-      {/* Diagonal bottom → next section */}
-      <SectionDiagonalBottom fillColor="#F2F2F2" direction="right" />
+      {/* Diagonal bottom → next section (Quand Commencer white) */}
+      <SectionDiagonalBottom fillColor="#FFFFFF" direction="right" />
     </section>
   );
 }
@@ -764,10 +842,29 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
 
             <h1 className="font-['Roboto'] font-[900] text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-[1.08] tracking-[0.02em] uppercase text-white">
-              {homeContent.hero.h1}
+              {(() => {
+                const h1 = homeContent.hero.h1;
+                const highlight = homeContent.hero.h1Highlight;
+                const parts = h1.split(highlight);
+                return (
+                  <>
+                    {parts[0]}
+                    <motion.span
+                      className="inline"
+                      style={{ backgroundSize: '200% 100%', backgroundClip: 'text', WebkitBackgroundClip: 'text' }}
+                      initial={{ color: 'rgba(255,255,255,1)', backgroundImage: 'linear-gradient(90deg, #EEFF41 0%, #EEFF41 0%, rgba(255,255,255,1) 0%)' }}
+                      animate={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, #EEFF41 0%, #EEFF41 100%, rgba(255,255,255,1) 100%)' }}
+                      transition={{ duration: 1.2, delay: 1, ease: 'easeOut' }}
+                    >
+                      {highlight}
+                    </motion.span>
+                    {parts[1]}
+                  </>
+                );
+              })()}
             </h1>
 
-            <p className="text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: 'rgba(255,255,255,0.8)' }}>
               {homeContent.hero.baseline}
             </p>
 
@@ -820,7 +917,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
-            className="hidden lg:block relative z-30 group overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl"
+            className="relative z-30 group overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl aspect-[4/3] lg:aspect-auto my-6 lg:my-0"
           >
             <img
               src="/hero-binoculars.png"
@@ -836,7 +933,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="absolute top-10 left-12 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-md p-4 shadow-lg"
+              className="hidden lg:block absolute top-10 left-12 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-md p-4 shadow-lg"
             >
               <svg width="96" height="48" viewBox="0 0 96 48" fill="none">
                 <defs>
@@ -874,7 +971,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="absolute bottom-20 left-5 z-20"
+              className="hidden lg:block absolute bottom-20 left-5 z-20"
             >
               <a
                 href="tel:+33750836543"
@@ -904,7 +1001,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="absolute bottom-36 right-5 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-md p-4 shadow-lg"
+              className="hidden lg:block absolute bottom-36 right-5 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-md p-4 shadow-lg"
             >
               <div className="flex items-center gap-3">
                 <div className="text-white font-['Roboto'] font-black text-2xl leading-none">+70</div>
@@ -1036,9 +1133,16 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 transition={{ delay: 0.1 * i }}
                 className={`${span} bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg p-4 sm:p-5 md:p-7 flex flex-col group shadow-sm card-hover-glow transition-all duration-300`}
               >
-                <div className="flex items-start justify-between mb-4 sm:mb-6">
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-black/5 backdrop-blur-sm border border-black/5 flex items-center justify-center group-hover:bg-black group-hover:border-black group-hover:shadow-lg group-hover:shadow-black/20 transition-all duration-300">
-                    <Icon className="text-black group-hover:text-white transition-colors" size={18} strokeWidth={2.5} />
+                <div className="flex items-start justify-between mb-3 sm:mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-black/5 backdrop-blur-sm border border-black/5 flex items-center justify-center group-hover:bg-black group-hover:border-black group-hover:shadow-lg group-hover:shadow-black/20 transition-all duration-300">
+                      <Icon className="text-black group-hover:text-white transition-colors" size={18} strokeWidth={2.5} />
+                    </div>
+                    <div className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-black/5 backdrop-blur-sm border border-black/10 rounded-lg">
+                      <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/60">
+                        {homeContent.piliers.piliers[idx].surtitre}
+                      </span>
+                    </div>
                   </div>
                   <span className="text-[11px] sm:text-[12px] font-black text-black/10 group-hover:text-black/25 transition-colors">0{idx + 1}</span>
                 </div>
@@ -1097,6 +1201,183 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 {homeContent.piliers.cta.primary.text} <ArrowRight size={14} />
               </Link>
             </div>
+          </motion.div>
+        </div>
+        {/* Diagonal bottom → next section (Assets Portfolio) */}
+        <SectionDiagonalBottom fillColor="#B7B7B7" direction="left" />
+      </section>
+
+      {/* ASSETS PORTFOLIO SECTION */}
+      <AssetsPortfolioSection />
+
+      {/* SECTION QUAND COMMENCER */}
+      {/* SEO: Offres et tarifs agence marketing Toulouse */}
+      {/* Images: 400x240px (5:3) pour les visuels des offres */}
+      <section
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-white via-[#FEFEFE] to-[#FAFAF8] relative grain-light"
+        aria-label="Offres et formules agence marketing Toulouse"
+      >
+        {/* Ambient glow */}
+        <div className="absolute top-[15%] left-[-5%] w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-gradient-to-br from-blue-50/20 via-slate-50/10 to-transparent rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[0%] w-[250px] sm:w-[450px] h-[250px] sm:h-[450px] bg-gradient-to-tl from-amber-50/15 via-orange-50/8 to-transparent rounded-full blur-[110px] pointer-events-none" />
+        <div className="max-w-[82.5rem] mx-auto relative z-10">
+          {/* Header */}
+          <div className="max-w-3xl mb-10 sm:mb-12 md:mb-16 lg:mb-20">
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
+            >
+              {homeContent.quandCommencer.surtitre}
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black mb-4 sm:mb-6"
+            >
+              {homeContent.quandCommencer.h2}
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-black/60 text-base sm:text-lg font-['Inter'] leading-relaxed"
+            >
+              {homeContent.quandCommencer.description}
+            </motion.p>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
+            {homeContent.quandCommencer.scenarios.map((scenario, index) => {
+              const isFeatured = index === 1;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`group flex flex-col overflow-hidden relative ${
+                    isFeatured
+                      ? 'bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border-2 border-white/30 rounded-md sm:rounded-lg shadow-2xl shadow-black/30 text-white'
+                      : 'bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm card-hover-glow transition-all duration-300'
+                  }`}
+                >
+                  {/* Carbon fibre pattern for featured card */}
+                  {isFeatured && <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')] pointer-events-none z-0" />}
+                  {/* Image Container */}
+                  <div className="relative aspect-[16/10] sm:aspect-[5/3] w-full overflow-hidden">
+                    <Image
+                      src={scenario.image}
+                      alt={`${scenario.title} - Agence Marketing Toulouse`}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className={`absolute inset-0 ${isFeatured ? 'bg-gradient-to-t from-black/80 to-transparent' : 'bg-gradient-to-t from-black/20 to-transparent'}`} />
+
+                    {/* Badge */}
+                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                      <span className={`px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest rounded-md sm:rounded-lg shadow-lg ${
+                        isFeatured ? 'bg-white text-black' : 'bg-black text-white'
+                      }`}>
+                        {scenario.badge}
+                      </span>
+                    </div>
+
+                    {isFeatured && (
+                      <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
+                        <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 rounded-md sm:rounded-lg">
+                          <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
+                          <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white">
+                            Populaire
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-4 sm:p-6 md:p-7 flex flex-col flex-grow">
+                    <h3
+                      className="font-['Roboto'] font-[900] text-lg sm:text-xl uppercase mb-1 sm:mb-1.5"
+                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}
+                    >
+                      {scenario.title}
+                    </h3>
+                    <p
+                      className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.1em] mb-3 sm:mb-4"
+                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.5)' }}
+                    >
+                      {scenario.subtitle}
+                    </p>
+                    <p
+                      className="text-xs sm:text-sm font-['Inter'] leading-relaxed mb-4 sm:mb-6 flex-grow"
+                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.6)' }}
+                    >
+                      {scenario.description}
+                    </p>
+
+                    {/* Metadata Section - Premium glassmorphism */}
+                    <div className={`space-y-2 sm:space-y-2.5 p-3 sm:p-4 mb-4 sm:mb-6 ${
+                      isFeatured ? 'bg-white/10 backdrop-blur-md border border-white/10 rounded-md sm:rounded-lg' : 'bg-white/50 backdrop-blur-sm border border-black/5 rounded-md sm:rounded-lg'
+                    }`}>
+                      <div className="flex justify-between items-center">
+                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Durée</span>
+                        <span className="text-[11px] sm:text-xs font-bold" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}>{scenario.duration}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Budget</span>
+                        <span className="text-[11px] sm:text-xs font-bold" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}>{scenario.investment}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Cible</span>
+                        <span className="text-[10px] sm:text-[11px] font-medium truncate ml-4" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.5)' }}>{scenario.idealFor}</span>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/contact"
+                      className={`w-full h-[44px] sm:h-[48px] text-[11px] sm:text-[12px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 ${
+                        isFeatured
+                          ? 'bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35)] hover:-translate-y-0.5'
+                          : 'bg-black/90 backdrop-blur-xl text-white border border-white/10 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:bg-black hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.2)] hover:-translate-y-0.5'
+                      }`}
+                    >
+                      {scenario.cta}
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-10 sm:mt-12 md:mt-16 pt-8 sm:pt-10 md:pt-12 border-t border-black/5 flex flex-col items-center gap-4 sm:gap-6 md:flex-row md:justify-between md:gap-8"
+          >
+            <div className="text-center md:text-left">
+              <p className="font-['Roboto'] font-black text-xs sm:text-sm uppercase text-black">
+                {homeContent.quandCommencer.bottomCta.text}
+              </p>
+              <p className="text-black/50 text-[11px] sm:text-xs font-['Inter']">
+                {homeContent.quandCommencer.bottomCta.subtext}
+              </p>
+            </div>
+            <Link
+              href={homeContent.quandCommencer.bottomCta.button.href}
+              className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-black hover:text-black/70 transition-colors group"
+            >
+              {homeContent.quandCommencer.bottomCta.button.text}
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
           </motion.div>
         </div>
         {/* Diagonal bottom → next section (IA Highlight) */}
@@ -1312,186 +1593,9 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
           </div>
         </div>
-        {/* Diagonal bottom → next section (Quand Commencer white) */}
-        <SectionDiagonalBottom fillColor="#FFFFFF" direction="right" />
+        {/* Diagonal bottom → next section (À Propos) */}
+        <SectionDiagonalBottom fillColor="#F2F2F2" direction="right" />
       </section>
-
-      {/* SECTION QUAND COMMENCER */}
-      {/* SEO: Offres et tarifs agence marketing Toulouse */}
-      {/* Images: 400x240px (5:3) pour les visuels des offres */}
-      <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-white via-[#FEFEFE] to-[#FAFAF8] relative grain-light"
-        aria-label="Offres et formules agence marketing Toulouse"
-      >
-        {/* Ambient glow */}
-        <div className="absolute top-[15%] left-[-5%] w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-gradient-to-br from-blue-50/20 via-slate-50/10 to-transparent rounded-full blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-[10%] right-[0%] w-[250px] sm:w-[450px] h-[250px] sm:h-[450px] bg-gradient-to-tl from-amber-50/15 via-orange-50/8 to-transparent rounded-full blur-[110px] pointer-events-none" />
-        <div className="max-w-[82.5rem] mx-auto relative z-10">
-          {/* Header */}
-          <div className="max-w-3xl mb-10 sm:mb-12 md:mb-16 lg:mb-20">
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
-            >
-              {homeContent.quandCommencer.surtitre}
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black mb-4 sm:mb-6"
-            >
-              {homeContent.quandCommencer.h2}
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-black/60 text-base sm:text-lg font-['Inter'] leading-relaxed"
-            >
-              {homeContent.quandCommencer.description}
-            </motion.p>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
-            {homeContent.quandCommencer.scenarios.map((scenario, index) => {
-              const isFeatured = index === 1;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`group flex flex-col overflow-hidden relative ${
-                    isFeatured
-                      ? 'bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border-2 border-white/30 rounded-md sm:rounded-lg shadow-2xl shadow-black/30 text-white'
-                      : 'bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm card-hover-glow transition-all duration-300'
-                  }`}
-                >
-                  {/* Carbon fibre pattern for featured card */}
-                  {isFeatured && <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')] pointer-events-none z-0" />}
-                  {/* Image Container */}
-                  <div className="relative aspect-[16/10] sm:aspect-[5/3] w-full overflow-hidden">
-                    <Image
-                      src={scenario.image}
-                      alt={`${scenario.title} - Agence Marketing Toulouse`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className={`absolute inset-0 ${isFeatured ? 'bg-gradient-to-t from-black/80 to-transparent' : 'bg-gradient-to-t from-black/20 to-transparent'}`} />
-
-                    {/* Badge */}
-                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
-                      <span className={`px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest rounded-md sm:rounded-lg shadow-lg ${
-                        isFeatured ? 'bg-white text-black' : 'bg-black text-white'
-                      }`}>
-                        {scenario.badge}
-                      </span>
-                    </div>
-
-                    {isFeatured && (
-                      <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                        <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 rounded-md sm:rounded-lg">
-                          <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
-                          <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white">
-                            Populaire
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-4 sm:p-6 md:p-7 flex flex-col flex-grow">
-                    <h3
-                      className="font-['Roboto'] font-[900] text-lg sm:text-xl uppercase mb-1 sm:mb-1.5"
-                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}
-                    >
-                      {scenario.title}
-                    </h3>
-                    <p
-                      className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.1em] mb-3 sm:mb-4"
-                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.5)' }}
-                    >
-                      {scenario.subtitle}
-                    </p>
-                    <p
-                      className="text-xs sm:text-sm font-['Inter'] leading-relaxed mb-4 sm:mb-6 flex-grow"
-                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.6)' }}
-                    >
-                      {scenario.description}
-                    </p>
-
-                    {/* Metadata Section - Premium glassmorphism */}
-                    <div className={`space-y-2 sm:space-y-2.5 p-3 sm:p-4 mb-4 sm:mb-6 ${
-                      isFeatured ? 'bg-white/10 backdrop-blur-md border border-white/10 rounded-md sm:rounded-lg' : 'bg-white/50 backdrop-blur-sm border border-black/5 rounded-md sm:rounded-lg'
-                    }`}>
-                      <div className="flex justify-between items-center">
-                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Durée</span>
-                        <span className="text-[11px] sm:text-xs font-bold" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}>{scenario.duration}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Budget</span>
-                        <span className="text-[11px] sm:text-xs font-bold" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}>{scenario.investment}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Cible</span>
-                        <span className="text-[10px] sm:text-[11px] font-medium truncate ml-4" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.5)' }}>{scenario.idealFor}</span>
-                      </div>
-                    </div>
-
-                    <Link
-                      href="/contact"
-                      className={`w-full h-[44px] sm:h-[48px] text-[11px] sm:text-[12px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 ${
-                        isFeatured
-                          ? 'bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35)] hover:-translate-y-0.5'
-                          : 'bg-black/90 backdrop-blur-xl text-white border border-white/10 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:bg-black hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.2)] hover:-translate-y-0.5'
-                      }`}
-                    >
-                      {scenario.cta}
-                      <ArrowRight size={14} />
-                    </Link>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mt-10 sm:mt-12 md:mt-16 pt-8 sm:pt-10 md:pt-12 border-t border-black/5 flex flex-col items-center gap-4 sm:gap-6 md:flex-row md:justify-between md:gap-8"
-          >
-            <div className="text-center md:text-left">
-              <p className="font-['Roboto'] font-black text-xs sm:text-sm uppercase text-black">
-                {homeContent.quandCommencer.bottomCta.text}
-              </p>
-              <p className="text-black/50 text-[11px] sm:text-xs font-['Inter']">
-                {homeContent.quandCommencer.bottomCta.subtext}
-              </p>
-            </div>
-            <Link
-              href={homeContent.quandCommencer.bottomCta.button.href}
-              className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-black hover:text-black/70 transition-colors group"
-            >
-              {homeContent.quandCommencer.bottomCta.button.text}
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </div>
-        {/* Diagonal bottom → next section (Assets Portfolio) */}
-        <SectionDiagonalBottom fillColor="#B7B7B7" direction="left" />
-      </section>
-
-      {/* ASSETS PORTFOLIO SECTION */}
-      <AssetsPortfolioSection />
 
       {/* SECTION À PROPOS DE VIZION */}
       {/* SEO: Présentation agence marketing Toulouse - équipe et valeurs */}
