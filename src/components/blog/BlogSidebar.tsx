@@ -40,10 +40,10 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
 
         <div className="relative z-10 flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <span className="font-['Inter'] text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-medium">
+            <span className="font-['Inter'] text-[10px] tracking-[0.2em] text-neutral-400 font-medium">
               Accès Privé
             </span>
-            <h3 className="font-['Roboto'] font-[900] uppercase text-xl leading-[0.9] text-white tracking-tighter">
+            <h3 className="font-['Inter'] font-[900] text-xl leading-[0.9] text-white tracking-tighter">
               Propulsez votre <br /> vision créative
             </h3>
           </div>
@@ -54,7 +54,7 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
 
           <Link 
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 bg-white px-5 py-2.5 rounded-full text-[10px] font-['Roboto'] font-[900] uppercase tracking-widest text-black hover:bg-neutral-200 transition-all duration-300 group/btn"
+            className="inline-flex items-center justify-center gap-2 bg-white px-5 py-2.5 rounded-full text-[10px] font-['Inter'] font-[900] tracking-widest text-black hover:bg-neutral-200 transition-all duration-300 group/btn"
           >
             S'inscrire 
             <ArrowUpRight className="w-3 h-3 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
@@ -65,7 +65,7 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
       {/* RELATED ARTICLES SECTION */}
       <div className="flex flex-col gap-5">
         <div className="flex items-center gap-3">
-          <h4 className="font-['Roboto'] font-[900] uppercase text-[11px] tracking-[0.25em] text-neutral-400">
+          <h4 className="font-['Inter'] font-[900] text-[11px] tracking-[0.25em] text-neutral-400">
             Articles Similaires
           </h4>
           <div className="h-[1px] flex-1 bg-neutral-200" />
@@ -96,7 +96,7 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
                   </div>
                   
                   <div className="flex flex-col gap-1.5 pt-1">
-                    <div className="flex items-center gap-2 text-[9px] font-['Inter'] font-semibold uppercase tracking-wider text-neutral-400">
+                    <div className="flex items-center gap-2 text-[9px] font-['Inter'] font-semibold tracking-wider text-neutral-400">
                       <span className="flex items-center gap-1">
                         <Tag className="w-2.5 h-2.5" />
                         {post.category}

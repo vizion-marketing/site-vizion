@@ -64,7 +64,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     >
       <div className="flex items-center gap-2 mb-4">
         <List size={16} className="text-zinc-500" />
-        <h4 className="text-[11px] font-medium uppercase tracking-[1.65px] text-zinc-500">
+        <h4 className="text-[11px] font-medium tracking-[1.65px] text-zinc-500">
           Sommaire
         </h4>
       </div>

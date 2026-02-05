@@ -25,7 +25,7 @@ export function AuthorBio() {
       transition={{ duration: 0.5 }}
       className="bg-[#F2F2F2] p-8 rounded-sm"
     >
-      <h4 className="text-[11px] font-medium uppercase tracking-[1.65px] text-zinc-500 mb-6">
+      <h4 className="text-[11px] font-medium tracking-[1.65px] text-zinc-500 mb-6">
         À propos de l'auteur
       </h4>
 
@@ -39,7 +39,7 @@ export function AuthorBio() {
           />
         </div>
         <div>
-          <p className="font-black uppercase text-sm leading-tight font-['Roboto']">
+          <p className="font-black text-sm leading-tight font-['Inter']">
             {AUTHOR_CONFIG.name}
           </p>
           <p className="text-xs text-zinc-500 mt-1 font-['Inter']">
@@ -80,7 +80,7 @@ export function AuthorBio() {
 
       <Link
         href={AUTHOR_CONFIG.website}
-        className="text-xs font-bold uppercase tracking-wider flex items-center gap-2 group hover:text-zinc-600 transition-colors"
+        className="text-xs font-bold tracking-wider flex items-center gap-2 group hover:text-zinc-600 transition-colors"
       >
         Contactez-nous{" "}
         <ChevronRight

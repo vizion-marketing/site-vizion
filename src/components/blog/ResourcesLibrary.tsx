@@ -31,7 +31,7 @@ export function ResourcesLibrary({ resources }: ResourcesLibraryProps) {
     >
       <div className="flex items-center gap-2 mb-6">
         <BookOpen size={20} className="text-zinc-600" />
-        <h3 className="text-lg font-black uppercase tracking-tight font-['Roboto']">
+        <h3 className="text-lg font-black tracking-tight font-['Inter']">
           Ressources complémentaires
         </h3>
       </div>
@@ -40,7 +40,7 @@ export function ResourcesLibrary({ resources }: ResourcesLibraryProps) {
         {/* Internal Resources */}
         {internalResources.length > 0 && (
           <div className="space-y-3">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+            <span className="text-[10px] font-bold tracking-wider text-zinc-400">
               Sur notre site
             </span>
             {internalResources.map((resource, idx) => (
@@ -74,7 +74,7 @@ export function ResourcesLibrary({ resources }: ResourcesLibraryProps) {
         {/* External Resources */}
         {externalResources.length > 0 && (
           <div className="space-y-3">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+            <span className="text-[10px] font-bold tracking-wider text-zinc-400">
               Liens externes
             </span>
             {externalResources.map((resource, idx) => (

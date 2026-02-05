@@ -92,13 +92,13 @@ export default function ContactPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-[#EEFF41]"></span>
                 </span>
-                <span className="text-[10px] font-bold text-white/80 uppercase tracking-[0.2em]">
+                <span className="text-[10px] font-bold text-white/80 tracking-[0.2em]">
                   Nous sommes disponibles
                 </span>
               </div>
 
               {/* Header Text */}
-              <h1 className="font-['Roboto'] font-[900] text-4xl md:text-5xl lg:text-6xl text-white uppercase tracking-tight leading-[0.95] mb-4">
+              <h1 className="font-['Inter'] font-[900] text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[0.95] mb-4">
                 Parlons de <br />
                 <span className="text-white/40">votre projet</span>
               </h1>
@@ -128,7 +128,7 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Prénom *</label>
+                    <label className="text-[10px] tracking-[0.15em] text-white/40 font-bold ml-1">Prénom *</label>
                     <input
                       required
                       name="firstName"
@@ -138,7 +138,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Nom *</label>
+                    <label className="text-[10px] tracking-[0.15em] text-white/40 font-bold ml-1">Nom *</label>
                     <input
                       required
                       name="lastName"
@@ -150,7 +150,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Email professionnel *</label>
+                  <label className="text-[10px] tracking-[0.15em] text-white/40 font-bold ml-1">Email professionnel *</label>
                   <input
                     required
                     name="email"
@@ -162,7 +162,7 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Entreprise</label>
+                    <label className="text-[10px] tracking-[0.15em] text-white/40 font-bold ml-1">Entreprise</label>
                     <input
                       name="company"
                       type="text"
@@ -171,7 +171,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Sujet *</label>
+                    <label className="text-[10px] tracking-[0.15em] text-white/40 font-bold ml-1">Sujet *</label>
                     <div className="relative">
                       <select
                         required
@@ -191,7 +191,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold ml-1">Message *</label>
+                  <label className="text-[10px] tracking-[0.15em] text-white/40 font-bold ml-1">Message *</label>
                   <textarea
                     required
                     name="message"
@@ -258,10 +258,10 @@ export default function ContactPage() {
               <div className="absolute bottom-6 inset-x-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl space-y-4">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-white font-['Roboto'] font-[900] text-lg uppercase tracking-tight leading-tight">Lucas Gonzalez</h3>
-                    <p className="text-[#EEFF41] text-[10px] font-bold uppercase tracking-[0.15em]">Directeur Commercial</p>
+                    <h3 className="text-white font-['Inter'] font-[900] text-lg tracking-tight leading-tight">Lucas Gonzalez</h3>
+                    <p className="text-[#EEFF41] text-[10px] font-bold tracking-[0.15em]">Directeur Commercial</p>
                   </div>
-                  <div className="bg-[#EEFF41] text-black text-[9px] font-black px-2.5 py-1 rounded-lg tracking-tight uppercase flex items-center gap-1.5">
+                  <div className="bg-[#EEFF41] text-black text-[9px] font-black px-2.5 py-1 rounded-lg tracking-tight flex items-center gap-1.5">
                     <span className="relative flex h-1.5 w-1.5">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-black"></span>
@@ -313,10 +313,10 @@ export default function ContactPage() {
         <div className="max-w-[82.5rem] mx-auto px-6 lg:px-12">
           {/* Section Header */}
           <div className="mb-16">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 mb-4 block">
+            <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 mb-4 block">
               Pourquoi nous choisir
             </span>
-            <h2 className="font-['Roboto'] font-[900] text-4xl md:text-5xl uppercase tracking-tight text-black leading-[0.95]">
+            <h2 className="font-['Inter'] font-[900] text-4xl md:text-5xl tracking-tight text-black leading-[0.95]">
               Nos engagements
             </h2>
           </div>
@@ -334,7 +334,7 @@ export default function ContactPage() {
               <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-[#EEFF41] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
                 <Clock className="w-7 h-7" />
               </div>
-              <h3 className="font-['Roboto'] font-[900] uppercase text-xl text-black tracking-tight mb-3">Réactivité 24h</h3>
+              <h3 className="font-['Inter'] font-[900] text-xl text-black tracking-tight mb-3">Réactivité 24h</h3>
               <p className="text-black/60 leading-relaxed">
                 Le temps est votre ressource la plus précieuse. Nous garantissons une première réponse sous 24h ouvrées maximum.
               </p>
@@ -352,7 +352,7 @@ export default function ContactPage() {
               <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-[#EEFF41] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
                 <ShieldCheck className="w-7 h-7" />
               </div>
-              <h3 className="font-['Roboto'] font-[900] uppercase text-xl text-black tracking-tight mb-3">Expertise B2B</h3>
+              <h3 className="font-['Inter'] font-[900] text-xl text-black tracking-tight mb-3">Expertise B2B</h3>
               <p className="text-black/60 leading-relaxed">
                 Spécialistes des environnements complexes, nous comprenons les enjeux de croissance propres aux PME et ETI.
               </p>
@@ -370,7 +370,7 @@ export default function ContactPage() {
               <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-[#EEFF41] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
                 <Users className="w-7 h-7" />
               </div>
-              <h3 className="font-['Roboto'] font-[900] uppercase text-xl text-black tracking-tight mb-3">Partenariat long-terme</h3>
+              <h3 className="font-['Inter'] font-[900] text-xl text-black tracking-tight mb-3">Partenariat long-terme</h3>
               <p className="text-black/60 leading-relaxed">
                 Nous ne sommes pas un simple prestataire. Nous devenons votre partenaire stratégique pour une croissance durable.
               </p>

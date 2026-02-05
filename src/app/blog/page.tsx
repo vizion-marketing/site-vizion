@@ -112,12 +112,12 @@ export default function BlogPage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-[#EEFF41]"></span>
                   </span>
-                  <span className="text-[10px] font-bold tracking-[0.15em] text-white/60 uppercase">
+                  <span className="text-[10px] font-bold tracking-[0.15em] text-white/60">
                     Le laboratoire de performance
                   </span>
                 </div>
                 
-                <h1 className="font-['Roboto'] font-[900] text-[56px] md:text-[80px] lg:text-[100px] leading-[0.9] tracking-tight uppercase text-white mb-4">
+                <h1 className="font-['Inter'] font-[900] text-[56px] md:text-[80px] lg:text-[100px] leading-[0.9] tracking-tight text-white mb-4">
                   <span className="relative inline-block">
                     <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[14px] bg-[#EEFF41] -z-10"></span>
                     Blog
@@ -163,7 +163,7 @@ export default function BlogPage() {
 
                           {/* Badge */}
                           <div className="absolute top-3 left-3 z-10">
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white text-black text-[9px] font-black uppercase tracking-wider rounded-full">
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white text-black text-[9px] font-black tracking-wider rounded-full">
                               <Star size={10} className="fill-black" />
                               Rédac
                             </span>
@@ -172,10 +172,10 @@ export default function BlogPage() {
 
                         {/* Content */}
                         <div className="p-5">
-                          <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/40 mb-1.5 block">
+                          <span className="text-[9px] font-bold tracking-[0.15em] text-white/40 mb-1.5 block">
                             {editorPick.category}
                           </span>
-                          <h3 className="font-['Roboto'] font-black text-sm uppercase leading-tight text-white group-hover:text-[#EEFF41] transition-colors line-clamp-2">
+                          <h3 className="font-['Inter'] font-black text-sm leading-tight text-white group-hover:text-[#EEFF41] transition-colors line-clamp-2">
                             {editorPick.title}
                           </h3>
                         </div>
@@ -216,7 +216,7 @@ export default function BlogPage() {
 
                           {/* Badge */}
                           <div className="absolute top-3 left-3 z-10">
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#EEFF41] text-black text-[9px] font-black uppercase tracking-wider rounded-full">
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#EEFF41] text-black text-[9px] font-black tracking-wider rounded-full">
                               <TrendingUp size={10} />
                               Populaire
                             </span>
@@ -225,10 +225,10 @@ export default function BlogPage() {
 
                         {/* Content */}
                         <div className="p-5">
-                          <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/40 mb-1.5 block">
+                          <span className="text-[9px] font-bold tracking-[0.15em] text-white/40 mb-1.5 block">
                             {readerFavorite.category}
                           </span>
-                          <h3 className="font-['Roboto'] font-black text-sm uppercase leading-tight text-white group-hover:text-[#EEFF41] transition-colors line-clamp-2">
+                          <h3 className="font-['Inter'] font-black text-sm leading-tight text-white group-hover:text-[#EEFF41] transition-colors line-clamp-2">
                             {readerFavorite.title}
                           </h3>
                         </div>
@@ -273,7 +273,7 @@ export default function BlogPage() {
 
                     {/* Badge - Top */}
                     <div className="absolute top-6 left-6 z-10">
-                      <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#EEFF41] text-black text-[10px] font-black uppercase tracking-wider rounded-full shadow-[0_0_20px_rgba(238,255,65,0.3)]">
+                      <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#EEFF41] text-black text-[10px] font-black tracking-wider rounded-full shadow-[0_0_20px_rgba(238,255,65,0.3)]">
                         <Sparkles size={12} />
                         À la une
                       </span>
@@ -281,10 +281,10 @@ export default function BlogPage() {
 
                     {/* Content - Bottom */}
                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/50 mb-3 block">
+                      <span className="text-[10px] font-bold tracking-[0.15em] text-white/50 mb-3 block">
                         {featuredPost.category}
                       </span>
-                      <h3 className="font-['Roboto'] font-black text-2xl md:text-3xl uppercase leading-[1.1] text-white mb-4 group-hover:text-[#EEFF41] transition-colors">
+                      <h3 className="font-['Inter'] font-black text-2xl md:text-3xl leading-[1.1] text-white mb-4 group-hover:text-[#EEFF41] transition-colors">
                         {featuredPost.title}
                       </h3>
                       <p className="text-white/60 text-sm line-clamp-2 mb-6 max-w-md">
@@ -301,7 +301,7 @@ export default function BlogPage() {
                             {featuredPost.readingTime}
                           </span>
                         </div>
-                        <span className="flex items-center gap-2 text-[11px] font-black uppercase text-white group-hover:text-[#EEFF41] transition-colors">
+                        <span className="flex items-center gap-2 text-[11px] font-black text-white group-hover:text-[#EEFF41] transition-colors">
                           Lire l'article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                         </span>
                       </div>
@@ -340,7 +340,7 @@ export default function BlogPage() {
                 <button
                   key={cat}
                   onClick={() => handleCategoryChange(cat)}
-                  className={`px-5 py-2.5 text-[11px] font-black uppercase tracking-wider transition-all duration-300 rounded-full border ${
+                  className={`px-5 py-2.5 text-[11px] font-black tracking-wider transition-all duration-300 rounded-full border ${
                     activeCategory === cat
                       ? "bg-black border-black text-white shadow-[0_0_20px_rgba(0,0,0,0.15)]"
                       : "bg-transparent border-black/20 text-black hover:border-black hover:bg-black hover:text-white"
@@ -419,7 +419,7 @@ export default function BlogPage() {
 
                         {/* Category badge on image */}
                         <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm text-black text-[9px] font-black uppercase tracking-wider rounded-full">
+                          <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm text-black text-[9px] font-black tracking-wider rounded-full">
                             {post.category}
                           </span>
                         </div>
@@ -429,7 +429,7 @@ export default function BlogPage() {
                     {/* Content */}
                     <div className="p-6">
                       <Link href={`/blog/${post.slug}`}>
-                        <h3 className="font-['Roboto'] font-black text-lg uppercase leading-tight mb-3 text-black group-hover:text-black/80 transition-colors line-clamp-2">
+                        <h3 className="font-['Inter'] font-black text-lg leading-tight mb-3 text-black group-hover:text-black/80 transition-colors line-clamp-2">
                           {post.title}
                         </h3>
                       </Link>
@@ -439,7 +439,7 @@ export default function BlogPage() {
 
                       {/* Meta */}
                       <div className="pt-4 border-t border-black/5 flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-[10px] font-bold text-black/40 uppercase">
+                        <div className="flex items-center gap-3 text-[10px] font-bold text-black/40">
                           <span className="flex items-center gap-1">
                             <Calendar size={12} />
                             {formatDate(post.date)}
@@ -452,7 +452,7 @@ export default function BlogPage() {
                         </div>
                         <Link
                           href={`/blog/${post.slug}`}
-                          className="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-black group-hover:text-[#000] transition-colors"
+                          className="flex items-center gap-1 text-[10px] font-black tracking-wider text-black group-hover:text-[#000] transition-colors"
                         >
                           Lire <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
@@ -467,7 +467,7 @@ export default function BlogPage() {
               <div className="w-16 h-16 rounded-full bg-black/5 flex items-center justify-center mx-auto mb-6">
                 <Search size={24} className="text-black/30" />
               </div>
-              <h3 className="font-['Roboto'] font-black text-xl uppercase mb-2">Aucun article trouvé</h3>
+              <h3 className="font-['Inter'] font-black text-xl mb-2">Aucun article trouvé</h3>
               <p className="text-black/50">Essayez une autre recherche ou catégorie</p>
             </div>
           )}
@@ -531,10 +531,10 @@ export default function BlogPage() {
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-[#EEFF41] text-[#EEFF41]" />)}
                 </div>
-                <span className="text-[10px] font-black text-white uppercase tracking-wider">Newsletter exclusive</span>
+                <span className="text-[10px] font-black text-white tracking-wider">Newsletter exclusive</span>
               </div>
 
-              <h2 className="font-['Roboto'] font-[900] text-[40px] md:text-[56px] leading-[1] tracking-tight uppercase mb-6 text-white">
+              <h2 className="font-['Inter'] font-[900] text-[40px] md:text-[56px] leading-[1] tracking-tight mb-6 text-white">
                 Restez à la <span className="relative inline-block"><span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[10px] bg-[#EEFF41] -z-10"></span>pointe</span>
               </h2>
               <p className="text-white/70 text-lg md:text-xl mb-10 max-w-xl mx-auto">
@@ -553,7 +553,7 @@ export default function BlogPage() {
                     className="w-full bg-white/10 border border-white/20 rounded-xl px-12 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-all backdrop-blur-sm"
                   />
                 </div>
-                <button className="bg-white text-black font-['Roboto'] font-black uppercase text-[12px] tracking-widest px-8 py-4 rounded-xl hover:bg-[#EEFF41] hover:shadow-[0_0_30px_rgba(238,255,65,0.4)] transition-all flex items-center justify-center gap-2">
+                <button className="bg-white text-black font-['Inter'] font-black text-[12px] tracking-widest px-8 py-4 rounded-xl hover:bg-[#EEFF41] hover:shadow-[0_0_30px_rgba(238,255,65,0.4)] transition-all flex items-center justify-center gap-2">
                   S'inscrire <ArrowRight size={14} />
                 </button>
               </form>

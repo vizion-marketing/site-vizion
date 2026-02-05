@@ -14,7 +14,9 @@
       "Bash(git push)",
       "Bash(npx next build:*)",
       "Bash(git push:*)",
-      "mcp__gemini-design-mcp__create_frontend"
+      "mcp__gemini-design-mcp__create_frontend",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Lucas Gonzalez\\OneDrive\\Bureau\\Apps\\site-vizion"

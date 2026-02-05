@@ -59,10 +59,10 @@ function TrendIcon({ trend }: { trend: string }) {
 // MDX Components
 const mdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className="font-['Roboto'] font-black text-2xl md:text-3xl uppercase tracking-tight text-black mt-16 mb-6 scroll-mt-24" {...props} />
+    <h2 className="font-['Inter'] font-black text-2xl md:text-3xl tracking-tight text-black mt-16 mb-6 scroll-mt-24" {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="font-['Roboto'] font-black text-xl uppercase tracking-tight text-black mt-10 mb-4" {...props} />
+    <h3 className="font-['Inter'] font-black text-xl tracking-tight text-black mt-10 mb-4" {...props} />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p className="text-neutral-600 text-lg leading-relaxed mb-6 font-['Inter']" {...props} />
@@ -93,7 +93,7 @@ const mdxComponents = {
     </div>
   ),
   th: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <th className="bg-neutral-100 px-4 py-3 text-left text-xs font-black uppercase tracking-wider text-neutral-600 border-b-2 border-neutral-200" {...props} />
+    <th className="bg-neutral-100 px-4 py-3 text-left text-xs font-black tracking-wider text-neutral-600 border-b-2 border-neutral-200" {...props} />
   ),
   td: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td className="px-4 py-3 text-neutral-600 border-b border-neutral-100" {...props} />
@@ -145,13 +145,13 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
               {/* Sector badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
                 <SectorIcon size={14} className="text-white" />
-                <span className="text-[11px] font-bold tracking-widest uppercase text-white">
+                <span className="text-[11px] font-bold tracking-widest text-white">
                   {caseStudy.sector}
                 </span>
               </div>
 
               {/* Title */}
-              <h1 className="font-['Roboto'] font-[900] text-[32px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tight uppercase text-white mb-6">
+              <h1 className="font-['Inter'] font-[900] text-[32px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tight text-white mb-6">
                 {caseStudy.title}
               </h1>
 
@@ -189,7 +189,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
               className="lg:col-span-4 hidden lg:block"
             >
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-                <span className="text-[10px] font-bold tracking-widest uppercase text-white/60 mb-4 block">
+                <span className="text-[10px] font-bold tracking-widest text-white/60 mb-4 block">
                   Résultats clés
                 </span>
                 <div className="space-y-4">
@@ -228,7 +228,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   </span>
                   <TrendIcon trend={metric.trend} />
                 </div>
-                <p className="text-xs md:text-sm text-white/60 font-medium uppercase tracking-wider">
+                <p className="text-xs md:text-sm text-white/60 font-medium tracking-wider">
                   {metric.label}
                 </p>
               </motion.div>
@@ -254,7 +254,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   viewport={{ once: true }}
                   className="bg-[#F2F2F2] rounded-2xl p-6"
                 >
-                  <h3 className="font-['Roboto'] font-black text-sm uppercase tracking-wider text-black mb-4">
+                  <h3 className="font-['Inter'] font-black text-sm tracking-wider text-black mb-4">
                     Contexte
                   </h3>
                   <p className="text-neutral-600 text-sm leading-relaxed">
@@ -270,7 +270,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   viewport={{ once: true }}
                   className="bg-white border border-neutral-100 rounded-2xl p-6 shadow-sm"
                 >
-                  <h3 className="font-['Roboto'] font-black text-sm uppercase tracking-wider text-black mb-4">
+                  <h3 className="font-['Inter'] font-black text-sm tracking-wider text-black mb-4">
                     Défis identifiés
                   </h3>
                   <ul className="space-y-3">
@@ -296,7 +296,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   >
                     <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
                     <div className="relative z-10">
-                      <h3 className="font-['Roboto'] font-black text-sm uppercase tracking-wider text-white mb-4">
+                      <h3 className="font-['Inter'] font-black text-sm tracking-wider text-white mb-4">
                         Livrables clés
                       </h3>
                       <ul className="space-y-4">
@@ -332,7 +332,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                 viewport={{ once: true }}
                 className="mb-16"
               >
-                <h2 className="font-['Roboto'] font-black text-2xl md:text-3xl uppercase tracking-tight text-black mb-8">
+                <h2 className="font-['Inter'] font-black text-2xl md:text-3xl tracking-tight text-black mb-8">
                   Notre Approche
                 </h2>
                 <div className="space-y-6">
@@ -350,7 +350,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                           <span className="text-sm font-black">{phase.phase.replace("Phase ", "")}</span>
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-['Roboto'] font-black text-lg uppercase tracking-tight text-black mb-2">
+                          <h3 className="font-['Inter'] font-black text-lg tracking-tight text-black mb-2">
                             {phase.title}
                           </h3>
                           <p className="text-neutral-600 text-sm leading-relaxed mb-4">
@@ -388,7 +388,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   viewport={{ once: true }}
                   className="mt-16 p-8 bg-[#F2F2F2] rounded-2xl"
                 >
-                  <h3 className="font-['Roboto'] font-black text-xl uppercase tracking-tight text-black mb-4">
+                  <h3 className="font-['Inter'] font-black text-xl tracking-tight text-black mb-4">
                     Impact & ROI
                   </h3>
                   <p className="text-neutral-600 text-lg leading-relaxed">
@@ -442,7 +442,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                     )}
                   </div>
                   <div>
-                    <h4 className="font-['Roboto'] font-black text-lg uppercase tracking-tight text-black">
+                    <h4 className="font-['Inter'] font-black text-lg tracking-tight text-black">
                       {caseStudy.testimonial.author}
                     </h4>
                     <p className="text-neutral-500 text-sm">
@@ -462,10 +462,10 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
           <div className="max-w-[82.5rem] mx-auto">
             <div className="flex items-end justify-between mb-12">
               <div>
-                <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold uppercase block mb-2">
+                <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold block mb-2">
                   Autres cas clients
                 </span>
-                <h2 className="font-['Roboto'] font-black text-3xl md:text-4xl uppercase tracking-tight text-black">
+                <h2 className="font-['Inter'] font-black text-3xl md:text-4xl tracking-tight text-black">
                   Découvrez d'autres succès
                 </h2>
               </div>
@@ -496,12 +496,12 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                         <div className="w-8 h-8 bg-[#F2F2F2] rounded-lg flex items-center justify-center">
                           <RelatedSectorIcon size={16} className="text-black" />
                         </div>
-                        <span className="text-[10px] font-bold tracking-widest uppercase text-neutral-400">
+                        <span className="text-[10px] font-bold tracking-widest text-neutral-400">
                           {relatedCase.sector}
                         </span>
                       </div>
                       
-                      <h3 className="font-['Roboto'] font-black text-lg uppercase tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2">
+                      <h3 className="font-['Inter'] font-black text-lg tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2">
                         {relatedCase.title}
                       </h3>
                       
@@ -520,7 +520,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                         ))}
                       </div>
                       
-                      <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-black group-hover:gap-3 transition-all">
+                      <span className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-black group-hover:gap-3 transition-all">
                         Lire l'étude <ChevronRight size={14} />
                       </span>
                     </Link>
@@ -553,11 +553,11 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
             <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
             
             <div className="relative z-10">
-              <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-[11px] font-bold tracking-widest uppercase text-white mb-6">
+              <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-[11px] font-bold tracking-widest text-white mb-6">
                 Vous avez un projet similaire ?
               </span>
               
-              <h2 className="font-['Roboto'] font-[900] text-[32px] md:text-[48px] leading-[1.1] tracking-tight uppercase mb-6 text-white">
+              <h2 className="font-['Inter'] font-[900] text-[32px] md:text-[48px] leading-[1.1] tracking-tight mb-6 text-white">
                 Discutons de vos enjeux
               </h2>
               

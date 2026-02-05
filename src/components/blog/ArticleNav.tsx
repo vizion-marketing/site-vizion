@@ -37,10 +37,10 @@ export function ArticleNav({ prevPost, nextPost }: ArticleNavProps) {
                 />
               </motion.div>
               <div className="flex-1 min-w-0">
-                <span className="text-[11px] font-medium uppercase tracking-[1.65px] text-zinc-400 block mb-2">
+                <span className="text-[11px] font-medium tracking-[1.65px] text-zinc-400 block mb-2">
                   Précédent
                 </span>
-                <p className="text-lg font-black uppercase tracking-tight font-['Roboto'] line-clamp-2 group-hover:text-zinc-600 transition-colors">
+                <p className="text-lg font-black tracking-tight font-['Inter'] line-clamp-2 group-hover:text-zinc-600 transition-colors">
                   {prevPost.title}
                 </p>
               </div>
@@ -56,10 +56,10 @@ export function ArticleNav({ prevPost, nextPost }: ArticleNavProps) {
               className="group flex items-center justify-end gap-8 py-12 px-4 hover:bg-white transition-colors"
             >
               <div className="flex-1 min-w-0 text-right">
-                <span className="text-[11px] font-medium uppercase tracking-[1.65px] text-zinc-400 block mb-2">
+                <span className="text-[11px] font-medium tracking-[1.65px] text-zinc-400 block mb-2">
                   Suivant
                 </span>
-                <p className="text-lg font-black uppercase tracking-tight font-['Roboto'] line-clamp-2 group-hover:text-zinc-600 transition-colors">
+                <p className="text-lg font-black tracking-tight font-['Inter'] line-clamp-2 group-hover:text-zinc-600 transition-colors">
                   {nextPost.title}
                 </p>
               </div>

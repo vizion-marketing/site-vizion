@@ -36,11 +36,11 @@ export function ArticleCTA({
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto"
         >
-          <span className="text-[11px] font-medium uppercase tracking-[1.65px] text-white/50 mb-6 block">
+          <span className="text-[11px] font-medium tracking-[1.65px] text-white/50 mb-6 block">
             Passez à l'action
           </span>
 
-          <h2 className="text-[32px] md:text-[48px] font-black uppercase tracking-[-2px] leading-[1.05] text-white mb-6 font-['Roboto']">
+          <h2 className="text-[32px] md:text-[48px] font-black tracking-[-2px] leading-[1.05] text-white mb-6 font-['Inter']">
             {title}
           </h2>
 
@@ -50,7 +50,7 @@ export function ArticleCTA({
 
           <Link
             href={link}
-            className="inline-flex items-center gap-4 bg-white text-black font-bold uppercase text-[12px] tracking-widest px-8 py-4 hover:bg-zinc-200 transition-all"
+            className="inline-flex items-center gap-4 bg-white text-black font-bold text-[12px] tracking-widest px-8 py-4 hover:bg-zinc-200 transition-all"
           >
             Contactez-nous
             <ChevronRight size={16} />

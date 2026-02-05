@@ -23,13 +23,13 @@ export default function MentionsLegalesPage() {
           Retour à l&apos;accueil
         </Link>
 
-        <h1 className="font-['Roboto'] font-[900] text-4xl md:text-5xl uppercase tracking-tight text-black mb-12">
+        <h1 className="font-['Inter'] font-[900] text-4xl md:text-5xl tracking-tight text-black mb-12">
           Mentions Légales
         </h1>
 
         <div className="prose prose-lg max-w-none text-black/80 space-y-8">
           <section>
-            <h2 className="font-['Roboto'] font-[900] text-xl uppercase tracking-tight text-black mt-0">
+            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black mt-0">
               1. Éditeur du site
             </h2>
             <p>
@@ -45,7 +45,7 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section>
-            <h2 className="font-['Roboto'] font-[900] text-xl uppercase tracking-tight text-black">
+            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
               2. Directeur de la publication
             </h2>
             <p>
@@ -54,7 +54,7 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section>
-            <h2 className="font-['Roboto'] font-[900] text-xl uppercase tracking-tight text-black">
+            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
               3. Hébergement
             </h2>
             <p>
@@ -69,7 +69,7 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section>
-            <h2 className="font-['Roboto'] font-[900] text-xl uppercase tracking-tight text-black">
+            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
               4. Propriété intellectuelle
             </h2>
             <p>
@@ -81,7 +81,7 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section>
-            <h2 className="font-['Roboto'] font-[900] text-xl uppercase tracking-tight text-black">
+            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
               5. Données personnelles
             </h2>
             <p>
@@ -93,7 +93,7 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section>
-            <h2 className="font-['Roboto'] font-[900] text-xl uppercase tracking-tight text-black">
+            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
               6. Cookies
             </h2>
             <p>
@@ -102,7 +102,7 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section>
-            <h2 className="font-['Roboto'] font-[900] text-xl uppercase tracking-tight text-black">
+            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
               7. Limitation de responsabilité
             </h2>
             <p>
@@ -111,7 +111,7 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section>
-            <h2 className="font-['Roboto'] font-[900] text-xl uppercase tracking-tight text-black">
+            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
               8. Droit applicable
             </h2>
             <p>

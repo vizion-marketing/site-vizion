@@ -260,8 +260,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   hero: {
     badge: "AGENCE DE MARKETING STRATÉGIQUE — TOULOUSE",
-    h1: "VOTRE AGENCE DE MARKETING STRATÉGIQUE À TOULOUSE",
-    h1Highlight: "STRATÉGIQUE",
+    h1: "Votre agence de marketing stratégique à Toulouse",
+    h1Highlight: "stratégique",
     baseline: "Nous imaginons et opérons des stratégies de croissance sur mesure — adaptées à chaque secteur, chaque enjeu, chaque cycle de vente.",
     badges: [
       "Décisions éclairées",

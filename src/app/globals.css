@@ -34,7 +34,7 @@
   --card-padding-white: 24px;
   
   /* === TYPOGRAPHY === */
-  --font-heading: 'Roboto', sans-serif;
+  --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
   
   /* === RADIUS === */
@@ -88,7 +88,6 @@ h1, .h1 {
   font-weight: 900;
   line-height: 0.92;
   letter-spacing: -0.04em;
-  text-transform: uppercase;
 }
 
 /* H2 - Titres de sections - Tighter tracking */
@@ -100,7 +99,6 @@ h2, .h2 {
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.035em;
-  text-transform: uppercase;
 }
 
 /* H3 - Sous-titres */
@@ -111,7 +109,6 @@ h3, .h3 {
   font-weight: 900;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
 }
 
 /* Surtitre - Labels de sections */
@@ -122,7 +119,6 @@ h3, .h3 {
   font-weight: 400;
   line-height: 16.5px; /* 150% */
   letter-spacing: 1.65px;
-  text-transform: uppercase;
 }
 
 /* Body text */
@@ -306,7 +302,6 @@ h3, .h3 {
   font-family: var(--font-heading);
   color: var(--color-black);
   font-weight: 900;
-  text-transform: uppercase;
   scroll-margin-top: 100px;
   position: relative;
 }
@@ -524,7 +519,6 @@ h3, .h3 {
   text-align: left;
   font-family: var(--font-heading);
   font-weight: 700;
-  text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   color: #71717a;
@@ -624,6 +618,18 @@ h3, .h3 {
   mix-blend-mode: multiply;
 }
 
+/* Medium grain - more pronounced texture */
+.grain-medium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
 /* Section Divider Line */
 .section-divider {
   position: relative;
@@ -705,4 +711,54 @@ h3, .h3 {
 /* Prevent horizontal scroll from diagonal dividers */
 html, body {
   overflow-x: hidden;
+}
+
+/* === GLOWING BORDER ANIMATION === */
+/* Animated rotating glow effect for CTA buttons */
+@keyframes rotate-glow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.glow-border-container {
+  position: relative;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.glow-border-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 60deg,
+    #c8ff00 120deg,
+    #eeff41 180deg,
+    #c8ff00 240deg,
+    transparent 300deg,
+    transparent 360deg
+  );
+  animation: rotate-glow 3s linear infinite;
+}
+
+.glow-border-container::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 9999px;
+  background: rgba(10, 10, 10, 0.95);
+}
+
+.glow-border-content {
+  position: relative;
+  z-index: 10;
 }

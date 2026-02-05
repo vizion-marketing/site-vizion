@@ -51,7 +51,7 @@ export function ArticleHero({
               className="inline-flex items-center gap-2 mb-8"
             >
               <div className="w-8 h-[1px] bg-white/40" />
-              <span className="text-[12px] font-bold uppercase tracking-[3px] text-white/80">
+              <span className="text-[12px] font-bold tracking-[3px] text-white/80">
                 {category}
               </span>
             </motion.div>
@@ -61,7 +61,7 @@ export function ArticleHero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mb-10 text-[36px] md:text-[56px] lg:text-[72px] font-black leading-[0.95] uppercase tracking-[-3px] text-white font-['Roboto'] max-w-4xl"
+              className="mb-10 text-[36px] md:text-[56px] lg:text-[72px] font-black leading-[0.95] tracking-[-3px] text-white font-['Inter'] max-w-4xl"
             >
               {title}
             </motion.h1>
@@ -75,15 +75,15 @@ export function ArticleHero({
             >
               <div className="flex items-center gap-3 transition-colors hover:text-white">
                 <div className="p-2 rounded-lg bg-white/5 border border-white/5"><Calendar size={18} className="text-white/40" /></div>
-                <span className="font-medium tracking-wide uppercase text-[11px]">{date}</span>
+                <span className="font-medium tracking-wide text-[11px]">{date}</span>
               </div>
               <div className="flex items-center gap-3 transition-colors hover:text-white">
                 <div className="p-2 rounded-lg bg-white/5 border border-white/5"><User size={18} className="text-white/40" /></div>
-                <span className="font-medium tracking-wide uppercase text-[11px]">{author}</span>
+                <span className="font-medium tracking-wide text-[11px]">{author}</span>
               </div>
               <div className="flex items-center gap-3 transition-colors hover:text-white">
                 <div className="p-2 rounded-lg bg-white/5 border border-white/5"><Clock size={18} className="text-white/40" /></div>
-                <span className="font-medium tracking-wide uppercase text-[11px]">{readingTime}</span>
+                <span className="font-medium tracking-wide text-[11px]">{readingTime}</span>
               </div>
             </motion.div>
 
@@ -98,7 +98,7 @@ export function ArticleHero({
                 {tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="text-[10px] font-bold uppercase tracking-wider px-4 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 hover:text-white rounded-full transition-all cursor-default"
+                    className="text-[10px] font-bold tracking-wider px-4 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 hover:text-white rounded-full transition-all cursor-default"
                   >
                     # {tag}
                   </span>

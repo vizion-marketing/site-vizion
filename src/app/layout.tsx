@@ -3,6 +3,7 @@ import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { CallWidget } from "@/components/CallWidget";
 import { MotionProvider } from "@/components/MotionProvider";
 import { allCaseStudies } from "contentlayer/generated";
 
@@ -87,6 +88,7 @@ export default function RootLayout({
           <Header caseStudies={caseStudiesForNav} />
           <main>{children}</main>
           <Footer />
+          <CallWidget />
         </MotionProvider>
       </body>
     </html>

@@ -147,332 +147,6 @@ function SectionDiagonalBottom({
   );
 }
 
-// Client Cases Data for Social Proof Tabs
-const clientCases = [
-  {
-    id: 'easyvirtual',
-    name: 'easyVirtual.tours',
-    intro: "Une filiale du groupe easyJet lance un concept de visites virtuelles immobilières et nous confie son déploiement national en franchise.",
-    problematique: "De 0 à 25 franchises en moins d'un an pour une filiale d'easyJet",
-    stats: [
-      { value: '0 → 25', label: 'Franchises en 1 an' },
-      { value: '3', label: 'Pays couverts' },
-      { value: '100%', label: 'Outils de vente livrés' },
-    ],
-    actions: ['Positionnement de marque franchise', 'Création des outils d\'aide à la vente', 'Déploiement du plan marketing national', 'Mise en place du CRM et automatisations'],
-    category: 'PropTech',
-    slug: 'franchise-services-domicile',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
-    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=easyVirtual',
-  },
-  {
-    id: 'ensenat',
-    name: 'Ensenat Coaching',
-    intro: "Un groupe de salles de sport premium multi-sites fait face à des coûts marketing élevés et un manque de visibilité locale.",
-    problematique: "+1000% de trafic SEO en 3 mois et -40% de coûts marketing pour un groupe de salles de sport",
-    stats: [
-      { value: '+1000%', label: 'Trafic SEO en 3 mois' },
-      { value: '-40%', label: 'Coûts marketing' },
-      { value: '5', label: 'Sites optimisés' },
-    ],
-    actions: ['Audit SEO technique et sémantique', 'Stratégie de contenu locale multi-sites', 'Optimisation des pages de conversion', 'Reporting et suivi de performance'],
-    category: 'Groupe Multi-Marques',
-    slug: 'reseau-local-seo',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop',
-    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=Ensenat',
-  },
-  {
-    id: 'elis',
-    name: 'Groupe Elis',
-    intro: "Le leader européen de l'hygiène et du bien-être au travail cherche à accélérer sa croissance externe en identifiant des cibles d'acquisition.",
-    problematique: "12 cédants identifiés sur 200+ entreprises analysées pour le groupe Elis",
-    stats: [
-      { value: '12', label: 'Cédants identifiés' },
-      { value: '3', label: 'Secteurs cartographiés' },
-      { value: '200+', label: 'Entreprises analysées' },
-    ],
-    actions: ['Cartographie du marché cible', 'Identification et qualification des cédants', 'Stratégie d\'approche personnalisée', 'Mise en relation et suivi'],
-    category: 'Hygiène',
-    slug: 'eti-manufacturing',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
-    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=Elis',
-  },
-  {
-    id: 'olivier',
-    name: 'Olivier Bas',
-    intro: "Le Vice-Président d'Havas Paris souhaite structurer sa présence LinkedIn pour asseoir son expertise et générer des opportunités.",
-    problematique: "1 million de vues LinkedIn et 15 000 abonnés pour le VP d'Havas Paris",
-    stats: [
-      { value: '1M', label: 'Vues LinkedIn' },
-      { value: '15K+', label: 'Nouveaux abonnés' },
-      { value: '48', label: 'Posts publiés' },
-    ],
-    actions: ['Stratégie éditoriale LinkedIn', 'Rédaction et publication régulière', 'Développement du réseau ciblé', 'Analyse des performances et itération'],
-    category: 'Ressources Humaines',
-    slug: 'cabinet-conseil-rh',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
-    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=Havas',
-  },
-  {
-    id: 'ecard',
-    name: 'e-card',
-    intro: "Un éditeur de cartes de visite digitales peine à se différencier sur un marché saturé et doit repositionner son offre.",
-    problematique: "x3 sur les leads qualifiés après un repositionnement complet pour e-card",
-    stats: [
-      { value: 'Nouveau', label: 'Positionnement marché' },
-      { value: '3x', label: 'Leads qualifiés' },
-      { value: '100%', label: 'Refonte message' },
-    ],
-    actions: ['Audit de positionnement', 'Redéfinition de la proposition de valeur', 'Refonte de l\'architecture de message', 'Déploiement de la nouvelle stratégie'],
-    category: 'SaaS',
-    slug: 'saas-marketing-automation',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop',
-    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=e-card',
-  },
-  {
-    id: 'eldo',
-    name: 'Eldo Wallet',
-    intro: "Une startup fintech lance un portefeuille numérique B2B et doit construire sa stratégie d'acquisition de zéro.",
-    problematique: "De 0 à 10K€ de MRR et 50+ prospects qualifiés pour une fintech B2B",
-    stats: [
-      { value: '0 → 10K€', label: 'MRR atteint' },
-      { value: '50+', label: 'Prospects qualifiés' },
-      { value: '1', label: 'Pitch deck investisseurs' },
-    ],
-    actions: ['Définition du positionnement B2B', 'Construction du pitch deck investisseurs', 'Stratégie d\'acquisition outbound', 'Mise en place du pipeline commercial'],
-    category: 'Retail',
-    slug: 'fintech-b2b',
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800&auto=format&fit=crop',
-    logo: 'https://placehold.co/400x400/0a0a0a/ffffff?text=Eldo',
-  }
-];
-
-// Social Proof Tabs Component
-// SEO: Showcases client success stories for "agence marketing Toulouse" credibility
-// Images: 800x400px (16:8) for case visuals, 56x56px circle for testimonial avatar
-function SocialProofTabs() {
-  const [activeClient, setActiveClient] = useState<string>('easyvirtual');
-  const currentCase = clientCases.find(c => c.id === activeClient) || clientCases[0];
-
-  return (
-    <section
-      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative grain-light overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #fafaf8 0%, #f0f0eb 100%)' }}
-      aria-label="Témoignages clients agence marketing Toulouse"
-    >
-      {/* Ambient glow — distant warm light behind bento */}
-      <div className="absolute top-[35%] left-[25%] w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] bg-[#c8ff00] opacity-[0.045] rounded-full blur-[200px] pointer-events-none" />
-      {/* Geometric depth blob */}
-      <div className="absolute -bottom-[10%] right-[5%] w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-[#f0f0ea] rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-[82.5rem] mx-auto relative z-10">
-        {/* Header */}
-        <div className="max-w-[800px] mb-10 sm:mb-16 lg:mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-2.5 mb-4 sm:mb-5"
-          >
-            <div className="w-2 h-2 rounded-full bg-[#c8ff00]" />
-            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] text-[#6b6b6b]">
-              {homeContent.preuveSociale.surtitre}
-            </span>
-          </motion.div>
-          <div className="flex gap-4 sm:gap-5">
-            <div className="w-[3px] shrink-0 mt-2 h-10 bg-[#c8ff00] rounded-full" />
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-['Roboto'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] uppercase text-[#1a1a1a]"
-            >
-              {(() => {
-                const h2 = homeContent.preuveSociale.h2;
-                const highlight = homeContent.preuveSociale.h2Highlight;
-                const parts = h2.split(highlight);
-                return (
-                  <>
-                    {parts[0]}
-                    <ScrambleText text={highlight} />
-                    {parts[1]}
-                  </>
-                );
-              })()}
-            </motion.h2>
-          </div>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-[#6b6b6b] text-base font-['Inter'] leading-relaxed max-w-[600px] mt-5 sm:mt-6"
-          >
-            {homeContent.preuveSociale.description}
-          </motion.p>
-        </div>
-
-        <div className="flex flex-col gap-6 sm:gap-8">
-          {/* Tab Navigation — wrapped grid on mobile, inline on desktop */}
-          <div className="grid grid-cols-2 gap-2 sm:flex sm:overflow-x-auto sm:pb-4 sm:gap-4 md:gap-5 sm:no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-            {clientCases.map((client, index) => (
-              <button
-                key={client.id}
-                onClick={() => setActiveClient(client.id)}
-                className={`group flex items-center justify-center sm:justify-start gap-2 sm:gap-3 px-3 sm:px-6 py-2.5 sm:py-3 rounded-[8px] transition-all duration-300 sm:flex-shrink-0 sm:whitespace-nowrap ${
-                  activeClient === client.id
-                    ? "bg-[#0a0a0a] text-white border border-[#c8ff00]/30"
-                    : "bg-white/60 sm:bg-transparent text-[#1a1a1a] hover:bg-[#e8e8e8] border border-black/5 sm:border-black/0 sm:hover:border-black/5"
-                }`}
-              >
-                <span className={`font-['Roboto'] font-[900] text-[10px] sm:text-xs leading-none transition-colors duration-300 ${
-                  activeClient === client.id ? "text-[#c8ff00]" : "text-black/20 group-hover:text-[#c8ff00]"
-                }`}>
-                  0{index + 1}
-                </span>
-                <span className="font-['Inter'] font-medium text-[11px] sm:text-[14px] leading-none">
-                  {client.category}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          {/* Premium Editorial Display */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeClient}
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 relative"
-            >
-              {/* CELL 1: TITRE / PROBLÉMATIQUE + STATS (2 Cols) */}
-              <div className="md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-[8px] border border-black/10 p-5 sm:p-8 lg:p-12 flex flex-col justify-between min-h-[280px] sm:min-h-[380px] lg:min-h-[440px] bg-white">
-                <div className="absolute inset-0 grain-light opacity-30 pointer-events-none" />
-                <div className="absolute -bottom-12 -right-12 text-[80px] sm:text-[180px] lg:text-[240px] font-['Roboto'] font-black text-black/[0.03] select-none pointer-events-none leading-none">
-                  0{clientCases.findIndex(c => c.id === activeClient) + 1}
-                </div>
-
-                <div className="relative z-10">
-                  <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
-                    <div className="w-2 h-2 rounded-full bg-[#c8ff00]" />
-                    <span className="text-[10px] font-bold tracking-[0.1em] uppercase text-[#6b6b6b]">
-                      {currentCase.category}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-['Roboto'] font-[900] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-5">
-                    {currentCase.problematique}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm font-['Inter'] text-[#999] leading-relaxed max-w-xl">
-                    {currentCase.intro}
-                  </p>
-                </div>
-
-                {/* Stats row */}
-                <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-3 mt-6 sm:mt-8">
-                  {currentCase.stats.map((stat, i) => (
-                    <div key={i} className="bg-[#fafaf8] border border-black/[0.06] rounded-[8px] p-3 sm:p-4 lg:p-5 flex flex-col gap-1 sm:gap-1.5">
-                      <span className="text-lg sm:text-2xl lg:text-3xl font-['Roboto'] font-[900] tracking-[-0.02em] text-[#1a1a1a] leading-none">
-                        {stat.value}
-                      </span>
-                      <span className="text-[8px] sm:text-[9px] lg:text-[10px] font-['Inter'] font-semibold uppercase tracking-wider text-[#999] leading-tight">
-                        {stat.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* CELL 2: LOGO CLIENT (1 Col) — image plein bloc */}
-              <div className="relative rounded-[8px] overflow-hidden border border-black/10 bg-[#0a0a0a] min-h-[200px] sm:min-h-[280px] md:min-h-0 flex items-center justify-center">
-                <Image
-                  src={currentCase.logo}
-                  alt={`Logo ${currentCase.name}`}
-                  fill
-                  className="object-contain p-8 sm:p-12 lg:p-14"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
-
-              {/* CELL 3: ACTIONS (1 Col) */}
-              <div className="md:col-span-1 lg:col-span-1 bg-[#0a0a0a] rounded-[8px] overflow-hidden border border-black/10 p-5 sm:p-8 lg:p-10 flex flex-col relative">
-                <div className="absolute inset-0 grain-overlay opacity-20 pointer-events-none" />
-                <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-white/40 mb-4 sm:mb-8 flex items-center gap-2">
-                  <span className="w-4 h-px bg-white/20" /> Stratégie &amp; Impact
-                </h4>
-                <ul className="flex-1 space-y-0 divide-y divide-white/5">
-                  {currentCase.actions.map((action, i) => (
-                    <li key={i} className="flex gap-4 py-4 first:pt-0 last:pb-0 group/item">
-                      <span className="text-[10px] font-black font-['Roboto'] text-[#c8ff00] mt-1 opacity-60 group-hover/item:opacity-100 transition-opacity">
-                        {(i + 1).toString().padStart(2, '0')}
-                      </span>
-                      <span className="text-sm font-['Inter'] text-white/70 leading-snug group-hover/item:text-white transition-colors">
-                        {action}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-4 sm:mt-8 pt-4 sm:pt-6 border-t border-white/5 flex items-center justify-between">
-                  <div className="text-[9px] font-bold text-white/30 uppercase tracking-widest">Execution</div>
-                  <div className="flex gap-1">
-                    {[1,2,3,4].map(dot => <div key={dot} className="w-3 h-1 rounded-full bg-[#c8ff00]" />)}
-                  </div>
-                </div>
-              </div>
-
-              {/* CELL 4: IMAGE & CTA (2 Cols) */}
-              <div className="md:col-span-2 lg:col-span-2 relative group aspect-[16/10] sm:aspect-[16/9] md:aspect-[2/1] lg:aspect-auto lg:min-h-[280px] rounded-[8px] overflow-hidden border border-black/10">
-                <Image
-                  src={currentCase.image}
-                  alt={currentCase.name}
-                  fill
-                  className="object-cover scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-out opacity-40 group-hover:opacity-60"
-                  sizes="(max-width: 1024px) 100vw, 800px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-
-                {/* Floating Tag */}
-                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 px-3 sm:px-4 py-1 sm:py-1.5 rounded-[8px] bg-white/10 backdrop-blur-xl border border-white/20 flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#c8ff00] animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white">Voir l&apos;étude</span>
-                </div>
-
-                <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-end items-start">
-                  <Link
-                    href={`/cas-clients/${currentCase.slug}`}
-                    className="h-[40px] sm:h-[48px] px-5 sm:px-7 text-[12px] sm:text-[14px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-[8px] bg-white text-black border border-white/50 transition-all duration-300 hover:bg-white/95 hover:-translate-y-0.5"
-                  >
-                    <span>Découvrir le cas complet</span>
-                    <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* CTA vers cas clients */}
-        <div className="mt-8 sm:mt-10 md:mt-12 flex justify-center">
-          <Link
-            href="/cas-clients"
-            className="group flex items-center gap-2 sm:gap-3 text-[11px] sm:text-[13px] font-['Inter'] font-semibold uppercase tracking-wider text-black hover:text-black/70 transition-all"
-          >
-            <span>Découvrir tous nos cas clients</span>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-[8px] bg-black border border-black text-white flex items-center justify-center group-hover:bg-transparent group-hover:text-black group-hover:-translate-y-0.5 transition-all duration-300">
-              <ArrowRight size={12} />
-            </div>
-          </Link>
-        </div>
-      </div>
-      {/* Diagonal bottom → next section (Piliers gray) */}
-      <SectionDiagonalBottom fillColor="#F2F2F2" direction="right" />
-    </section>
-  );
-}
-
 // FAQ Section Component
 // SEO: Questions fréquentes agence marketing Toulouse
 function FAQSection() {
@@ -501,7 +175,7 @@ function FAQSection() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
+                className="inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
               >
                 {homeContent.faq.surtitre}
               </motion.span>
@@ -509,7 +183,7 @@ function FAQSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="font-['Roboto'] font-[900] text-[24px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-[1.1] tracking-tight uppercase text-black mb-4 sm:mb-6"
+                className="font-['Inter'] font-bold text-[24px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-[1.1] tracking-tight text-black mb-4 sm:mb-6"
               >
                 {homeContent.faq.h2}
               </motion.h2>
@@ -553,7 +227,7 @@ function FAQSection() {
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     className="w-full p-3 sm:p-4 md:p-5 flex items-center justify-between text-left group gap-3"
                   >
-                    <span className="font-['Roboto'] font-bold text-xs sm:text-sm tracking-tight text-black group-hover:text-black/80 transition-colors pr-2">
+                    <span className="font-['Inter'] font-bold text-xs sm:text-sm tracking-tight text-black group-hover:text-black/80 transition-colors pr-2">
                       {faq.question}
                     </span>
                     <div
@@ -604,193 +278,841 @@ function FAQSection() {
 }
 
 // Assets Portfolio Card with 3D tilt effect
-const PortfolioAssetCard = ({
-  title,
-  category,
-  description,
-  image,
-  className,
-}: {
-  title: string;
-  category: string;
-  description: string;
-  image: string;
-  className?: string;
-}) => {
-  const [imageError, setImageError] = useState(false);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateY,
-        rotateX,
-        transformStyle: "preserve-3d",
-      }}
-      className={`relative group h-full min-h-[320px] rounded-xl border border-white/10 bg-black/60 backdrop-blur-sm overflow-hidden transition-colors hover:border-white/20 ${className}`}
-    >
-      {/* Image de fond ou placeholder */}
-      <div className="absolute inset-0">
-        {!imageError ? (
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            onError={() => setImageError(true)}
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#3a3a3a] to-[#1a1a1a] flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-white/10 flex items-center justify-center">
-                <svg className="w-8 h-8 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <p className="text-white/30 text-xs uppercase tracking-wider">Ajoutez votre image</p>
-              <p className="text-white/20 text-[10px] mt-1">{image.split('/').pop()}</p>
-            </div>
-          </div>
-        )}
-        {/* Overlay gradient pour lisibilité du texte */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
-      </div>
-
-      {/* Contenu texte */}
-      <div style={{ transform: "translateZ(30px)" }} className="relative z-10 h-full flex flex-col justify-end p-8">
-        <span className="text-[11px] font-normal uppercase tracking-[1.65px] text-[#B7B7B7] mb-2 block">{category}</span>
-        <h3 className="font-['Roboto'] text-xl font-black uppercase text-white leading-none tracking-tight mb-3">
-          {title}
-        </h3>
-        <p className="font-['Inter'] text-sm text-[#B7B7B7] max-w-[280px]">
-          {description}
-        </p>
-      </div>
-
-      {/* Decorative gradient flare on hover */}
-      <div className="absolute -inset-px bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
-    </motion.div>
-  );
-};
-
-// Assets Portfolio Section
+// Assets Portfolio Section - Bento Grid Style
 function AssetsPortfolioSection() {
+  // Portfolio items with images and one testimonial
+  const portfolioItems: Array<{
+    id: number;
+    span: string;
+    type: 'image' | 'testimonial';
+    image?: string;
+    alt?: string;
+    bg?: string;
+    quote?: string;
+    author?: string;
+    company?: string;
+  }> = [
+    {
+      id: 1,
+      type: 'image',
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop",
+      alt: "Logo design",
+      span: "col-span-2 row-span-1",
+      bg: "bg-[#1a1a6c]",
+    },
+    {
+      id: 2,
+      type: 'image',
+      image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=600&auto=format&fit=crop",
+      alt: "Brand mockup",
+      span: "col-span-1 row-span-1",
+      bg: "bg-[#1a1a6c]",
+    },
+    {
+      id: 3,
+      type: 'image',
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=400&auto=format&fit=crop",
+      alt: "Mobile app",
+      span: "col-span-1 row-span-2",
+      bg: "bg-gradient-to-br from-[#1a1a6c] to-[#4a4adc]",
+    },
+    {
+      id: 4,
+      type: 'testimonial',
+      span: "col-span-1 row-span-1",
+      quote: "Un travail de qualité. Notre image de marque n'a jamais été aussi forte.",
+      author: "Claire Fontaine",
+      company: "MetalPro",
+    },
+    {
+      id: 5,
+      type: 'image',
+      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop",
+      alt: "Presentation",
+      span: "col-span-2 row-span-1",
+      bg: "bg-[#1a1a1a]",
+    },
+    {
+      id: 6,
+      type: 'image',
+      image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=600&auto=format&fit=crop",
+      alt: "Social media",
+      span: "col-span-1 row-span-1",
+      bg: "bg-[#f0f0f0]",
+    },
+    {
+      id: 7,
+      type: 'image',
+      image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=400&auto=format&fit=crop",
+      alt: "App icon",
+      span: "col-span-1 row-span-1",
+      bg: "bg-gradient-to-br from-[#6366f1] to-[#a855f7]",
+    },
+    {
+      id: 8,
+      type: 'image',
+      image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=600&auto=format&fit=crop",
+      alt: "Brand guidelines",
+      span: "col-span-1 row-span-1",
+      bg: "bg-[#1a1a6c]",
+    },
+  ];
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] py-20 sm:py-28 md:py-36 px-4 sm:px-6 md:px-12">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+    <section className="relative overflow-hidden bg-[#f5f5f5] py-20 sm:py-28 md:py-36 px-4 sm:px-6 md:px-12">
+      <div className="max-w-[82.5rem] mx-auto relative z-10">
+        {/* Header */}
         <motion.div
-          animate={{ y: [0, -20, 0], opacity: [0.1, 0.2, 0.1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 -left-20 w-96 h-96 bg-white/5 blur-[100px] rounded-full"
-        />
-        <motion.div
-          animate={{ y: [0, 30, 0], opacity: [0.05, 0.15, 0.05] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full"
-        />
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12 sm:mb-16 md:mb-20"
+        >
+          <h2 className="font-['Inter'] font-bold text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a]">
+            Des assets exceptionnels,
+            <br />
+            <span className="text-[#6b6b6b]">pour des clients exceptionnels.</span>
+          </h2>
+        </motion.div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[200px]">
+          {portfolioItems.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className={`${item.span} relative rounded-xl sm:rounded-2xl overflow-hidden group cursor-pointer`}
+            >
+              {item.type === 'testimonial' ? (
+                // Testimonial Card
+                <div className="absolute inset-0 bg-white p-4 sm:p-5 flex flex-col justify-between">
+                  {/* Stars */}
+                  <div className="flex gap-0.5">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star
+                        key={star}
+                        size={14}
+                        className="text-[#c8ff00] fill-[#c8ff00]"
+                      />
+                    ))}
+                  </div>
+                  {/* Quote */}
+                  <p className="text-[12px] sm:text-[13px] font-['Inter'] leading-snug text-[#1a1a1a]/80 line-clamp-3">
+                    "{item.quote}"
+                  </p>
+                  {/* Author */}
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#c8ff00]/30 to-[#c8ff00]/10 flex items-center justify-center text-[9px] font-bold text-[#1a1a1a]">
+                      {item.author?.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div>
+                      <p className="text-[10px] sm:text-[11px] font-semibold text-[#1a1a1a]">{item.author}</p>
+                      <p className="text-[9px] text-[#666]">{item.company}</p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                // Image Card
+                <>
+                  <div className={`absolute inset-0 ${item.bg}`} />
+                  <Image
+                    src={item.image!}
+                    alt={item.alt!}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                  {/* Subtle hover overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                </>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      {/* Diagonal bottom → next section (À Propos) */}
+      <SectionDiagonalBottom fillColor="#F2F2F2" direction="right" />
+    </section>
+  );
+}
+
+// About Section Component - Présentation de Vizion
+// SEO: Introduction agence marketing stratégique Toulouse
+function AboutSection() {
+  const highlights = [
+    "Des stratèges, pas des exécutants",
+    "Le marketing aligné sur vos objectifs business",
+    "L'IA au service de la performance"
+  ];
+
+  return (
+    <section
+      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative grain-medium overflow-hidden"
+      style={{
+        background: `
+          radial-gradient(ellipse 80% 50% at 20% 40%, rgba(200,255,0,0.06) 0%, transparent 50%),
+          radial-gradient(ellipse 60% 40% at 80% 20%, rgba(200,255,0,0.04) 0%, transparent 40%),
+          radial-gradient(ellipse 70% 60% at 70% 80%, rgba(180,180,180,0.08) 0%, transparent 50%),
+          radial-gradient(ellipse 50% 50% at 10% 90%, rgba(200,200,200,0.06) 0%, transparent 40%),
+          linear-gradient(135deg, #fafaf8 0%, #f0f0eb 100%)
+        `
+      }}
+      aria-label="À propos de Vizion agence marketing Toulouse"
+    >
+      {/* Mesh gradient ambient glows */}
+      <div className="absolute top-[15%] right-[15%] w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] bg-[#c8ff00] opacity-[0.045] rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute bottom-[5%] left-[0%] w-[400px] sm:w-[500px] h-[400px] sm:h-[500px] bg-slate-300/40 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-[60%] left-[40%] w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-[#c8ff00] opacity-[0.025] rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
-        <div className="mb-12 md:mb-20">
-          <span className="text-[11px] font-normal uppercase tracking-[1.65px] text-[#F2F2F2] opacity-70 mb-4 block">Portfolio d&apos;Expertise</span>
-          <h2 className="font-['Roboto'] font-black text-[clamp(32px,5vw,52px)] leading-[1.05] tracking-[-0.035em] uppercase text-white max-w-3xl">
-            Nous produisons des assets marketing de <span className="text-[#B7B7B7]">haute qualité</span> pour bâtir votre autorité sur votre marché
-          </h2>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
+          {/* LEFT: Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
+            className="relative mb-8 sm:mb-0"
+          >
+            {/* Main Image Container */}
+            <div className="relative rounded-md sm:rounded-lg overflow-hidden shadow-2xl shadow-black/10 aspect-[4/3] lg:aspect-[4/3.5]">
+              <Image
+                src="/images/about/about-main.jpg"
+                alt="Équipe Vizion - Agence marketing stratégique Toulouse"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              {/* Subtle overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            </div>
 
-        {/*
-          INSTRUCTIONS POUR REMPLACER LES IMAGES :
-          Uploadez vos images dans /public/assets/ avec ces noms :
-          - plaquettes.jpg (ratio 16:9 recommandé)
-          - publicites.jpg (ratio 1:1 recommandé)
-          - landing-pages.jpg (ratio 9:16 recommandé - vertical)
-          - sales-deck.jpg (ratio 16:9 recommandé)
-          - social-media.jpg (ratio 1:1 recommandé)
-        */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[340px]">
+            {/* Person Badge - Bottom Left, overflowing on desktop, inside on mobile */}
+            <motion.div
+              initial={{ opacity: 0, x: -20, scale: 0.95, rotate: -8 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1, rotate: -3 }}
+              whileHover={{ scale: 1.03, rotate: -1, y: -3, transition: { duration: 0.15, ease: "easeOut" } }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
+              className="absolute bottom-3 left-3 sm:bottom-8 sm:-left-6 lg:-left-8 z-20 cursor-pointer"
+            >
+              <div className="bg-black/70 backdrop-blur-2xl border border-white/10 rounded-md sm:rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 shadow-xl shadow-black/30 transition-shadow duration-300 hover:shadow-2xl hover:shadow-black/40">
+                {/* Avatar */}
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 overflow-hidden relative">
+                  <Image
+                    src="/images/about/leo-bouyssou.jpg"
+                    alt="Léo Bouyssou"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                {/* Info */}
+                <div className="flex flex-col">
+                  <span className="text-[12px] sm:text-[13px] font-semibold text-white leading-tight">
+                    Léo Bouyssou
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] text-white/60 leading-tight">
+                    Co-fondateur easyVirtual.tours
+                  </span>
+                </div>
+              </div>
+            </motion.div>
 
-          {/* 1. Plaquettes A4 - Big span */}
-          <div className="md:col-span-8 md:row-span-1">
-            <PortfolioAssetCard
-              category="Édition"
-              title="Plaquettes A4"
-              description="Brochures institutionnelles et fiches produits haut de gamme."
-              image="/assets/plaquettes.jpg"
-            />
-          </div>
+            {/* Floating Stats Card - inside on mobile, overflowing on desktop */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.95, rotate: 3 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 2 }}
+              whileHover={{ scale: 1.03, rotate: 0, y: -3, transition: { duration: 0.15, ease: "easeOut" } }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.19, 1, 0.22, 1] }}
+              className="absolute -bottom-4 right-3 sm:bottom-6 sm:right-[-2rem] lg:right-[-3rem] z-20 cursor-pointer"
+            >
+              <div className="bg-black/70 backdrop-blur-2xl border border-white/10 rounded-md sm:rounded-lg p-4 sm:p-5 shadow-xl shadow-black/30 min-w-[160px] sm:min-w-[200px]">
+                {/* Badge */}
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="px-2.5 py-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-md">
+                    <span className="text-[9px] sm:text-[10px] font-bold tracking-wider text-white">
+                      Projets
+                    </span>
+                  </div>
+                </div>
 
-          {/* 2. Publicités - Small span */}
-          <div className="md:col-span-4 md:row-span-1">
-            <PortfolioAssetCard
-              category="Performance"
-              title="Publicités"
-              description="Campagnes display et formats print."
-              image="/assets/publicites.jpg"
-            />
-          </div>
+                {/* Mini Image */}
+                <div className="relative w-full h-16 sm:h-20 rounded-md overflow-hidden mb-3">
+                  <Image
+                    src="/images/about/about-card.jpg"
+                    alt="Projets clients"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-          {/* 3. Landing Pages - Tall span */}
-          <div className="md:col-span-4 md:row-span-2">
-            <PortfolioAssetCard
-              category="Digital"
-              title="Landing Pages"
-              description="Conversion optimisée et design orienté utilisateur pour vos leads."
-              image="/assets/landing-pages.jpg"
-              className="h-full"
-            />
-          </div>
+                {/* Stats */}
+                <div className="flex flex-col gap-1 mb-3">
+                  <span className="text-3xl sm:text-4xl font-['Inter'] font-bold tracking-[-0.02em] text-white leading-none">
+                    70+
+                  </span>
+                  <span className="text-[10px] sm:text-[11px] font-['Inter'] font-medium text-white/70 leading-tight">
+                    Entreprises accompagnées<br />depuis 2021
+                  </span>
+                </div>
 
-          {/* 4. Sales Deck - Small span */}
-          <div className="md:col-span-4 md:row-span-1">
-            <PortfolioAssetCard
-              category="Vente"
-              title="Sales Deck"
-              description="Présentations commerciales stratégiques."
-              image="/assets/sales-deck.jpg"
-            />
-          </div>
+                {/* CTA Tertiaire */}
+                <Link
+                  href="/cas-clients"
+                  className="text-[10px] sm:text-[11px] font-semibold text-white/80 hover:text-white underline underline-offset-2 decoration-white/40 hover:decoration-white/80 transition-colors flex items-center gap-1 group"
+                >
+                  Découvrir nos cas clients
+                  <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
 
-          {/* 5. Réseaux Sociaux - Small span */}
-          <div className="md:col-span-4 md:row-span-1">
-            <PortfolioAssetCard
-              category="Notoriété"
-              title="Contenu Social"
-              description="Posts LinkedIn et visuels engageants."
-              image="/assets/social-media.jpg"
-            />
-          </div>
+          {/* RIGHT: Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
+            className="flex flex-col"
+          >
+            {/* Surtitre */}
+            <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
+              <div className="w-2 h-2 rounded-full bg-[#c8ff00]" />
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.1em] text-[#6b6b6b]">
+                À propos de nous
+              </span>
+            </div>
 
+            {/* H2 Title */}
+            <h2 className="font-['Inter'] font-bold text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-5 sm:mb-6">
+              La stratégie au service de la performance commerciale
+            </h2>
+
+            {/* Description */}
+            <p className="text-[#6b6b6b] text-sm sm:text-base font-['Inter'] leading-relaxed mb-6 sm:mb-8 max-w-xl">
+              Vizion n'est pas une agence que l'on consulte pour produire un logo ou refaire une plaquette. Nous sommes des stratèges. Nous concevons des feuilles de route marketing alignées sur vos objectifs business, et nous les déployons jusqu'au terrain commercial.
+            </p>
+
+            {/* Highlights List */}
+            <ul className="space-y-3 sm:space-y-4 mb-8 sm:mb-10">
+              {highlights.map((item, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.1 }}
+                  className="flex items-start gap-3"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-[#c8ff00] shrink-0 mt-0.5" strokeWidth={2.5} />
+                  <span className="text-sm sm:text-[15px] font-['Inter'] font-medium text-[#1a1a1a] leading-relaxed">
+                    {item}
+                  </span>
+                </motion.li>
+              ))}
+            </ul>
+
+            {/* CTA Button */}
+            <div>
+              <Link
+                href="/contact"
+                className="inline-flex h-[48px] sm:h-[52px] px-6 sm:px-8 text-[13px] sm:text-[14px] font-['Inter'] font-semibold tracking-[-0.01em] bg-[#c8ff00] text-black rounded-full hover:bg-[#d4ff33] hover:-translate-y-0.5 transition-all duration-300 active:scale-95 items-center justify-center gap-2 border border-[#c8ff00] shadow-[0_4px_24px_-1px_rgba(200,255,0,0.3)] hover:shadow-[0_8px_32px_-4px_rgba(200,255,0,0.4)]"
+              >
+                <span>Découvrir notre approche</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Diagonal bottom → next section (Quand Commencer white) */}
+      {/* Diagonal bottom → next section (Social Proof) */}
+      <SectionDiagonalBottom fillColor="#fafaf8" direction="left" />
+    </section>
+  );
+}
+
+// Services Tabs Section Component - Vertical Tabs Design
+// SEO: Services agence marketing B2B Toulouse
+const servicesImages = [
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1531973576160-7125cd663d86?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+];
+
+function ServicesTabsSection() {
+  const [activeService, setActiveService] = useState(0);
+  const services = homeContent.piliers.piliers;
+
+  return (
+    <section
+      className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-white relative"
+      aria-label="Services agence marketing B2B Toulouse"
+    >
+      <div className="max-w-[82.5rem] mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16">
+          {/* LEFT COLUMN - Header + Vertical Tabs */}
+          <div className="lg:col-span-5 xl:col-span-4">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-8 sm:mb-10"
+            >
+              <span className="text-[12px] sm:text-[13px] font-['Inter'] text-[#6b6b6b] mb-3 block">
+                (Nos Services)
+              </span>
+              <h2 className="font-['Inter'] font-bold text-[28px] sm:text-[34px] md:text-[40px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+                Une expertise sur mesure pour vos enjeux
+              </h2>
+              <p className="text-[#6b6b6b] text-sm sm:text-base font-['Inter'] leading-relaxed">
+                Notre agence intervient sur cinq domaines complémentaires pour améliorer votre performance marketing et commerciale.
+              </p>
+            </motion.div>
+
+            {/* Vertical Tabs */}
+            <nav className="space-y-0 border-l border-black/10">
+              {services.map((service, index) => (
+                <motion.button
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  onClick={() => setActiveService(index)}
+                  className={`w-full text-left py-4 pl-5 pr-4 border-l-2 -ml-[2px] transition-all duration-300 group ${
+                    activeService === index
+                      ? "border-l-[#1a1a1a] bg-transparent"
+                      : "border-l-transparent hover:border-l-black/20 hover:bg-black/[0.02]"
+                  }`}
+                >
+                  <span
+                    className={`block font-['Inter'] text-[14px] sm:text-[15px] transition-colors duration-300 ${
+                      activeService === index
+                        ? "font-semibold text-[#1a1a1a]"
+                        : "font-normal text-[#999] group-hover:text-[#6b6b6b]"
+                    }`}
+                  >
+                    {service.surtitre}
+                  </span>
+                </motion.button>
+              ))}
+            </nav>
+          </div>
+
+          {/* RIGHT COLUMN - Content Card */}
+          <div className="lg:col-span-7 xl:col-span-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeService}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-[#fafaf8] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-black/5"
+              >
+                {/* Image */}
+                <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden mb-6 sm:mb-8">
+                  <Image
+                    src={servicesImages[activeService]}
+                    alt={services[activeService].surtitre}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                  />
+                </div>
+
+                {/* Service Title */}
+                <h3 className="font-['Inter'] font-bold text-[22px] sm:text-[26px] md:text-[30px] leading-[1.15] tracking-[-0.01em] text-[#1a1a1a] mb-4">
+                  {services[activeService].titre}
+                </h3>
+
+                {/* Description */}
+                <p className="text-[#6b6b6b] text-sm sm:text-[15px] font-['Inter'] leading-relaxed mb-6 sm:mb-8">
+                  {services[activeService].description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+                  {services[activeService].services.slice(0, 4).map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1.5 bg-white border border-black/10 text-[11px] sm:text-[12px] font-['Inter'] font-medium text-[#6b6b6b] rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* CTAs */}
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/contact"
+                    className="h-[44px] sm:h-[48px] px-5 sm:px-6 text-[13px] sm:text-[14px] font-['Inter'] font-semibold bg-[#1a1a1a] text-white rounded-full hover:bg-black/80 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    En savoir plus
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="h-[44px] sm:h-[48px] px-5 sm:px-6 text-[13px] sm:text-[14px] font-['Inter'] font-semibold bg-transparent text-[#1a1a1a] border border-black/20 rounded-full hover:bg-black/5 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    Prendre rendez-vous
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+
+      {/* Diagonal bottom → next section (IA Highlight) */}
+      <SectionDiagonalBottom fillColor="#000000" direction="left" />
+    </section>
+  );
+}
+
+// Testimonials data
+const testimonials = [
+  {
+    id: 1,
+    quote: "Travailler avec Vizion a complètement transformé notre approche commerciale. Ils ont identifié des opportunités que nous n'aurions jamais vues et nous ont aidés à structurer notre discours de vente. C'est la première fois qu'on sent notre marketing vraiment aligné avec nos objectifs business.",
+    author: "Marie Dubois",
+    role: "Directrice Générale",
+    company: "TechFlow Solutions",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    id: 2,
+    quote: "L'équipe Vizion nous a accompagnés dans notre repositionnement B2B. Leur méthodologie est rigoureuse, leur expertise indéniable. En 6 mois, notre pipeline commercial a doublé et notre cycle de vente s'est réduit de 40%.",
+    author: "Thomas Martin",
+    role: "CEO",
+    company: "IndustriaPlus",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=100&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    quote: "Ce qui distingue Vizion, c'est leur capacité à comprendre notre métier technique et à le traduire en message clair pour nos prospects. Nos commerciaux ont enfin des outils qu'ils utilisent vraiment.",
+    author: "Sophie Laurent",
+    role: "Directrice Marketing",
+    company: "DataSphere",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
+  },
+];
+
+// Mini testimonials for bento grid
+const miniTestimonials = [
+  {
+    id: 4,
+    quote: "Une vision stratégique claire et une exécution impeccable. Notre CA a progressé de 35% en un an.",
+    author: "Pierre Leroy",
+    company: "Nextech",
+  },
+  {
+    id: 5,
+    quote: "Enfin une agence qui comprend les enjeux du B2B industriel. Résultats concrets et mesurables.",
+    author: "Claire Fontaine",
+    company: "MetalPro",
+  },
+  {
+    id: 6,
+    quote: "Le repositionnement de notre offre a complètement changé notre façon de prospecter.",
+    author: "Marc Durand",
+    company: "CloudSystems",
+  },
+  {
+    id: 7,
+    quote: "Leur expertise en sales enablement a transformé notre équipe commerciale.",
+    author: "Julie Bernard",
+    company: "InnovaLogic",
+  },
+  {
+    id: 8,
+    quote: "Accompagnement de qualité, réactif et toujours force de proposition.",
+    author: "Antoine Roux",
+    company: "TechVision",
+  },
+  {
+    id: 9,
+    quote: "Le meilleur investissement marketing qu'on ait fait depuis 5 ans.",
+    author: "Émilie Moreau",
+    company: "DataFlow",
+  },
+  {
+    id: 10,
+    quote: "Ils ont su structurer notre approche commerciale de A à Z.",
+    author: "François Petit",
+    company: "SoftwarePlus",
+  },
+  {
+    id: 11,
+    quote: "Une approche pragmatique qui génère des résultats tangibles.",
+    author: "Nathalie Simon",
+    company: "DigitalFirst",
+  },
+  {
+    id: 12,
+    quote: "Partenaire de confiance depuis 2 ans, toujours au rendez-vous.",
+    author: "David Martin",
+    company: "AutomateSmart",
+  },
+];
+
+// Testimonials Section Component
+function TestimonialsSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const currentTestimonial = testimonials[currentIndex];
+
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  return (
+    <section
+      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative grain-light overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, #fafaf8 0%, #f0f0eb 100%)' }}
+      aria-label="Témoignages clients Vizion"
+    >
+      {/* Ambient glow */}
+      <div className="absolute top-[35%] left-[25%] w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] bg-[#c8ff00] opacity-[0.045] rounded-full blur-[200px] pointer-events-none" />
+
+      <div className="max-w-[82.5rem] mx-auto relative z-10">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-10 sm:mb-14 md:mb-16">
+          <div className="max-w-[800px]">
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-2.5 mb-4 sm:mb-5"
+            >
+              <div className="w-2 h-2 rounded-full bg-[#c8ff00]" />
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.1em] text-[#6b6b6b]">
+                Témoignages Clients
+              </span>
+            </motion.div>
+            <div className="flex gap-4 sm:gap-5">
+              <div className="w-[3px] shrink-0 mt-2 h-10 bg-[#c8ff00] rounded-full" />
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="font-['Inter'] font-bold text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]"
+              >
+                Ce que nos clients disent de notre collaboration
+              </motion.h2>
+            </div>
+          </div>
+
+          {/* More Reviews Button */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="mt-6 lg:mt-0"
+          >
+            <Link
+              href="/cas-clients"
+              className="h-[44px] sm:h-[48px] px-5 sm:px-7 text-[13px] sm:text-[14px] font-['Inter'] font-semibold tracking-[-0.01em] inline-flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-[#0a0a0a] text-white border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:bg-black/90 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)] hover:-translate-y-0.5"
+            >
+              <span>Plus d'avis</span>
+              <ArrowRight size={14} />
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+          {/* Testimonial Card */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentTestimonial.id}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg p-5 sm:p-8 md:p-10 shadow-sm card-hover-glow"
+            >
+              {/* Stars */}
+              <div className="flex gap-1 mb-5 sm:mb-6">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star
+                    key={star}
+                    size={18}
+                    className="text-[#c8ff00] fill-[#c8ff00]"
+                  />
+                ))}
+              </div>
+
+              {/* Quote */}
+              <blockquote className="text-[15px] sm:text-[17px] md:text-lg font-['Inter'] leading-relaxed text-[#1a1a1a] mb-6 sm:mb-8">
+                "{currentTestimonial.quote}"
+              </blockquote>
+
+              {/* Author & Google Logo */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full overflow-hidden ring-2 ring-white shadow-lg">
+                    <Image
+                      src={currentTestimonial.avatar}
+                      alt={currentTestimonial.author}
+                      width={56}
+                      height={56}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-['Inter'] font-semibold text-xs sm:text-sm tracking-wide text-[#1a1a1a]">
+                      {currentTestimonial.author}
+                    </h4>
+                    <p className="text-[10px] sm:text-[11px] font-bold tracking-wider text-[#999]">
+                      {currentTestimonial.role}, {currentTestimonial.company}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Google Logo */}
+                <div className="text-[#4285F4] font-['Inter'] font-medium text-lg sm:text-xl tracking-tight">
+                  <span className="text-[#4285F4]">G</span>
+                  <span className="text-[#EA4335]">o</span>
+                  <span className="text-[#FBBC05]">o</span>
+                  <span className="text-[#4285F4]">g</span>
+                  <span className="text-[#34A853]">l</span>
+                  <span className="text-[#EA4335]">e</span>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Image */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`img-${currentTestimonial.id}`}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[280px] sm:min-h-[350px] rounded-md sm:rounded-lg overflow-hidden border border-black/10"
+            >
+              <Image
+                src={currentTestimonial.image}
+                alt={`${currentTestimonial.author} - ${currentTestimonial.company}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              {/* Subtle overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Navigation Arrows */}
+        <div className="flex items-center gap-3 mt-8 sm:mt-10">
+          <button
+            onClick={prevTestimonial}
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center text-[#1a1a1a] hover:bg-white hover:shadow-md transition-all duration-300 active:scale-95"
+            aria-label="Témoignage précédent"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            onClick={nextTestimonial}
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center text-[#1a1a1a] hover:bg-white hover:shadow-md transition-all duration-300 active:scale-95"
+            aria-label="Témoignage suivant"
+          >
+            <ChevronRight size={18} />
+          </button>
+
+          {/* Dots indicator */}
+          <div className="flex gap-2 ml-4">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "bg-[#c8ff00] w-6"
+                    : "bg-black/20 hover:bg-black/40 w-2"
+                }`}
+                aria-label={`Aller au témoignage ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Mini Testimonials Bento Grid with Fade */}
+        <div className="relative mt-12 sm:mt-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
+          >
+            {miniTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="bg-white/60 backdrop-blur-sm border border-black/8 rounded-lg p-4 sm:p-5 hover:bg-white/80 hover:border-black/12 transition-all duration-300"
+              >
+                {/* Stars */}
+                <div className="flex gap-0.5 mb-3">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      size={12}
+                      className="text-[#c8ff00] fill-[#c8ff00]"
+                    />
+                  ))}
+                </div>
+                {/* Quote */}
+                <p className="text-[13px] sm:text-[14px] font-['Inter'] leading-relaxed text-[#1a1a1a]/80 mb-3 line-clamp-2">
+                  "{testimonial.quote}"
+                </p>
+                {/* Author */}
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#c8ff00]/20 to-[#c8ff00]/5 flex items-center justify-center text-[10px] font-bold text-[#1a1a1a]">
+                    {testimonial.author.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-semibold text-[#1a1a1a]">{testimonial.author}</p>
+                    <p className="text-[10px] text-[#666]">{testimonial.company}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Fade to transparency overlay */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to bottom, transparent 0%, rgba(245, 245, 240, 0.5) 30%, rgba(245, 245, 240, 0.85) 60%, rgba(245, 245, 240, 1) 100%)'
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Diagonal bottom → next section (Équipe) */}
       <SectionDiagonalBottom fillColor="#FFFFFF" direction="right" />
     </section>
   );
@@ -836,12 +1158,20 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-50"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#EEFF41] via-[#EEFF41]/80 to-[#EEFF41]/50 shadow-[0_0_8px_rgba(238,255,65,0.5)]"></span>
               </span>
-              <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.1em] uppercase" style={{ color: 'rgba(255,255,255,0.8)' }}>
+              <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.1em]" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 {homeContent.hero.badge}
               </span>
             </div>
 
-            <h1 className="font-['Roboto'] font-[900] text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-[1.08] tracking-[0.02em] uppercase text-white">
+            <h1
+              className="font-['Inter'] font-[600] text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] leading-[0.95] tracking-[-0.03em]"
+              style={{
+                backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent'
+              }}
+            >
               {(() => {
                 const h1 = homeContent.hero.h1;
                 const highlight = homeContent.hero.h1Highlight;
@@ -870,7 +1200,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pb-4 border-b border-white/10">
               {homeContent.hero.badges.map((item, i) => (
-                <div key={i} className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold uppercase tracking-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                <div key={i} className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
                   <CheckCircle2 size={14} className="shrink-0" style={{ color: '#EEFF41' }} />
                   {item}
                 </div>
@@ -1004,7 +1334,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               className="hidden lg:block absolute bottom-36 right-5 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-md p-4 shadow-lg"
             >
               <div className="flex items-center gap-3">
-                <div className="text-white font-['Roboto'] font-black text-2xl leading-none">+70</div>
+                <div className="text-white font-['Inter'] font-semibold text-2xl leading-none">+70</div>
                 <div>
                   <div className="text-white text-xs font-semibold leading-tight">clients accompagnés</div>
                   <div className="text-white/40 text-[10px] font-medium mt-0.5">De la PME à l'ETI</div>
@@ -1013,388 +1343,37 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </motion.div>
           </motion.div>
         </div>
-        {/* Diagonal bottom → next section (gray) */}
-        <SectionDiagonalBottom fillColor="#F2F2F2" direction="left" />
+        {/* Diagonal bottom → next section (About) */}
+        <SectionDiagonalBottom fillColor="#fafaf8" direction="left" />
       </section>
 
-      {/* SOCIAL PROOF SECTION - Tabs Interactifs */}
-      <SocialProofTabs />
+      {/* ABOUT SECTION - Présentation de Vizion */}
+      <AboutSection />
 
-
-      {/* 5 PILIERS SECTION - PREMIUM GLASSMORPHISM */}
-      <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#F8F8F8] via-[#F2F2F2] to-[#EAEAEA] relative grain-light"
-        aria-label="Services agence marketing B2B Toulouse"
-      >
-        {/* Background ambient light - Enhanced with multiple gradients */}
-        <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-gradient-to-br from-amber-100/15 via-orange-50/8 to-transparent rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-gradient-to-tl from-slate-200/20 via-white/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-white/20 rounded-full blur-[150px] pointer-events-none" />
-
-        <div className="max-w-[82.5rem] mx-auto relative z-10">
-          {/* Header - Refined */}
-          <div className="max-w-3xl mb-10 sm:mb-12 md:mb-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4"
-            >
-              <div className="h-[1px] w-6 sm:w-8 bg-black/20" />
-              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.25em] text-black/50">
-                {homeContent.piliers.surtitre}
-              </span>
-            </motion.div>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-['Roboto'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1] tracking-tight uppercase text-black mb-4 sm:mb-6 md:mb-8"
-            >
-              {homeContent.piliers.h2}
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-black/60 text-base sm:text-lg font-['Inter'] leading-relaxed max-w-2xl"
-            >
-              {homeContent.piliers.description}
-            </motion.p>
-          </div>
-
-          {/* Bento Grid - Premium Glassmorphism SaaS Style */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6">
-            {/* PILIER 01 - Main Dark Glassmorphism Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="md:col-span-2 lg:col-span-7 lg:row-span-2 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg p-5 sm:p-8 md:p-10 flex flex-col min-h-[400px] sm:min-h-[450px] lg:min-h-[550px] relative overflow-hidden group shadow-2xl shadow-black/30 hover:shadow-black/40 hover:border-white/20 transition-all duration-300"
-            >
-              {/* Carbon fibre pattern */}
-              <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
-              {/* Inner glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-white/[0.01] pointer-events-none rounded-xl" />
-
-              <div className="relative z-10 flex-1 flex flex-col">
-                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-5 sm:mb-8">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-white/20">
-                    <span className="font-black text-xs sm:text-sm text-black">{homeContent.piliers.piliers[0].numero}</span>
-                  </div>
-                  <div className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg">
-                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em]" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                      {homeContent.piliers.piliers[0].surtitre}
-                    </span>
-                  </div>
-                </div>
-
-                <h3 className="font-['Roboto'] font-[900] text-[24px] sm:text-[28px] md:text-[32px] lg:text-[40px] leading-tight uppercase mb-4 sm:mb-6 group-hover:opacity-90 transition-opacity duration-300" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                  {homeContent.piliers.piliers[0].titre}
-                </h3>
-                <p className="text-sm sm:text-base font-['Inter'] leading-relaxed mb-5 sm:mb-8 max-w-lg" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                  {homeContent.piliers.piliers[0].description}
-                </p>
-
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-10">
-                  {homeContent.piliers.piliers[0].services.map((item) => (
-                    <span key={item} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/10 backdrop-blur-sm border border-white/10 text-[9px] sm:text-[10px] font-bold rounded-lg uppercase tracking-wide hover:bg-white/15 hover:border-white/20 transition-all duration-200" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-auto hidden sm:block">
-                  <ImagePlaceholder
-                    width={600}
-                    height={240}
-                    label="Stratégie & Performance"
-                    rounded="lg"
-                    variant="dark"
-                    className="w-full border border-white/10 rounded-xl"
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* LIGHT GLASSMORPHISM CARDS (02-05) */}
-            {[
-              { idx: 1, Icon: Target, span: "lg:col-span-5" },
-              { idx: 2, Icon: Rocket, span: "lg:col-span-5" },
-              { idx: 3, Icon: Users, span: "lg:col-span-6" },
-              { idx: 4, Icon: Settings2, span: "lg:col-span-6" }
-            ].map(({ idx, Icon, span }, i) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * i }}
-                className={`${span} bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg p-4 sm:p-5 md:p-7 flex flex-col group shadow-sm card-hover-glow transition-all duration-300`}
-              >
-                <div className="flex items-start justify-between mb-3 sm:mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-black/5 backdrop-blur-sm border border-black/5 flex items-center justify-center group-hover:bg-black group-hover:border-black group-hover:shadow-lg group-hover:shadow-black/20 transition-all duration-300">
-                      <Icon className="text-black group-hover:text-white transition-colors" size={18} strokeWidth={2.5} />
-                    </div>
-                    <div className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-black/5 backdrop-blur-sm border border-black/10 rounded-lg">
-                      <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/60">
-                        {homeContent.piliers.piliers[idx].surtitre}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="text-[11px] sm:text-[12px] font-black text-black/10 group-hover:text-black/25 transition-colors">0{idx + 1}</span>
-                </div>
-                <h4 className="font-['Roboto'] font-black text-base sm:text-lg uppercase mb-2 sm:mb-3 tracking-tight text-black">{homeContent.piliers.piliers[idx].titre}</h4>
-                <p className="text-[13px] sm:text-[14px] text-black/60 font-['Inter'] leading-relaxed mb-4 sm:mb-6 flex-1">{homeContent.piliers.piliers[idx].description}</p>
-
-                <div className="flex flex-wrap items-center justify-between gap-2 mt-auto">
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {homeContent.piliers.piliers[idx].services.slice(0, 2).map(tag => (
-                      <span key={tag} className="px-2 sm:px-2.5 py-1 sm:py-1.5 bg-black/5 backdrop-blur-sm border border-black/5 text-black/70 text-[9px] sm:text-[10px] font-bold rounded-lg uppercase tracking-tight hover:bg-black/10 transition-all duration-200">{tag}</span>
-                    ))}
-                  </div>
-                  {idx === 4 && (
-                    <div className="flex items-center gap-2 bg-black text-white px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl shadow-lg">
-                      <span className="text-[8px] sm:text-[9px] font-bold opacity-50 uppercase">ROI</span>
-                      <span className="text-[11px] sm:text-xs font-black text-white">x4.5</span>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Bottom CTA - Premium Glassmorphism Style */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mt-10 sm:mt-12 md:mt-16 p-4 sm:p-6 md:p-8 rounded-md sm:rounded-lg bg-white/80 backdrop-blur-xl border border-black/10 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 shadow-sm"
-          >
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left">
-              <div className="flex -space-x-3">
-                {[5, 6, 7].map((i) => (
-                  <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden shadow-md ring-1 ring-black/5">
-                    <Image src={`https://i.pravatar.cc/40?u=${i+30}`} alt="Client" width={40} height={40} className="w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs sm:text-sm text-black/60 font-['Inter'] leading-tight">
-                <span className="block font-bold text-black text-xs sm:text-sm mb-0.5">{homeContent.piliers.socialProofText}</span>
-                Rejoignez les leaders du secteur
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 w-full md:w-auto">
-              <Link
-                href={homeContent.piliers.cta.secondary.href}
-                className="w-full sm:w-auto h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] text-black bg-black/5 backdrop-blur-sm border border-black/10 rounded-full hover:bg-black/10 hover:border-black/15 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 flex items-center justify-center"
-              >
-                {homeContent.piliers.cta.secondary.text}
-              </Link>
-              <Link
-                href={homeContent.piliers.cta.primary.href}
-                className="w-full sm:w-auto h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] bg-black text-white rounded-full hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)]"
-              >
-                {homeContent.piliers.cta.primary.text} <ArrowRight size={14} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-        {/* Diagonal bottom → next section (Assets Portfolio) */}
-        <SectionDiagonalBottom fillColor="#B7B7B7" direction="left" />
-      </section>
-
-      {/* ASSETS PORTFOLIO SECTION */}
-      <AssetsPortfolioSection />
-
-      {/* SECTION QUAND COMMENCER */}
-      {/* SEO: Offres et tarifs agence marketing Toulouse */}
-      {/* Images: 400x240px (5:3) pour les visuels des offres */}
-      <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-white via-[#FEFEFE] to-[#FAFAF8] relative grain-light"
-        aria-label="Offres et formules agence marketing Toulouse"
-      >
-        {/* Ambient glow */}
-        <div className="absolute top-[15%] left-[-5%] w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-gradient-to-br from-blue-50/20 via-slate-50/10 to-transparent rounded-full blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-[10%] right-[0%] w-[250px] sm:w-[450px] h-[250px] sm:h-[450px] bg-gradient-to-tl from-amber-50/15 via-orange-50/8 to-transparent rounded-full blur-[110px] pointer-events-none" />
-        <div className="max-w-[82.5rem] mx-auto relative z-10">
-          {/* Header */}
-          <div className="max-w-3xl mb-10 sm:mb-12 md:mb-16 lg:mb-20">
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
-            >
-              {homeContent.quandCommencer.surtitre}
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black mb-4 sm:mb-6"
-            >
-              {homeContent.quandCommencer.h2}
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-black/60 text-base sm:text-lg font-['Inter'] leading-relaxed"
-            >
-              {homeContent.quandCommencer.description}
-            </motion.p>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
-            {homeContent.quandCommencer.scenarios.map((scenario, index) => {
-              const isFeatured = index === 1;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`group flex flex-col overflow-hidden relative ${
-                    isFeatured
-                      ? 'bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] backdrop-blur-xl border-2 border-white/30 rounded-md sm:rounded-lg shadow-2xl shadow-black/30 text-white'
-                      : 'bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm card-hover-glow transition-all duration-300'
-                  }`}
-                >
-                  {/* Carbon fibre pattern for featured card */}
-                  {isFeatured && <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')] pointer-events-none z-0" />}
-                  {/* Image Container */}
-                  <div className="relative aspect-[16/10] sm:aspect-[5/3] w-full overflow-hidden">
-                    <Image
-                      src={scenario.image}
-                      alt={`${scenario.title} - Agence Marketing Toulouse`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className={`absolute inset-0 ${isFeatured ? 'bg-gradient-to-t from-black/80 to-transparent' : 'bg-gradient-to-t from-black/20 to-transparent'}`} />
-
-                    {/* Badge */}
-                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
-                      <span className={`px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest rounded-md sm:rounded-lg shadow-lg ${
-                        isFeatured ? 'bg-white text-black' : 'bg-black text-white'
-                      }`}>
-                        {scenario.badge}
-                      </span>
-                    </div>
-
-                    {isFeatured && (
-                      <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                        <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 rounded-md sm:rounded-lg">
-                          <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
-                          <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white">
-                            Populaire
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-4 sm:p-6 md:p-7 flex flex-col flex-grow">
-                    <h3
-                      className="font-['Roboto'] font-[900] text-lg sm:text-xl uppercase mb-1 sm:mb-1.5"
-                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}
-                    >
-                      {scenario.title}
-                    </h3>
-                    <p
-                      className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.1em] mb-3 sm:mb-4"
-                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.5)' }}
-                    >
-                      {scenario.subtitle}
-                    </p>
-                    <p
-                      className="text-xs sm:text-sm font-['Inter'] leading-relaxed mb-4 sm:mb-6 flex-grow"
-                      style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.6)' }}
-                    >
-                      {scenario.description}
-                    </p>
-
-                    {/* Metadata Section - Premium glassmorphism */}
-                    <div className={`space-y-2 sm:space-y-2.5 p-3 sm:p-4 mb-4 sm:mb-6 ${
-                      isFeatured ? 'bg-white/10 backdrop-blur-md border border-white/10 rounded-md sm:rounded-lg' : 'bg-white/50 backdrop-blur-sm border border-black/5 rounded-md sm:rounded-lg'
-                    }`}>
-                      <div className="flex justify-between items-center">
-                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Durée</span>
-                        <span className="text-[11px] sm:text-xs font-bold" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}>{scenario.duration}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Budget</span>
-                        <span className="text-[11px] sm:text-xs font-bold" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : '#000000' }}>{scenario.investment}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.4)' }}>Cible</span>
-                        <span className="text-[10px] sm:text-[11px] font-medium truncate ml-4" style={{ color: isFeatured ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.5)' }}>{scenario.idealFor}</span>
-                      </div>
-                    </div>
-
-                    <Link
-                      href="/contact"
-                      className={`w-full h-[44px] sm:h-[48px] text-[11px] sm:text-[12px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 ${
-                        isFeatured
-                          ? 'bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35)] hover:-translate-y-0.5'
-                          : 'bg-black/90 backdrop-blur-xl text-white border border-white/10 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:bg-black hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.2)] hover:-translate-y-0.5'
-                      }`}
-                    >
-                      {scenario.cta}
-                      <ArrowRight size={14} />
-                    </Link>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mt-10 sm:mt-12 md:mt-16 pt-8 sm:pt-10 md:pt-12 border-t border-black/5 flex flex-col items-center gap-4 sm:gap-6 md:flex-row md:justify-between md:gap-8"
-          >
-            <div className="text-center md:text-left">
-              <p className="font-['Roboto'] font-black text-xs sm:text-sm uppercase text-black">
-                {homeContent.quandCommencer.bottomCta.text}
-              </p>
-              <p className="text-black/50 text-[11px] sm:text-xs font-['Inter']">
-                {homeContent.quandCommencer.bottomCta.subtext}
-              </p>
-            </div>
-            <Link
-              href={homeContent.quandCommencer.bottomCta.button.href}
-              className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-black hover:text-black/70 transition-colors group"
-            >
-              {homeContent.quandCommencer.bottomCta.button.text}
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </div>
-        {/* Diagonal bottom → next section (IA Highlight) */}
-        <SectionDiagonalBottom fillColor="#B7B7B7" direction="left" />
-      </section>
+      {/* SERVICES SECTION - Vertical Tabs on White */}
+      <ServicesTabsSection />
 
       {/* SECTION IA HIGHLIGHT */}
       {/* SEO: Expertise Vibe Coding et IA de l'agence marketing Toulouse */}
       {/* Images: 800x320px (5:2) pour les visuels slider */}
       <section
-        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] relative"
+        className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-12 bg-black relative overflow-hidden grain-overlay"
         aria-label="Expertise IA et Vibe Coding agence marketing Toulouse"
       >
-        {/* Carbon fibre pattern */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
-        {/* Subtle glow */}
-        <div className="absolute top-0 right-0 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-gradient-to-bl from-white/10 via-[#EEFF41]/5 to-transparent rounded-full blur-[150px]" />
+        {/* Premium Mesh Gradient Background - like Hero */}
+        <div
+          className="absolute top-0 left-0 w-1/2 h-full pointer-events-none z-0"
+          style={{
+            background: `
+              radial-gradient(at 40% 50%, rgba(238, 255, 65, 0.08) 0%, transparent 50%),
+              radial-gradient(at 10% 15%, rgba(238, 255, 65, 0.05) 0%, transparent 40%),
+              radial-gradient(at 60% 85%, rgba(238, 255, 65, 0.04) 0%, transparent 45%),
+              radial-gradient(at 20% 75%, rgba(238, 255, 65, 0.04) 0%, transparent 40%)
+            `
+          }}
+        />
+        {/* Subtle glow on right */}
+        <div className="absolute top-0 right-0 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-gradient-to-bl from-[#EEFF41]/8 via-[#EEFF41]/3 to-transparent rounded-full blur-[150px]" />
 
         <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Header */}
@@ -1403,7 +1382,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-3 sm:mb-4"
+              className="inline-flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] mb-3 sm:mb-4"
               style={{ color: 'rgba(255,255,255,0.8)' }}
             >
               <Brain size={14} className="text-white sm:hidden" />
@@ -1414,7 +1393,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-white mb-4 sm:mb-6"
+              className="font-['Inter'] font-bold text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight text-white mb-4 sm:mb-6"
             >
               {homeContent.iaHighlight.h2}
             </motion.h2>
@@ -1513,7 +1492,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                           {/* Tags overlay */}
                           <div className="absolute top-3 sm:top-6 left-3 sm:left-6 flex flex-wrap gap-1.5 sm:gap-2">
                             {current.tags.map((tag: string, idx: number) => (
-                              <span key={idx} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 text-[9px] sm:text-[10px] font-bold text-white uppercase tracking-wider rounded-md sm:rounded-lg">
+                              <span key={idx} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/50 backdrop-blur-md border border-white/20 text-[9px] sm:text-[10px] font-bold text-white tracking-wider rounded-md sm:rounded-lg">
                                 {tag}
                               </span>
                             ))}
@@ -1522,10 +1501,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                           {/* Metric overlay */}
                           {current.metric && (
                             <div className="absolute bottom-3 sm:bottom-6 right-3 sm:right-6 text-right">
-                              <span className="text-2xl sm:text-4xl md:text-5xl font-['Roboto'] font-[900] text-white block leading-none drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
+                              <span className="text-2xl sm:text-4xl md:text-5xl font-['Inter'] font-bold text-white block leading-none drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
                                 {current.metric}
                               </span>
-                              <span className="text-[9px] sm:text-[10px] font-bold text-white/90 uppercase tracking-wider">
+                              <span className="text-[9px] sm:text-[10px] font-bold text-white/90 tracking-wider">
                                 Impact mesuré
                               </span>
                             </div>
@@ -1534,7 +1513,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                         {/* Content */}
                         <div className="p-4 sm:p-6 md:p-8 lg:p-10">
-                          <h3 className="font-['Roboto'] font-[900] text-xl sm:text-2xl md:text-3xl uppercase mb-3 sm:mb-4" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                          <h3 className="font-['Inter'] font-bold text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4" style={{ color: 'rgba(255,255,255,0.8)' }}>
                             {current.title}
                           </h3>
                           <p className="font-['Inter'] text-sm sm:text-base leading-relaxed mb-4 sm:mb-6" style={{ color: 'rgba(255,255,255,0.8)' }}>
@@ -1543,7 +1522,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                           {/* Example quote */}
                           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-md sm:rounded-lg p-3 sm:p-5 mb-6 sm:mb-8">
-                            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] mb-1.5 sm:mb-2 block" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                            <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.15em] mb-1.5 sm:mb-2 block" style={{ color: 'rgba(255,255,255,0.8)' }}>
                               Exemple concret
                             </span>
                             <p className="font-['Inter'] italic text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
@@ -1593,9 +1572,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
           </div>
         </div>
-        {/* Diagonal bottom → next section (À Propos) */}
-        <SectionDiagonalBottom fillColor="#F2F2F2" direction="right" />
+        {/* Diagonal bottom → next section (Assets) */}
+        <SectionDiagonalBottom fillColor="#f5f5f5" direction="right" />
       </section>
+
+      {/* ASSETS PORTFOLIO SECTION */}
+      <AssetsPortfolioSection />
 
       {/* SECTION À PROPOS DE VIZION */}
       {/* SEO: Présentation agence marketing Toulouse - équipe et valeurs */}
@@ -1617,10 +1599,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               viewport={{ once: true }}
               className="lg:col-span-7"
             >
-              <span className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4">
+              <span className="inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4">
                 {homeContent.aPropos.surtitre}
               </span>
-              <h2 className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black mb-5 sm:mb-6 md:mb-8">
+              <h2 className="font-['Inter'] font-bold text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight text-black mb-5 sm:mb-6 md:mb-8">
                 {homeContent.aPropos.h2}
               </h2>
 
@@ -1649,10 +1631,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     />
                   </div>
                   <div>
-                    <h4 className="font-['Roboto'] font-black text-xs sm:text-sm uppercase tracking-wide text-black">
+                    <h4 className="font-['Inter'] font-semibold text-xs sm:text-sm tracking-wide text-black">
                       {homeContent.aPropos.founderQuote.name}
                     </h4>
-                    <p className="text-black/40 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
+                    <p className="text-black/40 text-[10px] sm:text-[11px] font-bold tracking-wider">
                       {homeContent.aPropos.founderQuote.role}
                     </p>
                   </div>
@@ -1681,10 +1663,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                 {/* Caption Card - Premium Glassmorphism */}
                 <div className="bg-white/80 backdrop-blur-xl border border-black/10 rounded-md sm:rounded-lg shadow-sm p-4 sm:p-6">
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] text-black/40 mb-1 block">
+                  <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.15em] text-black/40 mb-1 block">
                     {homeContent.aPropos.photoCaption.label}
                   </span>
-                  <p className="font-['Roboto'] font-black text-sm sm:text-base uppercase text-black">
+                  <p className="font-['Inter'] font-semibold text-sm sm:text-base text-black">
                     {homeContent.aPropos.photoCaption.title}
                   </p>
                 </div>
@@ -1698,7 +1680,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-['Roboto'] font-black text-base sm:text-lg uppercase mb-4 sm:mb-6 text-center text-black">
+            <h3 className="font-['Inter'] font-semibold text-base sm:text-lg mb-4 sm:mb-6 text-center text-black">
               {homeContent.aPropos.valeursTitre}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
@@ -1724,7 +1706,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                       {icons[i]}
                       {iconsLg[i]}
                     </div>
-                    <h4 className="font-['Roboto'] font-black text-xs sm:text-sm uppercase mb-1.5 sm:mb-2 text-black tracking-tight">
+                    <h4 className="font-['Inter'] font-semibold text-xs sm:text-sm mb-1.5 sm:mb-2 text-black tracking-tight">
                       {value.title}
                     </h4>
                     <p className="text-black/50 text-[11px] sm:text-sm font-['Inter'] leading-relaxed">
@@ -1736,9 +1718,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
           </motion.div>
         </div>
-        {/* Diagonal bottom → next section (Équipe white) */}
-        <SectionDiagonalBottom fillColor="#FFFFFF" direction="right" />
+        {/* Diagonal bottom → next section (Testimonials) */}
+        <SectionDiagonalBottom fillColor="#fafaf8" direction="right" />
       </section>
+
+      {/* SECTION TÉMOIGNAGES CLIENTS */}
+      <TestimonialsSection />
 
       {/* SECTION ÉQUIPE */}
       {/* SEO: Équipe agence marketing Toulouse - experts B2B */}
@@ -1757,7 +1742,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
+              className="inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
             >
               {homeContent.equipe.surtitre}
             </motion.span>
@@ -1765,7 +1750,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black mb-4 sm:mb-6"
+              className="font-['Inter'] font-bold text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight text-black mb-4 sm:mb-6"
             >
               {homeContent.equipe.h2}
             </motion.h2>
@@ -1785,13 +1770,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="flex items-center gap-1.5 sm:gap-2 bg-black/90 backdrop-blur-xl text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border border-white/10 shadow-[0_4px_16px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:shadow-[0_6px_20px_-1px_rgba(0,0,0,0.3)] hover:-translate-y-0.5">
               <Users size={12} className="sm:hidden" />
               <Users size={14} className="hidden sm:block" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wide">{homeContent.equipe.modelExplanation.director}</span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-wide">{homeContent.equipe.modelExplanation.director}</span>
             </div>
             <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/60 backdrop-blur-md border border-black/5 rounded-lg text-black/30 font-bold shadow-sm text-sm">+</span>
             <div className="flex items-center gap-1.5 sm:gap-2 bg-white backdrop-blur-xl text-black px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border border-black/10 shadow-[0_4px_16px_-1px_rgba(0,0,0,0.08),inset_0_1px_0_0_rgba(255,255,255,0.5)] transition-all duration-300 hover:shadow-[0_6px_20px_-1px_rgba(0,0,0,0.12)] hover:-translate-y-0.5">
               <Rocket size={12} className="sm:hidden" />
               <Rocket size={14} className="hidden sm:block" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wide">{homeContent.equipe.modelExplanation.squads}</span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-wide">{homeContent.equipe.modelExplanation.squads}</span>
             </div>
           </div>
 
@@ -1823,7 +1808,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                       {/* Badge - Glassmorphism SaaS style */}
                       <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                        <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/90 backdrop-blur-md border border-black/5 text-black text-[9px] sm:text-[10px] font-bold uppercase tracking-tight rounded-md sm:rounded-lg shadow-md">
+                        <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white/90 backdrop-blur-md border border-black/5 text-black text-[9px] sm:text-[10px] font-bold tracking-tight rounded-md sm:rounded-lg shadow-md">
                           {member.specialty}
                         </span>
                       </div>
@@ -1831,7 +1816,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
                     {/* Info - Clean stacked layout with premium spacing */}
                     <div className="p-4 sm:p-6">
-                      <h4 className="font-['Roboto'] font-black text-sm sm:text-base uppercase text-black mb-0.5 sm:mb-1 tracking-tight">
+                      <h4 className="font-['Inter'] font-semibold text-sm sm:text-base text-black mb-0.5 sm:mb-1 tracking-tight">
                         {member.name}
                       </h4>
                       <p className="text-black/40 text-xs sm:text-sm mb-3 sm:mb-5 font-medium">{member.role}</p>
@@ -1840,7 +1825,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                         {member.skills.slice(0, 3).map((skill, j) => (
                           <span
                             key={j}
-                            className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/5 backdrop-blur-sm border border-black/5 text-black/70 text-[9px] sm:text-[10px] font-semibold uppercase rounded-lg"
+                            className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/5 backdrop-blur-sm border border-black/5 text-black/70 text-[9px] sm:text-[10px] font-semibold rounded-lg"
                           >
                             {skill}
                           </span>
@@ -1854,7 +1839,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
             {/* Scroll hint - Mobile only */}
             <div className="flex md:hidden justify-center mt-4 sm:mt-6">
-              <span className="text-[9px] sm:text-[10px] font-bold text-black/40 uppercase tracking-wider flex items-center gap-2">
+              <span className="text-[9px] sm:text-[10px] font-bold text-black/40 tracking-wider flex items-center gap-2">
                 <ChevronRight size={12} />
                 {homeContent.equipe.scrollHint}
               </span>
@@ -1883,7 +1868,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
+                className="inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] text-black/40 mb-3 sm:mb-4"
               >
                 {homeContent.blog.surtitre}
               </motion.span>
@@ -1891,14 +1876,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="font-['Roboto'] font-[900] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight uppercase text-black"
+                className="font-['Inter'] font-bold text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.1] tracking-tight text-black"
               >
                 {homeContent.blog.h2}
               </motion.h2>
             </div>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-black bg-white/70 backdrop-blur-sm border border-black/5 rounded-md sm:rounded-lg px-3 sm:px-4 py-2 hover:text-black/70 hover:shadow-md transition-all duration-300 group mt-4 sm:mt-6 md:mt-0"
+              className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-bold tracking-wider text-black bg-white/70 backdrop-blur-sm border border-black/5 rounded-md sm:rounded-lg px-3 sm:px-4 py-2 hover:text-black/70 hover:shadow-md transition-all duration-300 group mt-4 sm:mt-6 md:mt-0"
             >
               {homeContent.blog.ctaText}
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -1943,13 +1928,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   {/* Content */}
                   <div className="p-4 sm:p-6">
                     <div className="flex items-center gap-2 mb-2 sm:mb-3">
-                      <span className="px-2 py-0.5 bg-black/5 backdrop-blur-sm border border-black/5 rounded-lg text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-black/60">
+                      <span className="px-2 py-0.5 bg-black/5 backdrop-blur-sm border border-black/5 rounded-lg text-[9px] sm:text-[10px] font-bold tracking-wider text-black/60">
                         {post.category}
                       </span>
                     </div>
 
                     <Link href={`/blog/${post.slug}`}>
-                      <h3 className="font-['Roboto'] font-black text-sm sm:text-base md:text-lg uppercase leading-tight mb-2 sm:mb-3 text-black transition-colors line-clamp-2">
+                      <h3 className="font-['Inter'] font-semibold text-sm sm:text-base md:text-lg leading-tight mb-2 sm:mb-3 text-black transition-colors line-clamp-2">
                         {post.title}
                       </h3>
                     </Link>
@@ -1961,17 +1946,17 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     {/* Meta */}
                     <div className="pt-3 sm:pt-4 border-t border-black/[0.06] flex items-center justify-between">
                       <div className="flex items-center gap-1.5 sm:gap-2">
-                        <span className="text-[9px] sm:text-[10px] font-medium text-black/40 uppercase tracking-tight">
+                        <span className="text-[9px] sm:text-[10px] font-medium text-black/40 tracking-tight">
                           {formatDate(post.date)}
                         </span>
                         <span className="w-1 h-1 rounded-full bg-black/10" />
-                        <span className="text-[9px] sm:text-[10px] font-medium text-black/40 uppercase tracking-tight">
+                        <span className="text-[9px] sm:text-[10px] font-medium text-black/40 tracking-tight">
                           {post.readingTime}
                         </span>
                       </div>
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="text-[9px] sm:text-[10px] font-bold uppercase text-black flex items-center gap-1 sm:gap-1.5 hover:gap-2 transition-all duration-300 group/link"
+                        className="text-[9px] sm:text-[10px] font-bold text-black flex items-center gap-1 sm:gap-1.5 hover:gap-2 transition-all duration-300 group/link"
                       >
                         Lire <ArrowRight size={10} className="transition-transform group-hover/link:translate-x-0.5 sm:hidden" />
                         <ArrowRight size={12} className="transition-transform group-hover/link:translate-x-0.5 hidden sm:block" />
@@ -2022,7 +2007,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               className="flex items-center gap-2 mb-3 sm:mb-4"
             >
               <div className="h-4 w-1 bg-gradient-to-b from-black/10 via-black/30 to-black/50 rounded-full" />
-              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-black/40">
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] text-black/40">
                 Notre zone d&apos;intervention
               </span>
             </motion.div>
@@ -2030,7 +2015,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-['Roboto'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-tight uppercase text-black mb-4 sm:mb-6"
+              className="font-['Inter'] font-bold text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-tight text-black mb-4 sm:mb-6"
             >
               Votre agence marketing à Toulouse et en Occitanie
             </motion.h2>
@@ -2082,7 +2067,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     <MapPin size={20} className="text-white" />
                   </div>
                   <div>
-                    <h3 className="font-['Roboto'] font-black text-lg sm:text-xl uppercase tracking-tight text-black mb-1">
+                    <h3 className="font-['Inter'] font-semibold text-lg sm:text-xl tracking-tight text-black mb-1">
                       Nos bureaux
                     </h3>
                     <p className="text-black/60 font-['Inter'] text-sm sm:text-base">
@@ -2098,7 +2083,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
               {/* Métropole Toulousaine - Primary Zone */}
               <div className="bg-white/80 backdrop-blur-xl border border-black/5 rounded-xl p-6 sm:p-8 shadow-sm">
-                <h3 className="font-['Roboto'] font-black text-lg sm:text-xl uppercase tracking-tight text-black mb-4">
+                <h3 className="font-['Inter'] font-semibold text-lg sm:text-xl tracking-tight text-black mb-4">
                   Métropole Toulousaine
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
@@ -2112,7 +2097,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-black/[0.02] border border-black/5">
                       <div className="w-2 h-2 rounded-full bg-black mt-1.5 shrink-0" />
                       <div>
-                        <span className="font-['Roboto'] font-bold text-sm text-black block">
+                        <span className="font-['Inter'] font-bold text-sm text-black block">
                           {zone.city} <span className="font-normal text-black/40">({zone.zip})</span>
                         </span>
                         <span className="text-xs text-black/50 font-['Inter']">{zone.landmark}</span>
@@ -2124,7 +2109,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
               {/* Région Occitanie - Secondary Zone */}
               <div className="bg-white/60 backdrop-blur-xl border border-black/5 rounded-xl p-6 sm:p-8 shadow-sm">
-                <h3 className="font-['Roboto'] font-black text-base sm:text-lg uppercase tracking-tight text-black mb-3">
+                <h3 className="font-['Inter'] font-semibold text-base sm:text-lg tracking-tight text-black mb-3">
                   Interventions en Occitanie
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -2197,12 +2182,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     <Star key={i} size={10} className="fill-white text-white hidden sm:block" />
                   ))}
                 </div>
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                <span className="text-[9px] sm:text-[10px] font-bold tracking-widest" style={{ color: 'rgba(255,255,255,0.8)' }}>
                   {homeContent.finalCta.trustBadge}
                 </span>
               </div>
 
-              <h2 className="font-['Roboto'] font-[900] text-[24px] sm:text-[32px] md:text-[38px] lg:text-[44px] leading-tight tracking-tight uppercase mb-4 sm:mb-6" style={{ color: 'rgba(255,255,255,0.8)' }}>
+              <h2 className="font-['Inter'] font-bold text-[24px] sm:text-[32px] md:text-[38px] lg:text-[44px] leading-tight tracking-tight mb-4 sm:mb-6" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 {homeContent.finalCta.h2}
               </h2>
               <p className="text-sm sm:text-base md:text-lg font-['Inter'] leading-relaxed mb-8 sm:mb-10 md:mb-12" style={{ color: 'rgba(255,255,255,0.8)' }}>

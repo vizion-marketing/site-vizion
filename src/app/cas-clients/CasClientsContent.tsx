@@ -52,12 +52,12 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#EEFF41]"></span>
                 </span>
-                <span className="text-[10px] font-bold tracking-[0.1em] text-white/60 uppercase">
+                <span className="text-[10px] font-bold tracking-[0.1em] text-white/60">
                   +70 entreprises accompagnées
                 </span>
               </div>
               
-              <h1 className="font-['Roboto'] font-[900] text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-tight uppercase text-white mb-6">
+              <h1 className="font-['Inter'] font-[900] text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-tight text-white mb-6">
                 NOS CAS <span className="text-white/40">CLIENTS</span>
               </h1>
               
@@ -101,7 +101,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                     <span className="text-3xl md:text-4xl font-black text-white block mb-1">
                       {stat.value}
                     </span>
-                    <span className="text-[10px] font-medium text-white/60 uppercase tracking-wider">
+                    <span className="text-[10px] font-medium text-white/60 tracking-wider">
                       {stat.label}
                     </span>
                   </motion.div>
@@ -122,7 +122,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
               whileInView="whileInView"
               viewport={{ once: true }}
             >
-              <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold uppercase block mb-4">
+              <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold block mb-4">
                 Cas client mis en avant
               </span>
               
@@ -144,13 +144,13 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
                     <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-between z-10">
                       <div>
-                        <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-[10px] font-bold tracking-widest uppercase text-white">
+                        <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-[10px] font-bold tracking-widest text-white">
                           <Star size={12} className="fill-[#EEFF41] text-[#EEFF41]" />
                           {featuredCase.sector}
                         </span>
                       </div>
                       <div>
-                        <span className="font-['Roboto'] font-black text-4xl lg:text-5xl text-white uppercase">
+                        <span className="font-['Inter'] font-black text-4xl lg:text-5xl text-white">
                           {featuredCase.company}
                         </span>
                       </div>
@@ -160,7 +160,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                   {/* Content */}
                   <div className="p-8 lg:p-12 flex flex-col justify-between">
                     <div>
-                      <h2 className="font-['Roboto'] font-black text-2xl lg:text-3xl uppercase tracking-tight text-black mb-4 group-hover:text-neutral-600 transition-colors">
+                      <h2 className="font-['Inter'] font-black text-2xl lg:text-3xl tracking-tight text-black mb-4 group-hover:text-neutral-600 transition-colors">
                         {featuredCase.title}
                       </h2>
                       <p className="text-neutral-600 text-base leading-relaxed mb-6">
@@ -173,12 +173,12 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                         {featuredCase.metrics.slice(0, 4).map((metric: { value: string; label: string }, idx: number) => (
                           <div key={idx} className="text-center">
                             <span className="text-2xl font-black text-black block">{metric.value}</span>
-                            <span className="text-[10px] font-medium text-neutral-500 uppercase">{metric.label}</span>
+                            <span className="text-[10px] font-medium text-neutral-500">{metric.label}</span>
                           </div>
                         ))}
                       </div>
                       
-                      <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-black group-hover:gap-3 transition-all">
+                      <span className="inline-flex items-center gap-2 text-sm font-bold tracking-wider text-black group-hover:gap-3 transition-all">
                         Découvrir ce cas <ArrowRight size={16} />
                       </span>
                     </div>
@@ -204,10 +204,10 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
           >
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
               <div>
-                <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold uppercase block mb-2">
+                <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold block mb-2">
                   Toutes nos études de cas
                 </span>
-                <h2 className="font-['Roboto'] font-black text-3xl md:text-4xl uppercase tracking-tight text-black">
+                <h2 className="font-['Inter'] font-black text-3xl md:text-4xl tracking-tight text-black">
                   Des résultats <span className="text-[#B7B7B7]">mesurables</span>
                 </h2>
               </div>
@@ -286,7 +286,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                             <div className="w-8 h-8 bg-[#F2F2F2] rounded-lg flex items-center justify-center">
                               <SectorIcon size={16} className="text-black" />
                             </div>
-                            <span className="text-[10px] font-bold tracking-widest uppercase text-neutral-400">
+                            <span className="text-[10px] font-bold tracking-widest text-neutral-400">
                               {caseStudy.sector}
                             </span>
                           </div>
@@ -295,11 +295,11 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                           )}
                         </div>
                         
-                        <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider block mb-2">
+                        <span className="text-xs font-bold text-neutral-400 tracking-wider block mb-2">
                           {caseStudy.company}
                         </span>
                         
-                        <h3 className="font-['Roboto'] font-black text-lg uppercase tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2 min-h-[56px]">
+                        <h3 className="font-['Inter'] font-black text-lg tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2 min-h-[56px]">
                           {caseStudy.title}
                         </h3>
                         
@@ -316,7 +316,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                               <span className="text-lg font-black text-black block leading-tight">
                                 {metric.value}
                               </span>
-                              <span className="text-[9px] font-medium text-neutral-400 uppercase leading-tight block">
+                              <span className="text-[9px] font-medium text-neutral-400 leading-tight block">
                                 {metric.label}
                               </span>
                             </div>
@@ -329,7 +329,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                         <span className="text-[10px] font-medium text-neutral-400">
                           {caseStudy.projectDuration} • {caseStudy.projectYear}
                         </span>
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-black group-hover:gap-2 transition-all">
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold tracking-wider text-black group-hover:gap-2 transition-all">
                           Lire <ChevronRight size={14} />
                         </span>
                       </div>
@@ -350,7 +350,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
               <div className="w-16 h-16 bg-[#F2F2F2] rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Filter size={24} className="text-neutral-400" />
               </div>
-              <h3 className="font-['Roboto'] font-black text-xl uppercase text-black mb-2">
+              <h3 className="font-['Inter'] font-black text-xl text-black mb-2">
                 Aucun cas client
               </h3>
               <p className="text-neutral-500 mb-4">
@@ -379,7 +379,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
             <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
             
             <div className="relative z-10">
-              <h2 className="font-['Roboto'] font-[900] text-[32px] md:text-[48px] leading-[1.1] tracking-tight uppercase mb-6 text-white">
+              <h2 className="font-['Inter'] font-[900] text-[32px] md:text-[48px] leading-[1.1] tracking-tight mb-6 text-white">
                 Écrivons ensemble <br />
                 <span className="text-white/50">votre success story</span>
               </h2>
