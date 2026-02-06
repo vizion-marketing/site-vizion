@@ -507,15 +507,15 @@ export const homeContent: HomeContent = {
   // À PROPOS
   // --------------------------------------------------------------------------
   aPropos: {
-    surtitre: "NOTRE CONVICTION",
-    h2: "DES STRATÈGES, PAS UNE AGENCE D'EXÉCUTION",
-    h2Highlight: "STRATÈGES",
+    surtitre: "NOTRE MISSION",
+    h2: "FAIRE DE VOUS L'ÉVIDENCE SUR VOTRE MARCHÉ",
+    h2Highlight: "L'ÉVIDENCE",
     paragraphs: [
-      "Le marketing s'est perdu. Trop souvent cantonné à la communication, aux vanity metrics ou aux tactiques déconnectées du terrain, il a oublié sa raison d'être : faciliter la vente.",
-      "Vizion n'est pas une agence que l'on consulte pour produire un logo ou refaire une plaquette. Nous sommes des stratèges. Nous concevons des feuilles de route marketing alignées sur vos objectifs business, et nous les déployons jusqu'au terrain commercial. Chaque livrable intervient au bon moment, pour les bonnes raisons, au service d'une stratégie définie."
+      "Franchise, SaaS, retail, industrie… Nous travaillons avec des secteurs où la vente est complexe : cycles longs, multiples décideurs, offres techniques à vulgariser. Ces marchés exigent un marketing qui ne se contente pas de communiquer — il doit convaincre, structurer et accélérer.",
+      "Vizion accompagne les entreprises qui veulent devenir incontournables sur leur marché. Pas en multipliant les tactiques, mais en construisant une stratégie cohérente : positionnement clair, discours aligné, outils commerciaux affûtés. Le résultat ? Quand un prospect a un besoin, votre nom s'impose comme une évidence."
     ],
     founderQuote: {
-      quote: "Nous challengeons les demandes, nous questionnons les priorités, nous refusons de produire pour produire. Le marketing doit servir la stratégie de l'entreprise et raccourcir les cycles de décision.",
+      quote: "On ne devient pas une référence par hasard. On le devient en occupant le terrain avec méthode — le bon message, au bon moment, sur les bons canaux. Notre travail, c'est de construire cette évidence.",
       name: "Lucas Gonzalez",
       role: "Co-fondateur — Vizion"
     },
