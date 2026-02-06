@@ -89,12 +89,8 @@ export function CallWidget() {
           transition={{ delay: 0.5 }}
           className="bg-black/70 backdrop-blur-2xl border border-white/20 rounded-full px-4 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] flex items-center gap-2"
         >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#22c55e]" />
-          </span>
           <span className="text-[13px] font-['Inter'] font-medium text-white whitespace-nowrap">
-            On est dispo
+            Vous préférez nous appeler ?
           </span>
         </motion.div>
 
@@ -135,6 +131,11 @@ export function CallWidget() {
                   className="relative"
                 >
                   <Phone size={22} className="text-[#c8ff00]" />
+                  {/* Online indicator */}
+                  <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-[#22c55e] border-2 border-black/70" />
+                  </span>
                 </motion.div>
               )}
             </AnimatePresence>

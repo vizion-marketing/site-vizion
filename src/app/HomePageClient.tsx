@@ -718,10 +718,10 @@ function ServicesTabsSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#fafaf8] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-black/5"
+                className="bg-[#fafaf8] rounded-md sm:rounded-lg p-6 sm:p-8 lg:p-10 border border-black/5"
               >
-                {/* Image */}
-                <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden mb-6 sm:mb-8">
+                {/* Image with Tags Overlay */}
+                <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-md sm:rounded-lg overflow-hidden mb-6 sm:mb-8">
                   <Image
                     src={servicesImages[activeService]}
                     alt={services[activeService].surtitre}
@@ -729,6 +729,20 @@ function ServicesTabsSection() {
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 60vw"
                   />
+                  {/* Gradient overlay for better tag readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+                  {/* Tags - Glassmorphism on image */}
+                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 flex flex-wrap gap-2">
+                    {services[activeService].services.slice(0, 4).map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1.5 bg-black/50 backdrop-blur-xl border border-white/20 text-[10px] sm:text-[11px] font-['Inter'] font-medium text-white rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Service Title */}
@@ -740,18 +754,6 @@ function ServicesTabsSection() {
                 <p className="text-[#6b6b6b] text-sm sm:text-[15px] font-['Inter'] leading-relaxed mb-6 sm:mb-8">
                   {services[activeService].description}
                 </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
-                  {services[activeService].services.slice(0, 4).map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1.5 bg-white border border-black/10 text-[11px] sm:text-[12px] font-['Inter'] font-medium text-[#6b6b6b] rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
 
                 {/* CTAs */}
                 <div className="flex flex-wrap gap-3">
@@ -1132,15 +1134,17 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
       {/* HERO SECTION */}
       <section className="relative pt-20 sm:pt-24 md:pt-[80px] pb-10 sm:pb-12 md:pb-[40px] px-4 sm:px-6 md:px-12 bg-black flex items-center min-h-[100svh] overflow-hidden grain-overlay">
-        {/* Premium Mesh Gradient Background - Left Half Only */}
+        {/* Premium Mesh Gradient Background - Subtle yellow circles for depth */}
         <div
-          className="absolute top-0 left-0 w-1/2 h-full pointer-events-none z-0"
+          className="absolute inset-0 pointer-events-none z-0"
           style={{
             background: `
-              radial-gradient(at 40% 50%, rgba(238, 255, 65, 0.08) 0%, transparent 50%),
-              radial-gradient(at 10% 15%, rgba(238, 255, 65, 0.05) 0%, transparent 40%),
-              radial-gradient(at 60% 85%, rgba(238, 255, 65, 0.04) 0%, transparent 45%),
-              radial-gradient(at 20% 75%, rgba(238, 255, 65, 0.04) 0%, transparent 40%)
+              radial-gradient(circle 600px at 15% 20%, rgba(238, 255, 65, 0.06) 0%, transparent 70%),
+              radial-gradient(circle 500px at 85% 15%, rgba(238, 255, 65, 0.04) 0%, transparent 70%),
+              radial-gradient(circle 700px at 40% 80%, rgba(238, 255, 65, 0.05) 0%, transparent 70%),
+              radial-gradient(circle 400px at 70% 60%, rgba(238, 255, 65, 0.03) 0%, transparent 70%),
+              radial-gradient(circle 550px at 5% 70%, rgba(238, 255, 65, 0.04) 0%, transparent 70%),
+              radial-gradient(circle 450px at 95% 85%, rgba(238, 255, 65, 0.035) 0%, transparent 70%)
             `
           }}
         />
