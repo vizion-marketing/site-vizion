@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { useMDXComponent } from "next-contentlayer2/hooks";
 import { allPosts } from "contentlayer/generated";
 import {
   ArticleHero,
@@ -11,8 +10,9 @@ import {
   RelatedPosts,
   ArticleNav,
   ShareButtons,
+  MdxContent,
 } from "@/components/blog";
-import { BlogSidebar } from "@/components/blog/BlogSidebar";
+import { ArticleSidebar } from "@/components/blog/ArticleSidebar";
 import { extractHeadings } from "@/lib/mdx";
 import type { Resource } from "@/components/blog";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
@@ -259,30 +259,19 @@ export default async function BlogPostPage({ params }: Props) {
           tags={post.tags}
         />
 
-        {/* Main Content */}
+        {/* Main Content - style home */}
         <section className="py-24 lg:py-40 bg-white relative">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#f4f4f5_1px,transparent_1px),linear-gradient(to_bottom,#f4f4f5_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none" />
           
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 max-w-[90rem] mx-auto">
-              {/* Sidebar Left - Table of Contents & Author */}
-              <aside className="lg:col-span-3 order-2 lg:order-1">
-                <div className="lg:sticky lg:top-24 space-y-12">
-                  {/* Table of Contents */}
-                  {headings.length > 0 && <TableOfContents headings={headings} />}
-
-                  {/* Author Bio */}
-                  <AuthorBio />
-                </div>
-              </aside>
-
-              {/* Article Content - Center */}
-              <div className="lg:col-span-6 order-1 lg:order-2">
-                {/* Content wrapper with subtle shadow */}
+          <div className="max-w-[82.5rem] mx-auto px-6 md:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12">
+              {/* Contenu - Gauche */}
+              <div className="lg:col-span-8 order-1">
+                {/* Content wrapper */}
                 <div className="bg-white rounded-lg p-8 lg:p-12 shadow-sm border border-zinc-100">
                   <article className="prose prose-zinc prose-lg lg:prose-xl max-w-none">
-                    <MDXContent code={post.body.code} />
+                    <MdxContent code={post.body.code} />
                   </article>
                 </div>
 
@@ -291,15 +280,16 @@ export default async function BlogPostPage({ params }: Props) {
 
                 {/* Share section */}
                 <ShareButtons title={post.title} url={`${SITE_URL}/blog/${slug}`} />
+
+                {/* Bio auteur - fin du contenu */}
+                <div className="mt-12">
+                  <AuthorBio />
+                </div>
               </div>
 
-              {/* Sidebar Right - CTA & Related Posts */}
-              <aside className="lg:col-span-3 order-3">
-                <BlogSidebar 
-                  category={post.category}
-                  relatedPosts={relatedPosts}
-                  currentSlug={slug}
-                />
+              {/* Sidebar Droite - Sommaire + CTA Newsletter (fixed) */}
+              <aside className="lg:col-span-4 order-2">
+                <ArticleSidebar headings={headings} />
               </aside>
             </div>
           </div>
@@ -322,10 +312,4 @@ export default async function BlogPostPage({ params }: Props) {
       </main>
     </>
   );
-}
-
-// MDX Content Component
-function MDXContent({ code }: { code: string }) {
-  const Component = useMDXComponent(code);
-  return <Component />;
 }

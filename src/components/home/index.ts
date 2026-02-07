@@ -1,0 +1,14 @@
+export { HeroSection } from "./HeroSection";
+export { IndustriesMarquee } from "./IndustriesMarquee";
+export { ClientLogosSection } from "./ClientLogosSection";
+export { ManifestoSection } from "./ManifestoSection";
+export { ProblemsSection } from "./ProblemsSection";
+export { ApproachSection } from "./ApproachSection";
+export { QuoteSection } from "./QuoteSection";
+export { DeliverablesSection } from "./DeliverablesSection";
+export { TeamSection } from "./TeamSection";
+export { CaseStudiesSection } from "./CaseStudiesSection";
+export { AIPioneersSection } from "./AIPioneersSection";
+export { LocalSEOSection } from "./LocalSEOSection";
+export { TestimonialsSection } from "./TestimonialsSection";
+export { FinalCTASection } from "./FinalCTASection";

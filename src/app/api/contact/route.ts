@@ -62,7 +62,7 @@ export async function POST(request: Request) {
       subject: `[Contact Site] ${subjectLabel} - ${firstName} ${lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #000; border-bottom: 2px solid #EEFF41; padding-bottom: 10px;">
+          <h2 style="color: #000; border-bottom: 2px solid #D4FD00; padding-bottom: 10px;">
             Nouvelle demande de contact
           </h2>
 

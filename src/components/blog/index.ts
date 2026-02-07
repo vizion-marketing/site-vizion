@@ -11,3 +11,4 @@ export type { RelatedPost } from "./RelatedPosts";
 export { ArticleNav } from "./ArticleNav";
 export type { NavPost } from "./ArticleNav";
 export { ShareButtons } from "./ShareButtons";
+export { MdxContent } from "./MdxContent";

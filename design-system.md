@@ -2,8 +2,8 @@
 
 ## Fonts
 
-- **Titres**: `font-['Inter'] font-[900]` - tracking tight
-- **Corps**: `font-['Inter']` - normal weight
+- **Titres**: `font-heading` (DM Sans) - font-medium, tracking tight
+- **Corps**: `font-[var(--font-body)]` (DM Sans) - normal weight
 
 ## Couleurs
 
@@ -32,10 +32,11 @@
 ## Composants
 
 ### Surtitre (Overline)
+DM Sans, lettres fines (font-light), espacement entre lettres, pas de caps lock.
 ```jsx
 <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
-  <div className="w-2 h-2 rounded-full bg-[#c8ff00]" />
-  <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.1em] text-[#6b6b6b]">
+  <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
+  <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b]">
     Surtitre ici
   </span>
 </div>
@@ -45,7 +46,7 @@ Alternative avec ligne:
 ```jsx
 <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
   <div className="h-[1px] w-6 sm:w-8 bg-black/20" />
-  <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.25em] text-black/50">
+  <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-black/50">
     Surtitre
   </span>
 </div>
@@ -53,14 +54,14 @@ Alternative avec ligne:
 
 ### H1 Principal
 ```jsx
-<h1 className="font-['Inter'] font-[900] text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] leading-[0.95] tracking-[-0.03em] text-[#1a1a1a]">
+<h1 className="font-heading font-medium text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] leading-[0.95] tracking-[-0.03em] text-[#1a1a1a]">
   Titre H1
 </h1>
 ```
 
 ### H2 Principal
 ```jsx
-<h2 className="font-['Inter'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]">
+<h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]">
   Titre principal
 </h2>
 ```
@@ -68,8 +69,8 @@ Alternative avec ligne:
 Avec barre accent:
 ```jsx
 <div className="flex gap-4 sm:gap-5">
-  <div className="w-[3px] shrink-0 mt-2 h-10 bg-[#c8ff00] rounded-full" />
-  <h2 className="font-['Inter'] font-[900] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]">
+  <div className="w-[3px] shrink-0 mt-2 h-10 bg-[#D4FD00] rounded-full" />
+  <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]">
     Titre
   </h2>
 </div>
@@ -77,7 +78,7 @@ Avec barre accent:
 
 ### Paragraphe Description
 ```jsx
-<p className="text-[#6b6b6b] text-base font-['Inter'] leading-relaxed max-w-[600px] mt-5 sm:mt-6">
+<p className="text-[#6b6b6b] text-base font-[var(--font-body)] leading-relaxed max-w-[600px] mt-5 sm:mt-6">
   Description ici
 </p>
 ```
@@ -86,21 +87,21 @@ Avec barre accent:
 
 #### Primaire (blanc sur fond sombre)
 ```jsx
-<Link className="h-[44px] sm:h-[48px] px-5 sm:px-7 text-[13px] sm:text-[14px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35),inset_0_1px_0_0_rgba(255,255,255,0.6)] hover:-translate-y-0.5">
+<Link className="h-[44px] sm:h-[48px] px-5 sm:px-7 text-[13px] sm:text-[14px] font-[var(--font-body)] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 rounded-full transition-all duration-300 active:scale-95 bg-white text-black border border-white/50 shadow-[0_4px_24px_-1px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/95 hover:shadow-[0_8px_32px_-4px_rgba(255,255,255,0.35),inset_0_1px_0_0_rgba(255,255,255,0.6)] hover:-translate-y-0.5">
   Texte <ArrowRight size={16} />
 </Link>
 ```
 
 #### Primaire (noir sur fond clair)
 ```jsx
-<Link className="h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] bg-black text-white rounded-full hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)]">
+<Link className="h-[48px] sm:h-[56px] px-6 sm:px-8 text-[13px] sm:text-[15px] font-[var(--font-body)] font-semibold tracking-[-0.01em] bg-black text-white rounded-full hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 border border-black/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.3)]">
   Texte <ArrowRight size={14} />
 </Link>
 ```
 
 #### Secondaire (ghost)
 ```jsx
-<Link className="h-[44px] sm:h-[48px] px-5 sm:px-7 text-[13px] sm:text-[14px] font-['Inter'] font-semibold tracking-[-0.01em] flex items-center justify-center rounded-full transition-all duration-300 active:scale-95 bg-white/10 backdrop-blur-xl text-white border border-white/20 hover:bg-white/20 hover:border-white/30 hover:-translate-y-0.5">
+<Link className="h-[44px] sm:h-[48px] px-5 sm:px-7 text-[13px] sm:text-[14px] font-[var(--font-body)] font-semibold tracking-[-0.01em] flex items-center justify-center rounded-full transition-all duration-300 active:scale-95 bg-white/10 backdrop-blur-xl text-white border border-white/20 hover:bg-white/20 hover:border-white/30 hover:-translate-y-0.5">
   Texte
 </Link>
 ```
@@ -140,10 +141,10 @@ Sur fond sombre:
 ### Stats
 ```jsx
 <div className="bg-[#fafaf8] border border-black/[0.06] rounded-[8px] p-3 sm:p-4 lg:p-5 flex flex-col gap-1 sm:gap-1.5">
-  <span className="text-lg sm:text-2xl lg:text-3xl font-['Inter'] font-[900] tracking-[-0.02em] text-[#1a1a1a] leading-none">
+  <span className="text-lg sm:text-2xl lg:text-3xl font-[var(--font-body)] font-[900] tracking-[-0.02em] text-[#1a1a1a] leading-none">
     +70
   </span>
-  <span className="text-[8px] sm:text-[9px] lg:text-[10px] font-['Inter'] font-semibold tracking-wider text-[#999] leading-tight">
+  <span className="text-[8px] sm:text-[9px] lg:text-[10px] font-[var(--font-body)] font-semibold tracking-wider text-[#999] leading-tight">
     Clients accompagnés
   </span>
 </div>
@@ -155,7 +156,7 @@ Sur fond sombre:
   {items.map((item, i) => (
     <li key={i} className="flex items-start gap-3">
       <CheckCircle2 className="w-5 h-5 text-[#c8ff00] shrink-0 mt-0.5" />
-      <span className="text-sm font-['Inter'] text-[#1a1a1a] leading-relaxed">{item}</span>
+      <span className="text-sm font-[var(--font-body)] text-[#1a1a1a] leading-relaxed">{item}</span>
     </li>
   ))}
 </ul>
@@ -168,7 +169,7 @@ Ajouter la classe `grain-light` ou `grain-overlay` à la section
 
 ### Ambient Glow
 ```jsx
-<div className="absolute top-[35%] left-[25%] w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] bg-[#c8ff00] opacity-[0.045] rounded-full blur-[200px] pointer-events-none" />
+<div className="absolute top-[35%] left-[25%] w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] bg-[#D4FD00] opacity-[0.045] rounded-full blur-[200px] pointer-events-none" />
 ```
 
 ### Diagonal Divider
@@ -203,7 +204,7 @@ viewport={{ once: true }}
   style={{ background: 'linear-gradient(135deg, #fafaf8 0%, #f0f0eb 100%)' }}
 >
   {/* Ambient glow */}
-  <div className="absolute top-[35%] left-[25%] w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] bg-[#c8ff00] opacity-[0.045] rounded-full blur-[200px] pointer-events-none" />
+  <div className="absolute top-[35%] left-[25%] w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] bg-[#D4FD00] opacity-[0.045] rounded-full blur-[200px] pointer-events-none" />
 
   <div className="max-w-[82.5rem] mx-auto relative z-10">
     {/* Contenu */}

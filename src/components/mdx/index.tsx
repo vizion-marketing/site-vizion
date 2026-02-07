@@ -65,12 +65,12 @@ export const mdxComponents: MDXComponents = {
   
   // Code
   code: ({ children }) => (
-    <code className="bg-[var(--color-bg-alt)] px-1.5 py-0.5 rounded text-sm font-mono">
+    <code className="bg-[var(--color-bg-alt)] px-1.5 py-0.5 rounded-none text-sm font-mono">
       {children}
     </code>
   ),
   pre: ({ children }) => (
-    <pre className="bg-[var(--color-primary-dark)] text-white p-6 rounded-lg overflow-x-auto my-6">
+    <pre className="bg-[var(--color-primary-dark)] text-white p-6 rounded-none overflow-x-auto my-6">
       {children}
     </pre>
   ),
@@ -93,7 +93,7 @@ export const mdxComponents: MDXComponents = {
         alt={alt || ""}
         width={800}
         height={450}
-        className="rounded-lg shadow-md w-full h-auto"
+        className="rounded-none shadow-md w-full h-auto"
       />
     </span>
   ),

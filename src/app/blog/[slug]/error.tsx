@@ -17,11 +17,11 @@ export default function BlogPostError({
         <p className="text-zinc-500 mb-8">
           Impossible de charger cet article. Il a peut-être été déplacé ou supprimé.
         </p>
-        <div className="flex gap-4 justify-center">
-          <button onClick={reset} className="btn btn-primary px-6 py-3">
+        <div className="flex gap-4 justify-center flex-wrap">
+          <button onClick={reset} className="btn btn-primary">
             Réessayer
           </button>
-          <Link href="/blog" className="btn btn-primary px-6 py-3 bg-zinc-100 text-black border-zinc-200">
+          <Link href="/blog" className="btn btn-secondary">
             Retour au blog
           </Link>
         </div>

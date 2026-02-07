@@ -23,18 +23,18 @@ export function CallWidget() {
             {/* Header */}
             <div className="flex items-center gap-3 mb-4 pb-3 border-b border-white/10">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c8ff00] to-[#a8e000] flex items-center justify-center text-black font-bold text-sm">
+                <div className="w-10 h-10 rounded-none bg-gradient-to-br from-[#D4FD00] to-[#a8e000] flex items-center justify-center text-black font-bold text-sm">
                   LG
                 </div>
                 {/* Online indicator */}
-                <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#22c55e] rounded-full border-2 border-black/70" />
+                <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#22c55e] rounded-none border-2 border-black/70" />
               </div>
               <div>
-                <h4 className="font-['Inter'] font-bold text-sm text-white">
+                <h4 className="font-heading font-normal text-sm text-white">
                   Lucas Gonzalez
                 </h4>
                 <p className="text-[11px] text-white/60 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e] animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-none bg-[#22c55e] animate-pulse" />
                   Disponible maintenant
                 </p>
               </div>
@@ -45,7 +45,7 @@ export function CallWidget() {
               {/* Call Button */}
               <a
                 href="tel:+33750836543"
-                className="flex items-center gap-3 w-full px-4 py-3 rounded-xl bg-[#c8ff00] text-black font-['Inter'] font-semibold text-[13px] hover:bg-[#d4ff33] transition-all duration-200 active:scale-[0.98]"
+                className="flex items-center gap-3 w-full px-4 py-3 rounded-none bg-[#D4FD00] text-black font-[var(--font-body)] font-semibold text-[13px] hover:bg-[#D4FD00] transition-all duration-200 active:scale-[0.98]"
               >
                 <Phone size={16} strokeWidth={2.5} />
                 <span>Appeler maintenant</span>
@@ -56,7 +56,7 @@ export function CallWidget() {
                 href="https://wa.me/33750836543"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 w-full px-4 py-3 rounded-xl bg-white/10 text-white font-['Inter'] font-medium text-[13px] hover:bg-white/20 transition-all duration-200 border border-white/10"
+                className="flex items-center gap-3 w-full px-4 py-3 rounded-none bg-white/10 text-white font-[var(--font-body)] font-medium text-[13px] hover:bg-white/20 transition-all duration-200 border border-white/10"
               >
                 <MessageCircle size={16} />
                 <span>WhatsApp</span>
@@ -65,7 +65,7 @@ export function CallWidget() {
               {/* Book a call */}
               <Link
                 href="/contact"
-                className="flex items-center gap-3 w-full px-4 py-3 rounded-xl bg-white/10 text-white font-['Inter'] font-medium text-[13px] hover:bg-white/20 transition-all duration-200 border border-white/10"
+                className="flex items-center gap-3 w-full px-4 py-3 rounded-none bg-white/10 text-white font-[var(--font-body)] font-medium text-[13px] hover:bg-white/20 transition-all duration-200 border border-white/10"
               >
                 <Calendar size={16} />
                 <span>Planifier un appel</span>
@@ -87,9 +87,9 @@ export function CallWidget() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-black/70 backdrop-blur-2xl border border-white/20 rounded-full px-4 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] flex items-center gap-2"
+          className="bg-black/70 backdrop-blur-2xl border border-white/20 rounded-none px-4 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] flex items-center gap-2"
         >
-          <span className="text-[13px] font-['Inter'] font-medium text-white whitespace-nowrap">
+          <span className="text-[13px] font-[var(--font-body)] font-medium text-white whitespace-nowrap">
             Vous préférez nous appeler ?
           </span>
         </motion.div>
@@ -101,15 +101,15 @@ export function CallWidget() {
           whileTap={{ scale: 0.95 }}
         >
           {/* Glowing ring animation */}
-          <div className="absolute inset-0 rounded-full bg-[#c8ff00] opacity-20 blur-xl group-hover:opacity-30 transition-opacity" />
+          <div className="absolute inset-0 rounded-none bg-[#D4FD00] opacity-20 blur-xl group-hover:opacity-30 transition-opacity" />
 
           {/* Pulse animation when closed */}
           {!isExpanded && (
-            <div className="absolute inset-0 rounded-full bg-[#c8ff00] animate-ping opacity-20" />
+            <div className="absolute inset-0 rounded-none bg-[#D4FD00] animate-ping opacity-20" />
           )}
 
           {/* Button */}
-          <div className="relative w-14 h-14 rounded-full bg-black/70 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-300 hover:border-[#c8ff00]/50 hover:shadow-[0_8px_32px_rgba(200,255,0,0.2)]">
+          <div className="relative w-14 h-14 rounded-none bg-black/70 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-300 hover:border-[#D4FD00]/50 hover:shadow-[0_8px_32px_rgba(212,253,0,0.2)]">
             <AnimatePresence mode="wait">
               {isExpanded ? (
                 <motion.div
@@ -130,11 +130,11 @@ export function CallWidget() {
                   transition={{ duration: 0.15 }}
                   className="relative"
                 >
-                  <Phone size={22} className="text-[#c8ff00]" />
+                  <Phone size={22} className="text-[#D4FD00]" />
                   {/* Online indicator */}
                   <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-[#22c55e] border-2 border-black/70" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#22c55e] opacity-75" />
+                    <span className="relative inline-flex rounded-none h-3 w-3 bg-[#22c55e] border-2 border-black/70" />
                   </span>
                 </motion.div>
               )}

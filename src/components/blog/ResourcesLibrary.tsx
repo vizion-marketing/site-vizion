@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ExternalLink, FileText, ArrowRight, BookOpen } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons";
+import { ExternalLink, FileText, BookOpen } from "lucide-react";
 
 export interface Resource {
   title: string;
@@ -31,7 +32,7 @@ export function ResourcesLibrary({ resources }: ResourcesLibraryProps) {
     >
       <div className="flex items-center gap-2 mb-6">
         <BookOpen size={20} className="text-zinc-600" />
-        <h3 className="text-lg font-black tracking-tight font-['Inter']">
+        <h3 className="text-lg font-black tracking-tight font-[var(--font-body)]">
           Ressources complémentaires
         </h3>
       </div>
@@ -40,16 +41,16 @@ export function ResourcesLibrary({ resources }: ResourcesLibraryProps) {
         {/* Internal Resources */}
         {internalResources.length > 0 && (
           <div className="space-y-3">
-            <span className="text-[10px] font-bold tracking-wider text-zinc-400">
+            <span className="surtitre text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-black/50">
               Sur notre site
             </span>
             {internalResources.map((resource, idx) => (
               <Link
                 key={idx}
                 href={resource.url}
-                className="flex items-start gap-3 p-4 bg-[#F2F2F2] hover:bg-zinc-200 transition-colors rounded-sm group"
+                className="flex items-start gap-3 p-4 bg-[#F2F2F2] hover:bg-zinc-200 transition-colors rounded-none group"
               >
-                <div className="p-2 bg-black text-white rounded-sm">
+                <div className="p-2 bg-black text-white rounded-none">
                   <FileText size={14} />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -62,7 +63,7 @@ export function ResourcesLibrary({ resources }: ResourcesLibraryProps) {
                     </p>
                   )}
                 </div>
-                <ArrowRight
+                <ArrowUpRightIcon
                   size={14}
                   className="text-zinc-400 group-hover:translate-x-1 transition-transform mt-1"
                 />
@@ -74,7 +75,7 @@ export function ResourcesLibrary({ resources }: ResourcesLibraryProps) {
         {/* External Resources */}
         {externalResources.length > 0 && (
           <div className="space-y-3">
-            <span className="text-[10px] font-bold tracking-wider text-zinc-400">
+            <span className="surtitre text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-black/50">
               Liens externes
             </span>
             {externalResources.map((resource, idx) => (
@@ -83,9 +84,9 @@ export function ResourcesLibrary({ resources }: ResourcesLibraryProps) {
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-3 p-4 bg-white border border-zinc-200 hover:border-zinc-400 transition-colors rounded-sm group"
+                className="flex items-start gap-3 p-4 bg-white border border-zinc-200 hover:border-zinc-400 transition-colors rounded-none group"
               >
-                <div className="p-2 bg-zinc-100 text-zinc-600 rounded-sm">
+                <div className="p-2 bg-zinc-100 text-zinc-600 rounded-none">
                   <ExternalLink size={14} />
                 </div>
                 <div className="flex-1 min-w-0">

@@ -60,11 +60,11 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="bg-[#F2F2F2] p-6 rounded-sm"
+      className="bg-[#F2F2F2] p-6 rounded-none"
     >
       <div className="flex items-center gap-2 mb-4">
-        <List size={16} className="text-zinc-500" />
-        <h4 className="text-[11px] font-medium tracking-[1.65px] text-zinc-500">
+        <List size={16} className="text-black/40" />
+        <h4 className="text-[10px] font-light tracking-[0.12em] text-black/50">
           Sommaire
         </h4>
       </div>
@@ -72,7 +72,14 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
         {headings.map((heading) => (
           <li
             key={heading.id}
-            style={{ paddingLeft: heading.level === 3 ? "16px" : "0" }}
+            style={{
+                paddingLeft:
+                  heading.level === 2
+                    ? "0"
+                    : heading.level === 3
+                      ? "16px"
+                      : "32px",
+              }}
           >
             <button
               onClick={() => scrollToHeading(heading.id)}

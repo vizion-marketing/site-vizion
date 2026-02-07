@@ -15,7 +15,7 @@ export default function CasClientsError({
         <p className="text-zinc-500 mb-8">
           Impossible de charger les cas clients. Veuillez réessayer.
         </p>
-        <button onClick={reset} className="btn btn-primary px-8 py-3">
+        <button onClick={reset} className="btn btn-primary">
           Réessayer
         </button>
       </div>

@@ -17,16 +17,16 @@ const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
   height,
   label,
   className = '',
-  rounded = 'lg',
+  rounded = 'none',
   variant = 'light',
 }) => {
   const roundedClass = {
     none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    xl: 'rounded-xl',
-    full: 'rounded-full',
+    sm: 'rounded-none',
+    md: 'rounded-none',
+    lg: 'rounded-none',
+    xl: 'rounded-none',
+    full: 'rounded-none',
   }[rounded];
 
   const bgClass = variant === 'light'

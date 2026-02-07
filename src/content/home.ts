@@ -134,7 +134,11 @@ export interface AProposContent {
   surtitre: string;
   h2: string;
   h2Highlight: string;
-  paragraphs: string[];
+  introduction?: string;
+  valueProposition?: string;
+  introLaius?: string;
+  paragraphs?: string[];
+  marketPills?: string[];
   founderQuote: {
     quote: string;
     name: string;
@@ -238,19 +242,19 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Agence de Marketing Stratégique à Toulouse | Vizion",
-    description: "Vizion, agence de marketing stratégique à Toulouse. Nous concevons des stratégies marketing alignées sur vos objectifs business et les déployons jusqu'au terrain commercial. PME, ETI, scale-ups : lancement, repositionnement, accélération. Directeur marketing dédié. +70 entreprises accompagnées.",
+    title: "Agence marketing Toulouse | Positionnement, tunnel de vente & résultats B2B — Vizion",
+    description: "Offre complexe, message flou, tunnel incohérent ? Vizion, agence marketing à Toulouse, vous aide à clarifier, packager et vendre votre offre. Positionnement, messaging, campagnes au closing : un seul message. Devenez l'évidence sur votre marché — Toulouse, Occitanie et France.",
     keywords: [
-      "agence de marketing stratégique toulouse",
-      "agence marketing stratégique toulouse",
-      "marketing stratégique toulouse",
       "agence marketing toulouse",
-      "conseil en marketing stratégique toulouse",
-      "directeur marketing externalisé toulouse",
-      "marketing produit toulouse",
+      "agence marketing B2B toulouse",
+      "accompagnement marketing toulouse",
+      "agence marketing produit toulouse",
+      "marketing produit B2B toulouse",
+      "positionnement produit toulouse",
       "sales enablement toulouse",
-      "consultant marketing stratégique toulouse",
-      "accompagnement marketing B2B toulouse"
+      "go-to-market toulouse",
+      "messaging B2B toulouse",
+      "notoriété LinkedIn dirigeants toulouse"
     ],
     ogImage: "/og-image.jpg"
   },
@@ -259,20 +263,20 @@ export const homeContent: HomeContent = {
   // HERO SECTION
   // --------------------------------------------------------------------------
   hero: {
-    badge: "AGENCE DE MARKETING STRATÉGIQUE — TOULOUSE",
-    h1: "Votre agence de marketing stratégique à Toulouse",
-    h1Highlight: "stratégique",
-    baseline: "Nous imaginons et opérons des stratégies de croissance sur mesure — adaptées à chaque secteur, chaque enjeu, chaque cycle de vente.",
+    badge: "VIZION",
+    h1: "Faire de votre produit une évidence.",
+    h1Highlight: "évidence",
+    baseline: "Chez Vizion, nous pensons que rendre le complexe simple est un art, alors nous en avons fait notre métier. Nous accompagnons les entreprises de tous les secteurs à clarifier leur offre et maximiser leur performance pour faire d'eux une évidence aux yeux de leurs clients.",
     badges: [
-      "Décisions éclairées",
-      "Canaux marketing efficaces",
-      "Process commerciaux optimisés"
+      "Messaging clair en 5 secondes",
+      "Positionnement distinctif",
+      "Alignement sales & marketing"
     ],
     cta: {
       primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
     },
-    socialProof: "+70 ENTREPRISES ACCOMPAGNÉES DEPUIS 2021"
+    socialProof: "+70 ENTREPRISES ACCOMPAGNÉES À TOULOUSE ET EN FRANCE DEPUIS 2021"
   },
 
   // --------------------------------------------------------------------------
@@ -280,10 +284,10 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   preuveSociale: {
     surtitre: "[ NOS RÉALISATIONS ]",
-    h2: "BIENVENUE CHEZ VIZION, L'AGENCE MARKETING TOULOUSAINE QUI AVANCE À CONTRE-COURANT",
-    h2Highlight: "CONTRE-COURANT",
-    description: "Quand nous avons fondé Vizion en 2021, nous voulions bâtir le modèle d'agence avec laquelle nous aurions aimé collaborer : exigeante, proche de ses clients, et qui place la stratégie au-dessus de la simple exécution. En 3 ans, plus de 70 entreprises dans plus de 15 secteurs d'activités différents se sont reconnues dans cette Vizion. Voici leur histoire.",
-    trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing stratégique à Toulouse et en France",
+    h2: "DES OFFRES COMPLEXES DEVENUES L'ÉVIDENCE SUR LEUR MARCHÉ",
+    h2Highlight: "L'ÉVIDENCE",
+    description: "Vizion accompagne les entreprises B2B dans les moments critiques de leur développement : lancement, restructuration, accélération. Notre spécialité : transformer une offre complexe en un message clair qui déclenche la décision d'achat. Voici comment nos clients sont devenus l'évidence sur leur marché.",
+    trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing produit à Toulouse et en France",
     trustBannerHighlight: "70 PME, ETI et scale-ups",
 
     clients: [
@@ -337,54 +341,54 @@ export const homeContent: HomeContent = {
   },
 
   // --------------------------------------------------------------------------
-  // 5 PILIERS
+  // 5 PILIERS (Tunnel de vente Vizion)
   // --------------------------------------------------------------------------
   piliers: {
-    surtitre: "NOS DOMAINES D'INTERVENTION",
-    h2: "AVEC LE TEMPS, NOUS AVONS DÉVELOPPÉ UNE EXPERTISE AUTOUR DE 5 ENJEUX COMMERCIAUX ET MARKETING MAJEURS",
-    description: "Notre agence intervient sur cinq domaines complémentaires pour améliorer votre performance marketing et commerciale. Des canaux plus efficaces, des décisions mieux informées, des processus optimisés et des équipes alignées : chaque intervention est conçue pour produire des résultats mesurables.",
+    surtitre: "Nos services",
+    h2: "Un tunnel de vente aligné, de la pub au closing",
+    description: "Quand le message change entre la pub, le site et le commercial, le taux de conversion s'effondre. Nous construisons un tunnel unique : de la première impression publicitaire jusqu'au closing, un seul message. Votre offre devient une évidence commerciale.",
     badgeText: "Notre approche",
-    badgeStatus: "STRATÉGIQUE",
+    badgeStatus: "MARKETING PRODUIT",
     piliers: [
       {
         numero: "01",
-        surtitre: "DIRECTION MARKETING EXTERNALISÉE",
-        titre: "Nous imaginons et opérons des stratégies de croissance sur le long terme",
-        description: "Vous n'avez pas de direction marketing en interne — ou celle que vous avez manque de bande passante pour structurer la stratégie. Les actions s'enchaînent sans fil conducteur, les prestataires se multiplient sans pilote. Nous prenons le rôle de votre directeur marketing dédié : feuille de route, coordination des actions, lien avec vos équipes dirigeantes. Résultat : une stratégie marketing alignée sur vos objectifs business, exécutée dans la durée.",
-        services: ["Audit marketing & positionnement", "Architecture de message", "Plan de mise en marché", "Proposition de valeur", "Roadmap marketing stratégique", "Ateliers et formations"],
-        cta: "DÉFINIR VOTRE STRATÉGIE"
+        surtitre: "POSITIONNEMENT & MESSAGING",
+        titre: "Le socle : sans positionnement clair, les pubs et les commerciaux improvisent",
+        description: "Nous définissons le positionnement produit, la proposition de valeur et le messaging par segment. Tout le reste en découle. Jamais de publicité ni de support commercial sans ce socle. Vous gagnez en clarté et en cohérence.",
+        services: ["Matrice de positionnement", "Proposition de valeur", "Messaging framework par segment", "Personas affinés", "Analyse concurrentielle", "Architecture de message"],
+        cta: "POSER VOTRE POSITIONNEMENT"
       },
       {
         numero: "02",
-        surtitre: "PRODUCT MARKETING",
-        titre: "Nous construisons des narratifs produits irrésistibles",
-        description: "Votre produit est technique. Vos prospects décrochent avant d'en comprendre la valeur. Vous avez besoin d'un partenaire capable de se mettre à votre niveau — et de traduire cette expertise en un discours clair, compris par tous vos interlocuteurs. Nous structurons votre positionnement, votre proposition de valeur et votre architecture de message. Résultat : un narratif produit qui accélère chaque conversation commerciale.",
-        services: ["Positionnement produit", "Architecture de message", "Proposition de valeur", "Plan de mise en marché", "Analyse concurrentielle", "Storytelling produit"]
+        surtitre: "Awareness — campagnes & notoriété",
+        titre: "Messages forts, testés, itérés — pas des visuels qui ne convertissent pas",
+        description: "Création de messages alignés sur le positionnement. Campagnes Meta, Google Ads, LinkedIn Ads. Notoriété LinkedIn pour les dirigeants. Chaque campagne est le point d'entrée du tunnel, pas un service isolé. Résultat : des leads qui reconnaissent déjà votre promesse.",
+        services: ["Angles d'attaque & copywriting", "A/B testing accroches et CTA", "LinkedIn Ads & notoriété dirigeant", "Meta Ads & Google Ads", "Brief commercial dérivé des pubs", "Boucle de feedback commerciaux"]
       },
       {
         numero: "03",
-        surtitre: "CONTENT MARKETING",
-        titre: "Nous créons des contenus d'autorité pour faire de vous une référence sur votre marché",
-        description: "Votre expertise est réelle, mais personne ne le sait. Vos concurrents publient, prennent la parole, occupent le terrain — pendant que vous restez invisible. Nous concevons des contenus stratégiques qui démontrent votre savoir-faire et attirent vos cibles vers vous. Résultat : une position de référence sur votre marché et un flux régulier de prospects entrants.",
-        services: ["Stratégie éditoriale", "Articles d'expertise SEO", "Lead magnets & livres blancs", "Stratégies LinkedIn", "Personal branding dirigeant", "Content marketing B2B"]
+        surtitre: "Sites web & landing pages",
+        titre: "Sites et landing pages qui convertissent et renforcent le message",
+        description: "Copywriting centré sur le problème du prospect, pas sur les features. SEO pour positionner le produit sur les requêtes clés. Chaque point de contact porte le même message que la pub et que le commercial. Le visiteur qui débarque ne se perd pas.",
+        services: ["Sites produit & landing pages", "SEO & référencement produit", "Copywriting de conversion", "Parcours d'achat cartographiés", "Contenus de nurturing", "Études de cas & témoignages"]
       },
       {
         numero: "04",
-        surtitre: "GROWTH",
-        titre: "Nous activons et optimisons les bons canaux de croissance",
-        description: "Votre croissance repose sur quelques clients historiques et sur le hasard. Quand le pipe se tarit, c'est la panique. Nous construisons des systèmes d'acquisition reproductibles — les bons canaux, les bons messages, les bons dispositifs pour votre marché. Résultat : un pipeline commercial alimenté en continu, de manière prévisible.",
-        services: ["Campagnes d'emailing avancées", "Lead nurturing automatisé", "LinkedIn Ads & Google Ads", "Référencement SEO", "Tunnels d'acquisition", "Landing pages de conversion"]
+        surtitre: "SALES ENABLEMENT",
+        titre: "Le commercial pitch avec les mêmes mots que la pub",
+        description: "Le marketing génère des leads, les commerciaux pitchent avec leurs mots, le prospect reçoit deux discours — le taux de conversion chute. Nous créons un continuum : pitch decks alignés, battle cards, scripts d'appel, objection handling. Le prospect qui a cliqué sur une pub retrouve exactement les mêmes promesses en rendez-vous.",
+        services: ["Pitch decks alignés aux campagnes", "Battle cards positionnement concurrentiel", "Scripts et guides d'appel", "Objection handling testé", "Séquences de relance post-rdv", "Propositions commerciales structurées"]
       },
       {
         numero: "05",
-        surtitre: "SALES ENABLEMENT",
-        titre: "Nous équipons vos commerciaux des meilleurs outils pour convaincre",
-        description: "Vos commerciaux passent plus de temps à fabriquer leurs supports qu'à vendre. Les présentations sont incohérentes, les argumentaires improvisés. Nous créons les outils qui font la différence en rendez-vous : pitch decks, argumentaires structurés, supports d'aide à la décision. Résultat : des cycles de vente plus courts et un taux de closing en hausse.",
-        services: ["Présentations commerciales", "Pitch decks stratégiques", "Argumentaires de vente", "Supports d'aide à la décision", "CRM & automatisations", "Outils de prospection"]
+        surtitre: "Outils de conversion & closing",
+        titre: "Chaque interaction pousse vers la décision",
+        description: "Outils de qualification, séquences de relance, supports d'aide à la décision. Le message publicitaire est la promesse ; le commercial est la preuve que cette promesse est tenable. Un seul message, du clic au closing. Résultat : moins de fuite en fin de cycle.",
+        services: ["Outils de qualification", "Séquences de relance calibrées", "Supports d'aide à la décision", "CRM & automatisations", "Reporting et optimisation continue", "Feedback loop pub ↔ commerciaux"]
       }
     ],
-    ctaText: "Rejoignez les 70+ entreprises qui ont structuré leur marketing stratégique avec Vizion.",
-    socialProofText: "+70 entreprises accompagnées depuis 2021",
+    ctaText: "Rejoignez les 70+ entreprises qui ont aligné leur tunnel de vente avec Vizion.",
+    socialProofText: "+70 entreprises accompagnées à Toulouse et en France depuis 2021",
     cta: {
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" },
       primary: { text: "Parlons de vos enjeux", href: "/contact" }
@@ -392,17 +396,17 @@ export const homeContent: HomeContent = {
   },
 
   // --------------------------------------------------------------------------
-  // IA HIGHLIGHT - VIBE CODING
+  // IA HIGHLIGHT
   // --------------------------------------------------------------------------
   iaHighlight: {
-    surtitre: "CE QUI DIFFÉRENCIE NOTRE AGENCE DE MARKETING STRATÉGIQUE",
+    surtitre: "NOTRE DIFFÉRENCIATION",
     h2: "L'IA COMME LEVIER, PAS COMME ARGUMENT",
     h2Highlight: "LEVIER",
-    introduction: "Notre agence de marketing stratégique intègre l'intelligence artificielle dans ses méthodologies et dans celles de ses clients. Le déploiement est réfléchi : nous l'utilisons là où elle apporte une valeur ajoutée mesurable, pas de manière systématique. La stratégie et les décisions restent pilotées par l'expertise humaine.",
+    introduction: "Nous intégrons l'intelligence artificielle là où elle apporte une valeur mesurable : production de contenu accélérée, qualification de leads, personnalisation à l'échelle. La stratégie et les décisions restent pilotées par l'expertise humaine. Nous ne vendons pas de l'IA — nous l'utilisons pour livrer plus vite et mieux.",
     whyImportant: [
-      "L'IA permet de créer des contenus d'acquisition en une fraction du temps habituel.",
-      "Nous trions et enrichissons des listes de prospection pour prioriser les comptes à fort potentiel.",
-      "Nous personnalisons les approches commerciales à l'échelle, sans sacrifier la pertinence."
+      "Production de contenus d'acquisition en une fraction du temps habituel, sans sacrifier la qualité.",
+      "Qualification et enrichissement des listes de prospection pour prioriser les comptes à fort potentiel.",
+      "Personnalisation des approches commerciales à l'échelle, sans perdre en pertinence."
     ],
     useCases: [
       {
@@ -449,112 +453,114 @@ export const homeContent: HomeContent = {
   },
 
   // --------------------------------------------------------------------------
-  // QUAND COMMENCER
+  // QUAND COMMENCER (Méthode 4 phases)
   // --------------------------------------------------------------------------
   quandCommencer: {
-    surtitre: "COMMENT NOUS TRAVAILLONS",
-    h2: "DEUX MODES D'ACCOMPAGNEMENT EN MARKETING STRATÉGIQUE",
-    h2Highlight: "ACCOMPAGNEMENT",
-    description: "Nous adaptons notre intervention à vos besoins : mission ciblée sur un enjeu précis ou direction marketing externalisée dans la durée. Dans les deux cas, un directeur marketing dédié pilote l'ensemble de vos travaux — pas un chef de projet, un expert capable de dialoguer avec vos équipes dirigeantes.",
+    surtitre: "Notre méthode",
+    h2: "DIAGNOSTIC → FONDATIONS → ACTIVATION → OPTIMISATION",
+    h2Highlight: "OPTIMISATION",
+    description: "Chaque mission suit un cadre structuré en quatre phases. La séquence reste la même : on ne crée jamais de publicité sans avoir posé le positionnement d'abord. Nous adaptons l'intensité selon votre maturité — mission ciblée ou accompagnement dans la durée.",
     scenarios: [
       {
         number: "01",
         badge: "MISSION",
-        title: "Mission Stratégique Ciblée",
-        subtitle: "Un enjeu défini, une équipe dédiée",
-        description: "Vous traversez un moment stratégique : lancement de produit, repositionnement, structuration d'une offre. Nous intervenons sur un périmètre défini. Un directeur marketing dédié pilote l'ensemble de vos travaux.",
+        title: "Mission ciblée",
+        subtitle: "Un enjeu défini : lancement, repositionnement, tunnel à aligner",
+        description: "Vous traversez un moment critique : lancement de produit, restructuration, accélération. Nous intervenons sur un périmètre défini. Diagnostic, fondations (positionnement & messaging), activation sur le tunnel. Livrables stratégiques et opérationnels.",
         image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800",
         whenToChoose: [
           "Vous préparez un lancement de produit ou une innovation",
           "Votre positionnement nécessite une clarification",
-          "Vous devez structurer votre discours de marque",
-          "Vous avez besoin d'expertise stratégique ponctuelle"
+          "Votre messaging et vos supports commerciaux sont incohérents",
+          "Vous avez besoin d'expertise marketing produit ponctuelle"
         ],
-        deliverables: ["Directeur marketing dédié", "Équipe projet mobilisée", "Livrables stratégiques et opérationnels"],
+        deliverables: ["Positionnement & messaging", "Supports commerciaux alignés", "Campagnes ou landing pages selon le périmètre"],
         duration: "8 à 16 semaines",
         investment: "Sur devis",
-        idealFor: "PME & ETI avec un enjeu stratégique identifié",
+        idealFor: "Startups, PME & ETI avec un enjeu identifié",
         cta: "Échanger sur votre enjeu"
       },
       {
         number: "02",
         badge: "ACCOMPAGNEMENT",
-        title: "Direction Marketing Externalisée",
-        subtitle: "Un partenaire stratégique au quotidien",
-        description: "Nous endossons le rôle de votre direction marketing. Un directeur marketing dédié pilote votre stratégie, coordonne vos actions, assure le lien avec vos équipes dirigeantes et mobilise les experts spécialisés selon vos besoins.",
+        title: "Partenariat dans la durée",
+        subtitle: "Un partenaire marketing produit au quotidien",
+        description: "Nous endossons le rôle de votre équipe marketing produit : positionnement, campagnes, supports commerciaux, optimisation continue. Un interlocuteur dédié pilote l'ensemble et mobilise nos spécialistes (pub, SEO, sales enablement, LinkedIn) selon les besoins. Le message reste un, du clic au closing.",
         image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800",
         whenToChoose: [
-          "Vous ne disposez pas de direction marketing en interne",
-          "Vous souhaitez structurer sans recruter un CMO",
-          "L'alignement marketing-ventes constitue un frein à votre croissance",
-          "Vous recherchez un regard externe et stratégique"
+          "Vous n'avez pas d'équipe marketing produit en interne",
+          "Vous voulez structurer sans recruter",
+          "L'alignement marketing-ventes est un frein",
+          "Vous voulez un tunnel de vente cohérent et mesurable"
         ],
-        deliverables: ["Directeur marketing dédié", "Pilotage stratégique continu", "Accès à nos experts spécialisés", "Reporting mensuel"],
+        deliverables: ["Interlocuteur dédié", "Tunnel de vente aligné", "Accès aux experts (pub, SEO, sales enablement)", "Reporting et optimisation continue"],
         duration: "Engagement 6 mois minimum",
         investment: "À partir de 4 500 €/mois",
-        idealFor: "ETI & Scale-ups en phase de croissance",
+        idealFor: "SaaS, franchises, ETI en phase de croissance",
         cta: "Découvrir l'accompagnement"
       }
     ],
     bottomCta: {
-      text: "Vous ne savez pas quel mode d'accompagnement correspond à vos enjeux ?",
-      subtext: "Nous vous aidons à identifier l'approche la plus adaptée à votre situation en 15 minutes.",
+      text: "Vous ne savez pas quelle formule correspond à votre situation ?",
+      subtext: "Nous vous aidons à identifier l'approche la plus adaptée en 15 minutes.",
       button: { text: "Parlons-en ensemble", href: "/contact" }
     }
   },
 
   // --------------------------------------------------------------------------
-  // À PROPOS
+  // MISSION (Section n°2 après le hero)
   // --------------------------------------------------------------------------
   aPropos: {
-    surtitre: "NOTRE MISSION",
-    h2: "FAIRE DE VOUS L'ÉVIDENCE SUR VOTRE MARCHÉ",
-    h2Highlight: "L'ÉVIDENCE",
+    surtitre: "Notre mission",
+    introLaius: "La clarté n'est pas un luxe, c'est l'atout stratégique ultime. Dans un écosystème saturé, nous transformons la complexité de votre offre en un positionnement limpide qui déclenche l'adhésion immédiate de vos cibles.",
+    h2: "Faire de votre produit une évidence sur votre marché",
+    h2Highlight: "évidence",
+    marketPills: ["saas", "franchises", "pme / eti", "services b2b"],
     paragraphs: [
-      "Franchise, SaaS, retail, industrie… Nous travaillons avec des secteurs où la vente est complexe : cycles longs, multiples décideurs, offres techniques à vulgariser. Ces marchés exigent un marketing qui ne se contente pas de communiquer — il doit convaincre, structurer et accélérer.",
-      "Vizion accompagne les entreprises qui veulent devenir incontournables sur leur marché. Pas en multipliant les tactiques, mais en construisant une stratégie cohérente : positionnement clair, discours aligné, outils commerciaux affûtés. Le résultat ? Quand un prospect a un besoin, votre nom s'impose comme une évidence."
+      "Vizion est une agence marketing à Toulouse spécialisée en marketing produit B2B. Nous accompagnons les dirigeants et équipes qui veulent un message clair, un tunnel de vente aligné et des résultats mesurables — du premier clic au closing.",
+      "Notre approche : poser le positionnement et le messaging avant toute campagne ou support commercial. Un seul message partout. Pas de supports qui restent dans un tiroir ; des systèmes de vente connectés."
     ],
     founderQuote: {
-      quote: "On ne devient pas une référence par hasard. On le devient en occupant le terrain avec méthode — le bon message, au bon moment, sur les bons canaux. Notre travail, c'est de construire cette évidence.",
+      quote: "On ne crée pas de jolis supports qui restent dans un tiroir. On construit des systèmes de vente où chaque élément est connecté : la pub alimente le commercial, le commercial alimente la pub. Le message est un. Le résultat est mesurable.",
       name: "Lucas Gonzalez",
       role: "Co-fondateur — Vizion"
     },
     photoCaption: {
       label: "Vizion",
-      title: "Agence de marketing stratégique à Toulouse"
+      title: "Agence marketing à Toulouse — Marketing produit B2B"
     },
     valeursTitre: "NOS ENGAGEMENTS",
     valeurs: [
       {
-        title: "Orientation solutions",
-        description: "Nous identifions des réponses adaptées, même face aux problématiques les plus complexes."
+        title: "Un seul message",
+        description: "Du clic publicitaire au closing, le prospect reçoit la même promesse. Pas deux discours qui se contredisent."
       },
       {
-        title: "Exigence",
-        description: "Chaque projet bénéficie de notre engagement total, sans compromis sur la qualité."
+        title: "Positionnement d'abord",
+        description: "Nous ne lançons jamais de campagne ni de support commercial sans avoir posé le positionnement et le messaging."
       },
       {
         title: "Transparence",
-        description: "Nous communiquons avec réalisme sur les résultats attendus et les délais de mise en œuvre."
+        description: "Nous communiquons avec réalisme sur les résultats attendus, les délais et ce que nous ne faisons pas."
       },
       {
-        title: "Résilience",
-        description: "Nous maintenons notre cap face aux obstacles et capitalisons sur chaque expérience."
+        title: "Résultats mesurables",
+        description: "Messaging clair en 5 secondes, positionnement distinctif, tunnel aligné. Nous visons des résultats concrets."
       }
     ]
   },
 
   // --------------------------------------------------------------------------
-  // ÉQUIPE / INTELLIGENCE COLLECTIVE
+  // ÉQUIPE (Modèle hybride)
   // --------------------------------------------------------------------------
   equipe: {
     surtitre: "L'ÉQUIPE",
-    h2: "LES MEILLEURS TALENTS DE LA VILLE ROSE ET D'AILLEURS, À VOTRE SERVICE",
-    h2Highlight: "VILLE ROSE",
-    description: "Notre agence de marketing stratégique s'appuie sur une équipe interne structurée et un réseau de consultants experts, mobilisés selon les besoins de chaque projet. Le meilleur des deux modèles : continuité d'accompagnement et accès à des compétences pointues. Chaque client bénéficie d'un directeur marketing dédié — pas un chef de projet, un expert du marketing stratégique capable de dialoguer avec vos équipes dirigeantes.",
+    h2: "Une équipe marketing B2B à Toulouse : pilote dédié + experts à la demande",
+    h2Highlight: "experts à la demande",
+    description: "Notre modèle hybride associe un interlocuteur dédié à un réseau de spécialistes — pub, SEO, sales enablement, notoriété LinkedIn. Votre pilote pilote le tunnel de vente et mobilise les bonnes compétences au bon moment. Pas un simple chef de projet : des experts marketing produit qui dialoguent avec vos équipes dirigeantes et vos commerciaux. Réactivité et expertise quand vous en avez besoin.",
     modelExplanation: {
-      director: "Votre Directeur Marketing Dédié",
-      squads: "Nos Experts Spécialisés"
+      director: "Votre interlocuteur dédié",
+      squads: "Experts spécialisés (pub, SEO, sales enablement, LinkedIn)"
     },
     scrollHint: "Découvrez nos experts",
     members: [
@@ -607,9 +613,9 @@ export const homeContent: HomeContent = {
   // BLOG
   // --------------------------------------------------------------------------
   blog: {
-    surtitre: "[ RESSOURCES ]",
-    h2: "NOS PUBLICATIONS",
-    h2Highlight: "PUBLICATIONS",
+    surtitre: "Ressources",
+    h2: "Ressources et actualités de notre agence marketing à Toulouse",
+    h2Highlight: "agence marketing à Toulouse",
     ctaText: "Accéder aux ressources"
   },
 
@@ -618,37 +624,37 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   faq: {
     surtitre: "[ FAQ ]",
-    h2: "QUESTIONS FRÉQUENTES SUR NOTRE AGENCE",
-    h2Highlight: "FRÉQUENTES",
-    description: "Nous communiquons avec transparence sur nos modalités d'intervention. Voici les réponses aux questions les plus fréquentes sur notre agence de marketing stratégique à Toulouse.",
+    h2: "Questions fréquentes sur notre agence marketing à Toulouse",
+    h2Highlight: "agence marketing à Toulouse",
+    description: "Transparence sur ce que nous faisons — et ce que nous ne faisons pas. Voici les réponses aux questions les plus fréquentes sur Vizion, votre agence marketing B2B à Toulouse.",
     questions: [
       {
-        question: "Qu'est-ce qu'une agence de marketing stratégique ?",
-        answer: "Une agence de marketing stratégique conçoit des feuilles de route marketing alignées sur les objectifs business de l'entreprise, contrairement aux agences d'exécution qui produisent des livrables sans cadre stratégique. Chez Vizion, chaque action marketing — positionnement, architecture de message, sales enablement, acquisition — s'inscrit dans une stratégie définie. Nous intervenons de la conception jusqu'au terrain commercial, y compris dans les phases de négociation et de closing."
+        question: "Qu'est-ce que le marketing produit chez Vizion ?",
+        answer: "Le marketing produit, pour nous, c'est tout ce qui permet de positionner une offre sur son marché pour qu'elle devienne le choix évident : positionnement, messaging, sites web et landing pages, SEO, campagnes publicitaires, sales enablement, notoriété des dirigeants sur LinkedIn. Cela s'applique à tout « produit » au sens large : un SaaS, un concept de franchise, un service B2B. La méthode est la même, seule la nature du produit change."
       },
       {
-        question: "Pourquoi choisir Vizion comme agence de marketing stratégique à Toulouse ?",
-        answer: "Vizion se distingue par trois caractéristiques : un directeur marketing dédié (pas un chef de projet) qui pilote l'ensemble de vos travaux et dialogue avec vos équipes dirigeantes ; une intervention couvrant tout le cycle commercial, du positionnement jusqu'aux outils d'aide à la vente ; et une intégration réfléchie de l'intelligence artificielle là où elle apporte une valeur ajoutée mesurable. Plus de 70 PME, ETI et scale-ups nous font confiance depuis 2021."
+        question: "Pourquoi « marketing produit » et pas « marketing stratégique » ?",
+        answer: "« Marketing stratégique » est un terme fourre-tout en France — tout le monde s'en revendique. « Marketing produit » est précis : dans l'écosystème B2B et SaaS, il est immédiatement compris (positioning, messaging, go-to-market, sales enablement). Pour les clients hors tech, le concept se traduit simplement : nous vous aidons à mieux vendre ce que vous faites déjà bien."
       },
       {
         question: "Avec quels types d'entreprises travaillez-vous ?",
-        answer: "Nous travaillons avec des PME de 10 à 250 collaborateurs, des ETI et des scale-ups en phase de croissance. Nos clients évoluent dans l'industrie, les technologies, l'édition de logiciels et les services B2B à forte valeur ajoutée. Nous collaborons avec des dirigeants qui ont compris que le marketing n'est pas une solution miracle : construire une présence sur son marché demande du temps, de l'itération et un engagement dans la durée."
+        answer: "Nous intervenons auprès de trois typologies : startups et SaaS (logiciel, plateforme), franchises et réseaux (concept de franchise, recrutement franchisés), et PME/ETI B2B (offre commerciale à clarifier). Ces entreprises ont une problématique commune : transformer leur offre en évidence commerciale. Vizion applique la même rigueur aux franchises, services B2B et ETI industrielles qu'aux acteurs tech."
       },
       {
-        question: "Quelle est la différence entre une mission stratégique et une direction marketing externalisée ?",
-        answer: "La mission stratégique ciblée (8 à 16 semaines) intervient sur un enjeu précis : lancement de produit, repositionnement, structuration d'une offre. La direction marketing externalisée (engagement minimum 6 mois, à partir de 4 500 €/mois) est un accompagnement dans la durée où nous endossons le rôle de votre direction marketing. Dans les deux cas, un directeur marketing dédié pilote l'ensemble des travaux."
+        question: "Quelle est la différence entre mission ciblée et accompagnement dans la durée ?",
+        answer: "La mission ciblée (8 à 16 semaines) intervient sur un enjeu précis : lancement, repositionnement, alignement du tunnel. Diagnostic, fondations (positionnement et messaging), activation. L'accompagnement dans la durée (6 mois minimum, à partir de 4 500 €/mois) : nous endossons le rôle de votre équipe marketing produit. Un interlocuteur dédié, un tunnel aligné, accès aux experts selon les besoins. Dans les deux cas, nous ne créons jamais de pub sans avoir posé le positionnement d'abord."
       },
       {
         question: "Intervenez-vous uniquement à Toulouse ?",
-        answer: "Notre agence de marketing stratégique est basée à Toulouse, mais nous accompagnons des clients partout en France et à l'international. Nous adaptons nos modalités d'intervention : sessions en présentiel, visioconférences, déplacements ponctuels selon les besoins du projet. La proximité avec Toulouse et l'Occitanie reste un atout pour nos clients locaux."
+        answer: "Nous sommes basés à Toulouse (Labège, technopôle) et accompagnons des clients partout en France et à l'international. Présentiel pour les clients à Toulouse et en Occitanie, visio et déplacements ponctuels pour les autres. La proximité avec Toulouse et l'Occitanie reste un atout pour nos clients locaux."
       },
       {
-        question: "Comment intégrez-vous l'intelligence artificielle dans votre approche ?",
-        answer: "L'IA est un levier, pas un argument. Nous l'intégrons là où elle apporte une valeur ajoutée mesurable : création de lead magnets et contenus d'acquisition en une fraction du temps, tri et enrichissement de listes de prospection pour prioriser les comptes à fort potentiel, personnalisation des approches commerciales à l'échelle. La stratégie et les décisions restent pilotées par l'expertise humaine."
+        question: "Proposez-vous de la notoriété LinkedIn pour les dirigeants ?",
+        answer: "Oui. Avec un cofondateur ex-top 300 France sur la plateforme, Vizion propose un service de notoriété LinkedIn pour les dirigeants (personal branding, thought leadership). Dans le B2B, la crédibilité du fondateur ou du directeur commercial est souvent le premier levier de conversion. Cette expertise fait partie de notre tunnel de vente — campagnes LinkedIn Ads et stratégie de notoriété organique."
       },
       {
-        question: "Travaillez-vous avec les équipes marketing internes ?",
-        answer: "Nous travaillons aux côtés des directions marketing, pas à leur place. Notre rôle est de renforcer vos équipes : apporter une expertise complémentaire en marketing stratégique, structurer les processus, transférer les compétences. La pédagogie fait partie intégrante de notre approche. Un accompagnement réussi, c'est une équipe interne plus autonome à la fin du projet."
+        question: "Travaillez-vous avec les équipes marketing ou commerciales internes ?",
+        answer: "Nous ne remplaçons pas les équipes internes, nous les renforçons. Nous travaillons aux côtés des directions marketing et commerciales : positionnement, supports de vente alignés, boucle de feedback (les objections remontées par les commerciaux alimentent les prochaines campagnes). Un accompagnement réussi, c'est une équipe plus autonome et un message unifié du clic au closing."
       }
     ],
     ctaText: "Une autre question ? Échangeons directement.",
@@ -659,8 +665,8 @@ export const homeContent: HomeContent = {
   // CAS CLIENTS
   // --------------------------------------------------------------------------
   casClients: {
-    surtitre: "[ ÉTUDES DE CAS ]",
-    h2: "NOS ACCOMPAGNEMENTS CLIENTS",
+    surtitre: "Études de cas",
+    h2: "ILS SONT DEVENUS L'ÉVIDENCE SUR LEUR MARCHÉ",
     ctaText: "Découvrir nos réalisations",
     cases: [
       {
@@ -683,9 +689,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   finalCta: {
     trustBadge: "+70 entreprises à Toulouse et en France nous font confiance",
-    h2: "ÉCHANGEONS SUR VOS ENJEUX STRATÉGIQUES",
-    h2Highlight: "STRATÉGIQUES",
-    description: "Vous traversez un moment stratégique — lancement, repositionnement, accélération — et le marketing devient un enjeu de performance commerciale ? Notre agence de marketing stratégique à Toulouse vous propose un échange de 15 minutes pour identifier si nous pouvons vous accompagner.",
+    h2: "Prêt à devenir l'évidence sur votre marché ?",
+    h2Highlight: "l'évidence",
+    description: "Lancement, restructuration ou accélération ? Vous voulez un tunnel de vente aligné — du message publicitaire au closing ? Nous proposons un échange de 15 minutes pour identifier si nous pouvons vous accompagner.",
     cta: {
       primary: { text: "Parlons de votre projet", href: "/contact" },
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
@@ -706,9 +712,9 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://by-vizion.com/#organization",
-  "name": "Vizion — Agence de Marketing Stratégique à Toulouse",
-  "alternateName": ["Vizion", "Vizion Marketing Stratégique", "Agence Marketing Stratégique Toulouse"],
-  "description": "Agence de marketing stratégique à Toulouse. Vizion conçoit des stratégies marketing alignées sur les objectifs business des PME, ETI et scale-ups, et les déploie jusqu'au terrain commercial. Lancement de produit, repositionnement, accélération de croissance. Plus de 70 entreprises accompagnées depuis 2021.",
+  "name": "Vizion — Agence marketing Toulouse, marketing produit B2B",
+  "alternateName": ["Vizion", "Vizion Marketing Produit", "Agence marketing Toulouse", "Agence marketing B2B Toulouse"],
+  "description": "Agence marketing à Toulouse. Vizion aide les entreprises à clarifier, packager et vendre leur offre. Positionnement, messaging, tunnel de vente aligné — du message publicitaire au closing. SaaS, franchises, PME/ETI. Devenez l'évidence sur votre marché. Plus de 70 entreprises accompagnées à Toulouse et en France depuis 2021.",
   "url": "https://by-vizion.com",
   "logo": {
     "@type": "ImageObject",
@@ -788,7 +794,7 @@ export const organizationSchema = {
     {
       "@type": "Person",
       "name": "Lucas Gonzalez",
-      "jobTitle": "Co-fondateur — Spécialiste du marketing produit, du positionnement et du discours de marque"
+      "jobTitle": "Co-fondateur — Marketing produit, positionnement, notoriété LinkedIn (ex-top 300 France)"
     },
     {
       "@type": "Person",
@@ -804,46 +810,46 @@ export const organizationSchema = {
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Services Marketing Stratégique",
+    "name": "Services Marketing Produit B2B",
     "itemListElement": [
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Stratégie & Marketing Produit",
-          "description": "Définition du positionnement et de l'architecture de message. Identification des leviers de croissance et construction d'une proposition de valeur différenciante."
+          "name": "Positionnement & Messaging",
+          "description": "Définition du positionnement produit, de la proposition de valeur et du messaging par segment. Socle du tunnel de vente."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Actifs Digitaux & Conversion",
-          "description": "Conception d'interfaces performantes adaptées aux parcours de décision longs et aux cycles de vente complexes."
+          "name": "Campagnes publicitaires & Notoriété LinkedIn",
+          "description": "Messages forts testés et itérés. Meta, Google, LinkedIn Ads. Stratégie de notoriété LinkedIn pour les dirigeants."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Aide à la Vente & Influence",
-          "description": "Renforcement de l'efficacité commerciale par la mise à disposition d'outils et de contenus adaptés à chaque phase du cycle de vente."
+          "name": "Sites web & Landing pages",
+          "description": "Sites produit et pages d'atterrissage optimisés pour la conversion. SEO, copywriting centré sur le problème du prospect."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Acquisition & Génération d'Opportunités",
-          "description": "Génération d'un flux régulier d'opportunités commerciales qualifiées via des dispositifs ciblés."
+          "name": "Sales Enablement",
+          "description": "Pitch decks alignés aux campagnes, battle cards, scripts d'appel, objection handling. Un seul message du clic au closing."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Automatisation & CRM",
-          "description": "Structuration des systèmes d'information marketing et commerciaux pour soutenir la croissance."
+          "name": "Outils de conversion & Closing",
+          "description": "Propositions commerciales structurées, séquences de relance, feedback loop entre pub et équipes commerciales."
         }
       }
     ]

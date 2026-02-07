@@ -16,7 +16,8 @@
       "Bash(git push:*)",
       "mcp__gemini-design-mcp__create_frontend",
       "Bash(npx tsc:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(ls -la \"c:\\\\Users\\\\Lucas Gonzalez\\\\Documents\\\\GitHub\\\\site-vizion\\\\src\\\\components\\\\icons\"\" 2>/dev/null || echo \"Icons folder structure check \")"
     ],
     "additionalDirectories": [
       "c:\\Users\\Lucas Gonzalez\\OneDrive\\Bureau\\Apps\\site-vizion"

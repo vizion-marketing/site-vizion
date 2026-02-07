@@ -4,8 +4,8 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRightIcon } from "@/components/icons";
 import {
-  ArrowRight,
   Search,
   Mail,
   ChevronLeft,
@@ -88,11 +88,23 @@ export default function BlogPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white font-['Inter'] selection:bg-black selection:text-white">
-      {/* HERO SECTION - Style Homepage */}
-      <section className="relative pt-[120px] pb-[80px] px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] overflow-hidden">
-        {/* Pattern texture overlay */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
+    <main className="min-h-screen bg-white font-[var(--font-body)] selection:bg-black selection:text-white">
+      {/* HERO SECTION - Style Homepage (#0c0c0a + radial gradients D4FD00) */}
+      <section className="relative pt-[120px] pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay" style={{ background: "#0c0c0a" }}>
+        {/* Base + radial gradients jaune Vizion (comme home hero) */}
+        <div
+          className="absolute inset-0 pointer-events-none z-0"
+          aria-hidden
+          style={{
+            background: `
+              radial-gradient(ellipse 80% 60% at 20% 30%, rgba(212, 253, 0, 0.12) 0%, transparent 55%),
+              radial-gradient(ellipse 70% 50% at 80% 20%, rgba(212, 253, 0, 0.08) 0%, transparent 55%),
+              radial-gradient(ellipse 60% 70% at 50% 85%, rgba(212, 253, 0, 0.06) 0%, transparent 55%),
+              radial-gradient(ellipse 50% 50% at 90% 70%, rgba(212, 253, 0, 0.05) 0%, transparent 55%),
+              radial-gradient(ellipse 45% 45% at 8% 60%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)
+            `,
+          }}
+        />
         
         <div className="max-w-[82.5rem] mx-auto w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
@@ -104,22 +116,22 @@ export default function BlogPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-                className="bg-black/20 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-white/10"
+                className="bg-black/40 backdrop-blur-md rounded-none p-8 md:p-10 border border-white/10"
               >
                 {/* Status Badge */}
                 <div className="flex items-center gap-2 mb-4">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#EEFF41]"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#D4FD00] opacity-75"></span>
+                    <span className="relative inline-flex rounded-none h-2 w-2 bg-[#D4FD00]"></span>
                   </span>
-                  <span className="text-[10px] font-bold tracking-[0.15em] text-white/60">
+                  <span className="text-[10px] font-light tracking-[0.12em] text-white/60">
                     Le laboratoire de performance
                   </span>
                 </div>
                 
-                <h1 className="font-['Inter'] font-[900] text-[56px] md:text-[80px] lg:text-[100px] leading-[0.9] tracking-tight text-white mb-4">
+                <h1 className="font-[var(--font-body)] font-[900] text-[56px] md:text-[80px] lg:text-[100px] leading-[0.9] tracking-tight text-white mb-4">
                   <span className="relative inline-block">
-                    <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[14px] bg-[#EEFF41] -z-10"></span>
+                    <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[14px] bg-[#D4FD00] -z-10"></span>
                     Blog
                   </span>
                 </h1>
@@ -139,7 +151,7 @@ export default function BlogPage() {
                     transition={{ duration: 0.8, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
                   >
                     <Link href={`/blog/${editorPick.slug}`} className="group block h-full">
-                      <div className="h-full bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden hover:border-[#EEFF41]/30 transition-all duration-500">
+                      <div className="h-full bg-black/30 backdrop-blur-sm rounded-none border border-white/10 overflow-hidden hover:border-[#D4FD00]/30 transition-all duration-500">
                         {/* Image */}
                         <div className="aspect-[16/10] relative overflow-hidden">
                           {editorPick.featuredImage ? (
@@ -163,7 +175,7 @@ export default function BlogPage() {
 
                           {/* Badge */}
                           <div className="absolute top-3 left-3 z-10">
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white text-black text-[9px] font-black tracking-wider rounded-full">
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white text-black text-[9px] font-black tracking-wider rounded-none">
                               <Star size={10} className="fill-black" />
                               Rédac
                             </span>
@@ -172,10 +184,10 @@ export default function BlogPage() {
 
                         {/* Content */}
                         <div className="p-5">
-                          <span className="text-[9px] font-bold tracking-[0.15em] text-white/40 mb-1.5 block">
+                          <span className="text-[9px] font-light tracking-[0.12em] text-white/40 mb-1.5 block">
                             {editorPick.category}
                           </span>
-                          <h3 className="font-['Inter'] font-black text-sm leading-tight text-white group-hover:text-[#EEFF41] transition-colors line-clamp-2">
+                          <h3 className="font-[var(--font-body)] font-black text-sm leading-tight text-white group-hover:text-[#D4FD00] transition-colors line-clamp-2">
                             {editorPick.title}
                           </h3>
                         </div>
@@ -192,7 +204,7 @@ export default function BlogPage() {
                     transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
                   >
                     <Link href={`/blog/${readerFavorite.slug}`} className="group block h-full">
-                      <div className="h-full bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden hover:border-[#EEFF41]/30 transition-all duration-500">
+                      <div className="h-full bg-black/30 backdrop-blur-sm rounded-none border border-white/10 overflow-hidden hover:border-[#D4FD00]/30 transition-all duration-500">
                         {/* Image */}
                         <div className="aspect-[16/10] relative overflow-hidden">
                           {readerFavorite.featuredImage ? (
@@ -216,7 +228,7 @@ export default function BlogPage() {
 
                           {/* Badge */}
                           <div className="absolute top-3 left-3 z-10">
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#EEFF41] text-black text-[9px] font-black tracking-wider rounded-full">
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#D4FD00] text-black text-[9px] font-black tracking-wider rounded-none">
                               <TrendingUp size={10} />
                               Populaire
                             </span>
@@ -225,10 +237,10 @@ export default function BlogPage() {
 
                         {/* Content */}
                         <div className="p-5">
-                          <span className="text-[9px] font-bold tracking-[0.15em] text-white/40 mb-1.5 block">
+                          <span className="text-[9px] font-light tracking-[0.12em] text-white/40 mb-1.5 block">
                             {readerFavorite.category}
                           </span>
-                          <h3 className="font-['Inter'] font-black text-sm leading-tight text-white group-hover:text-[#EEFF41] transition-colors line-clamp-2">
+                          <h3 className="font-[var(--font-body)] font-black text-sm leading-tight text-white group-hover:text-[#D4FD00] transition-colors line-clamp-2">
                             {readerFavorite.title}
                           </h3>
                         </div>
@@ -248,7 +260,7 @@ export default function BlogPage() {
                 className="lg:col-span-5 hidden lg:block relative"
               >
                 <Link href={`/blog/${featuredPost.slug}`} className="group block h-full">
-                  <div className="relative h-full rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
+                  <div className="relative h-full rounded-none overflow-hidden border border-white/10 bg-black/30 backdrop-blur-sm">
                     {/* Image - Full height */}
                     <div className="absolute inset-0">
                       {featuredPost.featuredImage ? (
@@ -273,7 +285,7 @@ export default function BlogPage() {
 
                     {/* Badge - Top */}
                     <div className="absolute top-6 left-6 z-10">
-                      <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#EEFF41] text-black text-[10px] font-black tracking-wider rounded-full shadow-[0_0_20px_rgba(238,255,65,0.3)]">
+                      <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4FD00] text-black text-[10px] font-black tracking-wider rounded-none shadow-[0_0_20px_rgba(212,253,0,0.3)]">
                         <Sparkles size={12} />
                         À la une
                       </span>
@@ -281,10 +293,10 @@ export default function BlogPage() {
 
                     {/* Content - Bottom */}
                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
-                      <span className="text-[10px] font-bold tracking-[0.15em] text-white/50 mb-3 block">
+                      <span className="text-[10px] font-light tracking-[0.12em] text-white/50 mb-3 block">
                         {featuredPost.category}
                       </span>
-                      <h3 className="font-['Inter'] font-black text-2xl md:text-3xl leading-[1.1] text-white mb-4 group-hover:text-[#EEFF41] transition-colors">
+                      <h3 className="font-[var(--font-body)] font-black text-2xl md:text-3xl leading-[1.1] text-white mb-4 group-hover:text-[#D4FD00] transition-colors">
                         {featuredPost.title}
                       </h3>
                       <p className="text-white/60 text-sm line-clamp-2 mb-6 max-w-md">
@@ -301,8 +313,8 @@ export default function BlogPage() {
                             {featuredPost.readingTime}
                           </span>
                         </div>
-                        <span className="flex items-center gap-2 text-[11px] font-black text-white group-hover:text-[#EEFF41] transition-colors">
-                          Lire l'article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        <span className="flex items-center gap-2 text-[11px] font-black text-white group-hover:text-[#D4FD00] transition-colors">
+                          Lire l'article <ArrowUpRightIcon size={14} className="group-hover:translate-x-1 transition-transform" />
                         </span>
                       </div>
                     </div>
@@ -310,7 +322,7 @@ export default function BlogPage() {
                 </Link>
 
                 {/* Decorative elements */}
-                <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-[#EEFF41]/40 pointer-events-none z-20" />
+                <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-[#D4FD00]/40 pointer-events-none z-20" />
                 <div className="absolute -bottom-3 -left-3 w-12 h-12 border-b-2 border-l-2 border-white/30 pointer-events-none z-20" />
               </motion.div>
             )}
@@ -321,16 +333,16 @@ export default function BlogPage() {
         <motion.div 
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-32 right-[5%] w-40 h-40 border border-white/5 rounded-full blur-[2px] pointer-events-none hidden xl:block" 
+          className="absolute top-32 right-[5%] w-40 h-40 border border-white/5 rounded-none blur-[2px] pointer-events-none hidden xl:block" 
         />
         <motion.div 
           animate={{ y: [0, 15, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-32 left-[3%] w-24 h-24 border border-white/5 rounded-full blur-[2px] pointer-events-none hidden xl:block" 
+          className="absolute bottom-32 left-[3%] w-24 h-24 border border-white/5 rounded-none blur-[2px] pointer-events-none hidden xl:block" 
         />
       </section>
 
-      {/* FILTERS SECTION */}
+      {/* FILTERS SECTION - fond blanc */}
       <section className="bg-white py-10 px-6 md:px-12 border-b border-black/5">
         <div className="max-w-[82.5rem] mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -340,7 +352,7 @@ export default function BlogPage() {
                 <button
                   key={cat}
                   onClick={() => handleCategoryChange(cat)}
-                  className={`px-5 py-2.5 text-[11px] font-black tracking-wider transition-all duration-300 rounded-full border ${
+                  className={`px-5 py-2.5 text-[11px] font-black tracking-wider transition-all duration-300 rounded-none border ${
                     activeCategory === cat
                       ? "bg-black border-black text-white shadow-[0_0_20px_rgba(0,0,0,0.15)]"
                       : "bg-transparent border-black/20 text-black hover:border-black hover:bg-black hover:text-white"
@@ -364,7 +376,7 @@ export default function BlogPage() {
                     setSearchQuery(e.target.value);
                     setCurrentPage(1);
                   }}
-                  className="w-full md:w-56 bg-[#F2F2F2] border-none rounded-full px-10 py-2.5 text-sm text-black placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/10 transition-all"
+                  className="w-full md:w-56 bg-[#F2F2F2] border-none rounded-none px-10 py-2.5 text-sm text-black placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/10 transition-all"
                 />
               </div>
 
@@ -378,8 +390,8 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ARTICLES GRID */}
-      <section className="bg-[#F9F9F9] py-20 px-6 md:px-12">
+      {/* ARTICLES GRID - collection sur fond blanc */}
+      <section className="bg-white py-20 px-6 md:px-12">
         <div className="max-w-[82.5rem] mx-auto">
           {paginatedPosts.length > 0 ? (
             <motion.div
@@ -395,7 +407,7 @@ export default function BlogPage() {
                     key={post.slug}
                     variants={fadeInUp}
                     layout
-                    className="group bg-white rounded-2xl overflow-hidden border border-transparent hover:border-[#EEFF41]/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500"
+                    className="group bg-white rounded-none overflow-hidden border border-transparent hover:border-[#D4FD00]/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500"
                   >
                     {/* Image */}
                     <Link href={`/blog/${post.slug}`} className="block">
@@ -412,14 +424,14 @@ export default function BlogPage() {
                             width={400}
                             height={225}
                             label="Image article"
-                            rounded="sm"
+                            rounded="none"
                             className="w-full h-full"
                           />
                         )}
 
                         {/* Category badge on image */}
                         <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm text-black text-[9px] font-black tracking-wider rounded-full">
+                          <span className="px-3 py-1.5 bg-white/90 text-black text-[9px] font-black tracking-wider rounded-none">
                             {post.category}
                           </span>
                         </div>
@@ -429,7 +441,7 @@ export default function BlogPage() {
                     {/* Content */}
                     <div className="p-6">
                       <Link href={`/blog/${post.slug}`}>
-                        <h3 className="font-['Inter'] font-black text-lg leading-tight mb-3 text-black group-hover:text-black/80 transition-colors line-clamp-2">
+                        <h3 className="font-[var(--font-body)] font-black text-lg leading-tight mb-3 text-black group-hover:text-black/80 transition-colors line-clamp-2">
                           {post.title}
                         </h3>
                       </Link>
@@ -452,9 +464,9 @@ export default function BlogPage() {
                         </div>
                         <Link
                           href={`/blog/${post.slug}`}
-                          className="flex items-center gap-1 text-[10px] font-black tracking-wider text-black group-hover:text-[#000] transition-colors"
+                          className="flex items-center gap-1 text-[10px] font-black tracking-wider text-black group-hover:text-black transition-colors"
                         >
-                          Lire <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                          Lire <ArrowUpRightIcon size={12} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                       </div>
                     </div>
@@ -464,10 +476,10 @@ export default function BlogPage() {
             </motion.div>
           ) : (
             <div className="text-center py-20">
-              <div className="w-16 h-16 rounded-full bg-black/5 flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 rounded-none bg-black/5 flex items-center justify-center mx-auto mb-6">
                 <Search size={24} className="text-black/30" />
               </div>
-              <h3 className="font-['Inter'] font-black text-xl mb-2">Aucun article trouvé</h3>
+              <h3 className="font-[var(--font-body)] font-black text-xl mb-2 text-black">Aucun article trouvé</h3>
               <p className="text-black/50">Essayez une autre recherche ou catégorie</p>
             </div>
           )}
@@ -478,7 +490,7 @@ export default function BlogPage() {
               <button
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="w-12 h-12 flex items-center justify-center rounded-xl border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                className="w-12 h-12 flex items-center justify-center rounded-none border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ChevronLeft size={18} />
               </button>
@@ -487,7 +499,7 @@ export default function BlogPage() {
                 <button
                   key={num}
                   onClick={() => setCurrentPage(num)}
-                  className={`w-12 h-12 flex items-center justify-center rounded-xl text-sm font-black transition-all ${
+                  className={`w-12 h-12 flex items-center justify-center rounded-none text-sm font-black transition-all ${
                     num === currentPage
                       ? "bg-black text-white shadow-[0_0_20px_rgba(0,0,0,0.15)]"
                       : "border border-black/10 hover:border-black hover:bg-black hover:text-white"
@@ -500,7 +512,7 @@ export default function BlogPage() {
               <button
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="w-12 h-12 flex items-center justify-center rounded-xl border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                className="w-12 h-12 flex items-center justify-center rounded-none border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ChevronRight size={18} />
               </button>
@@ -516,26 +528,26 @@ export default function BlogPage() {
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-[var(--radius-xl)] p-12 md:p-20 relative overflow-hidden"
+            className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-none p-12 md:p-20 relative overflow-hidden"
           >
             {/* Pattern texture overlay */}
             <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
             
             {/* Decorative elements */}
-            <div className="absolute top-8 left-8 w-24 h-24 border-t-2 border-l-2 border-[#EEFF41]/20" />
-            <div className="absolute bottom-8 right-8 w-24 h-24 border-b-2 border-r-2 border-[#EEFF41]/20" />
+            <div className="absolute top-8 left-8 w-24 h-24 border-t-2 border-l-2 border-[#D4FD00]/20" />
+            <div className="absolute bottom-8 right-8 w-24 h-24 border-b-2 border-r-2 border-[#D4FD00]/20" />
             
             <div className="relative z-10 max-w-3xl mx-auto text-center">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-black/30 backdrop-blur-sm rounded-none border border-white/20 mb-8">
                 <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-[#EEFF41] text-[#EEFF41]" />)}
+                  {[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-[#D4FD00] text-[#D4FD00]" />)}
                 </div>
                 <span className="text-[10px] font-black text-white tracking-wider">Newsletter exclusive</span>
               </div>
 
-              <h2 className="font-['Inter'] font-[900] text-[40px] md:text-[56px] leading-[1] tracking-tight mb-6 text-white">
-                Restez à la <span className="relative inline-block"><span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[10px] bg-[#EEFF41] -z-10"></span>pointe</span>
+              <h2 className="font-[var(--font-body)] font-[900] text-[40px] md:text-[56px] leading-[1] tracking-tight mb-6 text-white">
+                Restez à la <span className="relative inline-block"><span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[10px] bg-[#D4FD00] -z-10"></span>pointe</span>
               </h2>
               <p className="text-white/70 text-lg md:text-xl mb-10 max-w-xl mx-auto">
                 Recevez nos meilleures analyses et stratégies B2B directement dans votre boîte mail, une fois par semaine.
@@ -550,26 +562,26 @@ export default function BlogPage() {
                   <input
                     type="email"
                     placeholder="votre@email.com"
-                    className="w-full bg-white/10 border border-white/20 rounded-xl px-12 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-all backdrop-blur-sm"
+                    className="w-full bg-black/30 border border-white/20 rounded-none px-12 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-all backdrop-blur-sm"
                   />
                 </div>
-                <button className="bg-white text-black font-['Inter'] font-black text-[12px] tracking-widest px-8 py-4 rounded-xl hover:bg-[#EEFF41] hover:shadow-[0_0_30px_rgba(238,255,65,0.4)] transition-all flex items-center justify-center gap-2">
-                  S'inscrire <ArrowRight size={14} />
+                <button type="button" className="btn btn-primary group">
+                  S'inscrire <ArrowUpRightIcon size={14} className="group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </form>
 
               {/* Trust elements */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <div className="flex items-center gap-2 text-white/50 text-sm">
-                  <CheckCircle2 size={14} className="text-[#EEFF41]" />
+                  <CheckCircle2 size={14} className="text-[#D4FD00]" />
                   <span>Pas de spam</span>
                 </div>
                 <div className="flex items-center gap-2 text-white/50 text-sm">
-                  <CheckCircle2 size={14} className="text-[#EEFF41]" />
+                  <CheckCircle2 size={14} className="text-[#D4FD00]" />
                   <span>Désinscription en 1 clic</span>
                 </div>
                 <div className="flex items-center gap-2 text-white/50 text-sm">
-                  <CheckCircle2 size={14} className="text-[#EEFF41]" />
+                  <CheckCircle2 size={14} className="text-[#D4FD00]" />
                   <span>+500 abonnés</span>
                 </div>
               </div>

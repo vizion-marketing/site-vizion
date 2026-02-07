@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Linkedin, Twitter, ChevronRight } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons";
 
 // Configuration auteur Vizion (fixe)
 const AUTHOR_CONFIG = {
@@ -23,11 +24,14 @@ export function AuthorBio() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-[#F2F2F2] p-8 rounded-sm"
+      className="bg-[#F2F2F2] p-8 rounded-none"
     >
-      <h4 className="text-[11px] font-medium tracking-[1.65px] text-zinc-500 mb-6">
-        À propos de l'auteur
-      </h4>
+      <div className="flex items-center gap-2.5 mb-6">
+        <div className="w-2 h-2 rounded-full bg-[#D4FD00] shrink-0" />
+        <h4 className="surtitre text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-black/50">
+          À propos de l'auteur
+        </h4>
+      </div>
 
       <div className="flex items-center gap-4 mb-4">
         <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-sm bg-zinc-200">
@@ -39,16 +43,16 @@ export function AuthorBio() {
           />
         </div>
         <div>
-          <p className="font-black text-sm leading-tight font-['Inter']">
+          <p className="font-black text-sm leading-tight font-[var(--font-body)]">
             {AUTHOR_CONFIG.name}
           </p>
-          <p className="text-xs text-zinc-500 mt-1 font-['Inter']">
+          <p className="text-xs text-zinc-500 mt-1 font-[var(--font-body)]">
             {AUTHOR_CONFIG.role}
           </p>
         </div>
       </div>
 
-      <p className="text-sm text-zinc-600 leading-relaxed mb-6 font-['Inter']">
+      <p className="text-sm text-zinc-600 leading-relaxed mb-6 font-[var(--font-body)]">
         {AUTHOR_CONFIG.bio}
       </p>
 
@@ -59,7 +63,7 @@ export function AuthorBio() {
             href={AUTHOR_CONFIG.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 bg-white hover:bg-black hover:text-white transition-colors rounded-sm"
+            className="p-2 bg-white hover:bg-black hover:text-white transition-colors rounded-none"
             aria-label="LinkedIn"
           >
             <Linkedin size={16} />
@@ -70,7 +74,7 @@ export function AuthorBio() {
             href={AUTHOR_CONFIG.twitter}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 bg-white hover:bg-black hover:text-white transition-colors rounded-sm"
+            className="p-2 bg-white hover:bg-black hover:text-white transition-colors rounded-none"
             aria-label="Twitter"
           >
             <Twitter size={16} />

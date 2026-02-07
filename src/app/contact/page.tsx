@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowUpRightIcon } from "@/components/icons";
 import {
-  ArrowRight,
   Mail,
   Phone,
   MapPin,
@@ -62,7 +62,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black overflow-x-hidden font-['Inter'] selection:bg-[#EEFF41] selection:text-black">
+    <main className="min-h-screen bg-black overflow-x-hidden font-[var(--font-body)] selection:bg-[#D4FD00] selection:text-black">
       {/* HERO SECTION - GRADIENT & CARBON TEXTURE */}
       <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-4 md:px-8 lg:px-12 overflow-hidden">
         {/* Base Gradient Layer */}
@@ -84,13 +84,13 @@ export default function ContactPage() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 flex flex-col justify-center"
           >
-            <div className="bg-black/20 backdrop-blur-md border border-white/10 rounded-[var(--radius-xl)] p-8 md:p-12 h-full flex flex-col">
+            <div className="bg-black/20 backdrop-blur-md border border-white/10 rounded-none p-8 md:p-12 h-full flex flex-col">
               
               {/* Status Badge */}
               <div className="flex items-center gap-3 mb-6">
                 <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[#EEFF41]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#D4FD00] opacity-75"></span>
+                  <span className="relative inline-flex rounded-none h-3 w-3 bg-[#D4FD00]"></span>
                 </span>
                 <span className="text-[10px] font-bold text-white/80 tracking-[0.2em]">
                   Nous sommes disponibles
@@ -98,7 +98,7 @@ export default function ContactPage() {
               </div>
 
               {/* Header Text */}
-              <h1 className="font-['Inter'] font-[900] text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[0.95] mb-4">
+              <h1 className="font-heading font-normal text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[0.95] mb-4">
                 Parlons de <br />
                 <span className="text-white/40">votre projet</span>
               </h1>
@@ -110,8 +110,8 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-5 flex-grow">
                 {/* Success Message */}
                 {formStatus === 'success' && (
-                  <div className="bg-[#EEFF41]/20 border border-[#EEFF41]/40 rounded-xl p-4 mb-4">
-                    <p className="text-[#EEFF41] text-sm font-medium">
+                  <div className="bg-[#D4FD00]/20 border border-[#D4FD00]/40 rounded-none p-4 mb-4">
+                    <p className="text-[#D4FD00] text-sm font-medium">
                       Message envoyé avec succès ! Nous vous répondrons sous 24h.
                     </p>
                   </div>
@@ -119,7 +119,7 @@ export default function ContactPage() {
 
                 {/* Error Message */}
                 {formStatus === 'error' && (
-                  <div className="bg-red-500/20 border border-red-500/40 rounded-xl p-4 mb-4">
+                  <div className="bg-red-500/20 border border-red-500/40 rounded-none p-4 mb-4">
                     <p className="text-red-400 text-sm font-medium">
                       {errorMessage}
                     </p>
@@ -134,7 +134,7 @@ export default function ContactPage() {
                       name="firstName"
                       type="text"
                       placeholder="Jean"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
+                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                     />
                   </div>
                   <div className="space-y-2">
@@ -144,7 +144,7 @@ export default function ContactPage() {
                       name="lastName"
                       type="text"
                       placeholder="Dupont"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
+                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                     />
                   </div>
                 </div>
@@ -156,7 +156,7 @@ export default function ContactPage() {
                     name="email"
                     type="email"
                     placeholder="contact@entreprise.com"
-                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
+                    className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                   />
                 </div>
 
@@ -167,7 +167,7 @@ export default function ContactPage() {
                       name="company"
                       type="text"
                       placeholder="Nom de votre entreprise"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
+                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                     />
                   </div>
                   <div className="space-y-2">
@@ -176,7 +176,7 @@ export default function ContactPage() {
                       <select
                         required
                         name="subject"
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white appearance-none focus:outline-none focus:border-white/60 transition-all duration-300 cursor-pointer"
+                        className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white appearance-none focus:outline-none focus:border-white/60 transition-all duration-300 cursor-pointer"
                       >
                         <option className="bg-zinc-900 text-white" value="">Sélectionnez un sujet</option>
                         <option className="bg-zinc-900 text-white" value="conseil">Conseil Stratégique</option>
@@ -197,7 +197,7 @@ export default function ContactPage() {
                     name="message"
                     rows={4}
                     placeholder="Décrivez brièvement votre projet ou votre demande..."
-                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300 resize-none"
+                    className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300 resize-none"
                   />
                 </div>
 
@@ -205,11 +205,11 @@ export default function ContactPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}
-                  className="w-full h-14 rounded-full flex items-center justify-center gap-3 mt-6 group disabled:opacity-70 disabled:cursor-not-allowed text-[15px] font-['Inter'] font-semibold tracking-[-0.01em] transition-all duration-300 bg-[#EEFF41]/90 backdrop-blur-xl text-black border border-[#EEFF41]/50 shadow-[0_4px_24px_-1px_rgba(238,255,65,0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:bg-[#EEFF41] hover:shadow-[0_8px_32px_-4px_rgba(238,255,65,0.4),inset_0_1px_0_0_rgba(255,255,255,0.4)]"
+                  className="w-full h-14 rounded-none flex items-center justify-center gap-3 mt-6 group disabled:opacity-70 disabled:cursor-not-allowed text-[15px] font-[var(--font-body)] font-semibold tracking-[-0.01em] transition-all duration-300 bg-[#D4FD00]/90 backdrop-blur-xl text-black border border-[#D4FD00]/50 shadow-[0_4px_24px_-1px_rgba(212,253,0,0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:bg-[#D4FD00] hover:shadow-[0_8px_32px_-4px_rgba(212,253,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.4)]"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-none animate-spin" />
                       Envoi en cours...
                     </>
                   ) : (
@@ -238,16 +238,16 @@ export default function ContactPage() {
             className="lg:col-span-4 relative group min-h-[600px] hidden lg:block"
           >
             {/* Decorative Corners */}
-            <div className="absolute top-[-12px] right-[-12px] w-20 h-20 border-t-2 border-r-2 border-[#EEFF41]/40 z-30 transition-all duration-500 group-hover:w-24 group-hover:h-24" />
+            <div className="absolute top-[-12px] right-[-12px] w-20 h-20 border-t-2 border-r-2 border-[#D4FD00]/40 z-30 transition-all duration-500 group-hover:w-24 group-hover:h-24" />
             <div className="absolute bottom-[-12px] left-[-12px] w-16 h-16 border-b-2 border-l-2 border-white/40 z-30 transition-all duration-500 group-hover:w-20 group-hover:h-20" />
 
             {/* Main Image Container */}
-            <div className="relative h-full w-full rounded-[var(--radius-xl)] overflow-hidden transition-all duration-700 ease-out shadow-2xl">
+            <div className="relative h-full w-full rounded-none overflow-hidden transition-all duration-700 ease-out shadow-2xl">
               <ImagePlaceholder
                 width={400}
                 height={600}
                 label="Portrait expert commercial"
-                rounded="xl"
+                rounded="none"
                 variant="dark"
                 className="w-full h-full"
               />
@@ -255,16 +255,16 @@ export default function ContactPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
 
               {/* Floating Contact Card */}
-              <div className="absolute bottom-6 inset-x-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl space-y-4">
+              <div className="absolute bottom-6 inset-x-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-none space-y-4">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-white font-['Inter'] font-[900] text-lg tracking-tight leading-tight">Lucas Gonzalez</h3>
-                    <p className="text-[#EEFF41] text-[10px] font-bold tracking-[0.15em]">Directeur Commercial</p>
+                    <h3 className="text-white font-heading font-normal text-lg tracking-tight leading-tight">Lucas Gonzalez</h3>
+                    <p className="text-[#D4FD00] text-[10px] font-light tracking-[0.12em]">Directeur Commercial</p>
                   </div>
-                  <div className="bg-[#EEFF41] text-black text-[9px] font-black px-2.5 py-1 rounded-lg tracking-tight flex items-center gap-1.5">
+                  <div className="bg-[#D4FD00] text-black text-[9px] font-black px-2.5 py-1 rounded-none tracking-tight flex items-center gap-1.5">
                     <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-black"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-black opacity-75"></span>
+                      <span className="relative inline-flex rounded-none h-1.5 w-1.5 bg-black"></span>
                     </span>
                     Réponse 24h
                   </div>
@@ -272,19 +272,19 @@ export default function ContactPage() {
 
                 <div className="space-y-2.5 pt-2 border-t border-white/10">
                   <a href="mailto:contact@by-vizion.com" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
+                    <div className="w-8 h-8 rounded-none bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
                       <Mail className="w-3.5 h-3.5" />
                     </div>
                     <span className="text-sm">contact@by-vizion.com</span>
                   </a>
                   <a href="tel:+33750836543" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
+                    <div className="w-8 h-8 rounded-none bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
                       <Phone className="w-3.5 h-3.5" />
                     </div>
                     <span className="text-sm">07 50 83 65 43</span>
                   </a>
                   <div className="flex items-center gap-3 text-white/80">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5">
+                    <div className="w-8 h-8 rounded-none bg-white/5 flex items-center justify-center border border-white/5">
                       <MapPin className="w-3.5 h-3.5" />
                     </div>
                     <span className="text-sm">815 La Pyrénéenne, 31670 Labège</span>
@@ -299,12 +299,12 @@ export default function ContactPage() {
         <motion.div 
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-32 right-[5%] w-48 h-48 border border-white/5 rounded-full blur-[2px] pointer-events-none hidden xl:block z-10" 
+          className="absolute top-32 right-[5%] w-48 h-48 border border-white/5 rounded-none blur-[2px] pointer-events-none hidden xl:block z-10" 
         />
         <motion.div 
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-32 left-[3%] w-32 h-32 border border-white/5 rounded-full blur-[2px] pointer-events-none hidden xl:block z-10" 
+          className="absolute bottom-32 left-[3%] w-32 h-32 border border-white/5 rounded-none blur-[2px] pointer-events-none hidden xl:block z-10" 
         />
       </section>
 
@@ -313,10 +313,10 @@ export default function ContactPage() {
         <div className="max-w-[82.5rem] mx-auto px-6 lg:px-12">
           {/* Section Header */}
           <div className="mb-16">
-            <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 mb-4 block">
+            <span className="text-[10px] font-light tracking-[0.12em] text-black/40 mb-4 block">
               Pourquoi nous choisir
             </span>
-            <h2 className="font-['Inter'] font-[900] text-4xl md:text-5xl tracking-tight text-black leading-[0.95]">
+            <h2 className="font-heading font-normal text-4xl md:text-5xl tracking-tight text-black leading-[0.95]">
               Nos engagements
             </h2>
           </div>
@@ -329,16 +329,16 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0 }}
-              className="bg-white p-8 rounded-[var(--radius-xl)] border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+              className="bg-white p-8 rounded-none border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-[#EEFF41] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-none bg-black flex items-center justify-center text-[#D4FD00] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
                 <Clock className="w-7 h-7" />
               </div>
-              <h3 className="font-['Inter'] font-[900] text-xl text-black tracking-tight mb-3">Réactivité 24h</h3>
+              <h3 className="font-heading font-normal text-xl text-black tracking-tight mb-3">Réactivité 24h</h3>
               <p className="text-black/60 leading-relaxed">
                 Le temps est votre ressource la plus précieuse. Nous garantissons une première réponse sous 24h ouvrées maximum.
               </p>
-              <div className="h-1 w-12 bg-black/10 group-hover:w-full group-hover:bg-[#EEFF41] transition-all duration-500 mt-6" />
+              <div className="h-1 w-12 bg-black/10 group-hover:w-full group-hover:bg-[#D4FD00] transition-all duration-500 mt-6" />
             </motion.div>
 
             {/* Card 2 */}
@@ -347,16 +347,16 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-white p-8 rounded-[var(--radius-xl)] border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+              className="bg-white p-8 rounded-none border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-[#EEFF41] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-none bg-black flex items-center justify-center text-[#D4FD00] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
                 <ShieldCheck className="w-7 h-7" />
               </div>
-              <h3 className="font-['Inter'] font-[900] text-xl text-black tracking-tight mb-3">Expertise B2B</h3>
+              <h3 className="font-heading font-normal text-xl text-black tracking-tight mb-3">Expertise B2B</h3>
               <p className="text-black/60 leading-relaxed">
                 Spécialistes des environnements complexes, nous comprenons les enjeux de croissance propres aux PME et ETI.
               </p>
-              <div className="h-1 w-12 bg-black/10 group-hover:w-full group-hover:bg-[#EEFF41] transition-all duration-500 mt-6" />
+              <div className="h-1 w-12 bg-black/10 group-hover:w-full group-hover:bg-[#D4FD00] transition-all duration-500 mt-6" />
             </motion.div>
 
             {/* Card 3 */}
@@ -365,16 +365,16 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-white p-8 rounded-[var(--radius-xl)] border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+              className="bg-white p-8 rounded-none border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-[#EEFF41] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-none bg-black flex items-center justify-center text-[#D4FD00] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
                 <Users className="w-7 h-7" />
               </div>
-              <h3 className="font-['Inter'] font-[900] text-xl text-black tracking-tight mb-3">Partenariat long-terme</h3>
+              <h3 className="font-heading font-normal text-xl text-black tracking-tight mb-3">Partenariat long-terme</h3>
               <p className="text-black/60 leading-relaxed">
                 Nous ne sommes pas un simple prestataire. Nous devenons votre partenaire stratégique pour une croissance durable.
               </p>
-              <div className="h-1 w-12 bg-black/10 group-hover:w-full group-hover:bg-[#EEFF41] transition-all duration-500 mt-6" />
+              <div className="h-1 w-12 bg-black/10 group-hover:w-full group-hover:bg-[#D4FD00] transition-all duration-500 mt-6" />
             </motion.div>
 
           </div>

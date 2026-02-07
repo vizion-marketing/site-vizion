@@ -14,7 +14,7 @@ export default function NotFound() {
         <p className="text-secondary mb-8 max-w-md mx-auto">
           Désolé, la page que vous recherchez n&apos;existe pas ou a été déplacée.
         </p>
-        <Link href="/" className="btn btn-primary inline-flex items-center gap-2 px-8 py-3">
+        <Link href="/" className="btn btn-primary gap-2">
           <ArrowLeft size={18} /> Retour à l&apos;accueil
         </Link>
       </div>

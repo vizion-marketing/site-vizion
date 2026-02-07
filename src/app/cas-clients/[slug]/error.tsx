@@ -17,11 +17,11 @@ export default function CaseStudyError({
         <p className="text-zinc-500 mb-8">
           Impossible de charger cette étude de cas.
         </p>
-        <div className="flex gap-4 justify-center">
-          <button onClick={reset} className="btn btn-primary px-6 py-3">
+        <div className="flex gap-4 justify-center flex-wrap">
+          <button onClick={reset} className="btn btn-primary">
             Réessayer
           </button>
-          <Link href="/cas-clients" className="btn btn-primary px-6 py-3 bg-zinc-100 text-black border-zinc-200">
+          <Link href="/cas-clients" className="btn btn-secondary">
             Retour aux cas clients
           </Link>
         </div>

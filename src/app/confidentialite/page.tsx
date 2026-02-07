@@ -23,13 +23,13 @@ export default function ConfidentialitePage() {
           Retour à l&apos;accueil
         </Link>
 
-        <h1 className="font-['Inter'] font-[900] text-4xl md:text-5xl tracking-tight text-black mb-12">
+        <h1 className="font-[var(--font-body)] font-[900] text-4xl md:text-5xl tracking-tight text-black mb-12">
           Politique de Confidentialité
         </h1>
 
         <div className="prose prose-lg max-w-none text-black/80 space-y-8">
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black mt-0">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black mt-0">
               1. Introduction
             </h2>
             <p>
@@ -38,7 +38,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               2. Responsable du traitement
             </h2>
             <p>
@@ -53,7 +53,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               3. Données collectées
             </h2>
             <p>
@@ -66,7 +66,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               4. Finalités du traitement
             </h2>
             <p>
@@ -81,7 +81,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               5. Base légale du traitement
             </h2>
             <p>
@@ -94,7 +94,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               6. Durée de conservation
             </h2>
             <p>
@@ -107,7 +107,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               7. Destinataires des données
             </h2>
             <p>
@@ -123,7 +123,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               8. Vos droits
             </h2>
             <p>
@@ -143,7 +143,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               9. Cookies
             </h2>
             <p>
@@ -159,7 +159,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               10. Sécurité
             </h2>
             <p>
@@ -168,7 +168,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               11. Réclamation
             </h2>
             <p>
@@ -177,7 +177,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="font-['Inter'] font-[900] text-xl tracking-tight text-black">
+            <h2 className="font-[var(--font-body)] font-[900] text-xl tracking-tight text-black">
               12. Modifications
             </h2>
             <p>

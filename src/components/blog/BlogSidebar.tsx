@@ -1,9 +1,10 @@
 "use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowUpRight, Calendar, Tag } from 'lucide-react';
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowUpRightIcon } from "@/components/icons";
+import { Calendar, Tag } from "lucide-react";
 
 interface RelatedPost {
   slug: string;
@@ -26,49 +27,48 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
 
   return (
     <aside className="sticky top-24 w-full flex flex-col gap-8">
-      {/* PREMIUM CTA SECTION */}
-      <motion.div 
+      {/* CTA - Style gradient home avec btn-primary */}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative group overflow-hidden rounded-[1rem] p-6 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] border border-white/10 shadow-2xl"
+        className="relative group overflow-hidden rounded-none p-6 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] border border-white/10"
       >
         {/* Carbon Texture Overlay */}
         <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('/carbon-fibre.png')]" />
-        
-        {/* Shine Effect */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         <div className="relative z-10 flex flex-col gap-4">
-          <div className="flex flex-col gap-1">
-            <span className="font-['Inter'] text-[10px] tracking-[0.2em] text-neutral-400 font-medium">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#D4FD00] opacity-50" />
+              <span className="relative inline-flex rounded-none h-2 w-2 bg-[#D4FD00]" />
+            </span>
+            <span className="text-[10px] font-light tracking-[0.12em] text-white/60">
               Accès Privé
             </span>
-            <h3 className="font-['Inter'] font-[900] text-xl leading-[0.9] text-white tracking-tighter">
-              Propulsez votre <br /> vision créative
-            </h3>
           </div>
-          
-          <p className="font-['Inter'] text-xs text-neutral-300 leading-relaxed max-w-[220px]">
+          <h3 className="font-heading font-normal text-xl leading-[0.9] text-white tracking-tight">
+            Propulsez votre vision créative
+          </h3>
+          <p className="font-[var(--font-body)] text-xs text-white/60 leading-relaxed max-w-[220px]">
             Rejoignez notre écosystème exclusif pour des ressources et insights premium hebdomadaires.
           </p>
 
-          <Link 
+          <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 bg-white px-5 py-2.5 rounded-full text-[10px] font-['Inter'] font-[900] tracking-widest text-black hover:bg-neutral-200 transition-all duration-300 group/btn"
+            className="btn btn-primary group"
           >
-            S'inscrire 
-            <ArrowUpRight className="w-3 h-3 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+            S'inscrire <ArrowUpRightIcon size={14} className="group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
       </motion.div>
 
-      {/* RELATED ARTICLES SECTION */}
+      {/* RELATED ARTICLES */}
       <div className="flex flex-col gap-5">
         <div className="flex items-center gap-3">
-          <h4 className="font-['Inter'] font-[900] text-[11px] tracking-[0.25em] text-neutral-400">
+          <span className="text-[10px] font-light tracking-[0.12em] text-black/50">
             Articles Similaires
-          </h4>
-          <div className="h-[1px] flex-1 bg-neutral-200" />
+          </span>
+          <div className="h-[1px] flex-1 bg-black/10" />
         </div>
 
         <div className="flex flex-col gap-6">
@@ -80,23 +80,25 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link 
-                  href={`/blog/${post.slug}`} 
+                <Link
+                  href={`/blog/${post.slug}`}
                   className="group flex gap-4 items-start"
                 >
-                  <div className="relative flex-shrink-0 w-16 h-16 overflow-hidden rounded-lg bg-neutral-200 border border-neutral-100">
-                    {post.featuredImage && (
+                  <div className="relative flex-shrink-0 w-16 h-16 overflow-hidden rounded-none bg-[#F2F2F2] border border-black/5">
+                    {post.featuredImage ? (
                       <Image
                         src={post.featuredImage}
                         alt={post.title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-zinc-700 to-zinc-900" />
                     )}
                   </div>
-                  
-                  <div className="flex flex-col gap-1.5 pt-1">
-                    <div className="flex items-center gap-2 text-[9px] font-['Inter'] font-semibold tracking-wider text-neutral-400">
+
+                  <div className="flex flex-col gap-1.5 pt-1 flex-1 min-w-0">
+                    <div className="flex items-center gap-2 text-[9px] font-bold tracking-wider text-black/40">
                       <span className="flex items-center gap-1">
                         <Tag className="w-2.5 h-2.5" />
                         {post.category}
@@ -107,8 +109,8 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
                         {post.date}
                       </span>
                     </div>
-                    
-                    <h5 className="font-['Inter'] font-bold text-sm leading-snug text-neutral-900 group-hover:text-black transition-colors line-clamp-2">
+
+                    <h5 className="font-[var(--font-body)] font-bold text-sm leading-snug text-black group-hover:text-black/70 transition-colors line-clamp-2">
                       {post.title}
                     </h5>
                   </div>
@@ -116,7 +118,7 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
               </motion.div>
             ))
           ) : (
-            <p className="font-['Inter'] text-xs text-neutral-500 italic">
+            <p className="font-[var(--font-body)] text-xs text-black/40 italic">
               Aucun article similaire trouvé.
             </p>
           )}

@@ -75,6 +75,8 @@ tags: ["tag1", "tag2"]
 Contenu de l'article en Markdown...
 ```
 
+**Publication automatique (générateur externe)** : un générateur d’articles peut publier via l’API `POST /api/blog/publish`. Authentification par clé (`BLOG_PUBLISH_API_KEY`), création du fichier MDX dans le dépôt via GitHub API puis redéploiement. Variables d’environnement et contrat détaillé : voir [`env.example`](env.example) et [`docs/blog-publish-api.md`](docs/blog-publish-api.md).
+
 ### Ajouter une Page Service
 
 1. Créer un fichier `.mdx` dans `content/pages/services/`

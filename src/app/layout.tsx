@@ -1,27 +1,18 @@
 import type { Metadata } from "next";
-import { Roboto, Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CallWidget } from "@/components/CallWidget";
 import { MotionProvider } from "@/components/MotionProvider";
+import SmoothScroller from "@/components/SmoothScroller";
 import { allCaseStudies } from "contentlayer/generated";
 
-// Optimisation: seulement 2 polices au lieu de 4
-// Roboto pour les titres, Inter pour le corps
-const roboto = Roboto({
-  variable: "--font-roboto",
+// DM Sans pour titres et corps
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-  display: "swap",
-  preload: true,
-  adjustFontFallback: true,
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
   preload: true,
   adjustFontFallback: true,
@@ -30,20 +21,20 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://by-vizion.com"),
   title: {
-    default: "Agence Marketing Toulouse | Vizion - Marketing Stratégique",
-    template: "%s | Vizion - Agence Marketing Toulouse",
+    default: "Agence Marketing Produit B2B Toulouse | Vizion",
+    template: "%s | Vizion - Agence Marketing Produit B2B Toulouse",
   },
   description:
-    "Agence marketing à Toulouse. Vizion vous aide à vendre plus : stratégie commerciale, acquisition clients, outils sur mesure. +70 entreprises accompagnées depuis 2021.",
+    "Agence de marketing produit B2B à Toulouse. Vizion vous aide à clarifier, packager et vendre votre offre. Positionnement, messaging, tunnel de vente aligné. +70 entreprises accompagnées depuis 2021.",
   keywords: [
+    "agence marketing produit B2B Toulouse",
+    "marketing produit Toulouse",
     "agence marketing Toulouse",
-    "agence marketing stratégique Toulouse",
-    "marketing Toulouse",
-    "agence growth Toulouse",
-    "stratégie commerciale Toulouse",
-    "acquisition clients Toulouse",
-    "agence digitale Toulouse",
-    "consultant marketing Toulouse",
+    "positionnement produit Toulouse",
+    "sales enablement Toulouse",
+    "go-to-market Toulouse",
+    "notoriété LinkedIn Toulouse",
+    "accompagnement marketing B2B Toulouse",
   ],
   authors: [{ name: "Vizion" }],
   openGraph: {
@@ -83,13 +74,15 @@ export default function RootLayout({
 
   return (
     <html lang="fr">
-      <body className={`${roboto.variable} ${inter.variable} antialiased`}>
-        <MotionProvider>
-          <Header caseStudies={caseStudiesForNav} />
-          <main>{children}</main>
-          <Footer />
-          <CallWidget />
-        </MotionProvider>
+      <body className={`${dmSans.variable} antialiased`} suppressHydrationWarning>
+        <SmoothScroller>
+          <MotionProvider>
+            <Header caseStudies={caseStudiesForNav} />
+            <main>{children}</main>
+            <Footer />
+            <CallWidget />
+          </MotionProvider>
+        </SmoothScroller>
       </body>
     </html>
   );

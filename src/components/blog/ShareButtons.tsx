@@ -26,7 +26,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
 
   return (
     <div className="mt-16 pt-8 border-t border-zinc-100 flex items-center justify-between">
-      <span className="text-[11px] font-medium tracking-[1.65px] text-zinc-400">
+      <span className="surtitre text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-black/50">
         Partager cet article
       </span>
       <div className="flex gap-4">
@@ -34,7 +34,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
           href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 hover:bg-zinc-100 rounded-full transition-colors"
+          className="p-2 hover:bg-zinc-100 rounded-none transition-colors"
           aria-label="Partager sur Twitter"
         >
           <svg
@@ -49,7 +49,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
           href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 hover:bg-zinc-100 rounded-full transition-colors"
+          className="p-2 hover:bg-zinc-100 rounded-none transition-colors"
           aria-label="Partager sur LinkedIn"
         >
           <svg
@@ -62,7 +62,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
         </a>
         <button
           onClick={handleShare}
-          className="p-2 hover:bg-zinc-100 rounded-full transition-colors"
+          className="p-2 hover:bg-zinc-100 rounded-none transition-colors"
           aria-label="Copier le lien"
         >
           <Share2 size={18} className="text-zinc-600" />

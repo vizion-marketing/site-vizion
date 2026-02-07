@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 
 // Schema pour les pages vitrine (accueil, services, cas clients)
 export const Page = defineDocumentType(() => ({
@@ -452,6 +453,6 @@ export default makeSource({
   disableImportAliasWarning: true,
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
+    rehypePlugins: [rehypeSlug],
   },
 });

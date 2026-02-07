@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowRight,
   ChevronRight,
   Filter,
   X,
@@ -14,6 +13,7 @@ import {
 } from "lucide-react";
 import { CaseStudy } from "contentlayer/generated";
 import { ImagePlaceholder } from "@/components/ui";
+import { ArrowUpRightIcon } from "@/components/icons";
 import { fadeInUp, staggerContainer, cardVariant } from "@/lib/animations";
 import { sectors, sectorIconMap } from "@/lib/sectorIcons";
 
@@ -31,7 +31,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
     : caseStudies.filter(cs => cs.sector === selectedSector);
 
   return (
-    <main className="min-h-screen bg-white font-['Inter']">
+    <main className="min-h-screen bg-white font-[var(--font-body)]">
       
       {/* HERO SECTION */}
       <section className="relative pt-[120px] pb-[80px] md:pt-[140px] md:pb-[100px] px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] overflow-hidden">
@@ -49,15 +49,15 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
             >
               <div className="flex items-center gap-2 mb-6">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EEFF41] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#EEFF41]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#D4FD00] opacity-75"></span>
+                  <span className="relative inline-flex rounded-none h-2 w-2 bg-[#D4FD00]"></span>
                 </span>
-                <span className="text-[10px] font-bold tracking-[0.1em] text-white/60">
+                <span className="text-[10px] font-light tracking-[0.12em] text-white/60">
                   +70 entreprises accompagnées
                 </span>
               </div>
               
-              <h1 className="font-['Inter'] font-[900] text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-tight text-white mb-6">
+              <h1 className="font-[var(--font-body)] font-[900] text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-tight text-white mb-6">
                 NOS CAS <span className="text-white/40">CLIENTS</span>
               </h1>
               
@@ -69,7 +69,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                 {["Franchise", "SaaS B2B", "Services B2B", "Industrie B2B", "Business Local"].map((sector) => (
                   <span 
                     key={sector}
-                    className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-[11px] font-medium text-white/80"
+                    className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-none text-[11px] font-medium text-white/80"
                   >
                     {sector}
                   </span>
@@ -96,7 +96,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + idx * 0.1 }}
-                    className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 text-center"
+                    className="bg-white/10 backdrop-blur-md rounded-none p-5 border border-white/20 text-center"
                   >
                     <span className="text-3xl md:text-4xl font-black text-white block mb-1">
                       {stat.value}
@@ -128,7 +128,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
               
               <Link 
                 href={featuredCase.url}
-                className="block bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group"
+                className="block bg-white rounded-none overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   {/* Image placeholder */}
@@ -137,20 +137,20 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                       width={700}
                       height={400}
                       label={`Visuel cas client ${featuredCase.company}`}
-                      rounded="sm"
+                      rounded="none"
                       variant="dark"
                       className="w-full h-full absolute inset-0"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
                     <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-between z-10">
                       <div>
-                        <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-[10px] font-bold tracking-widest text-white">
-                          <Star size={12} className="fill-[#EEFF41] text-[#EEFF41]" />
+                        <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-none border border-white/20 text-[10px] font-bold tracking-widest text-white">
+                          <Star size={12} className="fill-[#D4FD00] text-[#D4FD00]" />
                           {featuredCase.sector}
                         </span>
                       </div>
                       <div>
-                        <span className="font-['Inter'] font-black text-4xl lg:text-5xl text-white">
+                        <span className="font-[var(--font-body)] font-black text-4xl lg:text-5xl text-white">
                           {featuredCase.company}
                         </span>
                       </div>
@@ -160,7 +160,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                   {/* Content */}
                   <div className="p-8 lg:p-12 flex flex-col justify-between">
                     <div>
-                      <h2 className="font-['Inter'] font-black text-2xl lg:text-3xl tracking-tight text-black mb-4 group-hover:text-neutral-600 transition-colors">
+                      <h2 className="font-[var(--font-body)] font-black text-2xl lg:text-3xl tracking-tight text-black mb-4 group-hover:text-neutral-600 transition-colors">
                         {featuredCase.title}
                       </h2>
                       <p className="text-neutral-600 text-base leading-relaxed mb-6">
@@ -179,7 +179,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                       </div>
                       
                       <span className="inline-flex items-center gap-2 text-sm font-bold tracking-wider text-black group-hover:gap-3 transition-all">
-                        Découvrir ce cas <ArrowRight size={16} />
+                        Découvrir ce cas <ArrowUpRightIcon size={16} />
                       </span>
                     </div>
                   </div>
@@ -207,7 +207,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                 <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold block mb-2">
                   Toutes nos études de cas
                 </span>
-                <h2 className="font-['Inter'] font-black text-3xl md:text-4xl tracking-tight text-black">
+                <h2 className="font-[var(--font-body)] font-black text-3xl md:text-4xl tracking-tight text-black">
                   Des résultats <span className="text-[#B7B7B7]">mesurables</span>
                 </h2>
               </div>
@@ -228,7 +228,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                     key={sector.id}
                     onClick={() => setSelectedSector(sector.id)}
                     className={`
-                      inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300
+                      inline-flex items-center gap-2 px-4 py-2.5 rounded-none text-sm font-medium transition-all duration-300
                       ${isActive 
                         ? 'bg-black text-white shadow-lg' 
                         : 'bg-[#F2F2F2] text-neutral-600 hover:bg-neutral-200'
@@ -266,7 +266,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                   >
                     <Link
                       href={caseStudy.url}
-                      className="block bg-white border border-neutral-100 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
+                      className="block bg-white border border-neutral-100 rounded-none overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
                     >
                       {/* Card Image */}
                       <div className="relative">
@@ -274,7 +274,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                           width={400}
                           height={200}
                           label={`Visuel ${caseStudy.company}`}
-                          rounded="sm"
+                          rounded="none"
                           className="w-full"
                         />
                       </div>
@@ -291,7 +291,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                             </span>
                           </div>
                           {caseStudy.featured && (
-                            <Star size={14} className="fill-[#EEFF41] text-[#EEFF41]" />
+                            <Star size={14} className="fill-[#D4FD00] text-[#D4FD00]" />
                           )}
                         </div>
                         
@@ -299,7 +299,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                           {caseStudy.company}
                         </span>
                         
-                        <h3 className="font-['Inter'] font-black text-lg tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2 min-h-[56px]">
+                        <h3 className="font-[var(--font-body)] font-black text-lg tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2 min-h-[56px]">
                           {caseStudy.title}
                         </h3>
                         
@@ -347,10 +347,10 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
               animate={{ opacity: 1 }}
               className="text-center py-16"
             >
-              <div className="w-16 h-16 bg-[#F2F2F2] rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#F2F2F2] rounded-none flex items-center justify-center mx-auto mb-4">
                 <Filter size={24} className="text-neutral-400" />
               </div>
-              <h3 className="font-['Inter'] font-black text-xl text-black mb-2">
+              <h3 className="font-[var(--font-body)] font-black text-xl text-black mb-2">
                 Aucun cas client
               </h3>
               <p className="text-neutral-500 mb-4">
@@ -374,31 +374,25 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-3xl p-8 md:p-16 text-center relative overflow-hidden"
+            className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-none p-8 md:p-16 text-center relative overflow-hidden"
           >
             <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
             
             <div className="relative z-10">
-              <h2 className="font-['Inter'] font-[900] text-[32px] md:text-[48px] leading-[1.1] tracking-tight mb-6 text-white">
+              <h2 className="font-[var(--font-body)] font-[900] text-[32px] md:text-[48px] leading-[1.1] tracking-tight mb-6 text-white">
                 Écrivons ensemble <br />
                 <span className="text-white/50">votre success story</span>
               </h2>
               
-              <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-['Inter']">
+              <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-[var(--font-body)]">
                 Chaque entreprise mérite une stratégie sur-mesure. Discutons de vos enjeux et définissons ensemble le chemin vers vos objectifs.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/contact" 
-                  className="h-[56px] px-8 text-[15px] font-bold flex items-center justify-center gap-2 bg-white text-black hover:bg-white/90 rounded-2xl transition-all"
-                >
-                  Démarrer un projet <ArrowRight size={16} />
+                <Link href="/contact" className="btn btn-primary group">
+                  Démarrer un projet <ArrowUpRightIcon size={16} className="group-hover:translate-x-0.5 transition-transform" />
                 </Link>
-                <Link 
-                  href="/services" 
-                  className="h-[56px] px-8 text-[15px] font-bold flex items-center justify-center border-2 border-white/20 text-white hover:bg-white/10 rounded-2xl transition-all"
-                >
+                <Link href="/services" className="btn btn-secondary">
                   Découvrir nos services
                 </Link>
               </div>

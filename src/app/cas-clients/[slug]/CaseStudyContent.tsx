@@ -3,9 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowUpRightIcon } from "@/components/icons";
 import {
   ArrowLeft,
-  ArrowRight,
   CheckCircle2,
   Quote,
   Clock,
@@ -59,13 +59,13 @@ function TrendIcon({ trend }: { trend: string }) {
 // MDX Components
 const mdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className="font-['Inter'] font-black text-2xl md:text-3xl tracking-tight text-black mt-16 mb-6 scroll-mt-24" {...props} />
+    <h2 className="font-heading font-normal text-2xl md:text-3xl tracking-tight text-black mt-16 mb-6 scroll-mt-24" {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="font-['Inter'] font-black text-xl tracking-tight text-black mt-10 mb-4" {...props} />
+    <h3 className="font-heading font-normal text-xl tracking-tight text-black mt-10 mb-4" {...props} />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="text-neutral-600 text-lg leading-relaxed mb-6 font-['Inter']" {...props} />
+    <p className="text-neutral-600 text-lg leading-relaxed mb-6 font-[var(--font-body)]" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className="space-y-3 mb-6" {...props} />
@@ -74,14 +74,14 @@ const mdxComponents = {
     <ol className="space-y-3 mb-6 list-decimal list-inside" {...props} />
   ),
   li: ({ children, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="text-neutral-600 text-lg leading-relaxed font-['Inter'] flex items-start gap-3" {...props}>
-      <span className="w-1.5 h-1.5 bg-black rounded-full mt-3 shrink-0" />
+    <li className="text-neutral-600 text-lg leading-relaxed font-[var(--font-body)] flex items-start gap-3" {...props}>
+      <span className="w-1.5 h-1.5 bg-black rounded-none mt-3 shrink-0" />
       <span>{children}</span>
     </li>
   ),
   blockquote: ({ children, ...props }: React.HTMLAttributes<HTMLQuoteElement>) => (
-    <blockquote className="border-l-4 border-black pl-6 py-4 my-8 bg-neutral-50 rounded-r-lg" {...props}>
-      <p className="text-xl font-medium text-black italic font-['Inter']">{children}</p>
+    <blockquote className="border-l-4 border-black pl-6 py-4 my-8 bg-neutral-50 rounded-none" {...props}>
+      <p className="text-xl font-medium text-black italic font-[var(--font-body)]">{children}</p>
     </blockquote>
   ),
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
@@ -112,7 +112,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
   const SectorIcon = sectorIconMap[caseStudy.sectorIcon] || Building2;
 
   return (
-    <main className="min-h-screen bg-white font-['Inter']">
+    <main className="min-h-screen bg-white font-[var(--font-body)]">
       
       {/* HERO SECTION */}
       <section className="relative pt-[120px] pb-[60px] md:pt-[140px] md:pb-[80px] px-6 md:px-12 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] overflow-hidden">
@@ -143,7 +143,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
               className="lg:col-span-8"
             >
               {/* Sector badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-none border border-white/20 mb-6">
                 <SectorIcon size={14} className="text-white" />
                 <span className="text-[11px] font-bold tracking-widest text-white">
                   {caseStudy.sector}
@@ -151,7 +151,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
               </div>
 
               {/* Title */}
-              <h1 className="font-['Inter'] font-[900] text-[32px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tight text-white mb-6">
+              <h1 className="font-heading font-normal text-[32px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tight text-white mb-6">
                 {caseStudy.title}
               </h1>
 
@@ -188,7 +188,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
               transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
               className="lg:col-span-4 hidden lg:block"
             >
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+              <div className="bg-white/10 backdrop-blur-md rounded-none p-6 border border-white/20">
                 <span className="text-[10px] font-bold tracking-widest text-white/60 mb-4 block">
                   Résultats clés
                 </span>
@@ -252,9 +252,9 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   initial="initial"
                   whileInView="whileInView"
                   viewport={{ once: true }}
-                  className="bg-[#F2F2F2] rounded-2xl p-6"
+                  className="bg-[#F2F2F2] rounded-none p-6"
                 >
-                  <h3 className="font-['Inter'] font-black text-sm tracking-wider text-black mb-4">
+                  <h3 className="font-heading font-normal text-sm tracking-wider text-black mb-4">
                     Contexte
                   </h3>
                   <p className="text-neutral-600 text-sm leading-relaxed">
@@ -268,15 +268,15 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   initial="initial"
                   whileInView="whileInView"
                   viewport={{ once: true }}
-                  className="bg-white border border-neutral-100 rounded-2xl p-6 shadow-sm"
+                  className="bg-white border border-neutral-100 rounded-none p-6 shadow-sm"
                 >
-                  <h3 className="font-['Inter'] font-black text-sm tracking-wider text-black mb-4">
+                  <h3 className="font-heading font-normal text-sm tracking-wider text-black mb-4">
                     Défis identifiés
                   </h3>
                   <ul className="space-y-3">
                     {caseStudy.challenges.map((challenge: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-3 text-sm text-neutral-600">
-                        <span className="w-5 h-5 bg-black text-white rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
+                        <span className="w-5 h-5 bg-black text-white rounded-none flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
                           {idx + 1}
                         </span>
                         {challenge}
@@ -292,11 +292,11 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                     initial="initial"
                     whileInView="whileInView"
                     viewport={{ once: true }}
-                    className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-2xl p-6 relative overflow-hidden"
+                    className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-none p-6 relative overflow-hidden"
                   >
                     <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
                     <div className="relative z-10">
-                      <h3 className="font-['Inter'] font-black text-sm tracking-wider text-white mb-4">
+                      <h3 className="font-heading font-normal text-sm tracking-wider text-white mb-4">
                         Livrables clés
                       </h3>
                       <ul className="space-y-4">
@@ -304,7 +304,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                           const IconComponent = iconMap[deliverable.icon] || FileText;
                           return (
                             <li key={idx} className="flex items-start gap-3">
-                              <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
+                              <div className="w-8 h-8 bg-white/10 rounded-none flex items-center justify-center shrink-0">
                                 <IconComponent size={16} className="text-white" />
                               </div>
                               <div>
@@ -332,7 +332,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                 viewport={{ once: true }}
                 className="mb-16"
               >
-                <h2 className="font-['Inter'] font-black text-2xl md:text-3xl tracking-tight text-black mb-8">
+                <h2 className="font-heading font-normal text-2xl md:text-3xl tracking-tight text-black mb-8">
                   Notre Approche
                 </h2>
                 <div className="space-y-6">
@@ -343,14 +343,14 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
-                      className="bg-white border border-neutral-100 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group"
+                      className="bg-white border border-neutral-100 rounded-none p-6 hover:shadow-lg transition-all duration-300 group"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-black text-white rounded-xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                        <div className="w-12 h-12 bg-black text-white rounded-none flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                           <span className="text-sm font-black">{phase.phase.replace("Phase ", "")}</span>
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-['Inter'] font-black text-lg tracking-tight text-black mb-2">
+                          <h3 className="font-heading font-normal text-lg tracking-tight text-black mb-2">
                             {phase.title}
                           </h3>
                           <p className="text-neutral-600 text-sm leading-relaxed mb-4">
@@ -360,7 +360,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                             {phase.deliverables.map((del: string, dIdx: number) => (
                               <span 
                                 key={dIdx}
-                                className="inline-flex items-center gap-1 px-3 py-1 bg-[#F2F2F2] text-[11px] font-medium text-neutral-600 rounded-full"
+                                className="inline-flex items-center gap-1 px-3 py-1 bg-[#F2F2F2] text-[11px] font-medium text-neutral-600 rounded-none"
                               >
                                 <CheckCircle2 size={12} className="text-black" />
                                 {del}
@@ -386,9 +386,9 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   initial="initial"
                   whileInView="whileInView"
                   viewport={{ once: true }}
-                  className="mt-16 p-8 bg-[#F2F2F2] rounded-2xl"
+                  className="mt-16 p-8 bg-[#F2F2F2] rounded-none"
                 >
-                  <h3 className="font-['Inter'] font-black text-xl tracking-tight text-black mb-4">
+                  <h3 className="font-heading font-normal text-xl tracking-tight text-black mb-4">
                     Impact & ROI
                   </h3>
                   <p className="text-neutral-600 text-lg leading-relaxed">
@@ -410,7 +410,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
-              className="bg-white rounded-3xl p-8 md:p-12 lg:p-16 shadow-xl relative overflow-hidden"
+              className="bg-white rounded-none p-8 md:p-12 lg:p-16 shadow-xl relative overflow-hidden"
             >
               <Quote className="absolute top-8 right-8 w-24 h-24 text-neutral-100 -rotate-12 pointer-events-none" />
               
@@ -421,12 +421,12 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   ))}
                 </div>
                 
-                <blockquote className="font-['Inter'] text-xl md:text-2xl lg:text-3xl font-medium text-black leading-relaxed mb-8 italic">
+                <blockquote className="font-[var(--font-body)] text-xl md:text-2xl lg:text-3xl font-medium text-black leading-relaxed mb-8 italic">
                   "{caseStudy.testimonial.quote}"
                 </blockquote>
                 
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-xl bg-[#F2F2F2] overflow-hidden">
+                  <div className="w-16 h-16 rounded-none bg-[#F2F2F2] overflow-hidden">
                     {caseStudy.testimonial.photo ? (
                       <Image
                         src={caseStudy.testimonial.photo}
@@ -442,7 +442,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                     )}
                   </div>
                   <div>
-                    <h4 className="font-['Inter'] font-black text-lg tracking-tight text-black">
+                    <h4 className="font-heading font-normal text-lg tracking-tight text-black">
                       {caseStudy.testimonial.author}
                     </h4>
                     <p className="text-neutral-500 text-sm">
@@ -465,7 +465,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                 <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold block mb-2">
                   Autres cas clients
                 </span>
-                <h2 className="font-['Inter'] font-black text-3xl md:text-4xl tracking-tight text-black">
+                <h2 className="font-heading font-normal text-3xl md:text-4xl tracking-tight text-black">
                   Découvrez d'autres succès
                 </h2>
               </div>
@@ -473,7 +473,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                 href="/cas-clients"
                 className="hidden md:flex items-center gap-2 text-sm font-bold text-black hover:gap-3 transition-all"
               >
-                Voir tous les cas <ArrowRight size={16} />
+                Voir tous les cas <ArrowUpRightIcon size={16} />
               </Link>
             </div>
 
@@ -490,10 +490,10 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   <motion.div key={idx} variants={fadeInUp}>
                     <Link 
                       href={relatedCase.url}
-                      className="block bg-white border border-neutral-100 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
+                      className="block bg-white border border-neutral-100 rounded-none p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
                     >
                       <div className="flex items-center gap-2 mb-4">
-                        <div className="w-8 h-8 bg-[#F2F2F2] rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-[#F2F2F2] rounded-none flex items-center justify-center">
                           <RelatedSectorIcon size={16} className="text-black" />
                         </div>
                         <span className="text-[10px] font-bold tracking-widest text-neutral-400">
@@ -501,7 +501,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                         </span>
                       </div>
                       
-                      <h3 className="font-['Inter'] font-black text-lg tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2">
+                      <h3 className="font-heading font-normal text-lg tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2">
                         {relatedCase.title}
                       </h3>
                       
@@ -513,7 +513,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                         {relatedCase.metrics.slice(0, 2).map((metric: { value: string; label: string }, mIdx: number) => (
                           <span 
                             key={mIdx}
-                            className="px-2 py-1 bg-[#F2F2F2] text-[10px] font-bold text-black rounded"
+                            className="px-2 py-1 bg-[#F2F2F2] text-[10px] font-bold text-black rounded-none"
                           >
                             {metric.value} {metric.label}
                           </span>
@@ -534,7 +534,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                 href="/cas-clients"
                 className="inline-flex items-center gap-2 text-sm font-bold text-black"
               >
-                Voir tous les cas <ArrowRight size={16} />
+                Voir tous les cas <ArrowUpRightIcon size={16} />
               </Link>
             </div>
           </div>
@@ -548,33 +548,33 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-3xl p-8 md:p-16 text-center relative overflow-hidden"
+            className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] rounded-none p-8 md:p-16 text-center relative overflow-hidden"
           >
             <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
             
             <div className="relative z-10">
-              <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-[11px] font-bold tracking-widest text-white mb-6">
+              <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-none border border-white/20 text-[11px] font-bold tracking-widest text-white mb-6">
                 Vous avez un projet similaire ?
               </span>
               
-              <h2 className="font-['Inter'] font-[900] text-[32px] md:text-[48px] leading-[1.1] tracking-tight mb-6 text-white">
+              <h2 className="font-heading font-normal text-[32px] md:text-[48px] leading-[1.1] tracking-tight mb-6 text-white">
                 Discutons de vos enjeux
               </h2>
               
-              <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-['Inter']">
+              <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-[var(--font-body)]">
                 Chaque entreprise est unique. Prenons le temps d'échanger sur vos défis et de définir ensemble la meilleure approche.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
                   href="/contact" 
-                  className="h-[56px] px-8 text-[15px] font-bold flex items-center justify-center gap-2 bg-white text-black hover:bg-white/90 rounded-2xl transition-all"
+                  className="h-[56px] px-8 text-[15px] font-bold flex items-center justify-center gap-2 bg-white text-black hover:bg-white/90 rounded-none transition-all"
                 >
-                  Prendre rendez-vous <ArrowRight size={16} />
+                  Prendre rendez-vous <ArrowUpRightIcon size={16} />
                 </Link>
                 <Link 
                   href="/services" 
-                  className="h-[56px] px-8 text-[15px] font-bold flex items-center justify-center border-2 border-white/20 text-white hover:bg-white/10 rounded-2xl transition-all"
+                  className="h-[56px] px-8 text-[15px] font-bold flex items-center justify-center border-2 border-white/20 text-white hover:bg-white/10 rounded-none transition-all"
                 >
                   Découvrir nos services
                 </Link>
