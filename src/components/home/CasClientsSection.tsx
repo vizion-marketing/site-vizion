@@ -55,6 +55,108 @@ const CAS_CLIENTS = [
 
 const AUTO_SLIDE_INTERVAL = 6000;
 
+// Témoignages - Ajoutez facilement de nouveaux témoignages ici
+const TESTIMONIALS = [
+  {
+    id: 1,
+    quote: "Vizion a transformé notre approche commerciale. Nos cycles de vente ont été réduits de 40%.",
+    author: "Marie Dupont",
+    role: "Directrice Marketing",
+    company: "TechVision SAS",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150",
+  },
+  {
+    id: 2,
+    quote: "Le travail de positionnement nous a permis de nous différencier clairement de nos concurrents.",
+    author: "Jean-Pierre Martin",
+    role: "Directeur Général",
+    company: "IndustriePro",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150",
+  },
+  {
+    id: 3,
+    quote: "Vizion nous a aidé à clarifier notre proposition de valeur et à équiper nos commerciaux.",
+    author: "Sophie Bernard",
+    role: "CEO & Co-fondatrice",
+    company: "CloudScale",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150",
+  },
+  {
+    id: 4,
+    quote: "Une équipe réactive et des résultats concrets dès le premier trimestre.",
+    author: "Thomas Laurent",
+    role: "DG",
+    company: "IndusPro",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150",
+  },
+  {
+    id: 5,
+    quote: "Leur expertise en sales enablement a boosté notre taux de conversion de 65%.",
+    author: "Camille Rousseau",
+    role: "Head of Sales",
+    company: "DataFlow",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150",
+  },
+  {
+    id: 6,
+    quote: "Le meilleur investissement marketing que nous ayons fait cette année.",
+    author: "Pierre Lefebvre",
+    role: "CFO",
+    company: "FinanceHub",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150",
+  },
+  {
+    id: 7,
+    quote: "Vizion a su comprendre nos enjeux et proposer des solutions sur mesure.",
+    author: "Émilie Chen",
+    role: "CMO",
+    company: "StartupX",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150",
+  },
+  {
+    id: 8,
+    quote: "Notre site génère maintenant 3x plus de leads qualifiés qu'avant.",
+    author: "Julien Moreau",
+    role: "Fondateur",
+    company: "GrowthLab",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150",
+  },
+  {
+    id: 9,
+    quote: "Un accompagnement stratégique de haut niveau, pas juste de l'exécution.",
+    author: "Claire Petit",
+    role: "Directrice Commerciale",
+    company: "SalesForce FR",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150",
+  },
+];
+
+// Composant carte témoignage
+function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] }) {
+  return (
+    <div className="bg-white p-5 border border-[#1a1a1a]/5 hover:border-[#D4FD00]/50 transition-all duration-300">
+      <div className="flex items-start gap-3 mb-4">
+        <img
+          src={testimonial.avatar}
+          alt={testimonial.author}
+          className="w-10 h-10 object-cover"
+        />
+        <div>
+          <p className="font-heading font-semibold text-[14px] text-[#1a1a1a]">
+            {testimonial.author}
+          </p>
+          <p className="text-[12px] text-[#6b6b6b]">
+            {testimonial.role}, {testimonial.company}
+          </p>
+        </div>
+      </div>
+      <p className="text-[14px] text-[#1a1a1a]/80 font-[var(--font-body)] leading-relaxed">
+        "{testimonial.quote}"
+      </p>
+    </div>
+  );
+}
+
 export function CasClientsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -226,9 +328,56 @@ export function CasClientsSection() {
             className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:h-[520px]"
           >
             {/* Left - Text Content */}
-            <motion.div variants={itemVariants} className="lg:col-span-4 flex flex-col justify-between h-full bg-[#D4FD00] p-6 lg:p-8">
+            <motion.div variants={itemVariants} className="lg:col-span-4 relative flex flex-col justify-between h-full bg-[#D4FD00] p-6 lg:p-8 overflow-hidden">
+              {/* Black spray effect */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {/* Main spray disc - top right */}
+                <svg
+                  className="absolute top-[-15%] right-[-10%] w-[70%] h-[70%]"
+                  viewBox="0 0 200 200"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <filter id="spray1" x="-50%" y="-50%" width="200%" height="200%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise" />
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" xChannelSelector="R" yChannelSelector="G" />
+                      <feGaussianBlur stdDeviation="1" />
+                    </filter>
+                    <radialGradient id="sprayGrad1" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="black" stopOpacity="0.5" />
+                      <stop offset="40%" stopColor="black" stopOpacity="0.3" />
+                      <stop offset="70%" stopColor="black" stopOpacity="0.12" />
+                      <stop offset="100%" stopColor="black" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="100" cy="100" r="80" fill="url(#sprayGrad1)" filter="url(#spray1)" />
+                </svg>
+
+                {/* Secondary spray disc - bottom left */}
+                <svg
+                  className="absolute bottom-[-20%] left-[-15%] w-[60%] h-[60%]"
+                  viewBox="0 0 200 200"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <filter id="spray2" x="-50%" y="-50%" width="200%" height="200%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="4" result="noise" />
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+                      <feGaussianBlur stdDeviation="0.8" />
+                    </filter>
+                    <radialGradient id="sprayGrad2" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="black" stopOpacity="0.4" />
+                      <stop offset="50%" stopColor="black" stopOpacity="0.18" />
+                      <stop offset="100%" stopColor="black" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="100" cy="100" r="75" fill="url(#sprayGrad2)" filter="url(#spray2)" />
+                </svg>
+
+              </div>
+
               {/* Top - Title + Stat */}
-              <div>
+              <div className="relative z-10">
                 <h3 className="font-heading font-semibold text-[28px] sm:text-[36px] md:text-[44px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-6">
                   {currentCase.title}
                 </h3>
@@ -243,7 +392,7 @@ export function CasClientsSection() {
               </div>
 
               {/* Bottom - Sector, description, button */}
-              <div className="mt-auto">
+              <div className="relative z-10 mt-auto">
                 <div className="flex items-center gap-4 mb-4">
                   <span className="inline-block px-3 py-1.5 border border-[#1a1a1a] text-[#1a1a1a] text-[11px] font-medium tracking-wide uppercase">
                     {currentCase.sector}
@@ -329,33 +478,6 @@ export function CasClientsSection() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Thumbnail Navigation - Desktop */}
-        <div className="hidden lg:flex justify-center gap-4 mt-10">
-          {CAS_CLIENTS.map((cas, index) => (
-            <button
-              key={cas.id}
-              onClick={() => {
-                setCurrentIndex(index);
-                setProgress(0);
-              }}
-              className={`relative w-20 h-14 overflow-hidden transition-all duration-300 ${
-                index === currentIndex
-                  ? "ring-2 ring-[#D4FD00] ring-offset-2 scale-105"
-                  : "opacity-50 hover:opacity-80"
-              }`}
-            >
-              <img
-                src={cas.mainImage}
-                alt={cas.company}
-                className="w-full h-full object-cover"
-              />
-              {index === currentIndex && (
-                <div className="absolute inset-0 bg-[#D4FD00]/20" />
-              )}
-            </button>
-          ))}
-        </div>
-
         {/* Progress Dots - Mobile */}
         <div className="flex justify-center gap-2 mt-8 lg:hidden">
           {CAS_CLIENTS.map((_, index) => (
@@ -383,6 +505,58 @@ export function CasClientsSection() {
               <span className="text-[14px] text-[#6b6b6b] font-[var(--font-body)]">
                 {currentCase.stats.label}
               </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonials Marquee Section */}
+        <div className="mt-4">
+          {/* Three Columns Marquee */}
+          <div className="relative h-[500px] overflow-hidden">
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#fafafa] to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#fafafa] to-transparent z-10 pointer-events-none" />
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full">
+              {/* Column 1 - Scroll Up */}
+              <div className="relative overflow-hidden">
+                <motion.div
+                  animate={{ y: ["0%", "-50%"] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="flex flex-col gap-4"
+                >
+                  {[...TESTIMONIALS.slice(0, 3), ...TESTIMONIALS.slice(0, 3)].map((testimonial, idx) => (
+                    <TestimonialCard key={`col1-${testimonial.id}-${idx}`} testimonial={testimonial} />
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Column 2 - Scroll Down */}
+              <div className="relative overflow-hidden hidden md:block">
+                <motion.div
+                  initial={{ y: "-50%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+                  className="flex flex-col gap-4"
+                >
+                  {[...TESTIMONIALS.slice(3, 6), ...TESTIMONIALS.slice(3, 6)].map((testimonial, idx) => (
+                    <TestimonialCard key={`col2-${testimonial.id}-${idx}`} testimonial={testimonial} />
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Column 3 - Scroll Up */}
+              <div className="relative overflow-hidden hidden md:block">
+                <motion.div
+                  animate={{ y: ["0%", "-50%"] }}
+                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  className="flex flex-col gap-4"
+                >
+                  {[...TESTIMONIALS.slice(6, 9), ...TESTIMONIALS.slice(6, 9)].map((testimonial, idx) => (
+                    <TestimonialCard key={`col3-${testimonial.id}-${idx}`} testimonial={testimonial} />
+                  ))}
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>

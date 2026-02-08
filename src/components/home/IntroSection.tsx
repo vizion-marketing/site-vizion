@@ -1,34 +1,48 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-// Animation variants for staggered text reveal
+// Animation variants for staggered text reveal (petit à petit au scroll)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
+      staggerChildren: 0.22,
+      delayChildren: 0.05,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
 export function IntroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const textColor = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.85, 1],
+    ["#d2d2d2", "#8a8a8a", "#2a2a2a", "#1a1a1a"]
+  );
+
   return (
-    <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 overflow-hidden grain-overlay">
+    <section
+      ref={sectionRef}
+      className="relative py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 overflow-hidden grain-overlay"
+    >
       {/* Background base */}
       <div className="absolute inset-0 bg-[#f8f8f6]" />
 
@@ -61,7 +75,8 @@ export function IntroSection() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.12, margin: "0px 0px -80px 0px" }}
+            style={{ color: textColor }}
           >
             {/* Quote decorative element */}
             <motion.div variants={itemVariants} className="mb-6">
@@ -81,7 +96,7 @@ export function IntroSection() {
 
             <motion.h2
               variants={itemVariants}
-              className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-6 sm:mb-8"
+              className="font-heading font-medium text-[32px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.1] tracking-[-0.02em] mb-6 sm:mb-8"
             >
               Les meilleurs produits ne gagnent pas toujours.
               <br />
@@ -96,7 +111,7 @@ export function IntroSection() {
 
             <motion.div
               variants={itemVariants}
-              className="space-y-4 sm:space-y-5 text-[#6b6b6b] text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed"
+              className="space-y-4 sm:space-y-5 text-[16px] sm:text-base font-[var(--font-body)] leading-relaxed"
             >
               <p>
                 Votre produit est excellent. Vos clients satisfaits le confirment. Pourtant,
@@ -108,7 +123,7 @@ export function IntroSection() {
 
             <motion.div
               variants={itemVariants}
-              className="mt-4 sm:mt-5 text-[#6b6b6b] text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed"
+              className="mt-4 sm:mt-5 text-[16px] sm:text-base font-[var(--font-body)] leading-relaxed"
             >
               <p>
                 Dans un marché saturé, la clarté est devenue l'avantage concurrentiel ultime.
@@ -121,7 +136,7 @@ export function IntroSection() {
             <motion.div variants={itemVariants} className="mt-8 sm:mt-10">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[13px] sm:text-[14px] font-[var(--font-body)] font-semibold tracking-[-0.01em] bg-[#1a1a1a] text-white rounded-md hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
+                className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[14px] sm:text-[14px] font-[var(--font-body)] font-semibold tracking-[-0.01em] bg-[#1a1a1a] text-white rounded-md hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
               >
                 Clarifier mon offre
                 <ArrowUpRight size={16} />

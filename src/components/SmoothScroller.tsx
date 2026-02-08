@@ -33,7 +33,19 @@ export default function SmoothScroller({ children }: SmoothScrollerProps) {
 
     lenisRef.current = lenis;
 
-    // Connecter Lenis a GSAP ScrollTrigger
+    // ScrollTrigger doit utiliser la position de scroll de Lenis (scrollerProxy)
+    ScrollTrigger.scrollerProxy(document.body, {
+      scrollTop(value: number) {
+        if (arguments.length) {
+          lenis.scrollTo(value, { immediate: true });
+        }
+        return lenis.scroll;
+      },
+      getBoundingClientRect() {
+        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+      },
+    });
+
     lenis.on("scroll", ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
@@ -43,6 +55,7 @@ export default function SmoothScroller({ children }: SmoothScrollerProps) {
 
     // Cleanup
     return () => {
+      ScrollTrigger.scrollerProxy(document.body, {});
       lenis.destroy();
       lenisRef.current = null;
     };

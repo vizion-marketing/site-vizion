@@ -16,3 +16,4 @@ export { AIPioneersSection } from "./AIPioneersSection";
 export { LocalSEOSection } from "./LocalSEOSection";
 export { TestimonialsSection } from "./TestimonialsSection";
 export { FinalCTASection } from "./FinalCTASection";
+export { WhyVizionSection } from "./WhyVizionSection";

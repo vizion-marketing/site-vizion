@@ -1,562 +1,363 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Target, PenTool, TrendingUp, Presentation, Cog, ArrowRight, ChevronRight } from "lucide-react";
+import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Target, PenTool, TrendingUp, Presentation, Cog, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { homeContent } from "@/content/home";
-import { ArrowUpRightIcon } from "@/components/icons";
 
-const piliers = homeContent.piliers;
+gsap.registerPlugin(ScrollTrigger);
 
-const SERVICE_TITLES = [
-  "Product Marketing",
-  "Content Marketing",
-  "Growth Marketing",
-  "Sales Enablement",
-  "Marketing Automation",
+const { surtitre: piliersSurtitre, h2: piliersH2, description: piliersDescription } = homeContent.piliers;
+
+const SERVICES = [
+  {
+    id: 1,
+    title: "Product Marketing",
+    subtitle: "Positionnement & Message",
+    description: "Définissez un positionnement clair et une proposition de valeur qui résonne avec vos clients. Nous construisons l'architecture de message qui transforme votre offre en référence sur son marché.",
+    icon: Target,
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+    tags: ["Positionnement", "Messaging", "Go-to-Market"],
+    stat: "+45%",
+    statLabel: "conversion",
+  },
+  {
+    id: 2,
+    title: "Content Marketing",
+    subtitle: "Contenu & Acquisition",
+    description: "Créez du contenu qui attire, éduque et convertit vos prospects en clients. Des lead magnets aux articles de blog, nous produisons les assets qui génèrent des opportunités qualifiées.",
+    icon: PenTool,
+    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1200&q=80",
+    tags: ["SEO", "Lead Magnets", "Blog"],
+    stat: "3x",
+    statLabel: "trafic",
+  },
+  {
+    id: 3,
+    title: "Growth Marketing",
+    subtitle: "Acquisition & Croissance",
+    description: "Accélérez votre croissance avec des campagnes d'acquisition ciblées et mesurables. Paid ads, email marketing, automation — nous orchestrons les canaux qui génèrent des résultats.",
+    icon: TrendingUp,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+    tags: ["Paid Ads", "Email", "Automation"],
+    stat: "-40%",
+    statLabel: "CAC",
+  },
+  {
+    id: 4,
+    title: "Sales Enablement",
+    subtitle: "Outils & Performance",
+    description: "Équipez vos commerciaux avec les outils et contenus qui accélèrent le closing. Présentations, battle cards, objections — tout ce dont ils ont besoin pour convaincre.",
+    icon: Presentation,
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80",
+    tags: ["Pitch Decks", "Battle Cards", "Objections"],
+    stat: "+60%",
+    statLabel: "win rate",
+  },
+  {
+    id: 5,
+    title: "Automatisation",
+    subtitle: "CRM & Workflows",
+    description: "Automatisez vos processus marketing et commerciaux pour scaler sans friction. CRM, workflows, intégrations — nous construisons les systèmes qui libèrent votre temps.",
+    icon: Cog,
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80",
+    tags: ["HubSpot", "Zapier", "Intégrations"],
+    stat: "10h",
+    statLabel: "gagnées/sem",
+  },
 ];
 
-const SERVICE_ICONS = [Target, PenTool, TrendingUp, Presentation, Cog];
+interface ServiceSlideProps {
+  service: (typeof SERVICES)[0];
+  index: number;
+  total: number;
+  isFirst: boolean;
+  vertical?: boolean;
+}
 
-const SERVICE_IMAGES = [
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800",
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800",
-  "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800",
-  "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=800",
-];
-
-const SERVICE_DESCRIPTIONS = [
-  "Matrice de positionnement, proposition de valeur, messaging framework",
-  "Campagnes Meta, Google Ads, LinkedIn Ads, notoriété dirigeant",
-  "Sites produit, landing pages, SEO, copywriting de conversion",
-  "Pitch decks, battle cards, scripts d'appel, objection handling",
-  "Outils de qualification, séquences de relance, CRM & automatisations",
-];
-
-const SERVICE_SHORT_DESCRIPTIONS = [
-  "Positionnement & message",
-  "Acquisition & visibilité",
-  "Conversion & performance",
-  "Outils commerciaux",
-  "Process & automatisation",
-];
-
-const SERVICE_TAGS = [
-  ["Positionnement", "Messaging", "Persona"],
-  ["SEA", "Social Ads", "LinkedIn"],
-  ["Landing pages", "SEO", "Copywriting"],
-  ["Pitch deck", "Battle cards", "Scripts"],
-  ["CRM", "Workflows", "Intégrations"],
-];
-
-// Spring animation config
-const springConfig = {
-  type: "spring" as const,
-  stiffness: 300,
-  damping: 30,
-};
-
-// Auto-scroll interval in ms
-const AUTO_SCROLL_INTERVAL = 5000;
-
-export function ServicesSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [lockedIndex, setLockedIndex] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [progress, setProgress] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const progressRef = useRef<NodeJS.Timeout | null>(null);
-
-  const currentIndex = lockedIndex !== null ? lockedIndex : activeIndex;
-
-  // Auto-scroll logic
-  const goToNext = useCallback(() => {
-    const newIndex = currentIndex === piliers.piliers.length - 1 ? 0 : currentIndex + 1;
-    setActiveIndex(newIndex);
-    if (lockedIndex !== null) {
-      setLockedIndex(newIndex);
-    }
-    setProgress(0);
-  }, [currentIndex, lockedIndex]);
-
-  // Auto-scroll effect
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          goToNext();
-          return 0;
-        }
-        return prev + (100 / (AUTO_SCROLL_INTERVAL / 50));
-      });
-    }, 50);
-
-    progressRef.current = progressInterval;
-
-    return () => {
-      if (progressRef.current) {
-        clearInterval(progressRef.current);
-      }
-    };
-  }, [isAutoPlaying, goToNext]);
-
-  // Pause auto-scroll on interaction
-  const pauseAutoScroll = () => {
-    setIsAutoPlaying(false);
-    setProgress(0);
-  };
-
-  const resumeAutoScroll = () => {
-    setIsAutoPlaying(true);
-  };
-
-  const handleMouseEnter = (index: number) => {
-    pauseAutoScroll();
-    if (lockedIndex === null) {
-      setActiveIndex(index);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    resumeAutoScroll();
-  };
-
-  const handleClick = (index: number) => {
-    pauseAutoScroll();
-    if (lockedIndex === index) {
-      setLockedIndex(null);
-      resumeAutoScroll();
-    } else {
-      setLockedIndex(index);
-      setActiveIndex(index);
-    }
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMousePosition({ x, y });
-  };
-
-  // Icon animation variants
-  const iconVariants = {
-    initial: { scale: 0.8, rotate: -10, opacity: 0 },
-    animate: {
-      scale: 1,
-      rotate: 0,
-      opacity: 1,
-      transition: { ...springConfig, delay: 0.2 }
-    },
-  };
-
-  // Text animation variants
-  const textVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: { ...springConfig, delay: 0.1 }
-    },
-  };
-
-  const tagVariants = {
-    initial: { opacity: 0, scale: 0.8 },
-    animate: (i: number) => ({
-      opacity: 1,
-      scale: 1,
-      transition: { ...springConfig, delay: 0.3 + i * 0.05 }
-    }),
-  };
-
-  // Staggered card animation
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-        ease: [0, 0, 0.2, 1] as const
-      }
-    }),
-  };
+function ServiceSlide({ service, index, total, isFirst, vertical = false }: ServiceSlideProps) {
+  const Icon = service.icon;
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 lg:py-28 bg-white overflow-hidden">
-      <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-10 sm:mb-14 mx-auto text-center"
+    <div
+      className={
+        vertical
+          ? "w-full min-h-[80vh] py-16 sm:py-20"
+          : "flex-shrink-0 w-[100vw] h-full"
+      }
+    >
+      <div
+        className={`max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 flex items-center ${
+          vertical ? "" : "h-full"
+        }`}
+      >
+        <div
+          className={`w-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-stretch ${
+            vertical ? "" : "min-h-[100vh] lg:min-h-0"
+          }`}
         >
-          <div className="flex items-center justify-center gap-2.5 mb-4 sm:mb-5">
-            <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b]">
-              {piliers.surtitre}
-            </span>
+          {/* Image - 50vh mobile, 50% desktop (ou auto en vertical) */}
+          <div
+            className={`relative overflow-hidden ${
+              vertical
+                ? "min-h-[40vh] lg:min-h-[50vh]"
+                : "min-h-[50vh] lg:min-h-0 lg:h-[70vh]"
+            }`}
+          >
+            <img
+              src={service.image}
+              alt={service.title}
+              loading={isFirst ? "eager" : "lazy"}
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+            {/* Stat badge */}
+            <div className="absolute bottom-6 left-6 flex items-baseline gap-2">
+              <span className="text-[#D4FD00] font-heading font-bold text-4xl lg:text-5xl">
+                {service.stat}
+              </span>
+              <span className="text-white/80 text-base lg:text-lg">{service.statLabel}</span>
+            </div>
+
+            {/* Decorative corner */}
+            <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#D4FD00]" />
           </div>
 
-          <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4">
-            {piliers.h2}
-          </h2>
+          {/* Content - 50vh mobile */}
+          <div className="flex flex-col justify-center py-6 lg:py-0 min-h-[50vh] lg:min-h-0">
+            {/* Header with icon and counter */}
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 lg:w-14 lg:h-14 bg-[#D4FD00] flex items-center justify-center">
+                <Icon size={24} className="text-[#0c0c0a]" />
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#D4FD00]" />
+                <span className="text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
+                  {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                </span>
+              </div>
+            </div>
 
-          <p className="text-[#6b6b6b] text-base font-[var(--font-body)] leading-relaxed">
-            {piliers.description}
-          </p>
-        </motion.div>
+            {/* Subtitle */}
+            <p className="text-[#D4FD00] text-[12px] lg:text-[14px] font-medium tracking-wide uppercase mb-2">
+              {service.subtitle}
+            </p>
 
-        {/* Desktop Accordion */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="hidden lg:flex gap-2 h-[480px]"
-          onMouseLeave={handleMouseLeave}
-        >
-          {piliers.piliers.map((pilier, index) => {
-            const isActive = currentIndex === index;
-            const isLocked = lockedIndex === index;
-            const Icon = SERVICE_ICONS[index];
+            {/* Title */}
+            <h3 className="font-heading font-medium text-[28px] sm:text-[36px] lg:text-[48px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+              {service.title}
+            </h3>
 
-            return (
-              <motion.div
-                key={pilier.numero}
-                custom={index}
-                variants={cardVariants}
-                layout
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseMove={isActive ? handleMouseMove : undefined}
-                onClick={() => handleClick(index)}
-                className={`relative overflow-hidden rounded-lg cursor-pointer transition-shadow duration-300 ${
-                  isActive
-                    ? "flex-[4] shadow-2xl"
-                    : "flex-[0.6] bg-[#D4FD00] hover:bg-[#c9f000] shadow-lg hover:shadow-xl"
-                } ${isActive ? "border-2 border-[#D4FD00]" : "border border-black/10 hover:border-black/20"}`}
-                transition={springConfig}
-              >
-                {/* Background Image with Parallax + micro-animation */}
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 1.2, rotate: -2 }}
-                      animate={{ opacity: 1, scale: 1.1, rotate: 0 }}
-                      exit={{ opacity: 0, scale: 1.05 }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                      className="absolute inset-0"
-                      style={{
-                        transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px) scale(1.1)`,
-                      }}
-                    >
-                      <img
-                        src={SERVICE_IMAGES[index]}
-                        alt={SERVICE_TITLES[index]}
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+            {/* Description */}
+            <p className="text-[#6b6b6b] text-[14px] lg:text-[16px] leading-relaxed mb-6 max-w-lg">
+              {service.description}
+            </p>
 
-                {/* Gradient Overlay */}
-                {isActive && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"
-                  />
-                )}
-
-                {/* Content */}
-                <div className={`absolute inset-0 flex ${isActive ? "p-5 sm:p-6 flex-col justify-between" : "p-4 flex-col justify-between items-center"}`}>
-                  {isActive ? (
-                    <>
-                      {/* Top: Number + Lock */}
-                      <div className="flex justify-between items-start">
-                        <div className="flex items-center gap-2">
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={springConfig}
-                            className="w-10 h-10 rounded-none bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center"
-                          >
-                            <span className="text-white font-heading font-medium text-sm">
-                              {pilier.numero}
-                            </span>
-                          </motion.div>
-                          {isLocked && (
-                            <motion.div
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={springConfig}
-                              className="px-2 py-1 bg-[#D4FD00] rounded-none"
-                            >
-                              <span className="text-[10px] font-semibold text-black uppercase tracking-wide">Verrouillé</span>
-                            </motion.div>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Bottom: Glassmorphism Content */}
-                      <motion.div
-                        variants={textVariants}
-                        initial="initial"
-                        animate="animate"
-                        className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-4 sm:p-5"
-                      >
-                        <div className="flex items-start gap-4">
-                          <motion.div
-                            variants={iconVariants}
-                            initial="initial"
-                            animate="animate"
-                            className="w-10 h-10 rounded-md bg-[#D4FD00] flex items-center justify-center shrink-0"
-                          >
-                            <Icon size={20} className="text-black" />
-                          </motion.div>
-                          <div className="flex-1">
-                            <motion.h3
-                              variants={textVariants}
-                              initial="initial"
-                              animate="animate"
-                              className="font-heading font-semibold text-[20px] sm:text-[24px] leading-[1.1] tracking-[-0.02em] mb-2"
-                              style={{ color: "#ffffff" }}
-                            >
-                              {SERVICE_TITLES[index]}
-                            </motion.h3>
-
-                            <motion.p
-                              variants={textVariants}
-                              initial="initial"
-                              animate="animate"
-                              className="text-white text-[12px] sm:text-[13px] font-[var(--font-body)] leading-relaxed mb-3"
-                            >
-                              {SERVICE_DESCRIPTIONS[index]}
-                            </motion.p>
-
-                            {/* Tags */}
-                            <div className="flex flex-wrap gap-1.5 mb-4">
-                              {SERVICE_TAGS[index].map((tag, i) => (
-                                <motion.span
-                                  key={tag}
-                                  custom={i}
-                                  variants={tagVariants}
-                                  initial="initial"
-                                  animate="animate"
-                                  className="px-2 py-0.5 bg-black/20 border border-white/10 rounded-none text-[10px] text-white/80 font-medium"
-                                >
-                                  {tag}
-                                </motion.span>
-                              ))}
-                            </div>
-
-                            {/* CTA */}
-                            <motion.div
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.4 }}
-                            >
-                              <Link
-                                href="/services"
-                                className="inline-flex items-center gap-2 text-[12px] sm:text-[13px] font-semibold text-[#D4FD00] hover:text-white transition-colors group"
-                              >
-                                Nos services {SERVICE_TITLES[index]}
-                                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                              </Link>
-                            </motion.div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </>
-                  ) : (
-                    /* Collapsed - with icon */
-                    <>
-                      {/* Top: Number */}
-                      <div className="w-8 h-8 rounded-none bg-black/10 flex items-center justify-center">
-                        <span className="text-black/70 font-heading font-medium text-xs">
-                          {pilier.numero}
-                        </span>
-                      </div>
-
-                      {/* Bottom: Icon + Title */}
-                      <div className="flex flex-col items-center gap-3">
-                        {/* Icon in collapsed state */}
-                        <motion.div
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                          className="w-8 h-8 rounded-md bg-black/10 flex items-center justify-center"
-                        >
-                          <Icon size={16} className="text-black/70" />
-                        </motion.div>
-
-                        <div className="flex flex-col items-center gap-1 [writing-mode:vertical-rl] rotate-180">
-                          <h3 className="font-heading font-semibold text-[14px] sm:text-[16px] text-black tracking-[-0.01em]">
-                            {SERVICE_TITLES[index]}
-                          </h3>
-                          <span className="text-[11px] sm:text-[12px] text-black/60 font-[var(--font-body)]">
-                            {SERVICE_SHORT_DESCRIPTIONS[index]}
-                          </span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {/* Mobile & Tablet Accordion */}
-        <div className="lg:hidden flex flex-col gap-2">
-          {piliers.piliers.map((pilier, index) => {
-            const isOpen = currentIndex === index;
-            const Icon = SERVICE_ICONS[index];
-
-            return (
-              <motion.div
-                key={pilier.numero}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="rounded-lg overflow-hidden"
-              >
-                {/* Accordion Header */}
-                <button
-                  onClick={() => {
-                    pauseAutoScroll();
-                    if (currentIndex === index) {
-                      setActiveIndex(-1);
-                      setLockedIndex(null);
-                    } else {
-                      setActiveIndex(index);
-                      setLockedIndex(index);
-                    }
-                  }}
-                  className={`w-full flex items-center gap-3 p-4 transition-colors ${
-                    isOpen
-                      ? "bg-[#1a1a1a] text-white"
-                      : "bg-[#D4FD00] text-black hover:bg-[#c9f000]"
-                  }`}
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {service.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1.5 bg-[#f5f5f5] text-[#1a1a1a] text-[11px] lg:text-[12px] font-medium"
                 >
-                  <div className={`w-8 h-8 rounded-md flex items-center justify-center shrink-0 ${
-                    isOpen ? "bg-[#D4FD00]" : "bg-black/10"
-                  }`}>
-                    <Icon size={16} className={isOpen ? "text-black" : "text-black/70"} />
-                  </div>
-                  <div className="flex-1 text-left">
-                    <h3
-                      className="font-heading font-semibold text-[15px] sm:text-[16px] leading-tight"
-                      style={{ color: isOpen ? "#ffffff" : "#000000" }}
-                    >
-                      {SERVICE_TITLES[index]}
-                    </h3>
-                    <span className={`text-[11px] sm:text-[12px] ${isOpen ? "text-white/60" : "text-black/60"}`}>
-                      {SERVICE_SHORT_DESCRIPTIONS[index]}
-                    </span>
-                  </div>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 90 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="shrink-0"
-                  >
-                    <ArrowUpRightIcon
-                      size={16}
-                      className={isOpen ? "text-[#D4FD00]" : "text-black/70"}
-                    />
-                  </motion.div>
-                </button>
+                  {tag}
+                </span>
+              ))}
+            </div>
 
-                {/* Accordion Content */}
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="relative h-[280px] sm:h-[320px]">
-                        {/* Background Image */}
-                        <img
-                          src={SERVICE_IMAGES[index]}
-                          alt={SERVICE_TITLES[index]}
-                          className="absolute inset-0 w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
-
-                        {/* Content */}
-                        <div className="absolute inset-0 p-4 flex flex-col justify-end">
-                          <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                          >
-                            <p className="text-[12px] sm:text-[13px] font-[var(--font-body)] leading-relaxed mb-3" style={{ color: "#ffffff" }}>
-                              {SERVICE_DESCRIPTIONS[index]}
-                            </p>
-                            <div className="flex flex-wrap gap-1.5 mb-3">
-                              {SERVICE_TAGS[index].map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="px-2 py-0.5 bg-black/30 border border-white/10 rounded-none text-[10px] text-white/80 font-medium"
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                            <Link
-                              href="/services"
-                              className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#D4FD00]"
-                            >
-                              Nos services {SERVICE_TITLES[index]}
-                              <ArrowRight size={14} />
-                            </Link>
-                          </motion.div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Progress Bar Navigation - Desktop only */}
-        <div className="hidden lg:flex justify-center items-center gap-2 mt-5 sm:mt-6">
-          {piliers.piliers.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                pauseAutoScroll();
-                setActiveIndex(index);
-                setLockedIndex(index);
-              }}
-              className="relative h-1.5 sm:h-2 rounded-full overflow-hidden bg-black/10 transition-all duration-300"
-              style={{ width: currentIndex === index ? "2rem" : "0.5rem" }}
+            {/* CTA */}
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-[13px] lg:text-[14px] font-semibold text-[#1a1a1a] hover:text-[#D4FD00] transition-colors duration-300 group"
             >
-              {currentIndex === index && (
-                <motion.div
-                  className="absolute inset-0 bg-[#D4FD00] origin-left"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: progress / 100 }}
-                  transition={{ duration: 0.05, ease: "linear" }}
-                />
-              )}
-              {currentIndex !== index && (
-                <div className="absolute inset-0 bg-black/20 hover:bg-black/40 transition-colors" />
-              )}
-            </button>
-          ))}
+              En savoir plus
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+const SCROLL_DURATION_VH = 2.5; // Distance de scroll compressée (2.5x viewport) pour transitions plus rapides
+const SCRUB_DESKTOP = 0.35;
+const SCRUB_MOBILE = 0.25;
+
+export function ServicesSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = () => setReducedMotion(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (reducedMotion) return undefined;
+
+    const track = trackRef.current;
+    const trigger = triggerRef.current;
+
+    if (!track || !trigger) return undefined;
+
+    let ctx: gsap.Context | null = null;
+    const timer = setTimeout(() => {
+      const totalWidth = track.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const maxTranslate = Math.max(0, totalWidth - viewportWidth);
+
+      const scrollDuration = viewportHeight * SCROLL_DURATION_VH;
+      const scrub = viewportWidth < 768 ? SCRUB_MOBILE : SCRUB_DESKTOP;
+
+      ctx = gsap.context(() => {
+        gsap.to(track, {
+          x: -maxTranslate,
+          ease: "none",
+          scrollTrigger: {
+            trigger,
+            start: "top top",
+            end: () => `+=${scrollDuration}`,
+            pin: true,
+            scrub,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            snap: {
+              snapTo: 1 / (SERVICES.length - 1),
+              duration: { min: 0.2, max: 0.4 },
+              ease: "power2.inOut",
+            },
+            onUpdate: (self) => {
+              const newIndex = Math.min(
+                Math.round(self.progress * (SERVICES.length - 1)),
+                SERVICES.length - 1
+              );
+              setActiveIndex(newIndex);
+            },
+          },
+        });
+      }, sectionRef);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      ctx?.revert();
+    };
+  }, [reducedMotion]);
+
+  return (
+    <section id="services" ref={sectionRef} className="relative bg-white">
+      {/* Header - Not pinned */}
+      <div className="py-16 sm:py-20 md:py-24 lg:py-28">
+        <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
+          >
+            <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
+              <div className="w-2 h-2 bg-[#D4FD00]" />
+              <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
+                {piliersSurtitre}
+              </span>
+            </div>
+
+            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+              {piliersH2}
+            </h2>
+
+            <p className="text-[#6b6b6b] text-[14px] sm:text-[15px] leading-relaxed max-w-xl">
+              {piliersDescription}
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Horizontal Scroll Gallery - Pinned (ou stack vertical si reduced-motion) */}
+      {reducedMotion ? (
+        <div className="divide-y divide-[#e5e5e5]">
+          {SERVICES.map((service, index) => (
+            <ServiceSlide
+              key={service.id}
+              service={service}
+              index={index}
+              total={SERVICES.length}
+              isFirst={index === 0}
+              vertical
+            />
+          ))}
+        </div>
+      ) : (
+        <div ref={triggerRef} className="relative h-screen overflow-hidden">
+          <div
+            ref={trackRef}
+            className="flex h-full will-change-transform"
+          >
+            {SERVICES.map((service, index) => (
+              <ServiceSlide
+                key={service.id}
+                service={service}
+                index={index}
+                total={SERVICES.length}
+                isFirst={index === 0}
+              />
+            ))}
+          </div>
+
+          {/* Progress Indicator */}
+          <div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex gap-2"
+            role="tablist"
+            aria-label="Progression des services"
+          >
+            {SERVICES.map((_, i) => (
+              <span
+                key={i}
+                role="tab"
+                aria-selected={i === activeIndex}
+                aria-label={`Service ${i + 1}`}
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  i === activeIndex
+                    ? "w-8 bg-[#D4FD00]"
+                    : "w-2 bg-[#1a1a1a]/20"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Footer CTA - After unpin */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="py-16 sm:py-20 text-center"
+      >
+        <Link
+          href="/services"
+          className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[13px] sm:text-[14px] font-semibold bg-[#1a1a1a] text-white hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300"
+        >
+          Voir tous nos services
+          <ArrowRight size={16} />
+        </Link>
+      </motion.div>
     </section>
   );
 }
