@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, PanInfo } from "framer-motion";
-import { Target, PenTool, TrendingUp, Presentation, Cog, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Target, PenTool, TrendingUp, Presentation, Cog, ArrowRight, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { homeContent } from "@/content/home";
+import { ArrowUpRightIcon } from "@/components/icons";
 
 const piliers = homeContent.piliers;
 
@@ -66,7 +67,6 @@ export function ServicesSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [progress, setProgress] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<NodeJS.Timeout | null>(null);
 
   const currentIndex = lockedIndex !== null ? lockedIndex : activeIndex;
@@ -74,15 +74,6 @@ export function ServicesSection() {
   // Auto-scroll logic
   const goToNext = useCallback(() => {
     const newIndex = currentIndex === piliers.piliers.length - 1 ? 0 : currentIndex + 1;
-    setActiveIndex(newIndex);
-    if (lockedIndex !== null) {
-      setLockedIndex(newIndex);
-    }
-    setProgress(0);
-  }, [currentIndex, lockedIndex]);
-
-  const goToPrev = useCallback(() => {
-    const newIndex = currentIndex === 0 ? piliers.piliers.length - 1 : currentIndex - 1;
     setActiveIndex(newIndex);
     if (lockedIndex !== null) {
       setLockedIndex(newIndex);
@@ -152,16 +143,6 @@ export function ServicesSection() {
     setMousePosition({ x, y });
   };
 
-  // Swipe gesture handler for mobile
-  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const threshold = 50;
-    if (info.offset.x > threshold) {
-      goToPrev();
-    } else if (info.offset.x < -threshold) {
-      goToNext();
-    }
-  };
-
   // Icon animation variants
   const iconVariants = {
     initial: { scale: 0.8, rotate: -10, opacity: 0 },
@@ -215,9 +196,9 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-10 sm:mb-14"
+          className="max-w-2xl mb-10 sm:mb-14 mx-auto text-center"
         >
-          <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
+          <div className="flex items-center justify-center gap-2.5 mb-4 sm:mb-5">
             <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
             <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b]">
               {piliers.surtitre}
@@ -430,110 +411,126 @@ export function ServicesSection() {
           })}
         </motion.div>
 
-        {/* Mobile & Tablet Carousel with Swipe */}
-        <div className="lg:hidden">
-          <div className="relative" ref={carouselRef}>
-            {/* Carousel Content with Swipe - full width */}
-            <div className="overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={springConfig}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.2}
-                  onDragEnd={handleDragEnd}
-                  className="relative h-[400px] sm:h-[450px] md:h-[480px] rounded-lg overflow-hidden border-2 border-[#D4FD00] cursor-grab active:cursor-grabbing"
+        {/* Mobile & Tablet Accordion */}
+        <div className="lg:hidden flex flex-col gap-2">
+          {piliers.piliers.map((pilier, index) => {
+            const isOpen = currentIndex === index;
+            const Icon = SERVICE_ICONS[index];
+
+            return (
+              <motion.div
+                key={pilier.numero}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="rounded-lg overflow-hidden"
+              >
+                {/* Accordion Header */}
+                <button
+                  onClick={() => {
+                    pauseAutoScroll();
+                    if (currentIndex === index) {
+                      setActiveIndex(-1);
+                      setLockedIndex(null);
+                    } else {
+                      setActiveIndex(index);
+                      setLockedIndex(index);
+                    }
+                  }}
+                  className={`w-full flex items-center gap-3 p-4 transition-colors ${
+                    isOpen
+                      ? "bg-[#1a1a1a] text-white"
+                      : "bg-[#D4FD00] text-black hover:bg-[#c9f000]"
+                  }`}
                 >
-                  {/* Background Image with micro-animation */}
-                  <motion.img
-                    src={SERVICE_IMAGES[currentIndex]}
-                    alt={SERVICE_TITLES[currentIndex]}
-                    initial={{ scale: 1.1 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
-
-                  {/* Content */}
-                  <div className="absolute inset-0 p-4 sm:p-5 md:p-6 flex flex-col justify-between">
-                    {/* Top */}
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-none bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center">
-                      <span className="text-white font-heading font-medium text-xs sm:text-sm">
-                        {piliers.piliers[currentIndex].numero}
-                      </span>
-                    </div>
-
-                    {/* Bottom */}
-                    <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-3 sm:p-4 md:p-5">
-                      {/* Icon above title on mobile */}
-                      <motion.div
-                        variants={iconVariants}
-                        initial="initial"
-                        animate="animate"
-                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-[#D4FD00] flex items-center justify-center mb-3"
-                      >
-                        {(() => {
-                          const Icon = SERVICE_ICONS[currentIndex];
-                          return <Icon size={18} className="text-black sm:w-5 sm:h-5" />;
-                        })()}
-                      </motion.div>
-                      <h3
-                        className="font-heading font-semibold text-[18px] sm:text-[20px] md:text-[22px] leading-[1.1] tracking-[-0.02em] mb-1.5 sm:mb-2"
-                        style={{ color: "#ffffff" }}
-                      >
-                        {SERVICE_TITLES[currentIndex]}
-                      </h3>
-                      <p className="text-[11px] sm:text-[12px] md:text-[13px] font-[var(--font-body)] leading-relaxed mb-2 sm:mb-3" style={{ color: "#ffffff" }}>
-                        {SERVICE_DESCRIPTIONS[currentIndex]}
-                      </p>
-                      <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-2 sm:mb-3">
-                        {SERVICE_TAGS[currentIndex].map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-1.5 sm:px-2 py-0.5 bg-black/20 border border-white/10 rounded-none text-[9px] sm:text-[10px] text-white/80 font-medium"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <Link
-                        href="/services"
-                        className="inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-[12px] font-semibold text-[#D4FD00]"
-                      >
-                        Nos services {SERVICE_TITLES[currentIndex]}
-                        <ArrowRight size={12} className="sm:w-3.5 sm:h-3.5" />
-                      </Link>
-                    </div>
+                  <div className={`w-8 h-8 rounded-md flex items-center justify-center shrink-0 ${
+                    isOpen ? "bg-[#D4FD00]" : "bg-black/10"
+                  }`}>
+                    <Icon size={16} className={isOpen ? "text-black" : "text-black/70"} />
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+                  <div className="flex-1 text-left">
+                    <h3
+                      className="font-heading font-semibold text-[15px] sm:text-[16px] leading-tight"
+                      style={{ color: isOpen ? "#ffffff" : "#000000" }}
+                    >
+                      {SERVICE_TITLES[index]}
+                    </h3>
+                    <span className={`text-[11px] sm:text-[12px] ${isOpen ? "text-white/60" : "text-black/60"}`}>
+                      {SERVICE_SHORT_DESCRIPTIONS[index]}
+                    </span>
+                  </div>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 90 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="shrink-0"
+                  >
+                    <ArrowUpRightIcon
+                      size={16}
+                      className={isOpen ? "text-[#D4FD00]" : "text-black/70"}
+                    />
+                  </motion.div>
+                </button>
 
-            {/* Navigation Arrows - Below carousel */}
-            <div className="flex justify-center items-center gap-4 mt-4">
-              <button
-                onClick={() => { pauseAutoScroll(); goToPrev(); }}
-                className="w-10 h-10 sm:w-11 sm:h-11 bg-[#D4FD00] rounded-full flex items-center justify-center shadow-lg hover:bg-[#c9f000] transition-colors active:scale-95"
-              >
-                <ChevronLeft size={20} className="text-black" />
-              </button>
-              <button
-                onClick={() => { pauseAutoScroll(); goToNext(); }}
-                className="w-10 h-10 sm:w-11 sm:h-11 bg-[#D4FD00] rounded-full flex items-center justify-center shadow-lg hover:bg-[#c9f000] transition-colors active:scale-95"
-              >
-                <ChevronRight size={20} className="text-black" />
-              </button>
-            </div>
-          </div>
+                {/* Accordion Content */}
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="relative h-[280px] sm:h-[320px]">
+                        {/* Background Image */}
+                        <img
+                          src={SERVICE_IMAGES[index]}
+                          alt={SERVICE_TITLES[index]}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+
+                        {/* Content */}
+                        <div className="absolute inset-0 p-4 flex flex-col justify-end">
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                          >
+                            <p className="text-[12px] sm:text-[13px] font-[var(--font-body)] leading-relaxed mb-3" style={{ color: "#ffffff" }}>
+                              {SERVICE_DESCRIPTIONS[index]}
+                            </p>
+                            <div className="flex flex-wrap gap-1.5 mb-3">
+                              {SERVICE_TAGS[index].map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="px-2 py-0.5 bg-black/30 border border-white/10 rounded-none text-[10px] text-white/80 font-medium"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                            <Link
+                              href="/services"
+                              className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#D4FD00]"
+                            >
+                              Nos services {SERVICE_TITLES[index]}
+                              <ArrowRight size={14} />
+                            </Link>
+                          </motion.div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Progress Bar Navigation */}
-        <div className="flex justify-center items-center gap-2 mt-5 sm:mt-6">
+        {/* Progress Bar Navigation - Desktop only */}
+        <div className="hidden lg:flex justify-center items-center gap-2 mt-5 sm:mt-6">
           {piliers.piliers.map((_, index) => (
             <button
               key={index}

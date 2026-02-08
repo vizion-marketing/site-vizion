@@ -11,6 +11,7 @@ export { QuoteSection } from "./QuoteSection";
 export { DeliverablesSection } from "./DeliverablesSection";
 export { TeamSection } from "./TeamSection";
 export { CaseStudiesSection } from "./CaseStudiesSection";
+export { CasClientsSection } from "./CasClientsSection";
 export { AIPioneersSection } from "./AIPioneersSection";
 export { LocalSEOSection } from "./LocalSEOSection";
 export { TestimonialsSection } from "./TestimonialsSection";

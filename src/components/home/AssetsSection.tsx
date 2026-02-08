@@ -2,175 +2,220 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Globe, Layout, Users, Presentation, FileText, Megaphone } from "lucide-react";
 import Link from "next/link";
 
 const TABS = [
-  { id: "strategie", label: "Stratégie" },
-  { id: "ventes", label: "Ventes" },
-  { id: "marketing", label: "Marketing" },
-  { id: "operations", label: "Opérations" },
+  { id: "siteweb", label: "Site Web", icon: Globe },
+  { id: "landingpages", label: "Landing pages", icon: Layout },
+  { id: "casclients", label: "Cas clients", icon: Users },
+  { id: "salesdeck", label: "Sales deck", icon: Presentation },
+  { id: "leadmagnets", label: "Lead magnets", icon: FileText },
+  { id: "publicite", label: "Publicité", icon: Megaphone },
 ];
 
 const TAB_CONTENT = {
-  strategie: {
-    title: "Stratégie",
-    description: "Définissez votre positionnement, clarifiez votre proposition de valeur et construisez une architecture de message qui résonne avec votre marché cible.",
-    image: "/images/assets/strategie-dashboard.png",
-    link: "/services/strategie",
+  siteweb: {
+    title: "Site Web",
+    description: "Des sites vitrines et produits conçus pour convertir. Architecture claire, copywriting orienté bénéfices, design qui inspire confiance.",
+    image: "/images/pigment.avif",
+    link: "/services/site-web",
   },
-  ventes: {
-    title: "Ventes",
-    description: "Équipez vos commerciaux avec des pitch decks percutants, des battle cards et des scripts d'appel qui raccourcissent vos cycles de vente.",
-    image: "/images/assets/ventes-dashboard.png",
-    link: "/services/ventes",
+  landingpages: {
+    title: "Landing pages",
+    description: "Des pages d'atterrissage optimisées pour la conversion. Structure éprouvée, messages percutants, formulaires efficaces.",
+    image: "/images/assets/landing-dashboard.png",
+    link: "/services/landing-pages",
   },
-  marketing: {
-    title: "Marketing",
-    description: "Créez des campagnes d'acquisition performantes, des landing pages optimisées et des contenus qui génèrent des leads qualifiés.",
-    image: "/images/assets/marketing-dashboard.png",
-    link: "/services/marketing",
+  casclients: {
+    title: "Cas clients",
+    description: "Transformez vos succès en preuves sociales. Des études de cas qui rassurent vos prospects et accélèrent la décision d'achat.",
+    image: "/images/assets/casclients-dashboard.png",
+    link: "/services/cas-clients",
   },
-  operations: {
-    title: "Opérations",
-    description: "Automatisez vos processus marketing et commerciaux, déployez votre CRM et créez des intégrations sur mesure pour scaler vos opérations.",
-    image: "/images/assets/operations-dashboard.png",
-    link: "/services/operations",
+  salesdeck: {
+    title: "Sales deck",
+    description: "Des présentations commerciales qui marquent les esprits. Structure narrative, visuels impactants, arguments imparables.",
+    image: "/images/assets/salesdeck-dashboard.png",
+    link: "/services/sales-deck",
+  },
+  leadmagnets: {
+    title: "Lead magnets",
+    description: "Des contenus à forte valeur ajoutée qui génèrent des leads qualifiés. Guides, templates, checklists conçus pour convertir.",
+    image: "/images/assets/leadmagnets-dashboard.png",
+    link: "/services/lead-magnets",
+  },
+  publicite: {
+    title: "Publicité",
+    description: "Campagnes Meta, Google Ads et LinkedIn Ads. Ciblage précis, créatifs performants, optimisation continue pour maximiser votre ROI.",
+    image: "/images/assets/publicite-dashboard.png",
+    link: "/services/publicite",
   },
 };
 
 export function AssetsSection() {
-  const [activeTab, setActiveTab] = useState("strategie");
+  const [activeTab, setActiveTab] = useState("siteweb");
   const content = TAB_CONTENT[activeTab as keyof typeof TAB_CONTENT];
 
   return (
-    <section
-      className="relative py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden grain-overlay"
-      style={{ background: "#0c0c0a" }}
-    >
-      {/* Background gradients - same as hero */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div
-          className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
-          style={{
-            background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
-          }}
-        />
-        <div
-          className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
-          style={{
-            background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
-          }}
-        />
-        <div
-          className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
-          style={{
-            background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
-          }}
-        />
+    <>
+      {/* Header Banner - Same background as Manifeste */}
+      <div className="relative py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden grain-overlay">
+        {/* Background base */}
+        <div className="absolute inset-0 bg-[#f8f8f6]" />
+
+        {/* Subtle gradient blobs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute w-[70%] h-[60%] top-[-10%] left-[-15%]"
+            style={{
+              background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 60%)',
+            }}
+          />
+          <div
+            className="absolute w-[50%] h-[50%] top-[20%] right-[-10%]"
+            style={{
+              background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)',
+            }}
+          />
+          <div
+            className="absolute w-[60%] h-[50%] bottom-[-15%] left-[20%]"
+            style={{
+              background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)',
+            }}
+          />
+        </div>
+
+        <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+              Nous créons des assets exceptionnels pensés pour transformer vos prospects en clients.
+            </h2>
+
+            <p className="text-[#6b6b6b] text-base font-[var(--font-body)] leading-relaxed">
+              Tout au long du cycle de vente, nous concevons les outils qui font la différence.
+            </p>
+          </motion.div>
+        </div>
       </div>
 
-      <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-10 sm:mb-14"
-        >
-          <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#D4FD00] opacity-50"></span>
-              <span className="relative inline-flex rounded-none h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/50 shadow-[0_0_8px_rgba(212,253,0,0.5)]"></span>
-            </span>
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-white/60">
-              NOS LIVRABLES
-            </span>
-          </div>
-
-          <h2
-            className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-4"
+      {/* Main Section - Dark background */}
+      <section
+        className="relative pt-10 sm:pt-12 pb-0 overflow-hidden grain-overlay"
+        style={{ background: "#0c0c0a" }}
+      >
+        {/* Background gradients */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          <div
+            className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
             style={{
-              backgroundImage:
-                "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
             }}
-          >
-            Nous créons des assets exceptionnels pensés pour transformer vos prospects en clients.
-          </h2>
+          />
+          <div
+            className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+            }}
+          />
+        </div>
 
-          <p className="text-white/60 text-base font-[var(--font-body)] leading-relaxed">
-            Tout au long du cycle de vente, nous concevons les outils qui font la différence.
-          </p>
-        </motion.div>
+        {/* Floating decorative elements */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden hidden lg:block">
+          <motion.div
+            animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[15%] right-[8%] w-3 h-3 bg-[#D4FD00]/30 rounded-sm"
+          />
+          <motion.div
+            animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-[35%] right-[15%] w-2 h-2 bg-[#D4FD00]/20 rounded-full"
+          />
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-[25%] left-[5%] w-4 h-1 bg-[#D4FD00]/25 rounded-full"
+          />
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[50%] left-[3%] w-2 h-2 border border-[#D4FD00]/30 rounded-full"
+          />
+        </div>
 
-        {/* Glassmorphism Tabs */}
+        <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+          {/* Glassmorphism Tabs with Icons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="inline-flex bg-white/10 backdrop-blur-md border border-white/20 rounded-none p-1.5 mb-10 sm:mb-14"
+          className="relative inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1.5 mb-10 sm:mb-14"
         >
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-5 py-2.5 text-[13px] sm:text-[14px] font-[var(--font-body)] font-medium transition-all duration-300 rounded-none ${
-                activeTab === tab.id
-                  ? "bg-white text-[#0c0c0a]"
-                  : "text-white/70 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+          {TABS.map((tab, index) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative flex items-center gap-2 px-4 sm:px-5 py-2.5 text-[12px] sm:text-[13px] font-[var(--font-body)] font-medium transition-all duration-300 rounded-md ${
+                  isActive
+                    ? "text-[#0c0c0a]"
+                    : "text-white/60 hover:text-white"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-[#D4FD00] rounded-md"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-2">
+                  <Icon size={14} className={isActive ? "text-[#0c0c0a]" : ""} />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
+                </span>
+                {isActive && (
+                  <span className="relative z-10 hidden lg:flex items-center justify-center w-5 h-5 rounded-full bg-[#0c0c0a] text-[#D4FD00] text-[10px] font-bold">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </motion.div>
 
-        {/* Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-          {/* Large Asset Image */}
+        {/* Content - Image behind, card overlay */}
+        <div className="relative">
+          {/* Info Card - Floating on top */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-8 relative"
+            className="relative z-20 max-w-md lg:ml-0 mb-8 lg:mb-0 lg:absolute lg:top-8 lg:left-0"
           >
-            <div className="relative rounded-none overflow-hidden border border-white/10 shadow-2xl">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeTab}
-                  src={content.image}
-                  alt={content.title}
-                  initial={{ opacity: 0, scale: 1.02 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.4 }}
-                  className="w-full h-auto"
-                  onError={(e) => {
-                    // Fallback to placeholder if image doesn't exist
-                    (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200`;
-                  }}
-                />
-              </AnimatePresence>
-            </div>
-          </motion.div>
+            {/* Card accent line */}
+            <div className="absolute -left-0 top-6 bottom-6 w-1 bg-gradient-to-b from-[#D4FD00] via-[#D4FD00]/50 to-transparent rounded-full hidden lg:block" />
 
-          {/* Info Card - Glassmorphism */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-4"
-          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -178,16 +223,27 @@ export function AssetsSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-none p-6 sm:p-8"
+                className="relative bg-white rounded-lg p-6 sm:p-8 shadow-2xl border border-black/5 lg:ml-3"
               >
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-none bg-[#0c0c0a] flex items-center justify-center mb-5">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4FD00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                  </svg>
+                {/* Numéro badge */}
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#D4FD00] rounded-lg flex items-center justify-center shadow-lg">
+                  <span className="text-[#0c0c0a] font-heading font-bold text-xs">
+                    {String(TABS.findIndex(t => t.id === activeTab) + 1).padStart(2, '0')}
+                  </span>
                 </div>
+
+                {/* Icon - Dynamic based on tab */}
+                <motion.div
+                  key={`icon-${activeTab}`}
+                  initial={{ scale: 0.8, rotate: -10 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  className="w-12 h-12 rounded-lg bg-[#0c0c0a] flex items-center justify-center mb-5"
+                >
+                  {(() => {
+                    const Icon = TABS.find(t => t.id === activeTab)?.icon || Globe;
+                    return <Icon size={22} className="text-[#D4FD00]" />;
+                  })()}
+                </motion.div>
 
                 {/* Title */}
                 <h3 className="font-heading font-semibold text-[24px] sm:text-[28px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-4">
@@ -202,17 +258,70 @@ export function AssetsSection() {
                 {/* CTA Button */}
                 <Link
                   href={content.link}
-                  className="inline-flex items-center justify-between w-full h-[52px] px-6 text-[14px] font-[var(--font-body)] font-semibold bg-[#0c0c0a] text-white rounded-none hover:bg-[#1a1a1a] transition-all duration-300"
+                  className="group inline-flex items-center justify-between w-full h-[52px] px-6 text-[14px] font-[var(--font-body)] font-semibold bg-[#0c0c0a] text-white rounded-lg hover:bg-[#1a1a1a] transition-all duration-300"
                 >
                   <span>En savoir plus</span>
-                  <ArrowUpRight size={18} />
+                  <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </motion.div>
             </AnimatePresence>
           </motion.div>
+
+          {/* Large Asset Image - Behind, at bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="relative z-10 lg:ml-auto lg:w-[75%]"
+          >
+            {/* Accent border frame */}
+            <div className="absolute -inset-2 sm:-inset-3 border border-[#D4FD00]/30 rounded-t-xl pointer-events-none" />
+            <div className="absolute -inset-4 sm:-inset-6 border border-[#D4FD00]/10 rounded-t-xl pointer-events-none hidden lg:block" />
+
+            {/* Decorative corner accents */}
+            <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-[#D4FD00] rounded-tr-lg hidden lg:block" />
+            <div className="absolute -top-3 left-1/4 w-8 h-1 bg-[#D4FD00]/40 hidden lg:block" />
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, scale: 1.02 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.4 }}
+                className="relative overflow-hidden rounded-t-lg"
+              >
+                <img
+                  src={content.image}
+                  alt={content.title}
+                  className="w-full h-auto"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200`;
+                  }}
+                />
+                {/* Subtle overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0a]/20 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0c0c0a]/30 via-transparent to-transparent pointer-events-none lg:block hidden" />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Floating stat badge */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="absolute bottom-8 right-4 sm:right-8 bg-[#D4FD00] px-4 py-2 rounded-lg shadow-lg hidden lg:block"
+            >
+              <span className="text-[#0c0c0a] font-heading font-bold text-sm">+150%</span>
+              <span className="text-[#0c0c0a]/70 text-xs ml-1">conversion</span>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
+    </>
   );
 }
 

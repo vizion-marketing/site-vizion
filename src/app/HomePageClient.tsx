@@ -4,7 +4,7 @@ import React from "react";
 import { faqSchema, organizationSchema } from "@/content/home";
 
 // Import sections
-import { HeroSection, IntroSection, IndustriesMarquee, ServicesSection, AssetsSection } from "@/components/home";
+import { HeroSection, IntroSection, IndustriesMarquee, ServicesSection, AssetsSection, CasClientsSection } from "@/components/home";
 
 // Types
 interface Post {
@@ -53,6 +53,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <ServicesSection />
         {/* Assets Section */}
         <AssetsSection />
+        {/* Cas Clients */}
+        <CasClientsSection />
       </main>
     </>
   );
