@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { Target, PenTool, TrendingUp, Presentation, Cog, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { homeContent } from "@/content/home";
@@ -57,21 +57,88 @@ const springConfig = {
   damping: 30,
 };
 
+// Auto-scroll interval in ms
+const AUTO_SCROLL_INTERVAL = 5000;
+
 export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [lockedIndex, setLockedIndex] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [progress, setProgress] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<NodeJS.Timeout | null>(null);
+
+  const currentIndex = lockedIndex !== null ? lockedIndex : activeIndex;
+
+  // Auto-scroll logic
+  const goToNext = useCallback(() => {
+    const newIndex = currentIndex === piliers.piliers.length - 1 ? 0 : currentIndex + 1;
+    setActiveIndex(newIndex);
+    if (lockedIndex !== null) {
+      setLockedIndex(newIndex);
+    }
+    setProgress(0);
+  }, [currentIndex, lockedIndex]);
+
+  const goToPrev = useCallback(() => {
+    const newIndex = currentIndex === 0 ? piliers.piliers.length - 1 : currentIndex - 1;
+    setActiveIndex(newIndex);
+    if (lockedIndex !== null) {
+      setLockedIndex(newIndex);
+    }
+    setProgress(0);
+  }, [currentIndex, lockedIndex]);
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          goToNext();
+          return 0;
+        }
+        return prev + (100 / (AUTO_SCROLL_INTERVAL / 50));
+      });
+    }, 50);
+
+    progressRef.current = progressInterval;
+
+    return () => {
+      if (progressRef.current) {
+        clearInterval(progressRef.current);
+      }
+    };
+  }, [isAutoPlaying, goToNext]);
+
+  // Pause auto-scroll on interaction
+  const pauseAutoScroll = () => {
+    setIsAutoPlaying(false);
+    setProgress(0);
+  };
+
+  const resumeAutoScroll = () => {
+    setIsAutoPlaying(true);
+  };
 
   const handleMouseEnter = (index: number) => {
+    pauseAutoScroll();
     if (lockedIndex === null) {
       setActiveIndex(index);
     }
   };
 
+  const handleMouseLeave = () => {
+    resumeAutoScroll();
+  };
+
   const handleClick = (index: number) => {
+    pauseAutoScroll();
     if (lockedIndex === index) {
       setLockedIndex(null);
+      resumeAutoScroll();
     } else {
       setLockedIndex(index);
       setActiveIndex(index);
@@ -85,19 +152,14 @@ export function ServicesSection() {
     setMousePosition({ x, y });
   };
 
-  const currentIndex = lockedIndex !== null ? lockedIndex : activeIndex;
-
-  // Mobile navigation
-  const goToPrev = () => {
-    const newIndex = currentIndex === 0 ? piliers.piliers.length - 1 : currentIndex - 1;
-    setActiveIndex(newIndex);
-    setLockedIndex(newIndex);
-  };
-
-  const goToNext = () => {
-    const newIndex = currentIndex === piliers.piliers.length - 1 ? 0 : currentIndex + 1;
-    setActiveIndex(newIndex);
-    setLockedIndex(newIndex);
+  // Swipe gesture handler for mobile
+  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const threshold = 50;
+    if (info.offset.x > threshold) {
+      goToPrev();
+    } else if (info.offset.x < -threshold) {
+      goToNext();
+    }
   };
 
   // Icon animation variants
@@ -130,6 +192,20 @@ export function ServicesSection() {
     }),
   };
 
+  // Staggered card animation
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        ease: [0, 0, 0.2, 1] as const
+      }
+    }),
+  };
+
   return (
     <section className="py-16 sm:py-20 md:py-24 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12">
@@ -159,11 +235,11 @@ export function ServicesSection() {
 
         {/* Desktop Accordion */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
           className="hidden lg:flex gap-2 h-[480px]"
+          onMouseLeave={handleMouseLeave}
         >
           {piliers.piliers.map((pilier, index) => {
             const isActive = currentIndex === index;
@@ -173,25 +249,27 @@ export function ServicesSection() {
             return (
               <motion.div
                 key={pilier.numero}
+                custom={index}
+                variants={cardVariants}
                 layout
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseMove={isActive ? handleMouseMove : undefined}
                 onClick={() => handleClick(index)}
-                className={`relative overflow-hidden rounded-lg cursor-pointer ${
+                className={`relative overflow-hidden rounded-lg cursor-pointer transition-shadow duration-300 ${
                   isActive
-                    ? "flex-[4]"
-                    : "flex-[0.6] bg-[#fafaf8] hover:bg-[#f5f5f3]"
-                } ${isActive ? "border-2 border-[#D4FD00]" : "border border-black/5 hover:border-black/10"}`}
+                    ? "flex-[4] shadow-2xl"
+                    : "flex-[0.6] bg-[#D4FD00] hover:bg-[#c9f000] shadow-lg hover:shadow-xl"
+                } ${isActive ? "border-2 border-[#D4FD00]" : "border border-black/10 hover:border-black/20"}`}
                 transition={springConfig}
               >
-                {/* Background Image with Parallax */}
+                {/* Background Image with Parallax + micro-animation */}
                 <AnimatePresence>
                   {isActive && (
                     <motion.div
-                      initial={{ opacity: 0, scale: 1.15 }}
-                      animate={{ opacity: 1, scale: 1.1 }}
+                      initial={{ opacity: 0, scale: 1.2, rotate: -2 }}
+                      animate={{ opacity: 1, scale: 1.1, rotate: 0 }}
                       exit={{ opacity: 0, scale: 1.05 }}
-                      transition={{ duration: 0.6 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
                       className="absolute inset-0"
                       style={{
                         transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px) scale(1.1)`,
@@ -216,7 +294,7 @@ export function ServicesSection() {
                 )}
 
                 {/* Content */}
-                <div className={`absolute inset-0 flex ${isActive ? "p-5 sm:p-6 flex-col justify-between" : "p-4 flex-col justify-end items-center"}`}>
+                <div className={`absolute inset-0 flex ${isActive ? "p-5 sm:p-6 flex-col justify-between" : "p-4 flex-col justify-between items-center"}`}>
                   {isActive ? (
                     <>
                       {/* Top: Number + Lock */}
@@ -226,7 +304,7 @@ export function ServicesSection() {
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={springConfig}
-                            className="w-10 h-10 rounded-none bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center"
+                            className="w-10 h-10 rounded-none bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center"
                           >
                             <span className="text-white font-heading font-medium text-sm">
                               {pilier.numero}
@@ -290,7 +368,7 @@ export function ServicesSection() {
                                   variants={tagVariants}
                                   initial="initial"
                                   animate="animate"
-                                  className="px-2 py-0.5 bg-white/10 border border-white/20 rounded-none text-[10px] text-white/80 font-medium"
+                                  className="px-2 py-0.5 bg-black/20 border border-white/10 rounded-none text-[10px] text-white/80 font-medium"
                                 >
                                   {tag}
                                 </motion.span>
@@ -316,20 +394,33 @@ export function ServicesSection() {
                       </motion.div>
                     </>
                   ) : (
-                    /* Collapsed */
+                    /* Collapsed - with icon */
                     <>
-                      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-none bg-black/5 flex items-center justify-center">
-                        <span className="text-[#6b6b6b] font-heading font-medium text-xs">
+                      {/* Top: Number */}
+                      <div className="w-8 h-8 rounded-none bg-black/10 flex items-center justify-center">
+                        <span className="text-black/70 font-heading font-medium text-xs">
                           {pilier.numero}
                         </span>
                       </div>
-                      <div className="flex flex-col items-center gap-1 [writing-mode:vertical-rl] rotate-180">
-                        <h3 className="font-heading font-semibold text-[14px] sm:text-[16px] text-[#1a1a1a] tracking-[-0.01em]">
-                          {SERVICE_TITLES[index]}
-                        </h3>
-                        <span className="text-[11px] sm:text-[12px] text-[#6b6b6b] font-[var(--font-body)]">
-                          {SERVICE_SHORT_DESCRIPTIONS[index]}
-                        </span>
+
+                      {/* Bottom: Icon + Title */}
+                      <div className="flex flex-col items-center gap-3">
+                        {/* Icon in collapsed state */}
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className="w-8 h-8 rounded-md bg-black/10 flex items-center justify-center"
+                        >
+                          <Icon size={16} className="text-black/70" />
+                        </motion.div>
+
+                        <div className="flex flex-col items-center gap-1 [writing-mode:vertical-rl] rotate-180">
+                          <h3 className="font-heading font-semibold text-[14px] sm:text-[16px] text-black tracking-[-0.01em]">
+                            {SERVICE_TITLES[index]}
+                          </h3>
+                          <span className="text-[11px] sm:text-[12px] text-black/60 font-[var(--font-body)]">
+                            {SERVICE_SHORT_DESCRIPTIONS[index]}
+                          </span>
+                        </div>
                       </div>
                     </>
                   )}
@@ -339,25 +430,11 @@ export function ServicesSection() {
           })}
         </motion.div>
 
-        {/* Mobile Carousel */}
+        {/* Mobile & Tablet Carousel with Swipe */}
         <div className="lg:hidden">
           <div className="relative" ref={carouselRef}>
-            {/* Navigation Arrows */}
-            <button
-              onClick={goToPrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 backdrop-blur-sm border border-black/10 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={goToNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 backdrop-blur-sm border border-black/10 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors"
-            >
-              <ChevronRight size={20} />
-            </button>
-
-            {/* Carousel Content */}
-            <div className="overflow-hidden mx-8">
+            {/* Carousel Content with Swipe - full width */}
+            <div className="overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -365,88 +442,121 @@ export function ServicesSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
                   transition={springConfig}
-                  className="relative h-[450px] rounded-lg overflow-hidden border-2 border-[#D4FD00]"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={handleDragEnd}
+                  className="relative h-[400px] sm:h-[450px] md:h-[480px] rounded-lg overflow-hidden border-2 border-[#D4FD00] cursor-grab active:cursor-grabbing"
                 >
-                  {/* Background Image */}
-                  <img
+                  {/* Background Image with micro-animation */}
+                  <motion.img
                     src={SERVICE_IMAGES[currentIndex]}
                     alt={SERVICE_TITLES[currentIndex]}
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.8 }}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
 
                   {/* Content */}
-                  <div className="absolute inset-0 p-5 flex flex-col justify-between">
+                  <div className="absolute inset-0 p-4 sm:p-5 md:p-6 flex flex-col justify-between">
                     {/* Top */}
-                    <div className="w-10 h-10 rounded-none bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
-                      <span className="text-white font-heading font-medium text-sm">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-none bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center">
+                      <span className="text-white font-heading font-medium text-xs sm:text-sm">
                         {piliers.piliers[currentIndex].numero}
                       </span>
                     </div>
 
                     {/* Bottom */}
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4">
-                      <div className="flex items-start gap-3">
-                        <motion.div
-                          variants={iconVariants}
-                          initial="initial"
-                          animate="animate"
-                          className="w-10 h-10 rounded-md bg-[#D4FD00] flex items-center justify-center shrink-0"
-                        >
-                          {(() => {
-                            const Icon = SERVICE_ICONS[currentIndex];
-                            return <Icon size={20} className="text-black" />;
-                          })()}
-                        </motion.div>
-                        <div className="flex-1">
-                          <h3 className="font-heading font-semibold text-[20px] leading-[1.1] tracking-[-0.02em] mb-2 text-white">
-                            {SERVICE_TITLES[currentIndex]}
-                          </h3>
-                          <p className="text-white/70 text-[12px] font-[var(--font-body)] leading-relaxed mb-3">
-                            {SERVICE_DESCRIPTIONS[currentIndex]}
-                          </p>
-                          <div className="flex flex-wrap gap-1.5 mb-3">
-                            {SERVICE_TAGS[currentIndex].map((tag) => (
-                              <span
-                                key={tag}
-                                className="px-2 py-0.5 bg-white/10 border border-white/20 rounded-none text-[10px] text-white/80 font-medium"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                          <Link
-                            href="/services"
-                            className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#D4FD00]"
+                    <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-lg p-3 sm:p-4 md:p-5">
+                      {/* Icon above title on mobile */}
+                      <motion.div
+                        variants={iconVariants}
+                        initial="initial"
+                        animate="animate"
+                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-[#D4FD00] flex items-center justify-center mb-3"
+                      >
+                        {(() => {
+                          const Icon = SERVICE_ICONS[currentIndex];
+                          return <Icon size={18} className="text-black sm:w-5 sm:h-5" />;
+                        })()}
+                      </motion.div>
+                      <h3
+                        className="font-heading font-semibold text-[18px] sm:text-[20px] md:text-[22px] leading-[1.1] tracking-[-0.02em] mb-1.5 sm:mb-2"
+                        style={{ color: "#ffffff" }}
+                      >
+                        {SERVICE_TITLES[currentIndex]}
+                      </h3>
+                      <p className="text-[11px] sm:text-[12px] md:text-[13px] font-[var(--font-body)] leading-relaxed mb-2 sm:mb-3" style={{ color: "#ffffff" }}>
+                        {SERVICE_DESCRIPTIONS[currentIndex]}
+                      </p>
+                      <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-2 sm:mb-3">
+                        {SERVICE_TAGS[currentIndex].map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-1.5 sm:px-2 py-0.5 bg-black/20 border border-white/10 rounded-none text-[9px] sm:text-[10px] text-white/80 font-medium"
                           >
-                            Nos services
-                            <ArrowRight size={14} />
-                          </Link>
-                        </div>
+                            {tag}
+                          </span>
+                        ))}
                       </div>
+                      <Link
+                        href="/services"
+                        className="inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-[12px] font-semibold text-[#D4FD00]"
+                      >
+                        Nos services {SERVICE_TITLES[currentIndex]}
+                        <ArrowRight size={12} className="sm:w-3.5 sm:h-3.5" />
+                      </Link>
                     </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
             </div>
+
+            {/* Navigation Arrows - Below carousel */}
+            <div className="flex justify-center items-center gap-4 mt-4">
+              <button
+                onClick={() => { pauseAutoScroll(); goToPrev(); }}
+                className="w-10 h-10 sm:w-11 sm:h-11 bg-[#D4FD00] rounded-full flex items-center justify-center shadow-lg hover:bg-[#c9f000] transition-colors active:scale-95"
+              >
+                <ChevronLeft size={20} className="text-black" />
+              </button>
+              <button
+                onClick={() => { pauseAutoScroll(); goToNext(); }}
+                className="w-10 h-10 sm:w-11 sm:h-11 bg-[#D4FD00] rounded-full flex items-center justify-center shadow-lg hover:bg-[#c9f000] transition-colors active:scale-95"
+              >
+                <ChevronRight size={20} className="text-black" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Dots Navigation */}
-        <div className="flex justify-center gap-2 mt-6">
+        {/* Progress Bar Navigation */}
+        <div className="flex justify-center items-center gap-2 mt-5 sm:mt-6">
           {piliers.piliers.map((_, index) => (
             <button
               key={index}
               onClick={() => {
+                pauseAutoScroll();
                 setActiveIndex(index);
                 setLockedIndex(index);
               }}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                currentIndex === index
-                  ? "bg-[#D4FD00] w-6"
-                  : "bg-black/20 hover:bg-black/40 w-2"
-              }`}
-            />
+              className="relative h-1.5 sm:h-2 rounded-full overflow-hidden bg-black/10 transition-all duration-300"
+              style={{ width: currentIndex === index ? "2rem" : "0.5rem" }}
+            >
+              {currentIndex === index && (
+                <motion.div
+                  className="absolute inset-0 bg-[#D4FD00] origin-left"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: progress / 100 }}
+                  transition={{ duration: 0.05, ease: "linear" }}
+                />
+              )}
+              {currentIndex !== index && (
+                <div className="absolute inset-0 bg-black/20 hover:bg-black/40 transition-colors" />
+              )}
+            </button>
           ))}
         </div>
       </div>
