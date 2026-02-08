@@ -35,8 +35,8 @@ export default function SmoothScroller({ children }: SmoothScrollerProps) {
 
     // ScrollTrigger doit utiliser la position de scroll de Lenis (scrollerProxy)
     ScrollTrigger.scrollerProxy(document.body, {
-      scrollTop(value: number) {
-        if (arguments.length) {
+      scrollTop(value?: number) {
+        if (arguments.length && value !== undefined) {
           lenis.scrollTo(value, { immediate: true });
         }
         return lenis.scroll;

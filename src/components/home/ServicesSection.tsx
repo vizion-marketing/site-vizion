@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
+import React, { useRef, useLayoutEffect, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Target, PenTool, TrendingUp, Presentation, Cog, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { homeContent } from "@/content/home";
+import { useLenis } from "@/components/SmoothScroller";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -186,9 +187,12 @@ function ServiceSlide({ service, index, total, isFirst, vertical = false }: Serv
   );
 }
 
-const SCROLL_DURATION_VH = 2.5; // Distance de scroll compressée (2.5x viewport) pour transitions plus rapides
+const SCROLL_DURATION_VH = 2.5;
 const SCRUB_DESKTOP = 0.35;
 const SCRUB_MOBILE = 0.25;
+const SNAP_DEBOUNCE_MS = 120;
+const SNAP_DURATION = 0.35;
+const SERVICES_TRIGGER_ID = "services-gallery";
 
 export function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -196,6 +200,8 @@ export function ServicesSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const lenis = useLenis();
+  const snapTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -204,6 +210,60 @@ export function ServicesSection() {
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
+
+  const snapToNearestSlide = useCallback(() => {
+    const st = ScrollTrigger.getById(SERVICES_TRIGGER_ID);
+    if (!st || !st.isActive || !lenis) return;
+
+    const progress = st.progress;
+    const steps = SERVICES.length - 1;
+    const snappedProgress = Math.round(progress * steps) / steps;
+    if (Math.abs(progress - snappedProgress) < 0.01) return;
+
+    const start = st.start;
+    const end = st.end;
+    const targetScroll = start + snappedProgress * (end - start);
+
+    lenis.scrollTo(targetScroll, {
+      duration: SNAP_DURATION,
+      easing: (t: number) => t * (2 - t),
+    });
+  }, [lenis]);
+
+  const goToSlide = useCallback(
+    (index: number) => {
+      const st = ScrollTrigger.getById(SERVICES_TRIGGER_ID);
+      if (!st || !lenis) return;
+
+      const steps = SERVICES.length - 1;
+      const progress = index / steps;
+      const start = st.start;
+      const end = st.end;
+      const targetScroll = start + progress * (end - start);
+
+      lenis.scrollTo(targetScroll, {
+        duration: 0.6,
+        easing: (t: number) => t * (2 - t),
+      });
+    },
+    [lenis]
+  );
+
+  useEffect(() => {
+    if (!lenis || reducedMotion) return undefined;
+
+    const handler = () => {
+      if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
+      snapTimeoutRef.current = setTimeout(snapToNearestSlide, SNAP_DEBOUNCE_MS);
+    };
+
+    lenis.on("scroll", handler);
+
+    return () => {
+      if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
+      lenis.off("scroll", handler);
+    };
+  }, [lenis, reducedMotion, snapToNearestSlide]);
 
   useLayoutEffect(() => {
     if (reducedMotion) return undefined;
@@ -228,6 +288,7 @@ export function ServicesSection() {
           x: -maxTranslate,
           ease: "none",
           scrollTrigger: {
+            id: SERVICES_TRIGGER_ID,
             trigger,
             start: "top top",
             end: () => `+=${scrollDuration}`,
@@ -235,11 +296,6 @@ export function ServicesSection() {
             scrub,
             anticipatePin: 1,
             invalidateOnRefresh: true,
-            snap: {
-              snapTo: 1 / (SERVICES.length - 1),
-              duration: { min: 0.2, max: 0.4 },
-              ease: "power2.inOut",
-            },
             onUpdate: (self) => {
               const newIndex = Math.min(
                 Math.round(self.progress * (SERVICES.length - 1)),
@@ -319,26 +375,56 @@ export function ServicesSection() {
             ))}
           </div>
 
-          {/* Progress Indicator */}
-          <div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex gap-2"
-            role="tablist"
-            aria-label="Progression des services"
+          {/* Menu de navigation - sidebar gauche desktop, barre bas mobile */}
+          <nav
+            className="absolute z-50"
+            aria-label="Navigation entre les services"
           >
-            {SERVICES.map((_, i) => (
-              <span
-                key={i}
-                role="tab"
-                aria-selected={i === activeIndex}
-                aria-label={`Service ${i + 1}`}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  i === activeIndex
-                    ? "w-8 bg-[#D4FD00]"
-                    : "w-2 bg-[#1a1a1a]/20"
-                }`}
-              />
-            ))}
-          </div>
+            {/* Desktop: sidebar verticale gauche */}
+            <div className="hidden lg:flex flex-col gap-1 absolute left-6 xl:left-12 top-1/2 -translate-y-1/2">
+              {SERVICES.map((service, i) => (
+                <button
+                  key={service.id}
+                  onClick={() => goToSlide(i)}
+                  aria-current={i === activeIndex}
+                  aria-label={`Aller à ${service.title}`}
+                  className={`text-left py-2 px-3 rounded transition-all duration-300 group ${
+                    i === activeIndex
+                      ? "text-[#1a1a1a] font-semibold"
+                      : "text-[#6b6b6b] hover:text-[#1a1a1a] hover:bg-[#f5f5f5]"
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <span
+                      className={`w-2 h-2 rounded-full flex-shrink-0 transition-colors ${
+                        i === activeIndex ? "bg-[#D4FD00]" : "bg-[#6b6b6b]/30 group-hover:bg-[#6b6b6b]/60"
+                      }`}
+                    />
+                    <span className="text-[13px] xl:text-[14px]">{service.title}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Mobile: barre horizontale en bas */}
+            <div className="lg:hidden absolute bottom-8 left-4 right-4 flex gap-1 overflow-x-auto pb-1 scrollbar-hide">
+              {SERVICES.map((service, i) => (
+                <button
+                  key={service.id}
+                  onClick={() => goToSlide(i)}
+                  aria-current={i === activeIndex}
+                  aria-label={`Aller à ${service.title}`}
+                  className={`flex-shrink-0 px-3 py-1.5 rounded-full text-[12px] font-medium transition-all duration-300 ${
+                    i === activeIndex
+                      ? "bg-[#D4FD00] text-[#1a1a1a]"
+                      : "bg-[#1a1a1a]/10 text-[#6b6b6b] hover:bg-[#1a1a1a]/20"
+                  }`}
+                >
+                  {service.title}
+                </button>
+              ))}
+            </div>
+          </nav>
         </div>
       )}
 
