@@ -1,4 +1,7 @@
 export { HeroSection } from "./HeroSection";
+export { IntroSection } from "./IntroSection";
+export { ServicesSection } from "./ServicesSection";
+export { AssetsSection } from "./AssetsSection";
 export { IndustriesMarquee } from "./IndustriesMarquee";
 export { ClientLogosSection } from "./ClientLogosSection";
 export { ManifestoSection } from "./ManifestoSection";

@@ -264,7 +264,7 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   hero: {
     badge: "VIZION",
-    h1: "Faire de votre produit une évidence.",
+    h1: "Faites de votre produit une évidence.",
     h1Highlight: "évidence",
     baseline: "Chez Vizion, nous pensons que rendre le complexe simple est un art, alors nous en avons fait notre métier. Nous accompagnons les entreprises de tous les secteurs à clarifier leur offre et maximiser leur performance pour faire d'eux une évidence aux yeux de leurs clients.",
     badges: [

@@ -3,22 +3,8 @@
 import React from "react";
 import { faqSchema, organizationSchema } from "@/content/home";
 
-// Import all sections
-import {
-  HeroSection,
-  IndustriesMarquee,
-  ManifestoSection,
-  ProblemsSection,
-  ApproachSection,
-  QuoteSection,
-  DeliverablesSection,
-  TeamSection,
-  CaseStudiesSection,
-  AIPioneersSection,
-  LocalSEOSection,
-  TestimonialsSection,
-  FinalCTASection,
-} from "@/components/home";
+// Import sections
+import { HeroSection, IntroSection, IndustriesMarquee, ServicesSection, AssetsSection } from "@/components/home";
 
 // Types
 interface Post {
@@ -57,44 +43,16 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
       />
 
       <main>
-        {/* Section 1: Hero */}
+        {/* Hero */}
         <HeroSection />
-
-        {/* Bandeau industries */}
+        {/* Bandeau industries défilant */}
         <IndustriesMarquee />
-
-        {/* Section 2: Manifeste */}
-        <ManifestoSection />
-
-        {/* Section 3: Notre approche (5 etapes) */}
-        <ApproachSection />
-
-        {/* Citation */}
-        <QuoteSection />
-
-        {/* Section 4: Problemes qu'on resout */}
-        <ProblemsSection />
-
-        {/* Section 6: Ce qu'on produit (Livrables) */}
-        <DeliverablesSection />
-
-        {/* Section 7: L'equipe Vizion */}
-        <TeamSection />
-
-        {/* Section 8: Cas clients & resultats */}
-        <CaseStudiesSection />
-
-        {/* Section 9: Pionniers en IA */}
-        <AIPioneersSection />
-
-        {/* Section 10: Referencement local (Toulouse) */}
-        <LocalSEOSection />
-
-        {/* Section 11: Temoignages */}
-        <TestimonialsSection />
-
-        {/* Section 12: CTA final */}
-        <FinalCTASection />
+        {/* Introduction - Manifeste */}
+        <IntroSection />
+        {/* Services - 5 Piliers */}
+        <ServicesSection />
+        {/* Assets Section */}
+        <AssetsSection />
       </main>
     </>
   );
