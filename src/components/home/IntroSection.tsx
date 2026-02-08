@@ -41,7 +41,7 @@ export function IntroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 overflow-hidden grain-overlay"
+      className="relative py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden grain-overlay"
     >
       {/* Background base */}
       <div className="absolute inset-0 bg-[#f8f8f6]" />
@@ -79,7 +79,7 @@ export function IntroSection() {
             style={{ color: textColor }}
           >
             {/* Quote decorative element */}
-            <motion.div variants={itemVariants} className="mb-6">
+            <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
               <svg
                 width="48"
                 height="48"
@@ -96,7 +96,7 @@ export function IntroSection() {
 
             <motion.h2
               variants={itemVariants}
-              className="font-heading font-medium text-[32px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.1] tracking-[-0.02em] mb-6 sm:mb-8"
+              className="font-heading font-medium text-[26px] sm:text-[34px] md:text-[42px] lg:text-[48px] leading-[1.1] tracking-[-0.02em] mb-4 sm:mb-6 lg:mb-8"
             >
               Les meilleurs produits ne gagnent pas toujours.
               <br />
@@ -145,15 +145,15 @@ export function IntroSection() {
           </motion.div>
 
           {/* Image avec bordure accent et overlay amélioré */}
-          <motion.div
-            initial={{ opacity: 0, x: 30, scale: 0.98 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative"
-          >
+            <motion.div
+              initial={{ opacity: 0, x: 30, scale: 0.98 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="relative mt-6 sm:mt-0"
+            >
             {/* Accent border frame */}
-            <div className="absolute -inset-3 sm:-inset-4 border-2 border-[#D4FD00] rounded-lg opacity-60" />
+            <div className="absolute -inset-2 sm:-inset-3 md:-inset-4 border-2 border-[#D4FD00] rounded-lg opacity-60" />
             <div className="absolute -inset-1.5 sm:-inset-2 border border-[#1a1a1a]/10 rounded-lg" />
 
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">

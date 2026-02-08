@@ -215,7 +215,7 @@ export function CasClientsSection() {
   };
 
   return (
-    <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 bg-[#fafafa] overflow-hidden">
+    <section className="relative py-12 sm:py-16 md:py-20 lg:py-28 bg-[#fafafa] overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
@@ -243,47 +243,47 @@ export function CasClientsSection() {
         />
       </div>
 
-      <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
-        {/* Header */}
+      <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+        {/* Header - mobile-first */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-10 sm:mb-14"
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-8 sm:mb-10 md:mb-14"
         >
-          <div className="max-w-xl mb-6 lg:mb-0">
-            <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
+          <div className="max-w-xl mb-4 sm:mb-6 lg:mb-0">
+            <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
               <div className="w-2 h-2 bg-[#D4FD00]" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
                 Cas clients
               </span>
             </div>
-            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]">
+            <h2 className="font-heading font-medium text-[24px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]">
               Ils nous ont fait confiance
             </h2>
           </div>
 
-          {/* Navigation */}
-          <div className="flex items-center gap-3">
-            {/* Auto-play toggle */}
+          {/* Navigation - boutons tactiles sur mobile */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Auto-play toggle - zone tactile 44px min */}
             <button
               onClick={toggleAutoPlay}
-              className="w-10 h-10 border border-[#1a1a1a]/10 flex items-center justify-center hover:bg-[#1a1a1a]/5 transition-all duration-300"
+              className="min-w-[44px] min-h-[44px] w-10 h-10 sm:w-10 sm:h-10 border border-[#1a1a1a]/10 flex items-center justify-center hover:bg-[#1a1a1a]/5 transition-all duration-300"
               aria-label={isAutoPlaying ? "Pause" : "Lecture"}
             >
               {isAutoPlaying ? <Pause size={14} /> : <Play size={14} />}
             </button>
             <button
               onClick={goToPrevious}
-              className="w-12 h-12 border border-[#1a1a1a]/20 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-white transition-all duration-300"
+              className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 border border-[#1a1a1a]/20 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-white transition-all duration-300"
               aria-label="Cas précédent"
             >
               <ArrowLeft size={20} />
             </button>
             <button
               onClick={goToNext}
-              className="w-12 h-12 bg-[#1a1a1a] text-white flex items-center justify-center hover:bg-[#D4FD00] hover:text-[#1a1a1a] transition-all duration-300"
+              className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 bg-[#1a1a1a] text-white flex items-center justify-center hover:bg-[#D4FD00] hover:text-[#1a1a1a] transition-all duration-300"
               aria-label="Cas suivant"
             >
               <ArrowRight size={20} />
@@ -325,10 +325,10 @@ export function CasClientsSection() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:h-[520px]"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:h-[520px]"
           >
-            {/* Left - Text Content */}
-            <motion.div variants={itemVariants} className="lg:col-span-4 relative flex flex-col justify-between h-full bg-[#D4FD00] p-6 lg:p-8 overflow-hidden">
+            {/* Left - Text Content - padding mobile réduit */}
+            <motion.div variants={itemVariants} className="lg:col-span-4 relative flex flex-col justify-between h-full bg-[#D4FD00] p-4 sm:p-6 lg:p-8 overflow-hidden">
               {/* Black spray effect */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 {/* Main spray disc - top right */}
@@ -378,7 +378,7 @@ export function CasClientsSection() {
 
               {/* Top - Title + Stat */}
               <div className="relative z-10">
-                <h3 className="font-heading font-semibold text-[28px] sm:text-[36px] md:text-[44px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-6">
+                <h3 className="font-heading font-semibold text-[22px] sm:text-[30px] md:text-[40px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-4 sm:mb-6">
                   {currentCase.title}
                 </h3>
                 <div className="flex flex-col">
@@ -411,8 +411,8 @@ export function CasClientsSection() {
               </div>
             </motion.div>
 
-            {/* Center - Main Image */}
-            <motion.div variants={itemVariants} className="lg:col-span-5 relative h-[300px] lg:h-full">
+            {/* Center - Main Image - hauteur mobile adaptée */}
+            <motion.div variants={itemVariants} className="lg:col-span-5 relative h-[220px] sm:h-[260px] md:h-[300px] lg:h-full">
               <div className="relative h-full overflow-hidden">
                 {/* Decorative frame */}
                 <div className="absolute -inset-1 border border-[#D4FD00]/20 pointer-events-none z-10" />
@@ -434,9 +434,9 @@ export function CasClientsSection() {
             </motion.div>
 
             {/* Right - Secondary Image + Quote */}
-            <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-4 h-[400px] lg:h-full">
+            <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4 h-[320px] sm:h-[360px] md:h-[400px] lg:h-full">
               {/* Secondary Image */}
-              <div className="relative h-[45%] overflow-hidden">
+              <div className="relative h-[40%] sm:h-[45%] overflow-hidden">
                 <img
                   src={currentCase.secondaryImage}
                   alt={`${currentCase.company} - secondaire`}
@@ -445,8 +445,8 @@ export function CasClientsSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/20 to-transparent" />
               </div>
 
-              {/* Quote Box - Enhanced with glassmorphism feel */}
-              <div className="relative bg-[#1a1a1a] p-5 h-[55%] flex flex-col justify-between overflow-hidden">
+              {/* Quote Box */}
+              <div className="relative bg-[#1a1a1a] p-3 sm:p-5 h-[60%] sm:h-[55%] flex flex-col justify-between overflow-hidden">
                 {/* Decorative gradient */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4FD00]/10 blur-2xl" />
 
@@ -509,10 +509,9 @@ export function CasClientsSection() {
           </div>
         </div>
 
-        {/* Testimonials Marquee Section */}
-        <div className="mt-4">
-          {/* Three Columns Marquee */}
-          <div className="relative h-[500px] overflow-hidden">
+        {/* Testimonials Marquee Section - hauteur réduite sur mobile */}
+        <div className="mt-6 sm:mt-8">
+          <div className="relative h-[380px] sm:h-[440px] md:h-[500px] overflow-hidden">
             {/* Gradient overlays for fade effect */}
             <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#fafafa] to-transparent z-10 pointer-events-none" />
             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#fafafa] to-transparent z-10 pointer-events-none" />

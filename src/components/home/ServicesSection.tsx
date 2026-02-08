@@ -86,26 +86,26 @@ function ServiceSlide({ service, index, total, isFirst, vertical = false }: Serv
     <div
       className={
         vertical
-          ? "w-full min-h-[80vh] py-16 sm:py-20"
+          ? "w-full min-h-0 py-10 sm:py-14 md:py-20"
           : "flex-shrink-0 w-[100vw] h-full"
       }
     >
       <div
-        className={`max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 flex items-center ${
+        className={`max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex items-center ${
           vertical ? "" : "h-full"
         }`}
       >
         <div
-          className={`w-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-stretch ${
+          className={`w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-12 items-stretch ${
             vertical ? "" : "min-h-[100vh] lg:min-h-0"
           }`}
         >
-          {/* Image - 50vh mobile, 50% desktop (ou auto en vertical) */}
+          {/* Image - mobile: hauteur réduite pour garder du contenu visible */}
           <div
             className={`relative overflow-hidden ${
               vertical
-                ? "min-h-[40vh] lg:min-h-[50vh]"
-                : "min-h-[50vh] lg:min-h-0 lg:h-[70vh]"
+                ? "min-h-[32vh] sm:min-h-[38vh] lg:min-h-[50vh]"
+                : "min-h-[38vh] sm:min-h-[45vh] lg:min-h-0 lg:h-[70vh]"
             }`}
           >
             <img
@@ -130,10 +130,10 @@ function ServiceSlide({ service, index, total, isFirst, vertical = false }: Serv
             <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#D4FD00]" />
           </div>
 
-          {/* Content - 50vh mobile */}
-          <div className="flex flex-col justify-center py-6 lg:py-0 min-h-[50vh] lg:min-h-0">
+          {/* Content - mobile: padding réduit */}
+          <div className="flex flex-col justify-center py-4 sm:py-6 lg:py-0 min-h-0 lg:min-h-0">
             {/* Header with icon and counter */}
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
               <div className="w-12 h-12 lg:w-14 lg:h-14 bg-[#D4FD00] flex items-center justify-center">
                 <Icon size={24} className="text-[#0c0c0a]" />
               </div>
@@ -151,17 +151,17 @@ function ServiceSlide({ service, index, total, isFirst, vertical = false }: Serv
             </p>
 
             {/* Title */}
-            <h3 className="font-heading font-medium text-[28px] sm:text-[36px] lg:text-[48px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+            <h3 className="font-heading font-medium text-[22px] sm:text-[30px] lg:text-[48px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-4">
               {service.title}
             </h3>
 
             {/* Description */}
-            <p className="text-[#6b6b6b] text-[14px] lg:text-[16px] leading-relaxed mb-6 max-w-lg">
+            <p className="text-[#6b6b6b] text-[13px] sm:text-[14px] lg:text-[16px] leading-relaxed mb-4 sm:mb-6 max-w-lg">
               {service.description}
             </p>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
               {service.tags.map((tag) => (
                 <span
                   key={tag}
@@ -316,9 +316,9 @@ export function ServicesSection() {
 
   return (
     <section id="services" ref={sectionRef} className="relative bg-white">
-      {/* Header - Not pinned */}
-      <div className="py-16 sm:py-20 md:py-24 lg:py-28">
-        <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12">
+      {/* Header - Not pinned, mobile-first padding */}
+      <div className="py-12 sm:py-16 md:py-20 lg:py-28">
+        <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -326,18 +326,18 @@ export function ServicesSection() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
+            <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
               <div className="w-2 h-2 bg-[#D4FD00]" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
                 {piliersSurtitre}
               </span>
             </div>
 
-            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+            <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-4">
               {piliersH2}
             </h2>
 
-            <p className="text-[#6b6b6b] text-[14px] sm:text-[15px] leading-relaxed max-w-xl">
+            <p className="text-[#6b6b6b] text-[13px] sm:text-[15px] leading-relaxed max-w-xl">
               {piliersDescription}
             </p>
           </motion.div>
@@ -406,8 +406,8 @@ export function ServicesSection() {
               ))}
             </div>
 
-            {/* Mobile: barre horizontale en bas */}
-            <div className="lg:hidden absolute bottom-8 left-4 right-4 flex gap-1 overflow-x-auto pb-1 scrollbar-hide">
+            {/* Mobile: barre horizontale en bas - safe area */}
+            <div className="lg:hidden absolute bottom-5 left-4 right-4 flex gap-1 overflow-x-auto pb-2 scrollbar-hide">
               {SERVICES.map((service, i) => (
                 <button
                   key={service.id}
@@ -428,13 +428,13 @@ export function ServicesSection() {
         </div>
       )}
 
-      {/* Footer CTA - After unpin */}
+      {/* Footer CTA - After unpin, mobile-first */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="py-16 sm:py-20 text-center"
+        className="py-10 sm:py-14 md:py-20 text-center"
       >
         <Link
           href="/services"

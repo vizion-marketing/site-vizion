@@ -17,9 +17,9 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#F2F2F2] pt-24 pb-12">
-      <div className="container-wide px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
+    <footer className="bg-[#F2F2F2] pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-10 md:pb-12">
+      <div className="container-wide px-4 sm:px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 md:gap-16 mb-12 sm:mb-16 md:mb-24">
           <div className="lg:col-span-4 flex flex-col gap-10">
             <Link href="/" className="block">
               <Image
@@ -98,7 +98,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-black/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="border-t border-black/5 pt-6 sm:pt-8 md:pt-10 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
           <p className="surtitre text-black/40">
             © {currentYear} VIZION. TOUS DROITS RÉSERVÉS.
           </p>

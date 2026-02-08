@@ -208,27 +208,49 @@ h3, .h3 {
 .container-narrow {
   max-width: 42rem;
   margin-inline: auto;
-  padding-inline: var(--space-lg);
+  padding-inline: var(--space-md);
+}
+@media (min-width: 640px) {
+  .container-narrow { padding-inline: var(--space-lg); }
 }
 
 .container-base {
   max-width: 64rem;
   margin-inline: auto;
-  padding-inline: var(--space-lg);
+  padding-inline: var(--space-md);
+}
+@media (min-width: 640px) {
+  .container-base { padding-inline: var(--space-lg); }
 }
 
 .container-wide {
   max-width: 82.5rem;
   margin-inline: auto;
-  padding-inline: var(--space-lg);
+  padding-inline: var(--space-md);
+}
+@media (min-width: 640px) {
+  .container-wide { padding-inline: var(--space-lg); }
+}
+@media (min-width: 1024px) {
+  .container-wide { padding-inline: 3rem; }
 }
 
+/* Section padding: mobile-first (réduit sur petit écran), augmenté sur desktop */
 .section-padding {
-  padding-block: var(--space-4xl);
+  padding-block: 3rem;
+}
+@media (min-width: 640px) {
+  .section-padding { padding-block: var(--space-4xl); }
+}
+@media (min-width: 1024px) {
+  .section-padding { padding-block: 6rem; }
 }
 
 .section-padding-sm {
-  padding-block: var(--space-2xl);
+  padding-block: 2rem;
+}
+@media (min-width: 640px) {
+  .section-padding-sm { padding-block: var(--space-3xl); }
 }
 
 /* === BACKGROUND UTILITIES === */

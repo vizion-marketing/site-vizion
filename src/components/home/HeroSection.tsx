@@ -175,7 +175,7 @@ export function HeroSection() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-10 sm:pb-12 md:pb-[40px] px-4 sm:px-6 md:px-12 flex items-center min-h-[100svh] overflow-hidden grain-overlay"
+      className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-36 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 flex items-center min-h-[100svh] overflow-hidden grain-overlay"
       style={{ background: "#0c0c0a" }}
     >
       {/* Base + radial gradients jaune Vizion animés */}
@@ -218,8 +218,8 @@ export function HeroSection() {
       </div>
 
       <div className="max-w-[82.5rem] mx-auto w-full relative z-10 lg:grid lg:grid-cols-2 lg:gap-6 lg:items-stretch">
-        {/* CONTENT AREA */}
-        <div className="w-full p-4 sm:p-6 md:p-8 relative z-10 flex flex-col justify-center gap-4">
+        {/* CONTENT AREA - mobile-first: moins de padding, gaps serrés */}
+        <div className="w-full px-0 py-2 sm:p-4 md:p-6 lg:p-8 relative z-10 flex flex-col justify-center gap-3 sm:gap-4">
           {/* Premium Badge with Glassmorphism */}
           <div
             ref={badgeRef}
@@ -240,7 +240,7 @@ export function HeroSection() {
           {/* H1 with highlighted word */}
           <h1
             ref={h1Ref}
-            className="font-heading font-normal text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] leading-[0.95] tracking-[-0.03em] opacity-0"
+            className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[44px] md:text-[58px] lg:text-[80px] leading-[0.95] tracking-[-0.03em] opacity-0"
             style={{
               backgroundImage:
                 "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
@@ -262,7 +262,7 @@ export function HeroSection() {
 
           <div
             ref={badgesRef}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pb-4 border-b border-white/10 opacity-0"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pb-3 sm:pb-4 border-b border-white/10 opacity-0"
           >
             {homeContent.hero.badges.map((item, i) => (
               <div
@@ -299,10 +299,10 @@ export function HeroSection() {
             </Link>
           </div>
 
-          {/* Stats Bar */}
+          {/* Stats Bar - plus compact sur mobile */}
           <div
             ref={statsRef}
-            className="flex flex-wrap items-center gap-4 sm:gap-6 mt-4 pt-4 border-t border-white/5 opacity-0"
+            className="flex flex-wrap items-center gap-3 sm:gap-6 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-white/5 opacity-0"
           >
             <div className="flex items-center gap-2">
               <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">70+</span>
@@ -347,10 +347,10 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT IMAGE */}
+        {/* RIGHT IMAGE - mobile: hauteur raisonnable, moins de marge */}
         <div
           ref={imageRef}
-          className="relative z-30 group overflow-visible aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[420px] my-6 lg:my-0 opacity-0"
+          className="relative z-30 group overflow-visible aspect-[4/3] max-h-[280px] sm:max-h-[320px] md:max-h-[360px] lg:max-h-none lg:aspect-auto lg:h-full lg:min-h-[420px] mt-4 mb-2 sm:my-6 lg:my-0 opacity-0"
         >
           {/* Accent border frames */}
           <div className="absolute -inset-2 sm:-inset-3 border border-[#D4FD00]/20 rounded-lg pointer-events-none hidden lg:block" />
@@ -499,14 +499,14 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - plus petit sur mobile */}
       <div
         ref={scrollIndicatorRef}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-0"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 sm:gap-2 opacity-0"
       >
-        <span className="text-white/40 text-[10px] tracking-widest uppercase">Découvrir</span>
-        <div className="w-6 h-10 border border-white/20 rounded-full flex items-start justify-center p-1">
-          <div className="w-1.5 h-1.5 bg-[#D4FD00] rounded-full animate-bounce" />
+        <span className="text-white/40 text-[9px] sm:text-[10px] tracking-widest uppercase">Découvrir</span>
+        <div className="w-5 h-8 sm:w-6 sm:h-10 border border-white/20 rounded-full flex items-start justify-center p-1">
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#D4FD00] rounded-full animate-bounce" />
         </div>
       </div>
     </section>
