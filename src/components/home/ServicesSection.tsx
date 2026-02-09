@@ -1,15 +1,10 @@
 "use client";
 
-import React, { useRef, useLayoutEffect, useState, useEffect, useCallback } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Target, PenTool, TrendingUp, Presentation, Cog, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { homeContent } from "@/content/home";
-import { useLenis } from "@/components/SmoothScroller";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const { surtitre: piliersSurtitre, h2: piliersH2, description: piliersDescription } = homeContent.piliers;
 
@@ -24,426 +19,255 @@ const SERVICES = [
     tags: ["Positionnement", "Messaging", "Go-to-Market"],
     stat: "+45%",
     statLabel: "conversion",
+    span: "featured" as const,
   },
   {
     id: 2,
     title: "Content Marketing",
     subtitle: "Contenu & Acquisition",
-    description: "Créez du contenu qui attire, éduque et convertit vos prospects en clients. Des lead magnets aux articles de blog, nous produisons les assets qui génèrent des opportunités qualifiées.",
+    description: "Créez du contenu qui attire, éduque et convertit vos prospects en clients.",
     icon: PenTool,
-    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1200&q=80",
     tags: ["SEO", "Lead Magnets", "Blog"],
     stat: "3x",
     statLabel: "trafic",
+    span: "normal" as const,
   },
   {
     id: 3,
     title: "Growth Marketing",
     subtitle: "Acquisition & Croissance",
-    description: "Accélérez votre croissance avec des campagnes d'acquisition ciblées et mesurables. Paid ads, email marketing, automation — nous orchestrons les canaux qui génèrent des résultats.",
+    description: "Accélérez votre croissance avec des campagnes d'acquisition ciblées et mesurables.",
     icon: TrendingUp,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
     tags: ["Paid Ads", "Email", "Automation"],
     stat: "-40%",
     statLabel: "CAC",
+    span: "normal" as const,
   },
   {
     id: 4,
     title: "Sales Enablement",
     subtitle: "Outils & Performance",
-    description: "Équipez vos commerciaux avec les outils et contenus qui accélèrent le closing. Présentations, battle cards, objections — tout ce dont ils ont besoin pour convaincre.",
+    description: "Équipez vos commerciaux avec les outils et contenus qui accélèrent le closing.",
     icon: Presentation,
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80",
     tags: ["Pitch Decks", "Battle Cards", "Objections"],
     stat: "+60%",
     statLabel: "win rate",
+    span: "normal" as const,
   },
   {
     id: 5,
     title: "Automatisation",
     subtitle: "CRM & Workflows",
-    description: "Automatisez vos processus marketing et commerciaux pour scaler sans friction. CRM, workflows, intégrations — nous construisons les systèmes qui libèrent votre temps.",
+    description: "Automatisez vos processus marketing et commerciaux pour scaler sans friction.",
     icon: Cog,
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80",
     tags: ["HubSpot", "Zapier", "Intégrations"],
     stat: "10h",
     statLabel: "gagnées/sem",
+    span: "wide" as const,
   },
 ];
 
-interface ServiceSlideProps {
-  service: (typeof SERVICES)[0];
+interface ServiceCardProps {
+  service: typeof SERVICES[0];
   index: number;
-  total: number;
-  isFirst: boolean;
-  vertical?: boolean;
 }
 
-function ServiceSlide({ service, index, total, isFirst, vertical = false }: ServiceSlideProps) {
+function FeaturedCard({ service, index }: ServiceCardProps) {
   const Icon = service.icon;
 
   return (
-    <div
-      className={
-        vertical
-          ? "w-full min-h-0 py-10 sm:py-14 md:py-20"
-          : "flex-shrink-0 w-[100vw] h-full"
-      }
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
+      className="col-span-1 md:col-span-2 md:row-span-2 relative overflow-hidden group"
     >
-      <div
-        className={`max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex items-center ${
-          vertical ? "" : "h-full"
-        }`}
-      >
-        <div
-          className={`w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-12 items-stretch ${
-            vertical ? "" : "min-h-[100vh] lg:min-h-0"
-          }`}
-        >
-          {/* Image - mobile: hauteur réduite pour garder du contenu visible */}
-          <div
-            className={`relative overflow-hidden ${
-              vertical
-                ? "min-h-[32vh] sm:min-h-[38vh] lg:min-h-[50vh]"
-                : "min-h-[38vh] sm:min-h-[45vh] lg:min-h-0 lg:h-[70vh]"
-            }`}
-          >
-            <img
-              src={service.image}
-              alt={service.title}
-              loading={isFirst ? "eager" : "lazy"}
-              decoding="async"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      <div className="relative h-full min-h-[400px] md:min-h-[500px] lg:min-h-[580px] bg-[#D4FD00] p-6 sm:p-8 lg:p-10 flex flex-col">
+        {/* Background image with overlay */}
+        <div className="absolute inset-0">
+          <img
+            src={service.image}
+            alt={service.title}
+            className="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60" />
+        </div>
 
-            {/* Stat badge */}
-            <div className="absolute bottom-6 left-6 flex items-baseline gap-2">
-              <span className="text-[#D4FD00] font-heading font-bold text-4xl lg:text-5xl">
-                {service.stat}
-              </span>
-              <span className="text-white/80 text-base lg:text-lg">{service.statLabel}</span>
-            </div>
-
-            {/* Decorative corner */}
-            <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#D4FD00]" />
+        {/* Content */}
+        <div className="relative z-10 flex flex-col h-full">
+          {/* Icon */}
+          <div className="w-14 h-14 lg:w-16 lg:h-16 bg-[#1a1a1a] flex items-center justify-center mb-6">
+            <Icon size={28} className="text-[#D4FD00]" />
           </div>
 
-          {/* Content - mobile: padding réduit */}
-          <div className="flex flex-col justify-center py-4 sm:py-6 lg:py-0 min-h-0 lg:min-h-0">
-            {/* Header with icon and counter */}
-            <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <div className="w-12 h-12 lg:w-14 lg:h-14 bg-[#D4FD00] flex items-center justify-center">
-                <Icon size={24} className="text-[#0c0c0a]" />
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-[#D4FD00]" />
-                <span className="text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
-                  {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-                </span>
-              </div>
-            </div>
+          {/* Subtitle */}
+          <p className="text-[#1a1a1a]/70 text-[12px] lg:text-[14px] font-medium tracking-wide uppercase mb-2">
+            {service.subtitle}
+          </p>
 
-            {/* Subtitle */}
-            <p className="text-[#D4FD00] text-[12px] lg:text-[14px] font-medium tracking-wide uppercase mb-2">
-              {service.subtitle}
-            </p>
+          {/* Title */}
+          <h3 className="font-heading font-medium text-[28px] sm:text-[36px] lg:text-[48px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+            {service.title}
+          </h3>
 
-            {/* Title */}
-            <h3 className="font-heading font-medium text-[22px] sm:text-[30px] lg:text-[48px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-4">
-              {service.title}
-            </h3>
+          {/* Description */}
+          <p className="text-[#1a1a1a]/80 text-[14px] lg:text-[16px] leading-relaxed mb-6 max-w-md">
+            {service.description}
+          </p>
 
-            {/* Description */}
-            <p className="text-[#6b6b6b] text-[13px] sm:text-[14px] lg:text-[16px] leading-relaxed mb-4 sm:mb-6 max-w-lg">
-              {service.description}
-            </p>
+          {/* Spacer */}
+          <div className="flex-grow" />
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
-              {service.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1.5 bg-[#f5f5f5] text-[#1a1a1a] text-[11px] lg:text-[12px] font-medium"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-[13px] lg:text-[14px] font-semibold text-[#1a1a1a] hover:text-[#D4FD00] transition-colors duration-300 group"
-            >
-              En savoir plus
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const SCROLL_DURATION_VH = 2.5;
-const SCRUB_DESKTOP = 0.35;
-const SCRUB_MOBILE = 0.25;
-const SNAP_DEBOUNCE_MS = 120;
-const SNAP_DURATION = 0.35;
-const SERVICES_TRIGGER_ID = "services-gallery";
-
-export function ServicesSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const lenis = useLenis();
-  const snapTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const handler = () => setReducedMotion(mq.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  const snapToNearestSlide = useCallback(() => {
-    const st = ScrollTrigger.getById(SERVICES_TRIGGER_ID);
-    if (!st || !st.isActive || !lenis) return;
-
-    const progress = st.progress;
-    const steps = SERVICES.length - 1;
-    const snappedProgress = Math.round(progress * steps) / steps;
-    if (Math.abs(progress - snappedProgress) < 0.01) return;
-
-    const start = st.start;
-    const end = st.end;
-    const targetScroll = start + snappedProgress * (end - start);
-
-    lenis.scrollTo(targetScroll, {
-      duration: SNAP_DURATION,
-      easing: (t: number) => t * (2 - t),
-    });
-  }, [lenis]);
-
-  const goToSlide = useCallback(
-    (index: number) => {
-      const st = ScrollTrigger.getById(SERVICES_TRIGGER_ID);
-      if (!st || !lenis) return;
-
-      const steps = SERVICES.length - 1;
-      const progress = index / steps;
-      const start = st.start;
-      const end = st.end;
-      const targetScroll = start + progress * (end - start);
-
-      lenis.scrollTo(targetScroll, {
-        duration: 0.6,
-        easing: (t: number) => t * (2 - t),
-      });
-    },
-    [lenis]
-  );
-
-  useEffect(() => {
-    if (!lenis || reducedMotion) return undefined;
-
-    const handler = () => {
-      if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
-      snapTimeoutRef.current = setTimeout(snapToNearestSlide, SNAP_DEBOUNCE_MS);
-    };
-
-    lenis.on("scroll", handler);
-
-    return () => {
-      if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
-      lenis.off("scroll", handler);
-    };
-  }, [lenis, reducedMotion, snapToNearestSlide]);
-
-  useLayoutEffect(() => {
-    if (reducedMotion) return undefined;
-
-    const track = trackRef.current;
-    const trigger = triggerRef.current;
-
-    if (!track || !trigger) return undefined;
-
-    let ctx: gsap.Context | null = null;
-    const timer = setTimeout(() => {
-      const totalWidth = track.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-      const maxTranslate = Math.max(0, totalWidth - viewportWidth);
-
-      const scrollDuration = viewportHeight * SCROLL_DURATION_VH;
-      const scrub = viewportWidth < 768 ? SCRUB_MOBILE : SCRUB_DESKTOP;
-
-      ctx = gsap.context(() => {
-        gsap.to(track, {
-          x: -maxTranslate,
-          ease: "none",
-          scrollTrigger: {
-            id: SERVICES_TRIGGER_ID,
-            trigger,
-            start: "top top",
-            end: () => `+=${scrollDuration}`,
-            pin: true,
-            scrub,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-              const newIndex = Math.min(
-                Math.round(self.progress * (SERVICES.length - 1)),
-                SERVICES.length - 1
-              );
-              setActiveIndex(newIndex);
-            },
-          },
-        });
-      }, sectionRef);
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      ctx?.revert();
-    };
-  }, [reducedMotion]);
-
-  return (
-    <section id="services" ref={sectionRef} className="relative bg-white">
-      {/* Header - Not pinned, mobile-first padding */}
-      <div className="py-12 sm:py-16 md:py-20 lg:py-28">
-        <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
-              <div className="w-2 h-2 bg-[#D4FD00]" />
-              <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
-                {piliersSurtitre}
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {service.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1.5 bg-[#1a1a1a]/10 text-[#1a1a1a] text-[11px] lg:text-[12px] font-medium backdrop-blur-sm"
+              >
+                {tag}
               </span>
-            </div>
-
-            <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-4">
-              {piliersH2}
-            </h2>
-
-            <p className="text-[#6b6b6b] text-[13px] sm:text-[15px] leading-relaxed max-w-xl">
-              {piliersDescription}
-            </p>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Horizontal Scroll Gallery - Pinned (ou stack vertical si reduced-motion) */}
-      {reducedMotion ? (
-        <div className="divide-y divide-[#e5e5e5]">
-          {SERVICES.map((service, index) => (
-            <ServiceSlide
-              key={service.id}
-              service={service}
-              index={index}
-              total={SERVICES.length}
-              isFirst={index === 0}
-              vertical
-            />
-          ))}
-        </div>
-      ) : (
-        <div ref={triggerRef} className="relative h-screen overflow-hidden">
-          <div
-            ref={trackRef}
-            className="flex h-full will-change-transform"
-          >
-            {SERVICES.map((service, index) => (
-              <ServiceSlide
-                key={service.id}
-                service={service}
-                index={index}
-                total={SERVICES.length}
-                isFirst={index === 0}
-              />
             ))}
           </div>
 
-          {/* Menu de navigation - sidebar gauche desktop, barre bas mobile */}
-          <nav
-            className="absolute z-50"
-            aria-label="Navigation entre les services"
-          >
-            {/* Desktop: sidebar verticale gauche */}
-            <div className="hidden lg:flex flex-col gap-1 absolute left-6 xl:left-12 top-1/2 -translate-y-1/2">
-              {SERVICES.map((service, i) => (
-                <button
-                  key={service.id}
-                  onClick={() => goToSlide(i)}
-                  aria-current={i === activeIndex}
-                  aria-label={`Aller à ${service.title}`}
-                  className={`text-left py-2 px-3 rounded transition-all duration-300 group ${
-                    i === activeIndex
-                      ? "text-[#1a1a1a] font-semibold"
-                      : "text-[#6b6b6b] hover:text-[#1a1a1a] hover:bg-[#f5f5f5]"
-                  }`}
-                >
-                  <span className="flex items-center gap-2">
-                    <span
-                      className={`w-2 h-2 rounded-full flex-shrink-0 transition-colors ${
-                        i === activeIndex ? "bg-[#D4FD00]" : "bg-[#6b6b6b]/30 group-hover:bg-[#6b6b6b]/60"
-                      }`}
-                    />
-                    <span className="text-[13px] xl:text-[14px]">{service.title}</span>
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile: barre horizontale en bas - safe area */}
-            <div className="lg:hidden absolute bottom-5 left-4 right-4 flex gap-1 overflow-x-auto pb-2 scrollbar-hide">
-              {SERVICES.map((service, i) => (
-                <button
-                  key={service.id}
-                  onClick={() => goToSlide(i)}
-                  aria-current={i === activeIndex}
-                  aria-label={`Aller à ${service.title}`}
-                  className={`flex-shrink-0 px-3 py-1.5 rounded-full text-[12px] font-medium transition-all duration-300 ${
-                    i === activeIndex
-                      ? "bg-[#D4FD00] text-[#1a1a1a]"
-                      : "bg-[#1a1a1a]/10 text-[#6b6b6b] hover:bg-[#1a1a1a]/20"
-                  }`}
-                >
-                  {service.title}
-                </button>
-              ))}
-            </div>
-          </nav>
+          {/* Stat badge */}
+          <div className="flex items-baseline gap-2">
+            <span className="text-[#1a1a1a] font-heading font-bold text-4xl lg:text-5xl">
+              {service.stat}
+            </span>
+            <span className="text-[#1a1a1a]/70 text-base lg:text-lg">{service.statLabel}</span>
+          </div>
         </div>
-      )}
 
-      {/* Footer CTA - After unpin, mobile-first */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="py-10 sm:py-14 md:py-20 text-center"
-      >
-        <Link
-          href="/services"
-          className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[13px] sm:text-[14px] font-semibold bg-[#1a1a1a] text-white hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300"
+        {/* Decorative corner */}
+        <div className="absolute top-6 right-6 w-8 h-8 border-t-2 border-r-2 border-[#1a1a1a]/20" />
+      </div>
+    </motion.div>
+  );
+}
+
+function StandardCard({ service, index }: ServiceCardProps) {
+  const Icon = service.icon;
+  const isWide = service.span === "wide";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
+      className={`${isWide ? "col-span-1 md:col-span-2" : "col-span-1"} group`}
+    >
+      <div className="h-full min-h-[280px] bg-white border border-black/[0.06] p-6 sm:p-7 lg:p-8 flex flex-col transition-all duration-500 hover:bg-[#D4FD00] hover:-translate-y-1 hover:shadow-lg">
+        {/* Icon */}
+        <div className="w-12 h-12 lg:w-14 lg:h-14 bg-[#f5f5f5] group-hover:bg-[#1a1a1a] flex items-center justify-center mb-5 transition-colors duration-500">
+          <Icon size={24} className="text-[#1a1a1a] group-hover:text-[#D4FD00] transition-colors duration-500" />
+        </div>
+
+        {/* Subtitle */}
+        <p className="text-[#D4FD00] group-hover:text-[#1a1a1a]/70 text-[11px] lg:text-[12px] font-medium tracking-wide uppercase mb-2 transition-colors duration-500">
+          {service.subtitle}
+        </p>
+
+        {/* Title */}
+        <h3 className="font-heading font-medium text-[22px] sm:text-[26px] lg:text-[30px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-3 transition-colors duration-500">
+          {service.title}
+        </h3>
+
+        {/* Description */}
+        <p className="text-[#6b6b6b] group-hover:text-[#1a1a1a]/80 text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-500">
+          {service.description}
+        </p>
+
+        {/* Spacer */}
+        <div className="flex-grow" />
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {service.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2.5 py-1 bg-[#f5f5f5] group-hover:bg-[#1a1a1a]/10 text-[#1a1a1a] text-[10px] lg:text-[11px] font-medium transition-colors duration-500"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Stat */}
+        <div className="flex items-baseline gap-2 pt-4 border-t border-black/[0.06] group-hover:border-[#1a1a1a]/20 transition-colors duration-500">
+          <span className="text-[#1a1a1a] font-heading font-bold text-2xl lg:text-3xl">
+            {service.stat}
+          </span>
+          <span className="text-[#6b6b6b] group-hover:text-[#1a1a1a]/70 text-sm transition-colors duration-500">
+            {service.statLabel}
+          </span>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export function ServicesSection() {
+  const featuredService = SERVICES.find(s => s.span === "featured")!;
+  const otherServices = SERVICES.filter(s => s.span !== "featured");
+
+  return (
+    <section id="services" className="relative bg-white py-16 sm:py-20 md:py-24 lg:py-28">
+      <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-12 sm:mb-16 lg:mb-20"
         >
-          Voir tous nos services
-          <ArrowRight size={16} />
-        </Link>
-      </motion.div>
+          <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
+            <div className="w-2 h-2 bg-[#D4FD00]" />
+            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
+              {piliersSurtitre}
+            </span>
+          </div>
+
+          <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-4">
+            {piliersH2}
+          </h2>
+
+          <p className="text-[#6b6b6b] text-[13px] sm:text-[15px] leading-relaxed max-w-xl">
+            {piliersDescription}
+          </p>
+        </motion.div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+          {/* Featured Card - Product Marketing */}
+          <FeaturedCard service={featuredService} index={0} />
+
+          {/* Other Services */}
+          {otherServices.map((service, index) => (
+            <StandardCard key={service.id} service={service} index={index + 1} />
+          ))}
+        </div>
+
+        {/* Footer CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-12 sm:mt-16 lg:mt-20 text-center"
+        >
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[13px] sm:text-[14px] font-semibold bg-[#1a1a1a] text-white hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300"
+          >
+            Voir tous nos services
+            <ArrowRight size={16} />
+          </Link>
+        </motion.div>
+      </div>
     </section>
   );
 }
