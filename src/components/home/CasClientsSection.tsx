@@ -131,15 +131,18 @@ const TESTIMONIALS = [
   },
 ];
 
-// Composant carte témoignage
-function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] }) {
+// Composant carte témoignage - bento variant
+function TestimonialCard({ testimonial, featured = false }: { testimonial: typeof TESTIMONIALS[0]; featured?: boolean }) {
   return (
-    <div className="bg-white p-5 border border-[#1a1a1a]/5 hover:border-[#D4FD00]/50 transition-all duration-300">
-      <div className="flex items-start gap-3 mb-4">
+    <div className={`bg-white p-5 sm:p-6 border border-[#1a1a1a]/5 hover:border-[#D4FD00]/50 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 h-full ${featured ? "flex flex-col justify-between" : ""}`}>
+      <p className={`text-[#1a1a1a]/80 font-[var(--font-body)] leading-relaxed mb-4 ${featured ? "text-[16px] sm:text-[18px]" : "text-[14px]"}`}>
+        &ldquo;{testimonial.quote}&rdquo;
+      </p>
+      <div className="flex items-center gap-3">
         <img
           src={testimonial.avatar}
           alt={testimonial.author}
-          className="w-10 h-10 object-cover"
+          className={`object-cover ${featured ? "w-12 h-12" : "w-10 h-10"}`}
         />
         <div>
           <p className="font-heading font-semibold text-[14px] text-[#1a1a1a]">
@@ -150,9 +153,6 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
           </p>
         </div>
       </div>
-      <p className="text-[14px] text-[#1a1a1a]/80 font-[var(--font-body)] leading-relaxed">
-        "{testimonial.quote}"
-      </p>
     </div>
   );
 }
@@ -509,54 +509,75 @@ export function CasClientsSection() {
           </div>
         </div>
 
-        {/* Testimonials Marquee Section - hauteur réduite sur mobile */}
-        <div className="mt-6 sm:mt-8">
-          <div className="relative h-[380px] sm:h-[440px] md:h-[500px] overflow-hidden">
-            {/* Gradient overlays for fade effect */}
-            <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#fafafa] to-transparent z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#fafafa] to-transparent z-10 pointer-events-none" />
+        {/* Testimonials Bento Grid */}
+        <div className="mt-8 sm:mt-10">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase mb-5 sm:mb-6"
+          >
+            Ce que nos clients disent de nous
+          </motion.p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full">
-              {/* Column 1 - Scroll Up */}
-              <div className="relative overflow-hidden">
-                <motion.div
-                  animate={{ y: ["0%", "-50%"] }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="flex flex-col gap-4"
-                >
-                  {[...TESTIMONIALS.slice(0, 3), ...TESTIMONIALS.slice(0, 3)].map((testimonial, idx) => (
-                    <TestimonialCard key={`col1-${testimonial.id}-${idx}`} testimonial={testimonial} />
-                  ))}
-                </motion.div>
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-[minmax(140px,auto)]">
+            {/* Featured testimonial - spans 2 cols */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="sm:col-span-2"
+            >
+              <TestimonialCard testimonial={TESTIMONIALS[0]} featured />
+            </motion.div>
 
-              {/* Column 2 - Scroll Down */}
-              <div className="relative overflow-hidden hidden md:block">
-                <motion.div
-                  initial={{ y: "-50%" }}
-                  animate={{ y: "0%" }}
-                  transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-                  className="flex flex-col gap-4"
-                >
-                  {[...TESTIMONIALS.slice(3, 6), ...TESTIMONIALS.slice(3, 6)].map((testimonial, idx) => (
-                    <TestimonialCard key={`col2-${testimonial.id}-${idx}`} testimonial={testimonial} />
-                  ))}
-                </motion.div>
-              </div>
+            {/* Regular testimonials */}
+            {TESTIMONIALS.slice(1, 5).map((testimonial, idx) => (
+              <motion.div
+                key={`bento-${testimonial.id}`}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: (idx + 1) * 0.06 }}
+              >
+                <TestimonialCard testimonial={testimonial} />
+              </motion.div>
+            ))}
 
-              {/* Column 3 - Scroll Up */}
-              <div className="relative overflow-hidden hidden md:block">
-                <motion.div
-                  animate={{ y: ["0%", "-50%"] }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                  className="flex flex-col gap-4"
-                >
-                  {[...TESTIMONIALS.slice(6, 9), ...TESTIMONIALS.slice(6, 9)].map((testimonial, idx) => (
-                    <TestimonialCard key={`col3-${testimonial.id}-${idx}`} testimonial={testimonial} />
-                  ))}
-                </motion.div>
+            {/* Image card to break the pattern */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.36 }}
+              className="relative overflow-hidden min-h-[180px] hidden lg:block"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80"
+                alt="Collaboration"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/60 to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <span className="inline-block px-2.5 py-1 bg-[#D4FD00] text-[10px] font-bold tracking-wide text-[#1a1a1a]">
+                  +70 CLIENTS
+                </span>
               </div>
-            </div>
+            </motion.div>
+
+            {/* More testimonials */}
+            {TESTIMONIALS.slice(5, 8).map((testimonial, idx) => (
+              <motion.div
+                key={`bento2-${testimonial.id}`}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: (idx + 6) * 0.06 }}
+              >
+                <TestimonialCard testimonial={testimonial} />
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
