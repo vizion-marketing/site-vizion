@@ -1,7 +1,10 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { UserCheck, Users, GraduationCap, Cpu, TrendingUp, Puzzle } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const MILESTONES = [
   {
@@ -45,6 +48,36 @@ const MILESTONES = [
 ];
 
 export function WhyVizionSection() {
+  const leftColumnRef = useRef<HTMLDivElement>(null);
+  const rightColumnRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      if (!leftColumnRef.current || !rightColumnRef.current) return;
+
+      ScrollTrigger.create({
+        trigger: leftColumnRef.current,
+        start: "top 96px",
+        endTrigger: rightColumnRef.current,
+        end: "bottom bottom",
+        pin: true,
+        pinSpacing: false,
+      });
+
+      return () => {
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+      };
+    });
+
+    return () => {
+      mm.revert();
+    };
+  }, []);
+
   return (
     <section
       className="relative w-full py-12 sm:py-16 md:py-20 lg:py-32 grain-overlay"
@@ -85,9 +118,9 @@ export function WhyVizionSection() {
       <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8">
 
-          {/* Left Column - Sticky pour rester visible au scroll (compatible Lenis) */}
-          <div className="lg:col-span-5 lg:self-start">
-            <div className="lg:sticky lg:top-24 lg:pt-0 pt-0 lg:pb-8">
+          {/* Left Column - Sticky via ScrollTrigger (compatible Lenis) */}
+          <div className="lg:col-span-5">
+            <div ref={leftColumnRef} className="lg:pb-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -150,7 +183,7 @@ export function WhyVizionSection() {
           </div>
 
           {/* Right Column - Timeline */}
-          <div className="lg:col-span-6 relative">
+          <div ref={rightColumnRef} className="lg:col-span-6 relative">
             {/* Timeline line */}
             <div className="absolute left-5 sm:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#D4FD00] via-[#e5e5e5] to-[#e5e5e5]" />
 

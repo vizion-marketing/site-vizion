@@ -17,3 +17,5 @@ export { LocalSEOSection } from "./LocalSEOSection";
 export { TestimonialsSection } from "./TestimonialsSection";
 export { FinalCTASection } from "./FinalCTASection";
 export { WhyVizionSection } from "./WhyVizionSection";
+export { BlogSection } from "./BlogSection";
+export { FAQSection } from "./FAQSection";
