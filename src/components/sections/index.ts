@@ -87,3 +87,32 @@ export type { NumberCounterProps, CounterItem } from "./NumberCounter";
 
 export { HoverRevealGrid } from "./HoverRevealGrid";
 export type { HoverRevealGridProps, HoverRevealItem } from "./HoverRevealGrid";
+
+// --- Sections contenu SEO ---
+export { ContentBlock } from "./ContentBlock";
+export type { ContentBlockProps } from "./ContentBlock";
+
+export { ContentBentoGrid } from "./ContentBentoGrid";
+export type { ContentBentoGridProps, BentoContentCard } from "./ContentBentoGrid";
+
+export { ImageTextGrid } from "./ImageTextGrid";
+export type { ImageTextGridProps, ImageTextItem } from "./ImageTextGrid";
+
+export { TextColumns } from "./TextColumns";
+export type { TextColumnsProps, TextColumn } from "./TextColumns";
+
+export { QuoteHighlight } from "./QuoteHighlight";
+export type { QuoteHighlightProps } from "./QuoteHighlight";
+
+// --- Variantes Hero ---
+export { HeroSplit } from "./HeroSplit";
+export type { HeroSplitProps } from "./HeroSplit";
+
+export { HeroCentered } from "./HeroCentered";
+export type { HeroCenteredProps } from "./HeroCentered";
+
+export { HeroMinimal } from "./HeroMinimal";
+export type { HeroMinimalProps } from "./HeroMinimal";
+
+export { HeroBento } from "./HeroBento";
+export type { HeroBentoProps, HeroBentoCard } from "./HeroBento";

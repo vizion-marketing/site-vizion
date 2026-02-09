@@ -40,6 +40,17 @@ import {
   StickyScrollReveal,
   NumberCounter,
   HoverRevealGrid,
+  // SEO Content sections
+  ContentBlock,
+  ContentBentoGrid,
+  ImageTextGrid,
+  TextColumns,
+  QuoteHighlight,
+  // Hero variants
+  HeroSplit,
+  HeroCentered,
+  HeroMinimal,
+  HeroBento,
 } from "@/components/sections";
 
 /* ─── SECTION LABEL ─── */
@@ -69,7 +80,7 @@ export function PreviewClient() {
             Section Library <span className="text-[#D4FD00]">Preview</span>
           </h1>
           <p className="text-white/60 font-[var(--font-body)] text-[15px] mb-8 max-w-xl">
-            29 sections réutilisables. Scrolle pour les voir toutes avec des données fictives.
+            38 sections réutilisables. Scrolle pour les voir toutes avec des données fictives.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
             {[
@@ -80,6 +91,8 @@ export function PreviewClient() {
               "TabbedShowcase", "TabbedFeatures", "CaseStudiesCarousel", "ImageSlider",
               "BeforeAfter", "AccordionList", "ExpandableCards", "HorizontalRoadmap",
               "ProcessSteps", "StickyScrollReveal", "NumberCounter", "HoverRevealGrid",
+              "ContentBlock", "ContentBentoGrid", "ImageTextGrid", "TextColumns",
+              "QuoteHighlight", "HeroSplit", "HeroCentered", "HeroMinimal", "HeroBento",
             ].map((name, i) => (
               <div key={name} className="flex items-center gap-2 text-white/50 text-[12px] font-mono">
                 <span className="text-[#D4FD00]">{String(i + 1).padStart(2, "0")}</span>
@@ -544,10 +557,184 @@ export function PreviewClient() {
         variant="dark"
       />
 
+      {/* ===== 30 — ContentBlock ===== */}
+      <SectionLabel name="ContentBlock" index={++idx} />
+      <ContentBlock
+        surtitre="Marketing produit"
+        title="Pourquoi le marketing produit est essentiel"
+        titleHighlight="en B2B"
+        paragraphs={[
+          "Le marketing produit est la discipline qui fait le lien entre le produit, le marché et les équipes commerciales. En B2B, où les cycles de vente sont longs et les décisions impliquent plusieurs parties prenantes, il devient un levier stratégique incontournable.",
+          "Trop souvent confondu avec la communication produit, le marketing produit va bien au-delà. Il s'agit de comprendre les besoins du marché, de définir un positionnement clair et de créer les outils qui permettent aux commerciaux de vendre efficacement.",
+        ]}
+        bullets={[
+          "Définir un positionnement différenciant sur votre marché",
+          "Construire une architecture de message cohérente",
+          "Équiper les commerciaux avec les bons outils au bon moment",
+          "Raccourcir les cycles de décision grâce à des contenus pertinents",
+        ]}
+        image={PLACEHOLDER_IMG}
+        imageAlt="Stratégie marketing produit en B2B"
+        imageCaption="Atelier de positionnement — Vizion, 2024"
+        afterImageParagraphs={[
+          "Chez Vizion, nous accompagnons les entreprises dans la structuration de leur marketing produit. De la définition du positionnement à la création des supports de vente, nous intervenons à chaque étape pour transformer votre offre en référence sur son marché.",
+        ]}
+        variant="white"
+        textWidth="medium"
+      />
+
+      {/* ===== 31 — ContentBentoGrid ===== */}
+      <SectionLabel name="ContentBentoGrid" index={++idx} />
+      <ContentBentoGrid
+        surtitre="Notre valeur ajoutée"
+        title="Ce qui nous rend"
+        titleHighlight="différents"
+        description="Une approche structurée, des résultats mesurables et une expertise reconnue."
+        cards={[
+          { id: "cb1", type: "text", span: "wide", title: "Stratégie avant exécution", description: "Chaque livrable s'inscrit dans une feuille de route marketing alignée sur vos objectifs business. Nous ne produisons pas pour produire.", icon: Target },
+          { id: "cb2", type: "stat", value: "+70", label: "Clients accompagnés" },
+          { id: "cb3", type: "image", span: "tall", image: PLACEHOLDER_IMG, imageAlt: "Équipe Vizion", title: "Notre équipe", description: "Basés à Toulouse" },
+          { id: "cb4", type: "text", title: "Sales enablement", description: "Nous créons les outils dont vos commerciaux ont besoin pour chaque phase du cycle de vente.", icon: Briefcase },
+          { id: "cb5", type: "quote", quote: "Vizion a transformé notre approche commerciale en profondeur.", author: "Marie Dupont", role: "Directrice Marketing" },
+          { id: "cb6", type: "stat", value: "x3", label: "ROI moyen constaté" },
+          { id: "cb7", type: "image", span: "wide", image: PLACEHOLDER_IMG_2, imageAlt: "Résultats clients", title: "Des résultats concrets et mesurables" },
+        ]}
+        variant="light"
+      />
+
+      {/* ===== 32 — ImageTextGrid ===== */}
+      <SectionLabel name="ImageTextGrid" index={++idx} />
+      <ImageTextGrid
+        surtitre="Nos expertises"
+        title="Une approche complète du"
+        titleHighlight="marketing B2B"
+        description="De la stratégie à l'exécution, nous couvrons l'ensemble de vos besoins."
+        items={[
+          {
+            id: "itg1",
+            title: "Marketing produit & positionnement",
+            paragraphs: [
+              "Nous définissons un positionnement clair et différenciant pour votre offre. L'architecture de message, la proposition de valeur et les éléments de preuve sont construits pour convaincre chaque partie prenante du processus de décision.",
+            ],
+            bullets: ["Ateliers de positionnement", "Matrice de messages", "Plan de mise en marché"],
+            image: PLACEHOLDER_IMG,
+          },
+          {
+            id: "itg2",
+            title: "Sales enablement & outils commerciaux",
+            paragraphs: [
+              "Vos commerciaux méritent des outils à la hauteur de leur talent. Nous créons les présentations, battle cards et études de cas qui font la différence en rendez-vous.",
+            ],
+            bullets: ["Présentations sur mesure", "Argumentaires de vente", "Supports d'aide à la décision"],
+            image: PLACEHOLDER_IMG_2,
+          },
+          {
+            id: "itg3",
+            title: "Automatisation & CRM",
+            paragraphs: [
+              "Nous structurons vos systèmes d'information marketing et commerciaux pour soutenir la croissance. Workflows, intégrations et automatisations au service de l'efficacité.",
+            ],
+            image: PLACEHOLDER_IMG,
+          },
+        ]}
+        variant="white"
+      />
+
+      {/* ===== 33 — TextColumns ===== */}
+      <SectionLabel name="TextColumns" index={++idx} />
+      <TextColumns
+        surtitre="Notre philosophie"
+        title="Les principes qui guident"
+        titleHighlight="notre travail"
+        description="Cinq convictions fortes qui fondent notre approche du marketing B2B."
+        columns={[
+          { icon: Target, title: "Le marketing doit servir la vente", paragraphs: ["Pas de vanity metrics ni de tactiques déconnectées du terrain. Chaque action marketing doit contribuer à raccourcir les cycles de décision et à équiper les commerciaux."] },
+          { icon: Lightbulb, title: "La stratégie prime sur l'exécution", paragraphs: ["Un logo sans positionnement ne sert à rien. Un site sans stratégie non plus. Nous challengeons les demandes pour garantir que chaque livrable a un impact réel."] },
+          { icon: Users, title: "Avec vos équipes, pas à leur place", paragraphs: ["La pédagogie fait partie intégrante de notre approche. Un accompagnement réussi, c'est une équipe interne plus autonome à la fin du projet."] },
+        ]}
+        layout={3}
+        variant="light"
+      />
+
+      {/* ===== 34 — QuoteHighlight ===== */}
+      <SectionLabel name="QuoteHighlight" index={++idx} />
+      <QuoteHighlight
+        quote="Le marketing s'est perdu. Nous le ramenons à sa mission originelle : faciliter la vente."
+        author="Lucas Gonzalez"
+        role="Co-fondateur, Vizion"
+        variant="accent"
+      />
+
+      {/* ===== 35 — HeroSplit ===== */}
+      <SectionLabel name="HeroSplit" index={++idx} />
+      <HeroSplit
+        surtitre="Sales Enablement"
+        title="Équipez vos commerciaux pour"
+        titleHighlight="gagner"
+        description="Des outils et contenus adaptés à chaque phase du cycle de vente pour réduire les cycles de décision et augmenter vos taux de conversion."
+        image={PLACEHOLDER_IMG}
+        imageAlt="Sales enablement B2B"
+        primaryCta={{ text: "Découvrir notre approche", href: "/contact" }}
+        secondaryCta={{ text: "Voir les cas clients", href: "/cas-clients" }}
+        badge={{ text: "+45%", subtext: "conversion moyenne" }}
+        stats={[
+          { value: "+70", label: "Clients" },
+          { value: "x3", label: "ROI moyen" },
+        ]}
+        variant="dark"
+      />
+
+      {/* ===== 36 — HeroCentered ===== */}
+      <SectionLabel name="HeroCentered" index={++idx} />
+      <HeroCentered
+        surtitre="Agence marketing B2B"
+        title="Le marketing stratégique au service de"
+        titleHighlight="votre croissance"
+        description="Vizion conçoit des stratégies marketing alignées sur vos objectifs business et les déploie jusqu'au terrain commercial."
+        backgroundImage={PLACEHOLDER_IMG}
+        primaryCta={{ text: "Réserver un appel", href: "/contact" }}
+        secondaryCta={{ text: "Nos expertises", href: "/expertises" }}
+        trustElements={["+70 clients accompagnés", "98% de satisfaction", "Basés à Toulouse"]}
+      />
+
+      {/* ===== 37 — HeroMinimal ===== */}
+      <SectionLabel name="HeroMinimal" index={++idx} />
+      <HeroMinimal
+        surtitre="Article"
+        title="Pourquoi le marketing produit est la clé de votre croissance B2B"
+        description="Le marketing produit n'est pas une option. C'est le fondement d'une stratégie commerciale qui convertit. Découvrez pourquoi et comment le structurer."
+        breadcrumbs={[
+          { label: "Accueil", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: "Marketing produit" },
+        ]}
+        meta={["12 janvier 2025", "Marketing Produit", "6 min de lecture"]}
+        variant="white"
+      />
+
+      {/* ===== 38 — HeroBento ===== */}
+      <SectionLabel name="HeroBento" index={++idx} />
+      <HeroBento
+        surtitre="Agence Vizion"
+        title="Stratégie, marketing et"
+        titleHighlight="intelligence artificielle"
+        description="Nous accompagnons les PME et ETI B2B dans leurs moments de transformation : lancement, innovation, restructuration, accélération."
+        primaryCta={{ text: "Discuter de votre projet", href: "/contact" }}
+        secondaryCta={{ text: "Découvrir nos cas", href: "/cas-clients" }}
+        cards={[
+          { type: "image", span: "tall", image: PLACEHOLDER_IMG, imageAlt: "Stratégie marketing", title: "Stratégie & positionnement" },
+          { type: "stat", value: "+70", label: "Clients accompagnés" },
+          { type: "stat", value: "x3", label: "ROI moyen" },
+          { type: "image", span: "wide", image: PLACEHOLDER_IMG_2, imageAlt: "Résultats", title: "Des résultats concrets pour chaque client" },
+          { type: "text", title: "IA appliquée", description: "L'intelligence artificielle au service du marketing et des ventes." },
+          { type: "text", title: "Sales enablement", description: "Des outils pour chaque phase du cycle de vente." },
+        ]}
+      />
+
       {/* ===== END ===== */}
       <div className="bg-[#0c0c0a] text-center py-16 px-4">
         <p className="text-white/40 font-[var(--font-body)] text-sm">
-          Fin de la preview — 29 sections
+          Fin de la preview — 38 sections
         </p>
       </div>
     </div>
