@@ -21,6 +21,15 @@ export interface CTASectionProps {
   trustElements?: CTATrustElement[];
 }
 
+const trustContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+const trustItem = {
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
 export function CTASection({
   badge,
   title,
@@ -76,9 +85,13 @@ export function CTASection({
             viewport={{ once: true }}
             className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full mb-6 sm:mb-8"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-50" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/50 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+            <span className="relative flex h-2.5 w-2.5">
+              <motion.span
+                className="absolute inline-flex h-full w-full rounded-full bg-[#D4FD00]"
+                animate={{ scale: [1, 2.2, 1], opacity: [0.5, 0, 0.5] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/90 to-[#D4FD00]/60 shadow-[0_0_12px_rgba(212,253,0,0.7)]" />
             </span>
             <span className="text-[9px] sm:text-[10px] font-medium tracking-[0.08em] uppercase text-white/90">
               {badge}
@@ -138,46 +151,64 @@ export function CTASection({
         >
           <Link
             href={primaryCta.href}
-            className="btn btn-primary group"
+            className="btn btn-primary group relative overflow-hidden"
+            style={{ boxShadow: '0 4px 24px rgba(255,255,255,0.1)' }}
           >
-            {primaryCta.text}{" "}
-            <ArrowUpRightIcon
-              className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform"
-              size={16}
-            />
+            <span className="absolute inset-0 bg-gradient-to-r from-[#D4FD00]/0 via-[#D4FD00]/20 to-[#D4FD00]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <span className="relative z-10 flex items-center gap-2">
+              {primaryCta.text}
+              <motion.span
+                className="shrink-0 inline-flex"
+                whileHover={{ x: 2, y: -2 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <ArrowUpRightIcon size={16} />
+              </motion.span>
+            </span>
           </Link>
 
           {secondaryCta && (
             <Link
               href={secondaryCta.href}
-              className="btn btn-secondary group"
+              className="btn btn-secondary group relative overflow-hidden"
             >
-              {secondaryCta.text}{" "}
-              <ArrowUpRightIcon
-                className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform"
-                size={16}
-              />
+              <span className="absolute inset-0 bg-gradient-to-r from-[#D4FD00]/0 via-[#D4FD00]/10 to-[#D4FD00]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative z-10 flex items-center gap-2">
+                {secondaryCta.text}
+                <motion.span
+                  className="shrink-0 inline-flex"
+                  whileHover={{ x: 2, y: -2 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <ArrowUpRightIcon size={16} />
+                </motion.span>
+              </span>
             </Link>
           )}
         </motion.div>
 
-        {/* Trust elements */}
+        {/* Trust elements - staggered */}
         {trustElements && trustElements.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={trustContainer}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 pt-6 border-t border-white/5"
           >
             {trustElements.map((element, index) => (
               <React.Fragment key={element.text}>
-                <div className="flex items-center gap-2">
-                  <element.icon size={14} className="text-[#D4FD00]" />
-                  <span className="text-[11px] sm:text-xs font-[var(--font-body)] text-white/50">
+                <motion.div
+                  variants={trustItem}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  className="flex items-center gap-2 cursor-default"
+                >
+                  <element.icon size={14} className="text-[#D4FD00] transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.6)]" />
+                  <span className="text-[11px] sm:text-xs font-[var(--font-body)] text-white/50 hover:text-white/70 transition-colors duration-300">
                     {element.text}
                   </span>
-                </div>
+                </motion.div>
                 {index < trustElements.length - 1 && (
                   <div className="w-px h-4 bg-white/10 hidden sm:block" />
                 )}

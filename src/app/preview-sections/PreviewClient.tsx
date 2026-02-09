@@ -154,12 +154,12 @@ export function PreviewClient() {
         titleHighlight="maîtrisons"
         description="Cinq piliers d'expertise pour accompagner votre croissance."
         features={[
-          { icon: Target, title: "Stratégie & positionnement", description: "Définition du positionnement et de l'architecture de message.", tags: ["Marketing produit", "PMM"] },
-          { icon: Globe, title: "Actifs digitaux", description: "Sites, landing pages et tunnels d'acquisition performants.", tags: ["Web", "Conversion"] },
-          { icon: Briefcase, title: "Sales enablement", description: "Outils et contenus pour réduire les cycles de vente.", tags: ["Ventes", "Contenu"] },
-          { icon: Rocket, title: "Acquisition", description: "Campagnes ciblées pour générer des opportunités qualifiées.", tags: ["SEA", "Email"] },
-          { icon: Settings, title: "Automatisation", description: "Workflows et intégrations pour industrialiser vos processus.", tags: ["CRM", "Ops"] },
-          { icon: Shield, title: "Formation", description: "Transfert de compétences et montée en autonomie de vos équipes.", tags: ["Workshop", "Coaching"] },
+          { icon: Target, title: "Stratégie & positionnement", description: "Définition du positionnement et de l'architecture de message.", tags: ["Marketing produit", "PMM"], image: PLACEHOLDER_IMG },
+          { icon: Globe, title: "Actifs digitaux", description: "Sites, landing pages et tunnels d'acquisition performants.", tags: ["Web", "Conversion"], image: PLACEHOLDER_IMG_2 },
+          { icon: Briefcase, title: "Sales enablement", description: "Outils et contenus pour réduire les cycles de vente.", tags: ["Ventes", "Contenu"], image: PLACEHOLDER_IMG },
+          { icon: Rocket, title: "Acquisition", description: "Campagnes ciblées pour générer des opportunités qualifiées.", tags: ["SEA", "Email"], image: PLACEHOLDER_IMG_2 },
+          { icon: Settings, title: "Automatisation", description: "Workflows et intégrations pour industrialiser vos processus.", tags: ["CRM", "Ops"], image: PLACEHOLDER_IMG },
+          { icon: Shield, title: "Formation", description: "Transfert de compétences et montée en autonomie de vos équipes.", tags: ["Workshop", "Coaching"], image: PLACEHOLDER_IMG_2 },
         ]}
         columns={3}
       />
@@ -282,6 +282,7 @@ export function PreviewClient() {
         title="Des formules adaptées à"
         titleHighlight="vos ambitions"
         description="Choisissez l'accompagnement qui correspond à votre stade de développement."
+        backgroundImage={PLACEHOLDER_IMG}
         tiers={[
           {
             name: "Starter",
@@ -456,10 +457,10 @@ export function PreviewClient() {
         title="Nos piliers"
         titleHighlight="d'intervention"
         cards={[
-          { id: "e1", number: "01", title: "Marketing produit", subtitle: "Fondation", content: "Positionnement, messaging et go-to-market. Nous transformons votre offre en proposition de valeur claire.", bullets: ["Ateliers stratégiques", "Architecture de message", "Plan de lancement"] },
-          { id: "e2", number: "02", title: "Sales enablement", subtitle: "Conversion", content: "Outils et contenus qui réduisent les cycles de vente et augmentent les taux de conversion.", bullets: ["Présentations commerciales", "Battle cards", "Études de cas"] },
-          { id: "e3", number: "03", title: "Automatisation", subtitle: "Efficience", content: "Workflows et intégrations pour industrialiser vos processus marketing et commerciaux.", bullets: ["CRM setup", "Scoring automatique", "Séquences email"] },
-          { id: "e4", number: "04", title: "Formation", subtitle: "Autonomie", content: "Transfert de compétences pour rendre vos équipes autonomes sur le long terme.", bullets: ["Workshops", "Documentation", "Coaching individuel"] },
+          { id: "e1", number: "01", title: "Marketing produit", subtitle: "Fondation", content: "Positionnement, messaging et go-to-market. Nous transformons votre offre en proposition de valeur claire.", bullets: ["Ateliers stratégiques", "Architecture de message", "Plan de lancement"], image: PLACEHOLDER_IMG },
+          { id: "e2", number: "02", title: "Sales enablement", subtitle: "Conversion", content: "Outils et contenus qui réduisent les cycles de vente et augmentent les taux de conversion.", bullets: ["Présentations commerciales", "Battle cards", "Études de cas"], image: PLACEHOLDER_IMG_2 },
+          { id: "e3", number: "03", title: "Automatisation", subtitle: "Efficience", content: "Workflows et intégrations pour industrialiser vos processus marketing et commerciaux.", bullets: ["CRM setup", "Scoring automatique", "Séquences email"], image: PLACEHOLDER_IMG },
+          { id: "e4", number: "04", title: "Formation", subtitle: "Autonomie", content: "Transfert de compétences pour rendre vos équipes autonomes sur le long terme.", bullets: ["Workshops", "Documentation", "Coaching individuel"], image: PLACEHOLDER_IMG_2 },
         ]}
         columns={2}
       />
@@ -487,10 +488,10 @@ export function PreviewClient() {
         titleHighlight="travaillons"
         description="Une méthode structurée pour des résultats prévisibles."
         steps={[
-          { id: "s1", icon: Target, title: "Diagnostic", description: "Analyse approfondie de votre marché et de votre positionnement.", bullets: ["Audit marketing", "Analyse concurrentielle", "Benchmark sectoriel"] },
-          { id: "s2", icon: Lightbulb, title: "Stratégie", description: "Construction d'une feuille de route claire et actionnable.", bullets: ["Positionnement", "Architecture de message", "Plan d'action 90 jours"] },
-          { id: "s3", icon: Layers, title: "Exécution", description: "Production et déploiement des actifs marketing et commerciaux.", bullets: ["Supports de vente", "Site web", "Campagnes"] },
-          { id: "s4", icon: BarChart3, title: "Optimisation", description: "Mesure des résultats et amélioration continue.", bullets: ["KPIs tracking", "A/B testing", "Reporting mensuel"] },
+          { id: "s1", icon: Target, title: "Diagnostic", description: "Analyse approfondie de votre marché et de votre positionnement.", bullets: ["Audit marketing", "Analyse concurrentielle", "Benchmark sectoriel"], image: PLACEHOLDER_IMG },
+          { id: "s2", icon: Lightbulb, title: "Stratégie", description: "Construction d'une feuille de route claire et actionnable.", bullets: ["Positionnement", "Architecture de message", "Plan d'action 90 jours"], image: PLACEHOLDER_IMG_2 },
+          { id: "s3", icon: Layers, title: "Exécution", description: "Production et déploiement des actifs marketing et commerciaux.", bullets: ["Supports de vente", "Site web", "Campagnes"], image: PLACEHOLDER_IMG },
+          { id: "s4", icon: BarChart3, title: "Optimisation", description: "Mesure des résultats et amélioration continue.", bullets: ["KPIs tracking", "A/B testing", "Reporting mensuel"], image: PLACEHOLDER_IMG_2 },
         ]}
         layout="zigzag"
       />

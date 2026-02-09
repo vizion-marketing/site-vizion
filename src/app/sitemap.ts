@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: "/cas-clients", priority: 0.9, changeFrequency: "monthly" as const },
     { route: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
     { route: "/contact", priority: 0.8, changeFrequency: "monthly" as const },
+    { route: "/agence-marketing-toulouse", priority: 0.9, changeFrequency: "monthly" as const },
     { route: "/mentions-legales", priority: 0.3, changeFrequency: "yearly" as const },
     { route: "/confidentialite", priority: 0.3, changeFrequency: "yearly" as const },
   ];

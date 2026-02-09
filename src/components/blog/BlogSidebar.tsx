@@ -31,10 +31,33 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative group overflow-hidden rounded-none p-6 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] border border-white/10"
+        className="relative group overflow-hidden rounded-none p-6 border border-white/10 grain-overlay"
+        style={{ background: "#0c0c0a" }}
       >
-        {/* Carbon Texture Overlay */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('/carbon-fibre.png')]" />
+        {/* Base + radial gradients jaune Vizion animés */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div
+            className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+            }}
+          />
+        </div>
 
         <div className="relative z-10 flex flex-col gap-4">
           <div className="flex items-center gap-2">

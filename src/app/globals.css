@@ -3,9 +3,6 @@
 /* Design System - Monochrome Corporate */
 :root {
   /* === BACKGROUNDS === */
-  /* Gradient Hero - Pour sections importantes, hero, cartes mises en avant */
-  --bg-gradient-hero: linear-gradient(117deg, #B7B7B7 0%, #000 50.77%, #6D6D6D 100.58%);
-  
   /* Background gris */
   --bg-grey: #F2F2F2;
   
@@ -160,13 +157,7 @@ h3, .h3 {
 }
 
 /* Text on gradient backgrounds (inverted) */
-.text-inverted, 
-.bg-gradient-hero h1,
-.bg-gradient-hero h2,
-.bg-gradient-hero h3,
-.bg-gradient-hero .h1,
-.bg-gradient-hero .h2,
-.bg-gradient-hero .h3 {
+.text-inverted {
   color: var(--bg-white) !important;
 }
 
@@ -202,6 +193,29 @@ h3, .h3 {
 [class*="bg-gradient-to"][class*="via-[#000"] .h1,
 [class*="bg-gradient-to"][class*="via-[#000"] .h2 {
   color: var(--bg-white) !important;
+}
+
+/* Force white text for all elements in dark sections with #0c0c0a background */
+section[style*="#0c0c0a"] h1,
+section[style*="#0c0c0a"] h2,
+section[style*="#0c0c0a"] h3,
+section[style*="#0c0c0a"] .h1,
+section[style*="#0c0c0a"] .h2,
+section[style*="#0c0c0a"] .h3,
+section[style*="background: #0c0c0a"] h1,
+section[style*="background: #0c0c0a"] h2,
+section[style*="background: #0c0c0a"] h3,
+section[style*="background: #0c0c0a"] .h1,
+section[style*="background: #0c0c0a"] .h2,
+section[style*="background: #0c0c0a"] .h3 {
+  color: #ffffff !important;
+}
+
+section[style*="#0c0c0a"] p,
+section[style*="#0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([class*="text-[#1a1a1a]"]),
+section[style*="background: #0c0c0a"] p,
+section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([class*="text-[#1a1a1a]"]) {
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 /* Layout utilities */
@@ -254,9 +268,6 @@ h3, .h3 {
 }
 
 /* === BACKGROUND UTILITIES === */
-.bg-gradient-hero {
-  background: var(--bg-gradient-hero);
-}
 
 .bg-grey {
   background: var(--bg-grey);
@@ -413,7 +424,7 @@ h3, .h3 {
   top: 0.5rem;
   width: 4px;
   height: 2rem;
-  background: linear-gradient(180deg, #000 0%, #B7B7B7 100%);
+  background: linear-gradient(180deg, #0c0c0a 0%, #1a1a1a 100%);
   border-radius: 0;
 }
 
@@ -488,7 +499,7 @@ h3, .h3 {
   top: 0.65em;
   width: 6px;
   height: 6px;
-  background: linear-gradient(135deg, #000 0%, #B7B7B7 100%);
+  background: linear-gradient(135deg, #0c0c0a 0%, #1a1a1a 100%);
   border-radius: 50%;
 }
 

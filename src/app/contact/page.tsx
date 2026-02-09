@@ -65,11 +65,44 @@ export default function ContactPage() {
     <main className="min-h-screen bg-black overflow-x-hidden font-[var(--font-body)] selection:bg-[#D4FD00] selection:text-black">
       {/* HERO SECTION - GRADIENT & CARBON TEXTURE */}
       <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-4 md:px-8 lg:px-12 overflow-hidden">
-        {/* Base Gradient Layer */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] z-0" />
-        
-        {/* Carbon Fibre Texture Overlay */}
-        <div className="absolute inset-0 bg-[url('/carbon-fibre.png')] opacity-20 mix-blend-overlay pointer-events-none z-10" />
+        {/* Base + radial gradients jaune Vizion animés */}
+        <div className="absolute inset-0 z-0 grain-overlay" style={{ background: "#0c0c0a" }}>
+          <div
+            className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+            }}
+          />
+        </div>
 
         {/* Decorative Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] z-10" />

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Plus, Minus, ArrowRight } from "lucide-react";
+import { Plus, ArrowRight } from "lucide-react";
 
 export interface FAQItem {
   question: string;
@@ -58,12 +58,24 @@ export function FAQAccordion({
             transition={{ duration: 0.6 }}
             className="lg:col-span-4"
           >
-            {/* Overline */}
+            {/* Overline - dot spring + text fade */}
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
-              <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-              <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
+                className="w-2 h-2 rounded-full bg-[#D4FD00]"
+              />
+              <motion.span
+                initial={{ opacity: 0, x: -6 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.15 }}
+                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}
+              >
                 {surtitre}
-              </span>
+              </motion.span>
             </div>
 
             <h2 className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[40px] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
@@ -82,7 +94,13 @@ export function FAQAccordion({
                 className={`group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold transition-colors ${isDark ? "text-white hover:text-[#D4FD00]" : "text-[#1a1a1a] hover:text-[#0a0a0a]"}`}
               >
                 {ctaText}
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <motion.span
+                  className="inline-flex"
+                  whileHover={{ x: 3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <ArrowRight size={16} />
+                </motion.span>
               </Link>
             )}
           </motion.div>
@@ -99,16 +117,25 @@ export function FAQAccordion({
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                 >
                   <div
-                    className={`rounded-xl overflow-hidden transition-all duration-300 border ${
+                    className={`relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] border ${
                       isDark
                         ? openIndex === index
-                          ? "bg-white/[0.04] border-white/15"
-                          : "bg-white/[0.02] border-white/10 hover:border-white/15"
+                          ? "bg-white/[0.06] border-[#D4FD00]/40 shadow-[0_0_24px_rgba(212,253,0,0.15)]"
+                          : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]"
                         : openIndex === index
-                          ? "bg-white border-black/[0.12] shadow-sm"
-                          : "bg-white border-black/[0.06] hover:border-black/[0.1]"
+                          ? "bg-white border-[#D4FD00]/30 shadow-[0_4px_16px_rgba(212,253,0,0.1)]"
+                          : "bg-white border-black/[0.06] hover:border-black/[0.15] hover:shadow-sm"
                     }`}
                   >
+                    {/* Left accent bar */}
+                    <motion.div
+                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#D4FD00]"
+                      initial={false}
+                      animate={{ scaleY: openIndex === index ? 1 : 0 }}
+                      transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
+                      style={{ transformOrigin: "top" }}
+                    />
+
                     {/* Question */}
                     <button
                       onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -117,19 +144,17 @@ export function FAQAccordion({
                       <span className={`font-heading font-semibold text-[15px] sm:text-[16px] leading-snug pr-4 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
                         {faq.question}
                       </span>
-                      <div
-                        className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                      <motion.div
+                        animate={{ rotate: openIndex === index ? 45 : 0 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        className={`shrink-0 w-8 h-8 flex items-center justify-center transition-colors duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ${
                           openIndex === index
-                            ? "bg-[#D4FD00] text-[#1a1a1a]"
-                            : isDark ? "bg-white/5 text-white/50" : "bg-black/5 text-[#6b6b6b]"
+                            ? "bg-[#D4FD00] text-[#1a1a1a] shadow-[0_0_16px_rgba(212,253,0,0.5)]"
+                            : isDark ? "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70" : "bg-black/5 text-[#6b6b6b] hover:bg-black/10 hover:text-[#1a1a1a]"
                         }`}
                       >
-                        {openIndex === index ? (
-                          <Minus size={16} strokeWidth={2.5} />
-                        ) : (
-                          <Plus size={16} strokeWidth={2.5} />
-                        )}
-                      </div>
+                        <Plus size={16} strokeWidth={2.5} />
+                      </motion.div>
                     </button>
 
                     {/* Answer */}
@@ -139,10 +164,16 @@ export function FAQAccordion({
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
                         >
                           <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0">
-                            <div className={`h-px mb-4 sm:mb-5 ${isDark ? "bg-white/10" : "bg-black/[0.06]"}`} />
+                            <motion.div
+                              initial={{ scaleX: 0 }}
+                              animate={{ scaleX: 1 }}
+                              transition={{ duration: 0.4, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
+                              style={{ transformOrigin: "left" }}
+                              className={`h-px mb-4 sm:mb-5 ${isDark ? "bg-white/10" : "bg-black/[0.06]"}`}
+                            />
                             <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
                               {faq.answer}
                             </p>

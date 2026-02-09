@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 
 export interface ProcessStep {
@@ -11,6 +12,7 @@ export interface ProcessStep {
   title: string;
   description: string;
   bullets?: string[];
+  image?: string;
 }
 
 export interface ProcessStepsProps {
@@ -118,21 +120,28 @@ export function ProcessSteps({
 
                     {/* Left content (or right on odd) */}
                     <div className={`${isLeft ? "" : "md:order-2"}`}>
-                      <div className={`p-6 sm:p-8 border transition-colors ${isDark ? "border-white/10 bg-white/[0.02]" : "border-black/[0.06] bg-white"} ${isLeft ? "md:text-right" : ""}`}>
-                        {/* Mobile number */}
-                        <div className="md:hidden flex items-center gap-3 mb-3">
-                          <div className="w-9 h-9 flex items-center justify-center bg-[#D4FD00]">
-                            {Icon ? (
-                              <Icon size={16} className="text-[#1a1a1a]" />
-                            ) : (
-                              <span className="font-[var(--font-body)] font-bold text-[12px] text-[#1a1a1a]">{num}</span>
-                            )}
+                      <div className={`relative p-6 sm:p-8 border transition-colors ${isDark ? "border-white/10 bg-white/[0.02]" : "border-black/[0.06] bg-white"} ${isLeft ? "md:text-right" : ""}`}>
+                        {/* Background image */}
+                        {step.image && (
+                          <div className="absolute inset-0 opacity-5">
+                            <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                           </div>
-                        </div>
+                        )}
+                        <div className="relative z-10">
+                          {/* Mobile number */}
+                          <div className="md:hidden flex items-center gap-3 mb-3">
+                            <div className="w-9 h-9 flex items-center justify-center bg-[#D4FD00]">
+                              {Icon ? (
+                                <Icon size={16} className="text-[#1a1a1a]" />
+                              ) : (
+                                <span className="font-[var(--font-body)] font-bold text-[12px] text-[#1a1a1a]">{num}</span>
+                              )}
+                            </div>
+                          </div>
 
-                        <h3 className={`font-heading font-medium text-[18px] sm:text-[20px] mb-2 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
-                          {step.title}
-                        </h3>
+                          <h3 className={`font-heading font-medium text-[18px] sm:text-[20px] mb-2 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                            {step.title}
+                          </h3>
                         <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
                           {step.description}
                         </p>
@@ -146,6 +155,7 @@ export function ProcessSteps({
                             ))}
                           </ul>
                         )}
+                        </div>
                       </div>
                     </div>
 

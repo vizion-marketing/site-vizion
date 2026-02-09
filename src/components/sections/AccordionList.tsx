@@ -43,6 +43,7 @@ export function AccordionList({
 }: AccordionListProps) {
   const [openItems, setOpenItems] = useState<Set<number>>(new Set(defaultOpen));
   const isDark = variant === "dark";
+  const bg = isDark ? "#0c0c0a" : "#f8f8f6";
 
   const toggle = (index: number) => {
     setOpenItems((prev) => {
@@ -58,8 +59,8 @@ export function AccordionList({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : ""}`}
-      style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`}
+      style={{ background: bg }}
     >
       {/* Animated gradient orbs */}
       {isDark && (
@@ -81,7 +82,7 @@ export function AccordionList({
                 className="flex items-center justify-center gap-2.5 mb-4 sm:mb-5"
               >
                 <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-                <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+                <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.5)" } : undefined}>
                   {surtitre}
                 </span>
               </motion.div>
@@ -92,7 +93,8 @@ export function AccordionList({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
+                style={isDark ? { color: "#ffffff" } : undefined}
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
@@ -147,7 +149,7 @@ export function AccordionList({
                         {item.label}
                       </span>
                     )}
-                    <span className={`font-heading font-medium text-[16px] sm:text-[18px] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                    <span className={`font-heading font-medium text-[16px] sm:text-[18px] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`} style={isDark ? { color: "#ffffff" } : undefined}>
                       {item.title}
                     </span>
                   </div>
@@ -172,7 +174,7 @@ export function AccordionList({
                       className="overflow-hidden"
                     >
                       <div className={`pb-6 ${showNumbers ? "pl-11" : ""} ${Icon ? "pl-[3.25rem]" : ""} pr-12`}>
-                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
+                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "!text-white/60" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.6)" } : undefined}>
                           {item.content}
                         </p>
                         {item.bullets && item.bullets.length > 0 && (
@@ -180,7 +182,7 @@ export function AccordionList({
                             {item.bullets.map((bullet, bi) => (
                               <li key={bi} className="flex items-start gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] mt-1.5 shrink-0" />
-                                <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+                                <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.5)" } : undefined}>
                                   {bullet}
                                 </span>
                               </li>

@@ -87,7 +87,7 @@ export function HorizontalRoadmap({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
@@ -150,10 +150,10 @@ export function HorizontalRoadmap({
                           {milestone.phase}
                         </span>
                       )}
-                      <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] mb-2 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                      <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] mb-2 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>
                         {milestone.title}
                       </h3>
-                      <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed mb-3 ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+                      <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed mb-3 ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`}>
                         {milestone.description}
                       </p>
                       {milestone.status && (

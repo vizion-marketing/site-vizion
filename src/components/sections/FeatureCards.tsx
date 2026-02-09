@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRightIcon } from "@/components/icons";
 import type { LucideIcon } from "lucide-react";
 
@@ -12,6 +13,7 @@ export interface FeatureCard {
   description: string;
   tags?: string[];
   href?: string;
+  image?: string;
 }
 
 export interface FeatureCardsProps {
@@ -91,42 +93,51 @@ export function FeatureCards({
             return (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 25, scale: 0.97 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.08, ease: [0.19, 1, 0.22, 1] }}
                 className="group"
               >
-                <div className={`relative h-full min-h-[220px] lg:min-h-[240px] border overflow-hidden transition-all duration-500 hover:bg-[#D4FD00] hover:-translate-y-1 flex flex-col p-6 sm:p-7 lg:p-8 ${isDark ? "bg-white/[0.03] border-white/10" : "bg-white border-black/10"}`}>
-                  {/* Accent line bottom */}
-                  <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#1a1a1a] group-hover:w-full transition-all duration-500" />
+                <div className={`relative h-full min-h-[220px] lg:min-h-[240px] border overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] hover:-translate-y-2 hover:shadow-[0_8px_32px_rgba(212,253,0,0.2)] flex flex-col p-6 sm:p-7 lg:p-8 ${isDark ? "bg-white/[0.03] border-white/10 group-hover:border-[#D4FD00]/30" : "bg-white border-black/10 group-hover:border-[#D4FD00]/40"}`}>
+                  {/* Lime fill from bottom */}
+                  <div className="absolute inset-0 bg-[#D4FD00] scale-y-0 origin-bottom group-hover:scale-y-100 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] z-0" />
+                  {/* Accent line bottom with glow */}
+                  <div className={`absolute bottom-0 left-0 h-[4px] w-0 group-hover:w-full transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] z-[1] ${isDark ? "bg-white/30 shadow-[0_0_12px_rgba(255,255,255,0.3)]" : "bg-[#1a1a1a] shadow-[0_0_12px_rgba(26,26,26,0.4)]"}`} />
 
-                  {/* Icon */}
+                  {/* Background image with improved opacity */}
+                  {feature.image && (
+                    <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.25] transition-opacity duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]">
+                      <Image src={feature.image} alt={feature.title} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                    </div>
+                  )}
+
+                  {/* Icon with enhanced animation */}
                   {Icon && (
-                    <div className="mb-5">
-                      <div className={`w-12 h-12 lg:w-14 lg:h-14 group-hover:bg-[#1a1a1a] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ${isDark ? "bg-white/5" : "bg-[#f5f5f5]"}`}>
-                        <Icon size={24} className={`group-hover:text-[#D4FD00] transition-colors duration-500 ${isDark ? "text-[#D4FD00]" : "text-[#1a1a1a]"}`} />
+                    <div className="mb-5 relative z-10">
+                      <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110 group-hover:rotate-3 ${isDark ? "bg-white/5 group-hover:bg-white/15 group-hover:shadow-[0_0_20px_rgba(212,253,0,0.3)]" : "bg-[#f5f5f5] group-hover:bg-[#1a1a1a] group-hover:shadow-[0_0_20px_rgba(212,253,0,0.25)]"}`}>
+                        <Icon size={24} className={`transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] ${isDark ? "text-[#D4FD00] group-hover:text-[#D4FD00] group-hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.6)]" : "text-[#1a1a1a] group-hover:text-[#D4FD00] group-hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.5)]"}`} />
                       </div>
                     </div>
                   )}
 
-                  {/* Title */}
-                  <h3 className={`font-heading font-medium text-[20px] sm:text-[24px] lg:text-[28px] leading-[1.1] tracking-[-0.02em] mb-3 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                  {/* Title with improved contrast on hover */}
+                  <h3 className={`font-heading font-medium text-[20px] sm:text-[24px] lg:text-[28px] leading-[1.1] tracking-[-0.02em] mb-3 transition-colors duration-700 relative z-10 ${isDark ? "text-white group-hover:text-[#1a1a1a]" : "text-[#1a1a1a] group-hover:text-[#1a1a1a]"}`}>
                     {feature.title}
                   </h3>
 
-                  {/* Description */}
-                  <p className={`group-hover:text-[#1a1a1a]/80 text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-500 ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+                  {/* Description with enhanced contrast */}
+                  <p className={`text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-700 relative z-10 ${isDark ? "text-white/50 group-hover:text-[#1a1a1a]/90" : "text-[#6b6b6b] group-hover:text-[#1a1a1a]/90"}`}>
                     {feature.description}
                   </p>
 
-                  <div className="flex-grow" />
+                  <div className="flex-grow relative z-10" />
 
-                  {/* Tags */}
+                  {/* Tags with improved visibility */}
                   {feature.tags && feature.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 mb-4">
+                    <div className="flex flex-wrap gap-1.5 mb-4 relative z-10">
                       {feature.tags.map((tag) => (
-                        <span key={tag} className="px-2.5 py-1 bg-[#f5f5f5] group-hover:bg-[#1a1a1a]/10 text-[#1a1a1a] text-[10px] lg:text-[11px] font-medium transition-colors duration-500">
+                        <span key={tag} className={`px-2.5 py-1 text-[10px] lg:text-[11px] font-medium transition-all duration-700 border border-transparent ${isDark ? "bg-white/5 text-white/70 group-hover:bg-[#1a1a1a]/10 group-hover:text-[#1a1a1a] group-hover:border-[#1a1a1a]/30" : "bg-[#f5f5f5] text-[#1a1a1a] group-hover:bg-[#1a1a1a]/10 group-hover:text-[#1a1a1a] group-hover:border-[#1a1a1a]/30"}`}>
                           {tag}
                         </span>
                       ))}
@@ -135,12 +146,12 @@ export function FeatureCards({
 
                   {/* Link */}
                   {feature.href && (
-                    <div className="pt-4 border-t border-black/10 group-hover:border-[#1a1a1a]/20 transition-colors duration-500">
+                    <div className={`pt-4 border-t transition-colors duration-500 relative z-10 ${isDark ? "border-white/10 group-hover:border-white/20" : "border-black/10 group-hover:border-[#1a1a1a]/20"}`}>
                       <Link
                         href={feature.href}
-                        className="inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold text-[#1a1a1a] group/btn"
+                        className={`inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold group/btn transition-colors ${isDark ? "text-white group-hover:text-white" : "text-[#1a1a1a]"}`}
                       >
-                        <span className="border-b border-transparent group-hover/btn:border-[#1a1a1a] transition-colors duration-300">
+                        <span className={`border-b border-transparent transition-colors duration-300 ${isDark ? "group-hover/btn:border-white" : "group-hover/btn:border-[#1a1a1a]"}`}>
                           En savoir plus
                         </span>
                         <ArrowUpRightIcon className="shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" size={14} />

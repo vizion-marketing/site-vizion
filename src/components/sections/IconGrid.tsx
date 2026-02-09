@@ -46,17 +46,24 @@ export function IconGrid({
         {/* Header */}
         <div className="mb-12 sm:mb-16 max-w-3xl">
           {surtitre && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-2.5 mb-4 sm:mb-5"
-            >
-              <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-              <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+            <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
+                className="w-2 h-2 rounded-full bg-[#D4FD00]"
+              />
+              <motion.span
+                initial={{ opacity: 0, x: -6 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.15 }}
+                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}
+              >
                 {surtitre}
-              </span>
-            </motion.div>
+              </motion.span>
+            </div>
           )}
 
           <motion.h2
@@ -64,7 +71,7 @@ export function IconGrid({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
           >
             {title}{" "}
             {titleHighlight && (
@@ -78,37 +85,44 @@ export function IconGrid({
           {items.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{
-                duration: 0.5,
-                delay: index * 0.08,
+                duration: 0.6,
+                delay: index * 0.06,
                 ease: [0.19, 1, 0.22, 1],
               }}
               className={`
-                group p-5 sm:p-6 md:p-7
+                group p-5 sm:p-6 md:p-7 relative
                 ${isDark
-                  ? "bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] hover:bg-white/[0.06] hover:border-white/10"
-                  : "bg-white border border-black/[0.06] hover:border-black/10"
+                  ? "bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] hover:bg-white/[0.08] hover:border-[#D4FD00]/30"
+                  : "bg-white border border-black/[0.06] hover:border-[#D4FD00]/40 hover:shadow-[0_8px_24px_rgba(212,253,0,0.15)]"
                 }
-                transition-all duration-300 hover:-translate-y-1
+                transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] hover:-translate-y-2 hover:shadow-[0_12px_32px_rgba(212,253,0,0.12)]
                 ${index === items.length - 1 && items.length % 3 === 2 ? "lg:col-span-1 sm:col-span-2 lg:col-start-2" : ""}
                 ${index === items.length - 1 && items.length % 2 === 1 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2" : ""}
               `}
             >
-              {/* Icon */}
-              <div className={`w-10 h-10 sm:w-12 sm:h-12 mb-4 sm:mb-5 flex items-center justify-center ${isDark ? "bg-[#D4FD00]/10 group-hover:bg-[#D4FD00]/15" : "bg-[#D4FD00]/10 group-hover:bg-[#D4FD00]/20"} transition-colors`}>
-                <item.icon size={20} className="text-[#D4FD00]" />
-              </div>
+              {/* Accent line top */}
+              <div className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full bg-[#D4FD00] transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+
+              {/* Icon with spring hover */}
+              <motion.div
+                whileHover={{ rotate: 6, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className={`w-10 h-10 sm:w-12 sm:h-12 mb-4 sm:mb-5 flex items-center justify-center transition-colors duration-500 ${isDark ? "bg-[#D4FD00]/10 group-hover:bg-[#D4FD00]/20 group-hover:shadow-[0_0_16px_rgba(212,253,0,0.3)]" : "bg-[#D4FD00]/10 group-hover:bg-[#D4FD00]/25 group-hover:shadow-[0_0_16px_rgba(212,253,0,0.25)]"}`}
+              >
+                <item.icon size={20} className="text-[#D4FD00] transition-transform duration-500 group-hover:scale-110" />
+              </motion.div>
 
               {/* Title */}
-              <h3 className={`font-heading font-medium text-base sm:text-lg md:text-xl ${isDark ? "text-white" : "text-[#1a1a1a]"} mb-2 sm:mb-3 leading-snug`}>
+              <h3 className={`font-heading font-medium text-base sm:text-lg md:text-xl ${isDark ? "!text-white" : "text-[#1a1a1a]"} mb-2 sm:mb-3 leading-snug`}>
                 {item.title}
               </h3>
 
               {/* Description */}
-              <p className={`text-sm sm:text-[15px] ${isDark ? "text-white/60" : "text-[#6b6b6b]"} leading-relaxed font-[var(--font-body)]`}>
+              <p className={`text-sm sm:text-[15px] ${isDark ? "!text-white/60" : "text-[#6b6b6b]"} leading-relaxed font-[var(--font-body)]`}>
                 {item.description}
               </p>
             </motion.div>

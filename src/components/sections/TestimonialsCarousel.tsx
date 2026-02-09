@@ -58,90 +58,150 @@ export function TestimonialsCarousel({
   return (
     <section
       className="py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-overlay"
-      style={{
-        background: "linear-gradient(117deg, #B7B7B7 0%, #000 50.77%, #6D6D6D 100.58%)",
+      style={{ background: "#0c0c0a" }}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowLeft") scrollPrev();
+        if (e.key === "ArrowRight") scrollNext();
       }}
     >
-      {/* Carbon fibre texture */}
-      <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/carbon-fibre.png')]" />
+      {/* Base + radial gradients */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div
+          className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
+          style={{
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+          }}
+        />
+        <div
+          className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
+          style={{
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+          }}
+        />
+        <div
+          className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
+          style={{
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+          }}
+        />
+        <div
+          className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
+          style={{
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+          }}
+        />
+        <div
+          className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
+          style={{
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+          }}
+        />
+      </div>
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-2.5 mb-4 sm:mb-5"
-          >
-            <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-white/50">
+          <div className="flex items-center justify-center gap-2.5 mb-4 sm:mb-5">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
+              className="w-2 h-2 rounded-full bg-[#D4FD00]"
+            />
+            <motion.span
+              initial={{ opacity: 0, x: -6 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-white/50"
+            >
               {surtitre}
-            </span>
-          </motion.div>
+            </motion.span>
+          </div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-white"
+            className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] !text-white"
           >
             {title}
           </motion.h2>
         </div>
 
         {/* Carousel */}
-        <div className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="relative"
+        >
           {/* Nav arrows */}
-          <button
+          <motion.button
             onClick={scrollPrev}
-            className="absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-colors"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            className="absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/15 backdrop-blur-md border border-white/30 text-white hover:bg-white/25 hover:border-[#D4FD00]/50 hover:shadow-[0_0_20px_rgba(212,253,0,0.3)] transition-all duration-300"
             aria-label="Témoignage précédent"
           >
             <ChevronLeft size={20} />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             onClick={scrollNext}
-            className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-colors"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/15 backdrop-blur-md border border-white/30 text-white hover:bg-white/25 hover:border-[#D4FD00]/50 hover:shadow-[0_0_20px_rgba(212,253,0,0.3)] transition-all duration-300"
             aria-label="Témoignage suivant"
           >
             <ChevronRight size={20} />
-          </button>
+          </motion.button>
 
           <div ref={emblaRef} className="overflow-hidden px-8 sm:px-16">
             <div className="flex">
-              {testimonials.map((testimonial, index) => (
+              {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
                   className="flex-[0_0_100%] min-w-0 px-2 sm:px-4"
                 >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  <div
                     className={`
-                      p-6 sm:p-8 md:p-10 max-w-3xl mx-auto text-center
+                      p-6 sm:p-8 md:p-10 max-w-3xl mx-auto text-center backdrop-blur-xl
                       ${
                         testimonial.variant === "partner"
-                          ? "bg-white/5 border border-[#D4FD00]/30"
-                          : "bg-white/5 border border-white/10"
+                          ? "bg-white/[0.08] border border-[#D4FD00]/40 shadow-[0_8px_32px_rgba(212,253,0,0.15)]"
+                          : "bg-white/[0.08] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.2)]"
                       }
                     `}
                   >
-                    {/* Rating */}
-                    <div className="flex justify-center gap-1 mb-6">
+                    {/* Rating - staggered stars */}
+                    <div className="flex justify-center gap-1 mb-6" key={`stars-${selectedIndex}`}>
                       {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
+                        <motion.span
                           key={i}
-                          size={18}
-                          className={
-                            i < testimonial.rating
-                              ? "fill-[#D4FD00] text-[#D4FD00]"
-                              : "text-white/20"
-                          }
-                        />
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: i * 0.06, type: "spring", stiffness: 400, damping: 15 }}
+                        >
+                          <Star
+                            size={18}
+                            className={`transition-all duration-300 ${
+                              i < testimonial.rating
+                                ? "fill-[#D4FD00] text-[#D4FD00] drop-shadow-[0_0_8px_rgba(212,253,0,0.6)]"
+                                : "text-white/20"
+                            }`}
+                          />
+                        </motion.span>
                       ))}
                     </div>
 
@@ -153,7 +213,7 @@ export function TestimonialsCarousel({
                     {/* Author */}
                     <div className="flex items-center justify-center gap-3">
                       {testimonial.avatar && (
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 relative overflow-hidden rounded-full border-2 border-white/20">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 relative overflow-hidden rounded-full border-2 border-white/30 transition-all duration-300 hover:border-[#D4FD00]/60 hover:shadow-[0_0_16px_rgba(212,253,0,0.4)]">
                           <Image
                             src={testimonial.avatar}
                             alt={testimonial.author}
@@ -176,22 +236,24 @@ export function TestimonialsCarousel({
                         </span>
                       )}
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Dots */}
+        {/* Dots - layout animated */}
         <div className="flex justify-center gap-2 mt-6 sm:mt-8">
           {testimonials.map((_, index) => (
-            <button
+            <motion.button
               key={index}
+              layout
               onClick={() => scrollTo(index)}
+              transition={{ layout: { type: "spring", stiffness: 300, damping: 25 } }}
               className={`
-                w-2 h-2 transition-all duration-300
-                ${index === selectedIndex ? "bg-[#D4FD00] w-6" : "bg-white/30 hover:bg-white/50"}
+                h-2
+                ${index === selectedIndex ? "bg-[#D4FD00] w-8 shadow-[0_0_12px_rgba(212,253,0,0.6)]" : "w-2 bg-white/30 hover:bg-white/60"}
               `}
               aria-label={`Aller au témoignage ${index + 1}`}
             />

@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { ArrowUpRightIcon } from "@/components/icons";
 
@@ -24,6 +25,7 @@ export interface PricingSectionProps {
   description?: string;
   tiers: PricingTier[];
   footnote?: string;
+  backgroundImage?: string;
 }
 
 export function PricingSection({
@@ -33,12 +35,19 @@ export function PricingSection({
   description,
   tiers,
   footnote,
+  backgroundImage,
 }: PricingSectionProps) {
   return (
     <section
       className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-light"
       style={{ background: "#f8f8f6" }}
     >
+      {/* Background image */}
+      {backgroundImage && (
+        <div className="absolute inset-0 opacity-5">
+          <Image src={backgroundImage} alt="" fill className="object-cover" sizes="100vw" />
+        </div>
+      )}
       <div className="absolute top-[20%] right-[-5%] w-[500px] h-[500px] bg-[#D4FD00] opacity-[0.04] rounded-full blur-[200px] pointer-events-none" />
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">

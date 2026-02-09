@@ -2,7 +2,7 @@ export default function BlogLoading() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero skeleton */}
-      <div className="bg-gradient-to-br from-[#B7B7B7] via-[#000] to-[#6D6D6D] pt-[120px] pb-[80px] px-6 md:px-12">
+      <div className="grain-overlay pt-[120px] pb-[80px] px-6 md:px-12" style={{ background: "#0c0c0a" }}>
         <div className="max-w-[82.5rem] mx-auto">
           <div className="h-8 w-48 bg-white/10 rounded-none animate-pulse mb-6" />
           <div className="h-16 w-96 bg-white/10 rounded-none animate-pulse mb-4" />

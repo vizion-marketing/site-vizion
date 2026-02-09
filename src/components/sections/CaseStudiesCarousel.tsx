@@ -71,9 +71,9 @@ export function CaseStudiesCarousel({
           <div>
             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-center gap-2.5 mb-4 sm:mb-5">
               <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-              <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>{surtitre}</span>
+              <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.5)" } : undefined}>{surtitre}</span>
             </motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`} style={isDark ? { color: "#ffffff" } : undefined}>
               {title}
             </motion.h2>
           </div>
@@ -103,10 +103,10 @@ export function CaseStudiesCarousel({
                   </div>
                   <div className="p-6 sm:p-8">
                     <span className={`inline-block px-2.5 py-1 text-[10px] font-bold tracking-wide mb-4 ${isDark ? "bg-white/5 text-white/50" : "bg-black/5 text-[#6b6b6b]"}`}>{caseStudy.category}</span>
-                    <h3 className={`font-heading font-medium text-lg sm:text-xl mb-2 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>{caseStudy.logo}</h3>
-                    <p className={`text-base sm:text-lg font-[var(--font-body)] mb-4 ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}>{caseStudy.title}</p>
-                    <p className={`text-sm font-[var(--font-body)] leading-relaxed mb-6 ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>{caseStudy.description}</p>
-                    <Link href={`${ctaBaseHref}/${caseStudy.slug}`} className={`inline-flex items-center gap-2 text-sm font-[var(--font-body)] font-semibold hover:text-[#D4FD00] transition-colors group ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                    <h3 className={`font-heading font-medium text-lg sm:text-xl mb-2 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>{caseStudy.logo}</h3>
+                    <p className={`text-base sm:text-lg font-[var(--font-body)] mb-4 ${isDark ? "!text-white/70" : "text-[#6b6b6b]"}`}>{caseStudy.title}</p>
+                    <p className={`text-sm font-[var(--font-body)] leading-relaxed mb-6 ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`}>{caseStudy.description}</p>
+                    <Link href={`${ctaBaseHref}/${caseStudy.slug}`} className={`inline-flex items-center gap-2 text-sm font-[var(--font-body)] font-semibold hover:text-[#D4FD00] transition-colors group ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>
                       {ctaText}
                       <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </Link>

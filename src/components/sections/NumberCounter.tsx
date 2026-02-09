@@ -137,7 +137,7 @@ export function NumberCounter({
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
                 className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${
-                  isAccent ? "text-[#1a1a1a]" : isDark ? "text-white" : "text-[#1a1a1a]"
+                  isAccent ? "text-[#1a1a1a]" : isDark ? "!text-white" : "text-[#1a1a1a]"
                 }`}
               >
                 {title}{" "}
@@ -150,7 +150,7 @@ export function NumberCounter({
             )}
             {description && (
               <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto ${
-                isAccent ? "text-[#1a1a1a]/60" : isDark ? "text-white/60" : "text-[#6b6b6b]"
+                isAccent ? "text-[#1a1a1a]/60" : isDark ? "!text-white/60" : "text-[#6b6b6b]"
               }`}>
                 {description}
               </p>
@@ -176,7 +176,7 @@ export function NumberCounter({
               }`}
             >
               <div className={`font-[var(--font-body)] font-[900] text-[36px] sm:text-[48px] md:text-[56px] leading-none tracking-[-0.03em] mb-2 ${
-                isAccent ? "text-[#1a1a1a]" : isDark ? "text-white" : "text-[#1a1a1a]"
+                isAccent ? "text-[#1a1a1a]" : isDark ? "!text-white" : "text-[#1a1a1a]"
               }`}>
                 <AnimatedNumber
                   value={counter.value}
@@ -187,13 +187,13 @@ export function NumberCounter({
                 />
               </div>
               <p className={`font-heading font-medium text-[14px] sm:text-[15px] mb-1 ${
-                isAccent ? "text-[#1a1a1a]" : isDark ? "text-white" : "text-[#1a1a1a]"
+                isAccent ? "text-[#1a1a1a]" : isDark ? "!text-white" : "text-[#1a1a1a]"
               }`}>
                 {counter.label}
               </p>
               {counter.description && (
                 <p className={`text-[12px] sm:text-[13px] font-[var(--font-body)] ${
-                  isAccent ? "text-[#1a1a1a]/50" : isDark ? "text-white/40" : "text-[#6b6b6b]"
+                  isAccent ? "text-[#1a1a1a]/50" : isDark ? "!text-white/40" : "text-[#6b6b6b]"
                 }`}>
                   {counter.description}
                 </p>

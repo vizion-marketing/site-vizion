@@ -33,6 +33,7 @@ export function SingleTestimonial({
   const roleColor = isAccent ? "text-[#1a1a1a]/60" : isDark ? "text-white/50" : "text-[#6b6b6b]";
   const starColor = isAccent ? "fill-[#1a1a1a] text-[#1a1a1a]" : "fill-[#D4FD00] text-[#D4FD00]";
   const grain = isDark ? "grain-overlay" : isAccent ? "" : "grain-light";
+  const decorativeQuoteColor = isAccent ? "text-[#1a1a1a]/10" : isDark ? "text-[#D4FD00]/15" : "text-[#D4FD00]/20";
 
   return (
     <section
@@ -44,33 +45,56 @@ export function SingleTestimonial({
       )}
 
       <div className="max-w-[52rem] mx-auto relative z-10 text-center">
-        {/* Rating */}
-        {rating && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex justify-center gap-1 mb-6 sm:mb-8"
-          >
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star
-                key={i}
-                size={20}
-                className={i < rating ? starColor : (isDark ? "text-white/20" : "text-black/15")}
-              />
-            ))}
-          </motion.div>
-        )}
-
-        {/* Quote */}
-        <motion.blockquote
-          initial={{ opacity: 0, y: 20 }}
+        {/* Decorative quote mark */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className={`select-none pointer-events-none font-heading font-bold text-[80px] sm:text-[100px] md:text-[120px] leading-none ${decorativeQuoteColor} -mb-8 sm:-mb-10 md:-mb-12`}
+          aria-hidden="true"
+        >
+          &ldquo;
+        </motion.div>
+
+        {/* Rating - staggered stars */}
+        {rating && (
+          <div className="flex justify-center gap-1 mb-6 sm:mb-8">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: i * 0.08,
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 15,
+                }}
+              >
+                <Star
+                  size={20}
+                  className={`transition-all duration-300 ${
+                    i < rating
+                      ? `${starColor} drop-shadow-[0_0_6px_rgba(212,253,0,0.5)]`
+                      : isDark ? "text-white/20" : "text-black/15"
+                  }`}
+                />
+              </motion.span>
+            ))}
+          </div>
+        )}
+
+        {/* Quote with blur reveal */}
+        <motion.blockquote
+          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
           className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-[var(--font-body)] leading-[1.3] sm:leading-relaxed mb-8 sm:mb-10 ${quoteColor}`}
         >
-          &ldquo;{quote}&rdquo;
+          {quote}
         </motion.blockquote>
 
         {/* Author */}
@@ -82,14 +106,24 @@ export function SingleTestimonial({
           className="flex items-center justify-center gap-3"
         >
           {avatar && (
-            <div className={`w-12 h-12 sm:w-14 sm:h-14 relative overflow-hidden rounded-full border-2 ${isAccent ? "border-[#1a1a1a]/20" : isDark ? "border-white/20" : "border-black/10"}`}>
+            <motion.div
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              className={`w-12 h-12 sm:w-14 sm:h-14 relative overflow-hidden rounded-full border-2 transition-all duration-300 ${
+                isAccent
+                  ? "border-[#1a1a1a]/20 hover:border-[#1a1a1a]/40"
+                  : isDark
+                    ? "border-white/20 hover:border-[#D4FD00]/50 hover:shadow-[0_0_16px_rgba(212,253,0,0.3)]"
+                    : "border-black/10 hover:border-[#D4FD00]/40 hover:shadow-[0_0_12px_rgba(212,253,0,0.2)]"
+              }`}
+            >
               <Image
                 src={avatar}
                 alt={author}
                 fill
                 className="object-cover"
               />
-            </div>
+            </motion.div>
           )}
           <div className="text-left">
             <div className={`font-[var(--font-body)] font-semibold text-sm sm:text-base ${authorColor}`}>

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Plus, X } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -82,7 +83,7 @@ export function ExpandableCards({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
@@ -109,7 +110,7 @@ export function ExpandableCards({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className={`border transition-all duration-300 ${
+                className={`relative border transition-all duration-300 overflow-hidden ${
                   isExpanded
                     ? isDark
                       ? "border-[#D4FD00]/30 bg-[#D4FD00]/[0.03]"
@@ -119,10 +120,16 @@ export function ExpandableCards({
                       : "border-black/[0.06] bg-white hover:border-black/15"
                 }`}
               >
+                {/* Background image */}
+                {card.image && (
+                  <div className="absolute inset-0 opacity-5">
+                    <Image src={card.image} alt={card.title} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                  </div>
+                )}
                 {/* Card header */}
                 <button
                   onClick={() => toggle(card.id)}
-                  className="w-full text-left p-6 sm:p-8 flex items-start gap-4"
+                  className="relative z-10 w-full text-left p-6 sm:p-8 flex items-start gap-4"
                 >
                   {/* Number or Icon */}
                   {(card.number || Icon) && (
@@ -145,7 +152,7 @@ export function ExpandableCards({
                         {card.subtitle}
                       </span>
                     )}
-                    <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                    <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>
                       {card.title}
                     </h3>
                   </div>
@@ -170,9 +177,9 @@ export function ExpandableCards({
                       transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-0">
+                      <div className="relative z-10 px-6 sm:px-8 pb-6 sm:pb-8 pt-0">
                         <div className={`h-px mb-5 ${isDark ? "bg-white/10" : "bg-black/10"}`} />
-                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
+                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "!text-white/60" : "text-[#6b6b6b]"}`}>
                           {card.content}
                         </p>
                         {card.bullets && card.bullets.length > 0 && (
@@ -180,7 +187,7 @@ export function ExpandableCards({
                             {card.bullets.map((bullet, bi) => (
                               <li key={bi} className="flex items-start gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] mt-1.5 shrink-0" />
-                                <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+                                <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`}>
                                   {bullet}
                                 </span>
                               </li>

@@ -70,7 +70,7 @@ export function HoverRevealGrid({
                 className="flex items-center justify-center gap-2.5 mb-4 sm:mb-5"
               >
                 <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-                <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+                <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.5)" } : undefined}>
                   {surtitre}
                 </span>
               </motion.div>
@@ -81,14 +81,15 @@ export function HoverRevealGrid({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
+                style={isDark ? { color: "#ffffff" } : undefined}
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
               </motion.h2>
             )}
             {description && (
-              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
+              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto ${isDark ? "!text-white/60" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.6)" } : undefined}>
                 {description}
               </p>
             )}
@@ -155,10 +156,10 @@ export function HoverRevealGrid({
 
                   {/* Bottom: Title & description */}
                   <div>
-                    <h3 className={`font-heading font-medium text-[18px] sm:text-[20px] mb-2 transition-colors duration-300 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                    <h3 className={`font-heading font-medium text-[18px] sm:text-[20px] mb-2 transition-colors duration-300 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`} style={isDark ? { color: "#ffffff" } : undefined}>
                       {item.title}
                     </h3>
-                    <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed transition-colors duration-300 ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+                    <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed transition-colors duration-300 ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.5)" } : undefined}>
                       {item.description}
                     </p>
 
