@@ -52,7 +52,7 @@ export function HeroSection() {
   const scatterRef = useRef<HTMLDivElement>(null);
   const socialProofRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLButtonElement>(null);
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [testimonialIndex, setTestimonialIndex] = useState(0);
@@ -179,7 +179,7 @@ export function HeroSection() {
       style={{ background: "#0c0c0a" }}
     >
       {/* Base + radial gradients jaune Vizion animés */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none z-0">
         <div
           className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
           style={{
@@ -500,15 +500,19 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator - plus petit sur mobile */}
-      <div
+      <button
         ref={scrollIndicatorRef}
-        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 sm:gap-2 opacity-0"
+        onClick={() => {
+          const nextSection = containerRef.current?.nextElementSibling;
+          if (nextSection) nextSection.scrollIntoView({ behavior: "smooth" });
+        }}
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-1.5 sm:gap-2 opacity-0 cursor-pointer hover:opacity-80 transition-opacity"
       >
         <span className="text-white/40 text-[9px] sm:text-[10px] tracking-widest uppercase">Découvrir</span>
         <div className="w-5 h-8 sm:w-6 sm:h-10 border border-white/20 rounded-full flex items-start justify-center p-1">
           <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#D4FD00] rounded-full animate-bounce" />
         </div>
-      </div>
+      </button>
     </section>
   );
 }

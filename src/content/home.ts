@@ -565,46 +565,39 @@ export const homeContent: HomeContent = {
     scrollHint: "Découvrez nos experts",
     members: [
       {
-        name: "Marie Dupont",
-        role: "Lead SEO & Content",
-        specialty: "SEO Technique",
-        skills: ["SEO", "Content Strategy", "Analytics"],
-        img: "https://i.pravatar.cc/300?img=1"
+        name: "Lucas Gonzalez",
+        role: "Co-fondateur & Directeur Stratégie",
+        specialty: "Marketing Produit",
+        skills: ["Positionnement", "Messaging", "Go-to-Market"],
+        img: "/images/team/lucas-gonzalez.jpg"
       },
       {
-        name: "Thomas Martin",
-        role: "Expert Automation",
-        specialty: "Marketing Automation",
-        skills: ["HubSpot", "Zapier", "Workflows"],
-        img: "https://i.pravatar.cc/300?img=3"
+        name: "Hugo Schuppe",
+        role: "Co-fondateur & Directeur Technique",
+        specialty: "Ops & Automatisation",
+        skills: ["CRM", "Automatisation", "Intégrations"],
+        img: "/images/team/hugo-schuppe.jpg"
       },
       {
-        name: "Sophie Bernard",
-        role: "Creative Director",
+        name: "Léo Bouyssou",
+        role: "Consultant SEO & Contenu",
+        specialty: "SEO & Contenu",
+        skills: ["SEO Technique", "Content Strategy", "Analytics"],
+        img: "/images/about/leo-bouyssou.jpg"
+      },
+      {
+        name: "Camille Faure",
+        role: "Directrice Artistique",
         specialty: "Brand & Design",
-        skills: ["UI/UX", "Branding", "Webdesign"],
-        img: "https://i.pravatar.cc/300?img=5"
+        skills: ["Identité visuelle", "Webdesign", "UI/UX"],
+        img: "/images/team/camille-faure.jpg"
       },
       {
-        name: "Alexandre Petit",
-        role: "Growth Hacker",
+        name: "Romain Music",
+        role: "Expert Acquisition",
         specialty: "Acquisition",
-        skills: ["Paid Ads", "LinkedIn", "Outbound"],
-        img: "https://i.pravatar.cc/300?img=8"
-      },
-      {
-        name: "Julie Moreau",
-        role: "Data Analyst",
-        specialty: "Data & Reporting",
-        skills: ["Looker", "GA4", "Data Studio"],
-        img: "https://i.pravatar.cc/300?img=9"
-      },
-      {
-        name: "Pierre Leroy",
-        role: "CRM Specialist",
-        specialty: "Sales Enablement",
-        skills: ["Salesforce", "Pipedrive", "CRM"],
-        img: "https://i.pravatar.cc/300?img=11"
+        skills: ["LinkedIn Ads", "Google Ads", "Outbound"],
+        img: "/images/team/romain-music.jpg"
       }
     ]
   },

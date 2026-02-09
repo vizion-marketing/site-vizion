@@ -73,6 +73,7 @@ export function AssetsSection() {
   const [isMobile, setIsMobile] = useState(false);
   const lenis = useLenis();
   const snapTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isChangingTabRef = useRef(false);
   const content = TAB_CONTENT[activeTab as keyof typeof TAB_CONTENT];
 
   useEffect(() => {
@@ -171,14 +172,35 @@ export function AssetsSection() {
   }, [reducedMotion, isMobile]);
 
   const handleTabClick = useCallback(
-    (tabId: string, index: number) => {
+    (tabId: string, index: number, e?: React.MouseEvent<HTMLButtonElement>) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      
+      // Empêcher les clics multiples rapides
+      if (isChangingTabRef.current || activeTab === tabId) {
+        return;
+      }
+      
+      isChangingTabRef.current = true;
+      
       if (!isMobile || reducedMotion) {
+        // Sur PC : changement d'onglet immédiat sans scroll
         setActiveTab(tabId);
+        // Réinitialiser le flag après un court délai pour permettre l'animation
+        setTimeout(() => {
+          isChangingTabRef.current = false;
+        }, 300);
       } else {
+        // Sur mobile : scroll vers l'onglet
         goToTab(index);
+        setTimeout(() => {
+          isChangingTabRef.current = false;
+        }, 600);
       }
     },
-    [isMobile, reducedMotion, goToTab]
+    [isMobile, reducedMotion, goToTab, activeTab]
   );
 
   return (
@@ -304,12 +326,15 @@ export function AssetsSection() {
             return (
               <button
                 key={tab.id}
-                onClick={() => handleTabClick(tab.id, index)}
+                type="button"
+                onClick={(e) => handleTabClick(tab.id, index, e)}
                 className={`relative flex items-center gap-2 px-4 sm:px-5 py-2.5 text-[12px] sm:text-[13px] font-[var(--font-body)] font-medium transition-all duration-300 rounded-md ${
                   isActive
                     ? "text-[#0c0c0a]"
                     : "text-white/60 hover:text-white"
                 }`}
+                aria-selected={isActive}
+                aria-controls={`panel-${tab.id}`}
               >
                 {isActive && (
                   <motion.div

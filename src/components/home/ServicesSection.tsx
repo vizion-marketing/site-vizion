@@ -18,8 +18,6 @@ const SERVICES = [
     icon: Target,
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
     tags: ["Positionnement", "Messaging", "Go-to-Market"],
-    stat: "+45%",
-    statLabel: "conversion",
     span: "featured" as const,
     benefits: [
       "Architecture de message différenciante",
@@ -34,10 +32,7 @@ const SERVICES = [
     subtitle: "Contenu & Acquisition",
     description: "Créez du contenu qui attire, éduque et convertit vos prospects en clients.",
     icon: PenTool,
-    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&q=80",
     tags: ["SEO", "Lead Magnets", "Blog"],
-    stat: "3x",
-    statLabel: "trafic",
     span: "normal" as const,
     href: "/services/content-marketing",
   },
@@ -48,8 +43,6 @@ const SERVICES = [
     description: "Accélérez votre croissance avec des campagnes d'acquisition ciblées et mesurables.",
     icon: TrendingUp,
     tags: ["Paid Ads", "Email", "Automation"],
-    stat: "-40%",
-    statLabel: "CAC",
     span: "normal" as const,
     href: "/services/growth-marketing",
   },
@@ -60,8 +53,6 @@ const SERVICES = [
     description: "Équipez vos commerciaux avec les outils et contenus qui accélèrent le closing.",
     icon: Presentation,
     tags: ["Pitch Decks", "Battle Cards", "Objections"],
-    stat: "+60%",
-    statLabel: "win rate",
     span: "normal" as const,
     href: "/services/sales-enablement",
   },
@@ -71,14 +62,13 @@ const SERVICES = [
     subtitle: "CRM & Workflows",
     description: "Automatisez vos processus marketing et commerciaux pour scaler sans friction.",
     icon: Cog,
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
     tags: ["HubSpot", "Zapier", "Intégrations"],
-    stat: "10h",
-    statLabel: "gagnées/sem",
-    span: "wide" as const,
+    span: "normal" as const,
     href: "/services/automatisation",
   },
 ];
+
+const AUTOMATION_IMAGE = "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80";
 
 type Service = {
   id: number;
@@ -88,8 +78,6 @@ type Service = {
   icon: typeof Target;
   image?: string;
   tags: string[];
-  stat: string;
-  statLabel: string;
   span: "featured" | "normal" | "wide";
   benefits?: string[];
   href: string;
@@ -180,15 +168,8 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
               ))}
             </div>
 
-            {/* Bottom: Stat + CTA */}
-            <div className="flex items-end justify-between gap-4">
-              <div className="flex items-baseline gap-2">
-                <span className="text-white font-heading font-bold text-4xl lg:text-5xl drop-shadow-lg">
-                  {service.stat}
-                </span>
-                <span className="text-white/80 text-base lg:text-lg">{service.statLabel}</span>
-              </div>
-
+            {/* Bottom: CTA */}
+            <div className="flex items-end justify-end gap-4">
               {/* CTA Button */}
               <Link
                 href={service.href}
@@ -213,9 +194,9 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
 
 function StandardCard({ service, index, total }: ServiceCardProps) {
   const Icon = service.icon;
+  const cardNumber = String(index + 1).padStart(2, "0");
   const isWide = service.span === "wide";
   const hasImage = !!service.image;
-  const cardNumber = String(index + 1).padStart(2, "0");
 
   return (
     <motion.div
@@ -255,14 +236,11 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
             </div>
           )}
 
-          {/* Header: Icon + Number */}
-          <div className="flex items-center justify-between mb-5">
+          {/* Icon */}
+          <div className="mb-5">
             <div className="w-12 h-12 lg:w-14 lg:h-14 bg-[#f5f5f5] group-hover:bg-[#1a1a1a] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
               <Icon size={24} className="text-[#1a1a1a] group-hover:text-[#D4FD00] transition-colors duration-500" />
             </div>
-            <span className="text-black/10 group-hover:text-[#1a1a1a]/20 font-heading font-bold text-4xl transition-colors duration-500">
-              {cardNumber}
-            </span>
           </div>
 
           {/* Subtitle */}
@@ -295,16 +273,11 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
             ))}
           </div>
 
-          {/* Bottom: Stat + CTA */}
+          {/* Bottom: Number + CTA */}
           <div className="flex items-end justify-between gap-4 pt-4 border-t border-black/10 group-hover:border-[#1a1a1a]/20 transition-colors duration-500">
-            <div className="flex items-baseline gap-2">
-              <span className="text-[#1a1a1a] font-heading font-bold text-2xl lg:text-3xl">
-                {service.stat}
-              </span>
-              <span className="text-[#6b6b6b] group-hover:text-[#1a1a1a]/70 text-sm transition-colors duration-500">
-                {service.statLabel}
-              </span>
-            </div>
+            <span className="text-[#1a1a1a]/15 font-heading font-bold text-3xl lg:text-4xl">
+              {cardNumber}
+            </span>
 
             {/* CTA Link */}
             <Link
@@ -367,6 +340,29 @@ export function ServicesSection() {
           {otherServices.map((service, index) => (
             <StandardCard key={service.id} service={service} index={index + 1} total={total} />
           ))}
+
+          {/* Image card — séparée de Automatisation */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.5, ease: [0.19, 1, 0.22, 1] }}
+            className="col-span-1 relative overflow-hidden group"
+          >
+            <div className="relative h-full min-h-[280px] lg:min-h-[260px]">
+              <img
+                src={AUTOMATION_IMAGE}
+                alt="Automatisation et workflows"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <span className="px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-bold tracking-wide text-white/90">
+                  CRM & Workflows
+                </span>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Footer CTA */}
