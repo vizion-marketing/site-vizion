@@ -1,9 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Globe, Layout, Users, Presentation, FileText, Megaphone } from "lucide-react";
 import Link from "next/link";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLenis } from "@/components/SmoothScroller";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TABS = [
   { id: "siteweb", label: "Site Web", icon: Globe },
@@ -53,9 +58,128 @@ const TAB_CONTENT = {
   },
 };
 
+const SCROLL_DURATION_VH = 1.2;
+const TRIGGER_OFFSET_PX = 80;
+const SNAP_DEBOUNCE_MS = 120;
+const SNAP_DURATION = 0.35;
+const ASSETS_TRIGGER_ID = "assets-tabs";
+const MOBILE_BREAKPOINT = 1024;
+
 export function AssetsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState("siteweb");
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const lenis = useLenis();
+  const snapTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const content = TAB_CONTENT[activeTab as keyof typeof TAB_CONTENT];
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = () => setReducedMotion(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  const snapToNearestTab = useCallback(() => {
+    const st = ScrollTrigger.getById(ASSETS_TRIGGER_ID);
+    if (!st || !st.isActive || !lenis) return;
+    const progress = st.progress;
+    const steps = TABS.length - 1;
+    const snappedProgress = Math.round(progress * steps) / steps;
+    if (Math.abs(progress - snappedProgress) < 0.01) return;
+    const start = st.start;
+    const end = st.end;
+    const targetScroll = start + snappedProgress * (end - start);
+    lenis.scrollTo(targetScroll, {
+      duration: SNAP_DURATION,
+      easing: (t: number) => t * (2 - t),
+    });
+  }, [lenis]);
+
+  const goToTab = useCallback(
+    (index: number) => {
+      const st = ScrollTrigger.getById(ASSETS_TRIGGER_ID);
+      if (!st || !lenis) return;
+      const steps = TABS.length - 1;
+      const progress = index / steps;
+      const start = st.start;
+      const end = st.end;
+      const targetScroll = start + progress * (end - start);
+      lenis.scrollTo(targetScroll, {
+        duration: 0.6,
+        easing: (t: number) => t * (2 - t),
+      });
+    },
+    [lenis]
+  );
+
+  useEffect(() => {
+    if (!lenis || reducedMotion || !isMobile) return undefined;
+    const handler = () => {
+      if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
+      snapTimeoutRef.current = setTimeout(snapToNearestTab, SNAP_DEBOUNCE_MS);
+    };
+    lenis.on("scroll", handler);
+    return () => {
+      if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
+      lenis.off("scroll", handler);
+    };
+  }, [lenis, reducedMotion, isMobile, snapToNearestTab]);
+
+  useLayoutEffect(() => {
+    if (reducedMotion || !isMobile) return undefined;
+    const trigger = triggerRef.current;
+    if (!trigger) return undefined;
+    let ctx: gsap.Context | null = null;
+    const timer = setTimeout(() => {
+      const viewportHeight = window.innerHeight;
+      const scrollDuration = viewportHeight * SCROLL_DURATION_VH;
+      ctx = gsap.context(() => {
+        ScrollTrigger.create({
+          id: ASSETS_TRIGGER_ID,
+          trigger,
+          start: `top ${TRIGGER_OFFSET_PX}px`,
+          end: () => `+=${scrollDuration}`,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const tabIndex = Math.min(
+              Math.round(self.progress * (TABS.length - 1)),
+              TABS.length - 1
+            );
+            setActiveTab(TABS[tabIndex].id);
+          },
+        });
+      }, sectionRef);
+    }, 100);
+    return () => {
+      clearTimeout(timer);
+      ctx?.revert();
+    };
+  }, [reducedMotion, isMobile]);
+
+  const handleTabClick = useCallback(
+    (tabId: string, index: number) => {
+      if (!isMobile || reducedMotion) {
+        setActiveTab(tabId);
+      } else {
+        goToTab(index);
+      }
+    },
+    [isMobile, reducedMotion, goToTab]
+  );
 
   return (
     <>
@@ -107,9 +231,15 @@ export function AssetsSection() {
 
       {/* Main Section - Dark background */}
       <section
-        className="relative pt-10 sm:pt-12 pb-0 overflow-hidden grain-overlay"
+        id="assets"
+        ref={sectionRef}
+        className="relative overflow-hidden grain-overlay scroll-mt-20"
         style={{ background: "#0c0c0a" }}
       >
+        <div
+          ref={triggerRef}
+          className={`relative pt-10 sm:pt-12 pb-16 sm:pb-20 ${isMobile && !reducedMotion ? "min-h-screen" : ""}`}
+        >
         {/* Background gradients */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
           <div
@@ -174,7 +304,7 @@ export function AssetsSection() {
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabClick(tab.id, index)}
                 className={`relative flex items-center gap-2 px-4 sm:px-5 py-2.5 text-[12px] sm:text-[13px] font-[var(--font-body)] font-medium transition-all duration-300 rounded-md ${
                   isActive
                     ? "text-[#0c0c0a]"
@@ -320,6 +450,7 @@ export function AssetsSection() {
           </motion.div>
         </div>
       </div>
+        </div>
     </section>
     </>
   );

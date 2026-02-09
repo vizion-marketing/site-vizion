@@ -1,138 +1,137 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { homeContent } from "@/content/home";
 
-const TEAM = [
-  {
-    name: "Lucas Gonzalez",
-    role: "Cofondateur",
-    specialty: "STRATÉGIE & ACQUISITION",
-    image: "/images/about/lucas-gonzalez.jpg",
-  },
-  {
-    name: "Hugo Schuppe",
-    role: "Cofondateur",
-    specialty: "TECHNIQUE & SYSTÈMES",
-    image: "/images/about/hugo-schuppe.jpg",
-  },
-];
+const SOCIAL_LINK = "https://www.linkedin.com/company/vizion-marketing-b2b/";
 
 export function TeamSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const { equipe } = homeContent;
+  const members = equipe.members.slice(0, 5);
+  const [expandedIndex, setExpandedIndex] = useState(0);
+
+  // Ordre : carte dépliée en premier, puis les repliées
+  const orderedMembers = [
+    members[expandedIndex],
+    ...members.filter((_, i) => i !== expandedIndex),
+  ];
 
   return (
-    <section className="py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden bg-white">
+    <section
+      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden"
+      style={{ background: "#f0f0eb" }}
+    >
       <div className="max-w-[82.5rem] mx-auto relative z-10">
-        {/* Header centré */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
-        >
-          <div className="flex items-center justify-center gap-2.5 mb-4 sm:mb-5">
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.2em] text-[#6b6b6b] uppercase">
-              {homeContent.equipe.surtitre}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Colonne gauche — Titre + description */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5"
+          >
+            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.2em] text-[#6b6b6b] uppercase block mb-4">
+              {equipe.surtitre}
             </span>
-          </div>
-          <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4 sm:mb-5">
-            {homeContent.equipe.h2.replace(
-              homeContent.equipe.h2Highlight,
-              ""
-            ).trim()}
-            {homeContent.equipe.h2Highlight && (
-              <span className="text-[#1a1a1a] font-medium">
-                {" "}
-                {homeContent.equipe.h2Highlight}
-              </span>
-            )}
-          </h2>
-          <p className="text-[#6b6b6b] text-base sm:text-lg font-[var(--font-body)] leading-relaxed mb-8">
-            {homeContent.equipe.description}
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex h-12 sm:h-14 px-6 sm:px-8 text-[13px] sm:text-[15px] font-[var(--font-body)] font-semibold tracking-[-0.01em] bg-[#1a1a1a] text-white rounded-full hover:bg-[#0a0a0a] hover:-translate-y-0.5 transition-all duration-300 active:scale-95 items-center justify-center gap-2 border border-[#1a1a1a]"
-          >
-            Échanger avec nous
-            <ArrowRight size={18} className="shrink-0" />
-          </Link>
-        </motion.div>
+            <h2 className="font-heading font-medium text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[0.95] tracking-[-0.03em] text-[#1a1a1a] mb-6">
+              Notre <span className="bg-[#D4FD00]/30">équipe</span>
+            </h2>
+            <p className="text-[#6b6b6b] text-base sm:text-lg font-[var(--font-body)] leading-relaxed max-w-md mb-8">
+              {equipe.description}
+            </p>
+            <a
+              href={SOCIAL_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 h-[48px] px-6 text-[14px] font-[var(--font-body)] font-semibold bg-black text-white rounded-full hover:bg-black/90 transition-colors group"
+            >
+              Découvrir sur LinkedIn
+              <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+          </motion.div>
 
-        {/* Galerie horizontale – cartes profil */}
-        <div className="relative -mx-4 sm:-mx-6 md:-mx-12">
-          <div
-            ref={scrollRef}
-            className="flex gap-4 sm:gap-6 overflow-x-auto overflow-y-hidden pb-4 snap-x snap-mandatory scroll-smooth scrollbar-hide px-4 sm:px-6 md:px-12"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          {/* Colonne droite — Accordéon de cartes */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7"
           >
-            {TEAM.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] snap-center"
-              >
-                <div className="bg-[#0a0a0a] rounded-xl overflow-hidden border border-white/10 shadow-xl h-full flex flex-col">
-                  {/* Badge en haut à gauche */}
-                  <div className="p-4 sm:p-5 flex items-center gap-2">
-                    <Zap size={14} className="text-[#D4FD00] shrink-0" />
-                    <span className="text-[10px] sm:text-[11px] font-semibold tracking-wider text-white/90 uppercase">
-                      {member.specialty}
-                    </span>
-                  </div>
+            <div className="flex items-stretch justify-start gap-0 h-[340px] sm:h-[380px] md:h-[440px] overflow-x-auto overflow-y-visible scrollbar-hide pb-2">
+              {orderedMembers.map((member, displayIndex) => {
+                const isExpanded = displayIndex === 0;
+                const originalIndex = members.indexOf(member);
 
-                  {/* Photo avec dégradé vert/lime derrière */}
-                  <div className="relative px-4 sm:px-5 pb-4 flex-1 min-h-[280px] sm:min-h-[300px] flex flex-col items-center">
-                    <div className="relative w-full aspect-[3/4] max-h-[320px] rounded-lg overflow-hidden p-1.5">
-                      {/* Dégradé vert / sarcelle en cadre derrière le portrait */}
-                      <div
-                        className="absolute inset-0 rounded-lg"
-                        style={{
-                          background:
-                            "linear-gradient(160deg, rgba(212, 253, 0, 0.4) 0%, rgba(0, 200, 180, 0.35) 50%, rgba(20, 20, 20, 0.9) 100%)",
-                        }}
+                return (
+                  <motion.button
+                    key={member.name}
+                    onClick={() => setExpandedIndex(originalIndex)}
+                    layout
+                    initial={false}
+                    animate={{
+                      width: isExpanded ? 260 : 85,
+                      minWidth: isExpanded ? 200 : 70,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 35,
+                    }}
+                    className={`relative rounded-xl overflow-hidden border border-black/[0.06] bg-white flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#D4FD00] focus:ring-offset-2 ${
+                      isExpanded
+                        ? "shadow-[0_12px_40px_-12px_rgba(0,0,0,0.2)] z-10"
+                        : "shadow-sm -ml-6 sm:-ml-8 hover:z-[5]"
+                    }`}
+                  >
+                    <div className="relative w-full h-full min-w-0">
+                      <Image
+                        src={member.img}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 220px, 320px"
                       />
-                      <div className="relative w-full h-full rounded-md overflow-hidden z-10">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          className="object-cover object-top"
-                          sizes="(max-width: 640px) 280px, (max-width: 768px) 300px, 320px"
-                        />
-                      </div>
-                    </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
-                    {/* Nom et rôle sous le portrait */}
-                    <div className="w-full mt-4 text-center">
-                      <p className="font-heading font-medium text-lg sm:text-xl text-white tracking-[-0.02em]">
-                        {member.name}
-                      </p>
-                      <p className="text-sm text-white/70 font-[var(--font-body)] mt-0.5">
-                        {member.role}
-                      </p>
+                      {isExpanded ? (
+                        /* Carte dépliée — détails complets */
+                        <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 text-left">
+                          <p className="font-heading font-semibold text-white text-[20px] sm:text-[24px] leading-tight">
+                            {member.name}
+                          </p>
+                          <p className="text-[11px] sm:text-[12px] font-[var(--font-body)] text-white/90 tracking-wider uppercase mt-1 mb-3">
+                            {member.specialty}
+                          </p>
+                          <p className="text-[13px] sm:text-[14px] font-[var(--font-body)] text-white/80 leading-relaxed line-clamp-2">
+                            {member.role} — {member.skills.slice(0, 2).join(", ")}
+                          </p>
+                        </div>
+                      ) : (
+                        /* Carte repliée — texte vertical sur le côté */
+                        <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-3">
+                          <span
+                            className="text-white text-[10px] sm:text-[11px] font-[var(--font-body)] font-semibold tracking-wider uppercase whitespace-nowrap overflow-hidden"
+                            style={{
+                              writingMode: "vertical-rl",
+                              textOrientation: "mixed",
+                              transform: "rotate(180deg)",
+                              maxHeight: "70%",
+                            }}
+                          >
+                            {member.specialty}
+                          </span>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  </motion.button>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
-
-        {/* Indice de défilement (optionnel) */}
-        {TEAM.length > 2 && (
-          <p className="text-center text-[10px] sm:text-[11px] font-light tracking-widest text-[#6b6b6b] mt-6">
-            {homeContent.equipe.scrollHint}
-          </p>
-        )}
       </div>
     </section>
   );

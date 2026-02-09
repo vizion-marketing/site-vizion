@@ -23,6 +23,7 @@ interface HeaderProps {
 
 const navigation = [
   { label: "Services", href: "/#services" },
+  { label: "Assets", href: "/#assets" },
   { label: "Cas Clients", href: "/cas-clients" },
   { label: "Blog", href: "/blog" },
   { label: "À propos", href: "/#about" },

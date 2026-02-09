@@ -47,7 +47,7 @@ const MILESTONES = [
 export function WhyVizionSection() {
   return (
     <section
-      className="relative w-full py-12 sm:py-16 md:py-20 lg:py-32 overflow-hidden grain-overlay"
+      className="relative w-full py-12 sm:py-16 md:py-20 lg:py-32 grain-overlay"
     >
       {/* Background base — full-bleed sur toute la largeur de la section */}
       <div
@@ -86,7 +86,7 @@ export function WhyVizionSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8">
 
           {/* Left Column - Sticky pour rester visible au scroll (compatible Lenis) */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 lg:self-start">
             <div className="lg:sticky lg:top-24 lg:pt-0 pt-0 lg:pb-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
