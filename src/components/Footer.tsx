@@ -7,7 +7,6 @@ import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 const footerLinks = {
   entreprise: [
-    { name: 'Cas clients', href: '/cas-clients' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ],

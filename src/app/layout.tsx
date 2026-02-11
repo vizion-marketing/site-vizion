@@ -6,7 +6,6 @@ import { Footer } from "@/components/Footer";
 import { CallWidget } from "@/components/CallWidget";
 import { MotionProvider } from "@/components/MotionProvider";
 import SmoothScroller from "@/components/SmoothScroller";
-import { allCaseStudies } from "contentlayer/generated";
 
 // DM Sans pour titres et corps
 const dmSans = DM_Sans({
@@ -53,31 +52,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Préparer les données des cas clients pour le Header
-  // Filtrer les templates et trier par ordre/featured
-  const caseStudiesForNav = allCaseStudies
-    .filter((cs) => !cs._raw.sourceFileName.startsWith("_"))
-    .sort((a, b) => {
-      if (a.featured && !b.featured) return -1;
-      if (!a.featured && b.featured) return 1;
-      return (a.order || 0) - (b.order || 0);
-    })
-    .map((cs) => ({
-      title: cs.title,
-      description: cs.description,
-      company: cs.company,
-      sector: cs.sector,
-      slug: cs.slug,
-      featured: cs.featured || false,
-      heroImage: cs.heroImage || null,
-    }));
-
   return (
     <html lang="fr">
       <body className={`${dmSans.variable} antialiased`} suppressHydrationWarning>
         <SmoothScroller>
           <MotionProvider>
-            <Header caseStudies={caseStudiesForNav} />
+            <Header />
             <main>{children}</main>
             <Footer />
             <CallWidget />

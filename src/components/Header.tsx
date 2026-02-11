@@ -6,30 +6,11 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-// Types pour les cas clients
-interface CaseStudyNav {
-  title: string;
-  description: string;
-  company: string;
-  sector: string;
-  slug: string;
-  featured: boolean;
-  heroImage: string | null;
-}
-
-interface HeaderProps {
-  caseStudies?: CaseStudyNav[];
-}
-
 const navigation = [
-  { label: "Services", href: "/#services" },
-  { label: "Assets", href: "/#assets" },
-  { label: "Cas Clients", href: "/cas-clients" },
   { label: "Blog", href: "/blog" },
-  { label: "À propos", href: "/#about" },
 ];
 
-export function Header({ caseStudies = [] }: HeaderProps) {
+export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -63,16 +44,9 @@ export function Header({ caseStudies = [] }: HeaderProps) {
           </nav>
 
           {/* Right side - CTA */}
-          <div className="hidden lg:flex items-center gap-6">
-            <Link
-              href="/contact"
-              className="text-[14px] font-[var(--font-body)] font-medium text-[#52525b] hover:text-[#1a1a1a] transition-colors duration-200"
-            >
-              Contact
-            </Link>
-
+          <div className="hidden lg:flex items-center">
             <Link href="/contact" className="btn btn-dark">
-              Prendre rendez-vous
+              Contact
             </Link>
           </div>
 
@@ -109,21 +83,13 @@ export function Header({ caseStudies = [] }: HeaderProps) {
                 </Link>
               ))}
 
-              <div className="pt-4 mt-2 border-t border-gray-200 flex flex-col gap-3">
-                <Link
-                  href="/contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-[16px] font-[var(--font-body)] font-medium text-[#52525b] hover:text-[#1a1a1a] py-2 transition-colors"
-                >
-                  Contact
-                </Link>
-
+              <div className="pt-4 mt-2 border-t border-gray-200">
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
                   className="btn btn-dark w-full justify-center"
                 >
-                  Prendre rendez-vous
+                  Contact
                 </Link>
               </div>
             </div>

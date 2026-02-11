@@ -62,9 +62,9 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black overflow-x-hidden font-[var(--font-body)] selection:bg-[#D4FD00] selection:text-black">
+    <main className="min-h-screen overflow-x-hidden font-[var(--font-body)] selection:bg-[#D4FD00] selection:text-black">
       {/* HERO SECTION - GRADIENT & CARBON TEXTURE */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-4 md:px-8 lg:px-12 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-4 md:px-8 lg:px-12 overflow-hidden bg-black">
         {/* Base + radial gradients jaune Vizion animés */}
         <div className="absolute inset-0 z-0 grain-overlay" style={{ background: "#0c0c0a" }}>
           <div
@@ -212,10 +212,8 @@ export default function ContactPage() {
                         className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white appearance-none focus:outline-none focus:border-white/60 transition-all duration-300 cursor-pointer"
                       >
                         <option className="bg-zinc-900 text-white" value="">Sélectionnez un sujet</option>
-                        <option className="bg-zinc-900 text-white" value="conseil">Conseil Stratégique</option>
-                        <option className="bg-zinc-900 text-white" value="saas">Solutions SaaS</option>
-                        <option className="bg-zinc-900 text-white" value="formation">Formation</option>
-                        <option className="bg-zinc-900 text-white" value="partenariat">Partenariat</option>
+                        <option className="bg-zinc-900 text-white" value="projet">Nouveau projet</option>
+                        <option className="bg-zinc-900 text-white" value="question">Question générale</option>
                         <option className="bg-zinc-900 text-white" value="autre">Autre</option>
                       </select>
                       <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
@@ -349,25 +347,25 @@ export default function ContactPage() {
             <span className="text-[10px] font-light tracking-[0.12em] text-black/40 mb-4 block">
               Pourquoi nous choisir
             </span>
-            <h2 className="font-heading font-normal text-4xl md:text-5xl tracking-tight text-black leading-[0.95]">
+            <h2 className="font-heading font-normal text-4xl md:text-5xl tracking-tight leading-[0.95]" style={{ color: '#000000' }}>
               Nos engagements
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
+
             {/* Card 1 */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0 }}
               className="bg-white p-8 rounded-none border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-14 h-14 rounded-none bg-black flex items-center justify-center text-[#D4FD00] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-none bg-[#D4FD00] flex items-center justify-center text-black mb-6 transform group-hover:rotate-6 transition-transform duration-500">
                 <Clock className="w-7 h-7" />
               </div>
-              <h3 className="font-heading font-normal text-xl text-black tracking-tight mb-3">Réactivité 24h</h3>
+              <h3 className="font-heading font-normal text-xl tracking-tight mb-3" style={{ color: '#000000' }}>Réactivité 24h</h3>
               <p className="text-black/60 leading-relaxed">
                 Le temps est votre ressource la plus précieuse. Nous garantissons une première réponse sous 24h ouvrées maximum.
               </p>
@@ -375,17 +373,17 @@ export default function ContactPage() {
             </motion.div>
 
             {/* Card 2 */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
               className="bg-white p-8 rounded-none border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-14 h-14 rounded-none bg-black flex items-center justify-center text-[#D4FD00] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-none bg-[#D4FD00] flex items-center justify-center text-black mb-6 transform group-hover:rotate-6 transition-transform duration-500">
                 <ShieldCheck className="w-7 h-7" />
               </div>
-              <h3 className="font-heading font-normal text-xl text-black tracking-tight mb-3">Expertise B2B</h3>
+              <h3 className="font-heading font-normal text-xl tracking-tight mb-3" style={{ color: '#000000' }}>Expertise B2B</h3>
               <p className="text-black/60 leading-relaxed">
                 Spécialistes des environnements complexes, nous comprenons les enjeux de croissance propres aux PME et ETI.
               </p>
@@ -393,17 +391,17 @@ export default function ContactPage() {
             </motion.div>
 
             {/* Card 3 */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               className="bg-white p-8 rounded-none border border-black/5 group hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-14 h-14 rounded-none bg-black flex items-center justify-center text-[#D4FD00] mb-6 transform group-hover:rotate-6 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-none bg-[#D4FD00] flex items-center justify-center text-black mb-6 transform group-hover:rotate-6 transition-transform duration-500">
                 <Users className="w-7 h-7" />
               </div>
-              <h3 className="font-heading font-normal text-xl text-black tracking-tight mb-3">Partenariat long-terme</h3>
+              <h3 className="font-heading font-normal text-xl tracking-tight mb-3" style={{ color: '#000000' }}>Partenariat long-terme</h3>
               <p className="text-black/60 leading-relaxed">
                 Nous ne sommes pas un simple prestataire. Nous devenons votre partenaire stratégique pour une croissance durable.
               </p>
