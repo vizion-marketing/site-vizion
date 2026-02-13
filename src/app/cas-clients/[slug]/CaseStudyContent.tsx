@@ -56,6 +56,189 @@ function TrendIcon({ trend }: { trend: string }) {
   }
 }
 
+// ============================================================================
+// CUSTOM MDX COMPONENTS FOR IMAGES
+// ============================================================================
+
+// Figure avec caption - pour screenshots, graphiques, etc.
+interface FigureProps {
+  src: string;
+  alt: string;
+  caption?: string;
+  type?: "default" | "mockup" | "chart" | "screenshot";
+}
+
+function Figure({ src, alt, caption, type = "default" }: FigureProps) {
+  const typeStyles = {
+    default: "bg-neutral-50 p-4",
+    mockup: "bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 md:p-10",
+    chart: "bg-white border border-neutral-200 p-4",
+    screenshot: "bg-neutral-100 p-2 shadow-lg",
+  };
+
+  return (
+    <figure className="my-10 md:my-14">
+      <div className={`${typeStyles[type]} overflow-hidden`}>
+        <div className={type === "mockup" ? "rounded-lg overflow-hidden shadow-2xl" : ""}>
+          <Image
+            src={src}
+            alt={alt}
+            width={1200}
+            height={675}
+            className="w-full h-auto"
+          />
+        </div>
+      </div>
+      {caption && (
+        <figcaption className="mt-3 text-sm text-neutral-500 text-center font-medium">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+// Mockup browser - pour montrer des sites/apps
+interface MockupBrowserProps {
+  src: string;
+  alt: string;
+  url?: string;
+  caption?: string;
+}
+
+function MockupBrowser({ src, alt, url = "by-vizion.com", caption }: MockupBrowserProps) {
+  return (
+    <figure className="my-10 md:my-14">
+      <div className="bg-neutral-900 rounded-lg overflow-hidden shadow-2xl">
+        {/* Browser chrome */}
+        <div className="bg-neutral-800 px-4 py-3 flex items-center gap-3">
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+            <div className="w-3 h-3 rounded-full bg-green-500" />
+          </div>
+          <div className="flex-1 flex justify-center">
+            <div className="bg-neutral-700 rounded px-4 py-1 text-xs text-neutral-400 font-mono">
+              {url}
+            </div>
+          </div>
+        </div>
+        {/* Content */}
+        <Image
+          src={src}
+          alt={alt}
+          width={1200}
+          height={675}
+          className="w-full h-auto"
+        />
+      </div>
+      {caption && (
+        <figcaption className="mt-3 text-sm text-neutral-500 text-center font-medium">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+// Stat Card visuelle - pour mettre en avant des chiffres
+interface StatHighlightProps {
+  value: string;
+  label: string;
+  description?: string;
+  trend?: "up" | "down" | "neutral";
+}
+
+function StatHighlight({ value, label, description, trend = "up" }: StatHighlightProps) {
+  return (
+    <div className="my-10 p-6 md:p-8 bg-black text-white">
+      <div className="flex items-start gap-4">
+        <div className="flex-1">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-4xl md:text-5xl font-black tracking-tight">{value}</span>
+            {trend === "up" && <TrendingUp className="w-6 h-6 text-[#D4FD00]" />}
+            {trend === "down" && <TrendingDown className="w-6 h-6 text-[#D4FD00]" />}
+          </div>
+          <span className="text-lg font-semibold text-white/80">{label}</span>
+          {description && (
+            <p className="mt-3 text-sm text-white/60 leading-relaxed">{description}</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Gallery - pour afficher plusieurs images côte à côte
+interface GalleryProps {
+  images: Array<{ src: string; alt: string; caption?: string }>;
+  columns?: 2 | 3;
+}
+
+function Gallery({ images, columns = 2 }: GalleryProps) {
+  return (
+    <div className={`my-10 md:my-14 grid gap-4 ${columns === 3 ? "grid-cols-1 md:grid-cols-3" : "grid-cols-1 md:grid-cols-2"}`}>
+      {images.map((img, idx) => (
+        <figure key={idx} className="bg-neutral-50 p-3 overflow-hidden">
+          <Image
+            src={img.src}
+            alt={img.alt}
+            width={600}
+            height={400}
+            className="w-full h-auto"
+          />
+          {img.caption && (
+            <figcaption className="mt-2 text-xs text-neutral-500 text-center">
+              {img.caption}
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
+  );
+}
+
+// Callout box - pour mettre en avant des insights
+interface CalloutProps {
+  type?: "insight" | "result" | "warning";
+  title?: string;
+  children: React.ReactNode;
+}
+
+function Callout({ type = "insight", title, children }: CalloutProps) {
+  const styles = {
+    insight: {
+      bg: "bg-[#D4FD00]/10 border-[#D4FD00]",
+      icon: <Zap className="w-5 h-5 text-black" />,
+      defaultTitle: "Point clé",
+    },
+    result: {
+      bg: "bg-emerald-50 border-emerald-500",
+      icon: <TrendingUp className="w-5 h-5 text-emerald-600" />,
+      defaultTitle: "Résultat",
+    },
+    warning: {
+      bg: "bg-amber-50 border-amber-500",
+      icon: <Target className="w-5 h-5 text-amber-600" />,
+      defaultTitle: "Attention",
+    },
+  };
+
+  const style = styles[type];
+
+  return (
+    <div className={`my-8 p-6 border-l-4 ${style.bg}`}>
+      <div className="flex items-center gap-2 mb-3">
+        {style.icon}
+        <span className="text-sm font-bold tracking-wide text-black">
+          {title || style.defaultTitle}
+        </span>
+      </div>
+      <div className="text-neutral-700 leading-relaxed">{children}</div>
+    </div>
+  );
+}
+
 // MDX Components
 const mdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -98,6 +281,24 @@ const mdxComponents = {
   td: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td className="px-4 py-3 text-neutral-600 border-b border-neutral-100" {...props} />
   ),
+  // Image components
+  img: ({ src, alt }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    <figure className="my-8">
+      <Image
+        src={typeof src === "string" ? src : ""}
+        alt={alt || ""}
+        width={1200}
+        height={675}
+        className="w-full h-auto rounded-none shadow-lg"
+      />
+    </figure>
+  ),
+  // Custom components
+  Figure,
+  MockupBrowser,
+  StatHighlight,
+  Gallery,
+  Callout,
 };
 
 interface CaseStudyContentProps {
@@ -187,7 +388,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
               </div>
 
               {/* Title */}
-              <h1 className="font-heading font-normal text-[32px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tight text-white mb-6">
+              <h1 className="font-heading font-normal text-[32px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tight !text-white mb-6">
                 {caseStudy.title}
               </h1>
 
@@ -242,37 +443,6 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
         </div>
       </section>
 
-      {/* METRICS BANNER */}
-      <section className="py-8 md:py-12 px-6 md:px-12 bg-black">
-        <div className="max-w-[82.5rem] mx-auto">
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
-          >
-            {caseStudy.metrics.map((metric: { value: string; label: string; trend: string }, idx: number) => (
-              <motion.div 
-                key={idx}
-                variants={fadeInUp}
-                className="text-center"
-              >
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <span className="text-3xl md:text-5xl font-black text-white tracking-tight">
-                    {metric.value}
-                  </span>
-                  <TrendIcon trend={metric.trend} />
-                </div>
-                <p className="text-xs md:text-sm text-white/60 font-medium tracking-wider">
-                  {metric.label}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* MAIN CONTENT */}
       <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
         <div className="max-w-[82.5rem] mx-auto">
@@ -291,7 +461,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   className="bg-[#F2F2F2] rounded-none p-6"
                 >
                   <h3 className="font-heading font-normal text-sm tracking-wider text-black mb-4">
-                    Contexte
+                    En bref
                   </h3>
                   <p className="text-neutral-600 text-sm leading-relaxed">
                     {caseStudy.context}
@@ -307,7 +477,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   className="bg-white border border-neutral-100 rounded-none p-6 shadow-sm"
                 >
                   <h3 className="font-heading font-normal text-sm tracking-wider text-black mb-4">
-                    Défis identifiés
+                    Enjeux clés
                   </h3>
                   <ul className="space-y-3">
                     {caseStudy.challenges.map((challenge: string, idx: number) => (
@@ -378,62 +548,74 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                     </div>
                   </motion.div>
                 )}
+
+                {/* Metrics */}
+                {caseStudy.metrics && caseStudy.metrics.length > 0 && (
+                  <motion.div
+                    variants={fadeInUp}
+                    initial="initial"
+                    whileInView="whileInView"
+                    viewport={{ once: true }}
+                    className="bg-black rounded-none p-6"
+                  >
+                    <h3 className="font-heading font-normal text-sm tracking-wider text-white mb-4">
+                      Chiffres clés
+                    </h3>
+                    <div className="grid grid-cols-2 gap-4">
+                      {caseStudy.metrics.map((metric: { value: string; label: string; trend: string }, idx: number) => (
+                        <div key={idx} className="text-center">
+                          <div className="flex items-center justify-center gap-1 mb-1">
+                            <span className="text-2xl font-black text-white">{metric.value}</span>
+                            <TrendIcon trend={metric.trend} />
+                          </div>
+                          <span className="text-[10px] text-white/60 font-medium leading-tight block">{metric.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Testimonial Mini */}
+                {caseStudy.testimonial && (
+                  <motion.div
+                    variants={fadeInUp}
+                    initial="initial"
+                    whileInView="whileInView"
+                    viewport={{ once: true }}
+                    className="bg-white border border-neutral-100 rounded-none p-6 shadow-sm"
+                  >
+                    <Quote size={24} className="text-neutral-200 mb-3" />
+                    <p className="text-sm text-neutral-600 italic leading-relaxed mb-4 line-clamp-4">
+                      "{caseStudy.testimonial.quote}"
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-none bg-[#F2F2F2] overflow-hidden shrink-0">
+                        {caseStudy.testimonial.photo ? (
+                          <Image
+                            src={caseStudy.testimonial.photo}
+                            alt={caseStudy.testimonial.author}
+                            width={40}
+                            height={40}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <User size={16} className="text-neutral-400" />
+                          </div>
+                        )}
+                      </div>
+                      <div>
+                        <span className="text-xs font-bold text-black block">{caseStudy.testimonial.author}</span>
+                        <span className="text-[10px] text-neutral-500">{caseStudy.testimonial.role}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </aside>
 
             {/* Main Content */}
             <div className="lg:col-span-8 order-1 lg:order-2">
-              
-              {/* Approach Phases */}
-              <motion.div 
-                variants={fadeInUp}
-                initial="initial"
-                whileInView="whileInView"
-                viewport={{ once: true }}
-                className="mb-16"
-              >
-                <h2 className="font-heading font-normal text-2xl md:text-3xl tracking-tight text-black mb-8">
-                  Notre Approche
-                </h2>
-                <div className="space-y-6">
-                  {caseStudy.approachPhases.map((phase: { phase: string; title: string; description: string; deliverables: string[] }, idx: number) => (
-                    <motion.div 
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="bg-white border border-neutral-100 rounded-none p-6 hover:shadow-lg transition-all duration-300 group"
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-black text-white rounded-none flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                          <span className="text-sm font-black">{phase.phase.replace("Phase ", "")}</span>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-heading font-normal text-lg tracking-tight text-black mb-2">
-                            {phase.title}
-                          </h3>
-                          <p className="text-neutral-600 text-sm leading-relaxed mb-4">
-                            {phase.description}
-                          </p>
-                          <div className="flex flex-wrap gap-2">
-                            {phase.deliverables.map((del: string, dIdx: number) => (
-                              <span 
-                                key={dIdx}
-                                className="inline-flex items-center gap-1 px-3 py-1 bg-[#F2F2F2] text-[11px] font-medium text-neutral-600 rounded-none"
-                              >
-                                <CheckCircle2 size={12} className="text-black" />
-                                {del}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
               {/* MDX Content */}
               <div className="prose max-w-none">
                 <MDXContent components={mdxComponents} />

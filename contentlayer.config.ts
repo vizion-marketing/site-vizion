@@ -447,9 +447,105 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
+// Schema pour les pages de services (SEO-optimized)
+export const Service = defineDocumentType(() => ({
+  name: "Service",
+  filePathPattern: "services/*.mdx",
+  contentType: "mdx",
+  fields: {
+    // SEO & Meta
+    title: { type: "string", required: true },
+    metaTitle: { type: "string", required: true },
+    metaDescription: { type: "string", required: true },
+    keywords: { type: "list", of: { type: "string" }, default: [] },
+
+    // Hero
+    heroTitle: { type: "string", required: true },
+    heroSubtitle: { type: "string", required: true },
+    heroBadge: { type: "string" },
+    heroImage: { type: "string" },
+
+    // Icône et catégorie
+    icon: { type: "string", required: true }, // Nom Lucide
+    category: { type: "string", required: true },
+
+    // Métriques hero
+    metrics: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+      // Format: { value: "+40%", label: "Marges moyennes" }
+    },
+
+    // Pain points / Problématiques
+    painPointsTitle: { type: "string" },
+    painPoints: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+      // Format: { icon: "AlertCircle", title: "...", description: "..." }
+    },
+
+    // Ce qu'on fait (features/livrables)
+    featuresTitle: { type: "string" },
+    features: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+      // Format: { icon: "Target", title: "...", description: "..." }
+    },
+
+    // Process / Méthodologie
+    processTitle: { type: "string" },
+    processSubtitle: { type: "string" },
+    processSteps: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+      // Format: { step: "01", title: "...", description: "...", duration: "2 semaines", deliverables: ["..."] }
+    },
+
+    // Cas clients liés
+    relatedCaseStudies: {
+      type: "list",
+      of: { type: "string" },
+      default: [],
+    },
+
+    // FAQ
+    faqTitle: { type: "string" },
+    faqs: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+      // Format: { question: "...", answer: "..." }
+    },
+
+    // CTA
+    ctaTitle: { type: "string" },
+    ctaDescription: { type: "string" },
+    ctaButtonText: { type: "string" },
+    ctaButtonLink: { type: "string" },
+
+    // Publication
+    publishedAt: { type: "date", required: true },
+    order: { type: "number", default: 0 },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.replace("services/", ""),
+    },
+    url: {
+      type: "string",
+      resolve: (doc) => `/services/${doc._raw.flattenedPath.replace("services/", "")}`,
+    },
+  },
+}));
+
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Page, Post, CaseTemplate, CaseStudy],
+  documentTypes: [Page, Post, CaseTemplate, CaseStudy, Service],
   disableImportAliasWarning: true,
   mdx: {
     remarkPlugins: [remarkGfm],

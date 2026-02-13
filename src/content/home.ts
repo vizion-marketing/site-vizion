@@ -242,19 +242,19 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Agence marketing Toulouse | Positionnement, tunnel de vente & résultats B2B — Vizion",
-    description: "Offre complexe, message flou, tunnel incohérent ? Vizion, agence marketing à Toulouse, vous aide à clarifier, packager et vendre votre offre. Positionnement, messaging, campagnes au closing : un seul message. Devenez l'évidence sur votre marché — Toulouse, Occitanie et France.",
+    title: "Agence Marketing B2B | Positionnement, Sales Enablement & Tunnel de Vente — Vizion",
+    description: "Vizion, agence marketing B2B à Toulouse. Nous aidons les entreprises B2B à clarifier leur offre et aligner leur tunnel de vente. Positionnement, messaging, sales enablement : un seul message du premier contact au closing.",
     keywords: [
-      "agence marketing toulouse",
-      "agence marketing B2B toulouse",
-      "accompagnement marketing toulouse",
-      "agence marketing produit toulouse",
-      "marketing produit B2B toulouse",
-      "positionnement produit toulouse",
-      "sales enablement toulouse",
-      "go-to-market toulouse",
-      "messaging B2B toulouse",
-      "notoriété LinkedIn dirigeants toulouse"
+      "agence marketing b2b",
+      "agence marketing b2b toulouse",
+      "marketing b2b",
+      "agence marketing produit",
+      "positionnement b2b",
+      "sales enablement",
+      "tunnel de vente b2b",
+      "messaging b2b",
+      "go-to-market b2b",
+      "accompagnement marketing b2b"
     ],
     ogImage: "/og-image.jpg"
   },
@@ -264,9 +264,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   hero: {
     badge: "VIZION",
-    h1: "Faites de votre produit une évidence.",
+    h1: "Faites de votre produit une évidence sur son marché.",
     h1Highlight: "évidence",
-    baseline: "Chez Vizion, notre métier est de rendre simple le complexe. Nous aidons les entreprises à clarifier leur offre et maximiser leur performance pour faire d'elles une évidence sur leur marché.",
+    baseline: "Votre produit est complexe ? Vos cycles de ventes sont longs ? Vos clients sont exigeants ? Bienvenue chez Vizion, l'agence Marketing spécialiste du B2B.",
     badges: [
       "Messaging clair en 5 secondes",
       "Positionnement distinctif",
@@ -286,8 +286,8 @@ export const homeContent: HomeContent = {
     surtitre: "[ NOS RÉALISATIONS ]",
     h2: "DES OFFRES COMPLEXES DEVENUES L'ÉVIDENCE SUR LEUR MARCHÉ",
     h2Highlight: "L'ÉVIDENCE",
-    description: "Vizion accompagne les entreprises B2B dans les moments critiques de leur développement : lancement, restructuration, accélération. Notre spécialité : transformer une offre complexe en un message clair qui déclenche la décision d'achat. Voici comment nos clients sont devenus l'évidence sur leur marché.",
-    trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups nous font confiance pour leur marketing produit à Toulouse et en France",
+    description: "Notre agence marketing B2B accompagne les entreprises dans les moments critiques de leur développement : lancement, restructuration, accélération. Notre spécialité : transformer une offre complexe en un message clair qui déclenche la décision d'achat. Voici comment nos clients sont devenus l'évidence sur leur marché.",
+    trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups font confiance à notre agence marketing B2B à Toulouse",
     trustBannerHighlight: "70 PME, ETI et scale-ups",
 
     clients: [
@@ -345,8 +345,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   piliers: {
     surtitre: "Nos services",
-    h2: "Un tunnel de vente aligné, de la pub au closing",
-    description: "Quand le message change entre la pub, le site et le commercial, le taux de conversion s'effondre. Nous construisons un tunnel unique : de la première impression publicitaire jusqu'au closing, un seul message. Votre offre devient une évidence commerciale.",
+    h2: "Des services pensés pour les entreprises qui vendent aux entreprises.",
+    description: "Quand le message change entre la pub, le site et le commercial, le taux de conversion s'effondre. Notre agence marketing B2B construit un tunnel unique : de la première impression publicitaire jusqu'au closing, un seul message. Votre offre devient une évidence commerciale.",
     badgeText: "Notre approche",
     badgeStatus: "MARKETING PRODUIT",
     piliers: [
@@ -400,9 +400,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   iaHighlight: {
     surtitre: "NOTRE DIFFÉRENCIATION",
-    h2: "L'IA COMME LEVIER, PAS COMME ARGUMENT",
-    h2Highlight: "LEVIER",
-    introduction: "Nous intégrons l'intelligence artificielle là où elle apporte une valeur mesurable : production de contenu accélérée, qualification de leads, personnalisation à l'échelle. La stratégie et les décisions restent pilotées par l'expertise humaine. Nous ne vendons pas de l'IA — nous l'utilisons pour livrer plus vite et mieux.",
+    h2: "UNE AGENCE MARKETING B2B QUI INTÈGRE L'IA À BON ESCIENT",
+    h2Highlight: "L'IA À BON ESCIENT",
+    introduction: "Ce qui distingue notre agence marketing B2B : nous intégrons l'intelligence artificielle là où elle apporte une valeur mesurable. Production de contenu accélérée, qualification de leads, personnalisation à l'échelle. La stratégie et les décisions restent pilotées par l'expertise humaine. Nous ne vendons pas de l'IA — nous l'utilisons pour livrer plus vite et mieux.",
     whyImportant: [
       "Production de contenus d'acquisition en une fraction du temps habituel, sans sacrifier la qualité.",
       "Qualification et enrichissement des listes de prospection pour prioriser les comptes à fort potentiel.",
@@ -457,9 +457,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   quandCommencer: {
     surtitre: "Notre méthode",
-    h2: "DIAGNOSTIC → FONDATIONS → ACTIVATION → OPTIMISATION",
-    h2Highlight: "OPTIMISATION",
-    description: "Chaque mission suit un cadre structuré en quatre phases. La séquence reste la même : on ne crée jamais de publicité sans avoir posé le positionnement d'abord. Nous adaptons l'intensité selon votre maturité — mission ciblée ou accompagnement dans la durée.",
+    h2: "LA MÉTHODE DE NOTRE AGENCE MARKETING B2B",
+    h2Highlight: "AGENCE MARKETING B2B",
+    description: "Chaque mission de notre agence marketing B2B suit un cadre structuré en quatre phases. La séquence reste la même : on ne crée jamais de publicité sans avoir posé le positionnement d'abord. Nous adaptons l'intensité selon votre maturité — mission ciblée ou accompagnement dans la durée.",
     scenarios: [
       {
         number: "01",
@@ -513,7 +513,7 @@ export const homeContent: HomeContent = {
   aPropos: {
     surtitre: "Notre mission",
     introLaius: "La clarté n'est pas un luxe, c'est l'atout stratégique ultime. Dans un écosystème saturé, nous transformons la complexité de votre offre en un positionnement limpide qui déclenche l'adhésion immédiate de vos cibles.",
-    h2: "Faire de votre produit une évidence sur votre marché",
+    h2: "En B2B , les meilleurs produits ne gagnent pas toujours. Les plus clairs, si.",
     h2Highlight: "évidence",
     marketPills: ["saas", "franchises", "pme / eti", "services b2b"],
     paragraphs: [
@@ -555,9 +555,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   equipe: {
     surtitre: "L'ÉQUIPE",
-    h2: "Une équipe marketing B2B à Toulouse : pilote dédié + experts à la demande",
-    h2Highlight: "experts à la demande",
-    description: "Notre modèle hybride associe un interlocuteur dédié à un réseau de spécialistes — pub, SEO, sales enablement, notoriété LinkedIn. Votre pilote pilote le tunnel de vente et mobilise les bonnes compétences au bon moment. Pas un simple chef de projet : des experts marketing produit qui dialoguent avec vos équipes dirigeantes et vos commerciaux. Réactivité et expertise quand vous en avez besoin.",
+    h2: "L'équipe de notre agence marketing B2B à Toulouse",
+    h2Highlight: "agence marketing B2B",
+    description: "Notre agence marketing B2B fonctionne sur un modèle hybride : un interlocuteur dédié associé à un réseau de spécialistes — pub, SEO, sales enablement, notoriété LinkedIn. Votre pilote gère le tunnel de vente et mobilise les bonnes compétences au bon moment. Pas un simple chef de projet : des experts marketing produit qui dialoguent avec vos équipes dirigeantes et vos commerciaux.",
     modelExplanation: {
       director: "Votre interlocuteur dédié",
       squads: "Experts spécialisés (pub, SEO, sales enablement, LinkedIn)"
@@ -607,8 +607,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   blog: {
     surtitre: "Ressources",
-    h2: "Ressources et actualités de notre agence marketing à Toulouse",
-    h2Highlight: "agence marketing à Toulouse",
+    h2: "Ressources et actualités de notre agence marketing B2B",
+    h2Highlight: "agence marketing B2B",
     ctaText: "Accéder aux ressources"
   },
 
@@ -617,8 +617,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   faq: {
     surtitre: "[ FAQ ]",
-    h2: "Questions fréquentes sur notre agence marketing à Toulouse",
-    h2Highlight: "agence marketing à Toulouse",
+    h2: "Questions fréquentes sur notre agence marketing B2B",
+    h2Highlight: "agence marketing B2B",
     description: "Transparence sur ce que nous faisons — et ce que nous ne faisons pas. Voici les réponses aux questions les plus fréquentes sur Vizion, votre agence marketing B2B à Toulouse.",
     questions: [
       {
@@ -681,10 +681,10 @@ export const homeContent: HomeContent = {
   // FINAL CTA
   // --------------------------------------------------------------------------
   finalCta: {
-    trustBadge: "+70 entreprises à Toulouse et en France nous font confiance",
-    h2: "Prêt à devenir l'évidence sur votre marché ?",
-    h2Highlight: "l'évidence",
-    description: "Lancement, restructuration ou accélération ? Vous voulez un tunnel de vente aligné — du message publicitaire au closing ? Nous proposons un échange de 15 minutes pour identifier si nous pouvons vous accompagner.",
+    trustBadge: "+70 entreprises font confiance à notre agence marketing B2B",
+    h2: "Prêt à travailler avec une agence marketing B2B ?",
+    h2Highlight: "agence marketing B2B",
+    description: "Lancement, restructuration ou accélération ? Vous voulez un tunnel de vente aligné — du message publicitaire au closing ? Notre agence marketing B2B propose un échange de 15 minutes pour identifier si nous pouvons vous accompagner.",
     cta: {
       primary: { text: "Parlons de votre projet", href: "/contact" },
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
