@@ -13,6 +13,7 @@ export interface FAQItem {
 export interface FAQAccordionProps {
   surtitre?: string;
   title: string;
+  titleHighlight?: string;
   description?: string;
   ctaText?: string;
   ctaHref?: string;
@@ -24,6 +25,7 @@ export interface FAQAccordionProps {
 export function FAQAccordion({
   surtitre = "Questions fréquentes",
   title,
+  titleHighlight,
   description,
   ctaText,
   ctaHref = "/contact",
@@ -80,6 +82,9 @@ export function FAQAccordion({
 
             <h2 className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[40px] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
               {title}
+              {titleHighlight && (
+                <span className="text-[#D4FD00]"> {titleHighlight}</span>
+              )}
             </h2>
 
             {description && (
