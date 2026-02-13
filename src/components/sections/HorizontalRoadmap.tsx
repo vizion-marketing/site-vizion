@@ -75,10 +75,25 @@ export function HorizontalRoadmap({
                 viewport={{ once: true }}
                 className="flex items-center gap-2.5 mb-4 sm:mb-5"
               >
-                <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-                <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+                <motion.span
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
+                  className="relative flex h-2 w-2"
+                >
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                >
                   {surtitre}
-                </span>
+                </motion.span>
               </motion.div>
             )}
             {title && (
@@ -153,7 +168,7 @@ export function HorizontalRoadmap({
                       <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] mb-2 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>
                         {milestone.title}
                       </h3>
-                      <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed mb-3 ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`}>
+                      <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed mb-3 ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
                         {milestone.description}
                       </p>
                       {milestone.status && (

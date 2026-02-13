@@ -205,7 +205,7 @@ export function CTASection({
                   className="flex items-center gap-2 cursor-default"
                 >
                   <element.icon size={14} className="text-[#D4FD00] transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.6)]" />
-                  <span className="text-[11px] sm:text-xs font-[var(--font-body)] text-white/50 hover:text-white/70 transition-colors duration-300">
+                  <span className="text-[11px] sm:text-xs font-[var(--font-body)] text-white/70 hover:text-white/90 transition-colors duration-300">
                     {element.text}
                   </span>
                 </motion.div>

@@ -56,8 +56,25 @@ export function TabbedShowcase({
         <div className="mb-10 sm:mb-14 max-w-3xl">
           {surtitre && (
             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-center gap-2.5 mb-4 sm:mb-5">
-              <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-              <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.5)" } : undefined}>{surtitre}</span>
+              <motion.span
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
+                className="relative flex h-2 w-2"
+              >
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, x: -8 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+              >
+                {surtitre}
+              </motion.span>
             </motion.div>
           )}
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-4 sm:mb-5 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`} style={isDark ? { color: "#ffffff" } : undefined}>
@@ -65,7 +82,7 @@ export function TabbedShowcase({
             {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
           </motion.h2>
           {description && (
-            <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className={`text-base sm:text-lg font-[var(--font-body)] leading-relaxed ${isDark ? "!text-white/60" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.6)" } : undefined}>
+            <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className={`text-base sm:text-lg font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
               {description}
             </motion.p>
           )}
@@ -111,7 +128,7 @@ export function TabbedShowcase({
               <h3 className={`font-heading font-medium text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4 leading-snug ${isDark ? "!text-white" : "text-[#1a1a1a]"}`} style={isDark ? { color: "#ffffff" } : undefined}>
                 {activeCase.title}
               </h3>
-              <p className={`text-sm sm:text-base font-[var(--font-body)] leading-relaxed mb-6 sm:mb-8 ${isDark ? "!text-white/60" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.6)" } : undefined}>
+              <p className={`text-sm sm:text-base font-[var(--font-body)] leading-relaxed mb-6 sm:mb-8 ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
                 {activeCase.description}
               </p>
               {activeCase.example && (

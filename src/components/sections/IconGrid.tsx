@@ -47,19 +47,22 @@ export function IconGrid({
         <div className="mb-12 sm:mb-16 max-w-3xl">
           {surtitre && (
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
-              <motion.div
+              <motion.span
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
-                className="w-2 h-2 rounded-full bg-[#D4FD00]"
-              />
+                className="relative flex h-2 w-2"
+              >
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+              </motion.span>
               <motion.span
-                initial={{ opacity: 0, x: -6 }}
+                initial={{ opacity: 0, x: -8 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.15 }}
-                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
               >
                 {surtitre}
               </motion.span>
@@ -122,7 +125,7 @@ export function IconGrid({
               </h3>
 
               {/* Description */}
-              <p className={`text-sm sm:text-[15px] ${isDark ? "!text-white/60" : "text-[#6b6b6b]"} leading-relaxed font-[var(--font-body)]`}>
+              <p className={`text-sm sm:text-[15px] ${isDark ? "text-white/75" : "text-[#6b6b6b]"} leading-relaxed font-[var(--font-body)]`}>
                 {item.description}
               </p>
             </motion.div>

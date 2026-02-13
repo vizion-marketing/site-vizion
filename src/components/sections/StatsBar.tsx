@@ -88,15 +88,28 @@ export function StatsBar({ stats, variant = "dark" }: StatsBarProps) {
 
   const bg = isAccent ? "#D4FD00" : isDark ? "#0c0c0a" : "#f8f8f6";
   const valueColor = isAccent ? "text-[#1a1a1a]" : isDark ? "text-white" : "text-[#1a1a1a]";
-  const labelColor = isAccent ? "text-[#1a1a1a]/70" : isDark ? "text-white/50" : "text-[#6b6b6b]";
-  const dividerColor = isAccent ? "bg-[#1a1a1a]/15" : isDark ? "bg-white/10" : "bg-black/10";
+  const labelColor = isAccent ? "text-[#1a1a1a]/80" : isDark ? "text-white/70" : "text-[#52525B]";
+  const dividerColor = isAccent ? "bg-[#1a1a1a]/20" : isDark ? "bg-white/15" : "bg-black/10";
   const grain = isDark ? "grain-overlay" : isAccent ? "" : "grain-light";
+  const borderColor = isAccent ? "border-[#1a1a1a]/10" : isDark ? "border-white/5" : "border-black/[0.04]";
 
   return (
     <section
-      className={`py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-12 relative overflow-hidden ${grain}`}
+      className={`py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-12 relative overflow-hidden ${grain} border-y ${borderColor}`}
       style={{ background: bg }}
     >
+      {/* Subtle ambient glow for dark variant */}
+      {isDark && (
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute w-[50%] h-[100%] left-[25%] top-[-50%] animate-gradient-float-1"
+            style={{
+              background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 60%)",
+            }}
+          />
+        </div>
+      )}
+
       <div ref={ref} className="max-w-[82.5rem] mx-auto relative z-10">
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-0">
           {stats.map((stat, index) => (
@@ -109,17 +122,28 @@ export function StatsBar({ stats, variant = "dark" }: StatsBarProps) {
                   type: "spring",
                   stiffness: 100,
                   damping: 15,
-                  delay: index * 0.12,
+                  delay: index * 0.1,
                 }}
-                whileHover={{ y: -3, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-                className="flex flex-col items-center text-center px-4 sm:px-8 md:px-12 cursor-default"
+                whileHover={{
+                  y: -4,
+                  scale: 1.02,
+                  transition: { type: "spring", stiffness: 400, damping: 20 }
+                }}
+                className="group flex flex-col items-center text-center px-4 sm:px-8 md:px-12 cursor-default relative"
               >
+                {/* Hover glow effect */}
+                <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                  isAccent ? "bg-[#1a1a1a]/5" : isDark ? "bg-[#D4FD00]/5" : "bg-[#D4FD00]/5"
+                }`} />
+
                 <AnimatedStatValue
                   value={stat.value}
                   isInView={isInView}
-                  className={`font-heading font-bold text-[32px] sm:text-[40px] md:text-[48px] leading-none tracking-[-0.02em] ${valueColor}`}
+                  className={`relative font-heading font-bold text-[32px] sm:text-[40px] md:text-[48px] leading-none tracking-[-0.02em] ${valueColor} transition-colors duration-300 ${
+                    !isAccent && isDark ? "group-hover:text-[#D4FD00]" : ""
+                  }`}
                 />
-                <span className={`text-[11px] sm:text-xs font-[var(--font-body)] mt-1.5 ${labelColor}`}>
+                <span className={`relative text-[11px] sm:text-xs font-[var(--font-body)] font-medium tracking-wide mt-2 ${labelColor}`}>
                   {stat.label}
                 </span>
               </motion.div>
@@ -128,9 +152,9 @@ export function StatsBar({ stats, variant = "dark" }: StatsBarProps) {
                   initial={{ scaleY: 0 }}
                   whileInView={{ scaleY: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: (index + 0.5) * 0.12 }}
+                  transition={{ duration: 0.5, delay: (index + 0.5) * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
                   style={{ transformOrigin: "center" }}
-                  className={`hidden md:block w-px h-12 ${dividerColor}`}
+                  className={`hidden md:block w-px h-14 ${dividerColor}`}
                 />
               )}
             </React.Fragment>

@@ -108,19 +108,22 @@ export function TestimonialsCarousel({
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-2.5 mb-4 sm:mb-5">
-            <motion.div
+            <motion.span
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
-              className="w-2 h-2 rounded-full bg-[#D4FD00]"
-            />
+              className="relative flex h-2 w-2"
+            >
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+            </motion.span>
             <motion.span
               initial={{ opacity: 0, x: -6 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.15 }}
-              className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-white/50"
+              className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-white/70"
             >
               {surtitre}
             </motion.span>
@@ -226,7 +229,7 @@ export function TestimonialsCarousel({
                         <div className="text-white font-[var(--font-body)] font-semibold text-sm sm:text-base">
                           {testimonial.author}
                         </div>
-                        <div className="text-white/50 font-[var(--font-body)] text-xs sm:text-sm">
+                        <div className="text-white/70 font-[var(--font-body)] text-xs sm:text-sm">
                           {testimonial.role} — {testimonial.company}
                         </div>
                       </div>

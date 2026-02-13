@@ -59,30 +59,40 @@ export function FeatureCards({
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-2.5 mb-3 sm:mb-5"
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-2.5 mb-4 sm:mb-5"
             >
-              <div className="w-2 h-2 bg-[#D4FD00]" />
-              <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+              </span>
+              <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
                 {surtitre}
               </span>
             </motion.div>
           )}
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-3 sm:mb-4 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-4 sm:mb-5 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
           >
             {title}{" "}
             {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
           </motion.h2>
 
           {description && (
-            <p className={`text-[13px] sm:text-[15px] leading-relaxed max-w-xl ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className={`text-[14px] sm:text-[15px] leading-relaxed max-w-xl ${isDark ? "text-white/75" : "text-[#52525B]"}`}
+            >
               {description}
-            </p>
+            </motion.p>
           )}
         </div>
 
@@ -127,7 +137,7 @@ export function FeatureCards({
                   </h3>
 
                   {/* Description with enhanced contrast */}
-                  <p className={`text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-700 relative z-10 ${isDark ? "text-white/50 group-hover:text-[#1a1a1a]/90" : "text-[#6b6b6b] group-hover:text-[#1a1a1a]/90"}`}>
+                  <p className={`text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-700 relative z-10 ${isDark ? "text-white/75 group-hover:text-[#1a1a1a]/90" : "text-[#52525B] group-hover:text-[#1a1a1a]/90"}`}>
                     {feature.description}
                   </p>
 
