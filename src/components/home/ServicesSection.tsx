@@ -7,7 +7,11 @@ import Link from "next/link";
 import { homeContent } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
 
-const { surtitre: piliersSurtitre, h2: piliersH2, description: piliersDescription } = homeContent.piliers;
+interface ServicesSectionProps {
+  surtitre?: string;
+  h2?: string;
+  description?: string;
+}
 
 const SERVICES = [
   {
@@ -299,7 +303,10 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
   );
 }
 
-export function ServicesSection() {
+export function ServicesSection({ surtitre, h2, description }: ServicesSectionProps = {}) {
+  const piliersSurtitre = surtitre ?? homeContent.piliers.surtitre;
+  const piliersH2 = h2 ?? homeContent.piliers.h2;
+  const piliersDescription = description ?? homeContent.piliers.description;
   const featuredService = SERVICES.find(s => s.span === "featured")! as Service;
   const otherServices = SERVICES.filter(s => s.span !== "featured") as Service[];
   const total = SERVICES.length;

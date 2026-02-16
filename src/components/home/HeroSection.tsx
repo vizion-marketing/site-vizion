@@ -3,51 +3,64 @@
 import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { homeContent } from "@/content/home";
+import { homeContent, type HeroContent } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
 
 gsap.registerPlugin(useGSAP);
 
-const HERO_LOGOS = [
-  { name: "easyVirtual.tours", src: "/images/clients/easyvirtual.svg" },
-  { name: "Eldo Wallet", src: "/images/clients/eldo.svg" },
-  { name: "Ensenat Coaching", src: "/images/clients/ensenat.svg" },
-  { name: "Olivier Bas", src: "/images/clients/olivierbas.svg" },
-  { name: "Précision Industries", src: "/images/clients/precision.svg" },
-  { name: "SaaS Corp", src: "/images/clients/saas.svg" },
-];
-
 const TESTIMONIALS = [
   {
-    quote: "Vizion a transformé notre approche commerciale.",
-    author: "Marie Dupont",
-    role: "CEO, TechStart",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
+    quote: "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !",
+    author: "David Patry-Ballester",
+    role: "Chargé de marketing, Ensenat Coaching",
+    image: "/images/clients/ensenat.avif"
   },
   {
-    quote: "Un ROI visible dès le premier trimestre.",
-    author: "Thomas Laurent",
-    role: "DG, IndusPro",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+    quote: "Je recommande fortement cette agence toulousaine ! Équipe professionnelle et répondant à tous types de besoins. Lucas est mon Directeur Marketing externalisé et j'en suis ravie.",
+    author: "Tamia",
+    role: "Fondatrice, Tatamia",
+    image: "/images/clients/tatamia.avif"
   },
   {
-    quote: "L'équipe la plus réactive du marché.",
-    author: "Sophie Martin",
-    role: "CMO, SaaSify",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+    quote: "Nous avons confié la refonte de notre site web à Lucas et son équipe, nous en sommes très satisfaits bien que tout ait été fait à distance, depuis Toulouse jusqu'à Paris.",
+    author: "Barthélémy Delcampe",
+    role: "Responsable développement, Quai Liberté",
+    image: "/images/clients/quai-liberte.avif"
+  },
+  {
+    quote: "Hugo nous accompagne depuis un an maintenant pour restructurer tout notre CRM. Nous en sommes très satisfaits.",
+    author: "Olivier Mounié",
+    role: "Ojetables",
+    image: "/images/clients/placeholder.avif"
+  },
+  {
+    quote: "Vizion m'a accompagné dans le développement de mon image sur LinkedIn. Nous avons dépassé le million d'impressions en quelques mois, j'en suis très satisfait.",
+    author: "Olivier Bas",
+    role: "Vice-Président, Havas Paris",
+    image: "/images/clients/olivierbas.avif"
+  },
+  {
+    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, sales enablement, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
+    author: "Clément Carrere",
+    role: "Co-fondateur, easyVirtual.tours",
+    image: "/images/clients/easyvirtual.avif"
   },
 ];
 
-export function HeroSection() {
+interface HeroSectionProps {
+  content?: HeroContent;
+}
+
+export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
+  const hero = contentProp ?? homeContent.hero;
   const containerRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const baselineRef = useRef<HTMLParagraphElement>(null);
   const badgesRef = useRef<HTMLDivElement>(null);
   const ctasRef = useRef<HTMLDivElement>(null);
-  const logosRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const scatterRef = useRef<HTMLDivElement>(null);
   const socialProofRef = useRef<HTMLDivElement>(null);
@@ -55,14 +68,56 @@ export function HeroSection() {
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const wordRef = useRef<HTMLSpanElement>(null);
 
-  // Rotate testimonials
-  useEffect(() => {
-    const interval = setInterval(() => {
+  // Rotate testimonials with auto-play that resets on manual navigation
+  const testimonialIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startTestimonialAutoPlay = () => {
+    if (testimonialIntervalRef.current) clearInterval(testimonialIntervalRef.current);
+    testimonialIntervalRef.current = setInterval(() => {
       setTestimonialIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 4000);
-    return () => clearInterval(interval);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    startTestimonialAutoPlay();
+    return () => {
+      if (testimonialIntervalRef.current) clearInterval(testimonialIntervalRef.current);
+    };
   }, []);
+
+  const goToTestimonial = (direction: "prev" | "next") => {
+    setTestimonialIndex((prev) =>
+      direction === "next"
+        ? (prev + 1) % TESTIMONIALS.length
+        : (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length
+    );
+    startTestimonialAutoPlay();
+  };
+
+  // Rotate H1 words
+  const rotatingWords = hero.h1RotatingWords;
+  useEffect(() => {
+    if (rotatingWords.length <= 1) return;
+    const interval = setInterval(() => {
+      if (!wordRef.current) return;
+      const el = wordRef.current;
+      gsap.to(el, {
+        y: -20,
+        opacity: 0,
+        duration: 0.35,
+        ease: "power2.in",
+        onComplete: () => {
+          setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
+          gsap.set(el, { y: 20 });
+          gsap.to(el, { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" });
+        },
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [rotatingWords]);
 
   // Mouse parallax effect
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -113,12 +168,6 @@ export function HeroSection() {
           "-=0.3"
         )
         .fromTo(
-          logosRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.5 },
-          "-=0.2"
-        )
-        .fromTo(
           imageRef.current,
           { opacity: 0, x: 40, scale: 0.95 },
           { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: "back.out(1.2)" },
@@ -140,28 +189,54 @@ export function HeroSection() {
     { scope: containerRef }
   );
 
-  // Parse h1 to add highlight effect
-  const renderH1WithHighlight = () => {
-    const text = homeContent.hero.h1;
-    // Highlight "clarté" or key word - adjust based on your actual h1 content
-    const highlightWord = "clarté";
-    if (text.includes(highlightWord)) {
-      const parts = text.split(highlightWord);
-      return (
-        <>
-          {parts[0]}
-          <span className="relative inline-block">
-            <span className="relative z-10 text-[#D4FD00]">{highlightWord}</span>
-            <span
-              className="absolute bottom-2 left-0 w-full h-3 bg-[#D4FD00]/20 -z-0"
-              style={{ transform: 'skewX(-3deg)' }}
-            />
+  // Parse h1 to add highlight + rotating word
+  const renderH1 = () => {
+    const text = hero.h1;
+    const highlightWord = hero.h1Highlight;
+    const baseWord = rotatingWords[0]; // "produit" — the word to replace with slider
+
+    // Build fragments by splitting on both special words
+    // The h1 is: "Faites de votre produit une évidence sur son marché."
+    // We need to handle the rotating word AND the highlight
+    const parts: React.ReactNode[] = [];
+    let remaining = text;
+
+    // First, split on the rotating base word
+    const rotatingIdx = remaining.indexOf(baseWord);
+    if (rotatingIdx !== -1) {
+      parts.push(remaining.slice(0, rotatingIdx));
+      parts.push(
+        <span key="rotating" className="inline-block relative overflow-hidden align-baseline" style={{ minWidth: '3ch' }}>
+          <span
+            ref={wordRef}
+            className="inline-block text-[#D4FD00]"
+          >
+            {rotatingWords[currentWordIndex]}
           </span>
-          {parts[1]}
-        </>
+        </span>
       );
+      remaining = remaining.slice(rotatingIdx + baseWord.length);
     }
-    return text;
+
+    // Then handle highlight in the remaining text
+    if (highlightWord && remaining.includes(highlightWord)) {
+      const hlIdx = remaining.indexOf(highlightWord);
+      parts.push(remaining.slice(0, hlIdx));
+      parts.push(
+        <span key="highlight" className="relative inline-block">
+          <span className="relative z-10 text-[#D4FD00]">{highlightWord}</span>
+          <span
+            className="absolute bottom-2 left-0 w-full h-3 bg-[#D4FD00]/20 -z-0"
+            style={{ transform: 'skewX(-3deg)' }}
+          />
+        </span>
+      );
+      parts.push(remaining.slice(hlIdx + highlightWord.length));
+    } else {
+      parts.push(remaining);
+    }
+
+    return parts;
   };
 
   return (
@@ -226,7 +301,7 @@ export function HeroSection() {
               className="text-[9px] sm:text-[10px] font-medium tracking-[0.08em] uppercase"
               style={{ color: "rgba(255,255,255,0.9)" }}
             >
-              {homeContent.hero.badge}
+              {hero.badge}
             </span>
           </div>
 
@@ -242,7 +317,7 @@ export function HeroSection() {
               color: "transparent",
             }}
           >
-            {renderH1WithHighlight()}
+            {renderH1()}
           </h1>
 
           <p
@@ -250,14 +325,14 @@ export function HeroSection() {
             className="text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl opacity-0"
             style={{ color: "rgba(255,255,255,0.8)" }}
           >
-            {homeContent.hero.baseline}
+            {hero.baseline}
           </p>
 
           <div
             ref={badgesRef}
             className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pb-3 sm:pb-4 border-b border-white/10 opacity-0"
           >
-            {homeContent.hero.badges.map((item, i) => (
+            {hero.badges.map((item, i) => (
               <div
                 key={i}
                 className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-tight"
@@ -271,20 +346,20 @@ export function HeroSection() {
 
           <div ref={ctasRef} className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 mt-4 opacity-0">
             <Link
-              href={homeContent.hero.cta.primary.href}
+              href={hero.cta.primary.href}
               className="btn btn-primary group"
             >
-              {homeContent.hero.cta.primary.text}{" "}
+              {hero.cta.primary.text}{" "}
               <ArrowUpRightIcon
                 className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform"
                 size={16}
               />
             </Link>
             <Link
-              href={homeContent.hero.cta.secondary.href}
+              href={hero.cta.secondary.href}
               className="btn btn-secondary group"
             >
-              {homeContent.hero.cta.secondary.text}{" "}
+              {hero.cta.secondary.text}{" "}
               <ArrowUpRightIcon
                 className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform"
                 size={16}
@@ -308,36 +383,52 @@ export function HeroSection() {
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">4.9</span>
-              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">note<br/>moyenne</span>
+              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">99%</span>
+              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">de clients<br/>satisfaits</span>
             </div>
           </div>
 
-          <div
-            ref={logosRef}
-            className="relative overflow-hidden w-full mt-4 opacity-0"
-            style={{
-              maskImage:
-                "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-            }}
-          >
-            <div className="flex animate-scroll-left gap-8 w-max">
-              {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex gap-8 items-center shrink-0">
-                  {HERO_LOGOS.map((logo) => (
-                    <img
-                      key={`${setIndex}-${logo.name}`}
-                      src={logo.src}
-                      alt={logo.name}
-                      className="h-6 sm:h-7 w-auto opacity-50 hover:opacity-80 transition-opacity brightness-0 invert"
-                    />
-                  ))}
+          {/* Mobile Testimonial */}
+          <div className="lg:hidden mt-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3">
+            <div className="relative h-[80px] overflow-hidden">
+              {TESTIMONIALS.map((testimonial, i) => (
+                <div
+                  key={i}
+                  className="absolute inset-0 flex items-center gap-3"
+                  style={{
+                    opacity: i === testimonialIndex ? 1 : 0,
+                    transform: `translateY(${i === testimonialIndex ? 0 : 10}px)`,
+                    transition: 'opacity 0.4s ease, transform 0.4s ease',
+                    pointerEvents: i === testimonialIndex ? 'auto' : 'none',
+                  }}
+                >
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.author}
+                    className="w-10 h-10 rounded-full object-cover border-2 border-[#D4FD00]/40 shrink-0"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-0.5 mb-1">
+                      {[...Array(5)].map((_, starIndex) => (
+                        <svg key={starIndex} width="10" height="10" viewBox="0 0 24 24" fill="#D4FD00">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="text-[11px] leading-snug text-white line-clamp-2">
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </p>
+                    <div className="flex items-center gap-1 mt-1">
+                      <span className="text-white text-[10px] font-semibold">{testimonial.author}</span>
+                      <span className="text-white/40 text-[10px]">•</span>
+                      <span className="text-white/50 text-[9px]">{testimonial.role}</span>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
 
         {/* RIGHT IMAGE - mobile: hauteur raisonnable, moins de marge */}
@@ -401,17 +492,17 @@ export function HeroSection() {
           {/* 2. Social proof with rotating testimonial (bottom-left) with parallax */}
           <div
             ref={socialProofRef}
-            className="hidden lg:block absolute bottom-16 left-5 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-6 py-4 shadow-lg opacity-0 transition-transform duration-300 w-[320px]"
+            className="hidden lg:block absolute bottom-12 left-5 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-6 py-5 shadow-lg opacity-0 transition-transform duration-300 w-[520px]"
             style={{
               transform: `translate(${mousePosition.x * -10}px, ${mousePosition.y * -10}px)`,
             }}
           >
             {/* Rotating testimonial */}
-            <div className="relative h-[90px] overflow-hidden">
+            <div className="relative h-[120px] overflow-hidden">
               {TESTIMONIALS.map((testimonial, i) => (
                 <div
                   key={i}
-                  className="absolute inset-0 flex items-center gap-4"
+                  className="absolute inset-0 flex items-start gap-4"
                   style={{
                     opacity: i === testimonialIndex ? 1 : 0,
                     transform: `translateY(${i === testimonialIndex ? 0 : 10}px)`,
@@ -423,7 +514,7 @@ export function HeroSection() {
                   <img
                     src={testimonial.image}
                     alt={testimonial.author}
-                    className="w-14 h-14 rounded-full object-cover border-2 border-[#D4FD00]/40 shrink-0"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-[#D4FD00]/40 shrink-0 mt-0.5"
                   />
 
                   <div className="flex-1 min-w-0">
@@ -443,7 +534,7 @@ export function HeroSection() {
                     </div>
 
                     {/* Testimonial Quote */}
-                    <p className="text-[12px] leading-snug mb-1.5" style={{ color: '#ffffff' }}>
+                    <p className="text-[12px] leading-snug mb-2" style={{ color: '#ffffff' }}>
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
 
@@ -459,6 +550,36 @@ export function HeroSection() {
                 </div>
               ))}
             </div>
+
+            {/* Dots */}
+            <div className="flex items-center justify-center gap-1.5 mt-2 pt-2 border-t border-white/10">
+              {TESTIMONIALS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setTestimonialIndex(i); startTestimonialAutoPlay(); }}
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                    i === testimonialIndex ? "bg-[#D4FD00] w-4" : "bg-white/30 hover:bg-white/50"
+                  }`}
+                  aria-label={`Témoignage ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Navigation arrows — positioned on edges, vertically centered */}
+            <button
+              onClick={() => goToTestimonial("prev")}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-colors z-10"
+              aria-label="Témoignage précédent"
+            >
+              <ChevronLeft size={14} className="text-white/70" />
+            </button>
+            <button
+              onClick={() => goToTestimonial("next")}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-colors z-10"
+              aria-label="Témoignage suivant"
+            >
+              <ChevronRight size={14} className="text-white/70" />
+            </button>
           </div>
 
           {/* Google Rating Card (top-right) */}

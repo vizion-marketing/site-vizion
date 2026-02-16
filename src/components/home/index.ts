@@ -9,3 +9,5 @@ export { FinalCTASection } from "./FinalCTASection";
 export { WhyVizionSection } from "./WhyVizionSection";
 export { BlogSection } from "./BlogSection";
 export { FAQSection } from "./FAQSection";
+export { LocalSEOSection } from "./LocalSEOSection";
+export { IlsParlentDeNousSection } from "./IlsParlentDeNousSection";

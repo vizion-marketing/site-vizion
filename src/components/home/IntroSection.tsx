@@ -1,17 +1,15 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Flame, Target, Lightbulb, Gem, Zap } from "lucide-react";
 
-// Animation variants for staggered text reveal (petit à petit au scroll)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.22,
+      staggerChildren: 0.15,
       delayChildren: 0.05,
     },
   },
@@ -26,24 +24,48 @@ const itemVariants = {
   },
 };
 
+const TRUST_REASONS = [
+  {
+    icon: Flame,
+    title: "Nous vous challengeons",
+    description:
+      "Nous ne sommes pas là pour dire oui à tout. Nous questionnons vos certitudes, challengeons vos hypothèses et poussons votre réflexion plus loin. C'est comme ça qu'on construit des stratégies qui tiennent.",
+  },
+  {
+    icon: Target,
+    title: "Nous voulons avoir un impact",
+    description:
+      "On ne se contente pas de PowerPoints. Chaque action doit générer un résultat mesurable : plus de leads, des cycles de vente plus courts, un positionnement plus clair.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Stratèges avant tout",
+    description:
+      "Nous ne sommes pas seulement d'excellents communicants. Nous sommes des stratèges qui comprennent vos enjeux business et alignent le marketing sur vos objectifs de croissance.",
+  },
+  {
+    icon: Gem,
+    title: "Des assets de qualité",
+    description:
+      "Sites, présentations commerciales, contenus, visuels — chaque livrable est conçu avec exigence. Parce que la qualité de vos supports reflète la qualité de votre offre.",
+  },
+  {
+    icon: Zap,
+    title: "Ultra-réactifs",
+    description:
+      "Réponse en 24h, itérations rapides, exécution sans délai. Votre marché n'attend pas, nous non plus.",
+  },
+];
+
 export function IntroSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const textColor = useTransform(
-    scrollYProgress,
-    [0, 0.4, 0.85, 1],
-    ["#d2d2d2", "#8a8a8a", "#2a2a2a", "#1a1a1a"]
-  );
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden grain-overlay"
+      className="relative py-16 sm:py-20 md:py-28 lg:py-36 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden grain-overlay"
     >
-      {/* Background base */}
+      {/* Background */}
       <div className="absolute inset-0 bg-[#f8f8f6]" />
 
       {/* Subtle gradient blobs */}
@@ -51,145 +73,97 @@ export function IntroSection() {
         <div
           className="absolute w-[70%] h-[60%] top-[-10%] left-[-15%]"
           style={{
-            background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 60%)',
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 60%)",
           }}
         />
         <div
           className="absolute w-[50%] h-[50%] top-[20%] right-[-10%]"
           style={{
-            background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)',
-          }}
-        />
-        <div
-          className="absolute w-[60%] h-[50%] bottom-[-15%] left-[20%]"
-          style={{
-            background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)',
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
           }}
         />
       </div>
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Texte avec animations staggered */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.12, margin: "0px 0px -80px 0px" }}
-            style={{ color: textColor }}
-          >
-            {/* Quote decorative element */}
-            <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 48 48"
-                fill="none"
-                className="text-[#D4FD00] opacity-80"
-              >
-                <path
-                  d="M14 24C14 17.373 19.373 12 26 12V8C17.163 8 10 15.163 10 24V40H26V24H14ZM34 24C34 17.373 39.373 12 46 12V8C37.163 8 30 15.163 30 24V40H46V24H34Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </motion.div>
-
-            <motion.h2
-              variants={itemVariants}
-              className="font-heading font-medium text-[26px] sm:text-[34px] md:text-[42px] lg:text-[48px] leading-[1.1] tracking-[-0.02em] mb-4 sm:mb-6 lg:mb-8"
-            >
-              Les meilleurs produits ne gagnent pas toujours.
-              <br />
-              <span className="relative inline-block">
-                <span className="relative z-10">Les plus clairs, si.</span>
-                <span
-                  className="absolute bottom-1 left-0 w-full h-3 bg-[#D4FD00]/40 -z-0"
-                  style={{ transform: 'skewX(-3deg)' }}
-                />
+        {/* Header */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.12, margin: "0px 0px -80px 0px" }}
+          className="max-w-3xl mb-12 sm:mb-16 lg:mb-20"
+        >
+          <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
+            <span className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-[#1a1a1a] text-white rounded-full text-[11px] sm:text-xs font-semibold tracking-wide uppercase">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-50"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4FD00]"></span>
               </span>
-            </motion.h2>
-
-            <motion.div
-              variants={itemVariants}
-              className="space-y-4 sm:space-y-5 text-[16px] sm:text-base font-[var(--font-body)] leading-relaxed"
-            >
-              <p>
-                Votre produit est excellent. Vos clients satisfaits le confirment. Pourtant,
-                vos prospects ne le voient pas. Ils comparent, hésitent, et finissent par
-                choisir un concurrent moins bon mais plus lisible. Le problème n'est pas
-                votre offre — c'est la façon dont elle est perçue.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="mt-4 sm:mt-5 text-[16px] sm:text-base font-[var(--font-body)] leading-relaxed"
-            >
-              <p>
-                Dans un marché saturé, la clarté est devenue l'avantage concurrentiel ultime.
-                Les entreprises qui gagnent ne sont pas celles qui ont le meilleur produit,
-                mais celles qui savent le rendre évident. Chaque jour, vous perdez des deals
-                non pas parce que vous êtes moins bons, mais parce que vous êtes moins clairs.
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="mt-8 sm:mt-10">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[14px] sm:text-[14px] font-[var(--font-body)] font-semibold tracking-[-0.01em] bg-[#1a1a1a] text-white rounded-md hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
-              >
-                Clarifier mon offre
-                <ArrowUpRight size={16} />
-              </Link>
-            </motion.div>
+              Pourquoi nous
+            </span>
           </motion.div>
 
-          {/* Image avec bordure accent et overlay amélioré */}
-            <motion.div
-              initial={{ opacity: 0, x: 30, scale: 0.98 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative mt-6 sm:mt-0"
-            >
-            {/* Accent border frame */}
-            <div className="absolute -inset-2 sm:-inset-3 md:-inset-4 border-2 border-[#D4FD00] rounded-lg opacity-60" />
-            <div className="absolute -inset-1.5 sm:-inset-2 border border-[#1a1a1a]/10 rounded-lg" />
-
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200"
-                alt="Équipe en réunion stratégique"
-                className="w-full h-full object-cover"
+          <motion.h2
+            variants={itemVariants}
+            className="font-heading font-medium text-[26px] sm:text-[34px] md:text-[42px] lg:text-[52px] leading-[1.08] tracking-[-0.02em] text-[#1a1a1a] mb-5 sm:mb-6"
+          >
+            + de 70 entreprises Occitanes, Nationales et Européennes{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">nous ont fait confiance.</span>
+              <span
+                className="absolute bottom-1 left-0 w-full h-3 bg-[#D4FD00]/40 -z-0"
+                style={{ transform: "skewX(-3deg)" }}
               />
-              {/* Overlay amélioré avec gradient diagonal */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a]/20 via-transparent to-[#D4FD00]/10" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-            </div>
+            </span>
+          </motion.h2>
 
-            {/* Badge flottant avec design amélioré */}
+          <motion.p
+            variants={itemVariants}
+            className="text-[#6b6b6b] text-base sm:text-lg leading-relaxed max-w-2xl"
+          >
+            Pas parce qu&apos;on fait de belles présentations. Parce qu&apos;on
+            obtient des résultats. Voici ce qui fait la différence.
+          </motion.p>
+        </motion.div>
+
+        {/* Trust reasons grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.08, margin: "0px 0px -60px 0px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+        >
+          {TRUST_REASONS.map((reason, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-white border border-black/10 rounded-lg p-4 sm:p-5 shadow-xl"
+              key={i}
+              variants={itemVariants}
+              className={`group relative bg-white border border-black/[0.06] rounded-xl p-6 sm:p-7 hover:border-[#D4FD00]/40 hover:shadow-lg transition-all duration-300 ${
+                i >= 3 ? "lg:col-span-1 sm:col-span-1" : ""
+              }`}
             >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#D4FD00] flex items-center justify-center">
-                  <span className="text-[#1a1a1a] font-heading font-bold text-lg sm:text-xl">70+</span>
-                </div>
-                <div>
-                  <p className="text-[#1a1a1a] font-[var(--font-body)] font-semibold text-sm">Entreprises</p>
-                  <p className="text-[#6b6b6b] text-xs">accompagnées</p>
-                </div>
+              {/* Icon */}
+              <div className="w-11 h-11 rounded-lg bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#D4FD00] transition-colors duration-300">
+                <reason.icon
+                  size={20}
+                  className="text-[#D4FD00] group-hover:text-[#1a1a1a] transition-colors duration-300"
+                />
               </div>
-            </motion.div>
 
-            {/* Petit accent décoratif en haut à droite */}
-            <div className="absolute -top-2 -right-2 w-4 h-4 bg-[#D4FD00] rounded-sm" />
-          </motion.div>
-        </div>
+              <h3 className="font-heading font-semibold text-[#1a1a1a] text-base sm:text-lg mb-2.5">
+                {reason.title}
+              </h3>
+
+              <p className="text-[#6b6b6b] text-sm leading-relaxed">
+                {reason.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Bottom row: last 2 items centered on lg */}
       </div>
     </section>
   );

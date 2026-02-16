@@ -25,6 +25,7 @@ export interface HeroContent {
   badge: string;
   h1: string;
   h1Highlight: string;
+  h1RotatingWords: string[];
   baseline: string;
   badges: string[];
   cta: {
@@ -218,6 +219,34 @@ export interface FinalCTAContent {
   trustElements: string[];
 }
 
+export interface LocalSEOContent {
+  surtitre: string;
+  h2: string;
+  h2Highlight: string;
+  description: string;
+  paragraphs: string[];
+  preuveLocale: string;
+  mapEmbedUrl: string;
+  villes: {
+    name: string;
+    label: string;
+  }[];
+  cta: CTA;
+}
+
+export interface IlsParlentDeNousContent {
+  surtitre: string;
+  h2: string;
+  h2Highlight: string;
+  mentions: {
+    source: string;
+    type: string;
+    description: string;
+    logo?: string;
+    url?: string;
+  }[];
+}
+
 export interface HomeContent {
   seo: SEO;
   hero: HeroContent;
@@ -230,6 +259,8 @@ export interface HomeContent {
   blog: BlogContent;
   faq: FAQContent;
   casClients: CasClientsContent;
+  localSEO: LocalSEOContent;
+  ilsParlentDeNous: IlsParlentDeNousContent;
   finalCta: FinalCTAContent;
 }
 
@@ -264,12 +295,13 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   hero: {
     badge: "VIZION",
-    h1: "Faites de votre produit une évidence sur son marché.",
+    h1: "L'agence marketing toulousaine qui fait de votre produit une évidence.",
     h1Highlight: "évidence",
-    baseline: "Votre produit est complexe ? Vos cycles de ventes sont longs ? Vos clients sont exigeants ? Bienvenue chez Vizion, l'agence Marketing spécialiste du B2B.",
+    h1RotatingWords: ["produit", "SaaS", "franchise", "application", "offre", "innovation"],
+    baseline: "Votre produit est complexe ? Vos cycles de ventes sont longs ? Vos clients sont exigeants ? Bienvenue chez Vizion, l'agence Marketing toulousaine qui vous aide à y voir clair.",
     badges: [
-      "Messaging clair en 5 secondes",
-      "Positionnement distinctif",
+      "Réponse en 24h",
+      "Pas d'engagements",
       "Alignement sales & marketing"
     ],
     cta: {
@@ -673,6 +705,68 @@ export const homeContent: HomeContent = {
         titre: "Précision Industries",
         description: "Accompagnement de la transformation digitale de cette ETI industrielle (250M€ CA). Résultat : -30% coût d'acquisition client et structuration des outils commerciaux.",
         categorie: "Industrie B2B"
+      }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // RÉFÉRENCEMENT LOCAL
+  // --------------------------------------------------------------------------
+  localSEO: {
+    surtitre: "Notre ancrage",
+    h2: "L'agence marketing B2B à Toulouse",
+    h2Highlight: "Toulouse",
+    description: "Basés à Toulouse, nous accompagnons les entreprises B2B d'Occitanie et de toute la France. Proximité quand il faut, efficacité à distance quand c'est mieux.",
+    paragraphs: [
+      "Vizion est née à Toulouse, au cœur d'un écosystème tech et entrepreneurial en pleine accélération. C'est ici que nous avons construit notre méthodologie, au contact de startups, de PME industrielles et de réseaux de franchises qui avaient tous le même besoin : être plus clairs, plus vite.",
+      "Nous travaillons avec des entreprises à Toulouse, en Occitanie et dans toute la France. Nos clients apprécient la proximité pour les ateliers stratégiques et l'efficacité du travail à distance pour l'exécution."
+    ],
+    preuveLocale: "Enseignant en stratégie LinkedIn à Toulouse School of Management (TSM)",
+    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.5!2d1.5102!3d43.5416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7552ff%3A0x40ae6168453a970!2sLab%C3%A8ge!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr",
+    villes: [
+      { name: "Toulouse", label: "Siège" },
+      { name: "Montpellier", label: "Occitanie" },
+      { name: "Bordeaux", label: "Nouvelle-Aquitaine" },
+      { name: "Perpignan", label: "Occitanie" },
+      { name: "Nîmes", label: "Occitanie" },
+      { name: "Albi", label: "Occitanie" },
+      { name: "Tarbes", label: "Occitanie" },
+      { name: "Pau", label: "Nouvelle-Aquitaine" },
+      { name: "Carcassonne", label: "Occitanie" },
+      { name: "Montauban", label: "Occitanie" },
+      { name: "Béziers", label: "Occitanie" },
+      { name: "Rodez", label: "Occitanie" }
+    ],
+    cta: { text: "Rencontrons-nous à Toulouse", href: "/contact" }
+  },
+
+  // --------------------------------------------------------------------------
+  // ILS PARLENT DE NOUS
+  // --------------------------------------------------------------------------
+  ilsParlentDeNous: {
+    surtitre: "Dans les médias",
+    h2: "Ils parlent de nous",
+    h2Highlight: "parlent de nous",
+    mentions: [
+      {
+        source: "Le Sommet International du Marketing",
+        type: "Conférence",
+        description: "Intervention sur le marketing produit B2B et l'alignement des tunnels de vente.",
+      },
+      {
+        source: "Toulouse School of Management",
+        type: "Enseignement",
+        description: "Cours de stratégie LinkedIn et personal branding pour les étudiants du Master Marketing.",
+      },
+      {
+        source: "LinkedIn Top Voices",
+        type: "Distinction",
+        description: "Lucas Gonzalez classé parmi les 300 personnalités les plus influentes sur LinkedIn France.",
+      },
+      {
+        source: "French Tech Toulouse",
+        type: "Écosystème",
+        description: "Membre actif de l'écosystème French Tech, accompagnement de startups B2B en phase d'accélération.",
       }
     ]
   },

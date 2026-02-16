@@ -4,7 +4,7 @@ import React from "react";
 import { faqSchema, organizationSchema } from "@/content/home";
 
 // Import sections
-import { HeroSection, IntroSection, IndustriesMarquee, ServicesSection, AssetsSection, CasClientsSection, WhyVizionSection, TeamSection, BlogSection, FAQSection, FinalCTASection } from "@/components/home";
+import { HeroSection, IntroSection, IndustriesMarquee, ServicesSection, AssetsSection, CasClientsSection, WhyVizionSection, TeamSection, BlogSection, FAQSection, LocalSEOSection, IlsParlentDeNousSection, FinalCTASection } from "@/components/home";
 
 // Types
 interface Post {
@@ -63,6 +63,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <BlogSection />
         {/* FAQ */}
         <FAQSection />
+        {/* Référencement local — Toulouse & Occitanie */}
+        <LocalSEOSection />
+        {/* Ils parlent de nous */}
+        <IlsParlentDeNousSection />
         {/* CTA Final */}
         <FinalCTASection />
       </main>

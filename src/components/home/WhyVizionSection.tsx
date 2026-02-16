@@ -2,48 +2,28 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { UserCheck, Users, GraduationCap, Cpu, TrendingUp, Puzzle } from "lucide-react";
+import { Flame, TrendingUp, HeartHandshake } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const MILESTONES = [
   {
     number: "01",
-    title: "Un directeur marketing dédié",
-    description: "Votre interlocuteur unique est un expert stratégique, capable de dialoguer avec vos équipes dirigeantes et d'apporter une valeur ajoutée à chaque échange.",
-    icon: UserCheck,
+    title: "Le goût du challenge",
+    description: "On ne recule pas devant la complexité. Offres techniques, cycles longs, marchés concurrentiels : c'est précisément là qu'on excelle. Chaque projet est un défi qu'on prend à bras-le-corps.",
+    icon: Flame,
   },
   {
     number: "02",
-    title: "Structure hybride et agile",
-    description: "Une équipe interne qui assure la continuité, des experts freelances mobilisés selon vos besoins. Le meilleur des deux modèles.",
-    icon: Users,
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+    title: "Le marketing au service de la vente",
+    description: "Notre intervention couvre l'ensemble du cycle commercial, y compris les phases de négociation et de closing. Un seul message, du clic publicitaire au rendez-vous commercial.",
+    icon: TrendingUp,
   },
   {
     number: "03",
-    title: "La pédagogie comme engagement",
-    description: "Nous travaillons avec vos équipes, pas à leur place. Transfert de compétences et montée en autonomie font partie de chaque mission.",
-    icon: GraduationCap,
-  },
-  {
-    number: "04",
-    title: "L'IA comme levier",
-    description: "Nous intégrons l'intelligence artificielle là où elle apporte une valeur ajoutée mesurable — lead magnets, tri de prospection, personnalisation à l'échelle.",
-    icon: Cpu,
-  },
-  {
-    number: "05",
-    title: "Le marketing au service de la vente",
-    description: "Notre intervention couvre l'ensemble du cycle commercial, y compris les phases de négociation et de closing.",
-    icon: TrendingUp,
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
-  },
-  {
-    number: "06",
-    title: "Stratégie + Exécution",
-    description: "Lucas conçoit le positionnement et le discours, Hugo rend tout cela opérationnel. La vision et les mains, réunies dans une même équipe.",
-    icon: Puzzle,
+    title: "La proximité d'un growth partner",
+    description: "Pas un prestataire. Un partenaire impliqué dans votre croissance. Un interlocuteur dédié, disponible, qui connaît votre marché et vos enjeux aussi bien que vous.",
+    icon: HeartHandshake,
   },
 ];
 
@@ -140,10 +120,6 @@ export function WhyVizionSection() {
                   Ce qui fait la différence, à chaque étape
                 </h2>
 
-                <p className="text-[#6b6b6b] text-[14px] sm:text-[15px] md:text-[16px] font-[var(--font-body)] leading-relaxed mb-6 sm:mb-8">
-                  De la stratégie à l'exécution, voici comment Vizion transforme votre marketing en levier de croissance.
-                </p>
-
                 {/* Stats row */}
                 <div className="flex gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
                   <div>
@@ -223,16 +199,6 @@ export function WhyVizionSection() {
                         {milestone.description}
                       </p>
 
-                      {/* Optional Image */}
-                      {milestone.image && (
-                        <div className="mt-4 rounded-lg overflow-hidden">
-                          <img
-                            src={milestone.image}
-                            alt={milestone.title}
-                            className="w-full h-auto max-h-[200px] object-cover hover:scale-[1.02] transition-transform duration-500"
-                          />
-                        </div>
-                      )}
                     </div>
                   </motion.div>
                 );
