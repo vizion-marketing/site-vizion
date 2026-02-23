@@ -3,18 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ComingSoonLink } from "@/components/ComingSoonLink";
 import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 const footerLinks = {
-  services: [
-    { name: 'Marketing Produit', href: '/services/marketing-produit' },
-    { name: 'Sales Enablement', href: '/services/sales-enablement' },
-    { name: 'Sites Web B2B', href: '/services/sites-web-b2b' },
-    { name: 'Acquisition B2B', href: '/services/acquisition-b2b' },
-    { name: 'Automatisation & CRM', href: '/services/automatisation-crm' },
-    { name: 'IA Marketing & Ventes', href: '/services/ia-marketing-ventes' },
-  ],
   entreprise: [
     { name: 'Blog', href: '/blog' },
     { name: 'Cas clients', href: '/cas-clients' },
@@ -74,21 +65,9 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-4 flex gap-12">
+          <div className="lg:col-span-4">
             <div className="flex flex-col gap-6">
-              <h4 className="surtitre text-black">Services</h4>
-              <ul className="flex flex-col gap-3">
-                {footerLinks.services.map((link) => (
-                  <li key={link.name}>
-                    <ComingSoonLink className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
-                      {link.name}
-                    </ComingSoonLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col gap-6">
-              <h4 className="surtitre text-black">Entreprise</h4>
+              <h4 className="surtitre text-black">Navigation</h4>
               <ul className="flex flex-col gap-3">
                 {footerLinks.entreprise.map((link) => (
                   <li key={link.name}>

@@ -69,7 +69,7 @@ function MobileMenu({
               <button
                 key={item.target}
                 onClick={() => handleClick(item.target)}
-                className="flex items-center py-3 border-b border-black/5 text-left"
+                className="flex items-center py-3 border-b border-black/5 text-left cursor-pointer"
               >
                 <span className="text-[16px] font-semibold text-primary">
                   {item.label}
@@ -120,7 +120,7 @@ export function Header() {
           {/* Logo — scroll to top */}
           <button
             onClick={() => scrollToTarget("top")}
-            className="relative z-10 flex items-center group"
+            className="relative z-10 flex items-center group cursor-pointer"
           >
             <Image
               src="/logo-vizion.svg"
@@ -138,7 +138,7 @@ export function Header() {
               <button
                 key={item.target}
                 onClick={() => scrollToTarget(item.target)}
-                className="text-[14px] font-medium text-secondary hover:text-primary transition-colors duration-200"
+                className="text-[14px] font-medium text-secondary hover:text-primary transition-colors duration-200 cursor-pointer"
               >
                 {item.label}
               </button>
