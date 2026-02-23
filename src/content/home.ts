@@ -273,40 +273,38 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Agence Marketing Toulouse | Stratégie B2B, Positionnement & Sales Enablement — Vizion",
-    description: "Vizion est une agence marketing à Toulouse spécialisée en B2B. Positionnement, sales enablement, tunnel de vente aligné : nous aidons les PME et ETI à clarifier leur offre et accélérer leurs ventes. +70 entreprises accompagnées.",
+    title: "Agence Marketing Toulouse | Stratégie B2B, Positionnement & Aide à la Vente - Vizion",
+    description: "Vizion est une agence marketing à Toulouse spécialisée en B2B. Positionnement, aide à la vente, tunnel de vente aligné : nous aidons les PME et ETI à clarifier leur offre et accélérer leurs ventes. +70 entreprises accompagnées.",
     keywords: [
       "agence marketing toulouse",
       "agence marketing b2b toulouse",
       "agence marketing b2b",
       "marketing produit toulouse",
-      "sales enablement toulouse",
+      "aide a la vente toulouse",
       "positionnement b2b toulouse",
       "agence marketing digital toulouse",
       "conseil marketing toulouse",
       "stratégie marketing toulouse",
       "accompagnement marketing b2b"
     ],
-    ogImage: "/hero-binoculars.png"
+    ogImage: "/hero-binoculars.avif"
   },
 
   // --------------------------------------------------------------------------
   // HERO SECTION
   // --------------------------------------------------------------------------
   hero: {
-    badge: "CONSEIL & STRATÉGIE MARKETING B2B",
-    h1: "L'agence marketing toulousaine qui fait de votre produit une évidence.",
+    badge: "AGENCE MARKETING B2B - TOULOUSE",
+    h1: "Faites de votre innovation une évidence.",
     h1Highlight: "évidence",
-    h1RotatingWords: ["produit", "SaaS", "franchise", "application", "offre", "innovation"],
-    baseline: "Nous ne produisons pas des livrables. Nous concevons la stratégie marketing qui aligne votre message, vos commerciaux et votre marché. Du positionnement au closing, un seul fil conducteur.",
+    h1RotatingWords: ["innovation", "produit", "solution SaaS", "franchise", "service", "solution"],
+    baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialiste du B2B et des cycles de ventes longs.",
     badges: [
-      "Directeur marketing dédié",
-      "Stratégie avant exécution",
-      "Alignement sales & marketing"
+      "+70 entreprises accompagnées"
     ],
     cta: {
-      primary: { text: "Nous contacter", href: "/contact" },
-      secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
+      primary: { text: "Échanger avec un fondateur", href: "/contact" },
+      secondary: { text: "Voir nos cas clients", href: "/cas-clients" }
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES À TOULOUSE ET EN FRANCE DEPUIS 2021"
   },
@@ -319,8 +317,8 @@ export const homeContent: HomeContent = {
     h2: "DES OFFRES COMPLEXES DEVENUES L'ÉVIDENCE SUR LEUR MARCHÉ",
     h2Highlight: "L'ÉVIDENCE",
     description: "Notre agence marketing B2B accompagne les entreprises dans les moments critiques de leur développement : lancement, restructuration, accélération. Notre spécialité : transformer une offre complexe en un message clair qui déclenche la décision d'achat. Voici comment nos clients sont devenus l'évidence sur leur marché.",
-    trustBanner: "Depuis 2021, plus de 70 PME, ETI et scale-ups font confiance à notre agence marketing B2B à Toulouse",
-    trustBannerHighlight: "70 PME, ETI et scale-ups",
+    trustBanner: "Depuis 2021, plus de 70 PME, ETI et entreprises en croissance font confiance à notre agence marketing B2B à Toulouse",
+    trustBannerHighlight: "70 PME, ETI et entreprises en croissance",
 
     clients: [
       {
@@ -338,15 +336,15 @@ export const homeContent: HomeContent = {
         value: "+1000%",
         label: "Trafic SEO en 3 mois",
         logo: "Ensenat Coaching",
-        category: "SEO & Content Marketing",
+        category: "SEO & Marketing de contenu",
         slug: "ensenat-coaching"
       },
       {
         type: "minimal",
         logo: "Eldo Wallet",
-        category: "Go-to-Market & Sales",
+        category: "Mise en marché & Ventes",
         slug: "fintech-b2b",
-        bg: "/images/clients/eldo-wallet-bg.png"
+        bg: "/images/cas-clients/eldo-mainimage.avif"
       },
       {
         type: "testimonial",
@@ -357,14 +355,14 @@ export const homeContent: HomeContent = {
         value: "1M",
         label: "Vues LinkedIn",
         logo: "Olivier Bas",
-        category: "Personal Branding LinkedIn",
+        category: "Image de marque LinkedIn",
         slug: "olivier-bas-linkedin"
       }
     ],
     testimonial: {
       quote: "C'est vraiment un bonheur de les avoir au quotidien. Vizion est réellement investie dans notre croissance, ils font partie de l'équipe.",
       name: "CLÉMENT",
-      role: "Co-fondateur — easyVirtual.tours"
+      role: "Co-fondateur, easyVirtual.tours"
     },
     logos: [
       "TechCorp", "InnovateLab", "DataFlow", "CloudSync", "FinanceHub",
@@ -377,46 +375,46 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   piliers: {
     surtitre: "Notre méthodologie",
-    h2: "La stratégie d'abord. L'exécution ensuite. Jamais l'inverse.",
-    description: "Quand le message change entre la pub, le site et le commercial, le taux de conversion s'effondre. Nous ne commençons jamais par produire. Nous posons d'abord le positionnement, le messaging et la feuille de route. Ensuite seulement, nous activons le tunnel — du premier clic jusqu'au closing, un seul message.",
+    h2: "Un partenaire stratégique, au service de votre croissance.",
+    description: "La meilleure stratégie sans exécution reste une intention. L'exécution sans stratégie reste de l'agitation. C'est pourquoi nous faisons les deux : nous concevons le plan et nous le déployons, du positionnement à la signature.",
     badgeText: "Notre approche",
     badgeStatus: "CONSEIL STRATÉGIQUE",
     piliers: [
       {
         numero: "01",
-        surtitre: "POSITIONNEMENT & MESSAGING",
-        titre: "Le socle : sans positionnement clair, les pubs et les commerciaux improvisent",
-        description: "Nous définissons le positionnement produit, la proposition de valeur et le messaging par segment. Tout le reste en découle. Jamais de publicité ni de support commercial sans ce socle. Vous gagnez en clarté et en cohérence.",
-        services: ["Matrice de positionnement", "Proposition de valeur", "Messaging framework par segment", "Personas affinés", "Analyse concurrentielle", "Architecture de message"],
-        cta: "POSER VOTRE POSITIONNEMENT"
+        surtitre: "AUDIT & STRATÉGIE MARKETING",
+        titre: "Vous investissez sans savoir ce qui fonctionne vraiment",
+        description: "Votre marketing ne génère pas de résultats mesurables et vous ne savez pas pourquoi. Nous auditons votre positionnement, vos canaux et vos outils, puis nous structurons la feuille de route et pilotons sa mise en place. Direction marketing externalisée ou renfort ponctuel : nous nous adaptons à votre organisation. Pour que chaque euro investi repose sur un diagnostic solide et une exécution pilotée, pas sur des intuitions.",
+        services: ["Audit marketing complet", "Analyse concurrentielle", "Diagnostic des canaux d'acquisition", "Feuille de route stratégique", "Direction marketing externalisée", "Cadrage budgétaire"],
+        cta: "DEMANDER UN AUDIT"
       },
       {
         numero: "02",
-        surtitre: "Awareness — campagnes & notoriété",
-        titre: "Messages forts, testés, itérés — pas des visuels qui ne convertissent pas",
-        description: "Création de messages alignés sur le positionnement. Campagnes Meta, Google Ads, LinkedIn Ads. Notoriété LinkedIn pour les dirigeants. Chaque campagne est le point d'entrée du tunnel, pas un service isolé. Résultat : des leads qui reconnaissent déjà votre promesse.",
-        services: ["Angles d'attaque & copywriting", "A/B testing accroches et CTA", "LinkedIn Ads & notoriété dirigeant", "Meta Ads & Google Ads", "Brief commercial dérivé des pubs", "Boucle de feedback commerciaux"]
+        surtitre: "POSITIONNEMENT & NARRATIF PRODUIT",
+        titre: "Votre offre est trop complexe à expliquer en une phrase",
+        description: "Vos prospects ne comprennent pas ce qui vous distingue et vos commerciaux racontent chacun une version différente. Nous construisons un positionnement clair et un narratif produit structuré, adaptés à chaque segment de votre marché. Pour que vos clients idéaux comprennent instantanément votre valeur et vous choisissent face à la concurrence.",
+        services: ["Matrice de positionnement", "Proposition de valeur", "Architecture de message par segment", "Personas affinés", "Narratif produit", "Discours de marque"]
       },
       {
         numero: "03",
-        surtitre: "Sites web & landing pages",
-        titre: "Sites et landing pages qui convertissent et renforcent le message",
-        description: "Copywriting centré sur le problème du prospect, pas sur les features. SEO pour positionner le produit sur les requêtes clés. Chaque point de contact porte le même message que la pub et que le commercial. Le visiteur qui débarque ne se perd pas.",
-        services: ["Sites produit & landing pages", "SEO & référencement produit", "Copywriting de conversion", "Parcours d'achat cartographiés", "Contenus de nurturing", "Études de cas & témoignages"]
+        surtitre: "TRAFIC & NOTORIÉTÉ",
+        titre: "Vous avez le bon produit, mais personne ne vous connaît",
+        description: "Votre offre mérite d'être vue, mais votre marché ne sait pas que vous existez. Nous déployons les canaux d'acquisition adaptés à votre cible : SEO, campagnes publicitaires, LinkedIn, contenu stratégique. Pour que les bons prospects vous trouvent avant vos concurrents et arrivent déjà convaincus par votre promesse.",
+        services: ["SEO & référencement", "Campagnes LinkedIn Ads", "Google Ads & Meta Ads", "Stratégie de contenu", "Notoriété dirigeant LinkedIn", "Suivi et optimisation continue"]
       },
       {
         numero: "04",
-        surtitre: "SALES ENABLEMENT",
-        titre: "Le commercial pitch avec les mêmes mots que la pub",
-        description: "Le marketing génère des leads, les commerciaux pitchent avec leurs mots, le prospect reçoit deux discours — le taux de conversion chute. Nous créons un continuum : pitch decks alignés, battle cards, scripts d'appel, objection handling. Le prospect qui a cliqué sur une pub retrouve exactement les mêmes promesses en rendez-vous.",
-        services: ["Pitch decks alignés aux campagnes", "Battle cards positionnement concurrentiel", "Scripts et guides d'appel", "Objection handling testé", "Séquences de relance post-rdv", "Propositions commerciales structurées"]
+        surtitre: "AUTOMATISATION & INTELLIGENCE ARTIFICIELLE",
+        titre: "Vos équipes perdent du temps sur des tâches à faible valeur",
+        description: "Vos processus marketing et commerciaux sont manuels, chronophages et sujets aux erreurs. Nous déployons les automatisations et les outils d'IA adaptés à votre réalité opérationnelle. Pour que votre équipe se concentre sur ce qui génère vraiment du revenu : la stratégie et la relation client.",
+        services: ["Déploiement CRM", "Automatisations marketing", "Intégrations sur mesure", "Outils d'IA appliqués", "Tableaux de bord unifiés", "Qualification automatisée"]
       },
       {
         numero: "05",
-        surtitre: "Outils de conversion & closing",
-        titre: "Chaque interaction pousse vers la décision",
-        description: "Outils de qualification, séquences de relance, supports d'aide à la décision. Le message publicitaire est la promesse ; le commercial est la preuve que cette promesse est tenable. Un seul message, du clic au closing. Résultat : moins de fuite en fin de cycle.",
-        services: ["Outils de qualification", "Séquences de relance calibrées", "Supports d'aide à la décision", "CRM & automatisations", "Reporting et optimisation continue", "Feedback loop pub ↔ commerciaux"]
+        surtitre: "CONTENUS D'AIDE À LA VENTE",
+        titre: "Vos commerciaux improvisent à chaque rendez-vous",
+        description: "Chaque commercial raconte une histoire différente, les présentations sont obsolètes et les objections ne sont pas anticipées. Nous créons les supports alignés sur votre positionnement : présentations, fiches concurrentielles, guides d'appel. Pour que chaque interaction commerciale renforce la même promesse, du premier contact à la signature.",
+        services: ["Présentations commerciales alignées", "Fiches concurrentielles", "Guides et trames d'appel", "Gestion des objections", "Séquences de relance", "Propositions commerciales structurées"]
       }
     ],
     ctaText: "Rejoignez les 70+ entreprises qui ont aligné leur tunnel de vente avec Vizion.",
@@ -434,7 +432,7 @@ export const homeContent: HomeContent = {
     surtitre: "NOTRE DIFFÉRENCIATION",
     h2: "UNE AGENCE MARKETING B2B QUI INTÈGRE L'IA À BON ESCIENT",
     h2Highlight: "L'IA À BON ESCIENT",
-    introduction: "Ce qui distingue notre agence marketing B2B : nous intégrons l'intelligence artificielle là où elle apporte une valeur mesurable. Production de contenu accélérée, qualification de leads, personnalisation à l'échelle. La stratégie et les décisions restent pilotées par l'expertise humaine. Nous ne vendons pas de l'IA — nous l'utilisons pour livrer plus vite et mieux.",
+    introduction: "Ce qui distingue notre agence marketing B2B : nous intégrons l'intelligence artificielle là où elle apporte une valeur mesurable. Production de contenu accélérée, qualification de prospects, personnalisation à l'échelle. La stratégie et les décisions restent pilotées par l'expertise humaine. Nous ne vendons pas de l'IA, nous l'utilisons pour livrer plus vite et mieux.",
     whyImportant: [
       "Production de contenus d'acquisition en une fraction du temps habituel, sans sacrifier la qualité.",
       "Qualification et enrichissement des listes de prospection pour prioriser les comptes à fort potentiel.",
@@ -453,8 +451,8 @@ export const homeContent: HomeContent = {
         title: "Automatisation des processus",
         description: "Structuration et automatisation des workflows marketing et commerciaux. Nous connectons vos outils existants et industrialisons les tâches à faible valeur ajoutée pour libérer du temps sur les activités stratégiques.",
         example: "Automatisation de 80% du parcours d'accueil client pour une ETI, réduisant le délai de 2 semaines à 3 jours tout en améliorant la satisfaction.",
-        metric: "-80% temps onboarding",
-        tags: ["Automation", "CRM", "Efficacité"],
+        metric: "-80% temps d'intégration",
+        tags: ["Automatisation", "CRM", "Efficacité"],
         image: "/images/ia-highlight/automatisation.png"
       },
       {
@@ -468,7 +466,7 @@ export const homeContent: HomeContent = {
       {
         title: "Qualification intelligente",
         description: "Utilisation de l'intelligence artificielle pour analyser les signaux d'intention d'achat et prioriser les comptes à fort potentiel. Vos équipes commerciales concentrent leur énergie sur les opportunités les plus qualifiées.",
-        example: "Réduction de 60% du temps de qualification pour une ETI industrielle, permettant aux équipes commerciales de se concentrer sur les phases de closing.",
+        example: "Réduction de 60% du temps de qualification pour une ETI industrielle, permettant aux équipes commerciales de se concentrer sur les phases de signature.",
         metric: "-60% temps qualification",
         tags: ["Qualification", "Ventes", "IA"],
         image: "/images/ia-highlight/qualification.png"
@@ -477,8 +475,8 @@ export const homeContent: HomeContent = {
         title: "Tableaux de bord unifiés",
         description: "Création de tableaux de bord sur mesure qui agrègent vos données en temps réel. Automatisation du reporting pour permettre aux équipes de se concentrer sur l'analyse et la décision plutôt que sur la compilation.",
         example: "Remplacement de 5 rapports manuels par un tableau de bord unifié avec alertes automatiques sur les indicateurs critiques.",
-        metric: "5 rapports → 1 dashboard",
-        tags: ["Data", "Reporting", "Automatisation"],
+        metric: "5 rapports → 1 tableau de bord",
+        tags: ["Données", "Suivi", "Automatisation"],
         image: "/images/ia-highlight/tableaux-de-bord.png"
       }
     ]
@@ -491,22 +489,22 @@ export const homeContent: HomeContent = {
     surtitre: "Notre méthode",
     h2: "LA MÉTHODE DE NOTRE AGENCE MARKETING B2B",
     h2Highlight: "AGENCE MARKETING B2B",
-    description: "Chaque mission de notre agence marketing B2B suit un cadre structuré en quatre phases. La séquence reste la même : on ne crée jamais de publicité sans avoir posé le positionnement d'abord. Nous adaptons l'intensité selon votre maturité — mission ciblée ou accompagnement dans la durée.",
+    description: "Chaque mission de notre agence marketing B2B suit un cadre structuré en quatre phases. La séquence reste la même : on ne crée jamais de publicité sans avoir posé le positionnement d'abord. Nous adaptons l'intensité selon votre maturité, mission ciblée ou accompagnement dans la durée.",
     scenarios: [
       {
         number: "01",
         badge: "MISSION",
         title: "Mission ciblée",
         subtitle: "Un enjeu défini : lancement, repositionnement, tunnel à aligner",
-        description: "Vous traversez un moment critique : lancement de produit, restructuration, accélération. Nous intervenons sur un périmètre défini. Diagnostic, fondations (positionnement & messaging), activation sur le tunnel. Livrables stratégiques et opérationnels.",
+        description: "Vous traversez un moment critique : lancement de produit, restructuration, accélération. Nous intervenons sur un périmètre défini. Diagnostic, fondations (positionnement et discours de marque), activation sur le tunnel. Livrables stratégiques et opérationnels.",
         image: "/images/methode/mission-ciblee.png",
         whenToChoose: [
           "Vous préparez un lancement de produit ou une innovation",
           "Votre positionnement nécessite une clarification",
-          "Votre messaging et vos supports commerciaux sont incohérents",
+          "Votre discours commercial et vos supports sont incohérents",
           "Vous avez besoin d'expertise marketing produit ponctuelle"
         ],
-        deliverables: ["Positionnement & messaging", "Supports commerciaux alignés", "Campagnes ou landing pages selon le périmètre"],
+        deliverables: ["Positionnement & discours de marque", "Supports commerciaux alignés", "Campagnes ou pages de conversion selon le périmètre"],
         duration: "8 à 16 semaines",
         investment: "Sur devis",
         idealFor: "Startups, PME & ETI avec un enjeu identifié",
@@ -517,7 +515,7 @@ export const homeContent: HomeContent = {
         badge: "ACCOMPAGNEMENT",
         title: "Partenariat dans la durée",
         subtitle: "Un partenaire marketing produit au quotidien",
-        description: "Nous endossons le rôle de votre équipe marketing produit : positionnement, campagnes, supports commerciaux, optimisation continue. Un interlocuteur dédié pilote l'ensemble et mobilise nos spécialistes (pub, SEO, sales enablement, LinkedIn) selon les besoins. Le message reste un, du clic au closing.",
+        description: "Nous endossons le rôle de votre équipe marketing produit : positionnement, campagnes, supports commerciaux, optimisation continue. Un interlocuteur dédié pilote l'ensemble et mobilise nos spécialistes (pub, SEO, aide à la vente, LinkedIn) selon les besoins. Le message reste un, du clic à la signature.",
         image: "/images/methode/partenariat-duree.png",
         whenToChoose: [
           "Vous n'avez pas d'équipe marketing produit en interne",
@@ -525,7 +523,7 @@ export const homeContent: HomeContent = {
           "L'alignement marketing-ventes est un frein",
           "Vous voulez un tunnel de vente cohérent et mesurable"
         ],
-        deliverables: ["Interlocuteur dédié", "Tunnel de vente aligné", "Accès aux experts (pub, SEO, sales enablement)", "Reporting et optimisation continue"],
+        deliverables: ["Interlocuteur dédié", "Tunnel de vente aligné", "Accès aux experts (pub, SEO, aide à la vente)", "Suivi et optimisation continue"],
         duration: "Engagement 6 mois minimum",
         investment: "À partir de 4 500 €/mois",
         idealFor: "SaaS, franchises, ETI en phase de croissance",
@@ -544,32 +542,32 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   aPropos: {
     surtitre: "Notre mission",
-    introLaius: "Vizion n'est pas une agence qu'on consulte pour produire un logo ou refaire une plaquette. Nous sommes des stratèges. Nous concevons des feuilles de route marketing alignées sur vos objectifs business — et nous les déployons jusqu'au terrain commercial.",
+    introLaius: "Vizion n'est pas une agence qu'on consulte pour produire un logo ou refaire une plaquette. Nous sommes des stratèges. Nous concevons des feuilles de route marketing alignées sur vos objectifs commerciaux, et nous les déployons jusqu'au terrain.",
     h2: "En B2B, les meilleurs produits ne gagnent pas toujours. Les mieux positionnés, si.",
     h2Highlight: "positionnés",
     marketPills: ["saas", "franchises", "pme / eti", "services b2b"],
     paragraphs: [
-      "Vizion est une agence de conseil en marketing stratégique à Toulouse, spécialisée en B2B. Nous accompagnons les dirigeants qui veulent un positionnement clair, un tunnel de vente aligné et des résultats mesurables — pas des livrables décoratifs.",
-      "Notre approche : diagnostiquer avant de produire. Nous posons le positionnement et le messaging, nous challengeons les priorités, et seulement ensuite nous construisons le système qui porte votre offre. Chaque livrable a une raison stratégique d'exister."
+      "Vizion est une agence de conseil en marketing stratégique à Toulouse, spécialisée en B2B. Nous accompagnons les dirigeants qui veulent un positionnement clair, un tunnel de vente aligné et des résultats mesurables. Pas des livrables décoratifs.",
+      "Notre approche : diagnostiquer avant de produire. Nous posons le positionnement et le discours de marque, nous challengeons les priorités, et seulement ensuite nous construisons le système qui porte votre offre. Chaque livrable a une raison stratégique d'exister."
     ],
     founderQuote: {
-      quote: "Une agence d'exécution vous livre ce que vous demandez. Nous, on vous dit ce dont vous avez vraiment besoin — et on vous aide à le construire. La stratégie d'abord, l'exécution ensuite. C'est la seule façon de créer un marketing qui génère du revenu.",
+      quote: "Une agence d'exécution vous livre ce que vous demandez. Nous, on vous dit ce dont vous avez vraiment besoin, et on vous aide à le construire. La stratégie d'abord, l'exécution ensuite. C'est la seule façon de créer un marketing qui génère du revenu.",
       name: "Lucas Gonzalez",
-      role: "Co-fondateur — Vizion"
+      role: "Co-fondateur, Vizion"
     },
     photoCaption: {
       label: "Vizion",
-      title: "Agence marketing à Toulouse — Marketing produit B2B"
+      title: "Agence marketing à Toulouse - Marketing produit B2B"
     },
     valeursTitre: "NOS ENGAGEMENTS",
     valeurs: [
       {
         title: "Un seul message",
-        description: "Du clic publicitaire au closing, le prospect reçoit la même promesse. Pas deux discours qui se contredisent."
+        description: "Du clic publicitaire à la signature, le prospect reçoit la même promesse. Pas deux discours qui se contredisent."
       },
       {
         title: "Positionnement d'abord",
-        description: "Nous ne lançons jamais de campagne ni de support commercial sans avoir posé le positionnement et le messaging."
+        description: "Nous ne lançons jamais de campagne ni de support commercial sans avoir posé le positionnement et le discours de marque."
       },
       {
         title: "Transparence",
@@ -577,7 +575,7 @@ export const homeContent: HomeContent = {
       },
       {
         title: "Résultats mesurables",
-        description: "Messaging clair en 5 secondes, positionnement distinctif, tunnel aligné. Nous visons des résultats concrets."
+        description: "Discours clair en 5 secondes, positionnement distinctif, tunnel aligné. Nous visons des résultats concrets."
       }
     ]
   },
@@ -589,10 +587,10 @@ export const homeContent: HomeContent = {
     surtitre: "L'ÉQUIPE",
     h2: "L'équipe de notre agence marketing B2B à Toulouse",
     h2Highlight: "agence marketing B2B",
-    description: "Notre agence marketing B2B fonctionne sur un modèle hybride : un interlocuteur dédié associé à un réseau de spécialistes — pub, SEO, sales enablement, notoriété LinkedIn. Votre pilote gère le tunnel de vente et mobilise les bonnes compétences au bon moment. Pas un simple chef de projet : des experts marketing produit qui dialoguent avec vos équipes dirigeantes et vos commerciaux.",
+    description: "Un interlocuteur dédié qui pilote votre stratégie, appuyé par des spécialistes en acquisition, SEO, aide à la vente et automatisation. Pas de sous-traitance cachée : vous savez exactement qui travaille sur votre projet.",
     modelExplanation: {
       director: "Votre interlocuteur dédié",
-      squads: "Experts spécialisés (pub, SEO, sales enablement, LinkedIn)"
+      squads: "Experts spécialisés (pub, SEO, aide à la vente, LinkedIn)"
     },
     scrollHint: "Découvrez nos experts",
     members: [
@@ -600,7 +598,7 @@ export const homeContent: HomeContent = {
         name: "Lucas Gonzalez",
         role: "Co-fondateur & Directeur Stratégie",
         specialty: "Marketing Produit",
-        skills: ["Positionnement", "Messaging", "Go-to-Market"],
+        skills: ["Positionnement", "Discours de marque", "Mise en marché"],
         img: "/images/team/lucas-gonzalez.jpg"
       },
       {
@@ -614,21 +612,21 @@ export const homeContent: HomeContent = {
         name: "Léo Bouyssou",
         role: "Consultant SEO & Contenu",
         specialty: "SEO & Contenu",
-        skills: ["SEO Technique", "Content Strategy", "Analytics"],
+        skills: ["SEO Technique", "Stratégie de contenu", "Analyse de données"],
         img: "/images/about/leo-bouyssou.jpg"
       },
       {
         name: "Camille Faure",
         role: "Directrice Artistique",
-        specialty: "Brand & Design",
-        skills: ["Identité visuelle", "Webdesign", "UI/UX"],
+        specialty: "Marque & Design",
+        skills: ["Identité visuelle", "Design web", "Interfaces"],
         img: "/images/team/camille-faure.jpg"
       },
       {
         name: "Romain Music",
         role: "Expert Acquisition",
         specialty: "Acquisition",
-        skills: ["LinkedIn Ads", "Google Ads", "Outbound"],
+        skills: ["LinkedIn Ads", "Google Ads", "Prospection sortante"],
         img: "/images/team/romain-music.jpg"
       }
     ]
@@ -639,8 +637,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   blog: {
     surtitre: "Ressources",
-    h2: "Ressources et actualités de notre agence marketing B2B",
-    h2Highlight: "agence marketing B2B",
+    h2: "Nos analyses marketing B2B",
+    h2Highlight: "marketing B2B",
     ctaText: "Accéder aux ressources"
   },
 
@@ -649,17 +647,17 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   faq: {
     surtitre: "[ FAQ ]",
-    h2: "Questions fréquentes sur notre agence marketing B2B",
-    h2Highlight: "agence marketing B2B",
-    description: "Transparence sur ce que nous faisons — et ce que nous ne faisons pas. Voici les réponses aux questions les plus fréquentes sur Vizion, votre agence marketing B2B à Toulouse.",
+    h2: "Questions fréquentes",
+    h2Highlight: "fréquentes",
+    description: "Nous croyons à la transparence. Voici les réponses aux questions qu'on nous pose le plus souvent.",
     questions: [
       {
         question: "Qu'est-ce que le marketing produit chez Vizion ?",
-        answer: "Le marketing produit, pour nous, c'est tout ce qui permet de positionner une offre sur son marché pour qu'elle devienne le choix évident : positionnement, messaging, sites web et landing pages, SEO, campagnes publicitaires, sales enablement, notoriété des dirigeants sur LinkedIn. Cela s'applique à tout « produit » au sens large : un SaaS, un concept de franchise, un service B2B. La méthode est la même, seule la nature du produit change."
+        answer: "Le marketing produit, pour nous, c'est tout ce qui permet de positionner une offre sur son marché pour qu'elle devienne le choix évident : positionnement, discours de marque, sites web et pages de conversion, SEO, campagnes publicitaires, aide à la vente, notoriété des dirigeants sur LinkedIn. Cela s'applique à tout « produit » au sens large : un SaaS, un concept de franchise, un service B2B. La méthode est la même, seule la nature du produit change."
       },
       {
         question: "Pourquoi « marketing produit » et pas « marketing stratégique » ?",
-        answer: "« Marketing stratégique » est un terme fourre-tout en France — tout le monde s'en revendique. « Marketing produit » est précis : dans l'écosystème B2B et SaaS, il est immédiatement compris (positioning, messaging, go-to-market, sales enablement). Pour les clients hors tech, le concept se traduit simplement : nous vous aidons à mieux vendre ce que vous faites déjà bien."
+        answer: "« Marketing stratégique » est un terme fourre-tout en France, tout le monde s'en revendique. « Marketing produit » est précis : dans l'écosystème B2B et SaaS, il est immédiatement compris (positionnement, discours de marque, mise en marché, aide à la vente). Pour les clients hors tech, le concept se traduit simplement : nous vous aidons à mieux vendre ce que vous faites déjà bien."
       },
       {
         question: "Avec quels types d'entreprises travaillez-vous ?",
@@ -667,19 +665,19 @@ export const homeContent: HomeContent = {
       },
       {
         question: "Quelle est la différence entre mission ciblée et accompagnement dans la durée ?",
-        answer: "La mission ciblée (8 à 16 semaines) intervient sur un enjeu précis : lancement, repositionnement, alignement du tunnel. Diagnostic, fondations (positionnement et messaging), activation. L'accompagnement dans la durée (6 mois minimum, à partir de 4 500 €/mois) : nous endossons le rôle de votre équipe marketing produit. Un interlocuteur dédié, un tunnel aligné, accès aux experts selon les besoins. Dans les deux cas, nous ne créons jamais de pub sans avoir posé le positionnement d'abord."
+        answer: "La mission ciblée (8 à 16 semaines) intervient sur un enjeu précis : lancement, repositionnement, alignement du tunnel. Diagnostic, fondations (positionnement et discours de marque), activation. L'accompagnement dans la durée (6 mois minimum, à partir de 4 500 €/mois) : nous endossons le rôle de votre équipe marketing produit. Un interlocuteur dédié, un tunnel aligné, accès aux experts selon les besoins. Dans les deux cas, nous ne créons jamais de pub sans avoir posé le positionnement d'abord."
       },
       {
         question: "Intervenez-vous uniquement à Toulouse ?",
         answer: "Nous sommes basés à Toulouse (Labège, technopôle) et accompagnons des clients partout en France et à l'international. Présentiel pour les clients à Toulouse et en Occitanie, visio et déplacements ponctuels pour les autres. La proximité avec Toulouse et l'Occitanie reste un atout pour nos clients locaux."
       },
       {
-        question: "Proposez-vous de la notoriété LinkedIn pour les dirigeants ?",
-        answer: "Oui. Avec un cofondateur ex-top 300 France sur la plateforme, Vizion propose un service de notoriété LinkedIn pour les dirigeants (personal branding, thought leadership). Dans le B2B, la crédibilité du fondateur ou du directeur commercial est souvent le premier levier de conversion. Cette expertise fait partie de notre tunnel de vente — campagnes LinkedIn Ads et stratégie de notoriété organique."
+        question: "En combien de temps voit-on les premiers résultats ?",
+        answer: "Cela dépend du point de départ. Positionnement et discours de marque : 4 à 6 semaines. Premiers prospects qualifiés : 2 à 3 mois. Impact commercial mesurable : 4 à 6 mois. Nous sommes transparents sur les délais, pas de promesse de résultats en 2 semaines. Construire un positionnement solide et un tunnel de vente aligné demande du temps et de l'itération."
       },
       {
         question: "Travaillez-vous avec les équipes marketing ou commerciales internes ?",
-        answer: "Nous ne remplaçons pas les équipes internes, nous les renforçons. Nous travaillons aux côtés des directions marketing et commerciales : positionnement, supports de vente alignés, boucle de feedback (les objections remontées par les commerciaux alimentent les prochaines campagnes). Un accompagnement réussi, c'est une équipe plus autonome et un message unifié du clic au closing."
+        answer: "Nous ne remplaçons pas les équipes internes, nous les renforçons. Nous travaillons aux côtés des directions marketing et commerciales : positionnement, supports de vente alignés, boucle de retours (les objections remontées par les commerciaux alimentent les prochaines campagnes). Un accompagnement réussi, c'est une équipe plus autonome et un message unifié du clic à la signature."
       }
     ],
     ctaText: "Une autre question ? Échangeons directement.",
@@ -718,8 +716,8 @@ export const homeContent: HomeContent = {
     h2Highlight: "Toulouse",
     description: "Basés à Toulouse, nous accompagnons les entreprises B2B d'Occitanie et de toute la France. Proximité quand il faut, efficacité à distance quand c'est mieux.",
     paragraphs: [
-      "Vizion est née à Toulouse, au cœur d'un écosystème tech et entrepreneurial en pleine accélération. C'est ici que nous avons construit notre méthodologie, au contact de startups, de PME industrielles et de réseaux de franchises qui avaient tous le même besoin : être plus clairs, plus vite.",
-      "Nous travaillons avec des entreprises à Toulouse, en Occitanie et dans toute la France. Nos clients apprécient la proximité pour les ateliers stratégiques et l'efficacité du travail à distance pour l'exécution."
+      "Installés à Labège dans la technopole de Toulouse, nous travaillons au quotidien avec des PME et ETI de l'aéronautique, de la tech, de l'industrie et des services. L'Occitanie concentre plus de 12 000 entreprises B2B, et la plupart n'ont pas de stratégie marketing structurée.",
+      "Nos clients toulousains bénéficient d'ateliers stratégiques en présentiel. Pour les entreprises ailleurs en France, nous sommes tout aussi efficaces à distance, avec des déplacements ponctuels quand c'est utile."
     ],
     preuveLocale: "Enseignant en stratégie LinkedIn à Toulouse School of Management (TSM)",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.5!2d1.5102!3d43.5416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7552ff%3A0x40ae6168453a970!2sLab%C3%A8ge!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr",
@@ -735,7 +733,9 @@ export const homeContent: HomeContent = {
       { name: "Carcassonne", label: "Occitanie" },
       { name: "Montauban", label: "Occitanie" },
       { name: "Béziers", label: "Occitanie" },
-      { name: "Rodez", label: "Occitanie" }
+      { name: "Rodez", label: "Occitanie" },
+      { name: "Lyon", label: "Auvergne-Rhône-Alpes" },
+      { name: "Paris", label: "Île-de-France" }
     ],
     cta: { text: "Rencontrons-nous à Toulouse", href: "/contact" }
   },
@@ -775,18 +775,18 @@ export const homeContent: HomeContent = {
   // FINAL CTA
   // --------------------------------------------------------------------------
   finalCta: {
-    trustBadge: "+70 entreprises font confiance à notre agence marketing B2B",
-    h2: "Prêt à travailler avec une agence marketing B2B ?",
-    h2Highlight: "agence marketing B2B",
-    description: "Lancement, restructuration ou accélération ? Vous voulez un tunnel de vente aligné — du message publicitaire au closing ? Notre agence marketing B2B propose un échange de 15 minutes pour identifier si nous pouvons vous accompagner.",
+    trustBadge: "+70 entreprises nous font confiance",
+    h2: "Échangeons sur votre prochain cap.",
+    h2Highlight: "votre prochain cap",
+    description: "30 minutes avec un fondateur. On analyse votre positionnement actuel, on identifie les écarts avec votre marché, et on vous dit concrètement ce qu'on ferait. Sans engagement.",
     cta: {
-      primary: { text: "Parlons de votre projet", href: "/contact" },
-      secondary: { text: "Voir nos réalisations", href: "/cas-clients" }
+      primary: { text: "Réserver un appel avec un fondateur", href: "/contact" },
+      secondary: { text: "Voir nos cas clients", href: "/cas-clients" }
     },
     trustElements: [
-      "Réponse sous 24h",
-      "Échange sans engagement",
-      "Premier cadrage offert"
+      "30 minutes",
+      "Sans engagement",
+      "Avec un fondateur"
     ]
   }
 };
@@ -799,9 +799,9 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://by-vizion.com/#organization",
-  "name": "Vizion — Agence marketing Toulouse, marketing produit B2B",
+  "name": "Vizion - Agence marketing Toulouse, marketing produit B2B",
   "alternateName": ["Vizion", "Vizion Marketing Produit", "Agence marketing Toulouse", "Agence marketing B2B Toulouse"],
-  "description": "Agence marketing à Toulouse. Vizion aide les entreprises à clarifier, packager et vendre leur offre. Positionnement, messaging, tunnel de vente aligné — du message publicitaire au closing. SaaS, franchises, PME/ETI. Devenez l'évidence sur votre marché. Plus de 70 entreprises accompagnées à Toulouse et en France depuis 2021.",
+  "description": "Agence marketing à Toulouse. Vizion aide les entreprises à clarifier, structurer et vendre leur offre. Positionnement, discours de marque, tunnel de vente aligné, du message publicitaire à la signature. SaaS, franchises, PME/ETI. Devenez l'évidence sur votre marché. Plus de 70 entreprises accompagnées à Toulouse et en France depuis 2021.",
   "url": "https://by-vizion.com",
   "logo": {
     "@type": "ImageObject",
@@ -809,7 +809,7 @@ export const organizationSchema = {
     "width": 200,
     "height": 60
   },
-  "image": "https://by-vizion.com/hero-binoculars.png",
+  "image": "https://by-vizion.com/hero-binoculars.avif",
   "telephone": "+33750836543",
   "email": "contact@by-vizion.com",
   "sameAs": [
@@ -881,12 +881,12 @@ export const organizationSchema = {
     {
       "@type": "Person",
       "name": "Lucas Gonzalez",
-      "jobTitle": "Co-fondateur — Marketing produit, positionnement, notoriété LinkedIn (ex-top 300 France)"
+      "jobTitle": "Co-fondateur - Marketing produit, positionnement, notoriété LinkedIn (ex-top 300 France)"
     },
     {
       "@type": "Person",
       "name": "Hugo Schuppe",
-      "jobTitle": "Co-fondateur — Expert technique : automatisations, intégrations, systèmes d'information"
+      "jobTitle": "Co-fondateur - Expert technique : automatisations, intégrations, systèmes d'information"
     }
   ],
   "foundingDate": "2021",

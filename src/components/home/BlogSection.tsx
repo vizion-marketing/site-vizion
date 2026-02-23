@@ -11,34 +11,34 @@ const ARTICLES = [
     slug: "pourquoi-marketing-produit-b2b",
     category: "Marketing Produit",
     title: "Pourquoi le marketing produit est la clé de votre croissance B2B",
-    excerpt: "Le marketing produit n'est pas une option. C'est le fondement d'une stratégie commerciale qui convertit.",
+    excerpt: "Le marketing produit n'est pas un luxe. C'est ce qui sépare les offres qui vendent de celles qui stagnent.",
     readTime: "6 min",
     date: "12 Jan 2025",
-    image: "/images/blog/marketing-produit-b2b.png",
+    image: "/images/blog/product-marketing.avif",
   },
   {
     slug: "sales-enablement-guide-complet",
-    category: "Sales Enablement",
-    title: "Sales enablement : le guide complet pour équiper vos commerciaux",
-    excerpt: "Vos commerciaux perdent du temps à chercher les bons contenus. Voici comment structurer votre sales enablement.",
+    category: "Aide à la vente",
+    title: "Aide à la vente : le guide complet pour équiper vos commerciaux",
+    excerpt: "Vos commerciaux perdent 30% de leur temps à chercher des contenus. Voici comment y remédier.",
     readTime: "8 min",
     date: "5 Jan 2025",
-    image: "/images/blog/sales-enablement.png",
+    image: "/images/blog/sales-enablement.avif",
   },
   {
     slug: "ia-marketing-b2b-cas-usage",
     category: "Intelligence Artificielle",
     title: "IA et marketing B2B : 5 cas d'usage concrets pour gagner du temps",
-    excerpt: "L'IA n'est pas qu'un buzzword. Voici comment nous l'utilisons pour nos clients au quotidien.",
+    excerpt: "L'IA ne remplace pas la stratégie. Mais elle accélère tout ce qui vient après.",
     readTime: "5 min",
     date: "28 Dec 2024",
-    image: "/images/blog/ia-marketing-b2b.png",
+    image: "/images/blog/marketingb2b-ia.avif",
   },
 ];
 
 export function BlogSection() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden bg-white">
+    <section id="blog" className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden bg-white">
       <div className="max-w-[82.5rem] mx-auto relative z-10">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12 mb-10 sm:mb-12 lg:mb-14">
@@ -62,7 +62,7 @@ export function BlogSection() {
             </h2>
 
             <p className="text-muted text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mt-4 sm:mt-5">
-              Stratégies, retours d&apos;expérience et bonnes pratiques pour transformer votre marketing B2B.
+              Retours d&apos;expérience, analyses et guides pratiques pour les dirigeants B2B qui veulent un marketing qui génère du revenu.
             </p>
           </motion.div>
 

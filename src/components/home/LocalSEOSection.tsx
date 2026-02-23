@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, GraduationCap, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import { homeContent, type LocalSEOContent } from "@/content/home";
 
 interface LocalSEOSectionProps {
@@ -11,7 +10,6 @@ interface LocalSEOSectionProps {
 
 export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
   const data = content ?? homeContent.localSEO;
-  const [mapLoaded, setMapLoaded] = useState(false);
 
   return (
     <section className="dark-section relative w-full py-16 sm:py-20 md:py-24 lg:py-32 grain-overlay">
@@ -96,21 +94,6 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
               ))}
             </div>
 
-            {/* Preuve locale */}
-            <div className="flex items-start gap-3 bg-white/[0.06] border border-white/[0.12] rounded-xl p-4 sm:p-5 mb-6 sm:mb-8">
-              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#D4FD00]/10 flex items-center justify-center">
-                <GraduationCap size={18} className="text-[#D4FD00]" />
-              </div>
-              <div>
-                <span className="text-[10px] sm:text-[11px] font-light tracking-[0.1em] text-[#D4FD00] uppercase block mb-1">
-                  Preuve locale
-                </span>
-                <p className="text-white text-[13px] sm:text-[14px] leading-relaxed">
-                  {data.preuveLocale}
-                </p>
-              </div>
-            </div>
-
             {/* CTA */}
             <a
               href={data.cta.href}
@@ -133,26 +116,15 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
             className="relative"
           >
             <div className="rounded-xl overflow-hidden border border-white/[0.12] aspect-[4/3] sm:aspect-[16/10] relative">
-              {mapLoaded ? (
-                <iframe
-                  src="https://storage.googleapis.com/maps-solutions-n59h3jo0mv/locator-plus/xmnt/locator-plus.html"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  title="Vizion — Agence marketing Toulouse, Occitanie"
-                />
-              ) : (
-                <button
-                  onClick={() => setMapLoaded(true)}
-                  className="w-full h-full bg-[#1a1a1a] flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-[#222] transition-colors"
-                  aria-label="Charger la carte Google Maps"
-                >
-                  <MapPin size={32} className="text-[#D4FD00]" />
-                  <span className="text-white text-sm">Cliquer pour afficher la carte</span>
-                  <span className="text-white/70 text-xs">Labège, Toulouse — Occitanie</span>
-                </button>
-              )}
+              <iframe
+                src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}&q=Labège+Toulouse+France&zoom=12`}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                title="Vizion - Agence marketing Toulouse, Occitanie"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
             {/* Floating badge */}
             <div className="absolute top-4 left-4 flex items-center gap-2 bg-[#0c0c0a]/90 backdrop-blur-sm border border-white/15 rounded-lg px-3 py-2">

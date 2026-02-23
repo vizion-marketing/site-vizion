@@ -5,24 +5,25 @@ import { motion } from "framer-motion";
 import { Flame, TrendingUp, HeartHandshake } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 const MILESTONES = [
   {
     number: "01",
-    title: "Des stratèges, pas des exécutants",
-    description: "Votre interlocuteur est un directeur marketing, pas un chef de projet. Il conçoit la feuille de route, challenge vos priorités et dialogue avec vos équipes dirigeantes. Nous ne produisons rien sans avoir posé le positionnement d'abord.",
+    title: "Un directeur marketing, pas un chef de projet",
+    description: "Votre interlocuteur est un expert en marketing produit qui conçoit la stratégie et dialogue avec votre comité de direction. Pas un coordinateur qui transmet vos briefs à des exécutants.",
     icon: Flame,
   },
   {
     number: "02",
-    title: "Du conseil jusqu'au closing",
-    description: "Notre intervention ne s'arrête pas à la stratégie. Nous couvrons l'ensemble du cycle commercial : positionnement, campagnes, supports de vente, outils de closing. Un seul message partout — de la réflexion à la signature.",
+    title: "Du positionnement à la signature",
+    description: "Nous intervenons sur l'ensemble du cycle de vente. Positionnement, campagnes, supports commerciaux, outils de conclusion. Votre prospect reçoit le même message à chaque étape, et ça change tout sur le taux de conversion.",
     icon: TrendingUp,
   },
   {
     number: "03",
-    title: "Un partenaire, pas un prestataire",
-    description: "Nous travaillons aux côtés de vos équipes, pas à leur place. Transfert de compétences, montée en autonomie, pédagogie. Un accompagnement réussi, c'est une équipe interne plus forte à la fin du projet.",
+    title: "Vos équipes montent en compétence",
+    description: "Nous ne créons pas de dépendance. Transfert de compétences, formation, co-construction. À la fin de la mission, votre équipe est plus autonome qu'avant.",
     icon: HeartHandshake,
   },
 ];
@@ -60,6 +61,7 @@ export function WhyVizionSection() {
 
   return (
     <section
+      id="agence"
       className="relative w-full py-12 sm:py-16 md:py-20 lg:py-32 grain-overlay"
     >
       {/* Background base — full-bleed sur toute la largeur de la section */}
@@ -133,20 +135,22 @@ export function WhyVizionSection() {
                   <div className="w-px bg-black/10" />
                   <div>
                     <span className="block font-heading font-semibold text-[28px] sm:text-[32px] text-primary leading-none">
-                      4 ans
+                      5 ans
                     </span>
                     <span className="text-[11px] sm:text-[12px] text-muted font-medium">
-                      d'expertise B2B
+                      d&apos;expertise B2B
                     </span>
                   </div>
                 </div>
 
                 {/* Photo sous les chiffres */}
-                <div className="rounded-xl overflow-hidden border border-black/[0.06] shadow-sm aspect-[4/3] max-h-[260px] sm:max-h-[320px] md:max-h-[380px]">
-                  <img
+                <div className="rounded-xl overflow-hidden border border-black/[0.06] shadow-sm aspect-[4/3] max-h-[260px] sm:max-h-[320px] md:max-h-[380px] relative">
+                  <Image
                     src="/images/why-vizion/equipe-vizion.avif"
-                    alt="Équipe Vizion — Agence marketing Toulouse"
-                    className="w-full h-full object-cover"
+                    alt="Équipe Vizion - Agence marketing Toulouse"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 40vw"
                   />
                 </div>
               </motion.div>

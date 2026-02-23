@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { CallWidget } from "@/components/CallWidget";
 import { MotionProvider } from "@/components/MotionProvider";
 import SmoothScroller from "@/components/SmoothScroller";
+import { ComingSoonProvider } from "@/components/ComingSoonProvider";
 
 // DM Sans pour titres et corps
 const dmSans = DM_Sans({
@@ -78,10 +79,12 @@ export default function RootLayout({
       <body className={`${dmSans.variable} antialiased`} suppressHydrationWarning>
         <SmoothScroller>
           <MotionProvider>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-            <CallWidget />
+            <ComingSoonProvider>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+              <CallWidget />
+            </ComingSoonProvider>
           </MotionProvider>
         </SmoothScroller>
       </body>

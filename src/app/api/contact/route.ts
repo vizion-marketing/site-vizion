@@ -9,7 +9,67 @@ interface ContactFormData {
   message: string;
 }
 
+// HTML escaping function to prevent XSS attacks
+function escapeHtml(text: string): string {
+  const map: { [key: string]: string } = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
+// Simple in-memory rate limiting (3 requests per 15 minutes per IP)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const windowMs = 15 * 60 * 1000; // 15 minutes
+  const maxRequests = 3; // 3 requests per 15 minutes
+
+  const record = rateLimitMap.get(ip);
+
+  if (!record || now > record.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + windowMs });
+    return true;
+  }
+
+  if (record.count >= maxRequests) {
+    return false;
+  }
+
+  record.count++;
+  return true;
+}
+
 export async function POST(request: Request) {
+  // CSRF Protection - validate origin
+  const origin = request.headers.get('origin');
+  const allowedOrigins = [
+    'https://by-vizion.com',
+    'https://www.by-vizion.com',
+    process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : null
+  ].filter(Boolean) as string[];
+
+  if (origin && !allowedOrigins.includes(origin)) {
+    return NextResponse.json(
+      { error: "Origine non autorisée" },
+      { status: 403 }
+    );
+  }
+
+  // Rate limiting check
+  const forwarded = request.headers.get("x-forwarded-for");
+  const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown';
+
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { error: "Trop de requêtes. Veuillez réessayer dans 15 minutes." },
+      { status: 429 }
+    );
+  }
   try {
     const body: ContactFormData = await request.json();
 
@@ -56,7 +116,7 @@ export async function POST(request: Request) {
     const { Resend } = await import("resend");
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
-      from: "Vizion <onboarding@resend.dev>",
+      from: "Vizion <contact@by-vizion.com>",
       to: ["lucas@by-vizion.com"],
       replyTo: email,
       subject: `[Contact Site] ${subjectLabel} - ${firstName} ${lastName}`,
@@ -69,29 +129,29 @@ export async function POST(request: Request) {
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 140px;">Nom complet</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${firstName} ${lastName}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${escapeHtml(firstName)} ${escapeHtml(lastName)}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">Email</td>
               <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
-                <a href="mailto:${email}" style="color: #000;">${email}</a>
+                <a href="mailto:${escapeHtml(email)}" style="color: #000;">${escapeHtml(email)}</a>
               </td>
             </tr>
             ${company ? `
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">Entreprise</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${company}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${escapeHtml(company)}</td>
             </tr>
             ` : ''}
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">Sujet</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${subjectLabel}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${escapeHtml(subjectLabel)}</td>
             </tr>
           </table>
 
           <h3 style="color: #000; margin-top: 30px;">Message :</h3>
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; white-space: pre-wrap;">
-${message}
+${escapeHtml(message)}
           </div>
 
           <p style="color: #888; font-size: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">

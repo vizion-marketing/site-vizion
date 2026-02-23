@@ -4,20 +4,21 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote, Play, Pause } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const CAS_CLIENTS = [
   {
     id: 1,
     company: "Eldo Wallet",
     sector: "FinTech B2B",
-    title: "De 1 000 à 10K€ de MRR par mois grâce à la bonne stratégie de Go-To-Market.",
-    quote: "Vizion a structuré notre go-to-market de A à Z. Le positionnement, le tunnel de vente, les outils commerciaux — tout était aligné. Les résultats ont suivi naturellement.",
-    author: "Équipe Eldo Wallet",
-    role: "FinTech",
+    title: "De 1 000 à 10 000 € de revenus récurrents mensuels grâce à la bonne stratégie de mise en marché.",
+    quote: "Vizion a structuré notre mise en marché de A à Z. Le positionnement, le tunnel de vente, les outils commerciaux, tout était aligné. Les résultats ont suivi naturellement.",
+    author: "Paul Scandella",
+    role: "Fondateur",
     avatar: "/images/clients/eldo.avif",
-    mainImage: "/images/clients/eldo-wallet-bg.png",
-    secondaryImage: "/images/casclients-dashboard.avif",
-    stats: { value: "x10", label: "MRR mensuel" },
+    mainImage: "/images/cas-clients/eldo-mainimage.avif",
+    secondaryImage: "/images/cas-clients/eldo-secondaryimage.avif",
+    stats: { value: "x10", label: "revenu récurrent" },
     link: "/cas-clients",
   },
   {
@@ -25,9 +26,9 @@ const CAS_CLIENTS = [
     company: "easyVirtual.tours",
     sector: "Franchise",
     title: "D'acteur local à +25 agences en France grâce à notre accompagnement global.",
-    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, sales enablement, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
-    author: "Léo Bouyssou",
-    role: "Co-fondateur",
+    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, aide à la vente, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
+    author: "Clément Carrère",
+    role: "Fondateur",
     avatar: "/images/clients/easyvirtual.avif",
     mainImage: "/images/cas-clients/easyvirtual-mainimage.avif",
     secondaryImage: "/images/cas-clients/easyvirtual-secondaryimage.avif",
@@ -38,13 +39,13 @@ const CAS_CLIENTS = [
     id: 3,
     company: "Ensenat Coaching",
     sector: "Coaching & Formation",
-    title: "D'organisation déstructurée à machine marketing duplicable pour Ensenat Coaching.",
+    title: "De zéro structure marketing à un système d'acquisition reproductible pour Ensenat Coaching.",
     quote: "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !",
-    author: "David Patry-Ballester",
-    role: "Chargé de marketing",
+    author: "Thomas Ensenat",
+    role: "Fondateur",
     avatar: "/images/clients/ensenat.avif",
-    mainImage: "/images/cas-clients/ensenat-hero.jpg",
-    secondaryImage: "/images/salesdeck-dashboard.avif",
+    mainImage: "/images/cas-clients/ensenat-mainimage.avif",
+    secondaryImage: "/images/cas-clients/ensenat-secondaryimage.avif",
     stats: { value: "100%", label: "marketing structuré" },
     link: "/cas-clients",
   },
@@ -52,13 +53,13 @@ const CAS_CLIENTS = [
 
 const AUTO_SLIDE_INTERVAL = 6000;
 
-// Témoignages réels — mêmes données que le hero
+// Témoignages réels - mêmes données que le hero
 const TESTIMONIALS = [
   {
     id: 1,
     quote: "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !",
-    author: "David Patry-Ballester",
-    role: "Chargé de marketing",
+    author: "Thomas Ensenat",
+    role: "Fondateur",
     company: "Ensenat Coaching",
     avatar: "/images/clients/ensenat.avif",
   },
@@ -96,7 +97,7 @@ const TESTIMONIALS = [
   },
   {
     id: 6,
-    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, sales enablement, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
+    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, aide à la vente, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
     author: "Clément Carrere",
     role: "Co-fondateur",
     company: "easyVirtual.tours",
@@ -109,9 +110,11 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
   return (
     <div className="bg-white p-5 border border-[#1a1a1a]/5 hover:border-[#D4FD00]/50 transition-all duration-300">
       <div className="flex items-start gap-3 mb-4">
-        <img
+        <Image
           src={testimonial.avatar}
           alt={testimonial.author}
+          width={40}
+          height={40}
           className="w-10 h-10 object-cover"
         />
         <div>
@@ -188,7 +191,7 @@ export function CasClientsSection() {
   };
 
   return (
-    <section className="relative py-12 sm:py-16 md:py-20 lg:py-28 bg-[#fafafa] overflow-hidden">
+    <section id="cas-clients" className="relative py-12 sm:py-16 md:py-20 lg:py-28 bg-[#fafafa] overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
@@ -233,7 +236,7 @@ export function CasClientsSection() {
               </span>
             </div>
             <h2 className="font-heading font-medium text-[24px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
-              Ils nous ont fait confiance
+              Ils sont devenus l'évidence sur leur marché
             </h2>
           </div>
 
@@ -389,17 +392,19 @@ export function CasClientsSection() {
               <div className="relative h-full overflow-hidden">
                 {/* Decorative frame */}
                 <div className="absolute -inset-1 border border-[#D4FD00]/20 pointer-events-none z-10" />
-                <img
+                <Image
                   src={currentCase.mainImage}
                   alt={currentCase.company}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/40 via-transparent to-transparent" />
 
                 {/* Company badge on image */}
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2">
-                  <span className="font-heading font-semibold text-[14px] text-primary">
+                <div className="absolute bottom-4 left-4 bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2">
+                  <span className="font-heading font-semibold text-[14px] text-white">
                     {currentCase.company}
                   </span>
                 </div>
@@ -410,19 +415,21 @@ export function CasClientsSection() {
             <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4 h-[320px] sm:h-[360px] md:h-[400px] lg:h-full">
               {/* Secondary Image + Author glassmorphism badge */}
               <div className="relative h-[50%] sm:h-[55%] overflow-hidden">
-                <img
+                <Image
                   src={currentCase.secondaryImage}
                   alt={`${currentCase.company} - secondaire`}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 30vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/20 to-transparent" />
 
                 {/* Author glassmorphism badge */}
-                <div className="absolute bottom-3 left-3 right-3 bg-white/20 backdrop-blur-md border border-white/30 px-3 py-2 rounded-lg">
-                  <p className="font-heading font-semibold text-[13px] text-white">
+                <div className="absolute bottom-3 left-3 right-3 bg-black/70 backdrop-blur-md border border-white/10 px-3 py-2 rounded-lg">
+                  <p className="font-heading font-semibold text-[13px] !text-white" style={{ color: '#ffffff' }}>
                     {currentCase.author}
                   </p>
-                  <p className="text-[11px] text-white/80">
+                  <p className="text-[11px] !text-white" style={{ color: '#ffffff' }}>
                     {currentCase.role}, {currentCase.company}
                   </p>
                 </div>

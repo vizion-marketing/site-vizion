@@ -15,7 +15,7 @@ export function TeamSection({ content }: TeamSectionProps = {}) {
   return (
     <TeamCarousel
       surtitre={equipe.surtitre}
-      title="Les meilleurs spécialistes de la ville rose."
+      title="L'équipe derrière votre stratégie."
       description={equipe.description}
       ctaText="Découvrir sur LinkedIn"
       ctaHref={SOCIAL_LINK}

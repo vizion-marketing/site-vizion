@@ -14,8 +14,8 @@ gsap.registerPlugin(useGSAP);
 const TESTIMONIALS = [
   {
     quote: "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !",
-    author: "David Patry-Ballester",
-    role: "Chargé de marketing, Ensenat Coaching",
+    author: "Thomas Ensenat",
+    role: "Fondateur, Ensenat Coaching",
     image: "/images/clients/ensenat.avif"
   },
   {
@@ -43,7 +43,7 @@ const TESTIMONIALS = [
     image: "/images/clients/olivierbas.avif"
   },
   {
-    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, sales enablement, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
+    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, aide à la vente, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
     author: "Clément Carrere",
     role: "Co-fondateur, easyVirtual.tours",
     image: "/images/clients/easyvirtual.avif"
@@ -379,13 +379,13 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">150+</span>
-              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">projets<br/>livrés</span>
+              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">5 ans</span>
+              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">d&apos;expertise<br/>B2B</span>
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">99%</span>
-              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">de clients<br/>satisfaits</span>
+              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">96%</span>
+              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">taux de<br/>renouvellement</span>
             </div>
           </div>
 
@@ -403,15 +403,17 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                     pointerEvents: i === testimonialIndex ? 'auto' : 'none',
                   }}
                 >
-                  <img
+                  <Image
                     src={testimonial.image}
                     alt={testimonial.author}
+                    width={40}
+                    height={40}
                     className="w-10 h-10 rounded-full object-cover border-2 border-[#D4FD00]/40 shrink-0"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-0.5 mb-1">
                       {[...Array(5)].map((_, starIndex) => (
-                        <svg key={starIndex} width="10" height="10" viewBox="0 0 24 24" fill="#D4FD00">
+                        <svg key={starIndex} width="10" height="10" viewBox="0 0 24 24" fill="#D4FD00" aria-hidden="true">
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                         </svg>
                       ))}
@@ -447,8 +449,8 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
 
           <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
             <Image
-              src="/hero-binoculars.png"
-              alt="Vizion, agence marketing à Toulouse — stratégie et positionnement B2B"
+              src="/hero-binoculars.avif"
+              alt="Vizion, agence marketing à Toulouse - stratégie et positionnement B2B"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -515,9 +517,11 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                   }}
                 >
                   {/* Client Photo */}
-                  <img
+                  <Image
                     src={testimonial.image}
                     alt={testimonial.author}
+                    width={48}
+                    height={48}
                     className="w-12 h-12 rounded-full object-cover border-2 border-[#D4FD00]/40 shrink-0 mt-0.5"
                   />
 
@@ -531,6 +535,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                           height="12"
                           viewBox="0 0 24 24"
                           fill="#D4FD00"
+                          aria-hidden="true"
                         >
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                         </svg>
@@ -552,20 +557,6 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Dots */}
-            <div className="flex items-center justify-center gap-1.5 mt-2 pt-2 border-t border-white/10">
-              {TESTIMONIALS.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => { setTestimonialIndex(i); startTestimonialAutoPlay(); }}
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                    i === testimonialIndex ? "bg-[#D4FD00] w-4" : "bg-white/30 hover:bg-white/50"
-                  }`}
-                  aria-label={`Témoignage ${i + 1}`}
-                />
               ))}
             </div>
 
@@ -604,7 +595,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
               <div>
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="#FBBF24">
+                    <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="#FBBF24" aria-hidden="true">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
                   ))}

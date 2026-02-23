@@ -4,15 +4,21 @@ import { LogoMarquee } from "@/components/sections";
 
 const INDUSTRIES = [
   "SaaS",
-  "Franchises",
-  "Produits industriels",
-  "Marque employeur",
-  "Services B2B",
-  "Tech & Innovation",
-  "Conseil",
+  "Cybersécurité",
+  "Industrie",
+  "Franchise",
+  "Retail",
+  "Ressources humaines",
+  "Tech",
   "Formation",
-  "E-commerce B2B",
+  "Services B2B",
   "Logiciels métier",
+  "Conseil",
+  "FinTech",
+  "E-commerce B2B",
+  "Santé",
+  "Énergie",
+  "Immobilier",
 ];
 
 export function IndustriesMarquee() {

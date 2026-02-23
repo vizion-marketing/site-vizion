@@ -3,56 +3,57 @@
 import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Globe, Layout, Users, Presentation, FileText, Megaphone } from "lucide-react";
-import Link from "next/link";
+import { ComingSoonLink } from "@/components/ComingSoonLink";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLenis } from "@/components/SmoothScroller";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const TABS = [
-  { id: "siteweb", label: "Site Web", icon: Globe },
-  { id: "landingpages", label: "Landing pages", icon: Layout },
+  { id: "siteweb", label: "Site web", icon: Globe },
+  { id: "landingpages", label: "Pages de conversion", icon: Layout },
   { id: "casclients", label: "Cas clients", icon: Users },
-  { id: "salesdeck", label: "Sales deck", icon: Presentation },
-  { id: "leadmagnets", label: "Lead magnets", icon: FileText },
+  { id: "salesdeck", label: "Présentation commerciale", icon: Presentation },
+  { id: "leadmagnets", label: "Contenus d'acquisition", icon: FileText },
   { id: "publicite", label: "Publicité", icon: Megaphone },
 ];
 
 const TAB_CONTENT = {
   siteweb: {
-    title: "Site Web",
-    description: "Des sites vitrines et produits conçus pour convertir. Architecture claire, copywriting orienté bénéfices, design qui inspire confiance.",
+    title: "Site web",
+    description: "Votre site est la première impression. Nous construisons des sites B2B où le visiteur comprend votre offre en 5 secondes. Pas des vitrines esthétiques que personne ne comprend.",
     image: "/images/pigment.avif",
     link: "/services/site-web",
   },
   landingpages: {
-    title: "Landing pages",
-    description: "Des pages d'atterrissage optimisées pour la conversion. Structure éprouvée, messages percutants, formulaires efficaces.",
+    title: "Pages de conversion",
+    description: "Des pages conçues pour un objectif : convertir. Structure testée, rédaction persuasive orientée problème, formulaire au bon moment.",
     image: "/images/landing-dashboard.avif",
     link: "/services/landing-pages",
   },
   casclients: {
     title: "Cas clients",
-    description: "Transformez vos succès en preuves sociales. Des études de cas qui rassurent vos prospects et accélèrent la décision d'achat.",
+    description: "Vos prospects ont besoin de preuves. Nous transformons vos succès en études de cas structurées qui lèvent les objections et accélèrent la décision.",
     image: "/images/casclients-dashboard.avif",
     link: "/services/cas-clients",
   },
   salesdeck: {
-    title: "Sales deck",
-    description: "Des présentations commerciales qui marquent les esprits. Structure narrative, visuels impactants, arguments imparables.",
+    title: "Présentation commerciale",
+    description: "La présentation que vos commerciaux utilisent vraiment. Structure narrative, arguments alignés sur le positionnement, réponses aux objections intégrées.",
     image: "/images/salesdeck-dashboard.avif",
     link: "/services/sales-deck",
   },
   leadmagnets: {
-    title: "Lead magnets",
-    description: "Des contenus à forte valeur ajoutée qui génèrent des leads qualifiés. Guides, templates, checklists conçus pour convertir.",
+    title: "Contenus d'acquisition",
+    description: "Guides, modèles, listes de contrôle : des contenus à forte valeur qui génèrent des prospects qualifiés et positionnent votre expertise sur votre marché.",
     image: "/images/leadmagnets-dashboard.avif",
     link: "/services/lead-magnets",
   },
   publicite: {
     title: "Publicité",
-    description: "Campagnes Meta, Google Ads et LinkedIn Ads. Ciblage précis, créatifs performants, optimisation continue pour maximiser votre ROI.",
+    description: "Campagnes LinkedIn Ads, Google Ads et Meta Ads. Ciblage précis, messages alignés sur le positionnement, optimisation continue.",
     image: "/images/publicite-dashboard.avif",
     link: "/services/publicite",
   },
@@ -220,11 +221,11 @@ export function AssetsSection() {
             className="max-w-3xl"
           >
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-4">
-              Nous créons des assets exceptionnels pensés pour transformer vos prospects en clients.
+              Nos livrables sont conçus pour vous aider à vendre, pas pour rester au fond d'un drive.
             </h2>
 
             <p className="text-muted text-base font-[var(--font-body)] leading-relaxed">
-              Tout au long du cycle de vente, nous concevons les outils qui font la différence.
+              Chaque support que nous créons a une raison stratégique d'exister. Il s'inscrit dans le tunnel de vente et porte le même message, de la première impression au closing.
             </p>
           </motion.div>
         </div>
@@ -390,13 +391,12 @@ export function AssetsSection() {
                 </p>
 
                 {/* CTA Button */}
-                <Link
-                  href={content.link}
+                <ComingSoonLink
                   className="group inline-flex items-center justify-between w-full h-[52px] px-6 text-[14px] font-[var(--font-body)] font-semibold bg-[#0c0c0a] text-white rounded-lg hover:bg-[#1a1a1a] transition-all duration-300"
                 >
                   <span>En savoir plus</span>
                   <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
+                </ComingSoonLink>
               </motion.div>
             </AnimatePresence>
           </motion.div>
@@ -427,13 +427,12 @@ export function AssetsSection() {
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0"
                 >
-                  <img
+                  <Image
                     src={content.image}
                     alt={content.title}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200`;
-                    }}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </motion.div>
               </AnimatePresence>

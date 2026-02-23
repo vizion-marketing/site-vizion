@@ -86,6 +86,7 @@ export function TeamCarousel({
 
   return (
     <section
+      id="equipe"
       className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-light"
       style={{ background: "#f8f8f6" }}
     >

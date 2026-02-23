@@ -57,8 +57,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <CasClientsSection />
         {/* Pourquoi Vizion */}
         <WhyVizionSection />
-        {/* Équipe */}
-        <TeamSection />
+        {/* Équipe — masquée temporairement */}
+        {/* <TeamSection /> */}
         {/* Blog - Derniers articles */}
         <BlogSection />
         {/* FAQ */}

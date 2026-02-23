@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ComingSoonLink } from "@/components/ComingSoonLink";
 import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 const footerLinks = {
@@ -79,9 +80,9 @@ export function Footer() {
               <ul className="flex flex-col gap-3">
                 {footerLinks.services.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
+                    <ComingSoonLink className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
                       {link.name}
-                    </Link>
+                    </ComingSoonLink>
                   </li>
                 ))}
               </ul>

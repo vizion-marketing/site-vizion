@@ -3,9 +3,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Target, PenTool, TrendingUp, Presentation, Cog, CheckCircle2 } from "lucide-react";
-import Link from "next/link";
+import { ComingSoonLink } from "@/components/ComingSoonLink";
 import { homeContent } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
+import Image from "next/image";
 
 interface ServicesSectionProps {
   surtitre?: string;
@@ -16,59 +17,59 @@ interface ServicesSectionProps {
 const SERVICES = [
   {
     id: 1,
-    title: "Product Marketing",
-    subtitle: "Positionnement & Message",
-    description: "Définissez un positionnement clair et une proposition de valeur qui résonne avec vos clients.",
+    title: "Audit et stratégie marketing",
+    subtitle: "Diagnostic, feuille de route & direction marketing",
+    description: "Votre marketing ne génère pas de résultats mesurables et vous ne savez pas pourquoi. Nous auditons votre positionnement, vos canaux et vos outils, puis nous structurons la feuille de route et pilotons sa mise en place. Direction marketing externalisée ou renfort ponctuel : nous nous adaptons à votre organisation. Pour que chaque euro investi repose sur un diagnostic solide et une exécution pilotée, pas sur des intuitions.",
     icon: Target,
     image: "/images/services/product-marketing.avif",
-    tags: ["Positionnement", "Messaging", "Go-to-Market"],
+    tags: ["Audit", "Stratégie", "Direction marketing"],
     span: "featured" as const,
     benefits: [
-      "Architecture de message différenciante",
-      "Positionnement concurrentiel clair",
-      "Stratégie go-to-market structurée",
+      "Diagnostic complet de votre marketing actuel",
+      "Feuille de route structurée sur 6 à 12 mois",
+      "Direction marketing externalisée ou renfort stratégique",
     ],
     href: "/services/product-marketing",
   },
   {
     id: 2,
-    title: "Content Marketing",
-    subtitle: "Contenu & Acquisition",
-    description: "Créez du contenu qui attire, éduque et convertit vos prospects en clients.",
+    title: "Positionnement et narratif produit",
+    subtitle: "Clarté & différenciation",
+    description: "Votre offre est techniquement solide, mais vos prospects ne comprennent pas ce qui vous distingue. Nous construisons un positionnement clair et un narratif produit qui rendent votre valeur évidente. Pour que vos clients idéaux vous choisissent sans hésiter face à la concurrence.",
     icon: PenTool,
-    tags: ["SEO", "Lead Magnets", "Blog"],
+    tags: ["Positionnement", "Narratif produit", "Proposition de valeur"],
     span: "normal" as const,
     href: "/services/content-marketing",
   },
   {
     id: 3,
-    title: "Growth Marketing",
-    subtitle: "Acquisition & Croissance",
-    description: "Accélérez votre croissance avec des campagnes d'acquisition ciblées et mesurables.",
+    title: "Trafic et notoriété",
+    subtitle: "Visibilité & acquisition",
+    description: "Vous avez un bon produit, mais personne ne vous connaît sur votre marché. Nous déployons les canaux d'acquisition adaptés à votre cible : SEO, campagnes publicitaires, LinkedIn, contenu stratégique. Pour que les bons prospects vous trouvent avant vos concurrents.",
     icon: TrendingUp,
-    tags: ["Paid Ads", "Email", "Automation"],
+    tags: ["SEO", "Publicité", "LinkedIn"],
     span: "normal" as const,
     href: "/services/growth-marketing",
   },
   {
     id: 4,
-    title: "Sales Enablement",
-    subtitle: "Outils & Performance",
-    description: "Équipez vos commerciaux avec les outils et contenus qui accélèrent le closing.",
-    icon: Presentation,
-    tags: ["Pitch Decks", "Battle Cards", "Objections"],
+    title: "Automatisation et intelligence artificielle",
+    subtitle: "Efficacité & productivité",
+    description: "Vos équipes perdent du temps sur des tâches répétitives qui pourraient être automatisées. Nous déployons les automatisations et les outils d'IA adaptés à vos processus marketing et commerciaux. Pour que votre équipe se concentre sur ce qui génère vraiment du revenu.",
+    icon: Cog,
+    tags: ["CRM", "Automatisation", "IA"],
     span: "normal" as const,
-    href: "/services/sales-enablement",
+    href: "/services/automatisation",
   },
   {
     id: 5,
-    title: "Automatisation",
-    subtitle: "CRM & Workflows",
-    description: "Automatisez vos processus marketing et commerciaux pour scaler sans friction.",
-    icon: Cog,
-    tags: ["HubSpot", "Zapier", "Intégrations"],
+    title: "Contenus d'aide à la vente",
+    subtitle: "Outils commerciaux alignés",
+    description: "Vos commerciaux improvisent à chaque rendez-vous et chacun raconte une histoire différente. Nous créons les présentations, fiches concurrentielles et guides d'appel alignés sur votre positionnement. Pour que chaque interaction commerciale renforce la même promesse, du premier contact à la signature.",
+    icon: Presentation,
+    tags: ["Présentations commerciales", "Fiches concurrentielles", "Guides"],
     span: "normal" as const,
-    href: "/services/automatisation",
+    href: "/services/sales-enablement",
   },
 ];
 
@@ -129,7 +130,7 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
           </h3>
 
           {/* Description */}
-          <p className="text-primary/80 text-[14px] lg:text-[16px] leading-relaxed mb-5 max-w-lg">
+          <p className="text-primary/80 text-[14px] lg:text-[16px] leading-relaxed mb-5 max-w-[90%]">
             {service.description}
           </p>
 
@@ -149,10 +150,12 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
         {/* Image en bas avec contenu overlay */}
         <div className="relative flex-1 mt-6 min-h-[180px] lg:min-h-[200px]">
           {/* Image */}
-          <img
+          <Image
             src={service.image}
             alt={service.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
 
           {/* Filtre noir semi-transparent */}
@@ -160,31 +163,30 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
 
           {/* Contenu overlay sur l'image */}
           <div className="absolute inset-0 p-6 sm:p-8 lg:p-10 flex flex-col justify-end">
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {service.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1.5 bg-white/20 backdrop-blur-sm text-white text-[11px] lg:text-[12px] font-medium"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            {/* Bottom row: Tags + CTA aligned */}
+            <div className="flex items-end justify-between gap-4">
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2">
+                {service.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 bg-white/20 backdrop-blur-sm text-white text-[11px] lg:text-[12px] font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
 
-            {/* Bottom: CTA */}
-            <div className="flex items-end justify-end gap-4">
               {/* CTA Button */}
-              <Link
-                href={service.href}
-                className="inline-flex items-center gap-2 h-[44px] sm:h-[48px] px-5 sm:px-6 text-[12px] sm:text-[13px] font-semibold bg-[#D4FD00] text-primary hover:bg-white transition-all duration-300 group/btn"
+              <ComingSoonLink
+                className="inline-flex items-center gap-2 h-[44px] sm:h-[48px] px-5 sm:px-6 text-[12px] sm:text-[13px] font-semibold bg-[#D4FD00] text-primary hover:bg-white transition-all duration-300 group/btn shrink-0"
               >
                 {service.title}
                 <ArrowUpRightIcon
                   className="shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
                   size={14}
                 />
-              </Link>
+              </ComingSoonLink>
             </div>
           </div>
         </div>
@@ -217,10 +219,12 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
         {/* Image pour carte wide */}
         {hasImage && isWide && (
           <div className="relative w-full md:w-2/5 h-48 md:h-auto shrink-0 overflow-hidden">
-            <img
+            <Image
               src={service.image}
               alt={service.title}
-              className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              fill
+              className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              sizes="(max-width: 768px) 100vw, 40vw"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 group-hover:to-[#D4FD00]/20 transition-colors duration-500" />
           </div>
@@ -231,10 +235,12 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
           {/* Image pour carte normale (petite, en haut) */}
           {hasImage && !isWide && (
             <div className="relative w-full h-32 -mx-6 sm:-mx-7 lg:-mx-8 -mt-6 sm:-mt-7 lg:-mt-8 mb-5 overflow-hidden">
-              <img
+              <Image
                 src={service.image}
                 alt={service.title}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                fill
+                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                sizes="100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent group-hover:from-[#D4FD00] group-hover:via-[#D4FD00]/50 transition-colors duration-500" />
             </div>
@@ -284,18 +290,17 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
             </span>
 
             {/* CTA Link */}
-            <Link
-              href={service.href}
+            <ComingSoonLink
               className="inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold text-primary group-hover:text-primary transition-colors duration-300 group/btn"
             >
-              <span className="border-b border-transparent group-hover/btn:border-[#1a1a1a] transition-colors duration-300">
+              <span className="border-b border-[#1a1a1a] group-hover/btn:border-[#1a1a1a] transition-colors duration-300">
                 {service.title}
               </span>
               <ArrowUpRightIcon
                 className="shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
                 size={14}
               />
-            </Link>
+            </ComingSoonLink>
           </div>
         </div>
       </div>
@@ -357,10 +362,12 @@ export function ServicesSection({ surtitre, h2, description }: ServicesSectionPr
             className="col-span-1 relative overflow-hidden group"
           >
             <div className="relative h-full min-h-[280px] lg:min-h-[260px]">
-              <img
+              <Image
                 src={AUTOMATION_IMAGE}
                 alt="Automatisation et workflows"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -380,8 +387,7 @@ export function ServicesSection({ surtitre, h2, description }: ServicesSectionPr
           transition={{ duration: 0.6 }}
           className="mt-12 sm:mt-16 lg:mt-20 text-center"
         >
-          <Link
-            href="/services"
+          <ComingSoonLink
             className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[13px] sm:text-[14px] font-semibold bg-[#1a1a1a] text-white hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 group"
           >
             Voir tous nos services
@@ -389,7 +395,7 @@ export function ServicesSection({ surtitre, h2, description }: ServicesSectionPr
               className="shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
               size={16}
             />
-          </Link>
+          </ComingSoonLink>
         </motion.div>
       </div>
     </section>
