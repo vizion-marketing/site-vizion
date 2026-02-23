@@ -220,7 +220,7 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
         {hasImage && isWide && (
           <div className="relative w-full md:w-2/5 h-48 md:h-auto shrink-0 overflow-hidden">
             <Image
-              src={service.image}
+              src={service.image!}
               alt={service.title}
               fill
               className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
@@ -236,7 +236,7 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
           {hasImage && !isWide && (
             <div className="relative w-full h-32 -mx-6 sm:-mx-7 lg:-mx-8 -mt-6 sm:-mt-7 lg:-mt-8 mb-5 overflow-hidden">
               <Image
-                src={service.image}
+                src={service.image!}
                 alt={service.title}
                 fill
                 className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
