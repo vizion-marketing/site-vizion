@@ -272,19 +272,11 @@ export function CasClientsSection() {
 
               </div>
 
-              {/* Top - Title + Stat */}
+              {/* Top - Title */}
               <div className="relative z-10">
                 <h3 className="font-heading font-semibold text-[22px] sm:text-[30px] md:text-[40px] leading-[1.1] tracking-[-0.02em] text-primary mb-4 sm:mb-6">
                   {currentCase.title}
                 </h3>
-                <div className="flex flex-col">
-                  <span className="font-heading font-bold text-[32px] sm:text-[40px] text-primary">
-                    {currentCase.stats.value}
-                  </span>
-                  <span className="text-[14px] text-primary/70 font-[var(--font-body)]">
-                    {currentCase.stats.label}
-                  </span>
-                </div>
               </div>
 
               {/* Bottom - Sector, description, button */}
@@ -334,7 +326,7 @@ export function CasClientsSection() {
             {/* Right - Secondary Image + Quote */}
             <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4 h-[320px] sm:h-[360px] md:h-[400px] lg:h-full">
               {/* Secondary Image + Author glassmorphism badge */}
-              <div className="relative h-[60%] sm:h-[55%] overflow-hidden">
+              <div className="relative h-[70%] sm:h-[65%] overflow-hidden">
                 <Image
                   src={currentCase.secondaryImage}
                   alt={`${currentCase.company} - secondaire`}
@@ -356,7 +348,7 @@ export function CasClientsSection() {
               </div>
 
               {/* Quote Box */}
-              <div className="relative bg-white p-3 sm:p-5 h-[50%] sm:h-[45%] flex flex-col justify-between overflow-hidden border border-[#1a1a1a]/5">
+              <div className="relative bg-white p-3 sm:p-5 h-[30%] sm:h-[35%] flex flex-col justify-between overflow-hidden border border-[#1a1a1a]/5">
                 <div className="relative z-10">
                   <Quote size={28} className="text-[#D4FD00] mb-3" />
                   <p className="text-primary/80 text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed">
@@ -383,20 +375,6 @@ export function CasClientsSection() {
               aria-label={`Aller au cas ${index + 1}`}
             />
           ))}
-        </div>
-
-        {/* Mobile Stats */}
-        <div className="lg:hidden mt-6 flex justify-center">
-          <div className="relative bg-white p-4 border border-[#1a1a1a]/5">
-            <div className="flex items-center gap-3">
-              <span className="font-heading font-bold text-[28px] text-primary">
-                {currentCase.stats.value}
-              </span>
-              <span className="text-[14px] text-muted font-[var(--font-body)]">
-                {currentCase.stats.label}
-              </span>
-            </div>
-          </div>
         </div>
       </div>
     </section>

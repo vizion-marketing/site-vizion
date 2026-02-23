@@ -148,7 +148,7 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
         </div>
 
         {/* Image en bas avec contenu overlay */}
-        <div className="relative flex-1 mt-6 min-h-[180px] lg:min-h-[200px]">
+        <div className="relative flex-1 mt-6 min-h-[260px] lg:min-h-[200px]">
           {/* Image */}
           <Image
             src={service.image!}
@@ -164,9 +164,9 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
           {/* Contenu overlay sur l'image */}
           <div className="absolute inset-0 p-6 sm:p-8 lg:p-10 flex flex-col justify-end">
             {/* Bottom row: Tags + CTA aligned */}
-            <div className="flex items-end justify-between gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 sm:gap-4">
               {/* Tags */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-row flex-wrap gap-2">
                 {service.tags.map((tag) => (
                   <span
                     key={tag}
