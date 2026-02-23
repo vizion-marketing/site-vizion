@@ -21,15 +21,16 @@ function CharSplit({ text, className, as: Tag = "p" }: { text: string; className
   return (
     <Tag className={className}>
       {words.map((word, wi) => (
-        <span key={wi} className="inline-block whitespace-nowrap">
+        <span key={wi} className="inline-block mr-[0.25em]">
           {word.split("").map((char, ci) => (
-            <span key={ci} className="manifesto-char inline" style={{ color: "rgba(26, 26, 26, 0.15)" }}>
+            <span
+              key={ci}
+              className="manifesto-char inline-block"
+              style={{ color: "rgba(26, 26, 26, 0.15)" }}
+            >
               {char}
             </span>
           ))}
-          {wi < words.length - 1 && (
-            <span className="manifesto-char inline" style={{ color: "rgba(26, 26, 26, 0.15)" }}>{" "}</span>
-          )}
         </span>
       ))}
     </Tag>

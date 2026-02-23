@@ -273,8 +273,8 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Agence Marketing Toulouse | Stratégie B2B, Positionnement & Aide à la Vente - Vizion",
-    description: "Vizion est une agence marketing à Toulouse spécialisée en B2B. Positionnement, aide à la vente, tunnel de vente aligné : nous aidons les PME et ETI à clarifier leur offre et accélérer leurs ventes. +70 entreprises accompagnées.",
+    title: "Agence Marketing B2B Toulouse | Vizion - Positionnement & Sales",
+    description: "Agence marketing B2B à Toulouse. Transformez votre offre complexe en message clair qui déclenche la décision d'achat. Positionnement, sales enablement, tunnel aligné. +70 entreprises accompagnées depuis 2021.",
     keywords: [
       "agence marketing toulouse",
       "agence marketing b2b toulouse",
@@ -295,9 +295,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   hero: {
     badge: "AGENCE MARKETING B2B - TOULOUSE",
-    h1: "Faites de votre innovation une évidence.",
+    h1: "Agence Marketing B2B Toulouse : Transformez votre offre en évidence",
     h1Highlight: "évidence",
-    h1RotatingWords: ["innovation", "produit", "solution SaaS", "franchise", "service", "solution"],
+    h1RotatingWords: ["offre", "produit", "innovation", "solution SaaS", "franchise", "service"],
     baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialiste du B2B et des cycles de ventes longs.",
     badges: [
       "+70 entreprises accompagnées"
@@ -801,8 +801,10 @@ export const organizationSchema = {
   "@id": "https://by-vizion.com/#organization",
   "name": "Vizion - Agence marketing Toulouse, marketing produit B2B",
   "alternateName": ["Vizion", "Vizion Marketing Produit", "Agence marketing Toulouse", "Agence marketing B2B Toulouse"],
-  "description": "Agence marketing à Toulouse. Vizion aide les entreprises à clarifier, structurer et vendre leur offre. Positionnement, discours de marque, tunnel de vente aligné, du message publicitaire à la signature. SaaS, franchises, PME/ETI. Devenez l'évidence sur votre marché. Plus de 70 entreprises accompagnées à Toulouse et en France depuis 2021.",
+  "slogan": "Transformez votre offre B2B en évidence sur votre marché",
+  "description": "Agence marketing B2B à Toulouse spécialisée en positionnement stratégique, sales enablement et tunnel de vente aligné. Vizion accompagne les PME et ETI dans leur transformation marketing : lancement de produit, repositionnement, accélération commerciale. Expertise en marketing produit, automatisation et intelligence artificielle appliquée. Plus de 70 entreprises accompagnées à Toulouse, Occitanie et en France depuis 2021.",
   "url": "https://by-vizion.com",
+  "knowsAbout": ["Marketing B2B", "Positionnement stratégique", "Sales Enablement", "Marketing Produit", "Automatisation Marketing", "Intelligence Artificielle", "SEO", "LinkedIn Ads", "CRM", "Tunnel de vente"],
   "logo": {
     "@type": "ImageObject",
     "url": "https://by-vizion.com/logo-vizion.svg",
@@ -813,7 +815,9 @@ export const organizationSchema = {
   "telephone": "+33750836543",
   "email": "contact@by-vizion.com",
   "sameAs": [
-    "https://www.linkedin.com/company/vizion-marketing-b2b/"
+    "https://www.linkedin.com/company/vizion-marketing-b2b/",
+    "https://www.linkedin.com/in/lucas-gonzalez-vizion/",
+    "https://by-vizion.com/blog"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -855,7 +859,7 @@ export const organizationSchema = {
   ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "5",
+    "ratingValue": "5.0",
     "bestRating": "5",
     "worstRating": "1",
     "ratingCount": "5",
@@ -866,15 +870,71 @@ export const organizationSchema = {
       "@type": "Review",
       "author": {
         "@type": "Person",
-        "name": "Client Vérifié"
+        "name": "Thomas Ensenat"
       },
-      "datePublished": "2024-12-15",
+      "datePublished": "2024-06-15",
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": "5",
         "bestRating": "5"
       },
-      "reviewBody": "Excellente agence, très professionnelle et à l'écoute. Résultats concrets sur notre stratégie marketing."
+      "reviewBody": "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Tamia"
+      },
+      "datePublished": "2024-08-20",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Je recommande fortement cette agence toulousaine ! Équipe professionnelle et répondant à tous types de besoins. Lucas est mon Directeur Marketing externalisé et j'en suis ravie."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Clément Carrere"
+      },
+      "datePublished": "2024-11-10",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, aide à la vente, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Olivier Bas"
+      },
+      "datePublished": "2024-09-05",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Vizion m'a accompagné dans le développement de mon image sur LinkedIn. Nous avons dépassé le million d'impressions en quelques mois, j'en suis très satisfait."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Barthélémy Delcampe"
+      },
+      "datePublished": "2024-07-18",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Nous avons confié la refonte de notre site web à Lucas et son équipe, nous en sommes très satisfaits bien que tout ait été fait à distance, depuis Toulouse jusqu'à Paris."
     }
   ],
   "founder": [

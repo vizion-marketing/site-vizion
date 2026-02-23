@@ -207,7 +207,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
     if (rotatingIdx !== -1) {
       parts.push(remaining.slice(0, rotatingIdx));
       parts.push(
-        <span key="rotating" className="inline-block relative overflow-hidden align-baseline" style={{ minWidth: '3ch' }}>
+        <span key="rotating" className="inline-block relative align-baseline" style={{ minWidth: '3ch', paddingBottom: '0.15em' }}>
           <span
             ref={wordRef}
             className="inline-block text-[#D4FD00]"
@@ -450,7 +450,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
             <Image
               src="/hero-binoculars.avif"
-              alt="Vizion, agence marketing à Toulouse - stratégie et positionnement B2B"
+              alt="Agence marketing B2B Toulouse Vizion - positionnement stratégique, sales enablement et tunnel de vente aligné pour PME et ETI"
               fill
               priority
               sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"

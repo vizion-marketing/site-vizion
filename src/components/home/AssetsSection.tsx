@@ -300,7 +300,7 @@ export function AssetsSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           role="tablist"
           aria-label="Livrables marketing"
-          className="relative inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1.5 mb-10 sm:mb-14"
+          className="relative hidden md:inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1.5 mb-10 sm:mb-14"
         >
           {TABS.map((tab, index) => {
             const Icon = tab.icon;
@@ -436,6 +436,7 @@ export function AssetsSection() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority={activeTab === "siteweb"}
                   />
                 </motion.div>
               </AnimatePresence>
