@@ -8,12 +8,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const MANIFESTO_TITLE = "Le marketing B2B mérite mieux qu'un coup de communication.";
 
 const MANIFESTO_PARAGRAPHS = [
-  "En B2B, les cycles de vente durent des mois. Les décideurs comparent, challengent, arbitrent. Ils ne cherchent pas de la créativité. Ils veulent de la clarté, de la structure, des preuves.",
-  "Ce qui fonctionne, c'est la répétition. Un positionnement ancré. Un discours cohérent à chaque étape. Des fondations solides qui tiennent sur des cycles longs.",
-  "Vizion construit le socle que personne ne pose : positionnement, architecture de message, alignement marketing-ventes. Nos clients cherchent la rigueur nécessaire pour transformer leur offre en référence sur leur marché.",
+  "Si vous opérez en B2B, vous savez que vos cycles de vente durent des mois. Vos décideurs comparent, challengent, arbitrent. Ils ne cherchent pas de la créativité. Ils veulent de la clarté, de la structure, des preuves.",
+  "Ce qui fonctionne pour vous, c'est la répétition. Un positionnement ancré. Un discours cohérent à chaque étape. Des fondations solides qui tiennent sur des cycles longs.",
+  "On construit le socle que personne ne pose : positionnement, architecture de message, alignement marketing-ventes. Vous cherchez la rigueur nécessaire pour transformer votre offre en référence sur votre marché.",
 ];
 
-const MISSION_STATEMENT = "Notre mission : faire de votre produit une évidence.";
+const MISSION_STATEMENT = "Alors on s'est donné une mission : faire de votre produit une évidence.";
 
 /** Split text into lines for line-by-line scroll animation */
 function LineSplit({ text, className, as: Tag = "p" }: { text: string; className?: string; as?: "p" | "h2" }) {
