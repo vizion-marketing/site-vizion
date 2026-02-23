@@ -5,14 +5,12 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const MANIFESTO_TITLE = "Nous croyons que le marketing B2B mérite mieux qu'un coup de communication.";
+const MANIFESTO_TITLE = "Le marketing B2B mérite mieux qu'un coup de communication.";
 
 const MANIFESTO_PARAGRAPHS = [
-  "En B2B, les cycles de vente durent des mois. Les décisions passent par des comités. Les décideurs comparent, challengent, arbitrent. Ils ne cherchent pas de la créativité. Ils veulent de la clarté, de la structure, des preuves.",
-  "Pourtant, trop d'entreprises abordent leur marketing comme si elles vendaient du grand public. Campagnes dispersées. Messages qui changent tous les trois mois. Équipes commerciales qui improvisent face à des acheteurs exigeants.",
-  "Le marketing magique, on n'y croit pas. Ce qui fonctionne en B2B, c'est la répétition. Un positionnement ancré. Un discours cohérent à chaque étape. Des fondations solides qui tiennent sur des cycles longs.",
-  "Vizion est une agence de marketing stratégique à Toulouse, spécialisée dans les cycles de vente complexes. Nous construisons le socle que personne ne pose : positionnement, architecture de message, alignement marketing-ventes. Ensuite seulement, nous produisons.",
-  "Nos clients ne viennent pas chercher un coup de communication. Ils cherchent la rigueur et l'exigence nécessaires pour transformer leur offre en référence sur leur marché.",
+  "En B2B, les cycles de vente durent des mois. Les décideurs comparent, challengent, arbitrent. Ils ne cherchent pas de la créativité. Ils veulent de la clarté, de la structure, des preuves.",
+  "Ce qui fonctionne, c'est la répétition. Un positionnement ancré. Un discours cohérent à chaque étape. Des fondations solides qui tiennent sur des cycles longs.",
+  "Vizion construit le socle que personne ne pose : positionnement, architecture de message, alignement marketing-ventes. Nos clients cherchent la rigueur nécessaire pour transformer leur offre en référence sur leur marché.",
 ];
 
 const MISSION_STATEMENT = "Notre mission : faire de votre produit une évidence.";
