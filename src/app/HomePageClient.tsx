@@ -12,11 +12,10 @@ const IntroSection = dynamic(() => import("@/components/home/IntroSection"), { s
 const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"), { ssr: true });
 const AssetsSection = dynamic(() => import("@/components/home/AssetsSection"), { ssr: true });
 const CasClientsSection = dynamic(() => import("@/components/home/CasClientsSection"), { ssr: true });
-const WhyVizionSection = dynamic(() => import("@/components/home/WhyVizionSection"), { ssr: true });
+const AboutLocalSection = dynamic(() => import("@/components/home/AboutLocalSection"), { ssr: true });
 const TeamSection = dynamic(() => import("@/components/home/TeamSection"), { ssr: true });
 const BlogSection = dynamic(() => import("@/components/home/BlogSection"), { ssr: true });
 const FAQSection = dynamic(() => import("@/components/home/FAQSection"), { ssr: true });
-const LocalSEOSection = dynamic(() => import("@/components/home/LocalSEOSection"), { ssr: true });
 const IlsParlentDeNousSection = dynamic(() => import("@/components/home/IlsParlentDeNousSection"), { ssr: true });
 const FinalCTASection = dynamic(() => import("@/components/home/FinalCTASection"), { ssr: true });
 
@@ -55,18 +54,16 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <AssetsSection />
         {/* Cas Clients */}
         <CasClientsSection />
-        {/* Pourquoi Vizion */}
-        <WhyVizionSection />
+        {/* À propos + Localisation (Fusion Pourquoi Vizion + SEO Local) */}
+        <AboutLocalSection />
         {/* Équipe — masquée temporairement */}
         {/* <TeamSection /> */}
         {/* Blog - Derniers articles */}
         <BlogSection />
         {/* FAQ */}
         <FAQSection />
-        {/* Référencement local — Toulouse & Occitanie */}
-        <LocalSEOSection />
-        {/* Ils parlent de nous */}
-        <IlsParlentDeNousSection />
+        {/* Ils parlent de nous — masquée temporairement */}
+        {/* <IlsParlentDeNousSection /> */}
         {/* CTA Final */}
         <FinalCTASection />
       </main>

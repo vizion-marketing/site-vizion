@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GraduationCap, Award, Globe, Mic } from "lucide-react";
+import Image from "next/image";
 
 const ACTUALITES = [
   {
@@ -11,6 +12,7 @@ const ACTUALITES = [
     description:
       "Lucas intervient auprès des étudiants du programme Grande École de la TSM sur les enjeux du marketing B2B et du positionnement produit.",
     span: "tall" as const,
+    image: "/images/actualites/tsm.avif", // À fournir
   },
   {
     icon: Award,
@@ -27,6 +29,7 @@ const ACTUALITES = [
     description:
       "Lucas intervient au sommet international du marketing pour partager la méthodologie Vizion sur le sales enablement B2B.",
     span: "normal" as const,
+    image: "/images/actualites/sommet-marketing.avif", // À fournir
   },
   {
     icon: Mic,
@@ -35,6 +38,7 @@ const ACTUALITES = [
     description:
       "Lucas est invité sur le podcast du Coffee Showbiz pour parler image de marque et stratégie de visibilité sur LinkedIn.",
     span: "wide" as const,
+    image: "/images/actualites/podcast.avif", // À fournir
   },
 ];
 
@@ -111,12 +115,29 @@ export function IlsParlentDeNousSection() {
                     : isWide
                       ? "sm:col-span-2 lg:col-span-2 bg-white light-card"
                       : "bg-white light-card"
-                }`}
+                } ${item.image ? "flex flex-col" : ""}`}
               >
+                {/* Dedicated Image Section (if exists) */}
+                {item.image && (
+                  <div className={`relative overflow-hidden ${
+                    isTall ? "h-[200px] sm:h-[240px]" : isWide ? "h-[180px]" : "h-[160px]"
+                  }`}>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes={isTall ? "(max-width: 640px) 100vw, 33vw" : isWide ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 640px) 100vw, 33vw"}
+                    />
+                  </div>
+                )}
+
                 <div
-                  className={`relative z-10 flex flex-col h-full ${
-                    isTall ? "p-6 sm:p-8 justify-between min-h-[320px] sm:min-h-0" : "p-5 sm:p-6"
-                  }`}
+                  className={`relative z-10 flex flex-col ${
+                    item.image ? "flex-1" : "h-full"
+                  } ${
+                    isTall ? "p-6 sm:p-8 justify-between" : "p-5 sm:p-6"
+                  } ${!item.image && isTall ? "min-h-[320px] sm:min-h-0" : ""}`}
                 >
                   {/* Icon */}
                   <div
@@ -160,8 +181,8 @@ export function IlsParlentDeNousSection() {
                   </p>
                 </div>
 
-                {/* Decorative gradient for tall card */}
-                {isTall && (
+                {/* Decorative gradient for tall card without image */}
+                {isTall && !item.image && (
                   <div
                     className="absolute bottom-0 left-0 right-0 h-1/3 pointer-events-none"
                     style={{

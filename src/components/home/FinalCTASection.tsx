@@ -2,6 +2,7 @@
 
 import { Clock, Shield, User } from "lucide-react";
 import { CTASection } from "@/components/sections";
+import { TestimonialsMarquee } from "@/components/home/TestimonialsMarquee";
 
 const TRUST_ELEMENTS = [
   { icon: Clock, text: "30 minutes" },
@@ -19,7 +20,11 @@ export function FinalCTASection() {
       primaryCta={{ text: "Réserver un appel avec un fondateur", href: "/contact" }}
       secondaryCta={{ text: "Voir nos cas clients", href: "/cas-clients" }}
       trustElements={TRUST_ELEMENTS}
-    />
+    >
+      <div className="mt-12 sm:mt-16">
+        <TestimonialsMarquee />
+      </div>
+    </CTASection>
   );
 }
 

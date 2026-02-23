@@ -19,6 +19,7 @@ export interface CTASectionProps {
   primaryCta: { text: string; href: string };
   secondaryCta?: { text: string; href: string };
   trustElements?: CTATrustElement[];
+  children?: React.ReactNode;
 }
 
 const trustContainer = {
@@ -38,6 +39,7 @@ export function CTASection({
   primaryCta,
   secondaryCta,
   trustElements,
+  children,
 }: CTASectionProps) {
   return (
     <section
@@ -186,6 +188,9 @@ export function CTASection({
             </Link>
           )}
         </motion.div>
+
+        {/* Optional children (e.g., marquee) */}
+        {children}
 
         {/* Trust elements - staggered */}
         {trustElements && trustElements.length > 0 && (
