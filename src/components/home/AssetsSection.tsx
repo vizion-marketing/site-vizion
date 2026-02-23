@@ -298,6 +298,8 @@ export function AssetsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
+          role="tablist"
+          aria-label="Livrables marketing"
           className="relative inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1.5 mb-10 sm:mb-14"
         >
           {TABS.map((tab, index) => {
@@ -307,6 +309,7 @@ export function AssetsSection() {
               <button
                 key={tab.id}
                 type="button"
+                role="tab"
                 onClick={(e) => handleTabClick(tab.id, index, e)}
                 className={`relative flex items-center gap-2 px-4 sm:px-5 py-2.5 text-[12px] sm:text-[13px] font-[var(--font-body)] font-medium transition-all duration-300 rounded-md ${
                   isActive

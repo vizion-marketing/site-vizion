@@ -453,7 +453,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
               alt="Vizion, agence marketing à Toulouse - stratégie et positionnement B2B"
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
               className="object-contain object-center"
             />
           </div>
