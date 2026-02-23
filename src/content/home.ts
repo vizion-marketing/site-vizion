@@ -295,13 +295,11 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   hero: {
     badge: "AGENCE MARKETING B2B - TOULOUSE",
-    h1: "Agence Marketing B2B Toulouse : Transformez votre offre en évidence",
-    h1Highlight: "évidence",
+    h1: "Votre agence Marketing spécialiste du B2B à Toulouse",
+    h1Highlight: "Toulouse",
     h1RotatingWords: ["offre", "produit", "innovation", "solution SaaS", "franchise", "service"],
     baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialiste du B2B et des cycles de ventes longs.",
-    badges: [
-      "+70 entreprises accompagnées"
-    ],
+    badges: [],
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
       secondary: { text: "Voir nos cas clients", href: "/cas-clients" }
@@ -647,37 +645,41 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   faq: {
     surtitre: "[ FAQ ]",
-    h2: "Questions fréquentes",
-    h2Highlight: "fréquentes",
+    h2: "Vos questions",
+    h2Highlight: "questions",
     description: "Nous croyons à la transparence. Voici les réponses aux questions qu'on nous pose le plus souvent.",
     questions: [
       {
         question: "Qu'est-ce que le marketing produit chez Vizion ?",
-        answer: "Le marketing produit, pour nous, c'est tout ce qui permet de positionner une offre sur son marché pour qu'elle devienne le choix évident : positionnement, discours de marque, sites web et pages de conversion, SEO, campagnes publicitaires, aide à la vente, notoriété des dirigeants sur LinkedIn. Cela s'applique à tout « produit » au sens large : un SaaS, un concept de franchise, un service B2B. La méthode est la même, seule la nature du produit change."
+        answer: "Le marketing produit chez Vizion, c'est tout ce qui permet de positionner une offre sur son marché pour qu'elle devienne le choix évident : positionnement, discours de marque, sites web et pages de conversion, SEO, campagnes publicitaires, aide à la vente, notoriété des dirigeants sur LinkedIn. Cela s'applique à tout « produit » au sens large : un SaaS, un concept de franchise, un service B2B. La méthode est la même, seule la nature du produit change."
       },
       {
-        question: "Pourquoi « marketing produit » et pas « marketing stratégique » ?",
+        question: "Quelle est la différence entre marketing produit et marketing stratégique ?",
         answer: "« Marketing stratégique » est un terme fourre-tout en France, tout le monde s'en revendique. « Marketing produit » est précis : dans l'écosystème B2B et SaaS, il est immédiatement compris (positionnement, discours de marque, mise en marché, aide à la vente). Pour les clients hors tech, le concept se traduit simplement : nous vous aidons à mieux vendre ce que vous faites déjà bien."
       },
       {
-        question: "Avec quels types d'entreprises travaillez-vous ?",
-        answer: "Nous intervenons auprès de trois typologies : startups et SaaS (logiciel, plateforme), franchises et réseaux (concept de franchise, recrutement franchisés), et PME/ETI B2B (offre commerciale à clarifier). Ces entreprises ont une problématique commune : transformer leur offre en évidence commerciale. Vizion applique la même rigueur aux franchises, services B2B et ETI industrielles qu'aux acteurs tech."
+        question: "Quelles entreprises peuvent faire appel à Vizion ?",
+        answer: "Vizion intervient auprès de trois typologies : startups et SaaS (logiciel, plateforme), franchises et réseaux (concept de franchise, recrutement franchisés), et PME/ETI B2B (offre commerciale à clarifier). Ces entreprises ont une problématique commune : transformer leur offre en évidence commerciale. Nous appliquons la même rigueur aux franchises, services B2B et ETI industrielles qu'aux acteurs tech."
       },
       {
-        question: "Quelle est la différence entre mission ciblée et accompagnement dans la durée ?",
-        answer: "La mission ciblée (8 à 16 semaines) intervient sur un enjeu précis : lancement, repositionnement, alignement du tunnel. Diagnostic, fondations (positionnement et discours de marque), activation. L'accompagnement dans la durée (6 mois minimum, à partir de 4 500 €/mois) : nous endossons le rôle de votre équipe marketing produit. Un interlocuteur dédié, un tunnel aligné, accès aux experts selon les besoins. Dans les deux cas, nous ne créons jamais de pub sans avoir posé le positionnement d'abord."
+        question: "Comment travaille Vizion : mission ponctuelle ou accompagnement long terme ?",
+        answer: "Vizion propose deux modes d'intervention. La mission ciblée (8 à 16 semaines) intervient sur un enjeu précis : lancement, repositionnement, alignement du tunnel. L'accompagnement dans la durée (6 mois minimum, à partir de 4 500 €/mois) : nous endossons le rôle de votre équipe marketing produit. Un interlocuteur dédié, un tunnel aligné, accès aux experts selon les besoins. Dans les deux cas, nous ne créons jamais de pub sans avoir posé le positionnement d'abord."
       },
       {
-        question: "Intervenez-vous uniquement à Toulouse ?",
-        answer: "Nous sommes basés à Toulouse (Labège, technopôle) et accompagnons des clients partout en France et à l'international. Présentiel pour les clients à Toulouse et en Occitanie, visio et déplacements ponctuels pour les autres. La proximité avec Toulouse et l'Occitanie reste un atout pour nos clients locaux."
+        question: "Vizion travaille-t-elle uniquement à Toulouse et en Occitanie ?",
+        answer: "Non, Vizion est basée à Toulouse (Labège, technopôle) mais accompagne des clients partout en France et à l'international. Présentiel pour les clients à Toulouse et en Occitanie, visio et déplacements ponctuels pour les autres. Plus de 70 entreprises nous font confiance depuis 2021, en Occitanie et dans toute la France. La proximité géographique reste un atout pour nos clients toulousains."
       },
       {
-        question: "En combien de temps voit-on les premiers résultats ?",
-        answer: "Cela dépend du point de départ. Positionnement et discours de marque : 4 à 6 semaines. Premiers prospects qualifiés : 2 à 3 mois. Impact commercial mesurable : 4 à 6 mois. Nous sommes transparents sur les délais, pas de promesse de résultats en 2 semaines. Construire un positionnement solide et un tunnel de vente aligné demande du temps et de l'itération."
+        question: "Combien de temps faut-il pour voir les résultats avec Vizion ?",
+        answer: "Les délais dépendent du point de départ. Positionnement et discours de marque : 4 à 6 semaines. Premiers prospects qualifiés : 2 à 3 mois. Impact commercial mesurable : 4 à 6 mois. Nous sommes transparents sur les délais, pas de promesse de résultats en 2 semaines. Construire un positionnement solide et un tunnel de vente aligné demande du temps et de l'itération."
       },
       {
-        question: "Travaillez-vous avec les équipes marketing ou commerciales internes ?",
-        answer: "Nous ne remplaçons pas les équipes internes, nous les renforçons. Nous travaillons aux côtés des directions marketing et commerciales : positionnement, supports de vente alignés, boucle de retours (les objections remontées par les commerciaux alimentent les prochaines campagnes). Un accompagnement réussi, c'est une équipe plus autonome et un message unifié du clic à la signature."
+        question: "Vizion remplace-t-elle l'équipe marketing interne ?",
+        answer: "Non, Vizion ne remplace pas les équipes internes, nous les renforçons. Nous travaillons aux côtés des directions marketing et commerciales : positionnement, supports de vente alignés, boucle de retours (les objections remontées par les commerciaux alimentent les prochaines campagnes). Un accompagnement réussi, c'est une équipe plus autonome et un message unifié du clic à la signature."
+      },
+      {
+        question: "Quel est le prix d'un accompagnement marketing avec Vizion ?",
+        answer: "Vizion propose des accompagnements à partir de 4 500 €/mois pour un suivi dans la durée (minimum 6 mois). Les missions ciblées (8 à 16 semaines) varient selon l'enjeu et le périmètre. Nous travaillons principalement avec des PME de 10 à 250 collaborateurs, des ETI et des scale-ups en phase de croissance. Chaque projet démarre par un diagnostic gratuit pour évaluer si nous sommes le bon partenaire."
       }
     ],
     ctaText: "Une autre question ? Échangeons directement.",
@@ -723,18 +725,17 @@ export const homeContent: HomeContent = {
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.5!2d1.5102!3d43.5416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7552ff%3A0x40ae6168453a970!2sLab%C3%A8ge!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr",
     villes: [
       { name: "Toulouse", label: "Siège" },
-      { name: "Montpellier", label: "Occitanie" },
-      { name: "Bordeaux", label: "Nouvelle-Aquitaine" },
-      { name: "Perpignan", label: "Occitanie" },
-      { name: "Nîmes", label: "Occitanie" },
-      { name: "Albi", label: "Occitanie" },
-      { name: "Tarbes", label: "Occitanie" },
-      { name: "Pau", label: "Nouvelle-Aquitaine" },
-      { name: "Carcassonne", label: "Occitanie" },
-      { name: "Montauban", label: "Occitanie" },
-      { name: "Béziers", label: "Occitanie" },
-      { name: "Rodez", label: "Occitanie" },
-      { name: "Lyon", label: "Auvergne-Rhône-Alpes" },
+      { name: "Montpellier", label: "Hérault" },
+      { name: "Perpignan", label: "Pyrénées-Orientales" },
+      { name: "Nîmes", label: "Gard" },
+      { name: "Carcassonne", label: "Aude" },
+      { name: "Albi", label: "Tarn" },
+      { name: "Montauban", label: "Tarn-et-Garonne" },
+      { name: "Rodez", label: "Aveyron" },
+      { name: "Mende", label: "Lozère" },
+      { name: "Auch", label: "Gers" },
+      { name: "Tarbes", label: "Hautes-Pyrénées" },
+      { name: "Foix", label: "Ariège" },
       { name: "Paris", label: "Île-de-France" }
     ],
     cta: { text: "Rencontrons-nous à Toulouse", href: "/contact" }
