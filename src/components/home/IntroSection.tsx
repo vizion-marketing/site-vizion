@@ -184,18 +184,12 @@ export function IntroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="pt-6 sm:pt-8 md:pt-10"
           >
-            <div className="relative inline-block">
-              {/* Glow effect */}
-              <div
-                className="absolute inset-0 blur-2xl opacity-30"
-                style={{
-                  background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.4) 0%, transparent 70%)",
-                }}
-              />
+            {/* Glassmorphisme noir */}
+            <div className="relative inline-block bg-black/40 backdrop-blur-md border border-white/10 px-6 sm:px-8 py-4 sm:py-5 rounded-lg">
               {/* Mission text */}
-              <p className="relative font-heading font-medium text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-primary">
-                Notre mission :{" "}
-                <span className="text-[#D4FD00] drop-shadow-[0_0_25px_rgba(212,253,0,0.4)]">
+              <p className="relative font-heading font-medium text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-white">
+                Alors on s'est donné une mission :{" "}
+                <span className="text-[#D4FD00]">
                   faire de votre produit une évidence
                 </span>
               </p>
