@@ -420,7 +420,7 @@ export const Post = defineDocumentType(() => ({
     tags: { type: "list", of: { type: "string" }, default: [] },
     featuredImage: { type: "string" },
     draft: { type: "boolean", default: false },
-    readingTime: { type: "string" }, // Peut être overridé manuellement (sinon auto-calculé)
+    // Note: readingTime est calculé automatiquement dans computedFields
     // Bibliothèque de ressources
     resources: {
       type: "list",
