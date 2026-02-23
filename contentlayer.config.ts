@@ -414,17 +414,26 @@ export const Post = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string", required: true },
     date: { type: "date", required: true },
+    dateModified: { type: "date" }, // Date de dernière mise à jour (optionnel)
     author: { type: "string", default: "Vizion" },
     category: { type: "string", required: true },
     tags: { type: "list", of: { type: "string" }, default: [] },
     featuredImage: { type: "string" },
     draft: { type: "boolean", default: false },
+    readingTime: { type: "string" }, // Peut être overridé manuellement (sinon auto-calculé)
     // Bibliothèque de ressources
     resources: {
       type: "list",
       of: { type: "json" },
       default: [],
       // Format: { title, url, type: "internal" | "external", description? }
+    },
+    // FAQ pour featured snippets Google
+    faq: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+      // Format: { question: "...", answer: "..." }
     },
     // CTA personnalisé (optionnel)
     ctaTitle: { type: "string" },
