@@ -138,9 +138,10 @@ export function Header() {
               <button
                 key={item.target}
                 onClick={() => scrollToTarget(item.target)}
-                className="text-[14px] font-medium text-secondary hover:text-primary transition-colors duration-200 cursor-pointer"
+                className="relative text-[14px] font-medium text-secondary hover:text-primary transition-colors duration-200 cursor-pointer group"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
           </nav>
