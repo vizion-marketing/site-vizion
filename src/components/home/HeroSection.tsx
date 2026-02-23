@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { homeContent, type HeroContent } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
@@ -243,7 +244,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-36 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 flex items-center min-h-[100svh] overflow-hidden grain-overlay"
+      className="dark-section relative pt-20 sm:pt-24 md:pt-28 lg:pt-36 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 flex items-center min-h-[100svh] overflow-hidden grain-overlay"
       style={{ background: "#0c0c0a" }}
     >
       {/* Base + radial gradients jaune Vizion animés */}
@@ -445,10 +446,13 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-[#D4FD00] rounded-bl-lg hidden lg:block" />
 
           <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
-            <img
+            <Image
               src="/hero-binoculars.png"
-              alt="Strategie"
-              className="absolute inset-0 w-full h-full object-contain object-center"
+              alt="Vizion, agence marketing à Toulouse — stratégie et positionnement B2B"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-contain object-center"
             />
           </div>
 

@@ -55,7 +55,7 @@ export function TwoColSection({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${grain}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${grain} ${isDark ? "dark-section" : ""}`}
       style={{ background: bg }}
     >
       {/* Ambient glow */}
@@ -90,14 +90,14 @@ export function TwoColSection({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}
+                  className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted"
                 >
                   {surtitre}
                 </motion.span>
               </div>
             )}
 
-            <h2 className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-5 sm:mb-6 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-5 sm:mb-6 text-primary">
               {title}{" "}
               {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
             </h2>
@@ -110,7 +110,7 @@ export function TwoColSection({
               className="space-y-4 mb-8"
             >
               {paragraphs.map((p, i) => (
-                <motion.p key={i} variants={paragraphItem} className={`text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/80" : "text-[#52525B]"}`}>
+                <motion.p key={i} variants={paragraphItem} className="text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed text-secondary">
                   {p}
                 </motion.p>
               ))}
@@ -163,11 +163,11 @@ export function TwoColSection({
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.19, 1, 0.22, 1] }}
                 className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-[#D4FD00] p-4 sm:p-5 shadow-[0_8px_24px_rgba(212,253,0,0.3)]"
               >
-                <span className="font-heading font-bold text-[24px] sm:text-[32px] text-[#1a1a1a] leading-none block">
+                <span className="font-heading font-bold text-[24px] sm:text-[32px] text-primary leading-none block">
                   {badge.text}
                 </span>
                 {badge.subtext && (
-                  <span className="text-[11px] sm:text-xs text-[#1a1a1a]/70 font-[var(--font-body)] mt-1 block">
+                  <span className="text-[11px] sm:text-xs text-primary/70 font-[var(--font-body)] mt-1 block">
                     {badge.subtext}
                   </span>
                 )}

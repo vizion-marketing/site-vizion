@@ -151,7 +151,7 @@ function ServicesDropdown({ isOpen, onOpen, onClose }: ServicesDropdownProps) {
     >
       <button
         className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors duration-200 ${
-          isOpen ? "text-[#1a1a1a]" : "text-[#52525b] hover:text-[#1a1a1a]"
+          isOpen ? "text-primary" : "text-secondary hover:text-primary"
         }`}
       >
         Services
@@ -173,12 +173,12 @@ function ServicesDropdown({ isOpen, onOpen, onClose }: ServicesDropdownProps) {
               <div className="flex items-center justify-between mb-5 pb-4 border-b border-black/5">
                 <div>
                   <span className="text-[10px] font-light tracking-[0.12em] text-black/40 mb-1 block">NOS SERVICES</span>
-                  <span className="text-[15px] font-semibold text-[#1a1a1a]">Un tunnel de vente aligné</span>
+                  <span className="text-[15px] font-semibold text-primary">Un tunnel de vente aligné</span>
                 </div>
                 <Link
                   href="/#services"
                   onClick={onClose}
-                  className="flex items-center gap-1.5 text-[11px] font-bold tracking-wide text-black/60 hover:text-[#1a1a1a] transition-colors"
+                  className="flex items-center gap-1.5 text-[11px] font-bold tracking-wide text-black/60 hover:text-primary transition-colors"
                 >
                   Voir tous les services
                   <ArrowRight size={12} />
@@ -195,11 +195,11 @@ function ServicesDropdown({ isOpen, onOpen, onClose }: ServicesDropdownProps) {
                       onClick={onClose}
                       className="group flex gap-3 p-3 rounded-none transition-all duration-200 hover:bg-[#fafaf8]"
                     >
-                      <div className="w-10 h-10 shrink-0 flex items-center justify-center text-[#1a1a1a] bg-black/5 group-hover:bg-[#D4FD00] transition-colors">
+                      <div className="w-10 h-10 shrink-0 flex items-center justify-center text-primary bg-black/5 group-hover:bg-[#D4FD00] transition-colors">
                         <Icon size={18} strokeWidth={1.5} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <span className="text-[13px] font-semibold text-[#1a1a1a] group-hover:text-black block mb-0.5">{item.title}</span>
+                        <span className="text-[13px] font-semibold text-primary group-hover:text-black block mb-0.5">{item.title}</span>
                         <span className="text-[11px] text-black/50 leading-snug line-clamp-2 group-hover:text-black/60">{item.description}</span>
                       </div>
                     </Link>
@@ -215,7 +215,7 @@ function ServicesDropdown({ isOpen, onOpen, onClose }: ServicesDropdownProps) {
                 <Link
                   href="/contact"
                   onClick={onClose}
-                  className="text-[11px] font-bold text-[#1a1a1a] hover:text-black flex items-center gap-1 transition-colors"
+                  className="text-[11px] font-bold text-primary hover:text-black flex items-center gap-1 transition-colors"
                 >
                   Parlons de votre projet <ArrowUpRightIcon size={12} />
                 </Link>
@@ -271,7 +271,7 @@ function CasClientsDropdown({ isOpen, onOpen, onClose }: CasClientsDropdownProps
     >
       <button
         className={`flex items-center gap-1.5 text-[14px] font-medium transition-colors duration-200 ${
-          isOpen ? "text-[#1a1a1a]" : "text-[#52525b] hover:text-[#1a1a1a]"
+          isOpen ? "text-primary" : "text-secondary hover:text-primary"
         }`}
       >
         Clients
@@ -293,12 +293,12 @@ function CasClientsDropdown({ isOpen, onOpen, onClose }: CasClientsDropdownProps
               <div className="flex items-center justify-between mb-5 pb-4 border-b border-black/5">
                 <div>
                   <span className="text-[10px] font-light tracking-[0.12em] text-black/40 mb-1 block">NOS RÉALISATIONS</span>
-                  <span className="text-[15px] font-semibold text-[#1a1a1a]">Ils sont devenus l'évidence sur leur marché</span>
+                  <span className="text-[15px] font-semibold text-primary">Ils sont devenus l'évidence sur leur marché</span>
                 </div>
                 <Link
                   href="/cas-clients"
                   onClick={onClose}
-                  className="flex items-center gap-1.5 text-[11px] font-bold tracking-wide text-black/60 hover:text-[#1a1a1a] transition-colors"
+                  className="flex items-center gap-1.5 text-[11px] font-bold tracking-wide text-black/60 hover:text-primary transition-colors"
                 >
                   Voir tous les cas clients
                   <ArrowRight size={12} />
@@ -336,7 +336,7 @@ function CasClientsDropdown({ isOpen, onOpen, onClose }: CasClientsDropdownProps
 
                       {/* Content */}
                       <div>
-                        <span className="text-[13px] font-semibold text-[#1a1a1a] group-hover:text-black transition-colors duration-200 block mb-0.5">
+                        <span className="text-[13px] font-semibold text-primary group-hover:text-black transition-colors duration-200 block mb-0.5">
                           {item.title}
                         </span>
                         <span className="text-[11px] text-[#D4FD00] font-medium block mb-1 transition-colors duration-200 group-hover:text-[#b8d600]">
@@ -358,7 +358,7 @@ function CasClientsDropdown({ isOpen, onOpen, onClose }: CasClientsDropdownProps
                 <Link
                   href="/contact"
                   onClick={onClose}
-                  className="text-[11px] font-bold text-[#1a1a1a] hover:text-black flex items-center gap-1 transition-colors"
+                  className="text-[11px] font-bold text-primary hover:text-black flex items-center gap-1 transition-colors"
                 >
                   Devenir le prochain cas client <ArrowUpRightIcon size={12} />
                 </Link>
@@ -406,7 +406,7 @@ function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) {
                 onClick={onClose}
                 className="flex items-center py-3"
               >
-                <span className="text-[16px] font-semibold text-[#1a1a1a]">Accueil</span>
+                <span className="text-[16px] font-semibold text-primary">Accueil</span>
               </Link>
             </div>
 
@@ -414,7 +414,7 @@ function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) {
             <div className="border-b border-black/5 pb-4">
               <button
                 onClick={() => toggleSection("services")}
-                className="flex items-center justify-between w-full py-3 text-[16px] font-semibold text-[#1a1a1a]"
+                className="flex items-center justify-between w-full py-3 text-[16px] font-semibold text-primary"
               >
                 Services
                 <ChevronDown
@@ -441,10 +441,10 @@ function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) {
                             onClick={onClose}
                             className="flex items-center gap-3 p-3 rounded-none hover:bg-[#fafaf8] transition-colors"
                           >
-                            <div className="w-8 h-8 flex items-center justify-center bg-black/5 text-[#1a1a1a]">
+                            <div className="w-8 h-8 flex items-center justify-center bg-black/5 text-primary">
                               <Icon size={16} strokeWidth={1.5} />
                             </div>
-                            <span className="text-[14px] font-medium text-[#52525b] flex-1">{item.title}</span>
+                            <span className="text-[14px] font-medium text-secondary flex-1">{item.title}</span>
                           </Link>
                         );
                       })}
@@ -458,7 +458,7 @@ function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) {
             <div className="border-b border-black/5 pb-4">
               <button
                 onClick={() => toggleSection("cas-clients")}
-                className="flex items-center justify-between w-full py-3 text-[16px] font-semibold text-[#1a1a1a]"
+                className="flex items-center justify-between w-full py-3 text-[16px] font-semibold text-primary"
               >
                 Clients
                 <ChevronDown
@@ -485,11 +485,11 @@ function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) {
                             onClick={onClose}
                             className="flex items-start gap-3 p-3 rounded-none hover:bg-[#fafaf8] transition-colors"
                           >
-                            <div className="w-10 h-10 flex items-center justify-center bg-black/5 text-[#1a1a1a] shrink-0">
+                            <div className="w-10 h-10 flex items-center justify-center bg-black/5 text-primary shrink-0">
                               <Icon size={18} strokeWidth={1.5} />
                             </div>
                             <div className="flex-1">
-                              <span className="text-[14px] font-semibold text-[#1a1a1a] block">{item.title}</span>
+                              <span className="text-[14px] font-semibold text-primary block">{item.title}</span>
                               <span className="text-[12px] text-[#D4FD00] font-medium">{item.subtitle}</span>
                             </div>
                           </Link>
@@ -516,7 +516,7 @@ function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) {
                 onClick={onClose}
                 className="flex items-center py-3"
               >
-                <span className="text-[16px] font-semibold text-[#1a1a1a]">L'agence</span>
+                <span className="text-[16px] font-semibold text-primary">L'agence</span>
               </Link>
             </div>
 
@@ -577,7 +577,7 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             <Link
               href="/"
-              className="text-[14px] font-medium text-[#52525b] hover:text-[#1a1a1a] transition-colors duration-200"
+              className="text-[14px] font-medium text-secondary hover:text-primary transition-colors duration-200"
             >
               Accueil
             </Link>
@@ -596,7 +596,7 @@ export function Header() {
 
             <Link
               href="/#equipe"
-              className="text-[14px] font-medium text-[#52525b] hover:text-[#1a1a1a] transition-colors duration-200"
+              className="text-[14px] font-medium text-secondary hover:text-primary transition-colors duration-200"
             >
               L'agence
             </Link>
@@ -615,7 +615,7 @@ export function Header() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-[#52525b] hover:bg-gray-100 rounded-none transition-colors"
+            className="lg:hidden p-2 text-secondary hover:bg-gray-100 rounded-none transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}

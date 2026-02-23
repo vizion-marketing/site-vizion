@@ -56,13 +56,13 @@ export function TabbedFeatures({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.15 }}
-                className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase"
+                className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase"
               >
                 {surtitre}
               </motion.span>
             </motion.div>
           )}
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
             {title}{" "}
             {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
           </motion.h2>
@@ -80,7 +80,7 @@ export function TabbedFeatures({
                 className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 text-[12px] sm:text-[13px] font-semibold font-[var(--font-body)] transition-all duration-300 ${
                   isActive
                     ? "bg-[#1a1a1a] text-white"
-                    : "bg-white border border-black/10 text-[#6b6b6b] hover:border-black/20 hover:text-[#1a1a1a]"
+                    : "bg-white border border-black/10 text-muted hover:border-black/20 hover:text-primary"
                 }`}
               >
                 {Icon && <Icon size={16} className={isActive ? "text-[#D4FD00]" : ""} />}
@@ -102,10 +102,10 @@ export function TabbedFeatures({
           >
             {/* Text */}
             <div>
-              <h3 className="font-heading font-medium text-[24px] sm:text-[30px] md:text-[36px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+              <h3 className="font-heading font-medium text-[24px] sm:text-[30px] md:text-[36px] leading-[1.1] tracking-[-0.02em] text-primary mb-4">
                 {active.title}
               </h3>
-              <p className="text-[#6b6b6b] text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mb-6">
+              <p className="text-muted text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mb-6">
                 {active.description}
               </p>
               {active.bullets && (
@@ -113,7 +113,7 @@ export function TabbedFeatures({
                   {active.bullets.map((bullet, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] mt-2 shrink-0" />
-                      <span className="text-[14px] text-[#1a1a1a] font-[var(--font-body)] leading-snug">{bullet}</span>
+                      <span className="text-[14px] text-primary font-[var(--font-body)] leading-snug">{bullet}</span>
                     </li>
                   ))}
                 </ul>

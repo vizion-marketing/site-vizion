@@ -21,7 +21,7 @@ export function ArticleSidebar({ headings }: ArticleSidebarProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="relative group overflow-hidden rounded-none p-6 border border-white/10 grain-overlay"
+        className="relative group overflow-hidden rounded-none p-6 border border-white/10 grain-overlay dark-section"
         style={{ background: "#0c0c0a" }}
       >
         {/* Base + radial gradients jaune Vizion animés */}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, GraduationCap, ArrowRight } from "lucide-react";
 import { homeContent, type LocalSEOContent } from "@/content/home";
@@ -10,34 +11,35 @@ interface LocalSEOSectionProps {
 
 export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
   const data = content ?? homeContent.localSEO;
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   return (
-    <section className="relative w-full py-16 sm:py-20 md:py-24 lg:py-32 grain-overlay">
-      {/* Background — full-bleed */}
+    <section className="dark-section relative w-full py-16 sm:py-20 md:py-24 lg:py-32 grain-overlay">
+      {/* Background — full-bleed, même que le hero */}
       <div
-        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-[#0c0c0a]"
-        style={{ minWidth: "100vw" }}
+        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none"
+        style={{ minWidth: "100vw", background: "#0c0c0a" }}
         aria-hidden
       />
 
-      {/* Gradient blobs */}
+      {/* Gradient blobs — même palette que le hero */}
       <div
         className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none pointer-events-none overflow-hidden"
         style={{ minWidth: "100vw" }}
         aria-hidden
       >
         <div
-          className="absolute w-[60%] h-[50%] top-[-10%] right-[-10%]"
+          className="absolute w-[80%] h-[60%] top-[-10%] left-[-20%] animate-gradient-float-1"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 60%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
           }}
         />
         <div
-          className="absolute w-[50%] h-[40%] bottom-[-10%] left-[-10%]"
+          className="absolute w-[60%] h-[50%] bottom-[-15%] right-[-15%] animate-gradient-float-3"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.04) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
           }}
         />
       </div>
@@ -57,7 +59,7 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D4FD00] opacity-40" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#D4FD00]" />
             </div>
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-white/50 uppercase">
+            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-white/80 uppercase">
               {data.surtitre}
             </span>
           </div>
@@ -68,7 +70,7 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
             {data.h2.split(data.h2Highlight)[1]}
           </h2>
 
-          <p className="text-white/60 text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed max-w-3xl">
+          <p className="text-white/90 text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed max-w-3xl">
             {data.description}
           </p>
         </motion.div>
@@ -87,7 +89,7 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
               {data.paragraphs.map((paragraph, i) => (
                 <p
                   key={i}
-                  className="text-white/70 text-[14px] sm:text-[15px] leading-relaxed"
+                  className="text-white/90 text-[14px] sm:text-[15px] leading-relaxed"
                 >
                   {paragraph}
                 </p>
@@ -95,7 +97,7 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
             </div>
 
             {/* Preuve locale */}
-            <div className="flex items-start gap-3 bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 sm:p-5 mb-6 sm:mb-8">
+            <div className="flex items-start gap-3 bg-white/[0.06] border border-white/[0.12] rounded-xl p-4 sm:p-5 mb-6 sm:mb-8">
               <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#D4FD00]/10 flex items-center justify-center">
                 <GraduationCap size={18} className="text-[#D4FD00]" />
               </div>
@@ -103,7 +105,7 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
                 <span className="text-[10px] sm:text-[11px] font-light tracking-[0.1em] text-[#D4FD00] uppercase block mb-1">
                   Preuve locale
                 </span>
-                <p className="text-white/80 text-[13px] sm:text-[14px] leading-relaxed">
+                <p className="text-white text-[13px] sm:text-[14px] leading-relaxed">
                   {data.preuveLocale}
                 </p>
               </div>
@@ -130,22 +132,32 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="rounded-xl overflow-hidden border border-white/[0.08] aspect-[4/3] sm:aspect-[16/10]">
-              <iframe
-                src={data.mapEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: "grayscale(1) invert(0.92) contrast(1.1)" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Vizion — Agence marketing Toulouse, Occitanie"
-              />
+            <div className="rounded-xl overflow-hidden border border-white/[0.12] aspect-[4/3] sm:aspect-[16/10] relative">
+              {mapLoaded ? (
+                <iframe
+                  src="https://storage.googleapis.com/maps-solutions-n59h3jo0mv/locator-plus/xmnt/locator-plus.html"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  title="Vizion — Agence marketing Toulouse, Occitanie"
+                />
+              ) : (
+                <button
+                  onClick={() => setMapLoaded(true)}
+                  className="w-full h-full bg-[#1a1a1a] flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-[#222] transition-colors"
+                  aria-label="Charger la carte Google Maps"
+                >
+                  <MapPin size={32} className="text-[#D4FD00]" />
+                  <span className="text-white text-sm">Cliquer pour afficher la carte</span>
+                  <span className="text-white/70 text-xs">Labège, Toulouse — Occitanie</span>
+                </button>
+              )}
             </div>
             {/* Floating badge */}
-            <div className="absolute top-4 left-4 flex items-center gap-2 bg-[#0c0c0a]/90 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2">
+            <div className="absolute top-4 left-4 flex items-center gap-2 bg-[#0c0c0a]/90 backdrop-blur-sm border border-white/15 rounded-lg px-3 py-2">
               <MapPin size={14} className="text-[#D4FD00]" />
-              <span className="text-[11px] sm:text-[12px] text-white/80 font-medium">
+              <span className="text-[11px] sm:text-[12px] text-white font-medium">
                 Labège, Toulouse
               </span>
             </div>
@@ -160,10 +172,10 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <div className="flex items-center gap-2.5 mb-5 sm:mb-6">
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-white/40 uppercase">
-              Zones d'intervention
+            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-white/70 uppercase">
+              Zones d&apos;intervention
             </span>
-            <div className="flex-1 h-px bg-white/[0.06]" />
+            <div className="flex-1 h-px bg-white/[0.10]" />
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
@@ -176,8 +188,8 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
                 transition={{ duration: 0.3, delay: index * 0.04 }}
                 className={`group relative flex flex-col items-center gap-1.5 py-3 sm:py-4 px-3 rounded-xl border transition-all duration-300 ${
                   ville.label === "Siège"
-                    ? "bg-[#D4FD00]/10 border-[#D4FD00]/20 hover:border-[#D4FD00]/40"
-                    : "bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.05] hover:border-white/[0.12]"
+                    ? "bg-[#D4FD00]/10 border-[#D4FD00]/30 hover:border-[#D4FD00]/50"
+                    : "bg-white/[0.04] border-white/[0.10] hover:bg-white/[0.08] hover:border-white/[0.20]"
                 }`}
               >
                 <MapPin
@@ -185,17 +197,17 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
                   className={
                     ville.label === "Siège"
                       ? "text-[#D4FD00]"
-                      : "text-white/30 group-hover:text-white/50 transition-colors"
+                      : "text-white/60 group-hover:text-white transition-colors"
                   }
                 />
                 <span
                   className={`text-[13px] sm:text-[14px] font-medium ${
-                    ville.label === "Siège" ? "text-[#D4FD00]" : "text-white/70"
+                    ville.label === "Siège" ? "text-[#D4FD00]" : "text-white"
                   }`}
                 >
                   {ville.name}
                 </span>
-                <span className="text-[10px] text-white/30">{ville.label}</span>
+                <span className="text-[10px] text-white/60">{ville.label}</span>
               </motion.div>
             ))}
           </div>

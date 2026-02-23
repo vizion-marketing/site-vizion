@@ -28,16 +28,16 @@ export function SingleTestimonial({
   const isAccent = variant === "accent";
 
   const bg = isAccent ? "#D4FD00" : isDark ? "#0c0c0a" : "#f8f8f6";
-  const quoteColor = isAccent ? "text-[#1a1a1a]" : isDark ? "text-white" : "text-[#1a1a1a]";
-  const authorColor = isAccent ? "text-[#1a1a1a]" : isDark ? "text-white" : "text-[#1a1a1a]";
-  const roleColor = isAccent ? "text-[#1a1a1a]/70" : isDark ? "text-white/70" : "text-[#6b6b6b]";
-  const starColor = isAccent ? "fill-[#1a1a1a] text-[#1a1a1a]" : "fill-[#D4FD00] text-[#D4FD00]";
+  const quoteColor = isAccent ? "text-primary" : "text-primary";
+  const authorColor = isAccent ? "text-primary" : "text-primary";
+  const roleColor = isAccent ? "text-primary/70" : "text-muted";
+  const starColor = isAccent ? "fill-[#1a1a1a] text-primary" : "fill-[#D4FD00] text-[#D4FD00]";
   const grain = isDark ? "grain-overlay" : isAccent ? "" : "grain-light";
-  const decorativeQuoteColor = isAccent ? "text-[#1a1a1a]/10" : isDark ? "text-[#D4FD00]/15" : "text-[#D4FD00]/20";
+  const decorativeQuoteColor = isAccent ? "text-primary/10" : isDark ? "text-[#D4FD00]/15" : "text-[#D4FD00]/20";
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${grain}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${grain} ${isDark ? "dark-section" : ""}`}
       style={{ background: bg }}
     >
       {isDark && (

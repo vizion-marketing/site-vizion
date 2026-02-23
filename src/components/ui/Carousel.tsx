@@ -107,7 +107,7 @@ export function Carousel({
             className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10
               w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center
               bg-white/90 backdrop-blur-sm border border-black/10
-              text-[#1a1a1a] hover:bg-white hover:border-black/20
+              text-primary hover:bg-white hover:border-black/20
               transition-all duration-200 hover:-translate-y-1/2 hover:scale-105
               shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
             aria-label="Slide précédente"
@@ -119,7 +119,7 @@ export function Carousel({
             className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10
               w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center
               bg-white/90 backdrop-blur-sm border border-black/10
-              text-[#1a1a1a] hover:bg-white hover:border-black/20
+              text-primary hover:bg-white hover:border-black/20
               transition-all duration-200 hover:-translate-y-1/2 hover:scale-105
               shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
             aria-label="Slide suivante"

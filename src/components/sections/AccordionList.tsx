@@ -59,7 +59,7 @@ export function AccordionList({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
       style={{ background: bg }}
     >
       {/* Animated gradient orbs */}
@@ -96,7 +96,7 @@ export function AccordionList({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                  className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted"
                 >
                   {surtitre}
                 </motion.span>
@@ -108,15 +108,14 @@ export function AccordionList({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
-                style={isDark ? { color: "#ffffff" } : undefined}
+                className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary"
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
               </motion.h2>
             )}
             {description && (
-              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-lg mx-auto ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+              <p className="text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-lg mx-auto text-muted">
                 {description}
               </p>
             )}
@@ -153,7 +152,7 @@ export function AccordionList({
                   {/* Icon */}
                   {Icon && (
                     <div className={`w-9 h-9 flex items-center justify-center shrink-0 ${isOpen ? "bg-[#D4FD00]" : isDark ? "bg-white/5" : "bg-black/5"} transition-colors`}>
-                      <Icon size={18} className={isOpen ? "text-[#1a1a1a]" : "text-[#D4FD00]"} />
+                      <Icon size={18} className={isOpen ? "text-primary" : "text-[#D4FD00]"} />
                     </div>
                   )}
 
@@ -164,7 +163,7 @@ export function AccordionList({
                         {item.label}
                       </span>
                     )}
-                    <span className={`font-heading font-medium text-[16px] sm:text-[18px] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`} style={isDark ? { color: "#ffffff" } : undefined}>
+                    <span className="font-heading font-medium text-[16px] sm:text-[18px] text-primary">
                       {item.title}
                     </span>
                   </div>
@@ -172,9 +171,9 @@ export function AccordionList({
                   {/* Toggle icon */}
                   <div className={`w-8 h-8 flex items-center justify-center shrink-0 transition-colors ${isOpen ? "bg-[#D4FD00]" : isDark ? "bg-white/5" : "bg-black/5"}`}>
                     {isOpen ? (
-                      <Minus size={16} className={isOpen ? "text-[#1a1a1a]" : isDark ? "text-white" : "text-[#1a1a1a]"} />
+                      <Minus size={16} className={isOpen ? "text-primary" : "text-primary"} />
                     ) : (
-                      <Plus size={16} className={isDark ? "text-white" : "text-[#1a1a1a]"} />
+                      <Plus size={16} className="text-primary" />
                     )}
                   </div>
                 </button>
@@ -189,7 +188,7 @@ export function AccordionList({
                       className="overflow-hidden"
                     >
                       <div className={`pb-6 ${showNumbers ? "pl-11" : ""} ${Icon ? "pl-[3.25rem]" : ""} pr-12`}>
-                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+                        <p className="text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed text-muted">
                           {item.content}
                         </p>
                         {item.bullets && item.bullets.length > 0 && (
@@ -197,7 +196,7 @@ export function AccordionList({
                             {item.bullets.map((bullet, bi) => (
                               <li key={bi} className="flex items-start gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] mt-1.5 shrink-0" />
-                                <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] ${isDark ? "!text-white/50" : "text-[#6b6b6b]"}`} style={isDark ? { color: "rgba(255, 255, 255, 0.5)" } : undefined}>
+                                <span className="text-[13px] sm:text-[14px] font-[var(--font-body)] text-muted">
                                   {bullet}
                                 </span>
                               </li>

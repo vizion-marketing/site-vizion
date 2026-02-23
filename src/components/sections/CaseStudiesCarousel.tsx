@@ -57,7 +57,7 @@ export function CaseStudiesCarousel({
   }, [emblaApi, onSelect]);
 
   return (
-    <section className={`py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`} style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}>
+    <section className={`py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`} style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}>
       {isDark && (
         <>
           <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
@@ -85,20 +85,20 @@ export function CaseStudiesCarousel({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.15 }}
-                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
               >
                 {surtitre}
               </motion.span>
             </motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`} style={isDark ? { color: "#ffffff" } : undefined}>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
               {title}
             </motion.h2>
           </div>
           <div className="flex gap-2">
-            <button onClick={scrollPrev} className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border transition-colors ${isDark ? "bg-white/5 border-white/10 text-white hover:bg-white/10" : "bg-white border-black/10 text-[#1a1a1a] hover:bg-black hover:text-white"}`} aria-label="Précédent">
+            <button onClick={scrollPrev} className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border transition-colors ${isDark ? "bg-white/5 border-white/10 text-primary hover:bg-white/10" : "bg-white border-black/10 text-primary hover:bg-black hover:text-white"}`} aria-label="Précédent">
               <ChevronLeft size={20} />
             </button>
-            <button onClick={scrollNext} className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border transition-colors ${isDark ? "bg-white/5 border-white/10 text-white hover:bg-white/10" : "bg-white border-black/10 text-[#1a1a1a] hover:bg-black hover:text-white"}`} aria-label="Suivant">
+            <button onClick={scrollNext} className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border transition-colors ${isDark ? "bg-white/5 border-white/10 text-primary hover:bg-white/10" : "bg-white border-black/10 text-primary hover:bg-black hover:text-white"}`} aria-label="Suivant">
               <ChevronRight size={20} />
             </button>
           </div>
@@ -114,16 +114,16 @@ export function CaseStudiesCarousel({
                     <Image src={caseStudy.image} alt={caseStudy.logo} fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute bottom-4 right-4 bg-[#D4FD00] p-3 sm:p-4">
-                      <span className="font-[var(--font-body)] font-[900] text-2xl sm:text-3xl tracking-[-0.03em] text-[#1a1a1a] leading-none block">{caseStudy.metric}</span>
-                      <span className="text-[9px] font-semibold tracking-wider text-[#1a1a1a]/70 uppercase">{caseStudy.metricLabel}</span>
+                      <span className="font-[var(--font-body)] font-[900] text-2xl sm:text-3xl tracking-[-0.03em] text-primary leading-none block">{caseStudy.metric}</span>
+                      <span className="text-[9px] font-semibold tracking-wider text-primary/70 uppercase">{caseStudy.metricLabel}</span>
                     </div>
                   </div>
                   <div className="p-6 sm:p-8">
-                    <span className={`inline-block px-2.5 py-1 text-[10px] font-bold tracking-wide mb-4 ${isDark ? "bg-white/5 text-white/50" : "bg-black/5 text-[#6b6b6b]"}`}>{caseStudy.category}</span>
-                    <h3 className={`font-heading font-medium text-lg sm:text-xl mb-2 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>{caseStudy.logo}</h3>
-                    <p className={`text-base sm:text-lg font-[var(--font-body)] mb-4 ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>{caseStudy.title}</p>
-                    <p className={`text-sm font-[var(--font-body)] leading-relaxed mb-6 ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>{caseStudy.description}</p>
-                    <Link href={`${ctaBaseHref}/${caseStudy.slug}`} className={`inline-flex items-center gap-2 text-sm font-[var(--font-body)] font-semibold hover:text-[#D4FD00] transition-colors group ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>
+                    <span className={`inline-block px-2.5 py-1 text-[10px] font-bold tracking-wide mb-4 ${isDark ? "bg-white/5 text-white/50" : "bg-black/5 text-muted"}`}>{caseStudy.category}</span>
+                    <h3 className={`font-heading font-medium text-lg sm:text-xl mb-2 text-primary`}>{caseStudy.logo}</h3>
+                    <p className={`text-base sm:text-lg font-[var(--font-body)] mb-4 text-muted`}>{caseStudy.title}</p>
+                    <p className={`text-sm font-[var(--font-body)] leading-relaxed mb-6 text-muted`}>{caseStudy.description}</p>
+                    <Link href={`${ctaBaseHref}/${caseStudy.slug}`} className={`inline-flex items-center gap-2 text-sm font-[var(--font-body)] font-semibold hover:text-[#D4FD00] transition-colors group text-primary`}>
                       {ctaText}
                       <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </Link>

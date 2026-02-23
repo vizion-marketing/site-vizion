@@ -9,20 +9,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const MILESTONES = [
   {
     number: "01",
-    title: "Le goût du challenge",
-    description: "On ne recule pas devant la complexité. Offres techniques, cycles longs, marchés concurrentiels : c'est précisément là qu'on excelle. Chaque projet est un défi qu'on prend à bras-le-corps.",
+    title: "Des stratèges, pas des exécutants",
+    description: "Votre interlocuteur est un directeur marketing, pas un chef de projet. Il conçoit la feuille de route, challenge vos priorités et dialogue avec vos équipes dirigeantes. Nous ne produisons rien sans avoir posé le positionnement d'abord.",
     icon: Flame,
   },
   {
     number: "02",
-    title: "Le marketing au service de la vente",
-    description: "Notre intervention couvre l'ensemble du cycle commercial, y compris les phases de négociation et de closing. Un seul message, du clic publicitaire au rendez-vous commercial.",
+    title: "Du conseil jusqu'au closing",
+    description: "Notre intervention ne s'arrête pas à la stratégie. Nous couvrons l'ensemble du cycle commercial : positionnement, campagnes, supports de vente, outils de closing. Un seul message partout — de la réflexion à la signature.",
     icon: TrendingUp,
   },
   {
     number: "03",
-    title: "La proximité d'un growth partner",
-    description: "Pas un prestataire. Un partenaire impliqué dans votre croissance. Un interlocuteur dédié, disponible, qui connaît votre marché et vos enjeux aussi bien que vous.",
+    title: "Un partenaire, pas un prestataire",
+    description: "Nous travaillons aux côtés de vos équipes, pas à leur place. Transfert de compétences, montée en autonomie, pédagogie. Un accompagnement réussi, c'est une équipe interne plus forte à la fin du projet.",
     icon: HeartHandshake,
   },
 ];
@@ -111,31 +111,31 @@ export function WhyVizionSection() {
                 {/* Overline */}
                 <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
                   <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-                  <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
+                  <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
                     Pourquoi nous choisir
                   </span>
                 </div>
 
-                <h2 className="font-heading font-medium text-[26px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.08] tracking-[-0.02em] text-[#1a1a1a] mb-4 sm:mb-6">
-                  Ce qui fait la différence, à chaque étape
+                <h2 className="font-heading font-medium text-[26px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.08] tracking-[-0.02em] text-primary mb-4 sm:mb-6">
+                  Pourquoi choisir notre agence marketing à Toulouse
                 </h2>
 
                 {/* Stats row */}
                 <div className="flex gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
                   <div>
-                    <span className="block font-heading font-semibold text-[28px] sm:text-[32px] text-[#1a1a1a] leading-none">
+                    <span className="block font-heading font-semibold text-[28px] sm:text-[32px] text-primary leading-none">
                       +70
                     </span>
-                    <span className="text-[11px] sm:text-[12px] text-[#6b6b6b] font-medium">
+                    <span className="text-[11px] sm:text-[12px] text-muted font-medium">
                       clients accompagnés
                     </span>
                   </div>
                   <div className="w-px bg-black/10" />
                   <div>
-                    <span className="block font-heading font-semibold text-[28px] sm:text-[32px] text-[#1a1a1a] leading-none">
+                    <span className="block font-heading font-semibold text-[28px] sm:text-[32px] text-primary leading-none">
                       4 ans
                     </span>
-                    <span className="text-[11px] sm:text-[12px] text-[#6b6b6b] font-medium">
+                    <span className="text-[11px] sm:text-[12px] text-muted font-medium">
                       d'expertise B2B
                     </span>
                   </div>
@@ -144,7 +144,7 @@ export function WhyVizionSection() {
                 {/* Photo sous les chiffres */}
                 <div className="rounded-xl overflow-hidden border border-black/[0.06] shadow-sm aspect-[4/3] max-h-[260px] sm:max-h-[320px] md:max-h-[380px]">
                   <img
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                    src="/images/why-vizion/equipe-vizion.avif"
                     alt="Équipe Vizion — Agence marketing Toulouse"
                     className="w-full h-full object-cover"
                   />
@@ -177,7 +177,7 @@ export function WhyVizionSection() {
                   >
                     {/* Timeline dot with icon */}
                     <div className="absolute left-0 top-0 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl bg-white border border-black/[0.08] shadow-sm flex items-center justify-center group-hover:border-[#D4FD00]/50 group-hover:shadow-md transition-all duration-300">
-                      <Icon size={18} className="text-[#1a1a1a] group-hover:text-[#0c0c0a] transition-colors" />
+                      <Icon size={18} className="text-primary group-hover:text-[#0c0c0a] transition-colors" />
                     </div>
 
                     {/* Content card */}
@@ -190,12 +190,12 @@ export function WhyVizionSection() {
                       </div>
 
                       {/* Title */}
-                      <h3 className="font-heading font-semibold text-[18px] sm:text-[20px] text-[#1a1a1a] mb-2 leading-tight">
+                      <h3 className="font-heading font-semibold text-[18px] sm:text-[20px] text-primary mb-2 leading-tight">
                         {milestone.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-[#6b6b6b] text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed">
+                      <p className="text-muted text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed">
                         {milestone.description}
                       </p>
 

@@ -31,7 +31,7 @@ export const BlogSidebar = ({ category, relatedPosts, currentSlug }: BlogSidebar
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative group overflow-hidden rounded-none p-6 border border-white/10 grain-overlay"
+        className="relative group overflow-hidden rounded-none p-6 border border-white/10 grain-overlay dark-section"
         style={{ background: "#0c0c0a" }}
       >
         {/* Base + radial gradients jaune Vizion animés */}

@@ -28,7 +28,7 @@ export function ArticleHero({
     <>
       {/* Hero Section - Style Home Page */}
       <section
-        className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-12 overflow-hidden grain-overlay"
+        className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-12 overflow-hidden grain-overlay dark-section"
         style={{ background: "#0c0c0a" }}
       >
         {/* Base + radial gradients jaune Vizion → transparent (comme home hero) */}

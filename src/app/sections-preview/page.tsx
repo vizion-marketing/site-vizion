@@ -649,7 +649,7 @@ const transformationFAQs = [
 // ============================================================================
 export default function SectionsPreviewPage() {
   return (
-    <div className="min-h-screen bg-[#0c0c0a]">
+    <div className="min-h-screen bg-[#0c0c0a] dark-section">
       <SectionsNav />
 
       {/* ================================================================== */}

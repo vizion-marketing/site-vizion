@@ -4,7 +4,10 @@ import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Mentions Légales",
-  description: "Mentions légales du site Vizion - Agence marketing B2B",
+  description: "Mentions légales du site Vizion - Agence marketing B2B à Toulouse",
+  alternates: {
+    canonical: "https://by-vizion.com/mentions-legales",
+  },
   robots: {
     index: false,
     follow: false,

@@ -48,7 +48,7 @@ export function HoverRevealGrid({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : ""}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
       style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
     >
       {isDark && (
@@ -84,7 +84,7 @@ export function HoverRevealGrid({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
                 >
                   {surtitre}
                 </motion.span>
@@ -96,15 +96,14 @@ export function HoverRevealGrid({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
-                style={isDark ? { color: "#ffffff" } : undefined}
+                className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary"
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
               </motion.h2>
             )}
             {description && (
-              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto text-muted`}>
                 {description}
               </p>
             )}
@@ -156,7 +155,7 @@ export function HoverRevealGrid({
                       <div className={`w-12 h-12 flex items-center justify-center mb-5 transition-colors duration-300 ${
                         isHovered ? "bg-[#D4FD00]" : isDark ? "bg-white/5" : "bg-black/5"
                       }`}>
-                        <Icon size={22} className={`transition-colors duration-300 ${isHovered ? "text-[#1a1a1a]" : "text-[#D4FD00]"}`} />
+                        <Icon size={22} className={`transition-colors duration-300 ${isHovered ? "text-primary" : "text-[#D4FD00]"}`} />
                       </div>
                     ) : (
                       <span className={`font-[var(--font-body)] font-[900] text-[48px] leading-none tracking-[-0.03em] block mb-4 transition-colors duration-300 ${
@@ -171,10 +170,10 @@ export function HoverRevealGrid({
 
                   {/* Bottom: Title & description */}
                   <div>
-                    <h3 className={`font-heading font-medium text-[18px] sm:text-[20px] mb-2 transition-colors duration-300 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`} style={isDark ? { color: "#ffffff" } : undefined}>
+                    <h3 className="font-heading font-medium text-[18px] sm:text-[20px] mb-2 transition-colors duration-300 text-primary">
                       {item.title}
                     </h3>
-                    <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed transition-colors duration-300 ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+                    <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed transition-colors duration-300 text-muted`}>
                       {item.description}
                     </p>
 

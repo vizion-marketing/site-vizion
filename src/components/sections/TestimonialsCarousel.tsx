@@ -57,7 +57,7 @@ export function TestimonialsCarousel({
 
   return (
     <section
-      className="py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-overlay"
+      className="py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-overlay dark-section"
       style={{ background: "#0c0c0a" }}
       tabIndex={0}
       onKeyDown={(e) => {

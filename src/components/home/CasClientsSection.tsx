@@ -8,126 +8,99 @@ import Link from "next/link";
 const CAS_CLIENTS = [
   {
     id: 1,
-    company: "TechVision SAS",
-    sector: "Éditeur de logiciels",
-    title: "Comment TechVision a multiplié par 3 ses leads qualifiés en 6 mois",
-    quote: "Vizion a transformé notre approche commerciale. Nos cycles de vente ont été réduits de 40% grâce aux nouveaux outils de sales enablement.",
-    author: "Marie Dupont",
-    role: "Directrice Marketing",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=200",
-    mainImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200",
-    secondaryImage: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=600",
-    stats: { value: "+180%", label: "de leads qualifiés" },
-    link: "/cas-clients/techvision",
+    company: "Eldo Wallet",
+    sector: "FinTech B2B",
+    title: "De 1 000 à 10K€ de MRR par mois grâce à la bonne stratégie de Go-To-Market.",
+    quote: "Vizion a structuré notre go-to-market de A à Z. Le positionnement, le tunnel de vente, les outils commerciaux — tout était aligné. Les résultats ont suivi naturellement.",
+    author: "Équipe Eldo Wallet",
+    role: "FinTech",
+    avatar: "/images/clients/eldo.avif",
+    mainImage: "/images/clients/eldo-wallet-bg.png",
+    secondaryImage: "/images/casclients-dashboard.avif",
+    stats: { value: "x10", label: "MRR mensuel" },
+    link: "/cas-clients",
   },
   {
     id: 2,
-    company: "IndustriePro",
-    sector: "Industrie manufacturière",
-    title: "IndustriePro repositionne son offre et conquiert de nouveaux marchés",
-    quote: "Le travail de positionnement réalisé avec Vizion nous a permis de nous différencier clairement de nos concurrents. Les résultats sont au rendez-vous.",
-    author: "Jean-Pierre Martin",
-    role: "Directeur Général",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=200",
-    mainImage: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200",
-    secondaryImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
-    stats: { value: "+65%", label: "de CA sur 12 mois" },
-    link: "/cas-clients/industriepro",
+    company: "easyVirtual.tours",
+    sector: "Franchise",
+    title: "D'acteur local à +25 agences en France grâce à notre accompagnement global.",
+    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, sales enablement, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
+    author: "Léo Bouyssou",
+    role: "Co-fondateur",
+    avatar: "/images/clients/easyvirtual.avif",
+    mainImage: "/images/cas-clients/easyvirtual-mainimage.avif",
+    secondaryImage: "/images/cas-clients/easyvirtual-secondaryimage.avif",
+    stats: { value: "+25", label: "agences en France" },
+    link: "/cas-clients/easyvirtual-tours-franchise",
   },
   {
     id: 3,
-    company: "CloudScale",
-    sector: "SaaS B2B",
-    title: "CloudScale structure son marketing produit pour accélérer sa croissance",
-    quote: "Nous avions un excellent produit mais un message confus. Vizion nous a aidé à clarifier notre proposition de valeur et à équiper nos commerciaux.",
-    author: "Sophie Bernard",
-    role: "CEO & Co-fondatrice",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=200",
-    mainImage: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1200",
-    secondaryImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600",
-    stats: { value: "-45%", label: "cycle de vente" },
-    link: "/cas-clients/cloudscale",
+    company: "Ensenat Coaching",
+    sector: "Coaching & Formation",
+    title: "D'organisation déstructurée à machine marketing duplicable pour Ensenat Coaching.",
+    quote: "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !",
+    author: "David Patry-Ballester",
+    role: "Chargé de marketing",
+    avatar: "/images/clients/ensenat.avif",
+    mainImage: "/images/cas-clients/ensenat-hero.jpg",
+    secondaryImage: "/images/salesdeck-dashboard.avif",
+    stats: { value: "100%", label: "marketing structuré" },
+    link: "/cas-clients",
   },
 ];
 
 const AUTO_SLIDE_INTERVAL = 6000;
 
-// Témoignages - Ajoutez facilement de nouveaux témoignages ici
+// Témoignages réels — mêmes données que le hero
 const TESTIMONIALS = [
   {
     id: 1,
-    quote: "Vizion a transformé notre approche commerciale. Nos cycles de vente ont été réduits de 40%.",
-    author: "Marie Dupont",
-    role: "Directrice Marketing",
-    company: "TechVision SAS",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150",
+    quote: "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !",
+    author: "David Patry-Ballester",
+    role: "Chargé de marketing",
+    company: "Ensenat Coaching",
+    avatar: "/images/clients/ensenat.avif",
   },
   {
     id: 2,
-    quote: "Le travail de positionnement nous a permis de nous différencier clairement de nos concurrents.",
-    author: "Jean-Pierre Martin",
-    role: "Directeur Général",
-    company: "IndustriePro",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150",
+    quote: "Je recommande fortement cette agence toulousaine ! Équipe professionnelle et répondant à tous types de besoins. Lucas est mon Directeur Marketing externalisé et j'en suis ravie.",
+    author: "Tamia",
+    role: "Fondatrice",
+    company: "Tatamia",
+    avatar: "/images/clients/tatamia.avif",
   },
   {
     id: 3,
-    quote: "Vizion nous a aidé à clarifier notre proposition de valeur et à équiper nos commerciaux.",
-    author: "Sophie Bernard",
-    role: "CEO & Co-fondatrice",
-    company: "CloudScale",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150",
+    quote: "Nous avons confié la refonte de notre site web à Lucas et son équipe, nous en sommes très satisfaits bien que tout ait été fait à distance, depuis Toulouse jusqu'à Paris.",
+    author: "Barthélémy Delcampe",
+    role: "Responsable développement",
+    company: "Quai Liberté",
+    avatar: "/images/clients/quai-liberte.avif",
   },
   {
     id: 4,
-    quote: "Une équipe réactive et des résultats concrets dès le premier trimestre.",
-    author: "Thomas Laurent",
-    role: "DG",
-    company: "IndusPro",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150",
+    quote: "Hugo nous accompagne depuis un an maintenant pour restructurer tout notre CRM. Nous en sommes très satisfaits.",
+    author: "Olivier Mounié",
+    role: "Dirigeant",
+    company: "Ojetables",
+    avatar: "/images/clients/placeholder.avif",
   },
   {
     id: 5,
-    quote: "Leur expertise en sales enablement a boosté notre taux de conversion de 65%.",
-    author: "Camille Rousseau",
-    role: "Head of Sales",
-    company: "DataFlow",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150",
+    quote: "Vizion m'a accompagné dans le développement de mon image sur LinkedIn. Nous avons dépassé le million d'impressions en quelques mois, j'en suis très satisfait.",
+    author: "Olivier Bas",
+    role: "Vice-Président",
+    company: "Havas Paris",
+    avatar: "/images/clients/olivierbas.avif",
   },
   {
     id: 6,
-    quote: "Le meilleur investissement marketing que nous ayons fait cette année.",
-    author: "Pierre Lefebvre",
-    role: "CFO",
-    company: "FinanceHub",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150",
-  },
-  {
-    id: 7,
-    quote: "Vizion a su comprendre nos enjeux et proposer des solutions sur mesure.",
-    author: "Émilie Chen",
-    role: "CMO",
-    company: "StartupX",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150",
-  },
-  {
-    id: 8,
-    quote: "Notre site génère maintenant 3x plus de leads qualifiés qu'avant.",
-    author: "Julien Moreau",
-    role: "Fondateur",
-    company: "GrowthLab",
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150",
-  },
-  {
-    id: 9,
-    quote: "Un accompagnement stratégique de haut niveau, pas juste de l'exécution.",
-    author: "Claire Petit",
-    role: "Directrice Commerciale",
-    company: "SalesForce FR",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150",
+    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, sales enablement, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
+    author: "Clément Carrere",
+    role: "Co-fondateur",
+    company: "easyVirtual.tours",
+    avatar: "/images/clients/easyvirtual.avif",
   },
 ];
 
@@ -142,15 +115,15 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
           className="w-10 h-10 object-cover"
         />
         <div>
-          <p className="font-heading font-semibold text-[14px] text-[#1a1a1a]">
+          <p className="font-heading font-semibold text-[14px] text-primary">
             {testimonial.author}
           </p>
-          <p className="text-[12px] text-[#6b6b6b]">
+          <p className="text-[12px] text-muted">
             {testimonial.role}, {testimonial.company}
           </p>
         </div>
       </div>
-      <p className="text-[14px] text-[#1a1a1a]/80 font-[var(--font-body)] leading-relaxed">
+      <p className="text-[14px] text-primary/80 font-[var(--font-body)] leading-relaxed">
         "{testimonial.quote}"
       </p>
     </div>
@@ -255,11 +228,11 @@ export function CasClientsSection() {
           <div className="max-w-xl mb-4 sm:mb-6 lg:mb-0">
             <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
               <div className="w-2 h-2 bg-[#D4FD00]" />
-              <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
+              <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
                 Cas clients
               </span>
             </div>
-            <h2 className="font-heading font-medium text-[24px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]">
+            <h2 className="font-heading font-medium text-[24px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
               Ils nous ont fait confiance
             </h2>
           </div>
@@ -283,12 +256,12 @@ export function CasClientsSection() {
             </button>
             <button
               onClick={goToNext}
-              className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 bg-[#1a1a1a] text-white flex items-center justify-center hover:bg-[#D4FD00] hover:text-[#1a1a1a] transition-all duration-300"
+              className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 bg-[#1a1a1a] text-white flex items-center justify-center hover:bg-[#D4FD00] hover:text-primary transition-all duration-300"
               aria-label="Cas suivant"
             >
               <ArrowRight size={20} />
             </button>
-            <span className="text-[14px] font-[var(--font-body)] text-[#6b6b6b] ml-2">
+            <span className="text-[14px] font-[var(--font-body)] text-muted ml-2">
               {String(currentIndex + 1).padStart(2, "0")} / {String(CAS_CLIENTS.length).padStart(2, "0")}
             </span>
           </div>
@@ -378,14 +351,14 @@ export function CasClientsSection() {
 
               {/* Top - Title + Stat */}
               <div className="relative z-10">
-                <h3 className="font-heading font-semibold text-[22px] sm:text-[30px] md:text-[40px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-4 sm:mb-6">
+                <h3 className="font-heading font-semibold text-[22px] sm:text-[30px] md:text-[40px] leading-[1.1] tracking-[-0.02em] text-primary mb-4 sm:mb-6">
                   {currentCase.title}
                 </h3>
                 <div className="flex flex-col">
-                  <span className="font-heading font-bold text-[32px] sm:text-[40px] text-[#1a1a1a]">
+                  <span className="font-heading font-bold text-[32px] sm:text-[40px] text-primary">
                     {currentCase.stats.value}
                   </span>
-                  <span className="text-[14px] text-[#1a1a1a]/70 font-[var(--font-body)]">
+                  <span className="text-[14px] text-primary/70 font-[var(--font-body)]">
                     {currentCase.stats.label}
                   </span>
                 </div>
@@ -394,16 +367,16 @@ export function CasClientsSection() {
               {/* Bottom - Sector, description, button */}
               <div className="relative z-10 mt-auto">
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="inline-block px-3 py-1.5 border border-[#1a1a1a] text-[#1a1a1a] text-[11px] font-medium tracking-wide uppercase">
+                  <span className="inline-block px-3 py-1.5 border border-[#1a1a1a] text-primary text-[11px] font-medium tracking-wide uppercase">
                     {currentCase.sector}
                   </span>
                 </div>
-                <p className="text-[#1a1a1a]/70 text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed mb-5">
+                <p className="text-primary/70 text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed mb-5">
                   Découvrez comment {currentCase.company} a transformé sa stratégie marketing et commerciale avec Vizion.
                 </p>
                 <Link
                   href={currentCase.link}
-                  className="inline-flex items-center gap-2 px-5 py-3 text-[14px] font-semibold text-white bg-[#1a1a1a] hover:bg-white hover:text-[#1a1a1a] transition-all duration-300 group"
+                  className="inline-flex items-center gap-2 px-5 py-3 text-[14px] font-semibold text-white bg-[#1a1a1a] hover:bg-white hover:text-primary transition-all duration-300 group"
                 >
                   Lire le cas client
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -426,7 +399,7 @@ export function CasClientsSection() {
 
                 {/* Company badge on image */}
                 <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2">
-                  <span className="font-heading font-semibold text-[14px] text-[#1a1a1a]">
+                  <span className="font-heading font-semibold text-[14px] text-primary">
                     {currentCase.company}
                   </span>
                 </div>
@@ -435,43 +408,33 @@ export function CasClientsSection() {
 
             {/* Right - Secondary Image + Quote */}
             <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4 h-[320px] sm:h-[360px] md:h-[400px] lg:h-full">
-              {/* Secondary Image */}
-              <div className="relative h-[40%] sm:h-[45%] overflow-hidden">
+              {/* Secondary Image + Author glassmorphism badge */}
+              <div className="relative h-[50%] sm:h-[55%] overflow-hidden">
                 <img
                   src={currentCase.secondaryImage}
                   alt={`${currentCase.company} - secondaire`}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/20 to-transparent" />
+
+                {/* Author glassmorphism badge */}
+                <div className="absolute bottom-3 left-3 right-3 bg-white/20 backdrop-blur-md border border-white/30 px-3 py-2 rounded-lg">
+                  <p className="font-heading font-semibold text-[13px] text-white">
+                    {currentCase.author}
+                  </p>
+                  <p className="text-[11px] text-white/80">
+                    {currentCase.role}, {currentCase.company}
+                  </p>
+                </div>
               </div>
 
               {/* Quote Box */}
-              <div className="relative bg-[#1a1a1a] p-3 sm:p-5 h-[60%] sm:h-[55%] flex flex-col justify-between overflow-hidden">
-                {/* Decorative gradient */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4FD00]/10 blur-2xl" />
-
+              <div className="relative bg-white p-3 sm:p-5 h-[50%] sm:h-[45%] flex flex-col justify-between overflow-hidden border border-[#1a1a1a]/5">
                 <div className="relative z-10">
                   <Quote size={28} className="text-[#D4FD00] mb-3" />
-                  <p className="text-white/90 text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed">
-                    "{currentCase.quote}"
+                  <p className="text-primary/80 text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed">
+                    &ldquo;{currentCase.quote}&rdquo;
                   </p>
-                </div>
-
-                {/* Author with avatar */}
-                <div className="relative z-10 flex items-center gap-3 mt-4 pt-4 border-t border-white/10">
-                  <img
-                    src={currentCase.avatar}
-                    alt={currentCase.author}
-                    className="w-10 h-10 object-cover border-2 border-[#D4FD00]"
-                  />
-                  <div>
-                    <p className="font-heading font-semibold text-[14px] text-white">
-                      {currentCase.author}
-                    </p>
-                    <p className="text-[12px] text-white/60">
-                      {currentCase.role}
-                    </p>
-                  </div>
                 </div>
               </div>
             </motion.div>
@@ -499,10 +462,10 @@ export function CasClientsSection() {
         <div className="lg:hidden mt-6 flex justify-center">
           <div className="relative bg-white p-4 border border-[#1a1a1a]/5">
             <div className="flex items-center gap-3">
-              <span className="font-heading font-bold text-[28px] text-[#1a1a1a]">
+              <span className="font-heading font-bold text-[28px] text-primary">
                 {currentCase.stats.value}
               </span>
-              <span className="text-[14px] text-[#6b6b6b] font-[var(--font-body)]">
+              <span className="text-[14px] text-muted font-[var(--font-body)]">
                 {currentCase.stats.label}
               </span>
             </div>
@@ -524,7 +487,7 @@ export function CasClientsSection() {
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   className="flex flex-col gap-4"
                 >
-                  {[...TESTIMONIALS.slice(0, 3), ...TESTIMONIALS.slice(0, 3)].map((testimonial, idx) => (
+                  {[...TESTIMONIALS.slice(0, 2), ...TESTIMONIALS.slice(0, 2)].map((testimonial, idx) => (
                     <TestimonialCard key={`col1-${testimonial.id}-${idx}`} testimonial={testimonial} />
                   ))}
                 </motion.div>
@@ -538,7 +501,7 @@ export function CasClientsSection() {
                   transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
                   className="flex flex-col gap-4"
                 >
-                  {[...TESTIMONIALS.slice(3, 6), ...TESTIMONIALS.slice(3, 6)].map((testimonial, idx) => (
+                  {[...TESTIMONIALS.slice(2, 4), ...TESTIMONIALS.slice(2, 4)].map((testimonial, idx) => (
                     <TestimonialCard key={`col2-${testimonial.id}-${idx}`} testimonial={testimonial} />
                   ))}
                 </motion.div>
@@ -551,7 +514,7 @@ export function CasClientsSection() {
                   transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                   className="flex flex-col gap-4"
                 >
-                  {[...TESTIMONIALS.slice(6, 9), ...TESTIMONIALS.slice(6, 9)].map((testimonial, idx) => (
+                  {[...TESTIMONIALS.slice(4, 6), ...TESTIMONIALS.slice(4, 6)].map((testimonial, idx) => (
                     <TestimonialCard key={`col3-${testimonial.id}-${idx}`} testimonial={testimonial} />
                   ))}
                 </motion.div>

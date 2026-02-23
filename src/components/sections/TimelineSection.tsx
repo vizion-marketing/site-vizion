@@ -33,7 +33,7 @@ export function TimelineSection({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
       style={{ background: bg }}
     >
       {/* Ambient glow */}
@@ -66,7 +66,7 @@ export function TimelineSection({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.15 }}
-                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
               >
                 {surtitre}
               </motion.span>
@@ -78,7 +78,7 @@ export function TimelineSection({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary`}
           >
             {title}{" "}
             {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
@@ -90,7 +90,7 @@ export function TimelineSection({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className={`mt-4 text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}
+              className={`mt-4 text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed text-muted`}
             >
               {description}
             </motion.p>
@@ -120,9 +120,9 @@ export function TimelineSection({
                   <div className="relative z-10 shrink-0">
                     <div className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center ${isDark ? "bg-[#D4FD00]/10 border border-[#D4FD00]/20" : "bg-[#D4FD00] border border-[#D4FD00]"} transition-colors`}>
                       {Icon ? (
-                        <Icon size={18} className={isDark ? "text-[#D4FD00]" : "text-[#1a1a1a]"} />
+                        <Icon size={18} className={isDark ? "text-[#D4FD00]" : "text-primary"} />
                       ) : (
-                        <span className={`font-heading font-bold text-sm ${isDark ? "text-[#D4FD00]" : "text-[#1a1a1a]"}`}>
+                        <span className={`font-heading font-bold text-sm ${isDark ? "text-[#D4FD00]" : "text-primary"}`}>
                           {stepNumber}
                         </span>
                       )}
@@ -131,10 +131,10 @@ export function TimelineSection({
 
                   {/* Content */}
                   <div className={`pb-8 sm:pb-10 ${index < steps.length - 1 ? `border-b ${isDark ? "border-white/5" : "border-black/5"}` : ""} flex-1`}>
-                    <h3 className={`font-heading font-medium text-lg sm:text-xl md:text-2xl leading-snug mb-2 sm:mb-3 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                    <h3 className={`font-heading font-medium text-lg sm:text-xl md:text-2xl leading-snug mb-2 sm:mb-3 text-primary`}>
                       {step.title}
                     </h3>
-                    <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+                    <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl text-muted`}>
                       {step.description}
                     </p>
                   </div>

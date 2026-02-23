@@ -79,7 +79,7 @@ export function ImageSlider({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : ""}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
       style={{ background: isDark ? "#0c0c0a" : "#ffffff" }}
     >
       {isDark && (
@@ -116,7 +116,7 @@ export function ImageSlider({
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.15 }}
-                    className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                    className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
                   >
                     {surtitre}
                   </motion.span>
@@ -128,7 +128,7 @@ export function ImageSlider({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
-                  className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+                  className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] text-primary`}
                 >
                   {title}
                 </motion.h2>
@@ -137,7 +137,7 @@ export function ImageSlider({
             {/* Nav arrows */}
             <div className="flex items-center gap-2">
               {showCounter && (
-                <span className={`text-sm font-[var(--font-body)] mr-3 tabular-nums ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}>
+                <span className={`text-sm font-[var(--font-body)] mr-3 tabular-nums text-muted`}>
                   {String(currentIndex + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
                 </span>
               )}
@@ -145,8 +145,8 @@ export function ImageSlider({
                 onClick={goPrev}
                 className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border transition-colors ${
                   isDark
-                    ? "border-white/10 text-white hover:bg-white hover:text-[#0c0c0a]"
-                    : "border-black/10 text-[#1a1a1a] hover:bg-black hover:text-white"
+                    ? "border-white/10 text-primary hover:bg-white hover:text-[#0c0c0a]"
+                    : "border-black/10 text-primary hover:bg-black hover:text-white"
                 }`}
                 aria-label="Précédent"
               >
@@ -156,8 +156,8 @@ export function ImageSlider({
                 onClick={goNext}
                 className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border transition-colors ${
                   isDark
-                    ? "border-white/10 text-white hover:bg-white hover:text-[#0c0c0a]"
-                    : "border-black/10 text-[#1a1a1a] hover:bg-black hover:text-white"
+                    ? "border-white/10 text-primary hover:bg-white hover:text-[#0c0c0a]"
+                    : "border-black/10 text-primary hover:bg-black hover:text-white"
                 }`}
                 aria-label="Suivant"
               >

@@ -29,48 +29,46 @@ const TAB_CONTENT = {
   landingpages: {
     title: "Landing pages",
     description: "Des pages d'atterrissage optimisées pour la conversion. Structure éprouvée, messages percutants, formulaires efficaces.",
-    image: "/images/assets/landing-dashboard.png",
+    image: "/images/landing-dashboard.avif",
     link: "/services/landing-pages",
   },
   casclients: {
     title: "Cas clients",
     description: "Transformez vos succès en preuves sociales. Des études de cas qui rassurent vos prospects et accélèrent la décision d'achat.",
-    image: "/images/assets/casclients-dashboard.png",
+    image: "/images/casclients-dashboard.avif",
     link: "/services/cas-clients",
   },
   salesdeck: {
     title: "Sales deck",
     description: "Des présentations commerciales qui marquent les esprits. Structure narrative, visuels impactants, arguments imparables.",
-    image: "/images/assets/salesdeck-dashboard.png",
+    image: "/images/salesdeck-dashboard.avif",
     link: "/services/sales-deck",
   },
   leadmagnets: {
     title: "Lead magnets",
     description: "Des contenus à forte valeur ajoutée qui génèrent des leads qualifiés. Guides, templates, checklists conçus pour convertir.",
-    image: "/images/assets/leadmagnets-dashboard.png",
+    image: "/images/leadmagnets-dashboard.avif",
     link: "/services/lead-magnets",
   },
   publicite: {
     title: "Publicité",
     description: "Campagnes Meta, Google Ads et LinkedIn Ads. Ciblage précis, créatifs performants, optimisation continue pour maximiser votre ROI.",
-    image: "/images/assets/publicite-dashboard.png",
+    image: "/images/publicite-dashboard.avif",
     link: "/services/publicite",
   },
 };
 
-const SCROLL_DURATION_VH = 1.2;
+const SCROLL_DURATION_VH = 2.5;
 const TRIGGER_OFFSET_PX = 80;
 const SNAP_DEBOUNCE_MS = 120;
 const SNAP_DURATION = 0.35;
 const ASSETS_TRIGGER_ID = "assets-tabs";
-const MOBILE_BREAKPOINT = 1024;
 
 export function AssetsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState("siteweb");
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const lenis = useLenis();
   const snapTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isChangingTabRef = useRef(false);
@@ -80,14 +78,6 @@ export function AssetsSection() {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReducedMotion(mq.matches);
     const handler = () => setReducedMotion(mq.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
@@ -126,7 +116,7 @@ export function AssetsSection() {
   );
 
   useEffect(() => {
-    if (!lenis || reducedMotion || !isMobile) return undefined;
+    if (!lenis || reducedMotion) return undefined;
     const handler = () => {
       if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
       snapTimeoutRef.current = setTimeout(snapToNearestTab, SNAP_DEBOUNCE_MS);
@@ -136,10 +126,10 @@ export function AssetsSection() {
       if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
       lenis.off("scroll", handler);
     };
-  }, [lenis, reducedMotion, isMobile, snapToNearestTab]);
+  }, [lenis, reducedMotion, snapToNearestTab]);
 
   useLayoutEffect(() => {
-    if (reducedMotion || !isMobile) return undefined;
+    if (reducedMotion) return undefined;
     const trigger = triggerRef.current;
     if (!trigger) return undefined;
     let ctx: gsap.Context | null = null;
@@ -169,7 +159,7 @@ export function AssetsSection() {
       clearTimeout(timer);
       ctx?.revert();
     };
-  }, [reducedMotion, isMobile]);
+  }, [reducedMotion]);
 
   const handleTabClick = useCallback(
     (tabId: string, index: number, e?: React.MouseEvent<HTMLButtonElement>) => {
@@ -177,30 +167,19 @@ export function AssetsSection() {
         e.preventDefault();
         e.stopPropagation();
       }
-      
-      // Empêcher les clics multiples rapides
-      if (isChangingTabRef.current || activeTab === tabId) {
-        return;
-      }
-      
+
+      if (isChangingTabRef.current || activeTab === tabId) return;
       isChangingTabRef.current = true;
-      
-      if (!isMobile || reducedMotion) {
-        // Sur PC : changement d'onglet immédiat sans scroll
+
+      if (reducedMotion) {
         setActiveTab(tabId);
-        // Réinitialiser le flag après un court délai pour permettre l'animation
-        setTimeout(() => {
-          isChangingTabRef.current = false;
-        }, 300);
+        setTimeout(() => { isChangingTabRef.current = false; }, 300);
       } else {
-        // Sur mobile : scroll vers l'onglet
         goToTab(index);
-        setTimeout(() => {
-          isChangingTabRef.current = false;
-        }, 600);
+        setTimeout(() => { isChangingTabRef.current = false; }, 600);
       }
     },
-    [isMobile, reducedMotion, goToTab, activeTab]
+    [reducedMotion, goToTab, activeTab]
   );
 
   return (
@@ -240,11 +219,11 @@ export function AssetsSection() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-4">
               Nous créons des assets exceptionnels pensés pour transformer vos prospects en clients.
             </h2>
 
-            <p className="text-[#6b6b6b] text-base font-[var(--font-body)] leading-relaxed">
+            <p className="text-muted text-base font-[var(--font-body)] leading-relaxed">
               Tout au long du cycle de vente, nous concevons les outils qui font la différence.
             </p>
           </motion.div>
@@ -255,12 +234,12 @@ export function AssetsSection() {
       <section
         id="assets"
         ref={sectionRef}
-        className="relative overflow-hidden grain-overlay scroll-mt-20"
+        className="dark-section relative overflow-hidden grain-overlay scroll-mt-20"
         style={{ background: "#0c0c0a" }}
       >
         <div
           ref={triggerRef}
-          className={`relative pt-10 sm:pt-12 pb-16 sm:pb-20 ${isMobile && !reducedMotion ? "min-h-screen" : ""}`}
+          className={`relative pt-10 sm:pt-12 pb-16 sm:pb-20 ${!reducedMotion ? "min-h-screen" : ""}`}
         >
         {/* Background gradients */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -343,10 +322,10 @@ export function AssetsSection() {
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-                <span className="relative z-10 flex items-center gap-2">
+                <span className={`relative z-10 flex items-center gap-2 ${isActive ? "text-[#0c0c0a]" : ""}`}>
                   <Icon size={14} className={isActive ? "text-[#0c0c0a]" : ""} />
-                  <span className="hidden sm:inline">{tab.label}</span>
-                  <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
+                  <span className={`hidden sm:inline ${isActive ? "text-[#0c0c0a]" : ""}`}>{tab.label}</span>
+                  <span className={`sm:hidden ${isActive ? "text-[#0c0c0a]" : ""}`}>{tab.label.split(' ')[0]}</span>
                 </span>
                 {isActive && (
                   <span className="relative z-10 hidden lg:flex items-center justify-center w-5 h-5 rounded-full bg-[#0c0c0a] text-[#D4FD00] text-[10px] font-bold">
@@ -378,7 +357,7 @@ export function AssetsSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="relative bg-white rounded-lg p-6 sm:p-8 shadow-2xl border border-black/5 lg:ml-3"
+                className="relative bg-white light-card rounded-lg p-6 sm:p-8 shadow-2xl border border-black/5 lg:ml-3"
               >
                 {/* Numéro badge */}
                 <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#D4FD00] rounded-lg flex items-center justify-center shadow-lg">
@@ -401,12 +380,12 @@ export function AssetsSection() {
                 </motion.div>
 
                 {/* Title */}
-                <h3 className="font-heading font-semibold text-[24px] sm:text-[28px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+                <h3 className="font-heading font-semibold text-[24px] sm:text-[28px] leading-[1.1] tracking-[-0.02em] text-primary mb-4">
                   {content.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[#6b6b6b] text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed mb-6">
+                <p className="text-muted text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed mb-6">
                   {content.description}
                 </p>
 
@@ -438,28 +417,30 @@ export function AssetsSection() {
             <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-[#D4FD00] rounded-tr-lg hidden lg:block" />
             <div className="absolute -top-3 left-1/4 w-8 h-1 bg-[#D4FD00]/40 hidden lg:block" />
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.4 }}
-                className="relative overflow-hidden rounded-t-lg"
-              >
-                <img
-                  src={content.image}
-                  alt={content.title}
-                  className="w-full h-auto"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200`;
-                  }}
-                />
-                {/* Subtle overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0a]/20 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0c0c0a]/30 via-transparent to-transparent pointer-events-none lg:block hidden" />
-              </motion.div>
-            </AnimatePresence>
+            <div className="relative aspect-[14/9] overflow-hidden rounded-t-lg">
+              <AnimatePresence initial={false}>
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0"
+                >
+                  <img
+                    src={content.image}
+                    alt={content.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200`;
+                    }}
+                  />
+                </motion.div>
+              </AnimatePresence>
+              {/* Subtle overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0a]/20 via-transparent to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0c0c0a]/30 via-transparent to-transparent pointer-events-none lg:block hidden z-10" />
+            </div>
 
             {/* Floating stat badge */}
             <motion.div

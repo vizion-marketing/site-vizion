@@ -50,7 +50,7 @@ export function ExpandableCards({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : ""}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
       style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
     >
       {isDark && (
@@ -86,7 +86,7 @@ export function ExpandableCards({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
                 >
                   {surtitre}
                 </motion.span>
@@ -98,14 +98,14 @@ export function ExpandableCards({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
+                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary`}
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
               </motion.h2>
             )}
             {description && (
-              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto text-muted`}>
                 {description}
               </p>
             )}
@@ -155,7 +155,7 @@ export function ExpandableCards({
                         </span>
                       ) : Icon ? (
                         <div className={`w-10 h-10 flex items-center justify-center transition-colors ${isExpanded ? "bg-[#D4FD00]" : isDark ? "bg-white/5" : "bg-black/5"}`}>
-                          <Icon size={20} className={isExpanded ? "text-[#1a1a1a]" : "text-[#D4FD00]"} />
+                          <Icon size={20} className={isExpanded ? "text-primary" : "text-[#D4FD00]"} />
                         </div>
                       ) : null}
                     </div>
@@ -167,7 +167,7 @@ export function ExpandableCards({
                         {card.subtitle}
                       </span>
                     )}
-                    <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>
+                    <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] text-primary`}>
                       {card.title}
                     </h3>
                   </div>
@@ -175,9 +175,9 @@ export function ExpandableCards({
                   {/* Toggle */}
                   <div className={`w-8 h-8 flex items-center justify-center shrink-0 transition-colors ${isExpanded ? "bg-[#D4FD00]" : isDark ? "bg-white/5" : "bg-black/5"}`}>
                     {isExpanded ? (
-                      <X size={14} className="text-[#1a1a1a]" />
+                      <X size={14} className="text-primary" />
                     ) : (
-                      <Plus size={14} className={isDark ? "text-white" : "text-[#1a1a1a]"} />
+                      <Plus size={14} className="text-primary" />
                     )}
                   </div>
                 </button>
@@ -194,7 +194,7 @@ export function ExpandableCards({
                     >
                       <div className="relative z-10 px-6 sm:px-8 pb-6 sm:pb-8 pt-0">
                         <div className={`h-px mb-5 ${isDark ? "bg-white/10" : "bg-black/10"}`} />
-                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed text-muted`}>
                           {card.content}
                         </p>
                         {card.bullets && card.bullets.length > 0 && (
@@ -202,7 +202,7 @@ export function ExpandableCards({
                             {card.bullets.map((bullet, bi) => (
                               <li key={bi} className="flex items-start gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] mt-1.5 shrink-0" />
-                                <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}>
+                                <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] text-muted`}>
                                   {bullet}
                                 </span>
                               </li>

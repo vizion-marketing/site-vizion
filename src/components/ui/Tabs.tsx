@@ -132,8 +132,8 @@ export function Tabs({
                 ${sizeClasses[size]}
                 ${
                   activeTab === tab.id
-                    ? "text-[#1a1a1a]"
-                    : "text-[#6b6b6b] hover:text-[#1a1a1a]"
+                    ? "text-primary"
+                    : "text-muted hover:text-primary"
                 }
                 ${variant === "pills" && activeTab === tab.id ? "bg-white shadow-sm" : ""}
               `}

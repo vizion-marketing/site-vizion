@@ -40,9 +40,9 @@ export function HorizontalRoadmap({
   const lineWidth = useTransform(scrollYProgress, [0.1, 0.7], ["0%", "100%"]);
 
   const statusColors = {
-    completed: "bg-[#D4FD00] text-[#1a1a1a]",
+    completed: "bg-[#D4FD00] text-primary",
     "in-progress": "bg-[#D4FD00]/20 text-[#D4FD00]",
-    upcoming: isDark ? "bg-white/10 text-white/50" : "bg-black/5 text-[#6b6b6b]",
+    upcoming: isDark ? "bg-white/10 text-white/50" : "bg-black/5 text-muted",
   };
 
   const statusLabels = {
@@ -54,7 +54,7 @@ export function HorizontalRoadmap({
   return (
     <section
       ref={containerRef}
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : ""}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
       style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
     >
       {isDark && (
@@ -90,7 +90,7 @@ export function HorizontalRoadmap({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
                 >
                   {surtitre}
                 </motion.span>
@@ -102,7 +102,7 @@ export function HorizontalRoadmap({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
+                className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] text-primary"
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
@@ -147,10 +147,10 @@ export function HorizontalRoadmap({
                               : "bg-white border border-black/15"
                       }`}>
                         {Icon ? (
-                          <Icon size={18} className={milestone.status === "completed" ? "text-[#1a1a1a]" : "text-[#D4FD00]"} />
+                          <Icon size={18} className={milestone.status === "completed" ? "text-primary" : "text-[#D4FD00]"} />
                         ) : (
                           <span className={`font-[var(--font-body)] font-bold text-[13px] ${
-                            milestone.status === "completed" ? "text-[#1a1a1a]" : isDark ? "text-white/60" : "text-[#1a1a1a]/60"
+                            milestone.status === "completed" ? "text-primary" : isDark ? "text-white/60" : "text-primary/60"
                           }`}>
                             {String(index + 1).padStart(2, "0")}
                           </span>
@@ -165,10 +165,10 @@ export function HorizontalRoadmap({
                           {milestone.phase}
                         </span>
                       )}
-                      <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] mb-2 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>
+                      <h3 className="font-heading font-medium text-[16px] sm:text-[18px] mb-2 text-primary">
                         {milestone.title}
                       </h3>
-                      <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed mb-3 ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+                      <p className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed mb-3 text-muted`}>
                         {milestone.description}
                       </p>
                       {milestone.status && (

@@ -37,7 +37,7 @@ export function FAQAccordion({
   const isDark = variant === "dark";
 
   return (
-    <section className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`}
+    <section className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
       style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
     >
       {isDark ? (
@@ -77,13 +77,13 @@ export function FAQAccordion({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.15 }}
-                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted"
               >
                 {surtitre}
               </motion.span>
             </div>
 
-            <h2 className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[40px] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[40px] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 text-primary">
               {title}
               {titleHighlight && (
                 <span className="text-[#D4FD00]"> {titleHighlight}</span>
@@ -91,7 +91,7 @@ export function FAQAccordion({
             </h2>
 
             {description && (
-              <p className={`text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mb-6 sm:mb-8 ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+              <p className="text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mb-6 sm:mb-8 text-muted">
                 {description}
               </p>
             )}
@@ -99,7 +99,7 @@ export function FAQAccordion({
             {ctaText && (
               <Link
                 href={ctaHref}
-                className={`group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold transition-colors ${isDark ? "text-white hover:text-[#D4FD00]" : "text-[#1a1a1a] hover:text-[#0a0a0a]"}`}
+                className="group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold transition-colors text-primary hover:text-[#D4FD00]"
               >
                 {ctaText}
                 <motion.span
@@ -149,7 +149,7 @@ export function FAQAccordion({
                       onClick={() => setOpenIndex(openIndex === index ? null : index)}
                       className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left"
                     >
-                      <span className={`font-heading font-semibold text-[15px] sm:text-[16px] leading-snug pr-4 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                      <span className="font-heading font-semibold text-[15px] sm:text-[16px] leading-snug pr-4 text-primary">
                         {faq.question}
                       </span>
                       <motion.div
@@ -157,8 +157,8 @@ export function FAQAccordion({
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
                         className={`shrink-0 w-8 h-8 flex items-center justify-center transition-colors duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ${
                           openIndex === index
-                            ? "bg-[#D4FD00] text-[#1a1a1a] shadow-[0_0_16px_rgba(212,253,0,0.5)]"
-                            : isDark ? "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70" : "bg-black/5 text-[#6b6b6b] hover:bg-black/10 hover:text-[#1a1a1a]"
+                            ? "bg-[#D4FD00] text-primary shadow-[0_0_16px_rgba(212,253,0,0.5)]"
+                            : isDark ? "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70" : "bg-black/5 text-muted hover:bg-black/10 hover:text-primary"
                         }`}
                       >
                         <Plus size={16} strokeWidth={2.5} />
@@ -182,7 +182,7 @@ export function FAQAccordion({
                               style={{ transformOrigin: "left" }}
                               className={`h-px mb-4 sm:mb-5 ${isDark ? "bg-white/10" : "bg-black/[0.06]"}`}
                             />
-                            <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+                            <p className="text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed text-muted">
                               {faq.answer}
                             </p>
                           </div>

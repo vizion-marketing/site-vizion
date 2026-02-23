@@ -103,7 +103,7 @@ export function MetricCard({
     >
       <span
         className={`
-          font-[var(--font-body)] font-[900] tracking-[-0.03em] text-[#1a1a1a] leading-none
+          font-[var(--font-body)] font-[900] tracking-[-0.03em] text-primary leading-none
           ${sizeClasses[size].value}
         `}
       >

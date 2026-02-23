@@ -90,7 +90,7 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-white font-[var(--font-body)] selection:bg-black selection:text-white">
       {/* HERO SECTION - Style Homepage (#0c0c0a + radial gradients D4FD00) */}
-      <section className="relative pt-[120px] pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay" style={{ background: "#0c0c0a" }}>
+      <section className="relative pt-[120px] pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "#0c0c0a" }}>
         {/* Base + radial gradients jaune Vizion (comme home hero) */}
         <div
           className="absolute inset-0 pointer-events-none z-0"
@@ -528,7 +528,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="rounded-none p-12 md:p-20 relative overflow-hidden grain-overlay"
+            className="rounded-none p-12 md:p-20 relative overflow-hidden grain-overlay dark-section"
             style={{ background: "#0c0c0a" }}
           >
             {/* Base + radial gradients jaune Vizion animés */}

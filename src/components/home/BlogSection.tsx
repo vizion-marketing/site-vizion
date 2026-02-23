@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
+import { homeContent } from "@/content/home";
 
 const ARTICLES = [
   {
@@ -12,7 +14,7 @@ const ARTICLES = [
     excerpt: "Le marketing produit n'est pas une option. C'est le fondement d'une stratégie commerciale qui convertit.",
     readTime: "6 min",
     date: "12 Jan 2025",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    image: "/images/blog/marketing-produit-b2b.png",
   },
   {
     slug: "sales-enablement-guide-complet",
@@ -21,7 +23,7 @@ const ARTICLES = [
     excerpt: "Vos commerciaux perdent du temps à chercher les bons contenus. Voici comment structurer votre sales enablement.",
     readTime: "8 min",
     date: "5 Jan 2025",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    image: "/images/blog/sales-enablement.png",
   },
   {
     slug: "ia-marketing-b2b-cas-usage",
@@ -30,7 +32,7 @@ const ARTICLES = [
     excerpt: "L'IA n'est pas qu'un buzzword. Voici comment nous l'utilisons pour nos clients au quotidien.",
     readTime: "5 min",
     date: "28 Dec 2024",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    image: "/images/blog/ia-marketing-b2b.png",
   },
 ];
 
@@ -50,17 +52,17 @@ export function BlogSection() {
             {/* Overline */}
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
               <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-              <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
-                Notre blog
+              <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
+                {homeContent.blog.surtitre}
               </span>
             </div>
 
-            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a]">
-              Nos derniers articles
+            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
+              {homeContent.blog.h2}
             </h2>
 
-            <p className="text-[#6b6b6b] text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mt-4 sm:mt-5">
-              Stratégies, retours d'expérience et bonnes pratiques pour transformer votre marketing B2B.
+            <p className="text-muted text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mt-4 sm:mt-5">
+              Stratégies, retours d&apos;expérience et bonnes pratiques pour transformer votre marketing B2B.
             </p>
           </motion.div>
 
@@ -72,9 +74,9 @@ export function BlogSection() {
           >
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold text-[#1a1a1a] hover:text-[#0a0a0a] transition-colors"
+              className="group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold text-primary hover:text-[#0a0a0a] transition-colors"
             >
-              Voir tous les articles
+              {homeContent.blog.ctaText}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -95,11 +97,13 @@ export function BlogSection() {
                 className="group block bg-[#fafaf8] border border-black/[0.06] rounded-xl overflow-hidden hover:border-black/[0.12] hover:shadow-lg transition-all duration-300"
               >
                 {/* Image */}
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <Image
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
@@ -107,7 +111,7 @@ export function BlogSection() {
                 <div className="p-5 sm:p-6">
                   {/* Category & Read Time */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="px-2.5 py-1 bg-[#D4FD00]/20 text-[10px] font-bold tracking-wide text-[#1a1a1a] rounded">
+                    <span className="px-2.5 py-1 bg-[#D4FD00]/20 text-[10px] font-bold tracking-wide text-primary rounded">
                       {article.category}
                     </span>
                     <div className="flex items-center gap-1 text-[#999]">
@@ -117,12 +121,12 @@ export function BlogSection() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-heading font-semibold text-[17px] sm:text-[18px] text-[#1a1a1a] leading-tight mb-2 group-hover:text-[#0a0a0a] transition-colors line-clamp-2">
+                  <h3 className="font-heading font-semibold text-[17px] sm:text-[18px] text-primary leading-tight mb-2 group-hover:text-[#0a0a0a] transition-colors line-clamp-2">
                     {article.title}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-[#6b6b6b] text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed line-clamp-2 mb-4">
+                  <p className="text-muted text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed line-clamp-2 mb-4">
                     {article.excerpt}
                   </p>
 

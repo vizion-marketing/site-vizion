@@ -39,7 +39,7 @@ export function ProcessSteps({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : ""}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
       style={{ background: isDark ? "#0c0c0a" : "#ffffff" }}
     >
       {isDark && (
@@ -75,7 +75,7 @@ export function ProcessSteps({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
                 >
                   {surtitre}
                 </motion.span>
@@ -87,14 +87,14 @@ export function ProcessSteps({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary`}
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
               </motion.h2>
             )}
             {description && (
-              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto text-muted`}>
                 {description}
               </p>
             )}
@@ -126,9 +126,9 @@ export function ProcessSteps({
                     <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
                       <div className="w-12 h-12 flex items-center justify-center bg-[#D4FD00]">
                         {Icon ? (
-                          <Icon size={20} className="text-[#1a1a1a]" />
+                          <Icon size={20} className="text-primary" />
                         ) : (
-                          <span className="font-[var(--font-body)] font-bold text-[14px] text-[#1a1a1a]">{num}</span>
+                          <span className="font-[var(--font-body)] font-bold text-[14px] text-primary">{num}</span>
                         )}
                       </div>
                     </div>
@@ -147,17 +147,17 @@ export function ProcessSteps({
                           <div className="md:hidden flex items-center gap-3 mb-3">
                             <div className="w-9 h-9 flex items-center justify-center bg-[#D4FD00]">
                               {Icon ? (
-                                <Icon size={16} className="text-[#1a1a1a]" />
+                                <Icon size={16} className="text-primary" />
                               ) : (
-                                <span className="font-[var(--font-body)] font-bold text-[12px] text-[#1a1a1a]">{num}</span>
+                                <span className="font-[var(--font-body)] font-bold text-[12px] text-primary">{num}</span>
                               )}
                             </div>
                           </div>
 
-                          <h3 className={`font-heading font-medium text-[18px] sm:text-[20px] mb-2 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                          <h3 className={`font-heading font-medium text-[18px] sm:text-[20px] mb-2 text-primary`}>
                             {step.title}
                           </h3>
-                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed text-muted`}>
                           {step.description}
                         </p>
                         {step.bullets && step.bullets.length > 0 && (
@@ -165,7 +165,7 @@ export function ProcessSteps({
                             {step.bullets.map((b, bi) => (
                               <li key={bi} className={`flex items-center gap-2 ${isLeft ? "md:flex-row-reverse" : ""}`}>
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] shrink-0" />
-                                <span className={`text-[13px] font-[var(--font-body)] ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>{b}</span>
+                                <span className={`text-[13px] font-[var(--font-body)] text-muted`}>{b}</span>
                               </li>
                             ))}
                           </ul>
@@ -205,19 +205,19 @@ export function ProcessSteps({
                     <div className="relative z-10 shrink-0">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-[#D4FD00]">
                         {Icon ? (
-                          <Icon size={18} className="text-[#1a1a1a]" />
+                          <Icon size={18} className="text-primary" />
                         ) : (
-                          <span className="font-[var(--font-body)] font-bold text-[13px] text-[#1a1a1a]">{num}</span>
+                          <span className="font-[var(--font-body)] font-bold text-[13px] text-primary">{num}</span>
                         )}
                       </div>
                     </div>
 
                     {/* Content */}
                     <div className={`flex-1 pb-6 sm:pb-8 border-b ${isDark ? "border-white/5" : "border-black/[0.06]"} ${index === steps.length - 1 ? "border-b-0" : ""}`}>
-                      <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] mb-1.5 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                      <h3 className={`font-heading font-medium text-[16px] sm:text-[18px] mb-1.5 text-primary`}>
                         {step.title}
                       </h3>
-                      <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
+                      <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed text-muted`}>
                         {step.description}
                       </p>
                       {step.bullets && step.bullets.length > 0 && (
@@ -225,7 +225,7 @@ export function ProcessSteps({
                           {step.bullets.map((b, bi) => (
                             <li key={bi} className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] shrink-0" />
-                              <span className={`text-[13px] font-[var(--font-body)] ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>{b}</span>
+                              <span className={`text-[13px] font-[var(--font-body)] text-muted`}>{b}</span>
                             </li>
                           ))}
                         </ul>

@@ -27,7 +27,7 @@ export function LogoBanner({
 
   return (
     <section
-      className={`py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`}
+      className={`py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
       style={{ background: bg }}
     >
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -56,7 +56,7 @@ export function LogoBanner({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
                 >
                   {surtitre}
                 </motion.span>
@@ -68,7 +68,7 @@ export function LogoBanner({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[22px] sm:text-[28px] md:text-[36px] leading-[1.1] tracking-[-0.02em] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+                className={`font-heading font-medium text-[22px] sm:text-[28px] md:text-[36px] leading-[1.1] tracking-[-0.02em] text-primary`}
               >
                 {title}
               </motion.h2>

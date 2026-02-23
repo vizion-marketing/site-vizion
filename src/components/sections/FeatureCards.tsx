@@ -41,7 +41,7 @@ export function FeatureCards({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
       style={{ background: bg }}
     >
       {isDark && (
@@ -66,7 +66,7 @@ export function FeatureCards({
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
               </span>
-              <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
+              <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted">
                 {surtitre}
               </span>
             </motion.div>
@@ -77,7 +77,7 @@ export function FeatureCards({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-4 sm:mb-5 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+            className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-4 sm:mb-5 text-primary"
           >
             {title}{" "}
             {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
@@ -89,7 +89,7 @@ export function FeatureCards({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className={`text-[14px] sm:text-[15px] leading-relaxed max-w-xl ${isDark ? "text-white/75" : "text-[#52525B]"}`}
+              className="text-[14px] sm:text-[15px] leading-relaxed max-w-xl text-secondary"
             >
               {description}
             </motion.p>
@@ -126,18 +126,18 @@ export function FeatureCards({
                   {Icon && (
                     <div className="mb-5 relative z-10">
                       <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110 group-hover:rotate-3 ${isDark ? "bg-white/5 group-hover:bg-white/15 group-hover:shadow-[0_0_20px_rgba(212,253,0,0.3)]" : "bg-[#f5f5f5] group-hover:bg-[#1a1a1a] group-hover:shadow-[0_0_20px_rgba(212,253,0,0.25)]"}`}>
-                        <Icon size={24} className={`transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] ${isDark ? "text-[#D4FD00] group-hover:text-[#D4FD00] group-hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.6)]" : "text-[#1a1a1a] group-hover:text-[#D4FD00] group-hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.5)]"}`} />
+                        <Icon size={24} className={`transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] ${isDark ? "text-[#D4FD00] group-hover:text-[#D4FD00] group-hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.6)]" : "text-primary group-hover:text-[#D4FD00] group-hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.5)]"}`} />
                       </div>
                     </div>
                   )}
 
                   {/* Title with improved contrast on hover */}
-                  <h3 className={`font-heading font-medium text-[20px] sm:text-[24px] lg:text-[28px] leading-[1.1] tracking-[-0.02em] mb-3 transition-colors duration-700 relative z-10 ${isDark ? "text-white group-hover:text-[#1a1a1a]" : "text-[#1a1a1a] group-hover:text-[#1a1a1a]"}`}>
+                  <h3 className="font-heading font-medium text-[20px] sm:text-[24px] lg:text-[28px] leading-[1.1] tracking-[-0.02em] mb-3 transition-colors duration-700 relative z-10 text-primary group-hover:text-primary">
                     {feature.title}
                   </h3>
 
                   {/* Description with enhanced contrast */}
-                  <p className={`text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-700 relative z-10 ${isDark ? "text-white/75 group-hover:text-[#1a1a1a]/90" : "text-[#52525B] group-hover:text-[#1a1a1a]/90"}`}>
+                  <p className={`text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-700 relative z-10 text-secondary group-hover:text-primary/90`}>
                     {feature.description}
                   </p>
 
@@ -147,7 +147,7 @@ export function FeatureCards({
                   {feature.tags && feature.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mb-4 relative z-10">
                       {feature.tags.map((tag) => (
-                        <span key={tag} className={`px-2.5 py-1 text-[10px] lg:text-[11px] font-medium transition-all duration-700 border border-transparent ${isDark ? "bg-white/5 text-white/70 group-hover:bg-[#1a1a1a]/10 group-hover:text-[#1a1a1a] group-hover:border-[#1a1a1a]/30" : "bg-[#f5f5f5] text-[#1a1a1a] group-hover:bg-[#1a1a1a]/10 group-hover:text-[#1a1a1a] group-hover:border-[#1a1a1a]/30"}`}>
+                        <span key={tag} className={`px-2.5 py-1 text-[10px] lg:text-[11px] font-medium transition-all duration-700 border border-transparent ${isDark ? "bg-white/5 text-white/70 group-hover:bg-[#1a1a1a]/10 group-hover:text-primary group-hover:border-[#1a1a1a]/30" : "bg-[#f5f5f5] text-primary group-hover:bg-[#1a1a1a]/10 group-hover:text-primary group-hover:border-[#1a1a1a]/30"}`}>
                           {tag}
                         </span>
                       ))}
@@ -159,7 +159,7 @@ export function FeatureCards({
                     <div className={`pt-4 border-t transition-colors duration-500 relative z-10 ${isDark ? "border-white/10 group-hover:border-white/20" : "border-black/10 group-hover:border-[#1a1a1a]/20"}`}>
                       <Link
                         href={feature.href}
-                        className={`inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold group/btn transition-colors ${isDark ? "text-white group-hover:text-white" : "text-[#1a1a1a]"}`}
+                        className={`inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold group/btn transition-colors ${isDark ? "text-primary group-hover:text-white" : "text-primary"}`}
                       >
                         <span className={`border-b border-transparent transition-colors duration-300 ${isDark ? "group-hover/btn:border-white" : "group-hover/btn:border-[#1a1a1a]"}`}>
                           En savoir plus

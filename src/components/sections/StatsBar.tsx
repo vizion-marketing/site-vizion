@@ -87,15 +87,15 @@ export function StatsBar({ stats, variant = "dark" }: StatsBarProps) {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   const bg = isAccent ? "#D4FD00" : isDark ? "#0c0c0a" : "#f8f8f6";
-  const valueColor = isAccent ? "text-[#1a1a1a]" : isDark ? "text-white" : "text-[#1a1a1a]";
-  const labelColor = isAccent ? "text-[#1a1a1a]/80" : isDark ? "text-white/70" : "text-[#52525B]";
+  const valueColor = isAccent ? "text-primary" : "text-primary";
+  const labelColor = isAccent ? "text-primary/80" : "text-secondary";
   const dividerColor = isAccent ? "bg-[#1a1a1a]/20" : isDark ? "bg-white/15" : "bg-black/10";
   const grain = isDark ? "grain-overlay" : isAccent ? "" : "grain-light";
   const borderColor = isAccent ? "border-[#1a1a1a]/10" : isDark ? "border-white/5" : "border-black/[0.04]";
 
   return (
     <section
-      className={`py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-12 relative overflow-hidden ${grain} border-y ${borderColor}`}
+      className={`py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-12 relative overflow-hidden ${grain} border-y ${borderColor} ${isDark ? "dark-section" : ""}`}
       style={{ background: bg }}
     >
       {/* Subtle ambient glow for dark variant */}

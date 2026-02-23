@@ -75,7 +75,7 @@ export function PricingSection({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.15 }}
-                className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase"
+                className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase"
               >
                 {surtitre}
               </motion.span>
@@ -87,14 +87,14 @@ export function PricingSection({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-4"
+            className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-3 sm:mb-4"
           >
             {title}{" "}
             {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
           </motion.h2>
 
           {description && (
-            <p className="text-[#6b6b6b] text-[14px] sm:text-base font-[var(--font-body)] leading-relaxed">
+            <p className="text-muted text-[14px] sm:text-base font-[var(--font-body)] leading-relaxed">
               {description}
             </p>
           )}
@@ -119,7 +119,7 @@ export function PricingSection({
                 {/* Badge */}
                 {tier.badge && (
                   <span className={`absolute top-0 right-0 px-3 py-1.5 text-[9px] font-bold tracking-wide ${
-                    tier.highlighted ? "bg-[#D4FD00] text-[#1a1a1a]" : "bg-[#D4FD00] text-[#1a1a1a]"
+                    tier.highlighted ? "bg-[#D4FD00] text-primary" : "bg-[#D4FD00] text-primary"
                   }`}>
                     {tier.badge}
                   </span>
@@ -132,18 +132,18 @@ export function PricingSection({
 
                 {/* Price */}
                 <div className="mb-2">
-                  <span className={`font-heading font-bold text-[36px] sm:text-[44px] lg:text-[52px] leading-none tracking-[-0.02em] ${tier.highlighted ? "text-white" : "text-[#1a1a1a]"}`}>
+                  <span className={`font-heading font-bold text-[36px] sm:text-[44px] lg:text-[52px] leading-none tracking-[-0.02em] ${tier.highlighted ? "text-white" : "text-primary"}`}>
                     {tier.price}
                   </span>
                   {tier.priceLabel && (
-                    <span className={`text-sm ml-1 ${tier.highlighted ? "text-white/70" : "text-[#6b6b6b]"}`}>
+                    <span className={`text-sm ml-1 ${tier.highlighted ? "text-white/70" : "text-muted"}`}>
                       {tier.priceLabel}
                     </span>
                   )}
                 </div>
 
                 {/* Description */}
-                <p className={`text-[14px] font-[var(--font-body)] leading-relaxed mb-6 ${tier.highlighted ? "text-white/75" : "text-[#6b6b6b]"}`}>
+                <p className={`text-[14px] font-[var(--font-body)] leading-relaxed mb-6 ${tier.highlighted ? "text-white/75" : "text-muted"}`}>
                   {tier.description}
                 </p>
 
@@ -152,7 +152,7 @@ export function PricingSection({
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
                       <Check size={16} className={`shrink-0 mt-0.5 ${tier.highlighted ? "text-[#D4FD00]" : "text-[#D4FD00]"}`} />
-                      <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-snug ${tier.highlighted ? "text-white/80" : "text-[#1a1a1a]"}`}>
+                      <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-snug ${tier.highlighted ? "text-white/80" : "text-primary"}`}>
                         {feature}
                       </span>
                     </li>
@@ -178,7 +178,7 @@ export function PricingSection({
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-[#6b6b6b] text-[12px] sm:text-[13px] font-[var(--font-body)] mt-8 sm:mt-10"
+            className="text-center text-muted text-[12px] sm:text-[13px] font-[var(--font-body)] mt-8 sm:mt-10"
           >
             {footnote}
           </motion.p>

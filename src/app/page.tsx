@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { allPosts } from "contentlayer/generated";
-import { homeContent } from "@/content/home";
+import { homeContent, organizationSchema, faqSchema } from "@/content/home";
 import HomePageClient from "./HomePageClient";
 
 // ============================================================================
@@ -14,7 +14,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: homeContent.seo.title,
     description: homeContent.seo.description,
-    images: [homeContent.seo.ogImage],
+    images: [
+      {
+        url: homeContent.seo.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Vizion — Agence marketing B2B à Toulouse",
+      },
+    ],
     type: "website",
     locale: "fr_FR",
     siteName: "Vizion",
@@ -23,7 +30,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: homeContent.seo.title,
     description: homeContent.seo.description,
-    images: [homeContent.seo.ogImage],
+    images: [
+      {
+        url: homeContent.seo.ogImage,
+        alt: "Vizion — Agence marketing B2B à Toulouse",
+      },
+    ],
   },
   alternates: {
     canonical: "https://by-vizion.com",
@@ -61,5 +73,18 @@ export default function HomePage() {
       featuredImage: post.featuredImage,
     }));
 
-  return <HomePageClient latestPosts={latestPosts} />;
+  return (
+    <>
+      {/* JSON-LD schemas — rendered server-side, no client JS needed */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <HomePageClient latestPosts={latestPosts} />
+    </>
+  );
 }

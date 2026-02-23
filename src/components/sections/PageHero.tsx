@@ -61,7 +61,7 @@ export function PageHero({
 
   return (
     <section
-      className={`pt-28 sm:pt-32 md:pt-36 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`}
+      className={`pt-28 sm:pt-32 md:pt-36 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
       style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
     >
       {/* Enhanced ambient glows with more layers */}
@@ -117,18 +117,18 @@ export function PageHero({
             {breadcrumbs.map((crumb, i) => (
               <React.Fragment key={i}>
                 {i > 0 && (
-                  <motion.span variants={breadcrumbItem} className={`text-xs ${isDark ? "text-white/30" : "text-[#6b6b6b]/50"}`}>/</motion.span>
+                  <motion.span variants={breadcrumbItem} className="text-xs text-muted/50">/</motion.span>
                 )}
                 <motion.span variants={breadcrumbItem}>
                   {crumb.href ? (
                     <Link
                       href={crumb.href}
-                      className={`text-xs font-[var(--font-body)] ${isDark ? "text-white/50 hover:text-white/90" : "text-[#6b6b6b] hover:text-[#1a1a1a]"} transition-colors duration-300`}
+                      className="text-xs font-[var(--font-body)] text-muted hover:text-primary transition-colors duration-300"
                     >
                       {crumb.label}
                     </Link>
                   ) : (
-                    <span className={`text-xs font-[var(--font-body)] ${isDark ? "text-white/80" : "text-[#1a1a1a]"}`}>
+                    <span className="text-xs font-[var(--font-body)] text-primary">
                       {crumb.label}
                     </span>
                   )}
@@ -154,7 +154,7 @@ export function PageHero({
               initial={{ opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}
+              className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted"
             >
               {surtitre}
             </motion.span>
@@ -166,7 +166,7 @@ export function PageHero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className={`font-heading font-normal text-[36px] sm:text-[48px] md:text-[60px] lg:text-[72px] leading-[0.95] tracking-[-0.03em] max-w-4xl mb-6 sm:mb-8 ${isDark ? "" : "text-[#1a1a1a]"}`}
+          className={`font-heading font-normal text-[36px] sm:text-[48px] md:text-[60px] lg:text-[72px] leading-[0.95] tracking-[-0.03em] max-w-4xl mb-6 sm:mb-8 ${isDark ? "" : "text-primary"}`}
           style={isDark ? {
             backgroundImage: "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.90) 100%)",
             WebkitBackgroundClip: "text",
@@ -209,7 +209,7 @@ export function PageHero({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className={`text-base sm:text-lg md:text-xl font-[var(--font-body)] leading-relaxed max-w-2xl mb-8 sm:mb-10 ${isDark ? "" : "text-[#52525B]"}`}
+            className={`text-base sm:text-lg md:text-xl font-[var(--font-body)] leading-relaxed max-w-2xl mb-8 sm:mb-10 ${isDark ? "" : "text-secondary"}`}
             style={isDark ? { color: "rgba(255,255,255,0.85)" } : undefined}
           >
             {description}

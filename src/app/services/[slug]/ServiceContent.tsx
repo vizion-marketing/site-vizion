@@ -63,7 +63,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
             {/* Title */}
             <motion.h1
               variants={fadeInUp}
-              className="text-[2.5rem] sm:text-[3rem] lg:text-[3.5rem] font-bold text-[#1a1a1a] leading-[1.1] tracking-tight mb-6"
+              className="text-[2.5rem] sm:text-[3rem] lg:text-[3.5rem] font-bold text-primary leading-[1.1] tracking-tight mb-6"
             >
               {service.heroTitle}
             </motion.h1>
@@ -84,7 +84,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
               >
                 {service.metrics.map((metric: { value: string; label: string }, index: number) => (
                   <div key={index} className="flex flex-col">
-                    <span className="text-3xl sm:text-4xl font-bold text-[#1a1a1a]">
+                    <span className="text-3xl sm:text-4xl font-bold text-primary">
                       {metric.value}
                     </span>
                     <span className="text-sm text-black/50">{metric.label}</span>
@@ -121,7 +121,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
                 <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 mb-4 block">
                   VOUS RECONNAISSEZ-VOUS ?
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1a1a1a] mb-4">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4">
                   {service.painPointsTitle || "Les problèmes que nous résolvons"}
                 </h2>
               </motion.div>
@@ -139,7 +139,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
                     <div className="w-10 h-10 flex items-center justify-center bg-red-50 text-red-500 mb-4">
                       <DynamicIcon name={pain.icon || "AlertCircle"} size={20} />
                     </div>
-                    <h3 className="text-lg font-semibold text-[#1a1a1a] mb-2">
+                    <h3 className="text-lg font-semibold text-primary mb-2">
                       {pain.title}
                     </h3>
                     <p className="text-sm text-black/60 leading-relaxed">
@@ -155,7 +155,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
 
       {/* Features Section */}
       {service.features && service.features.length > 0 && (
-        <section className="py-20 lg:py-28 bg-[#1a1a1a]">
+        <section className="py-20 lg:py-28 bg-[#1a1a1a] dark-section">
           <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-8">
             <motion.div
               initial="hidden"
@@ -213,7 +213,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
                 <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 mb-4 block">
                   NOTRE MÉTHODOLOGIE
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1a1a1a] mb-4">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4">
                   {service.processTitle || "Comment nous travaillons"}
                 </h2>
                 {service.processSubtitle && (
@@ -235,7 +235,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-[#1a1a1a]">
+                        <h3 className="text-lg font-semibold text-primary">
                           {step.title}
                         </h3>
                         {step.duration && (
@@ -293,7 +293,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
                 <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 mb-4 block">
                   CAS CLIENTS
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1a1a1a]">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">
                   Ils nous ont fait confiance
                 </h2>
               </motion.div>
@@ -313,7 +313,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
                           {caseStudy.sector}
                         </span>
                       </div>
-                      <h3 className="text-xl font-semibold text-[#1a1a1a] group-hover:text-black mb-2">
+                      <h3 className="text-xl font-semibold text-primary group-hover:text-black mb-2">
                         {caseStudy.company}
                       </h3>
                       <p className="text-sm text-black/60 mb-4 line-clamp-2">
@@ -322,7 +322,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
                       <div className="flex flex-wrap gap-4">
                         {caseStudy.metrics?.slice(0, 2).map((metric: { value: string; label: string }, i: number) => (
                           <div key={i}>
-                            <span className="text-lg font-bold text-[#1a1a1a]">
+                            <span className="text-lg font-bold text-primary">
                               {metric.value}
                             </span>
                             <span className="text-xs text-black/50 ml-1">
@@ -361,7 +361,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
                 <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 mb-4 block">
                   FAQ
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1a1a1a]">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">
                   {service.faqTitle || "Questions fréquentes"}
                 </h2>
               </motion.div>
@@ -374,7 +374,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
                     className="group bg-white border border-black/5 p-6"
                   >
                     <summary className="flex items-center justify-between cursor-pointer list-none">
-                      <h3 className="text-base font-semibold text-[#1a1a1a] pr-4">
+                      <h3 className="text-base font-semibold text-primary pr-4">
                         {faq.question}
                       </h3>
                       <LucideIcons.ChevronDown
@@ -394,7 +394,7 @@ export function ServiceContent({ service, relatedCases }: ServiceContentProps) {
       )}
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-28 bg-[#1a1a1a]">
+      <section className="py-20 lg:py-28 bg-[#1a1a1a] dark-section">
         <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-8">
           <motion.div
             initial="hidden"

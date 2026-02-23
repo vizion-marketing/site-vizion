@@ -120,19 +120,19 @@ export function TeamCarousel({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase"
+                  className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase"
                 >
                   {surtitre}
                 </motion.span>
               </div>
             )}
 
-            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-5 sm:mb-6">
+            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-5 sm:mb-6">
               {title}
             </h2>
 
             {description && (
-              <p className="text-[#6b6b6b] text-base font-[var(--font-body)] leading-relaxed max-w-md mb-8">
+              <p className="text-muted text-base font-[var(--font-body)] leading-relaxed max-w-md mb-8">
                 {description}
               </p>
             )}

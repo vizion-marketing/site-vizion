@@ -64,7 +64,7 @@ export function BeforeAfter({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : ""}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
       style={{ background: isDark ? "#0c0c0a" : "#ffffff" }}
     >
       {isDark && (
@@ -100,7 +100,7 @@ export function BeforeAfter({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
                 >
                   {surtitre}
                 </motion.span>
@@ -112,13 +112,13 @@ export function BeforeAfter({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary`}
               >
                 {title}
               </motion.h2>
             )}
             {description && (
-              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+              <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-xl mx-auto text-muted`}>
                 {description}
               </p>
             )}
@@ -183,7 +183,7 @@ export function BeforeAfter({
             </span>
           </div>
           <div className="absolute top-4 right-4 px-3 py-1.5 bg-[#D4FD00] pointer-events-none">
-            <span className="text-[11px] font-[var(--font-body)] font-semibold text-[#1a1a1a] uppercase tracking-wider">
+            <span className="text-[11px] font-[var(--font-body)] font-semibold text-primary uppercase tracking-wider">
               {afterLabel}
             </span>
           </div>

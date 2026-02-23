@@ -29,7 +29,7 @@ export function IconGrid({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`}
+      className={`py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
       style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
     >
       {/* Ambient glow */}
@@ -62,7 +62,7 @@ export function IconGrid({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.15 }}
-                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
               >
                 {surtitre}
               </motion.span>
@@ -74,7 +74,7 @@ export function IconGrid({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
+            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary`}
           >
             {title}{" "}
             {titleHighlight && (
@@ -120,12 +120,12 @@ export function IconGrid({
               </motion.div>
 
               {/* Title */}
-              <h3 className={`font-heading font-medium text-base sm:text-lg md:text-xl ${isDark ? "!text-white" : "text-[#1a1a1a]"} mb-2 sm:mb-3 leading-snug`}>
+              <h3 className="font-heading font-medium text-base sm:text-lg md:text-xl text-primary mb-2 sm:mb-3 leading-snug">
                 {item.title}
               </h3>
 
               {/* Description */}
-              <p className={`text-sm sm:text-[15px] ${isDark ? "text-white/75" : "text-[#6b6b6b]"} leading-relaxed font-[var(--font-body)]`}>
+              <p className={`text-sm sm:text-[15px] text-muted leading-relaxed font-[var(--font-body)]`}>
                 {item.description}
               </p>
             </motion.div>

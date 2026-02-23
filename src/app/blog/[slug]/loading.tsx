@@ -2,7 +2,7 @@ export default function BlogPostLoading() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero skeleton */}
-      <div className="grain-overlay pt-40 pb-24 px-6 md:px-12" style={{ background: "#0c0c0a" }}>
+      <div className="grain-overlay pt-40 pb-24 px-6 md:px-12 dark-section" style={{ background: "#0c0c0a" }}>
         <div className="max-w-[82.5rem] mx-auto">
           <div className="h-6 w-32 bg-white/10 rounded animate-pulse mb-4" />
           <div className="h-12 w-[70%] bg-white/10 rounded animate-pulse mb-6" />

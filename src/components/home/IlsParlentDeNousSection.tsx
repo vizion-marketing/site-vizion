@@ -59,12 +59,12 @@ export function IlsParlentDeNousSection({
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D4FD00] opacity-40" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#D4FD00]" />
             </div>
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
+            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
               {data.surtitre}
             </span>
           </div>
 
-          <h2 className="font-heading font-medium text-[26px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.08] tracking-[-0.02em] text-[#1a1a1a]">
+          <h2 className="font-heading font-medium text-[26px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.08] tracking-[-0.02em] text-primary">
             {data.h2.split(data.h2Highlight)[0]}
             <span className="text-[#D4FD00] drop-shadow-[0_0_20px_rgba(212,253,0,0.3)]">
               {data.h2Highlight}
@@ -100,12 +100,12 @@ export function IlsParlentDeNousSection({
                 </span>
 
                 {/* Source name */}
-                <h3 className="font-heading font-semibold text-[16px] sm:text-[17px] text-[#1a1a1a] mb-2 leading-tight">
+                <h3 className="font-heading font-semibold text-[16px] sm:text-[17px] text-primary mb-2 leading-tight">
                   {mention.source}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[#6b6b6b] text-[13px] sm:text-[14px] leading-relaxed">
+                <p className="text-muted text-[13px] sm:text-[14px] leading-relaxed">
                   {mention.description}
                 </p>
 

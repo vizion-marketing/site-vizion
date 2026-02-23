@@ -34,7 +34,7 @@ export function StickyScrollReveal({
 
   return (
     <section
-      className={`relative overflow-hidden ${isDark ? "grain-overlay" : ""}`}
+      className={`relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
       style={{ background: isDark ? "#0c0c0a" : "#ffffff" }}
     >
       {isDark && (
@@ -70,7 +70,7 @@ export function StickyScrollReveal({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                  className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
                 >
                   {surtitre}
                 </motion.span>
@@ -82,7 +82,7 @@ export function StickyScrollReveal({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] max-w-3xl ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}
+                className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] max-w-3xl text-primary`}
               >
                 {title}{" "}
                 {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
@@ -144,7 +144,7 @@ export function StickyScrollReveal({
                       <div className="flex-1 pt-2">
                         {Icon && (
                           <div className="w-10 h-10 flex items-center justify-center bg-[#D4FD00] mb-4">
-                            <Icon size={20} className="text-[#1a1a1a]" />
+                            <Icon size={20} className="text-primary" />
                           </div>
                         )}
                         {item.label && (
@@ -152,10 +152,10 @@ export function StickyScrollReveal({
                             {item.label}
                           </span>
                         )}
-                        <h3 className={`font-heading font-medium text-[22px] sm:text-[28px] leading-[1.1] tracking-[-0.01em] mb-3 ${isDark ? "!text-white" : "text-[#1a1a1a]"}`}>
+                        <h3 className={`font-heading font-medium text-[22px] sm:text-[28px] leading-[1.1] tracking-[-0.01em] mb-3 text-primary`}>
                           {item.title}
                         </h3>
-                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+                        <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed text-muted`}>
                           {item.description}
                         </p>
                       </div>

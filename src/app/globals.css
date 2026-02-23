@@ -52,6 +52,29 @@
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
+
+  /* === SEMANTIC TEXT COLORS (Context-Aware) === */
+  --text-primary: #1a1a1a;
+  --text-secondary: #52525B;
+  --text-muted: #6b6b6b;
+  --border-default: rgba(0, 0, 0, 0.08);
+}
+
+/* === DARK SECTION CONTEXT === */
+/* Classe à ajouter sur tout conteneur à fond sombre : les textes enfants deviennent clairs */
+.dark-section {
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --border-default: rgba(255, 255, 255, 0.1);
+}
+
+/* Carte claire imbriquée dans une section sombre : restaure les couleurs foncées */
+.dark-section .light-card {
+  --text-primary: #1a1a1a;
+  --text-secondary: #52525B;
+  --text-muted: #6b6b6b;
+  --border-default: rgba(0, 0, 0, 0.08);
 }
 
 @theme inline {
@@ -59,6 +82,20 @@
   --color-foreground: var(--color-text);
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-roboto);
+}
+
+/* === SEMANTIC TAILWIND UTILITIES === */
+@utility text-primary {
+  color: var(--text-primary);
+}
+@utility text-secondary {
+  color: var(--text-secondary);
+}
+@utility text-muted {
+  color: var(--text-muted);
+}
+@utility border-default {
+  border-color: var(--border-default);
 }
 
 /* === LENIS SMOOTH SCROLL === */
@@ -90,7 +127,7 @@ html {
 
 body {
   background: var(--bg-white);
-  color: #52525B;
+  color: var(--text-secondary);
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 16px;
@@ -108,7 +145,7 @@ body {
 
 /* H1 - Titres principaux - More impactful */
 h1, .h1 {
-  color: var(--color-black);
+  color: var(--text-primary);
   font-family: var(--font-heading);
   font-size: clamp(48px, 8vw, 72px);
   font-style: normal;
@@ -119,7 +156,7 @@ h1, .h1 {
 
 /* H2 - Titres de sections - Tighter tracking */
 h2, .h2 {
-  color: var(--color-black);
+  color: var(--text-primary);
   font-family: var(--font-heading);
   font-size: clamp(32px, 5vw, 52px);
   font-style: normal;
@@ -130,7 +167,7 @@ h2, .h2 {
 
 /* H3 - Sous-titres */
 h3, .h3 {
-  color: var(--color-black);
+  color: var(--text-primary);
   font-family: var(--font-heading);
   font-size: clamp(20px, 3vw, 28px);
   font-weight: 400;
@@ -152,70 +189,13 @@ h3, .h3 {
 /* Body text */
 .text-body, p {
   font-family: var(--font-body);
-  color: #52525B;
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 
 /* Text on gradient backgrounds (inverted) */
 .text-inverted {
   color: var(--bg-white) !important;
-}
-
-/* Ensure white text on all dark backgrounds */
-.bg-black h1,
-.bg-black h2,
-.bg-black h3,
-.bg-black .h1,
-.bg-black .h2,
-[class*="bg-gradient-to"][class*="from-[#B7B7B7]"] h1,
-[class*="bg-gradient-to"][class*="from-[#B7B7B7]"] h2,
-[class*="bg-gradient-to"][class*="from-[#B7B7B7]"] h3,
-[class*="bg-gradient-to"][class*="from-[#B7B7B7]"] .h1,
-[class*="bg-gradient-to"][class*="from-[#B7B7B7]"] .h2,
-[class*="bg-gradient-to"][class*="from-[#111"] h1,
-[class*="bg-gradient-to"][class*="from-[#111"] h2,
-[class*="bg-gradient-to"][class*="from-[#111"] h3,
-[class*="bg-gradient-to"][class*="from-[#111"] .h1,
-[class*="bg-gradient-to"][class*="from-[#111"] .h2,
-[class*="bg-gradient-to"][class*="from-black"] h1,
-[class*="bg-gradient-to"][class*="from-black"] h2,
-[class*="bg-gradient-to"][class*="from-black"] h3,
-[class*="bg-gradient-to"][class*="from-black"] .h1,
-[class*="bg-gradient-to"][class*="from-black"] .h2,
-[class*="bg-gradient-to"][class*="to-[#6D6D6D]"] h1,
-[class*="bg-gradient-to"][class*="to-[#6D6D6D]"] h2,
-[class*="bg-gradient-to"][class*="to-[#6D6D6D]"] h3,
-[class*="bg-gradient-to"][class*="to-[#6D6D6D]"] .h1,
-[class*="bg-gradient-to"][class*="to-[#6D6D6D]"] .h2,
-[class*="bg-gradient-to"][class*="via-[#000"] h1,
-[class*="bg-gradient-to"][class*="via-[#000"] h2,
-[class*="bg-gradient-to"][class*="via-[#000"] h3,
-[class*="bg-gradient-to"][class*="via-[#000"] .h1,
-[class*="bg-gradient-to"][class*="via-[#000"] .h2 {
-  color: var(--bg-white) !important;
-}
-
-/* Force white text for all elements in dark sections with #0c0c0a background */
-section[style*="#0c0c0a"] h1,
-section[style*="#0c0c0a"] h2,
-section[style*="#0c0c0a"] h3,
-section[style*="#0c0c0a"] .h1,
-section[style*="#0c0c0a"] .h2,
-section[style*="#0c0c0a"] .h3,
-section[style*="background: #0c0c0a"] h1,
-section[style*="background: #0c0c0a"] h2,
-section[style*="background: #0c0c0a"] h3,
-section[style*="background: #0c0c0a"] .h1,
-section[style*="background: #0c0c0a"] .h2,
-section[style*="background: #0c0c0a"] .h3 {
-  color: #ffffff !important;
-}
-
-section[style*="#0c0c0a"] p,
-section[style*="#0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([class*="text-[#1a1a1a]"]),
-section[style*="background: #0c0c0a"] p,
-section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([class*="text-[#1a1a1a]"]) {
-  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 /* Layout utilities */
@@ -390,7 +370,7 @@ section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([c
 /* === PROSE STYLES (MDX content) === */
 .prose {
   max-width: 70ch;
-  color: #27272a;
+  color: var(--text-secondary);
   font-size: 1.0625rem;
   line-height: 1.85;
 }
@@ -401,7 +381,7 @@ section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([c
 .prose h3,
 .prose h4 {
   font-family: var(--font-heading);
-  color: var(--color-black);
+  color: var(--text-primary);
   font-weight: 400;
   scroll-margin-top: 100px;
   position: relative;
@@ -448,7 +428,7 @@ section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([c
   margin-bottom: 1.75rem;
   line-height: 1.85;
   font-family: var(--font-body);
-  color: #3f3f46;
+  color: var(--text-secondary);
   font-weight: 400;
   letter-spacing: -0.01em;
 }
@@ -456,22 +436,22 @@ section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([c
 .prose p:first-of-type {
   font-size: 1.175rem;
   line-height: 1.8;
-  color: #27272a;
+  color: var(--text-primary);
 }
 
 /* Links with elegant hover */
 .prose a {
-  color: var(--color-black);
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 600;
-  border-bottom: 1px solid #e4e4e7;
+  border-bottom: 1px solid var(--border-default);
   transition: all 0.2s ease;
   position: relative;
 }
 
 .prose a:hover {
-  color: var(--color-grey-dark);
-  border-bottom-color: var(--color-black);
+  color: var(--text-muted);
+  border-bottom-color: var(--text-primary);
 }
 
 /* Lists with better visual hierarchy */
@@ -489,7 +469,7 @@ section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([c
   padding-left: 2rem;
   margin-bottom: 0.875rem;
   line-height: 1.85;
-  color: #3f3f46;
+  color: var(--text-secondary);
 }
 
 .prose ul > li::before {
@@ -519,7 +499,7 @@ section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([c
   font-size: 0.875rem;
   font-weight: 700;
   font-family: var(--font-heading);
-  color: #71717a;
+  color: var(--text-muted);
 }
 
 /* Blockquote with premium styling */
@@ -549,7 +529,7 @@ section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([c
   margin: 0;
   font-size: 1.125rem;
   line-height: 1.75;
-  color: #27272a;
+  color: var(--text-primary);
   font-weight: 500;
   padding-left: 2rem;
 }
@@ -588,7 +568,7 @@ section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([c
 /* Strong/Bold text */
 .prose strong {
   font-weight: 700;
-  color: var(--color-black);
+  color: var(--text-primary);
 }
 
 /* Images in prose */
@@ -622,14 +602,14 @@ section[style*="background: #0c0c0a"] span:not([class*="text-[#D4FD00]"]):not([c
   font-weight: 700;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
-  color: #71717a;
-  border-bottom: 2px solid #e4e4e7;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border-default);
 }
 
 .prose td {
   padding: 0.875rem 1rem;
-  border-bottom: 1px solid #f4f4f5;
-  color: #3f3f46;
+  border-bottom: 1px solid var(--border-default);
+  color: var(--text-secondary);
 }
 
 .prose tr:hover td {

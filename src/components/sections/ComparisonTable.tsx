@@ -28,7 +28,7 @@ function CellValue({ value, highlighted, isDark }: { value: boolean | string; hi
   if (value === true) {
     return (
       <div className={`w-7 h-7 flex items-center justify-center ${highlighted ? "bg-[#D4FD00]" : "bg-[#D4FD00]/20"}`}>
-        <Check size={16} className={highlighted ? "text-[#1a1a1a]" : "text-[#D4FD00]"} />
+        <Check size={16} className={highlighted ? "text-primary" : "text-[#D4FD00]"} />
       </div>
     );
   }
@@ -47,7 +47,7 @@ function CellValue({ value, highlighted, isDark }: { value: boolean | string; hi
     );
   }
   return (
-    <span className={`text-[13px] font-[var(--font-body)] font-medium ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+    <span className={`text-[13px] font-[var(--font-body)] font-medium text-primary`}>
       {value}
     </span>
   );
@@ -69,7 +69,7 @@ export function ComparisonTable({
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : ""}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
       style={{ background: bg }}
     >
       {isDark && (
@@ -104,7 +104,7 @@ export function ComparisonTable({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.15 }}
-                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/70" : "text-[#6b6b6b]"}`}
+                className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted`}
               >
                 {surtitre}
               </motion.span>
@@ -116,14 +116,14 @@ export function ComparisonTable({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}
+            className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary`}
           >
             {title}{" "}
             {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
           </motion.h2>
 
           {description && (
-            <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-lg mx-auto ${isDark ? "text-white/75" : "text-[#6b6b6b]"}`}>
+            <p className={`text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed max-w-lg mx-auto text-muted`}>
               {description}
             </p>
           )}
@@ -140,13 +140,13 @@ export function ComparisonTable({
           {/* Header row */}
           <div className={`grid grid-cols-[1fr_120px_120px] sm:grid-cols-[1fr_160px_160px] ${isDark ? "bg-white/5" : "bg-[#f8f8f6]"}`}>
             <div className="p-4 sm:p-5" />
-            <div className={`p-4 sm:p-5 text-center border-l ${isDark ? "border-white/10" : "border-black/10"} ${highlightColumn === "left" ? "bg-[#D4FD00] text-[#1a1a1a]" : ""}`}>
-              <span className={`font-heading font-semibold text-[13px] sm:text-[14px] ${highlightColumn !== "left" ? (isDark ? "text-white" : "text-[#1a1a1a]") : ""}`}>
+            <div className={`p-4 sm:p-5 text-center border-l ${isDark ? "border-white/10" : "border-black/10"} ${highlightColumn === "left" ? "bg-[#D4FD00] text-primary" : ""}`}>
+              <span className={`font-heading font-semibold text-[13px] sm:text-[14px] ${highlightColumn !== "left" ? "text-primary" : ""}`}>
                 {leftLabel}
               </span>
             </div>
-            <div className={`p-4 sm:p-5 text-center border-l ${isDark ? "border-white/10" : "border-black/10"} ${highlightColumn === "right" ? "bg-[#D4FD00] text-[#1a1a1a]" : ""}`}>
-              <span className={`font-heading font-semibold text-[13px] sm:text-[14px] ${highlightColumn !== "right" ? (isDark ? "text-white" : "text-[#1a1a1a]") : ""}`}>
+            <div className={`p-4 sm:p-5 text-center border-l ${isDark ? "border-white/10" : "border-black/10"} ${highlightColumn === "right" ? "bg-[#D4FD00] text-primary" : ""}`}>
+              <span className={`font-heading font-semibold text-[13px] sm:text-[14px] ${highlightColumn !== "right" ? "text-primary" : ""}`}>
                 {rightLabel}
               </span>
             </div>
@@ -158,7 +158,7 @@ export function ComparisonTable({
               key={row.feature}
               className={`grid grid-cols-[1fr_120px_120px] sm:grid-cols-[1fr_160px_160px] border-t ${isDark ? "border-white/5" : "border-black/[0.06]"}`}
             >
-              <div className={`p-4 sm:p-5 flex items-center ${isDark ? "text-white/80" : "text-[#1a1a1a]"}`}>
+              <div className={`p-4 sm:p-5 flex items-center text-primary`}>
                 <span className="text-[13px] sm:text-[14px] font-[var(--font-body)]">
                   {row.feature}
                 </span>

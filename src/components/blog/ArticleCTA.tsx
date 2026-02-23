@@ -30,7 +30,7 @@ export function ArticleCTA({
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="rounded-none p-12 md:p-20 relative overflow-hidden grain-overlay"
+          className="rounded-none p-12 md:p-20 relative overflow-hidden grain-overlay dark-section"
           style={{ background: "#0c0c0a" }}
         >
           {/* Base + radial gradients jaune Vizion animés */}

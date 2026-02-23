@@ -41,7 +41,7 @@ export function CTASection({
 }: CTASectionProps) {
   return (
     <section
-      className="py-20 sm:py-24 md:py-32 lg:py-40 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-overlay"
+      className="py-20 sm:py-24 md:py-32 lg:py-40 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-overlay dark-section"
       style={{ background: "#0c0c0a" }}
     >
       {/* Animated radial gradients */}

@@ -64,7 +64,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen overflow-x-hidden font-[var(--font-body)] selection:bg-[#D4FD00] selection:text-black">
       {/* HERO SECTION - GRADIENT & CARBON TEXTURE */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-4 md:px-8 lg:px-12 overflow-hidden bg-black">
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-4 md:px-8 lg:px-12 overflow-hidden bg-black dark-section">
         {/* Base + radial gradients jaune Vizion animés */}
         <div className="absolute inset-0 z-0 grain-overlay" style={{ background: "#0c0c0a" }}>
           <div

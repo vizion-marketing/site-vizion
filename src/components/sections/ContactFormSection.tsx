@@ -73,14 +73,14 @@ export function ContactFormSection({
   };
 
   const inputClass = isDark
-    ? "bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-[#D4FD00]/50 focus:ring-1 focus:ring-[#D4FD00]/20"
-    : "bg-white border border-black/10 text-[#1a1a1a] placeholder-black/30 focus:border-[#D4FD00] focus:ring-1 focus:ring-[#D4FD00]/20";
+    ? "bg-white/5 border border-white/10 text-primary placeholder-white/30 focus:border-[#D4FD00]/50 focus:ring-1 focus:ring-[#D4FD00]/20"
+    : "bg-white border border-black/10 text-primary placeholder-black/30 focus:border-[#D4FD00] focus:ring-1 focus:ring-[#D4FD00]/20";
 
-  const labelClass = isDark ? "text-white/70" : "text-[#6b6b6b]";
+  const labelClass = "text-muted";
 
   return (
     <section
-      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay" : "grain-light"}`}
+      className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
       style={{ background: bg }}
     >
       {isDark && (
@@ -102,18 +102,18 @@ export function ContactFormSection({
             {surtitre && (
               <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
                 <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
-                <span className={`text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase ${isDark ? "text-white/50" : "text-[#6b6b6b]"}`}>
+                <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted">
                   {surtitre}
                 </span>
               </div>
             )}
 
-            <h2 className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[40px] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+            <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[40px] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 text-primary">
               {title}
             </h2>
 
             {description && (
-              <p className={`text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mb-8 ${isDark ? "text-white/60" : "text-[#6b6b6b]"}`}>
+              <p className="text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mb-8 text-muted">
                 {description}
               </p>
             )}
@@ -127,15 +127,15 @@ export function ContactFormSection({
                       <info.icon size={18} className="text-[#D4FD00]" />
                     </div>
                     <div>
-                      <p className={`text-[11px] font-[var(--font-body)] uppercase tracking-wide ${isDark ? "text-white/40" : "text-[#6b6b6b]/70"}`}>
+                      <p className="text-[11px] font-[var(--font-body)] uppercase tracking-wide text-muted/70">
                         {info.label}
                       </p>
                       {info.href ? (
-                        <a href={info.href} className={`text-[14px] font-[var(--font-body)] font-medium ${isDark ? "text-white hover:text-[#D4FD00]" : "text-[#1a1a1a] hover:text-[#D4FD00]"} transition-colors`}>
+                        <a href={info.href} className="text-[14px] font-[var(--font-body)] font-medium text-primary hover:text-[#D4FD00] transition-colors">
                           {info.value}
                         </a>
                       ) : (
-                        <p className={`text-[14px] font-[var(--font-body)] font-medium ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                        <p className="text-[14px] font-[var(--font-body)] font-medium text-primary">
                           {info.value}
                         </p>
                       )}
@@ -209,7 +209,7 @@ export function ContactFormSection({
               {/* Status messages */}
               {formStatus === "success" && (
                 <div className={`sm:col-span-2 p-4 bg-[#D4FD00]/10 border border-[#D4FD00]/30`}>
-                  <p className={`text-[14px] font-[var(--font-body)] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                  <p className="text-[14px] font-[var(--font-body)] text-primary">
                     Message envoyé avec succès. Nous vous recontactons rapidement.
                   </p>
                 </div>

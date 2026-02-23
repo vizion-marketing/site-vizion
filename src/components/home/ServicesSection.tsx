@@ -20,7 +20,7 @@ const SERVICES = [
     subtitle: "Positionnement & Message",
     description: "Définissez un positionnement clair et une proposition de valeur qui résonne avec vos clients.",
     icon: Target,
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+    image: "/images/services/product-marketing.avif",
     tags: ["Positionnement", "Messaging", "Go-to-Market"],
     span: "featured" as const,
     benefits: [
@@ -72,7 +72,7 @@ const SERVICES = [
   },
 ];
 
-const AUTOMATION_IMAGE = "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80";
+const AUTOMATION_IMAGE = "/images/services/automatisation.avif";
 
 type Service = {
   id: number;
@@ -113,23 +113,23 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
             <div className="w-14 h-14 lg:w-16 lg:h-16 bg-[#1a1a1a] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
               <Icon size={28} className="text-[#D4FD00]" />
             </div>
-            <span className="text-[#1a1a1a]/20 font-heading font-bold text-5xl lg:text-7xl">
+            <span className="text-primary/20 font-heading font-bold text-5xl lg:text-7xl">
               {cardNumber}
             </span>
           </div>
 
           {/* Subtitle */}
-          <p className="text-[#1a1a1a]/70 text-[12px] lg:text-[14px] font-medium tracking-wide uppercase mb-2">
+          <p className="text-primary/70 text-[12px] lg:text-[14px] font-medium tracking-wide uppercase mb-2">
             {service.subtitle}
           </p>
 
           {/* Title */}
-          <h3 className="font-heading font-medium text-[28px] sm:text-[36px] lg:text-[48px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-4">
+          <h3 className="font-heading font-medium text-[28px] sm:text-[36px] lg:text-[48px] leading-[1.05] tracking-[-0.02em] text-primary mb-4">
             {service.title}
           </h3>
 
           {/* Description */}
-          <p className="text-[#1a1a1a]/80 text-[14px] lg:text-[16px] leading-relaxed mb-5 max-w-lg">
+          <p className="text-primary/80 text-[14px] lg:text-[16px] leading-relaxed mb-5 max-w-lg">
             {service.description}
           </p>
 
@@ -138,8 +138,8 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
             <ul className="space-y-2">
               {service.benefits.map((benefit, i) => (
                 <li key={i} className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#1a1a1a] shrink-0 mt-0.5" />
-                  <span className="text-[#1a1a1a]/90 text-[13px] lg:text-[14px] leading-snug">{benefit}</span>
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                  <span className="text-primary/90 text-[13px] lg:text-[14px] leading-snug">{benefit}</span>
                 </li>
               ))}
             </ul>
@@ -177,7 +177,7 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
               {/* CTA Button */}
               <Link
                 href={service.href}
-                className="inline-flex items-center gap-2 h-[44px] sm:h-[48px] px-5 sm:px-6 text-[12px] sm:text-[13px] font-semibold bg-[#D4FD00] text-[#1a1a1a] hover:bg-white transition-all duration-300 group/btn"
+                className="inline-flex items-center gap-2 h-[44px] sm:h-[48px] px-5 sm:px-6 text-[12px] sm:text-[13px] font-semibold bg-[#D4FD00] text-primary hover:bg-white transition-all duration-300 group/btn"
               >
                 {service.title}
                 <ArrowUpRightIcon
@@ -243,22 +243,22 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
           {/* Icon */}
           <div className="mb-5">
             <div className="w-12 h-12 lg:w-14 lg:h-14 bg-[#f5f5f5] group-hover:bg-[#1a1a1a] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
-              <Icon size={24} className="text-[#1a1a1a] group-hover:text-[#D4FD00] transition-colors duration-500" />
+              <Icon size={24} className="text-primary group-hover:text-[#D4FD00] transition-colors duration-500" />
             </div>
           </div>
 
           {/* Subtitle */}
-          <p className="text-[#D4FD00] group-hover:text-[#1a1a1a]/70 text-[11px] lg:text-[12px] font-medium tracking-wide uppercase mb-2 transition-colors duration-500">
+          <p className="text-[#D4FD00] group-hover:text-primary/70 text-[11px] lg:text-[12px] font-medium tracking-wide uppercase mb-2 transition-colors duration-500">
             {service.subtitle}
           </p>
 
           {/* Title */}
-          <h3 className="font-heading font-medium text-[22px] sm:text-[26px] lg:text-[30px] leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] mb-3 transition-colors duration-500">
+          <h3 className="font-heading font-medium text-[22px] sm:text-[26px] lg:text-[30px] leading-[1.1] tracking-[-0.02em] text-primary mb-3 transition-colors duration-500">
             {service.title}
           </h3>
 
           {/* Description */}
-          <p className="text-[#6b6b6b] group-hover:text-[#1a1a1a]/80 text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-500">
+          <p className="text-muted group-hover:text-primary/80 text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-500">
             {service.description}
           </p>
 
@@ -270,7 +270,7 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
             {service.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 bg-[#f5f5f5] group-hover:bg-[#1a1a1a]/10 text-[#1a1a1a] text-[10px] lg:text-[11px] font-medium transition-colors duration-500"
+                className="px-2.5 py-1 bg-[#f5f5f5] group-hover:bg-[#1a1a1a]/10 text-primary text-[10px] lg:text-[11px] font-medium transition-colors duration-500"
               >
                 {tag}
               </span>
@@ -279,14 +279,14 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
 
           {/* Bottom: Number + CTA */}
           <div className="flex items-end justify-between gap-4 pt-4 border-t border-black/10 group-hover:border-[#1a1a1a]/20 transition-colors duration-500">
-            <span className="text-[#1a1a1a]/15 font-heading font-bold text-3xl lg:text-4xl">
+            <span className="text-primary/15 font-heading font-bold text-3xl lg:text-4xl">
               {cardNumber}
             </span>
 
             {/* CTA Link */}
             <Link
               href={service.href}
-              className="inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold text-[#1a1a1a] group-hover:text-[#1a1a1a] transition-colors duration-300 group/btn"
+              className="inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold text-primary group-hover:text-primary transition-colors duration-300 group/btn"
             >
               <span className="border-b border-transparent group-hover/btn:border-[#1a1a1a] transition-colors duration-300">
                 {service.title}
@@ -324,16 +324,16 @@ export function ServicesSection({ surtitre, h2, description }: ServicesSectionPr
         >
           <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
             <div className="w-2 h-2 bg-[#D4FD00]" />
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-[#6b6b6b] uppercase">
+            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
               {piliersSurtitre}
             </span>
           </div>
 
-          <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-[#1a1a1a] mb-3 sm:mb-4">
+          <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-3 sm:mb-4">
             {piliersH2}
           </h2>
 
-          <p className="text-[#6b6b6b] text-[13px] sm:text-[15px] leading-relaxed max-w-xl">
+          <p className="text-muted text-[13px] sm:text-[15px] leading-relaxed max-w-xl">
             {piliersDescription}
           </p>
         </motion.div>

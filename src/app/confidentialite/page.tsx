@@ -5,6 +5,9 @@ import { ArrowLeft } from "lucide-react";
 export const metadata: Metadata = {
   title: "Politique de Confidentialité",
   description: "Politique de confidentialité et protection des données personnelles - Vizion",
+  alternates: {
+    canonical: "https://by-vizion.com/confidentialite",
+  },
   robots: {
     index: false,
     follow: false,

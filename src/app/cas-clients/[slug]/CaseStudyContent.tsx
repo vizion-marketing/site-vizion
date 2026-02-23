@@ -316,7 +316,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
     <main className="min-h-screen bg-white font-[var(--font-body)]">
       
       {/* HERO SECTION */}
-      <section className="relative pt-[120px] pb-[60px] md:pt-[140px] md:pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay" style={{ background: "#0c0c0a" }}>
+      <section className="relative pt-[120px] pb-[60px] md:pt-[140px] md:pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "#0c0c0a" }}>
         {/* Base + radial gradients jaune Vizion animés */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div
@@ -498,7 +498,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                     initial="initial"
                     whileInView="whileInView"
                     viewport={{ once: true }}
-                    className="rounded-none p-6 relative overflow-hidden grain-overlay"
+                    className="rounded-none p-6 relative overflow-hidden grain-overlay dark-section"
                     style={{ background: "#0c0c0a" }}
                   >
                     {/* Base + radial gradients jaune Vizion animés */}
@@ -556,7 +556,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                     initial="initial"
                     whileInView="whileInView"
                     viewport={{ once: true }}
-                    className="bg-black rounded-none p-6"
+                    className="bg-black rounded-none p-6 dark-section"
                   >
                     <h3 className="font-heading font-normal text-sm tracking-wider text-white mb-4">
                       Chiffres clés
@@ -790,7 +790,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="rounded-none p-8 md:p-16 text-center relative overflow-hidden grain-overlay"
+            className="rounded-none p-8 md:p-16 text-center relative overflow-hidden grain-overlay dark-section"
             style={{ background: "#0c0c0a" }}
           >
             {/* Base + radial gradients jaune Vizion animés */}

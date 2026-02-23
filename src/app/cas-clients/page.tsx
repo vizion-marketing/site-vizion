@@ -4,8 +4,8 @@ import { createMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "Cas Clients | Études de cas B2B",
-  description: "Découvrez nos études de cas B2B : franchise, SaaS, services, industrie, business local. Des résultats concrets et mesurables pour des PME et ETI.",
+  title: "Cas Clients — Résultats de notre agence marketing B2B",
+  description: "Études de cas de notre agence marketing à Toulouse : franchise, SaaS, industrie, services B2B. Résultats concrets et mesurables pour des PME et ETI accompagnées par Vizion.",
   path: "/cas-clients",
 });
 

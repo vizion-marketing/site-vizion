@@ -20,20 +20,20 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://by-vizion.com"),
   title: {
-    default: "Agence Marketing Produit B2B Toulouse | Vizion",
-    template: "%s | Vizion - Agence Marketing Produit B2B Toulouse",
+    default: "Agence Marketing Toulouse | Vizion — Stratégie B2B & Sales Enablement",
+    template: "%s | Vizion — Agence Marketing Toulouse",
   },
   description:
-    "Agence de marketing produit B2B à Toulouse. Vizion vous aide à clarifier, packager et vendre votre offre. Positionnement, messaging, tunnel de vente aligné. +70 entreprises accompagnées depuis 2021.",
+    "Vizion, agence marketing à Toulouse spécialisée en B2B. Positionnement, sales enablement, tunnel de vente aligné. +70 PME et ETI accompagnées depuis 2021.",
   keywords: [
-    "agence marketing produit B2B Toulouse",
-    "marketing produit Toulouse",
-    "agence marketing Toulouse",
-    "positionnement produit Toulouse",
-    "sales enablement Toulouse",
-    "go-to-market Toulouse",
-    "notoriété LinkedIn Toulouse",
-    "accompagnement marketing B2B Toulouse",
+    "agence marketing toulouse",
+    "agence marketing b2b toulouse",
+    "marketing produit toulouse",
+    "positionnement b2b toulouse",
+    "sales enablement toulouse",
+    "go-to-market toulouse",
+    "conseil marketing toulouse",
+    "accompagnement marketing b2b toulouse",
   ],
   authors: [{ name: "Vizion" }],
   openGraph: {
@@ -47,6 +47,19 @@ export const metadata: Metadata = {
   },
 };
 
+// WebSite schema — enables Google sitelinks search box
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://by-vizion.com/#website",
+  name: "Vizion — Agence Marketing Toulouse",
+  url: "https://by-vizion.com",
+  publisher: {
+    "@id": "https://by-vizion.com/#organization",
+  },
+  inLanguage: "fr-FR",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,6 +67,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className={`${dmSans.variable} antialiased`} suppressHydrationWarning>
         <SmoothScroller>
           <MotionProvider>

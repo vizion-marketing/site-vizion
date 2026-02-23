@@ -79,7 +79,7 @@ export function TestimonialCard({
         <blockquote
           className={`
             text-lg sm:text-xl md:text-2xl font-[var(--font-body)] font-normal leading-relaxed
-            ${isPartner ? "text-white/90" : "text-[#1a1a1a]"}
+            ${isPartner ? "text-white/90" : "text-primary"}
           `}
         >
           &ldquo;{quote}&rdquo;
@@ -101,7 +101,7 @@ export function TestimonialCard({
             <div
               className={`
                 font-[var(--font-body)] font-bold text-sm sm:text-base
-                ${isPartner ? "text-white" : "text-[#1a1a1a]"}
+                ${isPartner ? "text-white" : "text-primary"}
               `}
             >
               {author}
@@ -109,7 +109,7 @@ export function TestimonialCard({
             <div
               className={`
                 font-[var(--font-body)] text-xs sm:text-sm
-                ${isPartner ? "text-white/60" : "text-[#6b6b6b]"}
+                ${isPartner ? "text-white/60" : "text-muted"}
               `}
             >
               {role} — {company}
