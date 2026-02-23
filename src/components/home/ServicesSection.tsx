@@ -151,7 +151,7 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
         <div className="relative flex-1 mt-6 min-h-[180px] lg:min-h-[200px]">
           {/* Image */}
           <Image
-            src={service.image}
+            src={service.image!}
             alt={service.title}
             fill
             className="object-cover"
