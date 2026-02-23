@@ -5,32 +5,33 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const MANIFESTO_TITLE = "Votre offre est solide. Votre marché ne le sait pas encore.";
+const MANIFESTO_TITLE = "Nous croyons que le marketing B2B mérite mieux qu'un coup de communication.";
 
 const MANIFESTO_PARAGRAPHS = [
-  "Vous avez investi dans votre produit, recruté des commerciaux, lancé des campagnes. Pourtant, quand un prospect arrive sur votre site, il ne comprend pas ce que vous faites. Quand votre commercial argumente, il improvise. Quand votre client compare, il ne voit pas la différence.",
-  "Le problème n'est pas l'exécution. C'est l'absence de fondations. Pas de positionnement clair. Pas de message unifié. Pas de continuité entre le marketing et les ventes. Résultat : chaque livrable part dans une direction différente.",
-  "Vizion est une agence de marketing stratégique à Toulouse. Nous construisons le socle que personne ne pose : positionnement, architecture de message, tunnel de vente aligné. Chaque campagne, chaque page, chaque présentation commerciale découle de ces fondations.",
-  "Nous ne commençons jamais par produire. Nous diagnostiquons, nous challengeons, nous posons le cadre stratégique. Ensuite seulement, nous construisons, et tout est connecté, du premier clic publicitaire à la signature.",
-  "Nos clients ne nous consultent pas pour un logo ou un post LinkedIn. Ils viennent parce qu'ils veulent que leur offre devienne l'évidence sur leur marché.",
+  "En B2B, les cycles de vente durent des mois. Les décisions passent par des comités. Les décideurs comparent, challengent, arbitrent. Ils ne cherchent pas de la créativité. Ils veulent de la clarté, de la structure, des preuves.",
+  "Pourtant, trop d'entreprises abordent leur marketing comme si elles vendaient du grand public. Campagnes dispersées. Messages qui changent tous les trois mois. Équipes commerciales qui improvisent face à des acheteurs exigeants.",
+  "Le marketing magique, on n'y croit pas. Ce qui fonctionne en B2B, c'est la répétition. Un positionnement ancré. Un discours cohérent à chaque étape. Des fondations solides qui tiennent sur des cycles longs.",
+  "Vizion est une agence de marketing stratégique à Toulouse, spécialisée dans les cycles de vente complexes. Nous construisons le socle que personne ne pose : positionnement, architecture de message, alignement marketing-ventes. Ensuite seulement, nous produisons.",
+  "Nos clients ne viennent pas chercher un coup de communication. Ils cherchent la rigueur et l'exigence nécessaires pour transformer leur offre en référence sur leur marché.",
 ];
 
-/** Split text into character spans (grouped by word) for per-letter scroll animation */
-function CharSplit({ text, className, as: Tag = "p" }: { text: string; className?: string; as?: "p" | "h2" }) {
-  const words = text.split(" ");
+const MISSION_STATEMENT = "Notre mission : faire de votre produit une évidence.";
+
+/** Split text into lines for line-by-line scroll animation */
+function LineSplit({ text, className, as: Tag = "p" }: { text: string; className?: string; as?: "p" | "h2" }) {
+  // Split by sentence (period + space) for natural line breaks
+  const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+
   return (
     <Tag className={className}>
-      {words.map((word, wi) => (
-        <span key={wi} className="inline-block mr-[0.25em]">
-          {word.split("").map((char, ci) => (
-            <span
-              key={ci}
-              className="manifesto-char inline-block"
-              style={{ color: "rgba(26, 26, 26, 0.15)" }}
-            >
-              {char}
-            </span>
-          ))}
+      {sentences.map((sentence, idx) => (
+        <span
+          key={idx}
+          className="manifesto-line inline-block"
+          style={{ color: "rgba(26, 26, 26, 0.15)" }}
+        >
+          {sentence}
+          {idx < sentences.length - 1 && " "}
         </span>
       ))}
     </Tag>
@@ -49,23 +50,24 @@ export function IntroSection() {
 
     const mm = gsap.matchMedia();
 
-    // Desktop: scroll-scrubbed letter-by-letter color reveal
+    // Desktop & Mobile: line-by-line color reveal
     mm.add("(min-width: 768px)", () => {
       blocks.forEach((block) => {
-        const chars = block.querySelectorAll(".manifesto-char");
+        const lines = block.querySelectorAll(".manifesto-line");
 
         gsap.fromTo(
-          chars,
+          lines,
           { color: "rgba(26, 26, 26, 0.15)" },
           {
             color: "rgba(26, 26, 26, 1)",
-            ease: "none",
-            stagger: 0.01,
+            duration: 0.4,
+            ease: "power2.out",
+            stagger: 0.15,
             scrollTrigger: {
               trigger: block,
-              start: "top 85%",
-              end: "bottom 40%",
-              scrub: 1,
+              start: "top 80%",
+              end: "bottom 50%",
+              scrub: 1.2,
             },
           }
         );
@@ -76,22 +78,22 @@ export function IntroSection() {
       };
     });
 
-    // Mobile: simple reveal (whole block)
+    // Mobile: faster line-by-line reveal
     mm.add("(max-width: 767px)", () => {
       blocks.forEach((block) => {
-        const chars = block.querySelectorAll(".manifesto-char");
+        const lines = block.querySelectorAll(".manifesto-line");
 
         gsap.fromTo(
-          chars,
+          lines,
           { color: "rgba(26, 26, 26, 0.15)" },
           {
             color: "rgba(26, 26, 26, 1)",
-            duration: 0.6,
-            stagger: 0.005,
+            duration: 0.5,
+            stagger: 0.1,
             ease: "power2.out",
             scrollTrigger: {
               trigger: block,
-              start: "top 90%",
+              start: "top 85%",
               toggleActions: "play none none none",
             },
           }
@@ -161,7 +163,7 @@ export function IntroSection() {
 
         <div ref={contentRef} className="max-w-4xl space-y-6 sm:space-y-8 md:space-y-10">
           {/* Title */}
-          <CharSplit
+          <LineSplit
             as="h2"
             text={MANIFESTO_TITLE}
             className="manifesto-block font-heading font-medium text-[28px] sm:text-[38px] md:text-[48px] lg:text-[60px] xl:text-[68px] leading-[1.05] tracking-[-0.03em] mb-4 sm:mb-6 md:mb-8"
@@ -169,12 +171,38 @@ export function IntroSection() {
 
           {/* Paragraphs */}
           {MANIFESTO_PARAGRAPHS.map((paragraph, i) => (
-            <CharSplit
+            <LineSplit
               key={i}
               text={paragraph}
               className="manifesto-block text-[15px] sm:text-[17px] md:text-[19px] lg:text-[21px] leading-[1.65] font-light"
             />
           ))}
+
+          {/* Mission Statement */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="pt-6 sm:pt-8 md:pt-10"
+          >
+            <div className="relative inline-block">
+              {/* Glow effect */}
+              <div
+                className="absolute inset-0 blur-2xl opacity-30"
+                style={{
+                  background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.4) 0%, transparent 70%)",
+                }}
+              />
+              {/* Mission text */}
+              <p className="relative font-heading font-medium text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-primary">
+                Notre mission :{" "}
+                <span className="text-[#D4FD00] drop-shadow-[0_0_25px_rgba(212,253,0,0.4)]">
+                  faire de votre produit une évidence
+                </span>
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
