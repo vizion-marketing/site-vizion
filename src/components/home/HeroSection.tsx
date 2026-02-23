@@ -390,12 +390,12 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           </div>
 
           {/* Mobile Testimonial */}
-          <div className="lg:hidden mt-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3">
-            <div className="relative h-[80px] overflow-hidden">
+          <div className="lg:hidden mt-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-4">
+            <div className="relative min-h-[140px]">
               {TESTIMONIALS.map((testimonial, i) => (
                 <div
                   key={i}
-                  className="absolute inset-0 flex items-center gap-3"
+                  className="absolute inset-0 flex items-start gap-3"
                   style={{
                     opacity: i === testimonialIndex ? 1 : 0,
                     transform: `translateY(${i === testimonialIndex ? 0 : 10}px)`,
@@ -406,25 +406,25 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                   <Image
                     src={testimonial.image}
                     alt={testimonial.author}
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-[#D4FD00]/40 shrink-0"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-[#D4FD00]/40 shrink-0"
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-0.5 mb-1">
+                    <div className="flex items-center gap-0.5 mb-2">
                       {[...Array(5)].map((_, starIndex) => (
-                        <svg key={starIndex} width="10" height="10" viewBox="0 0 24 24" fill="#D4FD00" aria-hidden="true">
+                        <svg key={starIndex} width="12" height="12" viewBox="0 0 24 24" fill="#D4FD00" aria-hidden="true">
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                         </svg>
                       ))}
                     </div>
-                    <p className="text-[11px] leading-snug text-white line-clamp-2">
+                    <p className="text-[12px] leading-relaxed text-white mb-2">
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
-                    <div className="flex items-center gap-1 mt-1">
-                      <span className="text-white text-[10px] font-semibold">{testimonial.author}</span>
-                      <span className="text-white/40 text-[10px]">•</span>
-                      <span className="text-white/50 text-[9px]">{testimonial.role}</span>
+                    <div className="flex items-center gap-1.5 mt-2">
+                      <span className="text-white text-[11px] font-semibold">{testimonial.author}</span>
+                      <span className="text-white/40 text-[11px]">•</span>
+                      <span className="text-white/60 text-[10px]">{testimonial.role}</span>
                     </div>
                   </div>
                 </div>
@@ -434,10 +434,10 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
 
         </div>
 
-        {/* RIGHT IMAGE - mobile: hauteur raisonnable, moins de marge */}
+        {/* RIGHT IMAGE - masquée sur mobile, visible desktop */}
         <div
           ref={imageRef}
-          className="relative z-30 group overflow-visible aspect-[4/3] max-h-[280px] sm:max-h-[320px] md:max-h-[360px] lg:max-h-none lg:aspect-auto lg:h-full lg:min-h-[420px] mt-4 mb-2 sm:my-6 lg:my-0 opacity-0"
+          className="relative z-30 group overflow-visible hidden lg:block lg:aspect-auto lg:h-full lg:min-h-[420px] lg:my-0 opacity-0"
         >
           {/* Accent border frames */}
           <div className="absolute -inset-2 sm:-inset-3 border border-[#D4FD00]/20 rounded-lg pointer-events-none hidden lg:block" />

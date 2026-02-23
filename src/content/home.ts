@@ -298,7 +298,7 @@ export const homeContent: HomeContent = {
     h1: "Votre agence Marketing spécialiste du B2B à Toulouse",
     h1Highlight: "Toulouse",
     h1RotatingWords: ["offre", "produit", "innovation", "solution SaaS", "franchise", "service"],
-    baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialiste du B2B et des cycles de ventes longs.",
+    baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialisée dans le B2B et des cycles de ventes longs.",
     badges: [],
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
@@ -373,15 +373,15 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   piliers: {
     surtitre: "Notre méthodologie",
-    h2: "Un partenaire stratégique, au service de votre croissance.",
-    description: "La meilleure stratégie sans exécution reste une intention. L'exécution sans stratégie reste de l'agitation. C'est pourquoi nous faisons les deux : nous concevons le plan et nous le déployons, du positionnement à la signature.",
+    h2: "Vizion, un partenaire stratégique, au service de votre croissance",
+    description: "Vizion a développé des services structurants, conçus pour répondre aux enjeux concrets des entreprises B2B : clarifier le positionnement, structurer l'acquisition, équiper les commerciaux, automatiser les processus. Pas de prestations gadgets, seulement ce qui génère un impact mesurable sur votre croissance.",
     badgeText: "Notre approche",
     badgeStatus: "CONSEIL STRATÉGIQUE",
     piliers: [
       {
         numero: "01",
-        surtitre: "AUDIT & STRATÉGIE MARKETING",
-        titre: "Vous investissez sans savoir ce qui fonctionne vraiment",
+        surtitre: "Vous investissez sans savoir ce qui fonctionne vraiment",
+        titre: "Audit & stratégie marketing",
         description: "Votre marketing ne génère pas de résultats mesurables et vous ne savez pas pourquoi. Nous auditons votre positionnement, vos canaux et vos outils, puis nous structurons la feuille de route et pilotons sa mise en place. Direction marketing externalisée ou renfort ponctuel : nous nous adaptons à votre organisation. Pour que chaque euro investi repose sur un diagnostic solide et une exécution pilotée, pas sur des intuitions.",
         services: ["Audit marketing complet", "Analyse concurrentielle", "Diagnostic des canaux d'acquisition", "Feuille de route stratégique", "Direction marketing externalisée", "Cadrage budgétaire"],
         cta: "DEMANDER UN AUDIT"

@@ -70,6 +70,7 @@ export function AssetsSection() {
   const triggerRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState("siteweb");
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({});
   const lenis = useLenis();
   const snapTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isChangingTabRef = useRef(false);
@@ -81,6 +82,26 @@ export function AssetsSection() {
     const handler = () => setReducedMotion(mq.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  // Preload all images on mount for instant transitions
+  useEffect(() => {
+    const preloadImages = () => {
+      Object.entries(TAB_CONTENT).forEach(([key, tab]) => {
+        const img = new window.Image();
+        img.onload = () => {
+          setImagesLoaded(prev => ({ ...prev, [key]: true }));
+        };
+        img.onerror = () => {
+          setImagesLoaded(prev => ({ ...prev, [key]: false }));
+        };
+        img.src = tab.image;
+      });
+    };
+
+    // Start preloading after a small delay to not block initial render
+    const timer = setTimeout(preloadImages, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   const snapToNearestTab = useCallback(() => {
@@ -108,9 +129,14 @@ export function AssetsSection() {
       const start = st.start;
       const end = st.end;
       const targetScroll = start + progress * (end - start);
+
+      // Smoother easing function for click-triggered scrolls
       lenis.scrollTo(targetScroll, {
-        duration: 0.6,
-        easing: (t: number) => t * (2 - t),
+        duration: 0.5,
+        easing: (t: number) => {
+          // Custom ease-out-cubic for more natural feel
+          return 1 - Math.pow(1 - t, 3);
+        },
       });
     },
     [lenis]
@@ -172,12 +198,21 @@ export function AssetsSection() {
       if (isChangingTabRef.current || activeTab === tabId) return;
       isChangingTabRef.current = true;
 
+      // Clear any pending snap timeout to prevent conflicts
+      if (snapTimeoutRef.current) {
+        clearTimeout(snapTimeoutRef.current);
+        snapTimeoutRef.current = null;
+      }
+
+      // IMPORTANT: Change tab immediately for instant visual feedback
+      setActiveTab(tabId);
+
       if (reducedMotion) {
-        setActiveTab(tabId);
         setTimeout(() => { isChangingTabRef.current = false; }, 300);
       } else {
+        // Also trigger scroll animation for smooth transition
         goToTab(index);
-        setTimeout(() => { isChangingTabRef.current = false; }, 600);
+        setTimeout(() => { isChangingTabRef.current = false; }, 500);
       }
     },
     [reducedMotion, goToTab, activeTab]
@@ -221,7 +256,7 @@ export function AssetsSection() {
             className="max-w-3xl"
           >
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-4">
-              Nos livrables sont conçus pour vous aider à vendre, pas pour rester au fond d'un drive.
+              Des livrables d'excellence, conçus pour vous aider à vendre, pas pour rester au fond d'un drive.
             </h2>
 
             <p className="text-muted text-base font-[var(--font-body)] leading-relaxed">
@@ -292,16 +327,17 @@ export function AssetsSection() {
         </div>
 
         <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
-          {/* Glassmorphism Tabs with Icons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          role="tablist"
-          aria-label="Livrables marketing"
-          className="relative hidden md:inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1.5 mb-10 sm:mb-14"
-        >
+          {/* Glassmorphism Tabs with Icons - Scrollable on mobile */}
+        <div className="overflow-x-auto pb-2 mb-10 sm:mb-14 -mx-4 px-4 sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            role="tablist"
+            aria-label="Livrables marketing"
+            className="relative inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1.5 min-w-max"
+          >
           {TABS.map((tab, index) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -313,11 +349,12 @@ export function AssetsSection() {
                 onClick={(e) => handleTabClick(tab.id, index, e)}
                 className={`relative flex items-center gap-2 px-4 sm:px-5 py-2.5 text-[12px] sm:text-[13px] font-[var(--font-body)] font-medium transition-all duration-300 rounded-md ${
                   isActive
-                    ? "text-[#0c0c0a]"
-                    : "text-white/60 hover:text-white"
-                }`}
+                    ? "text-[#0c0c0a] cursor-default"
+                    : "text-white/60 hover:text-white hover:bg-white/5 active:scale-95 cursor-pointer"
+                } ${isChangingTabRef.current ? "opacity-70 pointer-events-none" : ""}`}
                 aria-selected={isActive}
                 aria-controls={`panel-${tab.id}`}
+                disabled={isChangingTabRef.current}
               >
                 {isActive && (
                   <motion.div
@@ -340,6 +377,7 @@ export function AssetsSection() {
             );
           })}
         </motion.div>
+        </div>
 
         {/* Content - Image behind, card overlay */}
         <div className="relative">
@@ -421,23 +459,40 @@ export function AssetsSection() {
             <div className="absolute -top-3 left-1/4 w-8 h-1 bg-[#D4FD00]/40 hidden lg:block" />
 
             <div className="relative aspect-[14/9] overflow-hidden rounded-t-lg">
-              <AnimatePresence initial={false}>
+              <AnimatePresence initial={false} mode="wait">
                 <motion.div
                   key={activeTab}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.25 }}
                   className="absolute inset-0"
                 >
                   <Image
                     src={content.image}
                     alt={content.title}
                     fill
-                    className="object-cover"
+                    className={`object-cover transition-all duration-300 ${
+                      imagesLoaded[activeTab] === false
+                        ? "blur-sm scale-105"
+                        : imagesLoaded[activeTab]
+                          ? "blur-0 scale-100"
+                          : "blur-sm scale-105"
+                    }`}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority={activeTab === "siteweb"}
+                    loading={activeTab === "siteweb" ? "eager" : "lazy"}
                   />
+
+                  {/* Loading skeleton overlay */}
+                  {!imagesLoaded[activeTab] && (
+                    <motion.div
+                      initial={{ opacity: 1 }}
+                      animate={{ opacity: 0 }}
+                      transition={{ duration: 0.3, delay: 0.2 }}
+                      className="absolute inset-0 bg-gradient-to-br from-[#D4FD00]/10 via-white/5 to-transparent animate-pulse"
+                    />
+                  )}
                 </motion.div>
               </AnimatePresence>
               {/* Subtle overlay gradient */}

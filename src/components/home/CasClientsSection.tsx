@@ -53,86 +53,6 @@ const CAS_CLIENTS = [
 
 const AUTO_SLIDE_INTERVAL = 6000;
 
-// Témoignages réels - mêmes données que le hero
-const TESTIMONIALS = [
-  {
-    id: 1,
-    quote: "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !",
-    author: "Thomas Ensenat",
-    role: "Fondateur",
-    company: "Ensenat Coaching",
-    avatar: "/images/clients/ensenat.avif",
-  },
-  {
-    id: 2,
-    quote: "Je recommande fortement cette agence toulousaine ! Équipe professionnelle et répondant à tous types de besoins. Lucas est mon Directeur Marketing externalisé et j'en suis ravie.",
-    author: "Tamia",
-    role: "Fondatrice",
-    company: "Tatamia",
-    avatar: "/images/clients/tatamia.avif",
-  },
-  {
-    id: 3,
-    quote: "Nous avons confié la refonte de notre site web à Lucas et son équipe, nous en sommes très satisfaits bien que tout ait été fait à distance, depuis Toulouse jusqu'à Paris.",
-    author: "Barthélémy Delcampe",
-    role: "Responsable développement",
-    company: "Quai Liberté",
-    avatar: "/images/clients/quai-liberte.avif",
-  },
-  {
-    id: 4,
-    quote: "Hugo nous accompagne depuis un an maintenant pour restructurer tout notre CRM. Nous en sommes très satisfaits.",
-    author: "Olivier Mounié",
-    role: "Dirigeant",
-    company: "Ojetables",
-    avatar: "/images/clients/placeholder.avif",
-  },
-  {
-    id: 5,
-    quote: "Vizion m'a accompagné dans le développement de mon image sur LinkedIn. Nous avons dépassé le million d'impressions en quelques mois, j'en suis très satisfait.",
-    author: "Olivier Bas",
-    role: "Vice-Président",
-    company: "Havas Paris",
-    avatar: "/images/clients/olivierbas.avif",
-  },
-  {
-    id: 6,
-    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, aide à la vente, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
-    author: "Clément Carrere",
-    role: "Co-fondateur",
-    company: "easyVirtual.tours",
-    avatar: "/images/clients/easyvirtual.avif",
-  },
-];
-
-// Composant carte témoignage
-function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] }) {
-  return (
-    <div className="bg-white p-5 border border-[#1a1a1a]/5 hover:border-[#D4FD00]/50 transition-all duration-300">
-      <div className="flex items-start gap-3 mb-4">
-        <Image
-          src={testimonial.avatar}
-          alt={testimonial.author}
-          width={40}
-          height={40}
-          className="w-10 h-10 object-cover"
-        />
-        <div>
-          <p className="font-heading font-semibold text-[14px] text-primary">
-            {testimonial.author}
-          </p>
-          <p className="text-[12px] text-muted">
-            {testimonial.role}, {testimonial.company}
-          </p>
-        </div>
-      </div>
-      <p className="text-[14px] text-primary/80 font-[var(--font-body)] leading-relaxed">
-        "{testimonial.quote}"
-      </p>
-    </div>
-  );
-}
-
 export function CasClientsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -236,7 +156,7 @@ export function CasClientsSection() {
               </span>
             </div>
             <h2 className="font-heading font-medium text-[24px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
-              Ils sont devenus l'évidence sur leur marché
+              Nos clients vous parlent de leur expérience aux côtés de notre agence Marketing
             </h2>
           </div>
 
@@ -414,7 +334,7 @@ export function CasClientsSection() {
             {/* Right - Secondary Image + Quote */}
             <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4 h-[320px] sm:h-[360px] md:h-[400px] lg:h-full">
               {/* Secondary Image + Author glassmorphism badge */}
-              <div className="relative h-[50%] sm:h-[55%] overflow-hidden">
+              <div className="relative h-[60%] sm:h-[55%] overflow-hidden">
                 <Image
                   src={currentCase.secondaryImage}
                   alt={`${currentCase.company} - secondaire`}
@@ -475,57 +395,6 @@ export function CasClientsSection() {
               <span className="text-[14px] text-muted font-[var(--font-body)]">
                 {currentCase.stats.label}
               </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Testimonials Marquee Section - hauteur réduite sur mobile */}
-        <div className="mt-6 sm:mt-8">
-          <div className="relative h-[380px] sm:h-[440px] md:h-[500px] overflow-hidden">
-            {/* Gradient overlays for fade effect */}
-            <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#fafafa] to-transparent z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#fafafa] to-transparent z-10 pointer-events-none" />
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full">
-              {/* Column 1 - Scroll Up */}
-              <div className="relative overflow-hidden">
-                <motion.div
-                  animate={{ y: ["0%", "-50%"] }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="flex flex-col gap-4"
-                >
-                  {[...TESTIMONIALS.slice(0, 2), ...TESTIMONIALS.slice(0, 2)].map((testimonial, idx) => (
-                    <TestimonialCard key={`col1-${testimonial.id}-${idx}`} testimonial={testimonial} />
-                  ))}
-                </motion.div>
-              </div>
-
-              {/* Column 2 - Scroll Down */}
-              <div className="relative overflow-hidden hidden md:block">
-                <motion.div
-                  initial={{ y: "-50%" }}
-                  animate={{ y: "0%" }}
-                  transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-                  className="flex flex-col gap-4"
-                >
-                  {[...TESTIMONIALS.slice(2, 4), ...TESTIMONIALS.slice(2, 4)].map((testimonial, idx) => (
-                    <TestimonialCard key={`col2-${testimonial.id}-${idx}`} testimonial={testimonial} />
-                  ))}
-                </motion.div>
-              </div>
-
-              {/* Column 3 - Scroll Up */}
-              <div className="relative overflow-hidden hidden md:block">
-                <motion.div
-                  animate={{ y: ["0%", "-50%"] }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                  className="flex flex-col gap-4"
-                >
-                  {[...TESTIMONIALS.slice(4, 6), ...TESTIMONIALS.slice(4, 6)].map((testimonial, idx) => (
-                    <TestimonialCard key={`col3-${testimonial.id}-${idx}`} testimonial={testimonial} />
-                  ))}
-                </motion.div>
-              </div>
             </div>
           </div>
         </div>
