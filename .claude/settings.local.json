@@ -21,7 +21,20 @@
       "Bash(timeout:*)",
       "Bash(del \"c:\\\\Users\\\\Lucas Gonzalez\\\\Documents\\\\GitHub\\\\site-vizion\\\\src\\\\components\\\\HeroSection.tsx\")",
       "Bash(npx sharp-cli:*)",
-      "Bash(xargs:*)"
+      "Bash(xargs:*)",
+      "Bash(vercel --version:*)",
+      "Bash(vercel:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Bash(node -e:*)",
+      "Bash(npx --yes sharp-cli:*)",
+      "Read(//c/Users/**)",
+      "Bash(ls:*)",
+      "Read(//c/Users/Lucas Gonzalez/Documents/GitHub/site-vizion/**)",
+      "Bash(node scripts/convert-images.js:*)",
+      "Bash(git reset:*)",
+      "Bash(node scripts/convert-automatisation.js:*)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Lucas Gonzalez\\OneDrive\\Bureau\\Apps\\site-vizion"

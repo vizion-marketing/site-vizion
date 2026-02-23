@@ -1,0 +1,17 @@
+# Browserslist configuration
+# Targets modern browsers that support ES6+ features natively
+# This reduces unnecessary polyfills and transpilation
+
+# Production browsers
+> 0.5%
+last 2 versions
+Firefox ESR
+not dead
+not IE 11
+not op_mini all
+
+# Modern browsers with ES2020+ support
+Chrome >= 80
+Firefox >= 75
+Safari >= 13.1
+Edge >= 80

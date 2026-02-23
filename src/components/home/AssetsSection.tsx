@@ -474,10 +474,10 @@ export function AssetsSection() {
                     fill
                     className={`object-cover transition-all duration-300 ${
                       imagesLoaded[activeTab] === false
-                        ? "blur-sm scale-105"
+                        ? "opacity-60 scale-105"
                         : imagesLoaded[activeTab]
-                          ? "blur-0 scale-100"
-                          : "blur-sm scale-105"
+                          ? "opacity-100 scale-100"
+                          : "opacity-60 scale-105"
                     }`}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority={activeTab === "siteweb"}

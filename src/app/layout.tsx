@@ -69,6 +69,12 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        {/* Preconnect to external origins for faster resource loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
