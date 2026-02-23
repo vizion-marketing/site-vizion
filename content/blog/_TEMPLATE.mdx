@@ -1,0 +1,202 @@
+---
+# ============================================================================
+# TEMPLATE ARTICLE VIZION - Version simplifiée
+# ============================================================================
+# 1. Dupliquer ce fichier et renommer : slug-de-article.mdx
+# 2. Remplir les champs ci-dessous
+# 3. Écrire le contenu
+# 4. Tester avec npm run dev
+# 5. Publier (draft: false)
+# ============================================================================
+
+title: "Titre de l'article (50-60 caractères max)"
+description: "Meta description 150-160 caractères. Inclure mot-clé + Vizion + Toulouse pour SEO local. Ajouter CTA."
+date: 2026-02-24
+dateModified: 2026-02-24
+author: Lucas Gonzalez
+draft: true
+
+category: "Product Marketing"
+
+# ⚠️ IMPORTANT : Internal Linking Automatique
+# Les tags ci-dessous servent à 2 choses :
+# 1. Catégorisation SEO classique
+# 2. GÉNÉRATION AUTOMATIQUE de suggestions d'articles similaires
+#
+# Le système analyse automatiquement les tags et affiche en fin d'article
+# une section "Vous aimerez aussi" avec 2-3 articles ayant des tags communs.
+#
+# 🎯 RÈGLES POUR LES TAGS :
+# - Utiliser 4-6 tags par article
+# - Mix : 2-3 tags généraux + 2-3 tags spécifiques
+# - Être cohérent entre les articles (réutiliser les mêmes tags)
+# - Éviter les doublons (ex: "marketing b2b" ET "b2b marketing")
+#
+# ✅ Bon exemple :
+tags:
+  - product marketing      # Général (lie aux autres articles PMM)
+  - stratégie b2b         # Général (lie aux articles stratégie)
+  - positionnement        # Spécifique
+  - go-to-market          # Spécifique
+  - pme                   # Audience cible
+#
+# ❌ Mauvais exemple :
+# tags:
+#   - marketing            # Trop vague
+#   - business             # Trop vague
+#   - guide                # Non pertinent
+#   - 2024                 # Inutile
+
+featuredImage: https://images.unsplash.com/photo-XXXXXX?q=80&w=2400&auto=format&fit=crop
+readingTime: "8 min"
+
+# Resources externes (2-4 recommandés)
+resources:
+  - title: "Notre accompagnement Marketing Produit"
+    url: /services
+    type: internal
+    description: "Découvrez nos services de structuration marketing"
+
+  - title: "Source externe crédible (McKinsey, Gartner...)"
+    url: https://www.mckinsey.com/
+    type: external
+    description: "Description de la ressource"
+
+# CTA de fin d'article
+ctaTitle: "Besoin d'aide pour [action liée au sujet] ?"
+ctaDescription: "Réservez un audit gratuit de 30 minutes pour identifier les opportunités de croissance."
+ctaLink: /contact
+
+# FAQ pour featured snippets (⚠️ IMPORTANT pour SEO)
+faq:
+  - question: "Question 1 : vraie requête Google"
+    answer: "Réponse directe en 2-3 phrases max. Inclure mots-clés naturellement."
+
+  - question: "Question 2 : issue de 'People also ask'"
+    answer: "Réponse claire et concise qui donne la réponse immédiatement."
+
+  - question: "Question 3 : objection courante"
+    answer: "Traiter l'objection avec des faits et données."
+
+---
+
+## Introduction
+
+[Votre introduction ici. Structure recommandée :]
+- Hook (question, stat, problème)
+- Contexte (2-3 phrases)
+- Promesse de valeur (ce que le lecteur va apprendre)
+
+> "Citation pertinente ou statistique marquante"
+
+## Section 1 : [Titre H2 avec mot-clé]
+
+[Développer le premier point majeur]
+
+### Sous-section 1.1
+
+[Contenu + exemples concrets]
+
+### Sous-section 1.2
+
+[Continuer le développement]
+
+## Section 2 : [Titre H2 avec mot-clé]
+
+[Deuxième grande idée]
+
+## Section 3 : Cas d'usage concrets
+
+[Toujours inclure des exemples réels]
+
+### Cas #1 : [Secteur]
+
+**Contexte :** [Situation de départ]
+**Action :** [Ce qui a été fait]
+**Résultat :** [Métriques, impact]
+
+## Checklist : [Action concrète]
+
+[Terminer par du actionnable]
+
+- [ ] Action 1
+- [ ] Action 2
+- [ ] Action 3
+- [ ] Action 4
+- [ ] Action 5
+
+## Conclusion
+
+[Récapitulatif en 2-3 phrases + CTA clair vers prochaine étape]
+
+<!--
+============================================================================
+SYSTÈME D'INTERNAL LINKING AUTOMATIQUE
+============================================================================
+
+🎯 COMMENT ÇA FONCTIONNE ?
+
+Quand vous publiez cet article, le système analyse automatiquement les tags
+et génère une section "Vous aimerez aussi" en fin d'article.
+
+ÉTAPES AUTOMATIQUES :
+1. Le système lit vos tags
+2. Compare avec tous les autres articles publiés
+3. Calcule un score de similarité (nombre de tags communs)
+4. Affiche les 3 articles les plus pertinents
+5. Met à jour TOUS les articles existants (pas besoin de les modifier)
+
+EXEMPLE CONCRET :
+
+Votre article a ces tags :
+→ ["product marketing", "stratégie b2b", "positionnement"]
+
+Le système trouve automatiquement :
+→ Article A : 2 tags communs = 66% similarité ✅ Suggéré !
+→ Article B : 1 tag commun = 33% similarité ⚠️ Suggéré si pas d'autre
+→ Article C : 0 tag commun = 0% similarité ❌ Non suggéré
+
+AFFICHAGE EN FIN D'ARTICLE :
+
+[Votre contenu...]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## Vous aimerez aussi
+
+💡 ARTICLE CONNEXE
+[Product Marketing] 8 min
+Comment définir son positionnement B2B
+Lire l'article →
+
+💡 ARTICLE CONNEXE
+[Sales Enablement] 6 min
+Guide complet Sales Enablement
+Lire l'article →
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[Resources...]
+[Share Buttons...]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ AUCUNE ACTION MANUELLE REQUISE !
+
+Vous n'avez PAS besoin de :
+❌ Lister les articles à suggérer
+❌ Créer des liens manuellement
+❌ Mettre à jour les anciens articles
+❌ Configurer quoi que ce soit
+
+Le système fait TOUT automatiquement dès que vous :
+✅ Ajoutez des tags pertinents
+✅ Publiez l'article (draft: false)
+
+IMPACT ATTENDU :
+→ +40% pages vues par session
+→ +25% temps passé sur le site
+→ +15% trafic organique (SEO boost)
+
+Pour plus d'infos : INTERNAL-LINKING-GUIDE.md
+
+============================================================================
+-->

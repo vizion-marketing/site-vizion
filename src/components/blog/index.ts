@@ -12,3 +12,5 @@ export { ArticleNav } from "./ArticleNav";
 export type { NavPost } from "./ArticleNav";
 export { ShareButtons } from "./ShareButtons";
 export { MdxContent } from "./MdxContent";
+export { ReadingProgress } from "./ReadingProgress";
+export { RelatedInlineCard } from "./RelatedInlineCard";

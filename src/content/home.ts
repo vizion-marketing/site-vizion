@@ -280,7 +280,7 @@ export const homeContent: HomeContent = {
       "agence marketing b2b toulouse",
       "agence marketing b2b",
       "marketing produit toulouse",
-      "aide a la vente toulouse",
+      "aide à la vente toulouse",
       "positionnement b2b toulouse",
       "agence marketing digital toulouse",
       "conseil marketing toulouse",

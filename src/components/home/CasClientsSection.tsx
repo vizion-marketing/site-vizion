@@ -324,9 +324,9 @@ export function CasClientsSection() {
             </motion.div>
 
             {/* Right - Secondary Image + Quote */}
-            <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4 h-[320px] sm:h-[360px] md:h-[400px] lg:h-full">
+            <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4 h-[480px] sm:h-[520px] md:h-[560px] lg:h-full">
               {/* Secondary Image + Author glassmorphism badge */}
-              <div className="relative h-[70%] sm:h-[65%] overflow-hidden">
+              <div className="relative h-[75%] overflow-hidden">
                 <Image
                   src={currentCase.secondaryImage}
                   alt={`${currentCase.company} - secondaire`}

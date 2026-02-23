@@ -9,6 +9,7 @@ interface ArticleHeroProps {
   title: string;
   category: string;
   date: string;
+  dateModified?: string;
   author: string;
   readingTime: string;
   featuredImage?: string;
@@ -19,6 +20,7 @@ export function ArticleHero({
   title,
   category,
   date,
+  dateModified,
   author,
   readingTime,
   featuredImage,
@@ -90,6 +92,24 @@ export function ArticleHero({
                 {readingTime}
               </div>
             </div>
+
+            {/* Last Updated Badge - SEO freshness signal */}
+            {dateModified && dateModified !== date && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#D4FD00]/10 border border-[#D4FD00]/30 rounded-full mt-2"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-50" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4FD00]" />
+                </span>
+                <span className="text-[10px] font-medium tracking-wide text-white/80">
+                  Mis à jour le {dateModified}
+                </span>
+              </motion.div>
+            )}
 
             {/* Tags */}
             {tags.length > 0 && (

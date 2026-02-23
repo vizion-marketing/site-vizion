@@ -6,37 +6,29 @@ import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import { homeContent } from "@/content/home";
 
-const ARTICLES = [
-  {
-    slug: "pourquoi-marketing-produit-b2b",
-    category: "Marketing Produit",
-    title: "Pourquoi le marketing produit est la clé de votre croissance B2B",
-    excerpt: "Le marketing produit n'est pas un luxe. C'est ce qui sépare les offres qui vendent de celles qui stagnent.",
-    readTime: "6 min",
-    date: "12 Jan 2025",
-    image: "/images/blog/product-marketing.avif",
-  },
-  {
-    slug: "sales-enablement-guide-complet",
-    category: "Aide à la vente",
-    title: "Aide à la vente : le guide complet pour équiper vos commerciaux",
-    excerpt: "Vos commerciaux perdent 30% de leur temps à chercher des contenus. Voici comment y remédier.",
-    readTime: "8 min",
-    date: "5 Jan 2025",
-    image: "/images/blog/sales-enablement.avif",
-  },
-  {
-    slug: "ia-marketing-b2b-cas-usage",
-    category: "Intelligence Artificielle",
-    title: "IA et marketing B2B : 5 cas d'usage concrets pour gagner du temps",
-    excerpt: "L'IA ne remplace pas la stratégie. Mais elle accélère tout ce qui vient après.",
-    readTime: "5 min",
-    date: "28 Dec 2024",
-    image: "/images/blog/marketingb2b-ia.avif",
-  },
-];
+interface BlogSectionProps {
+  articles: Array<{
+    slug: string;
+    title: string;
+    description?: string;
+    date: string;
+    category?: string;
+    readingTime?: string;
+    featuredImage?: string;
+  }>;
+}
 
-export function BlogSection() {
+// Format date for display
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+export function BlogSection({ articles }: BlogSectionProps) {
   return (
     <section id="blog" className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden bg-white">
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -84,7 +76,7 @@ export function BlogSection() {
 
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {ARTICLES.map((article, index) => (
+          {articles.map((article, index) => (
             <motion.article
               key={article.slug}
               initial={{ opacity: 0, y: 20 }}
@@ -99,7 +91,7 @@ export function BlogSection() {
                 {/* Image */}
                 <div className="aspect-[16/10] overflow-hidden relative">
                   <Image
-                    src={article.image}
+                    src={article.featuredImage || "/images/blog/placeholder.avif"}
                     alt={article.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -111,13 +103,17 @@ export function BlogSection() {
                 <div className="p-5 sm:p-6">
                   {/* Category & Read Time */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="px-2.5 py-1 bg-[#D4FD00]/20 text-[10px] font-bold tracking-wide text-primary rounded">
-                      {article.category}
-                    </span>
-                    <div className="flex items-center gap-1 text-[#999]">
-                      <Clock size={12} />
-                      <span className="text-[11px] font-medium">{article.readTime}</span>
-                    </div>
+                    {article.category && (
+                      <span className="px-2.5 py-1 bg-[#D4FD00]/20 text-[10px] font-bold tracking-wide text-primary rounded">
+                        {article.category}
+                      </span>
+                    )}
+                    {article.readingTime && (
+                      <div className="flex items-center gap-1 text-[#999]">
+                        <Clock size={12} />
+                        <span className="text-[11px] font-medium">{article.readingTime}</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Title */}
@@ -125,14 +121,16 @@ export function BlogSection() {
                     {article.title}
                   </h3>
 
-                  {/* Excerpt */}
-                  <p className="text-muted text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed line-clamp-2 mb-4">
-                    {article.excerpt}
-                  </p>
+                  {/* Description */}
+                  {article.description && (
+                    <p className="text-muted text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed line-clamp-2 mb-4">
+                      {article.description}
+                    </p>
+                  )}
 
                   {/* Date */}
                   <span className="text-[11px] font-medium text-[#999] tracking-wide">
-                    {article.date}
+                    {formatDate(article.date)}
                   </span>
                 </div>
               </Link>

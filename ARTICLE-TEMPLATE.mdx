@@ -1,0 +1,424 @@
+---
+# ============================================================================
+# TEMPLATE ARTICLE BLOG VIZION
+# ============================================================================
+# Ce template contient tous les champs nécessaires pour créer un article
+# optimisé SEO, avec rich snippets et maximum d'engagement.
+#
+# INSTRUCTIONS :
+# 1. Copier ce fichier dans content/blog/
+# 2. Renommer : nom-article-seo-friendly.mdx
+# 3. Remplir TOUS les champs marqués [REQUIS]
+# 4. Remplir les champs [RECOMMANDÉ] pour SEO optimal
+# 5. Supprimer les commentaires # avant publication
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# MÉTADONNÉES DE BASE [REQUIS]
+# ----------------------------------------------------------------------------
+
+title: "Titre de l'article : clair, avec mot-clé principal, 50-60 caractères"
+# Règles title :
+# - Commencer par mot-clé principal si possible
+# - Être précis et engageant (pensez CTR)
+# - Éviter "comment" si pas nécessaire
+# - Ex: "Product Marketing B2B : Le guide complet 2026"
+
+description: "Meta description SEO-optimisée, 150-160 caractères avec appel à l'action. Inclure 'Vizion' et 'Toulouse' pour SEO local. Ex: Guide complet du product marketing pour PME. Positionnement, go-to-market, cas d'usage. Par Vizion, agence marketing B2B Toulouse."
+# Règles description :
+# - 150-160 caractères MAX (tronqué après)
+# - Inclure mot-clé principal
+# - Ajouter CTA ("Découvrez", "Apprenez", "Guide")
+# - Mention locale : "Vizion" + "Toulouse" ou "agence marketing Toulouse"
+# - Penser CTR : pourquoi cliquer ?
+
+date: 2026-02-24
+# Format : YYYY-MM-DD
+# Date de première publication
+
+dateModified: 2026-02-24
+# [RECOMMANDÉ] Date de dernière mise à jour
+# ⚠️ IMPORTANT pour SEO : Google valorise le contenu frais
+# Si pas de MAJ : laisser = date
+# Badge "Mis à jour récemment" dans SERP si récent
+
+author: Lucas Gonzalez
+# Nom de l'auteur (sera affiché + dans schema)
+# Options : "Lucas Gonzalez", "Hugo Schuppe", "Équipe Vizion"
+
+draft: false
+# true = non publié, false = publié
+# Les drafts ne sont pas générés dans le build
+
+# ----------------------------------------------------------------------------
+# CATÉGORIE & TAGS [REQUIS]
+# ----------------------------------------------------------------------------
+
+category: "Product Marketing"
+# Catégories disponibles :
+# - "Product Marketing"
+# - "Sales Enablement"
+# - "IA for Sales"
+# - "Stratégie Marketing"
+# - "Positionnement"
+# - "Cas Client"
+# Créer nouvelle catégorie si nécessaire
+
+tags:
+  - product marketing
+  - stratégie b2b
+  - positionnement
+  - go-to-market
+  - pme
+# 4-6 tags recommandés
+#
+# ⚠️ NOUVEAU : INTERNAL LINKING AUTOMATIQUE
+# Les tags servent maintenant à 2 choses :
+# 1. SEO classique (keywords, catégorisation)
+# 2. GÉNÉRATION AUTOMATIQUE de suggestions d'articles similaires
+#
+# Le système analyse les tags et affiche automatiquement en fin d'article
+# une section "Vous aimerez aussi" avec 2-3 articles ayant des tags communs.
+#
+# 🎯 IMPACT : +40% engagement, +15% SEO, +25% temps sur site
+#
+# Règles pour maximiser l'internal linking :
+# - Minuscules, pas de majuscules
+# - Mots-clés SEO pertinents
+# - Mix : généraux (2-3) + spécifiques (2-3) pour meilleur matching
+# - Réutiliser les tags existants pour créer des clusters d'articles
+# - Éviter les doublons de mots (ex: "marketing b2b" + "b2b marketing")
+#
+# ✅ Bon exemple (lie bien aux autres articles) :
+#    - product marketing      (général, réutilisé)
+#    - stratégie b2b         (général, réutilisé)
+#    - positionnement        (spécifique)
+#    - go-to-market          (spécifique)
+#
+# ❌ Mauvais exemple (tags trop vagues ou uniques) :
+#    - marketing             (trop vague)
+#    - guide                 (non pertinent)
+#    - article-specifique-xyz (trop unique, ne matchera rien)
+#
+# Pour plus d'infos : voir INTERNAL-LINKING-GUIDE.md
+
+# ----------------------------------------------------------------------------
+# IMAGE MISE EN AVANT [REQUIS]
+# ----------------------------------------------------------------------------
+
+featuredImage: https://images.unsplash.com/photo-XXXXXX?q=80&w=2400&auto=format&fit=crop
+# URL externe (Unsplash) ou chemin local (/images/blog/mon-image.avif)
+# Specs :
+# - Ratio 21:9 (ultra-wide) pour hero
+# - Minimum 1200x630 (optimal 2400x1029)
+# - Format AVIF recommandé (ou WebP, JPG en dernier recours)
+# - Alt text = title de l'article (automatique)
+
+# ----------------------------------------------------------------------------
+# TEMPS DE LECTURE [AUTO-CALCULÉ]
+# ----------------------------------------------------------------------------
+
+readingTime: "8 min"
+# Calculé automatiquement par Contentlayer
+# Format : "X min" ou "X min de lecture"
+# Si non calculé : 250 mots/min en moyenne
+
+# ----------------------------------------------------------------------------
+# RESOURCES EXTERNES [RECOMMANDÉ]
+# ----------------------------------------------------------------------------
+# Ces ressources apparaissent dans le composant ResourcesLibrary
+# en fin d'article. Très bon pour E-E-A-T (sources crédibles).
+
+resources:
+  - title: "Notre accompagnement Marketing Produit"
+    url: /services/marketing-produit
+    type: internal
+    description: "Découvrez comment nous aidons les PME à structurer leur marketing produit"
+
+  - title: "Product Marketing Alliance - Certification PMM"
+    url: https://productmarketingalliance.com/
+    type: external
+    description: "Certification internationale reconnue en product marketing"
+
+  - title: "McKinsey - State of B2B Marketing 2026"
+    url: https://www.mckinsey.com/
+    type: external
+    description: "Rapport annuel sur les tendances du marketing B2B"
+
+# Règles resources :
+# - 2-4 ressources (ni trop, ni pas assez)
+# - Mix : 1 internal (service/contact) + 2-3 external (sources crédibles)
+# - Types : internal ou external
+# - External = sources d'autorité (McKinsey, Gartner, HBR, etc.)
+
+# ----------------------------------------------------------------------------
+# CTA DE FIN D'ARTICLE [RECOMMANDÉ]
+# ----------------------------------------------------------------------------
+# Ce CTA apparaît en bas de l'article, dans ArticleCTA component.
+# Personnaliser selon le sujet de l'article.
+
+ctaTitle: "Besoin d'aide pour structurer votre marketing produit ?"
+ctaDescription: "Réservez un audit gratuit de 30 minutes avec Lucas pour identifier les opportunités de croissance de votre offre."
+ctaLink: /contact
+# Options ctaLink :
+# - /contact (défaut)
+# - /services/[slug]
+# - /cas-clients/[slug]
+# - URL externe (ex: Calendly)
+
+# ----------------------------------------------------------------------------
+# FAQ SCHEMA [TRÈS RECOMMANDÉ] 🎯
+# ----------------------------------------------------------------------------
+# ⚠️ IMPACT ÉNORME : Featured snippets Google, "People also ask"
+# ROI attendu : +40% CTR sur requêtes informationnelles
+
+faq:
+  - question: "Qu'est-ce que le product marketing en B2B ?"
+    answer: "Le product marketing B2B est la discipline qui fait le pont entre le produit et ses utilisateurs. Il englobe le positionnement, l'architecture de message, le go-to-market et l'aide à la vente. Son objectif : faciliter la décision d'achat."
+
+  - question: "Combien coûte un product marketer en France ?"
+    answer: "Le salaire d'un Product Marketing Manager en France varie de 45K€ à 75K€ selon l'expérience. En freelance, le TJM se situe entre 500€ et 900€. Une alternative : externaliser à une agence comme Vizion (4500-8000€/mois)."
+
+  - question: "Quelle est la différence entre product marketing et marketing traditionnel ?"
+    answer: "Le marketing traditionnel se concentre sur la promotion et l'acquisition. Le product marketing intervient en amont : il définit le positionnement, construit le discours et équipe les équipes commerciales pour vendre efficacement."
+
+# Règles FAQ :
+# - 3-5 questions (optimal pour Google)
+# - Questions = vraies requêtes Google (vérifier "People also ask")
+# - Réponses = 2-3 phrases max, précises et complètes
+# - Inclure mots-clés naturellement
+# - Penser featured snippet : répondre directement
+
+# ----------------------------------------------------------------------------
+# AUTHOR BIO ENRICHI [RECOMMANDÉ]
+# ----------------------------------------------------------------------------
+# Améliore E-E-A-T (Expertise, Experience, Authority, Trust)
+
+authorBio:
+  name: "Lucas Gonzalez"
+  role: "Fondateur & Expert Product Marketing"
+  avatar: "/team/lucas-gonzalez.avif"
+  linkedIn: "https://www.linkedin.com/in/lucasgonzalez"
+  bio: "15 ans d'expérience en marketing B2B. Classé parmi les 300 personnalités les plus influentes sur LinkedIn France. A accompagné +70 entreprises dans leur stratégie marketing."
+  expertise:
+    - "Product Marketing"
+    - "Positionnement B2B"
+    - "Sales Enablement"
+    - "Go-to-Market Strategy"
+
+# Si pas renseigné : bio générique Vizion sera affichée
+
+# ----------------------------------------------------------------------------
+# MÉTADONNÉES AVANCÉES [OPTIONNEL]
+# ----------------------------------------------------------------------------
+
+# SEO avancé
+canonicalUrl: "https://by-vizion.com/blog/mon-article"
+# ⚠️ Laisser vide sauf si contenu syndiqué/republié
+
+# Social Media
+ogImage: "/images/blog/og-custom.avif"
+# Image OpenGraph custom (si différente de featuredImage)
+# Specs : 1200x630px
+
+twitterHandle: "@vizion_marketing"
+# Compte Twitter à mentionner dans le partage
+
+# Performance
+priority: 0.8
+# Priorité dans le sitemap.xml (0.0 à 1.0)
+# 1.0 = page la plus importante
+# 0.5 = défaut
+# Augmenter si article pilier
+
+# Série d'articles
+series: "Guide complet Product Marketing"
+seriesPart: 1
+# Si l'article fait partie d'une série
+
+---
+
+<!--
+============================================================================
+STRUCTURE DE CONTENU RECOMMANDÉE
+============================================================================
+
+Suivre cette structure pour optimiser lisibilité, SEO et engagement :
+
+1. Introduction (100-150 mots)
+   - Hook : question, stat, problème
+   - Contexte rapide
+   - Ce que le lecteur va apprendre
+
+2. Table des matières (auto-générée par TOC component)
+
+3. Section 1 : Contexte / Problématique
+   - Pourquoi c'est important
+   - Enjeux pour le lecteur
+
+4. Section 2-4 : Cœur du contenu
+   - 1 idée = 1 section
+   - H2 pour grandes sections
+   - H3 pour sous-sections
+   - Exemples concrets + visuels
+
+5. Section finale : Récapitulatif / Prochaines étapes
+   - Résumé des points clés
+   - Actions à prendre
+   - Lien vers ressources
+
+6. FAQ (optionnel, dans le frontmatter)
+
+RÈGLES D'ÉCRITURE :
+- Paragraphes courts (3-4 lignes max)
+- 1 idée = 1 paragraphe
+- Phrases courtes (15-20 mots)
+- Listes à puces pour clarté
+- Exemples concrets > théorie
+- Ton : expert mais accessible
+- Éviter jargon inutile
+
+ÉLÉMENTS VISUELS :
+- 1 image tous les 300-400 mots
+- Citations en blockquote pour aérer
+- Listes à puces / numérotées
+- Tableaux pour comparaisons
+- Infographies si possible
+
+============================================================================
+-->
+
+## Introduction
+
+[Commencer ici votre introduction. Hook + contexte + promesse de valeur.]
+
+Le marketing B2B a changé. Ce qui fonctionnait hier ne fonctionne plus aujourd'hui. Les acheteurs B2B sont plus exigeants, mieux informés et les cycles de vente s'allongent.
+
+Dans cet article, vous allez découvrir [ce que le lecteur va apprendre]. À la fin, vous saurez [bénéfice concret].
+
+> "Citation pertinente d'expert ou statistique marquante qui pose le contexte." — Source crédible
+
+## Pourquoi [sujet] est crucial en 2026
+
+[Développer le contexte, les enjeux, pourquoi le lecteur devrait s'en préoccuper maintenant.]
+
+### Les 3 erreurs classiques
+
+[Liste d'erreurs courantes = bon pour engagement, très scannable]
+
+1. **Erreur 1** : Description du problème et pourquoi c'est une erreur
+2. **Erreur 2** : Explication + exemple concret
+3. **Erreur 3** : Impact négatif + comment l'éviter
+
+## Section principale 1 : [Titre descriptif avec mot-clé]
+
+[Développer le premier point majeur]
+
+### Sous-section 1.1
+
+[Contenu détaillé avec exemples]
+
+**Exemple concret :**
+Chez [nom entreprise], nous avons observé que [observation concrète]. Résultat : [métrique chiffrée].
+
+### Sous-section 1.2
+
+[Continuer le développement]
+
+## Section principale 2 : [Titre descriptif avec mot-clé]
+
+[Deuxième grande idée]
+
+### Les 5 étapes pour [action concrète]
+
+[Liste numérotée pour structure claire et actionnable]
+
+1. **Étape 1 : [Action]**
+   - Sous-action A
+   - Sous-action B
+   - Outil recommandé : [nom]
+
+2. **Étape 2 : [Action]**
+   - Détails
+   - Exemple
+
+[... continuer]
+
+## Section principale 3 : Cas d'usage concrets
+
+[Toujours inclure des exemples réels ou inspirés du réel]
+
+### Cas #1 : [Secteur / Entreprise]
+
+**Contexte :** [Situation de départ]
+**Action :** [Ce qui a été fait]
+**Résultat :** [Métriques, impact]
+
+### Cas #2 : [Secteur / Entreprise]
+
+[Même structure]
+
+## Checklist : [Action concrète]
+
+[Toujours terminer par du actionable]
+
+Avant de [action finale], assurez-vous de :
+
+- [ ] Action 1
+- [ ] Action 2
+- [ ] Action 3
+- [ ] Action 4
+- [ ] Action 5
+
+## Conclusion
+
+[Récapitulatif en 2-3 phrases max]
+
+Vous savez maintenant [rappel de ce qui a été appris]. La prochaine étape : [call-to-action clair].
+
+**Besoin d'aide pour [action liée au sujet] ?** [Lien vers service ou contact]
+
+---
+
+<!--
+============================================================================
+CHECKLIST PRÉ-PUBLICATION
+============================================================================
+
+SEO :
+- [ ] Title 50-60 caractères, mot-clé au début
+- [ ] Description 150-160 caractères, inclut "Vizion" et "Toulouse"
+- [ ] H1 unique (= title)
+- [ ] H2-H6 hiérarchie logique
+- [ ] Mots-clés naturellement intégrés (densité 1-2%)
+- [ ] Internal links vers 2-3 autres articles/pages
+- [ ] External links vers sources crédibles (2-3 minimum)
+- [ ] Alt text sur toutes les images
+- [ ] Featured image optimisée (AVIF, 2400px width)
+
+Contenu :
+- [ ] Introduction engageante (hook)
+- [ ] Longueur : 1500+ mots pour article pilier, 800+ pour article standard
+- [ ] Exemples concrets (minimum 2)
+- [ ] Listes à puces pour scanabilité
+- [ ] Pas de jargon non expliqué
+- [ ] Ton cohérent avec Vizion (expert mais accessible)
+- [ ] Appel à l'action clair en conclusion
+
+Engagement :
+- [ ] FAQ schema rempli (3-5 questions)
+- [ ] Resources externes (2-4)
+- [ ] CTA personnalisé de fin
+- [ ] Citations / blockquotes pour aérer
+- [ ] Sous-titres descriptifs et engageants
+
+Technique :
+- [ ] draft: false
+- [ ] dateModified à jour
+- [ ] authorBio renseigné
+- [ ] Prévisualisation OK (npm run dev)
+- [ ] Pas de liens cassés
+- [ ] Images chargent correctement
+
+============================================================================
+-->

@@ -14,7 +14,7 @@ const AssetsSection = dynamic(() => import("@/components/home/AssetsSection"), {
 const CasClientsSection = dynamic(() => import("@/components/home/CasClientsSection"), { ssr: true });
 const AboutLocalSection = dynamic(() => import("@/components/home/AboutLocalSection"), { ssr: true });
 const TeamSection = dynamic(() => import("@/components/home/TeamSection"), { ssr: true });
-const BlogSection = dynamic(() => import("@/components/home/BlogSection"), { ssr: true });
+const BlogSectionComponent = dynamic(() => import("@/components/home/BlogSection"), { ssr: true });
 const FAQSection = dynamic(() => import("@/components/home/FAQSection"), { ssr: true });
 const IlsParlentDeNousSection = dynamic(() => import("@/components/home/IlsParlentDeNousSection"), { ssr: true });
 const FinalCTASection = dynamic(() => import("@/components/home/FinalCTASection"), { ssr: true });
@@ -59,7 +59,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         {/* Équipe — masquée temporairement */}
         {/* <TeamSection /> */}
         {/* Blog - Derniers articles */}
-        <BlogSection />
+        <BlogSectionComponent articles={latestPosts} />
         {/* FAQ */}
         <FAQSection />
         {/* Ils parlent de nous — masquée temporairement */}

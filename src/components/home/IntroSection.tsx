@@ -184,16 +184,12 @@ export function IntroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="pt-6 sm:pt-8 md:pt-10"
           >
-            {/* Glassmorphisme noir */}
-            <div className="relative inline-block bg-black/40 backdrop-blur-md border border-white/10 px-6 sm:px-8 py-4 sm:py-5 rounded-lg">
-              {/* Mission text */}
-              <p className="relative font-heading font-medium text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-white">
-                Alors on s'est donné une mission :{" "}
-                <span className="text-[#D4FD00]">
-                  faire de votre produit une évidence
-                </span>
-              </p>
-            </div>
+            <p className="font-heading font-medium text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-primary">
+              Alors on s'est donné une mission :{" "}
+              <span className="text-primary">
+                faire de votre produit une évidence
+              </span>
+            </p>
           </motion.div>
         </div>
       </div>

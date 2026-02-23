@@ -11,11 +11,14 @@ import {
   ArticleNav,
   ShareButtons,
   MdxContent,
+  ReadingProgress,
+  RelatedInlineCard,
 } from "@/components/blog";
 import { ArticleSidebar } from "@/components/blog/ArticleSidebar";
 import { extractHeadings } from "@/lib/mdx";
 import type { Resource } from "@/components/blog";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
+import { getSuggestedArticles } from "@/lib/internal-linking";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -67,6 +70,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "fr_FR",
       type: "article",
       publishedTime: publishedDate,
+      modifiedTime: post.dateModified
+        ? new Date(post.dateModified).toISOString()
+        : publishedDate,
       authors: [post.author || SITE_NAME],
       tags: post.tags,
       images: post.featuredImage
@@ -168,22 +174,32 @@ export default async function BlogPostPage({ params }: Props) {
   // Get related posts
   const relatedPosts = getRelatedPosts(post);
 
+  // Get suggested articles for internal linking (automatic based on tags)
+  const suggestedArticles = getSuggestedArticles(slug, post.tags, 3);
+
   // Parse resources
   const resources = (post.resources as Resource[]) || [];
 
-  // Format date
+  // Format dates
   const formattedDate = formatDate(post.date);
+  const formattedDateModified = post.dateModified ? formatDate(post.dateModified) : undefined;
 
-  // JSON-LD Article Schema
-  const articleSchema = {
+  // JSON-LD BlogPosting Schema (more specific than Article for SEO)
+  const blogPostingSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
     author: {
-      "@type": "Organization",
-      name: post.author || SITE_NAME,
-      url: SITE_URL,
+      "@type": "Person",
+      name: post.author || "Lucas Gonzalez",
+      url: `${SITE_URL}/equipe/${(post.author || "lucas-gonzalez").toLowerCase().replace(/ /g, "-")}`,
+      jobTitle: "Expert Marketing Produit & Fondateur",
+      worksFor: {
+        "@type": "Organization",
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
     },
     publisher: {
       "@type": "Organization",
@@ -191,22 +207,38 @@ export default async function BlogPostPage({ params }: Props) {
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
+        url: `${SITE_URL}/logo-vizion.svg`,
+        width: 115,
+        height: 32,
       },
     },
     datePublished: new Date(post.date).toISOString(),
-    dateModified: new Date(post.date).toISOString(),
+    dateModified: post.dateModified
+      ? new Date(post.dateModified).toISOString()
+      : new Date(post.date).toISOString(),
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${SITE_URL}/blog/${slug}`,
     },
     image: post.featuredImage
-      ? post.featuredImage.startsWith("http")
-        ? post.featuredImage
-        : `${SITE_URL}${post.featuredImage}`
+      ? {
+          "@type": "ImageObject",
+          url: post.featuredImage.startsWith("http")
+            ? post.featuredImage
+            : `${SITE_URL}${post.featuredImage}`,
+          width: 1200,
+          height: 630,
+        }
       : undefined,
     articleSection: post.category,
     keywords: post.tags.join(", "),
+    wordCount: post.body.raw.split(/\s+/).length,
+    articleBody: post.description,
+    inLanguage: "fr-FR",
+    isAccessibleForFree: true,
+    ...(post.readingTime && {
+      timeRequired: post.readingTime,
+    }),
   };
 
   // Breadcrumb Schema
@@ -235,17 +267,42 @@ export default async function BlogPostPage({ params }: Props) {
     ],
   };
 
+  // FAQ Schema for featured snippets (if FAQ exists in frontmatter)
+  const faqSchema = post.faq && Array.isArray(post.faq) && post.faq.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faq.map((item: { question: string; answer: string }) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
+
   return (
     <>
+      {/* Reading Progress Bar */}
+      <ReadingProgress />
+
       {/* JSON-LD Schemas */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <main className="min-h-screen bg-white selection:bg-black selection:text-white">
         {/* Hero */}
@@ -253,6 +310,7 @@ export default async function BlogPostPage({ params }: Props) {
           title={post.title}
           category={post.category}
           date={formattedDate}
+          dateModified={formattedDateModified}
           author={post.author || SITE_NAME}
           readingTime={post.readingTime}
           featuredImage={post.featuredImage}
@@ -274,6 +332,24 @@ export default async function BlogPostPage({ params }: Props) {
                     <MdxContent code={post.body.code} />
                   </article>
                 </div>
+
+                {/* Suggested Articles - Internal Linking */}
+                {suggestedArticles.length > 0 && (
+                  <div className="mt-12">
+                    <h2 className="font-heading font-semibold text-2xl text-zinc-900 mb-6">
+                      Vous aimerez aussi
+                    </h2>
+                    <div className="space-y-6">
+                      {suggestedArticles.map((article, index) => (
+                        <RelatedInlineCard
+                          key={article.slug}
+                          article={article}
+                          index={index}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Resources Library */}
                 {resources.length > 0 && <ResourcesLibrary resources={resources} />}
