@@ -415,7 +415,7 @@ export const Post = defineDocumentType(() => ({
     description: { type: "string", required: true },
     date: { type: "date", required: true },
     dateModified: { type: "date" }, // Date de dernière mise à jour (optionnel)
-    author: { type: "string", default: "Vizion" },
+    author: { type: "string", default: "Lucas Gonzalez" },
     category: { type: "string", required: true },
     tags: { type: "list", of: { type: "string" }, default: [] },
     featuredImage: { type: "string" },

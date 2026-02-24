@@ -456,7 +456,7 @@ export const authors = [
       "Sales Enablement",
       "Go-to-Market Strategy",
     ],
-    linkedIn: "https://www.linkedin.com/in/lucasgonzalez",
+    linkedIn: "https://www.linkedin.com/in/lucas-gonzalez-marketing/",
     twitter: "https://twitter.com/lucasgonzalez",
     education: "ESSEC Business School",
     awards: ["Top 300 LinkedIn France 2024"],

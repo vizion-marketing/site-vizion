@@ -208,11 +208,11 @@ export function AboutLocalSection() {
               {/* Stat 3 */}
               <div className="bg-white light-card rounded-lg p-6 border border-black/[0.06] sm:col-span-2 lg:col-span-1">
                 <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-4xl sm:text-5xl font-heading font-bold text-primary">96%</span>
-                  <span className="text-sm text-muted">taux de renouvellement</span>
+                  <span className="text-4xl sm:text-5xl font-heading font-bold text-primary">+500</span>
+                  <span className="text-sm text-muted">assets marketing déjà livrés</span>
                 </div>
                 <p className="text-xs text-muted leading-relaxed">
-                  Nos clients nous font confiance dans la durée
+                  Présentations, pages, emails, supports de vente...
                 </p>
               </div>
             </div>

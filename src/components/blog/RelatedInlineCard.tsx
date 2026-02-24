@@ -30,7 +30,7 @@ export function RelatedInlineCard({ article, index = 0 }: RelatedInlineCardProps
     >
       <Link
         href={`/blog/${article.slug}`}
-        className="group block relative overflow-hidden rounded-xl border border-zinc-200 bg-gradient-to-br from-zinc-50 via-white to-zinc-50 hover:border-[#D4FD00]/50 hover:shadow-lg hover:shadow-[#D4FD00]/10 transition-all duration-300"
+        className="group block relative overflow-hidden rounded-none border border-zinc-200 bg-gradient-to-br from-zinc-50 via-white to-zinc-50 hover:border-[#D4FD00]/50 hover:shadow-lg hover:shadow-[#D4FD00]/10 transition-all duration-300"
       >
         {/* Effet glassmorphism au hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#D4FD00]/0 via-[#D4FD00]/0 to-[#D4FD00]/0 group-hover:from-[#D4FD00]/5 group-hover:via-[#D4FD00]/0 group-hover:to-[#D4FD00]/5 transition-all duration-500" />
@@ -38,7 +38,7 @@ export function RelatedInlineCard({ article, index = 0 }: RelatedInlineCardProps
         <div className="relative p-6">
           {/* Header avec icône */}
           <div className="flex items-center gap-2 mb-4">
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#D4FD00]/20 border border-[#D4FD00]/30">
+            <div className="flex items-center justify-center w-8 h-8 rounded-none bg-[#D4FD00]/20 border border-[#D4FD00]/30">
               <Lightbulb size={16} className="text-black" />
             </div>
             <span className="text-xs font-bold tracking-wider text-zinc-600 uppercase">
@@ -49,7 +49,7 @@ export function RelatedInlineCard({ article, index = 0 }: RelatedInlineCardProps
           <div className="flex gap-4">
             {/* Image (si disponible) */}
             {article.featuredImage && (
-              <div className="flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border border-zinc-200 bg-zinc-100">
+              <div className="flex-shrink-0 w-24 h-24 rounded-none overflow-hidden border border-zinc-200 bg-zinc-100">
                 <Image
                   src={article.featuredImage}
                   alt={article.title}
@@ -63,7 +63,7 @@ export function RelatedInlineCard({ article, index = 0 }: RelatedInlineCardProps
             {/* Contenu */}
             <div className="flex-1 min-w-0">
               {/* Catégorie */}
-              <span className="inline-block px-2.5 py-1 text-[10px] font-bold tracking-wide text-black bg-[#D4FD00]/30 rounded mb-2">
+              <span className="inline-block px-2.5 py-1 text-[10px] font-bold tracking-wide text-black bg-[#D4FD00]/30 rounded-none mb-2">
                 {article.category}
               </span>
 

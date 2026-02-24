@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
 const footerLinks = {
   entreprise: [
@@ -54,7 +55,7 @@ export function Footer() {
 
             <div className="flex gap-4">
               <a
-                href="https://www.linkedin.com/company/vizion-marketing-b2b/"
+                href={SOCIAL_LINKS.linkedin.vizion}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Suivez Vizion sur LinkedIn"

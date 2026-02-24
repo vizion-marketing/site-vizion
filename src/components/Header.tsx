@@ -117,9 +117,9 @@ export function Header() {
         }`}
       >
         <div className="max-w-[82.5rem] mx-auto flex items-center justify-between">
-          {/* Logo — scroll to top */}
-          <button
-            onClick={() => scrollToTarget("top")}
+          {/* Logo — retour accueil */}
+          <Link
+            href="/"
             className="relative z-10 flex items-center group cursor-pointer"
           >
             <Image
@@ -130,7 +130,7 @@ export function Header() {
               className="h-8 w-auto"
               priority
             />
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">

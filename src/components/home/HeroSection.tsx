@@ -384,8 +384,8 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">96%</span>
-              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">taux de<br/>renouvellement</span>
+              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">+500</span>
+              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">assets marketing<br/>déjà livrés</span>
             </div>
           </div>
 

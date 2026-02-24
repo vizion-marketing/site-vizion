@@ -24,7 +24,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
         });
       },
       {
-        rootMargin: "-100px 0px -80% 0px",
+        rootMargin: "-120px 0px -80% 0px",
         threshold: 0,
       }
     );
@@ -42,7 +42,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   const scrollToHeading = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100;
+      const offset = 120;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 
@@ -55,46 +55,64 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
   if (headings.length === 0) return null;
 
+  // Progress based on active heading position
+  const activeIndex = headings.findIndex((h) => h.id === activeId);
+  const progressPercent =
+    headings.length > 0 ? ((activeIndex + 1) / headings.length) * 100 : 0;
+
   return (
     <motion.nav
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="bg-[#F2F2F2] p-6 rounded-none"
+      className="bg-white border border-zinc-100 rounded-none overflow-hidden"
     >
-      <div className="flex items-center gap-2 mb-4">
-        <List size={16} className="text-black/40" />
-        <h4 className="text-[10px] font-light tracking-[0.12em] text-black/50">
-          Sommaire
-        </h4>
+      {/* Top accent bar */}
+      <div className="h-0.5 bg-[#D4FD00]" />
+
+      <div className="p-6">
+        <div className="flex items-center gap-2 mb-4">
+          <List size={16} className="text-black/40" />
+          <h4 className="text-[10px] font-light tracking-[0.12em] text-black/50">
+            Sommaire
+          </h4>
+        </div>
+
+        <div className="relative">
+          {/* Vertical progress track */}
+          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-zinc-100 overflow-hidden">
+            <div
+              className="w-full bg-[#D4FD00] transition-all duration-300 ease-out"
+              style={{ height: `${progressPercent}%` }}
+            />
+          </div>
+
+          <ul className="space-y-0.5 pl-4">
+            {headings.map((heading) => (
+              <li key={heading.id}>
+                <button
+                  onClick={() => scrollToHeading(heading.id)}
+                  className={`text-left text-sm py-1.5 px-3 transition-all duration-200 hover:text-black hover:translate-x-0.5 w-full ${
+                    activeId === heading.id
+                      ? "text-black font-semibold bg-[#D4FD00]/10 border-l-2 border-[#D4FD00] -ml-[2px]"
+                      : "text-zinc-400"
+                  }`}
+                  style={{
+                    paddingLeft:
+                      heading.level === 2
+                        ? "12px"
+                        : heading.level === 3
+                          ? "28px"
+                          : "44px",
+                  }}
+                >
+                  {heading.text}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <ul className="space-y-2">
-        {headings.map((heading) => (
-          <li
-            key={heading.id}
-            style={{
-                paddingLeft:
-                  heading.level === 2
-                    ? "0"
-                    : heading.level === 3
-                      ? "16px"
-                      : "32px",
-              }}
-          >
-            <button
-              onClick={() => scrollToHeading(heading.id)}
-              className={`text-left text-sm transition-colors duration-200 hover:text-black w-full ${
-                activeId === heading.id
-                  ? "text-black font-bold"
-                  : "text-zinc-500"
-              }`}
-            >
-              {heading.text}
-            </button>
-          </li>
-        ))}
-      </ul>
     </motion.nav>
   );
 }
-

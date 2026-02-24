@@ -362,7 +362,7 @@ authorBio: {
   name: "Lucas Gonzalez",
   role: "Expert Marketing Produit",
   avatar: "/team/lucas.avif",
-  linkedIn: "https://linkedin.com/in/lucasgonzalez",
+  linkedIn: "https://www.linkedin.com/in/lucas-gonzalez-marketing/",
   bio: "15 ans d'expérience en marketing B2B...",
   expertise: ["Product Marketing", "Positioning", "Sales Enablement"]
 }

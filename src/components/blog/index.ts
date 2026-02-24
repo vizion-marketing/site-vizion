@@ -14,3 +14,4 @@ export { ShareButtons } from "./ShareButtons";
 export { MdxContent } from "./MdxContent";
 export { ReadingProgress } from "./ReadingProgress";
 export { RelatedInlineCard } from "./RelatedInlineCard";
+export { MobileTOC } from "./MobileTOC";

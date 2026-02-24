@@ -2,8 +2,7 @@
 
 import { homeContent, type EquipeContent } from "@/content/home";
 import { TeamCarousel } from "@/components/sections";
-
-const SOCIAL_LINK = "https://www.linkedin.com/company/vizion-marketing-b2b/";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 interface TeamSectionProps {
   content?: EquipeContent;
@@ -18,7 +17,7 @@ export function TeamSection({ content }: TeamSectionProps = {}) {
       title="L'équipe derrière votre stratégie."
       description={equipe.description}
       ctaText="Découvrir sur LinkedIn"
-      ctaHref={SOCIAL_LINK}
+      ctaHref={SOCIAL_LINKS.linkedin.vizion}
       members={equipe.members}
     />
   );

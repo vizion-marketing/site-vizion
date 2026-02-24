@@ -2,19 +2,15 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { Linkedin, Twitter, ChevronRight } from "lucide-react";
-import { ArrowUpRightIcon } from "@/components/icons";
+import { Linkedin, ChevronRight } from "lucide-react";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
-// Configuration auteur Vizion (fixe)
 const AUTHOR_CONFIG = {
-  name: "Vizion",
-  role: "Agence Marketing",
-  bio: "Vizion accompagne les entreprises B2B dans leur croissance grâce à une approche structurée autour de 5 piliers : Stratégie, Marketing Produit, Acquisition, Activation des Ventes et Automatisation IA.",
-  avatar: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=200&auto=format&fit=crop",
-  linkedin: "https://www.linkedin.com/company/vizion",
-  twitter: "https://twitter.com/vizion",
-  website: "/contact",
+  name: "Lucas Gonzalez",
+  role: "Co-fondateur de Vizion",
+  bio: "Ex-Top 300 LinkedIn France, Intervenant TSM et Co-fondateur de Vizion, passionné de marketing depuis plus de 10 ans.",
+  avatar: "/images/portrait-lucas.png",
+  linkedin: SOCIAL_LINKS.linkedin.lucas,
 };
 
 export function AuthorBio() {
@@ -24,12 +20,12 @@ export function AuthorBio() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-[#F2F2F2] p-8 rounded-none"
+      className="bg-[#F2F2F2] p-6 sm:p-8 rounded-none"
     >
       <div className="flex items-center gap-2.5 mb-6">
         <div className="w-2 h-2 rounded-full bg-[#D4FD00] shrink-0" />
         <h4 className="surtitre text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-black/50">
-          À propos de l'auteur
+          À propos de l&apos;auteur
         </h4>
       </div>
 
@@ -56,42 +52,20 @@ export function AuthorBio() {
         {AUTHOR_CONFIG.bio}
       </p>
 
-      {/* Social Links */}
-      <div className="flex items-center gap-4 mb-6">
-        {AUTHOR_CONFIG.linkedin && (
-          <a
-            href={AUTHOR_CONFIG.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 bg-white hover:bg-black hover:text-white transition-colors rounded-none"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={16} />
-          </a>
-        )}
-        {AUTHOR_CONFIG.twitter && (
-          <a
-            href={AUTHOR_CONFIG.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 bg-white hover:bg-black hover:text-white transition-colors rounded-none"
-            aria-label="Twitter"
-          >
-            <Twitter size={16} />
-          </a>
-        )}
-      </div>
-
-      <Link
-        href={AUTHOR_CONFIG.website}
+      {/* LinkedIn */}
+      <a
+        href={AUTHOR_CONFIG.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
         className="text-xs font-bold tracking-wider flex items-center gap-2 group hover:text-zinc-600 transition-colors"
       >
-        Contactez-nous{" "}
+        <Linkedin size={14} />
+        Me suivre sur LinkedIn{" "}
         <ChevronRight
           size={14}
           className="group-hover:translate-x-1 transition-transform"
         />
-      </Link>
+      </a>
     </motion.div>
   );
 }

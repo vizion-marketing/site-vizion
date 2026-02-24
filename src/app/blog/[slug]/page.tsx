@@ -13,6 +13,7 @@ import {
   MdxContent,
   ReadingProgress,
   RelatedInlineCard,
+  MobileTOC,
 } from "@/components/blog";
 import { ArticleSidebar } from "@/components/blog/ArticleSidebar";
 import { extractHeadings } from "@/lib/mdx";
@@ -48,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${post.title} | Blog ${SITE_NAME}`,
     description: post.description,
     keywords: [post.category, ...post.tags],
-    authors: [{ name: post.author || SITE_NAME }],
+    authors: [{ name: post.author || "Lucas Gonzalez" }],
     creator: SITE_NAME,
     publisher: SITE_NAME,
     robots: {
@@ -73,7 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       modifiedTime: post.dateModified
         ? new Date(post.dateModified).toISOString()
         : publishedDate,
-      authors: [post.author || SITE_NAME],
+      authors: [post.author || "Lucas Gonzalez"],
       tags: post.tags,
       images: post.featuredImage
         ? [
@@ -288,6 +289,9 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Reading Progress Bar */}
       <ReadingProgress />
 
+      {/* Mobile TOC - floating button + bottom sheet */}
+      <MobileTOC headings={headings} />
+
       {/* JSON-LD Schemas */}
       <script
         type="application/ld+json"
@@ -311,14 +315,14 @@ export default async function BlogPostPage({ params }: Props) {
           category={post.category}
           date={formattedDate}
           dateModified={formattedDateModified}
-          author={post.author || SITE_NAME}
+          author={post.author || "Lucas Gonzalez"}
           readingTime={post.readingTime}
           featuredImage={post.featuredImage}
           tags={post.tags}
         />
 
         {/* Main Content - style home */}
-        <section className="py-24 lg:py-40 bg-white relative">
+        <section className="py-12 sm:py-16 lg:py-24 bg-white relative">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#f4f4f5_1px,transparent_1px),linear-gradient(to_bottom,#f4f4f5_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none" />
           
@@ -327,15 +331,15 @@ export default async function BlogPostPage({ params }: Props) {
               {/* Contenu - Gauche */}
               <div className="lg:col-span-8 order-1">
                 {/* Content wrapper */}
-                <div className="bg-white rounded-lg p-8 lg:p-12 shadow-sm border border-zinc-100">
-                  <article className="prose prose-zinc prose-lg lg:prose-xl max-w-none">
+                <div className="bg-white rounded-none p-5 sm:p-8 lg:p-12 shadow-sm border border-zinc-100">
+                  <article className="prose max-w-none">
                     <MdxContent code={post.body.code} />
                   </article>
                 </div>
 
                 {/* Suggested Articles - Internal Linking */}
                 {suggestedArticles.length > 0 && (
-                  <div className="mt-12">
+                  <div className="mt-16 pt-8 border-t border-zinc-100">
                     <h2 className="font-heading font-semibold text-2xl text-zinc-900 mb-6">
                       Vous aimerez aussi
                     </h2>
@@ -364,7 +368,7 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
 
               {/* Sidebar Droite - Sommaire + CTA Newsletter (fixed) */}
-              <aside className="lg:col-span-4 order-2">
+              <aside className="hidden lg:block lg:col-span-4 order-2">
                 <ArticleSidebar headings={headings} />
               </aside>
             </div>

@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote, Play, Pause } from "lucide-react";
-import Link from "next/link";
+
 import Image from "next/image";
 
 const CAS_CLIENTS = [
@@ -19,7 +19,6 @@ const CAS_CLIENTS = [
     mainImage: "/images/cas-clients/eldo-mainimage.avif",
     secondaryImage: "/images/cas-clients/eldo-secondaryimage.avif",
     stats: { value: "x10", label: "revenu récurrent" },
-    link: "/cas-clients",
   },
   {
     id: 2,
@@ -33,7 +32,6 @@ const CAS_CLIENTS = [
     mainImage: "/images/cas-clients/easyvirtual-mainimage.avif",
     secondaryImage: "/images/cas-clients/easyvirtual-secondaryimage.avif",
     stats: { value: "+25", label: "agences en France" },
-    link: "/cas-clients/easyvirtual-tours-franchise",
   },
   {
     id: 3,
@@ -47,7 +45,6 @@ const CAS_CLIENTS = [
     mainImage: "/images/cas-clients/ensenat-mainimage.avif",
     secondaryImage: "/images/cas-clients/ensenat-secondaryimage.avif",
     stats: { value: "100%", label: "marketing structuré" },
-    link: "/cas-clients",
   },
 ];
 
@@ -221,7 +218,7 @@ export function CasClientsSection() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:h-[520px]"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4"
           >
             {/* Left - Text Content - padding mobile réduit */}
             <motion.div variants={itemVariants} className="lg:col-span-4 relative flex flex-col justify-between h-full bg-[#D4FD00] p-4 sm:p-6 lg:p-8 overflow-hidden">
@@ -286,21 +283,14 @@ export function CasClientsSection() {
                     {currentCase.sector}
                   </span>
                 </div>
-                <p className="text-primary/70 text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed mb-5">
+                <p className="text-primary/70 text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed">
                   Découvrez comment {currentCase.company} a transformé sa stratégie marketing et commerciale avec Vizion.
                 </p>
-                <Link
-                  href={currentCase.link}
-                  className="inline-flex items-center gap-2 px-5 py-3 text-[14px] font-semibold text-white bg-[#1a1a1a] hover:bg-white hover:text-primary transition-all duration-300 group"
-                >
-                  Lire le cas client
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
               </div>
             </motion.div>
 
             {/* Center - Main Image - hauteur mobile adaptée */}
-            <motion.div variants={itemVariants} className="lg:col-span-5 relative h-[220px] sm:h-[260px] md:h-[300px] lg:h-full">
+            <motion.div variants={itemVariants} className="lg:col-span-5 relative h-[220px] sm:h-[260px] md:h-[300px] lg:h-[520px]">
               <div className="relative h-full overflow-hidden">
                 {/* Decorative frame */}
                 <div className="absolute -inset-1 border border-[#D4FD00]/20 pointer-events-none z-10" />
@@ -324,9 +314,9 @@ export function CasClientsSection() {
             </motion.div>
 
             {/* Right - Secondary Image + Quote */}
-            <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4 h-[480px] sm:h-[520px] md:h-[560px] lg:h-full">
+            <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4">
               {/* Secondary Image + Author glassmorphism badge */}
-              <div className="relative h-[75%] overflow-hidden">
+              <div className="relative h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden">
                 <Image
                   src={currentCase.secondaryImage}
                   alt={`${currentCase.company} - secondaire`}
@@ -348,7 +338,7 @@ export function CasClientsSection() {
               </div>
 
               {/* Quote Box */}
-              <div className="relative bg-white p-3 sm:p-5 h-[30%] sm:h-[35%] flex flex-col justify-between overflow-hidden border border-[#1a1a1a]/5">
+              <div className="relative bg-white p-3 sm:p-5 flex flex-col justify-between border border-[#1a1a1a]/5">
                 <div className="relative z-10">
                   <Quote size={28} className="text-[#D4FD00] mb-3" />
                   <p className="text-primary/80 text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed">

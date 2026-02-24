@@ -817,7 +817,8 @@ export const organizationSchema = {
   "email": "contact@by-vizion.com",
   "sameAs": [
     "https://www.linkedin.com/company/vizion-marketing-b2b/",
-    "https://www.linkedin.com/in/lucas-gonzalez-vizion/",
+    "https://www.linkedin.com/in/lucas-gonzalez-marketing/",
+    "https://www.linkedin.com/in/hugo-schuppe/",
     "https://by-vizion.com/blog"
   ],
   "address": {

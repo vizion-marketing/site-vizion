@@ -12,7 +12,7 @@ interface ArticleSidebarProps {
 
 export function ArticleSidebar({ headings }: ArticleSidebarProps) {
   return (
-    <aside className="lg:sticky lg:top-24 flex flex-col gap-8">
+    <aside className="lg:sticky lg:top-20 flex flex-col gap-8">
       {/* Sommaire dynamique */}
       {headings.length > 0 && <TableOfContents headings={headings} />}
 

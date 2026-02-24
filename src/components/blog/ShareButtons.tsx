@@ -63,7 +63,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
             {/* LinkedIn */}
             <button
               onClick={() => handleShare("linkedin")}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-[#0077B5] hover:text-white rounded-lg transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-[#0077B5] hover:text-white rounded-none transition-colors duration-200"
               aria-label="Partager sur LinkedIn"
             >
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
             {/* Twitter/X */}
             <button
               onClick={() => handleShare("twitter")}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-black hover:text-white rounded-lg transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-black hover:text-white rounded-none transition-colors duration-200"
               aria-label="Partager sur X (Twitter)"
             >
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
@@ -87,7 +87,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
             {/* WhatsApp */}
             <button
               onClick={() => handleShare("whatsapp")}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-[#25D366] hover:text-white rounded-lg transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-[#25D366] hover:text-white rounded-none transition-colors duration-200"
               aria-label="Partager sur WhatsApp"
             >
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
             {/* Email */}
             <button
               onClick={() => handleShare("email")}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-zinc-800 hover:text-white rounded-lg transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-zinc-800 hover:text-white rounded-none transition-colors duration-200"
               aria-label="Partager par email"
             >
               <Mail size={16} />
@@ -109,7 +109,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
             {/* Copy Link */}
             <button
               onClick={copyToClipboard}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-[#D4FD00] hover:text-black rounded-lg transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-[#D4FD00] hover:text-black rounded-none transition-colors duration-200"
               aria-label="Copier le lien"
             >
               {copied ? <Check size={16} /> : <Copy size={16} />}
@@ -126,7 +126,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-black text-white px-6 py-4 rounded-lg shadow-2xl"
+            className="fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-black text-white px-6 py-4 rounded-none shadow-2xl"
           >
             <Check size={20} className="text-[#D4FD00]" />
             <span className="font-medium text-sm">Lien copié dans le presse-papier !</span>
