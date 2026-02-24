@@ -808,7 +808,7 @@ export const organizationSchema = {
   "knowsAbout": ["Marketing B2B", "Positionnement stratégique", "Sales Enablement", "Marketing Produit", "Automatisation Marketing", "Intelligence Artificielle", "SEO", "LinkedIn Ads", "CRM", "Tunnel de vente"],
   "logo": {
     "@type": "ImageObject",
-    "url": "https://by-vizion.com/logo-vizion.svg",
+    "url": "https://by-vizion.com/images/logo-vizion.png",
     "width": 200,
     "height": 60
   },

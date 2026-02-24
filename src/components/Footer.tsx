@@ -12,6 +12,14 @@ const footerLinks = {
     { name: 'Cas clients', href: '/cas-clients' },
     { name: 'Contact', href: '/contact' },
   ],
+  services: [
+    { name: 'Marketing Produit', href: '/services/marketing-produit' },
+    { name: 'Sales Enablement', href: '/services/sales-enablement' },
+    { name: 'Sites Web B2B', href: '/services/sites-web-b2b' },
+    { name: 'Automatisation & CRM', href: '/services/automatisation-crm' },
+    { name: 'IA Marketing & Ventes', href: '/services/ia-marketing-ventes' },
+    { name: 'Acquisition B2B', href: '/services/acquisition-b2b' },
+  ],
 };
 
 export function Footer() {
@@ -24,7 +32,7 @@ export function Footer() {
           <div className="lg:col-span-4 flex flex-col gap-10">
             <Link href="/" className="block">
               <Image
-                src="/logo-vizion.svg"
+                src="/images/logo-vizion.avif"
                 alt="Vizion - Agence Marketing B2B"
                 width={120}
                 height={32}
@@ -66,7 +74,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-2">
             <div className="flex flex-col gap-6">
               <h4 className="surtitre text-black">Navigation</h4>
               <ul className="flex flex-col gap-3">
@@ -81,7 +89,22 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
+            <div className="flex flex-col gap-6">
+              <h4 className="surtitre text-black">Services</h4>
+              <ul className="flex flex-col gap-3">
+                {footerLinks.services.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="lg:col-span-3">
             <div className="card-white p-8 flex flex-col gap-6 shadow-sm">
               <div className="flex flex-col gap-2">
                 <h4 className="surtitre text-black">Une question ?</h4>

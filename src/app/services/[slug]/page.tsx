@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { allServices, allCaseStudies } from "contentlayer/generated";
 import { ServiceContent } from "./ServiceContent";
+import { SITE_URL } from "@/lib/constants";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -73,29 +74,69 @@ export default async function ServicePage({ params }: Props) {
     ? allCaseStudies.filter((cs) => service.relatedCaseStudies?.includes(cs.slug))
     : allCaseStudies.slice(0, 2);
 
+  // Get other services for cross-linking (exclude current)
+  const otherServices = allServices
+    .filter((s) => s.slug !== slug)
+    .sort((a, b) => (a.order || 0) - (b.order || 0))
+    .slice(0, 3);
+
   // Schema.org structured data for SEO
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${SITE_URL}/services/${slug}#service`,
     name: service.title,
     description: service.metaDescription,
     provider: {
       "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
       name: "Vizion",
-      url: "https://by-vizion.com",
+      url: SITE_URL,
+      logo: `${SITE_URL}/images/logo-vizion.png`,
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Toulouse",
+        streetAddress: "815 La Pyrénéenne",
+        addressLocality: "Labège",
+        postalCode: "31670",
         addressRegion: "Occitanie",
         addressCountry: "FR",
       },
+      telephone: "+33750836543",
+      email: "contact@by-vizion.com",
     },
-    areaServed: {
-      "@type": "Country",
-      name: "France",
-    },
+    areaServed: [
+      { "@type": "City", name: "Toulouse" },
+      { "@type": "AdministrativeArea", name: "Occitanie" },
+      { "@type": "Country", name: "France" },
+    ],
     serviceType: service.category,
-    url: `https://by-vizion.com/services/${slug}`,
+    url: `${SITE_URL}/services/${slug}`,
+  };
+
+  // BreadcrumbList schema
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Accueil",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: `${SITE_URL}/services`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.title,
+        item: `${SITE_URL}/services/${slug}`,
+      },
+    ],
   };
 
   // FAQ Schema
@@ -125,8 +166,12 @@ export default async function ServicePage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
-      <ServiceContent service={service} relatedCases={relatedCases} />
+      <ServiceContent service={service} relatedCases={relatedCases} otherServices={otherServices} />
     </>
   );
 }
