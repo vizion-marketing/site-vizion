@@ -42,9 +42,18 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     siteName: "Vizion",
     url: "https://by-vizion.com",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Vizion — Agence Marketing B2B Toulouse",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/images/og-image.png"],
   },
 };
 
