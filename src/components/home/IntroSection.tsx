@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const MANIFESTO_TITLE = "Le marketing B2B mérite mieux qu'un coup de communication.";
+const MANIFESTO_TITLE = "Les entreprises toulousaines méritent mieux qu'un coup de communication.";
 
 const MANIFESTO_PARAGRAPHS = [
-  "Si vous opérez en B2B, vous savez que vos cycles de vente durent des mois. Vos décideurs comparent, challengent, arbitrent. Ils ne cherchent pas de la créativité. Ils veulent de la clarté, de la structure, des preuves.",
+  "Vos cycles de vente durent des mois. Vos décideurs comparent, challengent, arbitrent. Ils ne cherchent pas de la créativité. Ils veulent de la clarté, de la structure, des preuves.",
   "Ce qui fonctionne pour vous, c'est la répétition. Un positionnement ancré. Un discours cohérent à chaque étape. Des fondations solides qui tiennent sur des cycles longs.",
   "On construit le socle que personne ne pose : positionnement, architecture de message, alignement marketing-ventes. Vous cherchez la rigueur nécessaire pour transformer votre offre en référence sur votre marché.",
 ];
@@ -112,7 +112,7 @@ export function IntroSection() {
     <section className="relative py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden grain-overlay">
       {/* Background — full-bleed light */}
       <div
-        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-[#f8f8f6]"
+        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-card"
         style={{ minWidth: "100vw" }}
         aria-hidden
       />
@@ -127,14 +127,14 @@ export function IntroSection() {
           className="absolute w-[80%] h-[60%] top-[-20%] left-[-20%] animate-gradient-float-1"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[60%] h-[50%] bottom-[-15%] right-[-15%] animate-gradient-float-3"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
           }}
         />
       </div>
@@ -150,8 +150,8 @@ export function IntroSection() {
         >
           <div className="flex items-center gap-2.5">
             <div className="relative flex items-center justify-center w-2 h-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D4FD00] opacity-40" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#D4FD00]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-40" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </div>
             <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
               Notre manifeste

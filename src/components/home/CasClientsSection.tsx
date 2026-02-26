@@ -6,11 +6,25 @@ import { ArrowLeft, ArrowRight, Quote, Play, Pause } from "lucide-react";
 
 import Image from "next/image";
 
-const CAS_CLIENTS = [
+export interface CasClientItem {
+  id: number;
+  company: string;
+  sector: string;
+  title: string;
+  quote: string;
+  author: string;
+  role: string;
+  avatar: string;
+  mainImage: string;
+  secondaryImage: string;
+  stats: { value: string; label: string };
+}
+
+const DEFAULT_CAS_CLIENTS: CasClientItem[] = [
   {
     id: 1,
     company: "Eldo Wallet",
-    sector: "FinTech B2B",
+    sector: "FinTech",
     title: "De 1 000 à 10 000 € de revenus récurrents mensuels grâce à la bonne stratégie de mise en marché.",
     quote: "Vizion a structuré notre mise en marché de A à Z. Le positionnement, le tunnel de vente, les outils commerciaux, tout était aligné. Les résultats ont suivi naturellement.",
     author: "Paul Scandella",
@@ -48,9 +62,16 @@ const CAS_CLIENTS = [
   },
 ];
 
+interface CasClientsSectionProps {
+  cases?: CasClientItem[];
+  surtitreText?: string;
+  titleText?: string;
+}
+
 const AUTO_SLIDE_INTERVAL = 6000;
 
-export function CasClientsSection() {
+export function CasClientsSection({ cases, surtitreText, titleText }: CasClientsSectionProps = {}) {
+  const CAS_CLIENTS = cases ?? DEFAULT_CAS_CLIENTS;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -108,31 +129,31 @@ export function CasClientsSection() {
   };
 
   return (
-    <section id="cas-clients" className="relative py-12 sm:py-16 md:py-20 lg:py-28 bg-[#fafafa] overflow-hidden">
+    <section id="cas-clients" className="relative py-12 sm:py-16 md:py-20 lg:py-28 bg-card overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute w-[60%] h-[50%] top-[-10%] right-[-15%]"
           style={{
-            background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 60%)',
+            background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 60%)',
           }}
         />
         <div
           className="absolute w-[40%] h-[40%] bottom-[-5%] left-[-10%]"
           style={{
-            background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.04) 0%, transparent 55%)',
+            background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.04) 0%, transparent 55%)',
           }}
         />
         {/* Floating shapes */}
         <motion.div
           animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[20%] right-[10%] w-3 h-3 bg-[#D4FD00]/20 hidden lg:block"
+          className="absolute top-[20%] right-[10%] w-3 h-3 bg-accent/20 hidden lg:block"
         />
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-[30%] left-[5%] w-2 h-2 border border-[#D4FD00]/30 hidden lg:block"
+          className="absolute bottom-[30%] left-[5%] w-2 h-2 border border-accent/30 hidden lg:block"
         />
       </div>
 
@@ -147,13 +168,13 @@ export function CasClientsSection() {
         >
           <div className="max-w-xl mb-4 sm:mb-6 lg:mb-0">
             <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
-              <div className="w-2 h-2 bg-[#D4FD00]" />
+              <div className="w-2 h-2 bg-accent" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
-                Cas clients
+                {surtitreText ?? "Cas clients"}
               </span>
             </div>
             <h2 className="font-heading font-medium text-[24px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
-              Nos clients vous parlent de leur expérience aux côtés de notre agence Marketing
+              {titleText ?? "Nos clients vous parlent de leur expérience aux côtés de notre agence Marketing"}
             </h2>
           </div>
 
@@ -162,21 +183,21 @@ export function CasClientsSection() {
             {/* Auto-play toggle - zone tactile 44px min */}
             <button
               onClick={toggleAutoPlay}
-              className="min-w-[44px] min-h-[44px] w-10 h-10 sm:w-10 sm:h-10 border border-[#1a1a1a]/10 flex items-center justify-center hover:bg-[#1a1a1a]/5 transition-all duration-300"
+              className="min-w-[44px] min-h-[44px] w-10 h-10 sm:w-10 sm:h-10 border border-black/10 flex items-center justify-center hover:bg-[var(--text-primary)]/5 transition-all duration-300"
               aria-label={isAutoPlaying ? "Pause" : "Lecture"}
             >
               {isAutoPlaying ? <Pause size={14} /> : <Play size={14} />}
             </button>
             <button
               onClick={goToPrevious}
-              className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 border border-[#1a1a1a]/20 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-white transition-all duration-300"
+              className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 border border-black/20 flex items-center justify-center hover:bg-[var(--text-primary)] hover:text-white transition-all duration-300"
               aria-label="Cas précédent"
             >
               <ArrowLeft size={20} />
             </button>
             <button
               onClick={goToNext}
-              className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 bg-[#1a1a1a] text-white flex items-center justify-center hover:bg-[#D4FD00] hover:text-primary transition-all duration-300"
+              className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 bg-[var(--text-primary)] text-white flex items-center justify-center hover:bg-accent hover:text-primary transition-all duration-300"
               aria-label="Cas suivant"
             >
               <ArrowRight size={20} />
@@ -196,10 +217,10 @@ export function CasClientsSection() {
                 setCurrentIndex(index);
                 setProgress(0);
               }}
-              className="flex-1 h-1 bg-[#1a1a1a]/10 overflow-hidden cursor-pointer"
+              className="flex-1 h-1 bg-[var(--text-primary)]/10 overflow-hidden cursor-pointer"
             >
               <motion.div
-                className="h-full bg-[#D4FD00]"
+                className="h-full bg-accent"
                 initial={{ width: 0 }}
                 animate={{
                   width: index === currentIndex ? `${progress}%` : index < currentIndex ? "100%" : "0%",
@@ -221,7 +242,7 @@ export function CasClientsSection() {
             className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4"
           >
             {/* Left - Text Content - padding mobile réduit */}
-            <motion.div variants={itemVariants} className="lg:col-span-4 relative flex flex-col justify-between h-full bg-[#D4FD00] p-4 sm:p-6 lg:p-8 overflow-hidden">
+            <motion.div variants={itemVariants} className="lg:col-span-4 relative flex flex-col justify-between h-full bg-accent p-4 sm:p-6 lg:p-8 overflow-hidden">
               {/* Black spray effect */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 {/* Main spray disc - top right */}
@@ -279,7 +300,7 @@ export function CasClientsSection() {
               {/* Bottom - Sector, description, button */}
               <div className="relative z-10 mt-auto">
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="inline-block px-3 py-1.5 border border-[#1a1a1a] text-primary text-[11px] font-medium tracking-wide uppercase">
+                  <span className="inline-block px-3 py-1.5 border border-black text-primary text-[11px] font-medium tracking-wide uppercase">
                     {currentCase.sector}
                   </span>
                 </div>
@@ -293,7 +314,7 @@ export function CasClientsSection() {
             <motion.div variants={itemVariants} className="lg:col-span-5 relative h-[220px] sm:h-[260px] md:h-[300px] lg:h-[520px]">
               <div className="relative h-full overflow-hidden">
                 {/* Decorative frame */}
-                <div className="absolute -inset-1 border border-[#D4FD00]/20 pointer-events-none z-10" />
+                <div className="absolute -inset-1 border border-accent/20 pointer-events-none z-10" />
                 <Image
                   src={currentCase.mainImage}
                   alt={currentCase.company}
@@ -302,7 +323,7 @@ export function CasClientsSection() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
                 {/* Company badge on image */}
                 <div className="absolute bottom-4 left-4 bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2">
@@ -324,7 +345,7 @@ export function CasClientsSection() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 30vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
 
                 {/* Author glassmorphism badge */}
                 <div className="absolute bottom-3 left-3 right-3 bg-black/70 backdrop-blur-md border border-white/10 px-3 py-2 rounded-lg">
@@ -338,9 +359,9 @@ export function CasClientsSection() {
               </div>
 
               {/* Quote Box */}
-              <div className="relative bg-white p-3 sm:p-5 flex flex-col justify-between border border-[#1a1a1a]/5">
+              <div className="relative bg-card p-3 sm:p-5 flex flex-col justify-between border border-black/[0.06]">
                 <div className="relative z-10">
-                  <Quote size={28} className="text-[#D4FD00] mb-3" />
+                  <Quote size={28} className="text-accent mb-3" />
                   <p className="text-primary/80 text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed">
                     &ldquo;{currentCase.quote}&rdquo;
                   </p>
@@ -360,7 +381,7 @@ export function CasClientsSection() {
                 setProgress(0);
               }}
               className={`h-2 transition-all duration-300 ${
-                index === currentIndex ? "bg-[#D4FD00] w-8" : "bg-[#1a1a1a]/20 w-2"
+                index === currentIndex ? "bg-accent w-8" : "bg-[var(--text-primary)]/20 w-2"
               }`}
               aria-label={`Aller au cas ${index + 1}`}
             />

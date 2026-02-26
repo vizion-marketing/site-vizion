@@ -76,7 +76,7 @@ export function AboutLocalSection() {
     >
       {/* Background base — full-bleed */}
       <div
-        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-[#f8f8f6]"
+        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-card"
         style={{ minWidth: "100vw" }}
         aria-hidden
       />
@@ -90,19 +90,19 @@ export function AboutLocalSection() {
         <div
           className="absolute w-[70%] h-[60%] top-[-10%] left-[-15%]"
           style={{
-            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 60%)",
+            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 60%)",
           }}
         />
         <div
           className="absolute w-[50%] h-[50%] top-[20%] right-[-10%]"
           style={{
-            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[60%] h-[50%] bottom-[-15%] left-[20%]"
           style={{
-            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
           }}
         />
       </div>
@@ -119,8 +119,8 @@ export function AboutLocalSection() {
           {/* Overline */}
           <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
             <div className="relative flex items-center justify-center w-2 h-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D4FD00] opacity-40" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#D4FD00]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-40" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </div>
             <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
               {localData.surtitre}
@@ -128,12 +128,12 @@ export function AboutLocalSection() {
           </div>
 
           <h2 className="font-heading font-medium text-[26px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.08] tracking-[-0.02em] text-primary mb-4 sm:mb-5">
-            <span className="text-[#D4FD00]">Vizion</span>, une agence toulousaine
+            <span className="text-accent">Vizion</span>, une agence de la ville rose
             <br className="hidden sm:inline" /> au service des entreprises d&apos;Occitanie et d&apos;ailleurs
           </h2>
 
           <p className="text-muted text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed max-w-3xl">
-            Basés à Labège dans la technopole de Toulouse, nous accompagnons les entreprises B2B de toute l'Occitanie et de France. Proximité pour les clients locaux, efficacité à distance pour les autres.
+            Basés à Labège dans la technopole de Toulouse, nous accompagnons les entreprises de toute l'Occitanie et de France. Proximité pour les clients locaux, efficacité à distance pour les autres.
           </p>
         </motion.div>
 
@@ -163,14 +163,14 @@ export function AboutLocalSection() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-black/[0.06] shadow-sm">
               <Image
                 src="/images/why-vizion/equipe-vizion.avif"
-                alt="Équipe Vizion - Agence marketing B2B Toulouse"
+                alt="Équipe Vizion - Agence marketing Toulouse"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             <p className="mt-3 text-xs text-muted">
-              <span className="font-medium text-primary">Équipe Vizion</span> — Agence marketing B2B, Toulouse
+              <span className="font-medium text-primary">Équipe Vizion</span> — Agence marketing, Toulouse
             </p>
           </motion.div>
 
@@ -201,7 +201,7 @@ export function AboutLocalSection() {
                   <span className="text-sm text-muted">d'expertise</span>
                 </div>
                 <p className="text-xs text-muted leading-relaxed">
-                  spécialisés en marketing B2B
+                  spécialisés en marketing
                 </p>
               </div>
 
@@ -243,8 +243,8 @@ export function AboutLocalSection() {
                   >
                     {/* Icon + Line */}
                     <div className="relative flex flex-col items-center">
-                      <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#D4FD00] shrink-0">
-                        <Icon size={20} className="text-[#0c0c0a]" />
+                      <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-accent shrink-0">
+                        <Icon size={20} className="text-primary" />
                       </div>
                       {index < MILESTONES.length - 1 && (
                         <div className="absolute top-12 bottom-[-2rem] left-1/2 -translate-x-1/2 w-px bg-black/[0.08]" />
@@ -253,7 +253,7 @@ export function AboutLocalSection() {
 
                     {/* Content */}
                     <div className="flex-1 pb-4">
-                      <span className="inline-block text-[10px] font-bold text-[#D4FD00] tracking-wider mb-2">
+                      <span className="inline-block text-[10px] font-bold text-accent tracking-wider mb-2">
                         {milestone.number}
                       </span>
                       <h4 className="font-heading font-semibold text-[16px] sm:text-[18px] leading-[1.3] text-primary mb-2">
@@ -301,7 +301,7 @@ export function AboutLocalSection() {
                   key={ville.name}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white light-card border border-black/[0.06] rounded-full text-xs font-medium text-primary"
                 >
-                  {ville.name === "Toulouse" && <MapPin size={12} className="text-[#D4FD00]" />}
+                  {ville.name === "Toulouse" && <MapPin size={12} className="text-accent" />}
                   {ville.name}
                   <span className="text-[10px] text-muted">• {ville.label}</span>
                 </span>
@@ -312,7 +312,7 @@ export function AboutLocalSection() {
             <div className="mt-8">
               <a
                 href={localData.cta.href}
-                className="group inline-flex items-center gap-2 text-[13px] sm:text-[14px] font-semibold text-primary hover:text-[#D4FD00] transition-colors duration-300"
+                className="group inline-flex items-center gap-2 text-[13px] sm:text-[14px] font-semibold text-primary hover:text-accent transition-colors duration-300"
               >
                 {localData.cta.text}
                 <svg

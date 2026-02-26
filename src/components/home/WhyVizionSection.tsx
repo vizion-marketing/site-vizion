@@ -22,8 +22,8 @@ const MILESTONES = [
   },
   {
     number: "03",
-    title: "Vos équipes montent en compétence",
-    description: "Nous ne créons pas de dépendance. Transfert de compétences, formation, co-construction. À la fin de la mission, votre équipe est plus autonome qu'avant.",
+    title: "Un acteur du sud-ouest, avec l'accent qui chante",
+    description: "Basés à Toulouse, nous connaissons le tissu économique occitan. Proximité, réactivité, ateliers en présentiel quand il faut. Et pour les clients ailleurs en France, on est tout aussi efficaces à distance.",
     icon: HeartHandshake,
   },
 ];
@@ -66,7 +66,7 @@ export function WhyVizionSection() {
     >
       {/* Background base — full-bleed sur toute la largeur de la section */}
       <div
-        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-[#f8f8f6]"
+        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-card"
         style={{ minWidth: "100vw" }}
         aria-hidden
       />
@@ -80,19 +80,19 @@ export function WhyVizionSection() {
         <div
           className="absolute w-[70%] h-[60%] top-[-10%] left-[-15%]"
           style={{
-            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 60%)",
+            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 60%)",
           }}
         />
         <div
           className="absolute w-[50%] h-[50%] top-[20%] right-[-10%]"
           style={{
-            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[60%] h-[50%] bottom-[-15%] left-[20%]"
           style={{
-            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+            background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
           }}
         />
       </div>
@@ -112,7 +112,7 @@ export function WhyVizionSection() {
               >
                 {/* Overline */}
                 <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
-                  <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
+                  <div className="w-2 h-2 rounded-full bg-accent" />
                   <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
                     Pourquoi nous choisir
                   </span>
@@ -138,7 +138,7 @@ export function WhyVizionSection() {
                       5 ans
                     </span>
                     <span className="text-[11px] sm:text-[12px] text-muted font-medium">
-                      d&apos;expertise B2B
+                      d&apos;expertise
                     </span>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export function WhyVizionSection() {
           {/* Right Column - Timeline */}
           <div ref={rightColumnRef} className="lg:col-span-6 relative">
             {/* Timeline line */}
-            <div className="absolute left-5 sm:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#D4FD00] via-[#e5e5e5] to-[#e5e5e5]" />
+            <div className="absolute left-5 sm:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--color-accent)] via-[#e5e5e5] to-[#e5e5e5]" />
 
             <div className="space-y-6 sm:space-y-8 md:space-y-10">
               {MILESTONES.map((milestone, index) => {
@@ -180,15 +180,15 @@ export function WhyVizionSection() {
                     className="relative pl-12 sm:pl-14 md:pl-16 group"
                   >
                     {/* Timeline dot with icon */}
-                    <div className="absolute left-0 top-0 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl bg-white border border-black/[0.08] shadow-sm flex items-center justify-center group-hover:border-[#D4FD00]/50 group-hover:shadow-md transition-all duration-300">
-                      <Icon size={18} className="text-primary group-hover:text-[#0c0c0a] transition-colors" />
+                    <div className="absolute left-0 top-0 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl bg-white border border-black/[0.08] shadow-sm flex items-center justify-center group-hover:border-accent/50 group-hover:shadow-md transition-all duration-300">
+                      <Icon size={18} className="text-primary group-hover:text-primary transition-colors" />
                     </div>
 
                     {/* Content card */}
                     <div className="bg-white/60 backdrop-blur-sm border border-black/[0.04] rounded-xl p-4 sm:p-5 md:p-6 hover:bg-white hover:border-black/[0.08] hover:shadow-sm transition-all duration-300">
                       {/* Number badge */}
                       <div className="inline-flex items-center gap-2 mb-3">
-                        <span className="text-[#D4FD00] text-[12px] sm:text-[13px] font-bold tracking-wider bg-[#0c0c0a] px-2.5 py-1 rounded">
+                        <span className="text-accent text-[12px] sm:text-[13px] font-bold tracking-wider bg-dark px-2.5 py-1 rounded">
                           {milestone.number}
                         </span>
                       </div>

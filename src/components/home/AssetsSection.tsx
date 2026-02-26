@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Globe, Layout, Users, Presentation, FileText, Megaphone } from "lucide-react";
+import { ArrowUpRight, Globe, Layout, Users, Presentation, FileText, Megaphone, Sparkles, Database } from "lucide-react";
 import { ComingSoonLink } from "@/components/ComingSoonLink";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,22 +13,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TABS = [
   { id: "siteweb", label: "Site web", icon: Globe },
-  { id: "landingpages", label: "Pages de conversion", icon: Layout },
+  { id: "landingpages", label: "Landing pages", icon: Layout },
   { id: "casclients", label: "Cas clients", icon: Users },
   { id: "salesdeck", label: "Présentation commerciale", icon: Presentation },
   { id: "leadmagnets", label: "Contenus d'acquisition", icon: FileText },
   { id: "publicite", label: "Publicité", icon: Megaphone },
+  { id: "applicationsia", label: "Applications IA", icon: Sparkles },
+  { id: "crm", label: "CRM", icon: Database },
 ];
 
 const TAB_CONTENT = {
   siteweb: {
     title: "Site web",
-    description: "Votre site est la première impression. Nous construisons des sites B2B où le visiteur comprend votre offre en 5 secondes. Pas des vitrines esthétiques que personne ne comprend.",
+    description: "Votre site est la première impression. Nous construisons des sites où le visiteur comprend votre offre en 5 secondes. Pas des vitrines esthétiques que personne ne comprend.",
     image: "/images/pigment.avif",
     link: "/services/site-web",
   },
   landingpages: {
-    title: "Pages de conversion",
+    title: "Landing pages",
     description: "Des pages conçues pour un objectif : convertir. Structure testée, rédaction persuasive orientée problème, formulaire au bon moment.",
     image: "/images/landing-dashboard.avif",
     link: "/services/landing-pages",
@@ -56,6 +58,18 @@ const TAB_CONTENT = {
     description: "Campagnes LinkedIn Ads, Google Ads et Meta Ads. Ciblage précis, messages alignés sur le positionnement, optimisation continue.",
     image: "/images/publicite-dashboard.avif",
     link: "/services/publicite",
+  },
+  applicationsia: {
+    title: "Applications IA",
+    description: "Outils métier sur mesure propulsés par l'intelligence artificielle. Qualification automatisée, scoring de prospects, production de contenu accélérée. L'IA au service de votre croissance.",
+    image: "/images/ia-highlight/outils-metier.png",
+    link: "/contact",
+  },
+  crm: {
+    title: "CRM",
+    description: "Déploiement et structuration de votre CRM pour aligner marketing et ventes. Pipelines configurés, automatisations intégrées, données exploitables pour piloter votre croissance.",
+    image: "/images/ia-highlight/tableaux-de-bord.png",
+    link: "/contact",
   },
 };
 
@@ -223,26 +237,26 @@ export function AssetsSection() {
       {/* Header Banner - Same background as Manifeste */}
       <div className="relative py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden grain-overlay">
         {/* Background base */}
-        <div className="absolute inset-0 bg-[#f8f8f6]" />
+        <div className="absolute inset-0 bg-card" />
 
         {/* Subtle gradient blobs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
             className="absolute w-[70%] h-[60%] top-[-10%] left-[-15%]"
             style={{
-              background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 60%)',
+              background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 60%)',
             }}
           />
           <div
             className="absolute w-[50%] h-[50%] top-[20%] right-[-10%]"
             style={{
-              background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)',
+              background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)',
             }}
           />
           <div
             className="absolute w-[60%] h-[50%] bottom-[-15%] left-[20%]"
             style={{
-              background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)',
+              background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)',
             }}
           />
         </div>
@@ -271,7 +285,7 @@ export function AssetsSection() {
         id="assets"
         ref={sectionRef}
         className="dark-section relative overflow-hidden grain-overlay scroll-mt-20"
-        style={{ background: "#0c0c0a" }}
+        style={{ background: "var(--bg-dark)" }}
       >
         <div
           ref={triggerRef}
@@ -283,21 +297,21 @@ export function AssetsSection() {
             className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
             }}
           />
         </div>
@@ -307,28 +321,69 @@ export function AssetsSection() {
           <motion.div
             animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[15%] right-[8%] w-3 h-3 bg-[#D4FD00]/30 rounded-sm"
+            className="absolute top-[15%] right-[8%] w-3 h-3 bg-accent/30 rounded-sm"
           />
           <motion.div
             animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute top-[35%] right-[15%] w-2 h-2 bg-[#D4FD00]/20 rounded-full"
+            className="absolute top-[35%] right-[15%] w-2 h-2 bg-accent/20 rounded-full"
           />
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-[25%] left-[5%] w-4 h-1 bg-[#D4FD00]/25 rounded-full"
+            className="absolute bottom-[25%] left-[5%] w-4 h-1 bg-accent/25 rounded-full"
           />
           <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[50%] left-[3%] w-2 h-2 border border-[#D4FD00]/30 rounded-full"
+            className="absolute top-[50%] left-[3%] w-2 h-2 border border-accent/30 rounded-full"
           />
         </div>
 
         <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
-          {/* Glassmorphism Tabs with Icons - Scrollable on mobile */}
-        <div className="overflow-x-auto pb-2 mb-10 sm:mb-14 -mx-4 px-4 sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          {/* Mobile: compact active tab indicator */}
+          <div className="sm:hidden mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-3"
+            >
+              <span className="inline-flex items-center justify-center w-7 h-7 bg-accent rounded-md text-primary font-heading font-bold text-[11px]">
+                {String(TABS.findIndex(t => t.id === activeTab) + 1).padStart(2, '0')}
+              </span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={activeTab}
+                  initial={{ opacity: 0, x: 8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -8 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-white text-[14px] font-[var(--font-body)] font-medium"
+                >
+                  {content.title}
+                </motion.span>
+              </AnimatePresence>
+              <span className="text-white/40 text-[12px] font-[var(--font-body)]">
+                / {String(TABS.length).padStart(2, '0')}
+              </span>
+            </motion.div>
+            {/* Progress dots */}
+            <div className="flex gap-1.5 mt-3">
+              {TABS.map((tab) => (
+                <div
+                  key={tab.id}
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    activeTab === tab.id ? "w-6 bg-accent" : "w-1.5 bg-white/20"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: full glassmorphism tab bar */}
+          <div className="hidden sm:block pb-2 mb-10 sm:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -336,7 +391,7 @@ export function AssetsSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             role="tablist"
             aria-label="Livrables marketing"
-            className="relative inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1.5 min-w-max"
+            className="relative inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1.5"
           >
           {TABS.map((tab, index) => {
             const Icon = tab.icon;
@@ -347,9 +402,9 @@ export function AssetsSection() {
                 type="button"
                 role="tab"
                 onClick={(e) => handleTabClick(tab.id, index, e)}
-                className={`relative flex items-center gap-2 px-4 sm:px-5 py-2.5 text-[12px] sm:text-[13px] font-[var(--font-body)] font-medium transition-all duration-300 rounded-md ${
+                className={`relative flex items-center gap-2 px-5 py-2.5 text-[13px] font-[var(--font-body)] font-medium transition-all duration-300 rounded-md ${
                   isActive
-                    ? "text-[#0c0c0a] cursor-default"
+                    ? "text-primary cursor-default"
                     : "text-white/60 hover:text-white hover:bg-white/5 active:scale-95 cursor-pointer"
                 } ${isChangingTabRef.current ? "opacity-70 pointer-events-none" : ""}`}
                 aria-selected={isActive}
@@ -359,17 +414,16 @@ export function AssetsSection() {
                 {isActive && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-[#D4FD00] rounded-md"
+                    className="absolute inset-0 bg-accent rounded-md"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-                <span className={`relative z-10 flex items-center gap-2 ${isActive ? "text-[#0c0c0a]" : ""}`}>
-                  <Icon size={14} className={isActive ? "text-[#0c0c0a]" : ""} />
-                  <span className={`hidden sm:inline ${isActive ? "text-[#0c0c0a]" : ""}`}>{tab.label}</span>
-                  <span className={`sm:hidden ${isActive ? "text-[#0c0c0a]" : ""}`}>{tab.label.split(' ')[0]}</span>
+                <span className={`relative z-10 flex items-center gap-2 ${isActive ? "text-primary" : ""}`}>
+                  <Icon size={14} className={isActive ? "text-primary" : ""} />
+                  <span className={isActive ? "text-primary" : ""}>{tab.label}</span>
                 </span>
                 {isActive && (
-                  <span className="relative z-10 hidden lg:flex items-center justify-center w-5 h-5 rounded-full bg-[#0c0c0a] text-[#D4FD00] text-[10px] font-bold">
+                  <span className="relative z-10 hidden lg:flex items-center justify-center w-5 h-5 rounded-full bg-dark text-accent text-[10px] font-bold">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 )}
@@ -390,7 +444,7 @@ export function AssetsSection() {
             className="relative z-20 max-w-md lg:ml-0 mb-8 lg:mb-0 lg:absolute lg:top-8 lg:left-0"
           >
             {/* Card accent line */}
-            <div className="absolute -left-0 top-6 bottom-6 w-1 bg-gradient-to-b from-[#D4FD00] via-[#D4FD00]/50 to-transparent rounded-full hidden lg:block" />
+            <div className="absolute -left-0 top-6 bottom-6 w-1 bg-gradient-to-b from-[var(--color-accent)] via-[var(--color-accent)]/50 to-transparent rounded-full hidden lg:block" />
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -402,8 +456,8 @@ export function AssetsSection() {
                 className="relative bg-white light-card rounded-lg p-6 sm:p-8 shadow-2xl border border-black/5 lg:ml-3"
               >
                 {/* Numéro badge */}
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#D4FD00] rounded-lg flex items-center justify-center shadow-lg">
-                  <span className="text-[#0c0c0a] font-heading font-bold text-xs">
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-accent rounded-lg flex items-center justify-center shadow-lg">
+                  <span className="text-primary font-heading font-bold text-xs">
                     {String(TABS.findIndex(t => t.id === activeTab) + 1).padStart(2, '0')}
                   </span>
                 </div>
@@ -413,11 +467,11 @@ export function AssetsSection() {
                   key={`icon-${activeTab}`}
                   initial={{ scale: 0.8, rotate: -10 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  className="w-12 h-12 rounded-lg bg-[#0c0c0a] flex items-center justify-center mb-5"
+                  className="w-12 h-12 rounded-lg bg-dark flex items-center justify-center mb-5"
                 >
                   {(() => {
                     const Icon = TABS.find(t => t.id === activeTab)?.icon || Globe;
-                    return <Icon size={22} className="text-[#D4FD00]" />;
+                    return <Icon size={22} className="text-accent" />;
                   })()}
                 </motion.div>
 
@@ -433,7 +487,7 @@ export function AssetsSection() {
 
                 {/* CTA Button */}
                 <ComingSoonLink
-                  className="group inline-flex items-center justify-between w-full h-[52px] px-6 text-[14px] font-[var(--font-body)] font-semibold bg-[#0c0c0a] text-white rounded-lg hover:bg-[#1a1a1a] transition-all duration-300"
+                  className="group inline-flex items-center justify-between w-full h-[52px] px-6 text-[14px] font-[var(--font-body)] font-semibold bg-dark text-white rounded-lg hover:bg-[var(--text-primary)] transition-all duration-300"
                 >
                   <span>En savoir plus</span>
                   <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -451,12 +505,12 @@ export function AssetsSection() {
             className="relative z-10 lg:ml-auto lg:w-[75%]"
           >
             {/* Accent border frame */}
-            <div className="absolute -inset-2 sm:-inset-3 border border-[#D4FD00]/30 rounded-t-xl pointer-events-none" />
-            <div className="absolute -inset-4 sm:-inset-6 border border-[#D4FD00]/10 rounded-t-xl pointer-events-none hidden lg:block" />
+            <div className="absolute -inset-2 sm:-inset-3 border border-accent/30 rounded-t-xl pointer-events-none" />
+            <div className="absolute -inset-4 sm:-inset-6 border border-accent/10 rounded-t-xl pointer-events-none hidden lg:block" />
 
             {/* Decorative corner accents */}
-            <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-[#D4FD00] rounded-tr-lg hidden lg:block" />
-            <div className="absolute -top-3 left-1/4 w-8 h-1 bg-[#D4FD00]/40 hidden lg:block" />
+            <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent rounded-tr-lg hidden lg:block" />
+            <div className="absolute -top-3 left-1/4 w-8 h-1 bg-accent/40 hidden lg:block" />
 
             <div className="relative aspect-[14/9] overflow-hidden rounded-t-lg">
               <AnimatePresence initial={false} mode="wait">
@@ -490,14 +544,14 @@ export function AssetsSection() {
                       initial={{ opacity: 1 }}
                       animate={{ opacity: 0 }}
                       transition={{ duration: 0.3, delay: 0.2 }}
-                      className="absolute inset-0 bg-gradient-to-br from-[#D4FD00]/10 via-white/5 to-transparent animate-pulse"
+                      className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent)]/10 via-white/5 to-transparent animate-pulse"
                     />
                   )}
                 </motion.div>
               </AnimatePresence>
               {/* Subtle overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0a]/20 via-transparent to-transparent pointer-events-none z-10" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0c0c0a]/30 via-transparent to-transparent pointer-events-none lg:block hidden z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)]/20 via-transparent to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-dark)]/30 via-transparent to-transparent pointer-events-none lg:block hidden z-10" />
             </div>
 
             {/* Floating stat badge */}
@@ -506,10 +560,10 @@ export function AssetsSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute bottom-8 right-4 sm:right-8 bg-[#D4FD00] px-4 py-2 rounded-lg shadow-lg hidden lg:block"
+              className="absolute bottom-8 right-4 sm:right-8 bg-accent px-4 py-2 rounded-lg shadow-lg hidden lg:block"
             >
-              <span className="text-[#0c0c0a] font-heading font-bold text-sm">+150%</span>
-              <span className="text-[#0c0c0a]/70 text-xs ml-1">conversion</span>
+              <span className="text-primary font-heading font-bold text-sm">+150%</span>
+              <span className="text-primary/70 text-xs ml-1">conversion</span>
             </motion.div>
           </motion.div>
         </div>

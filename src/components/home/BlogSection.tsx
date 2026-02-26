@@ -16,6 +16,10 @@ interface BlogSectionProps {
     readingTime?: string;
     featuredImage?: string;
   }>;
+  surtitre?: string;
+  h2?: string;
+  description?: string;
+  ctaText?: string;
 }
 
 // Format date for display
@@ -28,7 +32,7 @@ function formatDate(dateString: string): string {
   });
 }
 
-export function BlogSection({ articles }: BlogSectionProps) {
+export function BlogSection({ articles, surtitre, h2, description, ctaText }: BlogSectionProps) {
   return (
     <section id="blog" className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden bg-white">
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -43,18 +47,18 @@ export function BlogSection({ articles }: BlogSectionProps) {
           >
             {/* Overline */}
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
-              <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
+              <div className="w-2 h-2 rounded-full bg-accent" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
-                {homeContent.blog.surtitre}
+                {surtitre ?? homeContent.blog.surtitre}
               </span>
             </div>
 
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
-              {homeContent.blog.h2}
+              {h2 ?? homeContent.blog.h2}
             </h2>
 
             <p className="text-muted text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mt-4 sm:mt-5">
-              Retours d&apos;expérience, analyses et guides pratiques pour les dirigeants B2B qui veulent un marketing qui génère du revenu.
+              {description ?? "Retours d\u0027expérience, analyses et guides pratiques pour les dirigeants qui veulent un marketing qui génère du revenu."}
             </p>
           </motion.div>
 
@@ -66,9 +70,9 @@ export function BlogSection({ articles }: BlogSectionProps) {
           >
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold text-primary hover:text-[#0a0a0a] transition-colors"
+              className="group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold text-primary hover:text-primary transition-colors"
             >
-              {homeContent.blog.ctaText}
+              {ctaText ?? homeContent.blog.ctaText}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -86,7 +90,7 @@ export function BlogSection({ articles }: BlogSectionProps) {
             >
               <Link
                 href={`/blog/${article.slug}`}
-                className="group block bg-[#fafaf8] border border-black/[0.06] rounded-xl overflow-hidden hover:border-black/[0.12] hover:shadow-lg transition-all duration-300"
+                className="group block bg-card border border-black/[0.06] overflow-hidden hover:border-black/[0.12] hover:shadow-lg transition-all duration-300"
               >
                 {/* Image */}
                 <div className="aspect-[16/10] overflow-hidden relative">
@@ -104,7 +108,7 @@ export function BlogSection({ articles }: BlogSectionProps) {
                   {/* Category & Read Time */}
                   <div className="flex items-center gap-3 mb-3">
                     {article.category && (
-                      <span className="px-2.5 py-1 bg-[#D4FD00]/20 text-[10px] font-bold tracking-wide text-primary rounded">
+                      <span className="px-2.5 py-1 bg-accent/20 text-[10px] font-bold tracking-wide text-primary rounded">
                         {article.category}
                       </span>
                     )}
@@ -117,7 +121,7 @@ export function BlogSection({ articles }: BlogSectionProps) {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-heading font-semibold text-[17px] sm:text-[18px] text-primary leading-tight mb-2 group-hover:text-[#0a0a0a] transition-colors line-clamp-2">
+                  <h3 className="font-heading font-semibold text-[17px] sm:text-[18px] text-primary leading-tight mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {article.title}
                   </h3>
 

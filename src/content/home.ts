@@ -277,15 +277,13 @@ export const homeContent: HomeContent = {
     description: "Agence marketing à Toulouse. Transformez votre offre complexe en message clair qui déclenche la décision d'achat. Positionnement, sales enablement, tunnel aligné. +70 entreprises accompagnées depuis 2021.",
     keywords: [
       "agence marketing toulouse",
-      "agence marketing b2b toulouse",
-      "agence marketing b2b",
       "marketing produit toulouse",
       "aide à la vente toulouse",
-      "positionnement b2b toulouse",
+      "positionnement toulouse",
       "agence marketing digital toulouse",
       "conseil marketing toulouse",
       "stratégie marketing toulouse",
-      "accompagnement marketing b2b"
+      "accompagnement marketing toulouse"
     ],
     ogImage: "/hero-binoculars.avif"
   },
@@ -298,7 +296,7 @@ export const homeContent: HomeContent = {
     h1: "Votre agence Marketing à Toulouse",
     h1Highlight: "Toulouse",
     h1RotatingWords: ["offre", "produit", "innovation", "solution SaaS", "franchise", "service"],
-    baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialisée dans le B2B et des cycles de ventes longs.",
+    baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialisée dans les cycles de ventes longs.",
     badges: [],
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
@@ -373,8 +371,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   piliers: {
     surtitre: "Notre méthodologie",
-    h2: "Vizion, un partenaire stratégique, au service de votre croissance",
-    description: "Vizion a développé des services structurants, conçus pour répondre aux enjeux concrets des entreprises B2B : clarifier le positionnement, structurer l'acquisition, équiper les commerciaux, automatiser les processus. Pas de prestations gadgets, seulement ce qui génère un impact mesurable sur votre croissance.",
+    h2: "Vizion, un partenaire stratégique, au service des entreprises occitanes",
+    description: "Vizion a développé des services structurants, conçus pour répondre aux enjeux concrets des entreprises : clarifier le positionnement, structurer l'acquisition, équiper les commerciaux, automatiser les processus. Pas de prestations gadgets, seulement ce qui génère un impact mesurable sur votre croissance.",
     badgeText: "Notre approche",
     badgeStatus: "CONSEIL STRATÉGIQUE",
     piliers: [
@@ -502,7 +500,7 @@ export const homeContent: HomeContent = {
           "Votre discours commercial et vos supports sont incohérents",
           "Vous avez besoin d'expertise marketing produit ponctuelle"
         ],
-        deliverables: ["Positionnement & discours de marque", "Supports commerciaux alignés", "Campagnes ou pages de conversion selon le périmètre"],
+        deliverables: ["Positionnement & discours de marque", "Supports commerciaux alignés", "Campagnes ou landing pages selon le périmètre"],
         duration: "8 à 16 semaines",
         investment: "Sur devis",
         idealFor: "Startups, PME & ETI avec un enjeu identifié",
@@ -541,11 +539,11 @@ export const homeContent: HomeContent = {
   aPropos: {
     surtitre: "Notre mission",
     introLaius: "Vizion n'est pas une agence qu'on consulte pour produire un logo ou refaire une plaquette. Nous sommes des stratèges. Nous concevons des feuilles de route marketing alignées sur vos objectifs commerciaux, et nous les déployons jusqu'au terrain.",
-    h2: "En B2B, les meilleurs produits ne gagnent pas toujours. Les mieux positionnés, si.",
+    h2: "Les meilleurs produits ne gagnent pas toujours. Les mieux positionnés, si.",
     h2Highlight: "positionnés",
-    marketPills: ["saas", "franchises", "pme / eti", "services b2b"],
+    marketPills: ["saas", "franchises", "pme / eti", "services"],
     paragraphs: [
-      "Vizion est une agence de conseil en marketing stratégique à Toulouse, spécialisée en B2B. Nous accompagnons les dirigeants qui veulent un positionnement clair, un tunnel de vente aligné et des résultats mesurables. Pas des livrables décoratifs.",
+      "Vizion est une agence de conseil en marketing stratégique à Toulouse. Nous accompagnons les dirigeants qui veulent un positionnement clair, un tunnel de vente aligné et des résultats mesurables. Pas des livrables décoratifs.",
       "Notre approche : diagnostiquer avant de produire. Nous posons le positionnement et le discours de marque, nous challengeons les priorités, et seulement ensuite nous construisons le système qui porte votre offre. Chaque livrable a une raison stratégique d'exister."
     ],
     founderQuote: {
@@ -645,21 +643,21 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   faq: {
     surtitre: "[ FAQ ]",
-    h2: "Vos questions",
-    h2Highlight: "questions",
+    h2: "Vous avez une question ? Nous avons la réponse.",
+    h2Highlight: "la réponse",
     description: "Nous croyons à la transparence. Voici les réponses aux questions qu'on nous pose le plus souvent.",
     questions: [
       {
         question: "Qu'est-ce que le marketing produit chez Vizion ?",
-        answer: "Le marketing produit chez Vizion, c'est tout ce qui permet de positionner une offre sur son marché pour qu'elle devienne le choix évident : positionnement, discours de marque, sites web et pages de conversion, SEO, campagnes publicitaires, aide à la vente, notoriété des dirigeants sur LinkedIn. Cela s'applique à tout « produit » au sens large : un SaaS, un concept de franchise, un service B2B. La méthode est la même, seule la nature du produit change."
+        answer: "Le marketing produit chez Vizion, c'est tout ce qui permet de positionner une offre sur son marché pour qu'elle devienne le choix évident : positionnement, discours de marque, sites web et landing pages, SEO, campagnes publicitaires, aide à la vente, notoriété des dirigeants sur LinkedIn. Cela s'applique à tout « produit » au sens large : un SaaS, un concept de franchise, un service. La méthode est la même, seule la nature du produit change."
       },
       {
         question: "Quelle est la différence entre marketing produit et marketing stratégique ?",
-        answer: "« Marketing stratégique » est un terme fourre-tout en France, tout le monde s'en revendique. « Marketing produit » est précis : dans l'écosystème B2B et SaaS, il est immédiatement compris (positionnement, discours de marque, mise en marché, aide à la vente). Pour les clients hors tech, le concept se traduit simplement : nous vous aidons à mieux vendre ce que vous faites déjà bien."
+        answer: "« Marketing stratégique » est un terme fourre-tout en France, tout le monde s'en revendique. « Marketing produit » est précis : dans l'écosystème SaaS et tech, il est immédiatement compris (positionnement, discours de marque, mise en marché, aide à la vente). Pour les clients hors tech, le concept se traduit simplement : nous vous aidons à mieux vendre ce que vous faites déjà bien."
       },
       {
         question: "Quelles entreprises peuvent faire appel à Vizion ?",
-        answer: "Vizion intervient auprès de trois typologies : startups et SaaS (logiciel, plateforme), franchises et réseaux (concept de franchise, recrutement franchisés), et PME/ETI B2B (offre commerciale à clarifier). Ces entreprises ont une problématique commune : transformer leur offre en évidence commerciale. Nous appliquons la même rigueur aux franchises, services B2B et ETI industrielles qu'aux acteurs tech."
+        answer: "Vizion intervient auprès de trois typologies : startups et SaaS (logiciel, plateforme), franchises et réseaux (concept de franchise, recrutement franchisés), et PME/ETI (offre commerciale à clarifier). Ces entreprises ont une problématique commune : transformer leur offre en évidence commerciale. Nous appliquons la même rigueur aux franchises, services et ETI industrielles qu'aux acteurs tech."
       },
       {
         question: "Comment travaille Vizion : mission ponctuelle ou accompagnement long terme ?",
@@ -667,7 +665,7 @@ export const homeContent: HomeContent = {
       },
       {
         question: "Vizion travaille-t-elle uniquement à Toulouse et en Occitanie ?",
-        answer: "Non, Vizion est basée à Toulouse (Labège, technopôle) mais accompagne des clients partout en France et à l'international. Présentiel pour les clients à Toulouse et en Occitanie, visio et déplacements ponctuels pour les autres. Plus de 70 entreprises nous font confiance depuis 2021, en Occitanie et dans toute la France. La proximité géographique reste un atout pour nos clients toulousains."
+        answer: "Non, Vizion est basée à Toulouse (Labège, technopôle), au cœur de la ville rose et capitale de l'Occitanie, mais accompagne des clients partout en France et à l'international. Présentiel pour les clients à Toulouse et en Occitanie, visio et déplacements ponctuels pour les autres. Plus de 70 entreprises nous font confiance depuis 2021, en Occitanie et dans toute la France. La proximité géographique reste un atout pour nos clients toulousains."
       },
       {
         question: "Combien de temps faut-il pour voir les résultats avec Vizion ?",
@@ -697,14 +695,14 @@ export const homeContent: HomeContent = {
       {
         slug: "fintech-b2b",
         titre: "Eldo Wallet",
-        description: "Structuration du go-to-market de cette fintech B2B : passage de 0 à 1000 clients et 850K€ MRR en 12 mois. Pilotage de l'ensemble des travaux marketing et commerciaux.",
-        categorie: "SaaS B2B"
+        description: "Structuration du go-to-market de cette fintech : passage de 0 à 1000 clients et 850K€ MRR en 12 mois. Pilotage de l'ensemble des travaux marketing et commerciaux.",
+        categorie: "SaaS"
       },
       {
         slug: "eti-manufacturing",
         titre: "Précision Industries",
         description: "Accompagnement de la transformation digitale de cette ETI industrielle (250M€ CA). Résultat : -30% coût d'acquisition client et structuration des outils commerciaux.",
-        categorie: "Industrie B2B"
+        categorie: "Industrie"
       }
     ]
   },
@@ -716,9 +714,9 @@ export const homeContent: HomeContent = {
     surtitre: "Notre ancrage",
     h2: "L'agence marketing à Toulouse",
     h2Highlight: "Toulouse",
-    description: "Basés à Toulouse, nous accompagnons les entreprises B2B d'Occitanie et de toute la France. Proximité quand il faut, efficacité à distance quand c'est mieux.",
+    description: "Basés dans la ville rose, capitale de l'Occitanie, nous accompagnons les entreprises de la région et de toute la France. Proximité quand il faut, efficacité à distance quand c'est mieux.",
     paragraphs: [
-      "Installés à Labège dans la technopole de Toulouse, nous travaillons au quotidien avec des PME et ETI de l'aéronautique, de la tech, de l'industrie et des services. L'Occitanie concentre plus de 12 000 entreprises B2B, et la plupart n'ont pas de stratégie marketing structurée.",
+      "Installés à Labège dans la technopole de Toulouse, nous travaillons au quotidien avec des PME et ETI de l'aéronautique, de la tech, de l'industrie et des services. La capitale occitane concentre plus de 12 000 entreprises, et la plupart n'ont pas de stratégie marketing structurée.",
       "Nos clients toulousains bénéficient d'ateliers stratégiques en présentiel. Pour les entreprises ailleurs en France, nous sommes tout aussi efficaces à distance, avec des déplacements ponctuels quand c'est utile."
     ],
     preuveLocale: "Enseignant en stratégie LinkedIn à Toulouse School of Management (TSM)",
@@ -746,13 +744,13 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   ilsParlentDeNous: {
     surtitre: "Dans les médias",
-    h2: "Ils parlent de nous",
+    h2: "Nos clients occitans parlent de nous",
     h2Highlight: "parlent de nous",
     mentions: [
       {
         source: "Le Sommet International du Marketing",
         type: "Conférence",
-        description: "Intervention sur le marketing produit B2B et l'alignement des tunnels de vente.",
+        description: "Intervention sur le marketing produit et l'alignement des tunnels de vente.",
       },
       {
         source: "Toulouse School of Management",
@@ -767,7 +765,7 @@ export const homeContent: HomeContent = {
       {
         source: "French Tech Toulouse",
         type: "Écosystème",
-        description: "Membre actif de l'écosystème French Tech, accompagnement de startups B2B en phase d'accélération.",
+        description: "Membre actif de l'écosystème French Tech, accompagnement de startups en phase d'accélération.",
       }
     ]
   },
@@ -777,7 +775,7 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   finalCta: {
     trustBadge: "+70 entreprises nous font confiance",
-    h2: "Échangeons sur votre prochain cap.",
+    h2: "Vous avez une entreprise à Toulouse ? Échangeons sur votre prochain cap.",
     h2Highlight: "votre prochain cap",
     description: "30 minutes avec un fondateur. On analyse votre positionnement actuel, on identifie les écarts avec votre marché, et on vous dit concrètement ce qu'on ferait. Sans engagement.",
     cta: {
@@ -801,11 +799,11 @@ export const organizationSchema = {
   "@type": "LocalBusiness",
   "@id": "https://by-vizion.com/#organization",
   "name": "Vizion - Agence marketing à Toulouse",
-  "alternateName": ["Vizion", "Vizion Marketing Produit", "Agence marketing Toulouse", "Agence marketing B2B Toulouse"],
-  "slogan": "Transformez votre offre B2B en évidence sur votre marché",
+  "alternateName": ["Vizion", "Vizion Marketing Produit", "Agence marketing Toulouse"],
+  "slogan": "Transformez votre offre en évidence sur votre marché",
   "description": "Agence marketing à Toulouse spécialisée en positionnement stratégique, sales enablement et tunnel de vente aligné. Vizion accompagne les PME et ETI dans leur transformation marketing : lancement de produit, repositionnement, accélération commerciale. Expertise en marketing produit, automatisation et intelligence artificielle appliquée. Plus de 70 entreprises accompagnées à Toulouse, Occitanie et en France depuis 2021.",
   "url": "https://by-vizion.com",
-  "knowsAbout": ["Marketing B2B", "Positionnement stratégique", "Sales Enablement", "Marketing Produit", "Automatisation Marketing", "Intelligence Artificielle", "SEO", "LinkedIn Ads", "CRM", "Tunnel de vente"],
+  "knowsAbout": ["Marketing", "Positionnement stratégique", "Sales Enablement", "Marketing Produit", "Automatisation Marketing", "Intelligence Artificielle", "SEO", "LinkedIn Ads", "CRM", "Tunnel de vente"],
   "logo": {
     "@type": "ImageObject",
     "url": "https://by-vizion.com/images/logo-vizion.png",
@@ -959,7 +957,7 @@ export const organizationSchema = {
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Services Marketing Produit B2B",
+    "name": "Services Marketing Produit",
     "itemListElement": [
       {
         "@type": "Offer",

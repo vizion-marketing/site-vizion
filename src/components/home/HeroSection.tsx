@@ -210,7 +210,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
         <span key="rotating" className="inline-block relative align-baseline" style={{ minWidth: '3ch', paddingBottom: '0.15em' }}>
           <span
             ref={wordRef}
-            className="inline-block text-[#D4FD00]"
+            className="inline-block text-accent"
           >
             {rotatingWords[currentWordIndex]}
           </span>
@@ -225,9 +225,9 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
       parts.push(remaining.slice(0, hlIdx));
       parts.push(
         <span key="highlight" className="relative inline-block">
-          <span className="relative z-10 text-[#D4FD00]">{highlightWord}</span>
+          <span className="relative z-10 text-accent">{highlightWord}</span>
           <span
-            className="absolute bottom-2 left-0 w-full h-3 bg-[#D4FD00]/20 -z-0"
+            className="absolute bottom-2 left-0 w-full h-3 bg-accent/20 -z-0"
             style={{ transform: 'skewX(-3deg)' }}
           />
         </span>
@@ -245,7 +245,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       className="dark-section relative pt-20 sm:pt-24 md:pt-28 lg:pt-36 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 flex items-center min-h-[100svh] overflow-hidden grain-overlay"
-      style={{ background: "#0c0c0a" }}
+      style={{ background: "var(--bg-dark)" }}
     >
       {/* Base + radial gradients jaune Vizion animés */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -253,35 +253,35 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
           }}
         />
       </div>
@@ -295,8 +295,8 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-fit opacity-0"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-50"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/50 shadow-[0_0_8px_rgba(212,253,0,0.5)]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-50"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/50 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]"></span>
             </span>
             <span
               className="text-[9px] sm:text-[10px] font-medium tracking-[0.08em] uppercase"
@@ -339,7 +339,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                 className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-tight"
                 style={{ color: "rgba(255,255,255,0.8)" }}
               >
-                <CheckCircle2 size={14} className="shrink-0" style={{ color: "#D4FD00" }} />
+                <CheckCircle2 size={14} className="shrink-0" style={{ color: "var(--color-accent)" }} />
                 {item}
               </div>
             ))}
@@ -374,17 +374,17 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             className="flex flex-wrap items-center gap-3 sm:gap-6 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-white/5 opacity-0"
           >
             <div className="flex items-center gap-2">
-              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">70+</span>
+              <span className="text-accent font-heading font-bold text-xl sm:text-2xl">70+</span>
               <span className="text-white/50 text-[10px] sm:text-xs leading-tight">clients<br/>accompagnés</span>
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">5 ans</span>
-              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">d&apos;expertise<br/>B2B</span>
+              <span className="text-accent font-heading font-bold text-xl sm:text-2xl">5 ans</span>
+              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">d&apos;expertise</span>
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-[#D4FD00] font-heading font-bold text-xl sm:text-2xl">+500</span>
+              <span className="text-accent font-heading font-bold text-xl sm:text-2xl">+500</span>
               <span className="text-white/50 text-[10px] sm:text-xs leading-tight">assets marketing<br/>déjà livrés</span>
             </div>
           </div>
@@ -408,12 +408,12 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                     alt={testimonial.author}
                     width={48}
                     height={48}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-[#D4FD00]/40 shrink-0"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-accent/40 shrink-0"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-0.5 mb-2">
                       {[...Array(5)].map((_, starIndex) => (
-                        <svg key={starIndex} width="12" height="12" viewBox="0 0 24 24" fill="#D4FD00" aria-hidden="true">
+                        <svg key={starIndex} width="12" height="12" viewBox="0 0 24 24" fill="var(--color-accent)" aria-hidden="true">
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                         </svg>
                       ))}
@@ -440,17 +440,17 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           className="relative z-30 group overflow-visible hidden lg:block lg:aspect-auto lg:h-full lg:min-h-[420px] lg:my-0 opacity-0"
         >
           {/* Accent border frames */}
-          <div className="absolute -inset-2 sm:-inset-3 border border-[#D4FD00]/20 rounded-lg pointer-events-none hidden lg:block" />
-          <div className="absolute -inset-4 sm:-inset-6 border border-[#D4FD00]/10 rounded-xl pointer-events-none hidden lg:block" />
+          <div className="absolute -inset-2 sm:-inset-3 border border-accent/20 rounded-lg pointer-events-none hidden lg:block" />
+          <div className="absolute -inset-4 sm:-inset-6 border border-accent/10 rounded-xl pointer-events-none hidden lg:block" />
 
           {/* Corner accents */}
-          <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-[#D4FD00] rounded-tr-lg hidden lg:block" />
-          <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-[#D4FD00] rounded-bl-lg hidden lg:block" />
+          <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent rounded-tr-lg hidden lg:block" />
+          <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-accent rounded-bl-lg hidden lg:block" />
 
           <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
             <Image
               src="/hero-binoculars.avif"
-              alt="Agence marketing B2B Toulouse Vizion - positionnement stratégique, sales enablement et tunnel de vente aligné pour PME et ETI"
+              alt="Agence marketing Toulouse Vizion - positionnement stratégique, sales enablement et tunnel de vente aligné pour PME et ETI"
               fill
               priority
               sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
@@ -470,11 +470,11 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
               <defs>
                 <linearGradient id="curveGrad" x1="0" y1="48" x2="96" y2="0">
                   <stop offset="0%" stopColor="rgba(255,255,255,0.2)" />
-                  <stop offset="100%" stopColor="#D4FD00" />
+                  <stop offset="100%" stopColor="var(--color-accent)" />
                 </linearGradient>
                 <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="48">
-                  <stop offset="0%" stopColor="#D4FD00" stopOpacity="0.15" />
-                  <stop offset="100%" stopColor="#D4FD00" stopOpacity="0" />
+                  <stop offset="0%" stopColor="var(--color-accent)" stopOpacity="0.15" />
+                  <stop offset="100%" stopColor="var(--color-accent)" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <path
@@ -491,7 +491,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             </svg>
             <div className="flex items-center justify-between mt-2">
               <span className="text-white/60 text-[10px]">Performance</span>
-              <span className="text-[#D4FD00] text-xs font-bold">+127%</span>
+              <span className="text-accent text-xs font-bold">+127%</span>
             </div>
           </div>
 
@@ -522,7 +522,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                     alt={testimonial.author}
                     width={48}
                     height={48}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-[#D4FD00]/40 shrink-0 mt-0.5"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-accent/40 shrink-0 mt-0.5"
                   />
 
                   <div className="flex-1 min-w-0">
@@ -534,7 +534,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                           width="12"
                           height="12"
                           viewBox="0 0 24 24"
-                          fill="#D4FD00"
+                          fill="var(--color-accent)"
                           aria-hidden="true"
                         >
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />

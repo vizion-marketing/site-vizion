@@ -10,7 +10,7 @@ const ACTUALITES = [
     tag: "Enseignement",
     title: "Intervention à la Toulouse School of Management",
     description:
-      "Lucas intervient auprès des étudiants du programme Grande École de la TSM sur les enjeux du marketing B2B et du positionnement produit.",
+      "Lucas intervient auprès des étudiants du programme Grande École de la TSM sur les enjeux du marketing et du positionnement produit.",
     span: "tall" as const,
     image: "/images/actualites/tsm.avif", // À fournir
   },
@@ -27,7 +27,7 @@ const ACTUALITES = [
     tag: "Conférence",
     title: "Sommet international du marketing",
     description:
-      "Lucas intervient au sommet international du marketing pour partager la méthodologie Vizion sur le sales enablement B2B.",
+      "Lucas intervient au sommet international du marketing pour partager la méthodologie Vizion sur le sales enablement.",
     span: "normal" as const,
     image: "/images/actualites/sommet-marketing.avif", // À fournir
   },
@@ -47,7 +47,7 @@ export function IlsParlentDeNousSection() {
     <section className="relative w-full py-16 sm:py-20 md:py-24 lg:py-28 grain-overlay">
       {/* Background — full-bleed */}
       <div
-        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-[#f8f8f6]"
+        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-card"
         style={{ minWidth: "100vw" }}
         aria-hidden
       />
@@ -62,7 +62,7 @@ export function IlsParlentDeNousSection() {
           className="absolute w-[60%] h-[50%] top-[-15%] left-[-10%]"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 60%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 60%)",
           }}
         />
       </div>
@@ -79,8 +79,8 @@ export function IlsParlentDeNousSection() {
           {/* Overline */}
           <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
             <div className="relative flex items-center justify-center w-2 h-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D4FD00] opacity-40" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#D4FD00]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-40" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </div>
             <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
               Actualités
@@ -89,7 +89,7 @@ export function IlsParlentDeNousSection() {
 
           <h2 className="font-heading font-medium text-[26px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.08] tracking-[-0.02em] text-primary">
             Suivez l&apos;actualité de{" "}
-            <span className="text-[#D4FD00] drop-shadow-[0_0_20px_rgba(212,253,0,0.3)]">
+            <span className="text-accent drop-shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.3)]">
               Vizion
             </span>
           </h2>
@@ -109,9 +109,9 @@ export function IlsParlentDeNousSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className={`group relative overflow-hidden border border-black/[0.06] hover:border-[#D4FD00]/30 hover:shadow-md transition-all duration-300 ${
+                className={`group relative overflow-hidden border border-black/[0.06] hover:border-accent/30 hover:shadow-md transition-all duration-300 ${
                   isTall
-                    ? "sm:row-span-2 bg-[#0c0c0a] dark-section"
+                    ? "sm:row-span-2 bg-dark dark-section"
                     : isWide
                       ? "sm:col-span-2 lg:col-span-2 bg-white light-card"
                       : "bg-white light-card"
@@ -143,23 +143,23 @@ export function IlsParlentDeNousSection() {
                   <div
                     className={`w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center mb-4 sm:mb-5 transition-colors duration-300 ${
                       isTall
-                        ? "bg-[#D4FD00] group-hover:bg-white"
-                        : "bg-[#0c0c0a] group-hover:bg-[#D4FD00]"
+                        ? "bg-accent group-hover:bg-white"
+                        : "bg-dark group-hover:bg-accent"
                     }`}
                   >
                     <Icon
                       size={20}
                       className={`transition-colors duration-300 ${
                         isTall
-                          ? "text-[#0c0c0a] group-hover:text-[#0c0c0a]"
-                          : "text-[#D4FD00] group-hover:text-[#0c0c0a]"
+                          ? "text-primary group-hover:text-primary"
+                          : "text-accent group-hover:text-primary"
                       }`}
                     />
                   </div>
 
                   {/* Tag */}
                   <span
-                    className="inline-block text-[10px] sm:text-[11px] font-medium tracking-[0.08em] uppercase px-2 py-0.5 w-fit mb-3 text-[#D4FD00] bg-[#D4FD00]/10"
+                    className="inline-block text-[10px] sm:text-[11px] font-medium tracking-[0.08em] uppercase px-2 py-0.5 w-fit mb-3 text-accent bg-accent/10"
                   >
                     {item.tag}
                   </span>
@@ -187,7 +187,7 @@ export function IlsParlentDeNousSection() {
                     className="absolute bottom-0 left-0 right-0 h-1/3 pointer-events-none"
                     style={{
                       background:
-                        "linear-gradient(to top, rgba(212, 253, 0, 0.06) 0%, transparent 100%)",
+                        "linear-gradient(to top, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 100%)",
                     }}
                   />
                 )}
