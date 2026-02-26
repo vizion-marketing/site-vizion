@@ -13,7 +13,7 @@ export interface LogoMarqueeProps {
 
 export function LogoMarquee({
   items,
-  bgColor = "#D4FD00",
+  bgColor = "var(--color-accent)",
   textColor = "text-black",
   dotColor = "text-black/30",
   repeatCount = 4,

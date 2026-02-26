@@ -34,7 +34,13 @@
       "Read(//c/Users/Lucas Gonzalez/Documents/GitHub/site-vizion/**)",
       "Bash(node scripts/convert-images.js:*)",
       "Bash(git reset:*)",
-      "Bash(node scripts/convert-automatisation.js:*)"
+      "Bash(node scripts/convert-automatisation.js:*)",
+      "WebFetch(domain:pagespeed.web.dev)",
+      "Bash(git rm:*)",
+      "Bash(npx contentlayer2 build:*)",
+      "Bash(npx rimraf .next)",
+      "Bash(npx sharp:*)",
+      "Bash(git status:*)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Lucas Gonzalez\\OneDrive\\Bureau\\Apps\\site-vizion"

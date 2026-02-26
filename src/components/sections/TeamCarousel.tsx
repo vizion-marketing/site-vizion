@@ -88,11 +88,11 @@ export function TeamCarousel({
     <section
       id="equipe"
       className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-light"
-      style={{ background: "#f8f8f6" }}
+      style={{ background: "var(--bg-card)" }}
     >
       {/* Ambient glow */}
       <div
-        className="absolute top-[30%] right-[10%] w-[600px] h-[600px] bg-[#D4FD00] opacity-[0.04] rounded-full blur-[200px] pointer-events-none"
+        className="absolute top-[30%] right-[10%] w-[600px] h-[600px] bg-accent opacity-[0.04] rounded-full blur-[200px] pointer-events-none"
       />
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -113,8 +113,8 @@ export function TeamCarousel({
                   transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                   className="relative flex h-2 w-2"
                 >
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}
@@ -212,7 +212,7 @@ export function TeamCarousel({
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-700 group-hover:from-black/90" />
 
                   {/* Accent line bottom */}
-                  <div className="absolute bottom-0 left-0 h-[3px] bg-[#D4FD00] w-0 group-hover:w-full transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] z-10" />
+                  <div className="absolute bottom-0 left-0 h-[3px] bg-accent w-0 group-hover:w-full transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] z-10" />
 
                   {/* Specialty tag */}
                   <div className="absolute top-4 left-4">

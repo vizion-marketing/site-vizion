@@ -44,7 +44,7 @@ export function CTASection({
   return (
     <section
       className="py-20 sm:py-24 md:py-32 lg:py-40 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-overlay dark-section"
-      style={{ background: "#0c0c0a" }}
+      style={{ background: "var(--bg-dark)" }}
     >
       {/* Animated radial gradients */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -52,28 +52,28 @@ export function CTASection({
           className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
           }}
         />
       </div>
@@ -89,11 +89,11 @@ export function CTASection({
           >
             <span className="relative flex h-2.5 w-2.5">
               <motion.span
-                className="absolute inline-flex h-full w-full rounded-full bg-[#D4FD00]"
+                className="absolute inline-flex h-full w-full rounded-full bg-accent"
                 animate={{ scale: [1, 2.2, 1], opacity: [0.5, 0, 0.5] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/90 to-[#D4FD00]/60 shadow-[0_0_12px_rgba(212,253,0,0.7)]" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/90 to-[var(--color-accent)]/60 shadow-[0_0_12px_rgba(var(--color-accent-rgb),0.7)]" />
             </span>
             <span className="text-[9px] sm:text-[10px] font-medium tracking-[0.08em] uppercase text-white/90">
               {badge}
@@ -123,7 +123,7 @@ export function CTASection({
                 backgroundImage: "none",
                 WebkitBackgroundClip: "unset",
                 backgroundClip: "unset",
-                color: "#D4FD00",
+                color: "var(--color-accent)",
               }}
             >
               {titleHighlight}
@@ -156,7 +156,7 @@ export function CTASection({
             className="btn btn-primary group relative overflow-hidden"
             style={{ boxShadow: '0 4px 24px rgba(255,255,255,0.1)' }}
           >
-            <span className="absolute inset-0 bg-gradient-to-r from-[#D4FD00]/0 via-[#D4FD00]/20 to-[#D4FD00]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <span className="absolute inset-0 bg-gradient-to-r from-[var(--color-accent)]/0 via-[var(--color-accent)]/20 to-[var(--color-accent)]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <span className="relative z-10 flex items-center gap-2">
               {primaryCta.text}
               <motion.span
@@ -174,7 +174,7 @@ export function CTASection({
               href={secondaryCta.href}
               className="btn btn-secondary group relative overflow-hidden"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-[#D4FD00]/0 via-[#D4FD00]/10 to-[#D4FD00]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="absolute inset-0 bg-gradient-to-r from-[var(--color-accent)]/0 via-[var(--color-accent)]/10 to-[var(--color-accent)]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <span className="relative z-10 flex items-center gap-2">
                 {secondaryCta.text}
                 <motion.span
@@ -209,7 +209,7 @@ export function CTASection({
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                   className="flex items-center gap-2 cursor-default"
                 >
-                  <element.icon size={14} className="text-[#D4FD00] transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.6)]" />
+                  <element.icon size={14} className="text-accent transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.6)]" />
                   <span className="text-[11px] sm:text-xs font-[var(--font-body)] text-white/70 hover:text-white/90 transition-colors duration-300">
                     {element.text}
                   </span>

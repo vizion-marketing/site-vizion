@@ -23,7 +23,7 @@ export function LogoBanner({
   variant = "light",
 }: LogoBannerProps) {
   const isDark = variant === "dark";
-  const bg = isDark ? "#0c0c0a" : "#f8f8f6";
+  const bg = isDark ? "var(--bg-dark)" : "var(--bg-card)";
 
   return (
     <section
@@ -48,8 +48,8 @@ export function LogoBanner({
                   transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                   className="relative flex h-2 w-2"
                 >
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}

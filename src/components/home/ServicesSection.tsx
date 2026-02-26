@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Target, PenTool, TrendingUp, Presentation, Cog, CheckCircle2 } from "lucide-react";
-import { ComingSoonLink } from "@/components/ComingSoonLink";
+import Link from "next/link";
 import { homeContent } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
 import Image from "next/image";
@@ -29,7 +29,7 @@ const SERVICES = [
       "Feuille de route structurée sur 6 à 12 mois",
       "Direction marketing externalisée ou renfort stratégique",
     ],
-    href: "/services/product-marketing",
+    href: "/services/marketing-produit",
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ const SERVICES = [
     icon: PenTool,
     tags: ["Positionnement", "Discours de marque", "Proposition de valeur", "Personas"],
     span: "normal" as const,
-    href: "/services/content-marketing",
+    href: "/services/sales-enablement",
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ const SERVICES = [
     icon: TrendingUp,
     tags: ["SEO", "LinkedIn Ads", "Google Ads", "Content marketing"],
     span: "normal" as const,
-    href: "/services/growth-marketing",
+    href: "/services/acquisition-b2b",
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ const SERVICES = [
     icon: Cog,
     tags: ["CRM", "Workflows", "IA appliquée", "Intégrations"],
     span: "normal" as const,
-    href: "/services/automatisation",
+    href: "/services/automatisation-crm",
   },
   {
     id: 5,
@@ -106,13 +106,13 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
       className="col-span-1 md:col-span-2 md:row-span-2 relative overflow-hidden group"
     >
-      <div className="relative h-full min-h-[480px] md:min-h-[500px] lg:min-h-[520px] bg-[#D4FD00] flex flex-col">
+      <div className="relative h-full min-h-[480px] md:min-h-[500px] lg:min-h-[520px] bg-accent flex flex-col">
         {/* Top Content - sur fond lime */}
         <div className="relative z-10 p-6 sm:p-8 lg:p-10 pb-0">
           {/* Header: Icon + Number */}
           <div className="flex items-center justify-between mb-6">
-            <div className="w-14 h-14 lg:w-16 lg:h-16 bg-[#1a1a1a] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-              <Icon size={28} className="text-[#D4FD00]" />
+            <div className="w-14 h-14 lg:w-16 lg:h-16 bg-[var(--text-primary)] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+              <Icon size={28} className="text-accent" />
             </div>
             <span className="text-primary/20 font-heading font-bold text-5xl lg:text-7xl">
               {cardNumber}
@@ -178,21 +178,22 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
               </div>
 
               {/* CTA Button */}
-              <ComingSoonLink
-                className="inline-flex items-center gap-2 h-[44px] sm:h-[48px] px-5 sm:px-6 text-[12px] sm:text-[13px] font-semibold bg-[#D4FD00] text-primary hover:bg-white transition-all duration-300 group/btn shrink-0"
+              <Link
+                href={service.href}
+                className="inline-flex items-center gap-2 h-[44px] sm:h-[48px] px-5 sm:px-6 text-[12px] sm:text-[13px] font-semibold bg-accent text-primary hover:bg-white transition-all duration-300 group/btn shrink-0"
               >
                 {service.title}
                 <ArrowUpRightIcon
                   className="shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
                   size={14}
                 />
-              </ComingSoonLink>
+              </Link>
             </div>
           </div>
         </div>
 
         {/* Decorative corner */}
-        <div className="absolute top-6 right-6 w-8 h-8 border-t-2 border-r-2 border-[#1a1a1a]/20 group-hover:border-[#1a1a1a]/40 transition-colors duration-300" />
+        <div className="absolute top-6 right-6 w-8 h-8 border-t-2 border-r-2 border-black/20 group-hover:border-black/40 transition-colors duration-300" />
       </div>
     </motion.div>
   );
@@ -212,9 +213,9 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
       className={`${isWide ? "col-span-1 md:col-span-2" : "col-span-1"} group`}
     >
-      <div className={`relative h-full min-h-[280px] lg:min-h-[260px] bg-white border border-black/10 overflow-hidden transition-all duration-500 hover:bg-[#D4FD00] hover:-translate-y-1 ${isWide ? "flex flex-col md:flex-row" : "flex flex-col"}`}>
+      <div className={`relative h-full min-h-[280px] lg:min-h-[260px] bg-card border border-black/[0.06] overflow-hidden transition-all duration-500 hover:bg-accent hover:-translate-y-1 ${isWide ? "flex flex-col md:flex-row" : "flex flex-col"}`}>
         {/* Accent line bottom - animates on hover */}
-        <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#1a1a1a] group-hover:w-full transition-all duration-500" />
+        <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[var(--text-primary)] group-hover:w-full transition-all duration-500" />
 
         {/* Image pour carte wide */}
         {hasImage && isWide && (
@@ -226,7 +227,7 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
               className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               sizes="(max-width: 768px) 100vw, 40vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 group-hover:to-[#D4FD00]/20 transition-colors duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 group-hover:to-[var(--color-accent)]/20 transition-colors duration-500" />
           </div>
         )}
 
@@ -242,19 +243,19 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
                 className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                 sizes="100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent group-hover:from-[#D4FD00] group-hover:via-[#D4FD00]/50 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent group-hover:from-[var(--color-accent)] group-hover:via-[var(--color-accent)]/50 transition-colors duration-500" />
             </div>
           )}
 
           {/* Icon */}
           <div className="mb-5">
-            <div className="w-12 h-12 lg:w-14 lg:h-14 bg-[#f5f5f5] group-hover:bg-[#1a1a1a] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
-              <Icon size={24} className="text-primary group-hover:text-[#D4FD00] transition-colors duration-500" />
+            <div className="w-12 h-12 lg:w-14 lg:h-14 bg-[#f5f5f5] group-hover:bg-[var(--text-primary)] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+              <Icon size={24} className="text-primary group-hover:text-accent transition-colors duration-500" />
             </div>
           </div>
 
           {/* Subtitle */}
-          <p className="text-[#D4FD00] group-hover:text-primary/70 text-[11px] lg:text-[12px] font-medium tracking-wide uppercase mb-2 transition-colors duration-500">
+          <p className="text-accent group-hover:text-primary/70 text-[11px] lg:text-[12px] font-medium tracking-wide uppercase mb-2 transition-colors duration-500">
             {service.subtitle}
           </p>
 
@@ -276,7 +277,7 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
             {service.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 bg-[#f5f5f5] group-hover:bg-[#1a1a1a]/10 text-primary text-[10px] lg:text-[11px] font-medium transition-colors duration-500"
+                className="px-2.5 py-1 bg-[#f5f5f5] group-hover:bg-[var(--text-primary)]/10 text-primary text-[10px] lg:text-[11px] font-medium transition-colors duration-500"
               >
                 {tag}
               </span>
@@ -284,23 +285,24 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
           </div>
 
           {/* Bottom: Number + CTA */}
-          <div className="flex items-end justify-between gap-4 pt-4 border-t border-black/10 group-hover:border-[#1a1a1a]/20 transition-colors duration-500">
+          <div className="flex items-end justify-between gap-4 pt-4 border-t border-black/10 group-hover:border-black/20 transition-colors duration-500">
             <span className="text-primary/15 font-heading font-bold text-3xl lg:text-4xl">
               {cardNumber}
             </span>
 
             {/* CTA Link */}
-            <ComingSoonLink
+            <Link
+              href={service.href}
               className="inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold text-primary group-hover:text-primary transition-colors duration-300 group/btn"
             >
-              <span className="border-b border-[#1a1a1a] group-hover/btn:border-[#1a1a1a] transition-colors duration-300">
+              <span className="border-b border-black group-hover/btn:border-black transition-colors duration-300">
                 {service.title}
               </span>
               <ArrowUpRightIcon
                 className="shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
                 size={14}
               />
-            </ComingSoonLink>
+            </Link>
           </div>
         </div>
       </div>
@@ -328,7 +330,7 @@ export function ServicesSection({ surtitre, h2, description }: ServicesSectionPr
           className="max-w-2xl mb-12 sm:mb-16 lg:mb-20"
         >
           <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
-            <div className="w-2 h-2 bg-[#D4FD00]" />
+            <div className="w-2 h-2 bg-accent" />
             <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
               {piliersSurtitre}
             </span>
@@ -387,15 +389,16 @@ export function ServicesSection({ surtitre, h2, description }: ServicesSectionPr
           transition={{ duration: 0.6 }}
           className="mt-12 sm:mt-16 lg:mt-20 text-center"
         >
-          <ComingSoonLink
-            className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[13px] sm:text-[14px] font-semibold bg-[#1a1a1a] text-white hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 group"
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[13px] sm:text-[14px] font-semibold bg-[var(--text-primary)] text-white hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 group"
           >
             Voir tous nos services
             <ArrowUpRightIcon
               className="shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
               size={16}
             />
-          </ComingSoonLink>
+          </Link>
         </motion.div>
       </div>
     </section>

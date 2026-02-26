@@ -35,13 +35,13 @@ export function StickyScrollReveal({
   return (
     <section
       className={`relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
-      style={{ background: isDark ? "#0c0c0a" : "#ffffff" }}
+      style={{ background: isDark ? "var(--bg-dark)" : "#ffffff" }}
     >
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       {/* Header */}
@@ -62,8 +62,8 @@ export function StickyScrollReveal({
                   transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                   className="relative flex h-2 w-2"
                 >
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}
@@ -85,7 +85,7 @@ export function StickyScrollReveal({
                 className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] max-w-3xl text-primary`}
               >
                 {title}{" "}
-                {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+                {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
               </motion.h2>
             )}
           </div>
@@ -143,12 +143,12 @@ export function StickyScrollReveal({
 
                       <div className="flex-1 pt-2">
                         {Icon && (
-                          <div className="w-10 h-10 flex items-center justify-center bg-[#D4FD00] mb-4">
+                          <div className="w-10 h-10 flex items-center justify-center bg-accent mb-4">
                             <Icon size={20} className="text-primary" />
                           </div>
                         )}
                         {item.label && (
-                          <span className={`text-[10px] font-bold tracking-wider uppercase block mb-2 ${isDark ? "text-[#D4FD00]/60" : "text-[#D4FD00]"}`}>
+                          <span className={`text-[10px] font-bold tracking-wider uppercase block mb-2 ${isDark ? "text-accent/60" : "text-accent"}`}>
                             {item.label}
                           </span>
                         )}
@@ -214,7 +214,7 @@ function StickyImage({
         sizes="50vw"
       />
       {/* Subtle accent border */}
-      <div className="absolute inset-0 border border-[#D4FD00]/10" />
+      <div className="absolute inset-0 border border-accent/10" />
     </motion.div>
   );
 }

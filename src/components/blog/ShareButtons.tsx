@@ -109,7 +109,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
             {/* Copy Link */}
             <button
               onClick={copyToClipboard}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-[#D4FD00] hover:text-black rounded-none transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-accent hover:text-black rounded-none transition-colors duration-200"
               aria-label="Copier le lien"
             >
               {copied ? <Check size={16} /> : <Copy size={16} />}
@@ -128,7 +128,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
             exit={{ opacity: 0, y: 20 }}
             className="fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-black text-white px-6 py-4 rounded-none shadow-2xl"
           >
-            <Check size={20} className="text-[#D4FD00]" />
+            <Check size={20} className="text-accent" />
             <span className="font-medium text-sm">Lien copié dans le presse-papier !</span>
           </motion.div>
         )}

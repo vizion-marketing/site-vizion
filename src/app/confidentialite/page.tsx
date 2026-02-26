@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function ConfidentialitePage() {
   return (
-    <main className="min-h-screen bg-[#F2F2F2] pt-32 pb-24">
+    <main className="min-h-screen bg-grey pt-32 pb-24">
       <div className="max-w-3xl mx-auto px-6">
         <Link
           href="/"

@@ -80,13 +80,13 @@ export function ImageSlider({
   return (
     <section
       className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
-      style={{ background: isDark ? "#0c0c0a" : "#ffffff" }}
+      style={{ background: isDark ? "var(--bg-dark)" : "#ffffff" }}
     >
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -108,8 +108,8 @@ export function ImageSlider({
                     transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                     className="relative flex h-2 w-2"
                   >
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
                   </motion.span>
                   <motion.span
                     initial={{ opacity: 0, x: -8 }}
@@ -145,7 +145,7 @@ export function ImageSlider({
                 onClick={goPrev}
                 className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border transition-colors ${
                   isDark
-                    ? "border-white/10 text-primary hover:bg-white hover:text-[#0c0c0a]"
+                    ? "border-white/10 text-primary hover:bg-white hover:text-primary"
                     : "border-black/10 text-primary hover:bg-black hover:text-white"
                 }`}
                 aria-label="Précédent"
@@ -156,7 +156,7 @@ export function ImageSlider({
                 onClick={goNext}
                 className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border transition-colors ${
                   isDark
-                    ? "border-white/10 text-primary hover:bg-white hover:text-[#0c0c0a]"
+                    ? "border-white/10 text-primary hover:bg-white hover:text-primary"
                     : "border-black/10 text-primary hover:bg-black hover:text-white"
                 }`}
                 aria-label="Suivant"
@@ -215,7 +215,7 @@ export function ImageSlider({
                 onClick={() => goTo(index)}
                 className={`relative flex-shrink-0 w-20 h-14 sm:w-24 sm:h-16 overflow-hidden border-2 transition-all ${
                   index === currentIndex
-                    ? "border-[#D4FD00] opacity-100"
+                    ? "border-accent opacity-100"
                     : `${isDark ? "border-white/10" : "border-black/10"} opacity-50 hover:opacity-80`
                 }`}
                 aria-label={`Aller à l'image ${index + 1}`}
@@ -241,7 +241,7 @@ export function ImageSlider({
                 onClick={() => goTo(index)}
                 className={`h-2 transition-all duration-300 ${
                   index === currentIndex
-                    ? "bg-[#D4FD00] w-6"
+                    ? "bg-accent w-6"
                     : `${isDark ? "bg-white/20 hover:bg-white/40" : "bg-black/20 hover:bg-black/40"} w-2`
                 }`}
                 aria-label={`Aller à l'image ${index + 1}`}

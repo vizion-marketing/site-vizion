@@ -92,7 +92,7 @@ export function NumberCounter({
   const isDark = variant === "dark";
   const isAccent = variant === "accent";
 
-  const bg = isAccent ? "#D4FD00" : isDark ? "#0c0c0a" : "#ffffff";
+  const bg = isAccent ? "var(--color-accent)" : isDark ? "var(--bg-dark)" : "#ffffff";
   const colsClass = {
     2: "grid-cols-1 sm:grid-cols-2",
     3: "grid-cols-1 sm:grid-cols-3",
@@ -106,9 +106,9 @@ export function NumberCounter({
     >
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       <div ref={ref} className="max-w-[82.5rem] mx-auto relative z-10">
@@ -129,8 +129,8 @@ export function NumberCounter({
                   transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                   className="relative flex h-2 w-2"
                 >
-                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${isAccent ? "bg-[#1a1a1a]" : "bg-[#D4FD00]"} opacity-40`} />
-                  <span className={`relative inline-flex rounded-full h-2 w-2 ${isAccent ? "bg-[#1a1a1a]" : "bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]"}`} />
+                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${isAccent ? "bg-[var(--text-primary)]" : "bg-accent"} opacity-40`} />
+                  <span className={`relative inline-flex rounded-full h-2 w-2 ${isAccent ? "bg-[var(--text-primary)]" : "bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]"}`} />
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}
@@ -157,7 +157,7 @@ export function NumberCounter({
               >
                 {title}{" "}
                 {titleHighlight && (
-                  <span className={isAccent ? "text-white" : "text-[#D4FD00]"}>
+                  <span className={isAccent ? "text-white" : "text-accent"}>
                     {titleHighlight}
                   </span>
                 )}
@@ -184,10 +184,10 @@ export function NumberCounter({
               transition={{ delay: index * 0.1 }}
               className={`text-center p-6 sm:p-8 border ${
                 isAccent
-                  ? "border-[#1a1a1a]/10"
+                  ? "border-black/10"
                   : isDark
                     ? "border-white/10 bg-white/[0.02]"
-                    : "border-black/[0.06] bg-[#f8f8f6]"
+                    : "border-black/[0.06] bg-card"
               }`}
             >
               <div className={`font-[var(--font-body)] font-[900] text-[36px] sm:text-[48px] md:text-[56px] leading-none tracking-[-0.03em] mb-2 ${

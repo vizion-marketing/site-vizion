@@ -29,7 +29,7 @@ export function TimelineSection({
   variant = "light",
 }: TimelineSectionProps) {
   const isDark = variant === "dark";
-  const bg = isDark ? "#0c0c0a" : "#f8f8f6";
+  const bg = isDark ? "var(--bg-dark)" : "var(--bg-card)";
 
   return (
     <section
@@ -38,7 +38,7 @@ export function TimelineSection({
     >
       {/* Ambient glow */}
       <div
-        className="absolute top-[30%] left-[-5%] w-[400px] h-[400px] bg-[#D4FD00] opacity-[0.04] rounded-full blur-[180px] pointer-events-none"
+        className="absolute top-[30%] left-[-5%] w-[400px] h-[400px] bg-accent opacity-[0.04] rounded-full blur-[180px] pointer-events-none"
       />
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -58,8 +58,8 @@ export function TimelineSection({
                 transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                 className="relative flex h-2 w-2"
               >
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -8 }}
@@ -81,7 +81,7 @@ export function TimelineSection({
             className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary`}
           >
             {title}{" "}
-            {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+            {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
           </motion.h2>
 
           {description && (
@@ -118,11 +118,11 @@ export function TimelineSection({
                 >
                   {/* Number / Icon circle */}
                   <div className="relative z-10 shrink-0">
-                    <div className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center ${isDark ? "bg-[#D4FD00]/10 border border-[#D4FD00]/20" : "bg-[#D4FD00] border border-[#D4FD00]"} transition-colors`}>
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center ${isDark ? "bg-accent/10 border border-accent/20" : "bg-accent border border-accent"} transition-colors`}>
                       {Icon ? (
-                        <Icon size={18} className={isDark ? "text-[#D4FD00]" : "text-primary"} />
+                        <Icon size={18} className={isDark ? "text-accent" : "text-primary"} />
                       ) : (
-                        <span className={`font-heading font-bold text-sm ${isDark ? "text-[#D4FD00]" : "text-primary"}`}>
+                        <span className={`font-heading font-bold text-sm ${isDark ? "text-accent" : "text-primary"}`}>
                           {stepNumber}
                         </span>
                       )}

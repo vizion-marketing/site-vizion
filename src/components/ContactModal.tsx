@@ -93,7 +93,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       animate={{ opacity: 1, y: 0 }}
                       className="text-center py-12"
                     >
-                      <div className="w-16 h-16 bg-[#D4FD00] rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
                         <CheckCircle2 size={32} className="text-black" />
                       </div>
                       <h3 className="font-heading text-xl text-black mb-2">Message envoyé !</h3>
@@ -115,7 +115,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                             required
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-[#F2F2F2] border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#D4FD00]"
+                            className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
                             placeholder="Votre nom"
                           />
                         </div>
@@ -129,7 +129,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                             name="company"
                             value={formData.company}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-[#F2F2F2] border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#D4FD00]"
+                            className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
                             placeholder="Nom de l'entreprise"
                           />
                         </div>
@@ -146,7 +146,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-[#F2F2F2] border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#D4FD00]"
+                          className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
                           placeholder="votre@email.com"
                         />
                       </div>
@@ -162,7 +162,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                           rows={4}
                           value={formData.message}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-[#F2F2F2] border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#D4FD00] resize-none"
+                          className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] resize-none"
                           placeholder="Décrivez votre projet ou vos enjeux..."
                         />
                       </div>
@@ -199,7 +199,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       {/* Phone CTA */}
                       <a
                         href="tel:+33750836543"
-                        className="w-full h-12 bg-[#F2F2F2] text-black font-bold text-sm flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors"
+                        className="w-full h-12 bg-grey text-black font-bold text-sm flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors"
                       >
                         <Phone size={16} />
                         07 50 83 65 43
@@ -209,7 +209,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </div>
 
                 {/* Right - Photo */}
-                <div className="hidden lg:block relative bg-[#0c0c0a]">
+                <div className="hidden lg:block relative bg-dark">
                   {/* Close button */}
                   <button
                     onClick={onClose}
@@ -231,7 +231,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       className="absolute w-[60%] h-[60%] top-0 right-0"
                       style={{
                         background:
-                          "radial-gradient(ellipse 100% 100% at 100% 0%, rgba(212, 253, 0, 0.2) 0%, transparent 60%)",
+                          "radial-gradient(ellipse 100% 100% at 100% 0%, rgba(var(--color-accent-rgb), 0.2) 0%, transparent 60%)",
                       }}
                     />
                   </div>
@@ -248,7 +248,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   {/* Text overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-8 z-[2]">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-2 h-2 bg-[#D4FD00] rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
                       <span className="text-[11px] font-bold tracking-widest text-white/80">
                         RÉPONSE SOUS 24H
                       </span>

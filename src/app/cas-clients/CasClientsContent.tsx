@@ -34,42 +34,42 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
     <main className="min-h-screen bg-white font-[var(--font-body)]">
       
       {/* HERO SECTION */}
-      <section className="relative pt-[120px] pb-[80px] md:pt-[140px] md:pb-[100px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "#0c0c0a" }}>
+      <section className="relative pt-[120px] pb-[80px] md:pt-[140px] md:pb-[100px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "var(--bg-dark)" }}>
         {/* Base + radial gradients jaune Vizion animés */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div
             className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
             }}
           />
         </div>
@@ -85,8 +85,8 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
             >
               <div className="flex items-center gap-2 mb-6">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#D4FD00] opacity-75"></span>
-                  <span className="relative inline-flex rounded-none h-2 w-2 bg-[#D4FD00]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-accent opacity-75"></span>
+                  <span className="relative inline-flex rounded-none h-2 w-2 bg-accent"></span>
                 </span>
                 <span className="text-[10px] font-light tracking-[0.12em] text-white/60">
                   +70 entreprises accompagnées
@@ -150,7 +150,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
 
       {/* FEATURED CASE (if exists) */}
       {featuredCase && (
-        <section className="py-12 px-6 md:px-12 bg-[#F2F2F2] border-b border-neutral-200">
+        <section className="py-12 px-6 md:px-12 bg-grey border-b border-neutral-200">
           <div className="max-w-[82.5rem] mx-auto">
             <motion.div 
               variants={fadeInUp}
@@ -181,7 +181,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                     <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-between z-10">
                       <div>
                         <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-none border border-white/20 text-[10px] font-bold tracking-widest text-white">
-                          <Star size={12} className="fill-[#D4FD00] text-[#D4FD00]" />
+                          <Star size={12} className="fill-[var(--color-accent)] text-accent" />
                           {featuredCase.sector}
                         </span>
                       </div>
@@ -267,7 +267,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                       inline-flex items-center gap-2 px-4 py-2.5 rounded-none text-sm font-medium transition-all duration-300
                       ${isActive 
                         ? 'bg-black text-white shadow-lg' 
-                        : 'bg-[#F2F2F2] text-neutral-600 hover:bg-neutral-200'
+                        : 'bg-grey text-neutral-600 hover:bg-neutral-200'
                       }
                     `}
                   >
@@ -319,7 +319,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                       <div className="p-6 pb-0">
                         <div className="flex items-center justify-between mb-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-[#F2F2F2] rounded-lg flex items-center justify-center">
+                            <div className="w-8 h-8 bg-grey rounded-lg flex items-center justify-center">
                               <SectorIcon size={16} className="text-black" />
                             </div>
                             <span className="text-[10px] font-bold tracking-widest text-neutral-400">
@@ -327,7 +327,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                             </span>
                           </div>
                           {caseStudy.featured && (
-                            <Star size={14} className="fill-[#D4FD00] text-[#D4FD00]" />
+                            <Star size={14} className="fill-[var(--color-accent)] text-accent" />
                           )}
                         </div>
                         
@@ -383,7 +383,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
               animate={{ opacity: 1 }}
               className="text-center py-16"
             >
-              <div className="w-16 h-16 bg-[#F2F2F2] rounded-none flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-grey rounded-none flex items-center justify-center mx-auto mb-4">
                 <Filter size={24} className="text-neutral-400" />
               </div>
               <h3 className="font-[var(--font-body)] font-black text-xl text-black mb-2">
@@ -404,14 +404,14 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-16 md:py-24 px-6 md:px-12 bg-[#F2F2F2]">
+      <section className="py-16 md:py-24 px-6 md:px-12 bg-grey">
         <div className="max-w-[82.5rem] mx-auto">
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="rounded-none p-8 md:p-16 text-center relative overflow-hidden grain-overlay dark-section"
-            style={{ background: "#0c0c0a" }}
+            style={{ background: "var(--bg-dark)" }}
           >
             {/* Base + radial gradients jaune Vizion animés */}
             <div className="absolute inset-0 pointer-events-none z-0">
@@ -419,35 +419,35 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                 className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
                 }}
               />
             </div>

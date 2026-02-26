@@ -16,7 +16,7 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
       {/* Background — full-bleed, même que le hero */}
       <div
         className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none"
-        style={{ minWidth: "100vw", background: "#0c0c0a" }}
+        style={{ minWidth: "100vw", background: "var(--bg-dark)" }}
         aria-hidden
       />
 
@@ -30,14 +30,14 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
           className="absolute w-[80%] h-[60%] top-[-10%] left-[-20%] animate-gradient-float-1"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[60%] h-[50%] bottom-[-15%] right-[-15%] animate-gradient-float-3"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
           }}
         />
       </div>
@@ -54,8 +54,8 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
           {/* Overline */}
           <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
             <div className="relative flex items-center justify-center w-2 h-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D4FD00] opacity-40" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#D4FD00]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-40" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </div>
             <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-white/80 uppercase">
               {data.surtitre}
@@ -64,7 +64,7 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
 
           <h2 className="font-heading font-medium text-[26px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.08] tracking-[-0.02em] text-white mb-4 sm:mb-5">
             {data.h2.split(data.h2Highlight)[0]}
-            <span className="text-[#D4FD00]">{data.h2Highlight}</span>
+            <span className="text-accent">{data.h2Highlight}</span>
             {data.h2.split(data.h2Highlight)[1]}
           </h2>
 
@@ -97,7 +97,7 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
             {/* CTA */}
             <a
               href={data.cta.href}
-              className="group inline-flex items-center gap-2 text-[13px] sm:text-[14px] font-medium text-[#D4FD00] hover:text-white transition-colors duration-300"
+              className="group inline-flex items-center gap-2 text-[13px] sm:text-[14px] font-medium text-accent hover:text-white transition-colors duration-300"
             >
               {data.cta.text}
               <ArrowRight
@@ -127,8 +127,8 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
               />
             </div>
             {/* Floating badge */}
-            <div className="absolute top-4 left-4 flex items-center gap-2 bg-[#0c0c0a]/90 backdrop-blur-sm border border-white/15 rounded-lg px-3 py-2">
-              <MapPin size={14} className="text-[#D4FD00]" />
+            <div className="absolute top-4 left-4 flex items-center gap-2 bg-dark/90 backdrop-blur-sm border border-white/15 rounded-lg px-3 py-2">
+              <MapPin size={14} className="text-accent" />
               <span className="text-[11px] sm:text-[12px] text-white font-medium">
                 Labège, Toulouse
               </span>
@@ -160,7 +160,7 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
                 transition={{ duration: 0.3, delay: index * 0.04 }}
                 className={`group relative flex flex-col items-center gap-1.5 py-3 sm:py-4 px-3 rounded-xl border transition-all duration-300 ${
                   ville.label === "Siège"
-                    ? "bg-[#D4FD00]/10 border-[#D4FD00]/30 hover:border-[#D4FD00]/50"
+                    ? "bg-accent/10 border-accent/30 hover:border-accent/50"
                     : "bg-white/[0.04] border-white/[0.10] hover:bg-white/[0.08] hover:border-white/[0.20]"
                 }`}
               >
@@ -168,13 +168,13 @@ export function LocalSEOSection({ content }: LocalSEOSectionProps = {}) {
                   size={14}
                   className={
                     ville.label === "Siège"
-                      ? "text-[#D4FD00]"
+                      ? "text-accent"
                       : "text-white/60 group-hover:text-white transition-colors"
                   }
                 />
                 <span
                   className={`text-[13px] sm:text-[14px] font-medium ${
-                    ville.label === "Siège" ? "text-[#D4FD00]" : "text-white"
+                    ville.label === "Siège" ? "text-accent" : "text-white"
                   }`}
                 >
                   {ville.name}

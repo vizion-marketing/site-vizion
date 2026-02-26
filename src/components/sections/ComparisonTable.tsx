@@ -27,8 +27,8 @@ export interface ComparisonTableProps {
 function CellValue({ value, highlighted, isDark }: { value: boolean | string; highlighted?: boolean; isDark?: boolean }) {
   if (value === true) {
     return (
-      <div className={`w-7 h-7 flex items-center justify-center ${highlighted ? "bg-[#D4FD00]" : "bg-[#D4FD00]/20"}`}>
-        <Check size={16} className={highlighted ? "text-primary" : "text-[#D4FD00]"} />
+      <div className={`w-7 h-7 flex items-center justify-center ${highlighted ? "bg-accent" : "bg-accent/20"}`}>
+        <Check size={16} className={highlighted ? "text-primary" : "text-accent"} />
       </div>
     );
   }
@@ -65,7 +65,7 @@ export function ComparisonTable({
   variant = "light",
 }: ComparisonTableProps) {
   const isDark = variant === "dark";
-  const bg = isDark ? "#0c0c0a" : "#ffffff";
+  const bg = isDark ? "var(--bg-dark)" : "#ffffff";
 
   return (
     <section
@@ -74,9 +74,9 @@ export function ComparisonTable({
     >
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       <div className="max-w-[52rem] mx-auto relative z-10">
@@ -96,8 +96,8 @@ export function ComparisonTable({
                 transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                 className="relative flex h-2 w-2"
               >
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -8 }}
@@ -119,7 +119,7 @@ export function ComparisonTable({
             className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary`}
           >
             {title}{" "}
-            {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+            {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
           </motion.h2>
 
           {description && (
@@ -138,14 +138,14 @@ export function ComparisonTable({
           className={`border ${isDark ? "border-white/10" : "border-black/10"} overflow-hidden`}
         >
           {/* Header row */}
-          <div className={`grid grid-cols-[1fr_120px_120px] sm:grid-cols-[1fr_160px_160px] ${isDark ? "bg-white/5" : "bg-[#f8f8f6]"}`}>
+          <div className={`grid grid-cols-[1fr_120px_120px] sm:grid-cols-[1fr_160px_160px] ${isDark ? "bg-white/5" : "bg-card"}`}>
             <div className="p-4 sm:p-5" />
-            <div className={`p-4 sm:p-5 text-center border-l ${isDark ? "border-white/10" : "border-black/10"} ${highlightColumn === "left" ? "bg-[#D4FD00] text-primary" : ""}`}>
+            <div className={`p-4 sm:p-5 text-center border-l ${isDark ? "border-white/10" : "border-black/10"} ${highlightColumn === "left" ? "bg-accent text-primary" : ""}`}>
               <span className={`font-heading font-semibold text-[13px] sm:text-[14px] ${highlightColumn !== "left" ? "text-primary" : ""}`}>
                 {leftLabel}
               </span>
             </div>
-            <div className={`p-4 sm:p-5 text-center border-l ${isDark ? "border-white/10" : "border-black/10"} ${highlightColumn === "right" ? "bg-[#D4FD00] text-primary" : ""}`}>
+            <div className={`p-4 sm:p-5 text-center border-l ${isDark ? "border-white/10" : "border-black/10"} ${highlightColumn === "right" ? "bg-accent text-primary" : ""}`}>
               <span className={`font-heading font-semibold text-[13px] sm:text-[14px] ${highlightColumn !== "right" ? "text-primary" : ""}`}>
                 {rightLabel}
               </span>
@@ -163,10 +163,10 @@ export function ComparisonTable({
                   {row.feature}
                 </span>
               </div>
-              <div className={`p-4 sm:p-5 flex items-center justify-center border-l ${isDark ? "border-white/5" : "border-black/[0.06]"} ${highlightColumn === "left" ? (isDark ? "bg-[#D4FD00]/5" : "bg-[#D4FD00]/5") : ""}`}>
+              <div className={`p-4 sm:p-5 flex items-center justify-center border-l ${isDark ? "border-white/5" : "border-black/[0.06]"} ${highlightColumn === "left" ? (isDark ? "bg-accent/5" : "bg-accent/5") : ""}`}>
                 <CellValue value={row.left} highlighted={highlightColumn === "left"} isDark={isDark} />
               </div>
-              <div className={`p-4 sm:p-5 flex items-center justify-center border-l ${isDark ? "border-white/5" : "border-black/[0.06]"} ${highlightColumn === "right" ? (isDark ? "bg-[#D4FD00]/5" : "bg-[#D4FD00]/5") : ""}`}>
+              <div className={`p-4 sm:p-5 flex items-center justify-center border-l ${isDark ? "border-white/5" : "border-black/[0.06]"} ${highlightColumn === "right" ? (isDark ? "bg-accent/5" : "bg-accent/5") : ""}`}>
                 <CellValue value={row.right} highlighted={highlightColumn === "right"} isDark={isDark} />
               </div>
             </div>

@@ -40,7 +40,7 @@ export function PricingSection({
   return (
     <section
       className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-light"
-      style={{ background: "#f8f8f6" }}
+      style={{ background: "var(--bg-card)" }}
     >
       {/* Background image */}
       {backgroundImage && (
@@ -48,7 +48,7 @@ export function PricingSection({
           <Image src={backgroundImage} alt="" fill className="object-cover" sizes="100vw" />
         </div>
       )}
-      <div className="absolute top-[20%] right-[-5%] w-[500px] h-[500px] bg-[#D4FD00] opacity-[0.04] rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute top-[20%] right-[-5%] w-[500px] h-[500px] bg-accent opacity-[0.04] rounded-full blur-[200px] pointer-events-none" />
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
         {/* Header */}
@@ -67,8 +67,8 @@ export function PricingSection({
                 transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                 className="relative flex h-2 w-2"
               >
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -8 }}
@@ -90,7 +90,7 @@ export function PricingSection({
             className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-3 sm:mb-4"
           >
             {title}{" "}
-            {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+            {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
           </motion.h2>
 
           {description && (
@@ -113,20 +113,20 @@ export function PricingSection({
             >
               <div className={`relative h-full flex flex-col p-6 sm:p-8 lg:p-10 border overflow-hidden transition-all duration-300 ${
                 tier.highlighted
-                  ? "bg-[#1a1a1a] border-[#1a1a1a] text-white"
+                  ? "bg-[var(--text-primary)] border-black text-white"
                   : "bg-white border-black/10 hover:border-black/20"
               }`}>
                 {/* Badge */}
                 {tier.badge && (
                   <span className={`absolute top-0 right-0 px-3 py-1.5 text-[9px] font-bold tracking-wide ${
-                    tier.highlighted ? "bg-[#D4FD00] text-primary" : "bg-[#D4FD00] text-primary"
+                    tier.highlighted ? "bg-accent text-primary" : "bg-accent text-primary"
                   }`}>
                     {tier.badge}
                   </span>
                 )}
 
                 {/* Tier name */}
-                <p className={`text-[11px] sm:text-xs font-medium tracking-wide uppercase mb-3 ${tier.highlighted ? "text-[#D4FD00]" : "text-[#D4FD00]"}`}>
+                <p className={`text-[11px] sm:text-xs font-medium tracking-wide uppercase mb-3 ${tier.highlighted ? "text-accent" : "text-accent"}`}>
                   {tier.name}
                 </p>
 
@@ -151,7 +151,7 @@ export function PricingSection({
                 <ul className="space-y-3 mb-8 flex-grow">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
-                      <Check size={16} className={`shrink-0 mt-0.5 ${tier.highlighted ? "text-[#D4FD00]" : "text-[#D4FD00]"}`} />
+                      <Check size={16} className={`shrink-0 mt-0.5 ${tier.highlighted ? "text-accent" : "text-accent"}`} />
                       <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] leading-snug ${tier.highlighted ? "text-white/80" : "text-primary"}`}>
                         {feature}
                       </span>

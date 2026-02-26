@@ -13,8 +13,7 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Accueil", target: "top", href: "/" },
-  { label: "Services", target: "services", href: "/services" },
-  { label: "Cas Clients", target: "cas-clients", href: "/cas-clients" },
+{ label: "Cas Clients", target: "cas-clients", href: "/cas-clients" },
   { label: "Notre agence", target: "agence", href: "/#agence" },
   { label: "Blog", target: "blog", href: "/blog" },
 ];

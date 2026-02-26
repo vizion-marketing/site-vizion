@@ -142,7 +142,7 @@ export function Tabs({
                 <span
                   className={`
                     font-[var(--font-body)] font-bold text-[10px] sm:text-[11px]
-                    ${activeTab === tab.id ? "text-[#D4FD00]" : "text-[#999]"}
+                    ${activeTab === tab.id ? "text-accent" : "text-[#999]"}
                   `}
                 >
                   {tab.number}
@@ -156,7 +156,7 @@ export function Tabs({
           {/* Animated indicator */}
           {variant === "underline" && (
             <motion.div
-              className="absolute bottom-0 h-[2px] bg-[#D4FD00]"
+              className="absolute bottom-0 h-[2px] bg-accent"
               initial={false}
               animate={{
                 left: indicatorStyle.left,

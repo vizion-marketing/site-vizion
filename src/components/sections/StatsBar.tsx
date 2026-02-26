@@ -86,12 +86,12 @@ export function StatsBar({ stats, variant = "dark" }: StatsBarProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
-  const bg = isAccent ? "#D4FD00" : isDark ? "#0c0c0a" : "#f8f8f6";
+  const bg = isAccent ? "var(--color-accent)" : isDark ? "var(--bg-dark)" : "var(--bg-card)";
   const valueColor = isAccent ? "text-primary" : "text-primary";
   const labelColor = isAccent ? "text-primary/80" : "text-secondary";
-  const dividerColor = isAccent ? "bg-[#1a1a1a]/20" : isDark ? "bg-white/15" : "bg-black/10";
+  const dividerColor = isAccent ? "bg-[var(--text-primary)]/20" : isDark ? "bg-white/15" : "bg-black/10";
   const grain = isDark ? "grain-overlay" : isAccent ? "" : "grain-light";
-  const borderColor = isAccent ? "border-[#1a1a1a]/10" : isDark ? "border-white/5" : "border-black/[0.04]";
+  const borderColor = isAccent ? "border-black/10" : isDark ? "border-white/5" : "border-black/[0.04]";
 
   return (
     <section
@@ -104,7 +104,7 @@ export function StatsBar({ stats, variant = "dark" }: StatsBarProps) {
           <div
             className="absolute w-[50%] h-[100%] left-[25%] top-[-50%] animate-gradient-float-1"
             style={{
-              background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 60%)",
+              background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 60%)",
             }}
           />
         </div>
@@ -133,14 +133,14 @@ export function StatsBar({ stats, variant = "dark" }: StatsBarProps) {
               >
                 {/* Hover glow effect */}
                 <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                  isAccent ? "bg-[#1a1a1a]/5" : isDark ? "bg-[#D4FD00]/5" : "bg-[#D4FD00]/5"
+                  isAccent ? "bg-[var(--text-primary)]/5" : isDark ? "bg-accent/5" : "bg-accent/5"
                 }`} />
 
                 <AnimatedStatValue
                   value={stat.value}
                   isInView={isInView}
                   className={`relative font-heading font-bold text-[32px] sm:text-[40px] md:text-[48px] leading-none tracking-[-0.02em] ${valueColor} transition-colors duration-300 ${
-                    !isAccent && isDark ? "group-hover:text-[#D4FD00]" : ""
+                    !isAccent && isDark ? "group-hover:text-accent" : ""
                   }`}
                 />
                 <span className={`relative text-[11px] sm:text-xs font-[var(--font-body)] font-medium tracking-wide mt-2 ${labelColor}`}>

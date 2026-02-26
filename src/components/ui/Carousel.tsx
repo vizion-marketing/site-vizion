@@ -140,7 +140,7 @@ export function Carousel({
                 w-2 h-2 transition-all duration-300
                 ${
                   index === selectedIndex
-                    ? "bg-[#D4FD00] w-6"
+                    ? "bg-accent w-6"
                     : "bg-black/20 hover:bg-black/40"
                 }
               `}

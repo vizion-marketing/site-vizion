@@ -12,21 +12,13 @@ const footerLinks = {
     { name: 'Cas clients', href: '/cas-clients' },
     { name: 'Contact', href: '/contact' },
   ],
-  services: [
-    { name: 'Marketing Produit', href: '/services/marketing-produit' },
-    { name: 'Sales Enablement', href: '/services/sales-enablement' },
-    { name: 'Sites Web B2B', href: '/services/sites-web-b2b' },
-    { name: 'Automatisation & CRM', href: '/services/automatisation-crm' },
-    { name: 'IA Marketing & Ventes', href: '/services/ia-marketing-ventes' },
-    { name: 'Acquisition B2B', href: '/services/acquisition-b2b' },
-  ],
 };
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#F2F2F2] pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-10 md:pb-12">
+    <footer className="bg-grey pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-10 md:pb-12">
       <div className="container-wide px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 md:gap-16 mb-12 sm:mb-16 md:mb-24">
           <div className="lg:col-span-4 flex flex-col gap-10">
@@ -79,21 +71,6 @@ export function Footer() {
               <h4 className="surtitre text-black">Navigation</h4>
               <ul className="flex flex-col gap-3">
                 {footerLinks.entreprise.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="lg:col-span-3">
-            <div className="flex flex-col gap-6">
-              <h4 className="surtitre text-black">Services</h4>
-              <ul className="flex flex-col gap-3">
-                {footerLinks.services.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
                       {link.name}

@@ -113,7 +113,7 @@ export function BentoCardGrey({
 }: BentoCardProps) {
   return (
     <BentoCard span={span} index={index} className={className}>
-      <div className="h-full bg-[#fafaf8] border border-black/[0.06] p-5 sm:p-6 md:p-8 overflow-hidden relative">
+      <div className="h-full bg-card border border-black/[0.06] p-5 sm:p-6 md:p-8 overflow-hidden relative">
         {children}
       </div>
     </BentoCard>
@@ -132,7 +132,7 @@ export function BentoCardDark({
         className="h-full p-5 sm:p-6 md:p-8 overflow-hidden relative border border-white/10"
         style={{
           background:
-            "linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%)",
+            "linear-gradient(135deg, var(--text-primary) 0%, var(--bg-dark) 50%, var(--text-primary) 100%)",
         }}
       >
         {/* Carbon fibre texture */}
@@ -155,7 +155,7 @@ export function BentoCardAccent({
         className="h-full p-5 sm:p-6 md:p-8 overflow-hidden relative"
         style={{
           background:
-            "linear-gradient(135deg, #D4FD00 0%, #c8ff00 50%, #b8ef00 100%)",
+            "linear-gradient(135deg, var(--color-accent) 0%, #c8ff00 50%, #b8ef00 100%)",
         }}
       >
         {children}

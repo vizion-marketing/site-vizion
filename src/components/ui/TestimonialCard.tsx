@@ -38,7 +38,7 @@ export function TestimonialCard({
         relative p-6 sm:p-8 md:p-10
         ${
           isPartner
-            ? "bg-[#0a0a0a] border border-white/10"
+            ? "bg-dark border border-white/10"
             : "bg-white border border-black/[0.06]"
         }
         ${className}
@@ -65,7 +65,7 @@ export function TestimonialCard({
                 size={16}
                 className={
                   i < rating
-                    ? "fill-[#D4FD00] text-[#D4FD00]"
+                    ? "fill-[var(--color-accent)] text-accent"
                     : isPartner
                     ? "text-white/20"
                     : "text-black/10"

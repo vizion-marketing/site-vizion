@@ -31,7 +31,7 @@ export function ArticleHero({
       {/* Hero Section - Style Home Page */}
       <section
         className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-12 overflow-hidden grain-overlay dark-section"
-        style={{ background: "#0c0c0a" }}
+        style={{ background: "var(--bg-dark)" }}
       >
         {/* Base + radial gradients jaune Vizion → transparent (comme home hero) */}
         <div
@@ -39,11 +39,11 @@ export function ArticleHero({
           aria-hidden
           style={{
             background: `
-              radial-gradient(ellipse 80% 60% at 20% 30%, rgba(212, 253, 0, 0.12) 0%, transparent 55%),
-              radial-gradient(ellipse 70% 50% at 80% 20%, rgba(212, 253, 0, 0.08) 0%, transparent 55%),
-              radial-gradient(ellipse 60% 70% at 50% 85%, rgba(212, 253, 0, 0.06) 0%, transparent 55%),
-              radial-gradient(ellipse 50% 50% at 90% 70%, rgba(212, 253, 0, 0.05) 0%, transparent 55%),
-              radial-gradient(ellipse 45% 45% at 8% 60%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)
+              radial-gradient(ellipse 80% 60% at 20% 30%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%),
+              radial-gradient(ellipse 70% 50% at 80% 20%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%),
+              radial-gradient(ellipse 60% 70% at 50% 85%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%),
+              radial-gradient(ellipse 50% 50% at 90% 70%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%),
+              radial-gradient(ellipse 45% 45% at 8% 60%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)
             `,
           }}
         />
@@ -57,7 +57,7 @@ export function ArticleHero({
           >
             {/* Surtitre - style design system */}
             <div className="flex items-center gap-2.5">
-              <div className="w-2 h-2 rounded-full bg-[#D4FD00] shrink-0" />
+              <div className="w-2 h-2 rounded-full bg-accent shrink-0" />
               <span className="surtitre text-[10px] sm:text-[11px] font-light tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.8)" }}>
                 {category}
               </span>
@@ -80,15 +80,15 @@ export function ArticleHero({
             {/* Metadata badges - style CheckCircle2 comme home */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pb-4 border-b border-white/10">
               <div className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-tight" style={{ color: "rgba(255,255,255,0.8)" }}>
-                <Calendar size={14} className="shrink-0" style={{ color: "#D4FD00" }} />
+                <Calendar size={14} className="shrink-0" style={{ color: "var(--color-accent)" }} />
                 {date}
               </div>
               <div className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-tight" style={{ color: "rgba(255,255,255,0.8)" }}>
-                <User size={14} className="shrink-0" style={{ color: "#D4FD00" }} />
+                <User size={14} className="shrink-0" style={{ color: "var(--color-accent)" }} />
                 {author}
               </div>
               <div className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-tight" style={{ color: "rgba(255,255,255,0.8)" }}>
-                <Clock size={14} className="shrink-0" style={{ color: "#D4FD00" }} />
+                <Clock size={14} className="shrink-0" style={{ color: "var(--color-accent)" }} />
                 {readingTime}
               </div>
             </div>
@@ -99,11 +99,11 @@ export function ArticleHero({
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#D4FD00]/10 border border-[#D4FD00]/30 rounded-none mt-2"
+                className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-none mt-2"
               >
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-50" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4FD00]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-50" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
                 </span>
                 <span className="text-[10px] font-medium tracking-wide text-white/80">
                   Mis à jour le {dateModified}
@@ -155,7 +155,7 @@ export function ArticleHero({
             </div>
 
             {/* Cadres décoratifs style home - accent D4FD00 */}
-            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-[#D4FD00]/40 pointer-events-none z-20" />
+            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-accent/40 pointer-events-none z-20" />
             <div className="absolute -bottom-3 -left-3 w-12 h-12 border-b-2 border-l-2 border-white/30 pointer-events-none z-20" />
           </motion.div>
         </section>

@@ -27,7 +27,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
   if (filteredPosts.length === 0) return null;
 
   return (
-    <section className="py-20 px-6 md:px-12 bg-[#F2F2F2]">
+    <section className="py-20 px-6 md:px-12 bg-grey">
       <div className="max-w-[82.5rem] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
           className="mb-12"
         >
           <div className="flex items-center gap-2.5 mb-4">
-            <div className="w-2 h-2 rounded-full bg-[#D4FD00] shrink-0" />
+            <div className="w-2 h-2 rounded-full bg-accent shrink-0" />
             <span className="surtitre text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-black/50">
               Continuer la lecture
             </span>
@@ -55,10 +55,10 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-white rounded-none overflow-hidden border border-transparent hover:border-[#D4FD00]/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500 p-6 flex flex-col gap-6"
+              className="group bg-white rounded-none overflow-hidden border border-transparent hover:border-accent/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500 p-6 flex flex-col gap-6"
             >
               {/* Image */}
-              <div className="aspect-video w-full overflow-hidden bg-[#F2F2F2] relative">
+              <div className="aspect-video w-full overflow-hidden bg-grey relative">
                 {post.featuredImage ? (
                   <Image
                     src={post.featuredImage}

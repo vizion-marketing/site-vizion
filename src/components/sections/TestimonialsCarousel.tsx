@@ -58,7 +58,7 @@ export function TestimonialsCarousel({
   return (
     <section
       className="py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden grain-overlay dark-section"
-      style={{ background: "#0c0c0a" }}
+      style={{ background: "var(--bg-dark)" }}
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === "ArrowLeft") scrollPrev();
@@ -71,35 +71,35 @@ export function TestimonialsCarousel({
           className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
           }}
         />
         <div
           className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
           }}
         />
       </div>
@@ -115,8 +115,8 @@ export function TestimonialsCarousel({
               transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
               className="relative flex h-2 w-2"
             >
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
             </motion.span>
             <motion.span
               initial={{ opacity: 0, x: -6 }}
@@ -154,7 +154,7 @@ export function TestimonialsCarousel({
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/15 backdrop-blur-md border border-white/30 text-white hover:bg-white/25 hover:border-[#D4FD00]/50 hover:shadow-[0_0_20px_rgba(212,253,0,0.3)] transition-all duration-300"
+            className="absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/15 backdrop-blur-md border border-white/30 text-white hover:bg-white/25 hover:border-accent/50 hover:shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.3)] transition-all duration-300"
             aria-label="Témoignage précédent"
           >
             <ChevronLeft size={20} />
@@ -164,7 +164,7 @@ export function TestimonialsCarousel({
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/15 backdrop-blur-md border border-white/30 text-white hover:bg-white/25 hover:border-[#D4FD00]/50 hover:shadow-[0_0_20px_rgba(212,253,0,0.3)] transition-all duration-300"
+            className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/15 backdrop-blur-md border border-white/30 text-white hover:bg-white/25 hover:border-accent/50 hover:shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.3)] transition-all duration-300"
             aria-label="Témoignage suivant"
           >
             <ChevronRight size={20} />
@@ -182,7 +182,7 @@ export function TestimonialsCarousel({
                       p-6 sm:p-8 md:p-10 max-w-3xl mx-auto text-center backdrop-blur-xl
                       ${
                         testimonial.variant === "partner"
-                          ? "bg-white/[0.08] border border-[#D4FD00]/40 shadow-[0_8px_32px_rgba(212,253,0,0.15)]"
+                          ? "bg-white/[0.08] border border-accent/40 shadow-[0_8px_32px_rgba(var(--color-accent-rgb),0.15)]"
                           : "bg-white/[0.08] border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.2)]"
                       }
                     `}
@@ -200,7 +200,7 @@ export function TestimonialsCarousel({
                             size={18}
                             className={`transition-all duration-300 ${
                               i < testimonial.rating
-                                ? "fill-[#D4FD00] text-[#D4FD00] drop-shadow-[0_0_8px_rgba(212,253,0,0.6)]"
+                                ? "fill-[var(--color-accent)] text-accent drop-shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.6)]"
                                 : "text-white/20"
                             }`}
                           />
@@ -216,7 +216,7 @@ export function TestimonialsCarousel({
                     {/* Author */}
                     <div className="flex items-center justify-center gap-3">
                       {testimonial.avatar && (
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 relative overflow-hidden rounded-full border-2 border-white/30 transition-all duration-300 hover:border-[#D4FD00]/60 hover:shadow-[0_0_16px_rgba(212,253,0,0.4)]">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 relative overflow-hidden rounded-full border-2 border-white/30 transition-all duration-300 hover:border-accent/60 hover:shadow-[0_0_16px_rgba(var(--color-accent-rgb),0.4)]">
                           <Image
                             src={testimonial.avatar}
                             alt={testimonial.author}
@@ -234,7 +234,7 @@ export function TestimonialsCarousel({
                         </div>
                       </div>
                       {testimonial.variant === "partner" && (
-                        <span className="ml-2 px-2 py-1 bg-[#D4FD00]/20 text-[9px] font-bold tracking-wide text-[#D4FD00]">
+                        <span className="ml-2 px-2 py-1 bg-accent/20 text-[9px] font-bold tracking-wide text-accent">
                           PARTENAIRE
                         </span>
                       )}
@@ -256,7 +256,7 @@ export function TestimonialsCarousel({
               transition={{ layout: { type: "spring", stiffness: 300, damping: 25 } }}
               className={`
                 h-2
-                ${index === selectedIndex ? "bg-[#D4FD00] w-8 shadow-[0_0_12px_rgba(212,253,0,0.6)]" : "w-2 bg-white/30 hover:bg-white/60"}
+                ${index === selectedIndex ? "bg-accent w-8 shadow-[0_0_12px_rgba(var(--color-accent-rgb),0.6)]" : "w-2 bg-white/30 hover:bg-white/60"}
               `}
               aria-label={`Aller au témoignage ${index + 1}`}
             />

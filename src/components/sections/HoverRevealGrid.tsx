@@ -49,13 +49,13 @@ export function HoverRevealGrid({
   return (
     <section
       className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
-      style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
+      style={{ background: isDark ? "var(--bg-dark)" : "var(--bg-card)" }}
     >
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -76,8 +76,8 @@ export function HoverRevealGrid({
                   transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                   className="relative flex h-2 w-2"
                 >
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}
@@ -99,7 +99,7 @@ export function HoverRevealGrid({
                 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary"
               >
                 {title}{" "}
-                {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+                {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
               </motion.h2>
             )}
             {description && (
@@ -127,8 +127,8 @@ export function HoverRevealGrid({
                 onMouseLeave={() => setHoveredId(null)}
                 className={`relative border overflow-hidden group cursor-pointer transition-all duration-500 ${
                   isDark
-                    ? "border-white/10 bg-white/[0.02] hover:border-[#D4FD00]/30"
-                    : "border-black/[0.06] bg-white hover:border-[#D4FD00]/50"
+                    ? "border-white/10 bg-white/[0.02] hover:border-accent/30"
+                    : "border-black/[0.06] bg-white hover:border-accent/50"
                 }`}
                 style={{ minHeight: "280px" }}
               >
@@ -153,14 +153,14 @@ export function HoverRevealGrid({
                   <div className="mb-auto">
                     {Icon ? (
                       <div className={`w-12 h-12 flex items-center justify-center mb-5 transition-colors duration-300 ${
-                        isHovered ? "bg-[#D4FD00]" : isDark ? "bg-white/5" : "bg-black/5"
+                        isHovered ? "bg-accent" : isDark ? "bg-white/5" : "bg-black/5"
                       }`}>
-                        <Icon size={22} className={`transition-colors duration-300 ${isHovered ? "text-primary" : "text-[#D4FD00]"}`} />
+                        <Icon size={22} className={`transition-colors duration-300 ${isHovered ? "text-primary" : "text-accent"}`} />
                       </div>
                     ) : (
                       <span className={`font-[var(--font-body)] font-[900] text-[48px] leading-none tracking-[-0.03em] block mb-4 transition-colors duration-300 ${
                         isHovered
-                          ? "text-[#D4FD00]"
+                          ? "text-accent"
                           : isDark ? "text-white/[0.06]" : "text-black/[0.06]"
                       }`}>
                         {String(index + 1).padStart(2, "0")}
@@ -179,7 +179,7 @@ export function HoverRevealGrid({
 
                     {/* Reveal line */}
                     <motion.div
-                      className="h-[2px] bg-[#D4FD00] mt-4 origin-left"
+                      className="h-[2px] bg-accent mt-4 origin-left"
                       initial={false}
                       animate={{ scaleX: isHovered ? 1 : 0 }}
                       transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}

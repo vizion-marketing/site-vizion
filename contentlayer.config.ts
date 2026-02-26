@@ -530,6 +530,45 @@ export const Service = defineDocumentType(() => ({
       // Format: { question: "...", answer: "..." }
     },
 
+    // Narration du problème (TwoColSection)
+    problemTitle: { type: "string" },
+    problemParagraphs: {
+      type: "list",
+      of: { type: "string" },
+      default: [],
+    },
+    problemImage: { type: "string" },
+
+    // Testimonial client
+    testimonial: {
+      type: "json",
+      // Format: { quote: "...", author: "...", role: "...", company: "...", avatar?: "...", rating: 5 }
+    },
+
+    // Tableau comparatif
+    comparisonTitle: { type: "string" },
+    comparisonRows: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+      // Format: { feature: "...", left: true|false|"texte", right: true|false|"texte" }
+    },
+
+    // Track record (NumberCounter)
+    trackRecord: {
+      type: "list",
+      of: { type: "json" },
+      default: [],
+      // Format: { value: 70, prefix?: "+", suffix?: "%", label: "..." }
+    },
+
+    // Blog lié
+    relatedBlogTags: {
+      type: "list",
+      of: { type: "string" },
+      default: [],
+    },
+
     // CTA
     ctaTitle: { type: "string" },
     ctaDescription: { type: "string" },

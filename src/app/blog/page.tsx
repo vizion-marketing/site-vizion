@@ -89,19 +89,19 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-white font-[var(--font-body)] selection:bg-black selection:text-white">
-      {/* HERO SECTION - Style Homepage (#0c0c0a + radial gradients D4FD00) */}
-      <section className="relative pt-[120px] pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "#0c0c0a" }}>
+      {/* HERO SECTION - Style Homepage (dark bg + radial gradients accent) */}
+      <section className="relative pt-[120px] pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "var(--bg-dark)" }}>
         {/* Base + radial gradients jaune Vizion (comme home hero) */}
         <div
           className="absolute inset-0 pointer-events-none z-0"
           aria-hidden
           style={{
             background: `
-              radial-gradient(ellipse 80% 60% at 20% 30%, rgba(212, 253, 0, 0.12) 0%, transparent 55%),
-              radial-gradient(ellipse 70% 50% at 80% 20%, rgba(212, 253, 0, 0.08) 0%, transparent 55%),
-              radial-gradient(ellipse 60% 70% at 50% 85%, rgba(212, 253, 0, 0.06) 0%, transparent 55%),
-              radial-gradient(ellipse 50% 50% at 90% 70%, rgba(212, 253, 0, 0.05) 0%, transparent 55%),
-              radial-gradient(ellipse 45% 45% at 8% 60%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)
+              radial-gradient(ellipse 80% 60% at 20% 30%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%),
+              radial-gradient(ellipse 70% 50% at 80% 20%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%),
+              radial-gradient(ellipse 60% 70% at 50% 85%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%),
+              radial-gradient(ellipse 50% 50% at 90% 70%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%),
+              radial-gradient(ellipse 45% 45% at 8% 60%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)
             `,
           }}
         />
@@ -121,8 +121,8 @@ export default function BlogPage() {
                 {/* Status Badge */}
                 <div className="flex items-center gap-2 mb-4">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#D4FD00] opacity-75"></span>
-                    <span className="relative inline-flex rounded-none h-2 w-2 bg-[#D4FD00]"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-accent opacity-75"></span>
+                    <span className="relative inline-flex rounded-none h-2 w-2 bg-accent"></span>
                   </span>
                   <span className="text-[10px] font-light tracking-[0.12em] text-white/60">
                     Le laboratoire de performance
@@ -131,7 +131,7 @@ export default function BlogPage() {
                 
                 <h1 className="font-[var(--font-body)] font-[900] text-[56px] md:text-[80px] lg:text-[100px] leading-[0.9] tracking-tight text-white mb-4">
                   <span className="relative inline-block">
-                    <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[14px] bg-[#D4FD00] -z-10"></span>
+                    <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[14px] bg-accent -z-10"></span>
                     Blog
                   </span>
                 </h1>
@@ -151,7 +151,7 @@ export default function BlogPage() {
                     transition={{ duration: 0.8, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
                   >
                     <Link href={`/blog/${editorPick.slug}`} className="group block h-full">
-                      <div className="h-full bg-black/30 backdrop-blur-sm rounded-none border border-white/10 overflow-hidden hover:border-[#D4FD00]/30 transition-all duration-500">
+                      <div className="h-full bg-black/30 backdrop-blur-sm rounded-none border border-white/10 overflow-hidden hover:border-accent/30 transition-all duration-500">
                         {/* Image */}
                         <div className="aspect-[16/10] relative overflow-hidden">
                           {editorPick.featuredImage ? (
@@ -187,7 +187,7 @@ export default function BlogPage() {
                           <span className="text-[9px] font-light tracking-[0.12em] text-white/40 mb-1.5 block">
                             {editorPick.category}
                           </span>
-                          <h3 className="font-[var(--font-body)] font-black text-sm leading-tight text-white group-hover:text-[#D4FD00] transition-colors line-clamp-2">
+                          <h3 className="font-[var(--font-body)] font-black text-sm leading-tight text-white group-hover:text-accent transition-colors line-clamp-2">
                             {editorPick.title}
                           </h3>
                         </div>
@@ -204,7 +204,7 @@ export default function BlogPage() {
                     transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
                   >
                     <Link href={`/blog/${readerFavorite.slug}`} className="group block h-full">
-                      <div className="h-full bg-black/30 backdrop-blur-sm rounded-none border border-white/10 overflow-hidden hover:border-[#D4FD00]/30 transition-all duration-500">
+                      <div className="h-full bg-black/30 backdrop-blur-sm rounded-none border border-white/10 overflow-hidden hover:border-accent/30 transition-all duration-500">
                         {/* Image */}
                         <div className="aspect-[16/10] relative overflow-hidden">
                           {readerFavorite.featuredImage ? (
@@ -228,7 +228,7 @@ export default function BlogPage() {
 
                           {/* Badge */}
                           <div className="absolute top-3 left-3 z-10">
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#D4FD00] text-black text-[9px] font-black tracking-wider rounded-none">
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-accent text-black text-[9px] font-black tracking-wider rounded-none">
                               <TrendingUp size={10} />
                               Populaire
                             </span>
@@ -240,7 +240,7 @@ export default function BlogPage() {
                           <span className="text-[9px] font-light tracking-[0.12em] text-white/40 mb-1.5 block">
                             {readerFavorite.category}
                           </span>
-                          <h3 className="font-[var(--font-body)] font-black text-sm leading-tight text-white group-hover:text-[#D4FD00] transition-colors line-clamp-2">
+                          <h3 className="font-[var(--font-body)] font-black text-sm leading-tight text-white group-hover:text-accent transition-colors line-clamp-2">
                             {readerFavorite.title}
                           </h3>
                         </div>
@@ -285,7 +285,7 @@ export default function BlogPage() {
 
                     {/* Badge - Top */}
                     <div className="absolute top-6 left-6 z-10">
-                      <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4FD00] text-black text-[10px] font-black tracking-wider rounded-none shadow-[0_0_20px_rgba(212,253,0,0.3)]">
+                      <span className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-black text-[10px] font-black tracking-wider rounded-none shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.3)]">
                         <Sparkles size={12} />
                         À la une
                       </span>
@@ -296,7 +296,7 @@ export default function BlogPage() {
                       <span className="text-[10px] font-light tracking-[0.12em] text-white/50 mb-3 block">
                         {featuredPost.category}
                       </span>
-                      <h3 className="font-[var(--font-body)] font-black text-2xl md:text-3xl leading-[1.1] text-white mb-4 group-hover:text-[#D4FD00] transition-colors">
+                      <h3 className="font-[var(--font-body)] font-black text-2xl md:text-3xl leading-[1.1] text-white mb-4 group-hover:text-accent transition-colors">
                         {featuredPost.title}
                       </h3>
                       <p className="text-white/60 text-sm line-clamp-2 mb-6 max-w-md">
@@ -313,7 +313,7 @@ export default function BlogPage() {
                             {featuredPost.readingTime}
                           </span>
                         </div>
-                        <span className="flex items-center gap-2 text-[11px] font-black text-white group-hover:text-[#D4FD00] transition-colors">
+                        <span className="flex items-center gap-2 text-[11px] font-black text-white group-hover:text-accent transition-colors">
                           Lire l'article <ArrowUpRightIcon size={14} className="group-hover:translate-x-1 transition-transform" />
                         </span>
                       </div>
@@ -322,7 +322,7 @@ export default function BlogPage() {
                 </Link>
 
                 {/* Decorative elements */}
-                <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-[#D4FD00]/40 pointer-events-none z-20" />
+                <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-accent/40 pointer-events-none z-20" />
                 <div className="absolute -bottom-3 -left-3 w-12 h-12 border-b-2 border-l-2 border-white/30 pointer-events-none z-20" />
               </motion.div>
             )}
@@ -376,7 +376,7 @@ export default function BlogPage() {
                     setSearchQuery(e.target.value);
                     setCurrentPage(1);
                   }}
-                  className="w-full md:w-56 bg-[#F2F2F2] border-none rounded-none px-10 py-2.5 text-sm text-black placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/10 transition-all"
+                  className="w-full md:w-56 bg-grey border-none rounded-none px-10 py-2.5 text-sm text-black placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/10 transition-all"
                 />
               </div>
 
@@ -407,11 +407,11 @@ export default function BlogPage() {
                     key={post.slug}
                     variants={fadeInUp}
                     layout
-                    className="group bg-white rounded-none overflow-hidden border border-transparent hover:border-[#D4FD00]/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500"
+                    className="group bg-white rounded-none overflow-hidden border border-transparent hover:border-accent/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500"
                   >
                     {/* Image */}
                     <Link href={`/blog/${post.slug}`} className="block">
-                      <div className="aspect-video w-full overflow-hidden bg-[#F2F2F2] relative">
+                      <div className="aspect-video w-full overflow-hidden bg-grey relative">
                         {post.featuredImage ? (
                           <Image
                             src={post.featuredImage}
@@ -522,14 +522,14 @@ export default function BlogPage() {
       </section>
 
       {/* CTA NEWSLETTER - Style Homepage */}
-      <section className="py-24 px-6 md:px-12 bg-[#F2F2F2]">
+      <section className="py-24 px-6 md:px-12 bg-grey">
         <div className="max-w-[82.5rem] mx-auto">
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="rounded-none p-12 md:p-20 relative overflow-hidden grain-overlay dark-section"
-            style={{ background: "#0c0c0a" }}
+            style={{ background: "var(--bg-dark)" }}
           >
             {/* Base + radial gradients jaune Vizion animés */}
             <div className="absolute inset-0 pointer-events-none z-0">
@@ -537,54 +537,54 @@ export default function BlogPage() {
                 className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
                 }}
               />
             </div>
             
             {/* Decorative elements */}
-            <div className="absolute top-8 left-8 w-24 h-24 border-t-2 border-l-2 border-[#D4FD00]/20" />
-            <div className="absolute bottom-8 right-8 w-24 h-24 border-b-2 border-r-2 border-[#D4FD00]/20" />
+            <div className="absolute top-8 left-8 w-24 h-24 border-t-2 border-l-2 border-accent/20" />
+            <div className="absolute bottom-8 right-8 w-24 h-24 border-b-2 border-r-2 border-accent/20" />
             
             <div className="relative z-10 max-w-3xl mx-auto text-center">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-black/30 backdrop-blur-sm rounded-none border border-white/20 mb-8">
                 <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-[#D4FD00] text-[#D4FD00]" />)}
+                  {[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-[var(--color-accent)] text-accent" />)}
                 </div>
                 <span className="text-[10px] font-black text-white tracking-wider">Newsletter exclusive</span>
               </div>
 
               <h2 className="font-[var(--font-body)] font-[900] text-[40px] md:text-[56px] leading-[1] tracking-tight mb-6 text-white">
-                Restez à la <span className="relative inline-block"><span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[10px] bg-[#D4FD00] -z-10"></span>pointe</span>
+                Restez à la <span className="relative inline-block"><span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[10px] bg-accent -z-10"></span>pointe</span>
               </h2>
               <p className="text-white/70 text-lg md:text-xl mb-10 max-w-xl mx-auto">
                 Recevez nos meilleures analyses et stratégies B2B directement dans votre boîte mail, une fois par semaine.
@@ -610,15 +610,15 @@ export default function BlogPage() {
               {/* Trust elements */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <div className="flex items-center gap-2 text-white/50 text-sm">
-                  <CheckCircle2 size={14} className="text-[#D4FD00]" />
+                  <CheckCircle2 size={14} className="text-accent" />
                   <span>Pas de spam</span>
                 </div>
                 <div className="flex items-center gap-2 text-white/50 text-sm">
-                  <CheckCircle2 size={14} className="text-[#D4FD00]" />
+                  <CheckCircle2 size={14} className="text-accent" />
                   <span>Désinscription en 1 clic</span>
                 </div>
                 <div className="flex items-center gap-2 text-white/50 text-sm">
-                  <CheckCircle2 size={14} className="text-[#D4FD00]" />
+                  <CheckCircle2 size={14} className="text-accent" />
                   <span>+500 abonnés</span>
                 </div>
               </div>

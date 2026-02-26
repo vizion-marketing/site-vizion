@@ -87,7 +87,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
 
                 {/* Header - Coming Soon */}
                 <div className="mb-8">
-                  <div className="w-12 h-12 bg-[#D4FD00] flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-accent flex items-center justify-center mb-4">
                     <Construction size={24} className="text-black" />
                   </div>
                   <h2 className="font-heading text-2xl lg:text-3xl font-normal tracking-tight text-black mb-2">
@@ -105,7 +105,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center py-8"
                   >
-                    <div className="w-16 h-16 bg-[#D4FD00] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
                       <CheckCircle2 size={32} className="text-black" />
                     </div>
                     <h3 className="font-heading text-xl text-black mb-2">Message envoy&eacute; !</h3>
@@ -127,7 +127,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-[#F2F2F2] border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#D4FD00]"
+                          className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
                           placeholder="Votre nom"
                         />
                       </div>
@@ -141,7 +141,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
                           name="company"
                           value={formData.company}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-[#F2F2F2] border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#D4FD00]"
+                          className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
                           placeholder="Nom de l'entreprise"
                         />
                       </div>
@@ -158,7 +158,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-[#F2F2F2] border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#D4FD00]"
+                        className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
                         placeholder="votre@email.com"
                       />
                     </div>
@@ -173,7 +173,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
                         rows={3}
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-[#F2F2F2] border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#D4FD00] resize-none"
+                        className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] resize-none"
                         placeholder="Parlez-nous de votre projet..."
                       />
                     </div>
@@ -212,7 +212,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
                     {/* Phone CTA */}
                     <a
                       href="tel:+33750836543"
-                      className="w-full h-12 bg-[#F2F2F2] text-black font-bold text-sm flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors"
+                      className="w-full h-12 bg-grey text-black font-bold text-sm flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors"
                     >
                       <Phone size={16} />
                       07 50 83 65 43

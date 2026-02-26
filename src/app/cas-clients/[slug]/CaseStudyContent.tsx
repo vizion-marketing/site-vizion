@@ -156,8 +156,8 @@ function StatHighlight({ value, label, description, trend = "up" }: StatHighligh
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-2">
             <span className="text-4xl md:text-5xl font-black tracking-tight">{value}</span>
-            {trend === "up" && <TrendingUp className="w-6 h-6 text-[#D4FD00]" />}
-            {trend === "down" && <TrendingDown className="w-6 h-6 text-[#D4FD00]" />}
+            {trend === "up" && <TrendingUp className="w-6 h-6 text-accent" />}
+            {trend === "down" && <TrendingDown className="w-6 h-6 text-accent" />}
           </div>
           <span className="text-lg font-semibold text-white/80">{label}</span>
           {description && (
@@ -208,7 +208,7 @@ interface CalloutProps {
 function Callout({ type = "insight", title, children }: CalloutProps) {
   const styles = {
     insight: {
-      bg: "bg-[#D4FD00]/10 border-[#D4FD00]",
+      bg: "bg-accent/10 border-accent",
       icon: <Zap className="w-5 h-5 text-black" />,
       defaultTitle: "Point clé",
     },
@@ -316,42 +316,42 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
     <main className="min-h-screen bg-white font-[var(--font-body)]">
       
       {/* HERO SECTION */}
-      <section className="relative pt-[120px] pb-[60px] md:pt-[140px] md:pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "#0c0c0a" }}>
+      <section className="relative pt-[120px] pb-[60px] md:pt-[140px] md:pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "var(--bg-dark)" }}>
         {/* Base + radial gradients jaune Vizion animés */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div
             className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
             }}
           />
           <div
             className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
             style={{
               background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
             }}
           />
         </div>
@@ -458,7 +458,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   initial="initial"
                   whileInView="whileInView"
                   viewport={{ once: true }}
-                  className="bg-[#F2F2F2] rounded-none p-6"
+                  className="bg-grey rounded-none p-6"
                 >
                   <h3 className="font-heading font-normal text-sm tracking-wider text-black mb-4">
                     En bref
@@ -499,7 +499,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                     whileInView="whileInView"
                     viewport={{ once: true }}
                     className="rounded-none p-6 relative overflow-hidden grain-overlay dark-section"
-                    style={{ background: "#0c0c0a" }}
+                    style={{ background: "var(--bg-dark)" }}
                   >
                     {/* Base + radial gradients jaune Vizion animés */}
                     <div className="absolute inset-0 pointer-events-none z-0">
@@ -507,21 +507,21 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                         className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
                         style={{
                           background:
-                            "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+                            "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
                         }}
                       />
                       <div
                         className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
                         style={{
                           background:
-                            "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+                            "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
                         }}
                       />
                       <div
                         className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
                         style={{
                           background:
-                            "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                            "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
                         }}
                       />
                     </div>
@@ -589,7 +589,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                       "{caseStudy.testimonial.quote}"
                     </p>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-none bg-[#F2F2F2] overflow-hidden shrink-0">
+                      <div className="w-10 h-10 rounded-none bg-grey overflow-hidden shrink-0">
                         {caseStudy.testimonial.photo ? (
                           <Image
                             src={caseStudy.testimonial.photo}
@@ -628,7 +628,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                   initial="initial"
                   whileInView="whileInView"
                   viewport={{ once: true }}
-                  className="mt-16 p-8 bg-[#F2F2F2] rounded-none"
+                  className="mt-16 p-8 bg-grey rounded-none"
                 >
                   <h3 className="font-heading font-normal text-xl tracking-tight text-black mb-4">
                     Impact & ROI
@@ -645,7 +645,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
 
       {/* TESTIMONIAL SECTION */}
       {caseStudy.testimonial && (
-        <section className="py-16 md:py-24 px-6 md:px-12 bg-[#F2F2F2]">
+        <section className="py-16 md:py-24 px-6 md:px-12 bg-grey">
           <div className="max-w-[82.5rem] mx-auto">
             <motion.div 
               variants={fadeInUp}
@@ -668,7 +668,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                 </blockquote>
                 
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-none bg-[#F2F2F2] overflow-hidden">
+                  <div className="w-16 h-16 rounded-none bg-grey overflow-hidden">
                     {caseStudy.testimonial.photo ? (
                       <Image
                         src={caseStudy.testimonial.photo}
@@ -735,7 +735,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                       className="block bg-white border border-neutral-100 rounded-none p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
                     >
                       <div className="flex items-center gap-2 mb-4">
-                        <div className="w-8 h-8 bg-[#F2F2F2] rounded-none flex items-center justify-center">
+                        <div className="w-8 h-8 bg-grey rounded-none flex items-center justify-center">
                           <RelatedSectorIcon size={16} className="text-black" />
                         </div>
                         <span className="text-[10px] font-bold tracking-widest text-neutral-400">
@@ -755,7 +755,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                         {relatedCase.metrics.slice(0, 2).map((metric: { value: string; label: string }, mIdx: number) => (
                           <span 
                             key={mIdx}
-                            className="px-2 py-1 bg-[#F2F2F2] text-[10px] font-bold text-black rounded-none"
+                            className="px-2 py-1 bg-grey text-[10px] font-bold text-black rounded-none"
                           >
                             {metric.value} {metric.label}
                           </span>
@@ -791,7 +791,7 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="rounded-none p-8 md:p-16 text-center relative overflow-hidden grain-overlay dark-section"
-            style={{ background: "#0c0c0a" }}
+            style={{ background: "var(--bg-dark)" }}
           >
             {/* Base + radial gradients jaune Vizion animés */}
             <div className="absolute inset-0 pointer-events-none z-0">
@@ -799,35 +799,35 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
                 className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.05) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
                 }}
               />
               <div
                 className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
                 style={{
                   background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)",
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
                 }}
               />
             </div>

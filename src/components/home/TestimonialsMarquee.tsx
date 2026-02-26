@@ -59,7 +59,7 @@ const TESTIMONIALS = [
 // Composant carte témoignage
 function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] }) {
   return (
-    <div className="bg-black/70 backdrop-blur-md p-5 border border-white/10 hover:border-[#D4FD00]/50 transition-all duration-300">
+    <div className="bg-black/70 backdrop-blur-md p-5 border border-white/10 hover:border-accent/50 transition-all duration-300">
       <div className="flex items-start gap-3 mb-4">
         <Image
           src={testimonial.avatar}
@@ -88,8 +88,8 @@ export function TestimonialsMarquee() {
   return (
     <div className="relative h-[380px] sm:h-[440px] md:h-[500px] overflow-hidden">
       {/* Gradient overlays for fade effect */}
-      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#0c0c0a] to-transparent z-10 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#0c0c0a] to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[var(--bg-dark)] to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--bg-dark)] to-transparent z-10 pointer-events-none" />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full">
         {/* Column 1 - Scroll Up */}

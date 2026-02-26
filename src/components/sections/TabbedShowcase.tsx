@@ -40,7 +40,7 @@ export function TabbedShowcase({
   const [activeTab, setActiveTab] = useState(tabs[0]?.id ?? "");
   const activeCase = tabs.find((t) => t.id === activeTab) || tabs[0];
   const isDark = variant === "dark";
-  const bg = isDark ? "#0c0c0a" : "#f8f8f6";
+  const bg = isDark ? "var(--bg-dark)" : "var(--bg-card)";
 
   return (
     <section
@@ -48,8 +48,8 @@ export function TabbedShowcase({
       style={{ background: bg }}
     >
       {/* Ambient glow */}
-      <div className="absolute top-[20%] left-[-5%] w-[50%] h-[50%] rounded-full blur-[180px] pointer-events-none" style={{ background: "rgba(212, 253, 0, 0.05)" }} />
-      <div className="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[150px] pointer-events-none" style={{ background: "rgba(212, 253, 0, 0.04)" }} />
+      <div className="absolute top-[20%] left-[-5%] w-[50%] h-[50%] rounded-full blur-[180px] pointer-events-none" style={{ background: "rgba(var(--color-accent-rgb), 0.05)" }} />
+      <div className="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[150px] pointer-events-none" style={{ background: "rgba(var(--color-accent-rgb), 0.04)" }} />
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
         {/* Header */}
@@ -63,8 +63,8 @@ export function TabbedShowcase({
                 transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                 className="relative flex h-2 w-2"
               >
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -8 }}
@@ -79,7 +79,7 @@ export function TabbedShowcase({
           )}
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-4 sm:mb-5 text-primary">
             {title}{" "}
-            {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+            {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
           </motion.h2>
           {description && (
             <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className={`text-base sm:text-lg font-[var(--font-body)] leading-relaxed text-muted`}>
@@ -102,12 +102,12 @@ export function TabbedShowcase({
                       : "text-muted hover:text-primary"
                   }`}
                 >
-                  <span className={`font-bold text-[10px] sm:text-[11px] ${activeTab === tab.id ? "text-[#D4FD00]" : "text-muted/40"}`}>
+                  <span className={`font-bold text-[10px] sm:text-[11px] ${activeTab === tab.id ? "text-accent" : "text-muted/40"}`}>
                     {tab.number || String(i + 1).padStart(2, "0")}
                   </span>
                   <span>{tab.label}</span>
                   {activeTab === tab.id && (
-                    <motion.div layoutId="tabbedShowcaseIndicator" className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4FD00]" transition={{ type: "spring", stiffness: 500, damping: 35 }} />
+                    <motion.div layoutId="tabbedShowcaseIndicator" className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent" transition={{ type: "spring", stiffness: 500, damping: 35 }} />
                   )}
                 </button>
               ))}
@@ -121,8 +121,8 @@ export function TabbedShowcase({
             {/* Main content */}
             <div className={`lg:col-span-2 p-6 sm:p-8 md:p-10 ${isDark ? "bg-white/[0.03] border border-white/[0.06]" : "bg-white border border-black/[0.06]"}`}>
               {activeCase.icon && (
-                <div className="w-12 h-12 sm:w-14 sm:h-14 mb-5 sm:mb-6 flex items-center justify-center bg-[#D4FD00]/10">
-                  <activeCase.icon size={24} className="text-[#D4FD00]" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 mb-5 sm:mb-6 flex items-center justify-center bg-accent/10">
+                  <activeCase.icon size={24} className="text-accent" />
                 </div>
               )}
               <h3 className="font-heading font-medium text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4 leading-snug text-primary">
@@ -132,8 +132,8 @@ export function TabbedShowcase({
                 {activeCase.description}
               </p>
               {activeCase.example && (
-                <div className={`p-4 sm:p-5 ${isDark ? "bg-white/[0.03] border border-white/[0.06]" : "bg-[#f8f8f6] border border-black/[0.06]"}`}>
-                  <span className="text-[10px] sm:text-[11px] font-bold tracking-wider text-[#D4FD00] uppercase mb-2 block">Exemple concret</span>
+                <div className={`p-4 sm:p-5 ${isDark ? "bg-white/[0.03] border border-white/[0.06]" : "bg-card border border-black/[0.06]"}`}>
+                  <span className="text-[10px] sm:text-[11px] font-bold tracking-wider text-accent uppercase mb-2 block">Exemple concret</span>
                   <p className="text-sm font-[var(--font-body)] leading-relaxed text-primary">{activeCase.example}</p>
                 </div>
               )}
@@ -148,7 +148,7 @@ export function TabbedShowcase({
                 </div>
               )}
               {activeCase.metric && (
-                <div className="bg-[#D4FD00] p-6 sm:p-8 flex flex-col justify-center items-center text-center">
+                <div className="bg-accent p-6 sm:p-8 flex flex-col justify-center items-center text-center">
                   <span className="font-[var(--font-body)] font-[900] text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-primary leading-none mb-3">
                     {activeCase.metric}
                   </span>

@@ -94,10 +94,10 @@ export function MobileTOC({ headings }: MobileTOCProps) {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.2 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-40 lg:hidden w-12 h-12 flex items-center justify-center bg-[#0c0c0a] border border-white/10 rounded-none shadow-lg"
+            className="fixed bottom-6 right-6 z-40 lg:hidden w-12 h-12 flex items-center justify-center bg-dark border border-white/10 rounded-none shadow-lg"
             aria-label="Ouvrir le sommaire"
           >
-            <List size={20} className="text-[#D4FD00]" />
+            <List size={20} className="text-accent" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -125,7 +125,7 @@ export function MobileTOC({ headings }: MobileTOCProps) {
               className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white rounded-none max-h-[70vh] overflow-hidden flex flex-col"
             >
               {/* Top accent bar */}
-              <div className="h-0.5 bg-[#D4FD00] shrink-0" />
+              <div className="h-0.5 bg-accent shrink-0" />
 
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-100 shrink-0">
@@ -153,7 +153,7 @@ export function MobileTOC({ headings }: MobileTOCProps) {
                         onClick={() => scrollToHeading(heading.id)}
                         className={`text-left text-sm py-2.5 px-3 transition-all duration-200 w-full ${
                           activeId === heading.id
-                            ? "text-black font-semibold bg-[#D4FD00]/10 border-l-2 border-[#D4FD00] -ml-[2px]"
+                            ? "text-black font-semibold bg-accent/10 border-l-2 border-accent -ml-[2px]"
                             : "text-zinc-500"
                         }`}
                         style={{

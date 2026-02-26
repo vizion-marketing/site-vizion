@@ -48,7 +48,7 @@ export function ResourcesLibrary({ resources }: ResourcesLibraryProps) {
               <Link
                 key={idx}
                 href={resource.url}
-                className="flex items-start gap-3 p-4 bg-[#F2F2F2] hover:bg-zinc-200 transition-colors rounded-none group"
+                className="flex items-start gap-3 p-4 bg-grey hover:bg-zinc-200 transition-colors rounded-none group"
               >
                 <div className="p-2 bg-black text-white rounded-none">
                   <FileText size={14} />

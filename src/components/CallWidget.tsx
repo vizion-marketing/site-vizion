@@ -23,7 +23,7 @@ export function CallWidget() {
             {/* Header */}
             <div className="flex items-center gap-3 mb-4 pb-3 border-b border-white/10">
               <div className="relative">
-                <div className="w-10 h-10 rounded-none bg-gradient-to-br from-[#D4FD00] to-[#a8e000] flex items-center justify-center text-black font-bold text-sm">
+                <div className="w-10 h-10 rounded-none bg-gradient-to-br from-[var(--color-accent)] to-[#a8e000] flex items-center justify-center text-black font-bold text-sm">
                   LG
                 </div>
                 {/* Online indicator */}
@@ -45,7 +45,7 @@ export function CallWidget() {
               {/* Call Button */}
               <a
                 href="tel:+33750836543"
-                className="flex items-center gap-3 w-full px-4 py-3 rounded-none bg-[#D4FD00] text-black font-[var(--font-body)] font-semibold text-[13px] hover:bg-[#D4FD00] transition-all duration-200 active:scale-[0.98]"
+                className="flex items-center gap-3 w-full px-4 py-3 rounded-none bg-accent text-black font-[var(--font-body)] font-semibold text-[13px] hover:bg-accent transition-all duration-200 active:scale-[0.98]"
               >
                 <Phone size={16} strokeWidth={2.5} />
                 <span>Appeler maintenant</span>
@@ -101,15 +101,15 @@ export function CallWidget() {
           whileTap={{ scale: 0.95 }}
         >
           {/* Glowing ring animation */}
-          <div className="absolute inset-0 rounded-none bg-[#D4FD00] opacity-20 blur-xl group-hover:opacity-30 transition-opacity" />
+          <div className="absolute inset-0 rounded-none bg-accent opacity-20 blur-xl group-hover:opacity-30 transition-opacity" />
 
           {/* Pulse animation when closed */}
           {!isExpanded && (
-            <div className="absolute inset-0 rounded-none bg-[#D4FD00] animate-ping opacity-20" />
+            <div className="absolute inset-0 rounded-none bg-accent animate-ping opacity-20" />
           )}
 
           {/* Button */}
-          <div className="relative w-14 h-14 rounded-none bg-black/70 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-300 hover:border-[#D4FD00]/50 hover:shadow-[0_8px_32px_rgba(212,253,0,0.2)]">
+          <div className="relative w-14 h-14 rounded-none bg-black/70 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_32px_rgba(var(--color-accent-rgb),0.2)]">
             <AnimatePresence mode="wait">
               {isExpanded ? (
                 <motion.div
@@ -130,7 +130,7 @@ export function CallWidget() {
                   transition={{ duration: 0.15 }}
                   className="relative"
                 >
-                  <Phone size={22} className="text-[#D4FD00]" />
+                  <Phone size={22} className="text-accent" />
                   {/* Online indicator */}
                   <span className="absolute -top-1 -right-1 flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#22c55e] opacity-75" />

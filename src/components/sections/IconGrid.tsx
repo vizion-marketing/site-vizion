@@ -30,16 +30,16 @@ export function IconGrid({
   return (
     <section
       className={`py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
-      style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
+      style={{ background: isDark ? "var(--bg-dark)" : "var(--bg-card)" }}
     >
       {/* Ambient glow */}
       <div
         className="absolute top-[30%] right-[-10%] w-[50%] h-[50%] rounded-full blur-[180px] pointer-events-none"
-        style={{ background: `rgba(212, 253, 0, ${isDark ? "0.05" : "0.04"})` }}
+        style={{ background: `rgba(var(--color-accent-rgb), ${isDark ? "0.05" : "0.04"})` }}
       />
       <div
         className="absolute bottom-[10%] left-[-5%] w-[40%] h-[40%] rounded-full blur-[150px] pointer-events-none"
-        style={{ background: `rgba(212, 253, 0, ${isDark ? "0.04" : "0.03"})` }}
+        style={{ background: `rgba(var(--color-accent-rgb), ${isDark ? "0.04" : "0.03"})` }}
       />
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -54,8 +54,8 @@ export function IconGrid({
                 transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                 className="relative flex h-2 w-2"
               >
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -8 }}
@@ -78,7 +78,7 @@ export function IconGrid({
           >
             {title}{" "}
             {titleHighlight && (
-              <span className="text-[#D4FD00]">{titleHighlight}</span>
+              <span className="text-accent">{titleHighlight}</span>
             )}
           </motion.h2>
         </div>
@@ -99,24 +99,24 @@ export function IconGrid({
               className={`
                 group p-5 sm:p-6 md:p-7 relative
                 ${isDark
-                  ? "bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] hover:bg-white/[0.08] hover:border-[#D4FD00]/30"
-                  : "bg-white border border-black/[0.06] hover:border-[#D4FD00]/40 hover:shadow-[0_8px_24px_rgba(212,253,0,0.15)]"
+                  ? "bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] hover:bg-white/[0.08] hover:border-accent/30"
+                  : "bg-white border border-black/[0.06] hover:border-accent/40 hover:shadow-[0_8px_24px_rgba(var(--color-accent-rgb),0.15)]"
                 }
-                transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] hover:-translate-y-2 hover:shadow-[0_12px_32px_rgba(212,253,0,0.12)]
+                transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] hover:-translate-y-2 hover:shadow-[0_12px_32px_rgba(var(--color-accent-rgb),0.12)]
                 ${index === items.length - 1 && items.length % 3 === 2 ? "lg:col-span-1 sm:col-span-2 lg:col-start-2" : ""}
                 ${index === items.length - 1 && items.length % 2 === 1 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2" : ""}
               `}
             >
               {/* Accent line top */}
-              <div className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full bg-[#D4FD00] transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+              <div className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full bg-accent transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
 
               {/* Icon with spring hover */}
               <motion.div
                 whileHover={{ rotate: 6, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                className={`w-10 h-10 sm:w-12 sm:h-12 mb-4 sm:mb-5 flex items-center justify-center transition-colors duration-500 ${isDark ? "bg-[#D4FD00]/10 group-hover:bg-[#D4FD00]/20 group-hover:shadow-[0_0_16px_rgba(212,253,0,0.3)]" : "bg-[#D4FD00]/10 group-hover:bg-[#D4FD00]/25 group-hover:shadow-[0_0_16px_rgba(212,253,0,0.25)]"}`}
+                className={`w-10 h-10 sm:w-12 sm:h-12 mb-4 sm:mb-5 flex items-center justify-center transition-colors duration-500 ${isDark ? "bg-accent/10 group-hover:bg-accent/20 group-hover:shadow-[0_0_16px_rgba(var(--color-accent-rgb),0.3)]" : "bg-accent/10 group-hover:bg-accent/25 group-hover:shadow-[0_0_16px_rgba(var(--color-accent-rgb),0.25)]"}`}
               >
-                <item.icon size={20} className="text-[#D4FD00] transition-transform duration-500 group-hover:scale-110" />
+                <item.icon size={20} className="text-accent transition-transform duration-500 group-hover:scale-110" />
               </motion.div>
 
               {/* Title */}

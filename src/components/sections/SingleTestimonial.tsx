@@ -27,13 +27,13 @@ export function SingleTestimonial({
   const isDark = variant === "dark";
   const isAccent = variant === "accent";
 
-  const bg = isAccent ? "#D4FD00" : isDark ? "#0c0c0a" : "#f8f8f6";
+  const bg = isAccent ? "var(--color-accent)" : isDark ? "var(--bg-dark)" : "var(--bg-card)";
   const quoteColor = isAccent ? "text-primary" : "text-primary";
   const authorColor = isAccent ? "text-primary" : "text-primary";
   const roleColor = isAccent ? "text-primary/70" : "text-muted";
-  const starColor = isAccent ? "fill-[#1a1a1a] text-primary" : "fill-[#D4FD00] text-[#D4FD00]";
+  const starColor = isAccent ? "fill-black text-primary" : "fill-[var(--color-accent)] text-accent";
   const grain = isDark ? "grain-overlay" : isAccent ? "" : "grain-light";
-  const decorativeQuoteColor = isAccent ? "text-primary/10" : isDark ? "text-[#D4FD00]/15" : "text-[#D4FD00]/20";
+  const decorativeQuoteColor = isAccent ? "text-primary/10" : isDark ? "text-accent/15" : "text-accent/20";
 
   return (
     <section
@@ -41,7 +41,7 @@ export function SingleTestimonial({
       style={{ background: bg }}
     >
       {isDark && (
-        <div className="absolute top-[20%] left-[10%] w-[400px] h-[400px] bg-[#D4FD00] opacity-[0.04] rounded-full blur-[180px] pointer-events-none" />
+        <div className="absolute top-[20%] left-[10%] w-[400px] h-[400px] bg-accent opacity-[0.04] rounded-full blur-[180px] pointer-events-none" />
       )}
 
       <div className="max-w-[52rem] mx-auto relative z-10 text-center">
@@ -77,7 +77,7 @@ export function SingleTestimonial({
                   size={20}
                   className={`transition-all duration-300 ${
                     i < rating
-                      ? `${starColor} drop-shadow-[0_0_6px_rgba(212,253,0,0.5)]`
+                      ? `${starColor} drop-shadow-[0_0_6px_rgba(var(--color-accent-rgb),0.5)]`
                       : isDark ? "text-white/20" : "text-black/15"
                   }`}
                 />
@@ -111,10 +111,10 @@ export function SingleTestimonial({
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
               className={`w-12 h-12 sm:w-14 sm:h-14 relative overflow-hidden rounded-full border-2 transition-all duration-300 ${
                 isAccent
-                  ? "border-[#1a1a1a]/20 hover:border-[#1a1a1a]/40"
+                  ? "border-black/20 hover:border-black/40"
                   : isDark
-                    ? "border-white/20 hover:border-[#D4FD00]/50 hover:shadow-[0_0_16px_rgba(212,253,0,0.3)]"
-                    : "border-black/10 hover:border-[#D4FD00]/40 hover:shadow-[0_0_12px_rgba(212,253,0,0.2)]"
+                    ? "border-white/20 hover:border-accent/50 hover:shadow-[0_0_16px_rgba(var(--color-accent-rgb),0.3)]"
+                    : "border-black/10 hover:border-accent/40 hover:shadow-[0_0_12px_rgba(var(--color-accent-rgb),0.2)]"
               }`}
             >
               <Image

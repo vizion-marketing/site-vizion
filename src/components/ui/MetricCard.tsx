@@ -95,7 +95,7 @@ export function MetricCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
       className={`
-        bg-[#fafaf8] border border-black/[0.06]
+        bg-card border border-black/[0.06]
         ${sizeClasses[size].padding}
         flex flex-col gap-1 sm:gap-2
         ${className}

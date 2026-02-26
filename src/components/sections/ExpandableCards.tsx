@@ -51,13 +51,13 @@ export function ExpandableCards({
   return (
     <section
       className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
-      style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
+      style={{ background: isDark ? "var(--bg-dark)" : "var(--bg-card)" }}
     >
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -78,8 +78,8 @@ export function ExpandableCards({
                   transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                   className="relative flex h-2 w-2"
                 >
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}
@@ -101,7 +101,7 @@ export function ExpandableCards({
                 className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary`}
               >
                 {title}{" "}
-                {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+                {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
               </motion.h2>
             )}
             {description && (
@@ -128,8 +128,8 @@ export function ExpandableCards({
                 className={`relative border transition-all duration-300 overflow-hidden ${
                   isExpanded
                     ? isDark
-                      ? "border-[#D4FD00]/30 bg-[#D4FD00]/[0.03]"
-                      : "border-[#D4FD00]/50 bg-white"
+                      ? "border-accent/30 bg-accent/[0.03]"
+                      : "border-accent/50 bg-white"
                     : isDark
                       ? "border-white/10 bg-white/[0.02] hover:border-white/20"
                       : "border-black/[0.06] bg-white hover:border-black/15"
@@ -150,12 +150,12 @@ export function ExpandableCards({
                   {(card.number || Icon) && (
                     <div className="shrink-0">
                       {card.number ? (
-                        <span className={`font-[var(--font-body)] font-[900] text-[32px] sm:text-[40px] leading-none tracking-[-0.03em] ${isExpanded ? "text-[#D4FD00]" : isDark ? "text-white/10" : "text-black/10"} transition-colors`}>
+                        <span className={`font-[var(--font-body)] font-[900] text-[32px] sm:text-[40px] leading-none tracking-[-0.03em] ${isExpanded ? "text-accent" : isDark ? "text-white/10" : "text-black/10"} transition-colors`}>
                           {card.number}
                         </span>
                       ) : Icon ? (
-                        <div className={`w-10 h-10 flex items-center justify-center transition-colors ${isExpanded ? "bg-[#D4FD00]" : isDark ? "bg-white/5" : "bg-black/5"}`}>
-                          <Icon size={20} className={isExpanded ? "text-primary" : "text-[#D4FD00]"} />
+                        <div className={`w-10 h-10 flex items-center justify-center transition-colors ${isExpanded ? "bg-accent" : isDark ? "bg-white/5" : "bg-black/5"}`}>
+                          <Icon size={20} className={isExpanded ? "text-primary" : "text-accent"} />
                         </div>
                       ) : null}
                     </div>
@@ -163,7 +163,7 @@ export function ExpandableCards({
 
                   <div className="flex-1 min-w-0">
                     {card.subtitle && (
-                      <span className={`text-[10px] font-bold tracking-wider uppercase block mb-1 ${isDark ? "text-[#D4FD00]/60" : "text-[#D4FD00]"}`}>
+                      <span className={`text-[10px] font-bold tracking-wider uppercase block mb-1 ${isDark ? "text-accent/60" : "text-accent"}`}>
                         {card.subtitle}
                       </span>
                     )}
@@ -173,7 +173,7 @@ export function ExpandableCards({
                   </div>
 
                   {/* Toggle */}
-                  <div className={`w-8 h-8 flex items-center justify-center shrink-0 transition-colors ${isExpanded ? "bg-[#D4FD00]" : isDark ? "bg-white/5" : "bg-black/5"}`}>
+                  <div className={`w-8 h-8 flex items-center justify-center shrink-0 transition-colors ${isExpanded ? "bg-accent" : isDark ? "bg-white/5" : "bg-black/5"}`}>
                     {isExpanded ? (
                       <X size={14} className="text-primary" />
                     ) : (
@@ -201,7 +201,7 @@ export function ExpandableCards({
                           <ul className="mt-4 space-y-2">
                             {card.bullets.map((bullet, bi) => (
                               <li key={bi} className="flex items-start gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] mt-1.5 shrink-0" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
                                 <span className={`text-[13px] sm:text-[14px] font-[var(--font-body)] text-muted`}>
                                   {bullet}
                                 </span>

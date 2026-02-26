@@ -40,13 +40,13 @@ export function ProcessSteps({
   return (
     <section
       className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : ""}`}
-      style={{ background: isDark ? "#0c0c0a" : "#ffffff" }}
+      style={{ background: isDark ? "var(--bg-dark)" : "#ffffff" }}
     >
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -67,8 +67,8 @@ export function ProcessSteps({
                   transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                   className="relative flex h-2 w-2"
                 >
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}
@@ -90,7 +90,7 @@ export function ProcessSteps({
                 className={`font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-3 text-primary`}
               >
                 {title}{" "}
-                {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+                {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
               </motion.h2>
             )}
             {description && (
@@ -124,7 +124,7 @@ export function ProcessSteps({
                   >
                     {/* Center node */}
                     <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                      <div className="w-12 h-12 flex items-center justify-center bg-[#D4FD00]">
+                      <div className="w-12 h-12 flex items-center justify-center bg-accent">
                         {Icon ? (
                           <Icon size={20} className="text-primary" />
                         ) : (
@@ -145,7 +145,7 @@ export function ProcessSteps({
                         <div className="relative z-10">
                           {/* Mobile number */}
                           <div className="md:hidden flex items-center gap-3 mb-3">
-                            <div className="w-9 h-9 flex items-center justify-center bg-[#D4FD00]">
+                            <div className="w-9 h-9 flex items-center justify-center bg-accent">
                               {Icon ? (
                                 <Icon size={16} className="text-primary" />
                               ) : (
@@ -164,7 +164,7 @@ export function ProcessSteps({
                           <ul className={`mt-3 space-y-1.5 ${isLeft ? "md:flex md:flex-col md:items-end" : ""}`}>
                             {step.bullets.map((b, bi) => (
                               <li key={bi} className={`flex items-center gap-2 ${isLeft ? "md:flex-row-reverse" : ""}`}>
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] shrink-0" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                                 <span className={`text-[13px] font-[var(--font-body)] text-muted`}>{b}</span>
                               </li>
                             ))}
@@ -203,7 +203,7 @@ export function ProcessSteps({
                   >
                     {/* Node */}
                     <div className="relative z-10 shrink-0">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-[#D4FD00]">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-accent">
                         {Icon ? (
                           <Icon size={18} className="text-primary" />
                         ) : (
@@ -224,7 +224,7 @@ export function ProcessSteps({
                         <ul className="mt-2.5 space-y-1.5">
                           {step.bullets.map((b, bi) => (
                             <li key={bi} className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#D4FD00] shrink-0" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                               <span className={`text-[13px] font-[var(--font-body)] text-muted`}>{b}</span>
                             </li>
                           ))}

@@ -8,6 +8,9 @@
   
   /* Background blanc */
   --bg-white: #FFFFFF;
+
+  /* Background carte (fond légèrement grisé) */
+  --bg-card: #f8f8f6;
   
   /* Couleurs de base */
   --color-black: #000000;
@@ -16,6 +19,10 @@
   --color-grey-dark: #6D6D6D;
   /* Accent (lime) */
   --color-accent: #D4FD00;
+  --color-accent-rgb: 212, 253, 0;
+
+  /* Fond sombre (sections hero, dark backgrounds) */
+  --bg-dark: #0c0c0a;
   
   /* === SPACING === */
   --space-xs: 0.25rem;      /* 4px */
@@ -78,10 +85,10 @@
 }
 
 @theme inline {
-  --color-background: var(--color-bg);
-  --color-foreground: var(--color-text);
+  --color-background: var(--bg-white);
+  --color-foreground: var(--text-primary);
   --font-sans: var(--font-dm-sans);
-  --font-serif: var(--font-roboto);
+  --font-serif: var(--font-dm-sans);
 }
 
 /* === SEMANTIC TAILWIND UTILITIES === */
@@ -96,6 +103,32 @@
 }
 @utility border-default {
   border-color: var(--border-default);
+}
+
+/* Accent color utilities */
+@utility bg-accent {
+  background-color: var(--color-accent);
+}
+@utility text-accent {
+  color: var(--color-accent);
+}
+@utility border-accent {
+  border-color: var(--color-accent);
+}
+
+/* Dark background utility */
+@utility bg-dark {
+  background-color: var(--bg-dark);
+}
+
+/* Grey background utility */
+@utility bg-grey {
+  background-color: var(--bg-grey);
+}
+
+/* Card background utility (fond légèrement grisé) */
+@utility bg-card {
+  background-color: var(--bg-card);
 }
 
 /* === LENIS SMOOTH SCROLL === */
@@ -353,7 +386,7 @@ h3, .h3 {
 
 /* Variant: fond noir plein (sur fond clair) */
 .btn-dark {
-  background: #0a0a0a;
+  background: var(--bg-dark);
   color: #fff;
   border-color: rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
@@ -462,7 +495,7 @@ h3, .h3 {
   top: 0.35rem;
   width: 3px;
   height: 1.5rem;
-  background: linear-gradient(180deg, #0c0c0a 0%, #1a1a1a 100%);
+  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--text-primary) 100%);
   border-radius: 0;
   display: none;
 }
@@ -621,7 +654,7 @@ h3, .h3 {
   top: 0.65em;
   width: 6px;
   height: 6px;
-  background: linear-gradient(135deg, #0c0c0a 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--text-primary) 100%);
   border-radius: 50%;
 }
 
@@ -926,6 +959,25 @@ h3, .h3 {
   display: none;
 }
 
+/* Thin dark scrollbar for TOC */
+.toc-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+.toc-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.toc-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.toc-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+.toc-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 /* === MODERN UI ENHANCEMENTS === */
 
 /* Grain/Noise Texture Overlay */
@@ -1042,9 +1094,9 @@ h3, .h3 {
 }
 
 /* === BODY OVERFLOW FIX === */
-/* Prevent horizontal scroll */
+/* Prevent horizontal scroll — use clip instead of hidden to preserve position:sticky */
 html, body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* === GLOWING BORDER ANIMATION === */

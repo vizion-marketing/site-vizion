@@ -30,15 +30,15 @@ export function RelatedInlineCard({ article, index = 0 }: RelatedInlineCardProps
     >
       <Link
         href={`/blog/${article.slug}`}
-        className="group block relative overflow-hidden rounded-none border border-zinc-200 bg-gradient-to-br from-zinc-50 via-white to-zinc-50 hover:border-[#D4FD00]/50 hover:shadow-lg hover:shadow-[#D4FD00]/10 transition-all duration-300"
+        className="group block relative overflow-hidden rounded-none border border-zinc-200 bg-gradient-to-br from-zinc-50 via-white to-zinc-50 hover:border-accent/50 hover:shadow-lg hover:shadow-[var(--color-accent)]/10 transition-all duration-300"
       >
         {/* Effet glassmorphism au hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#D4FD00]/0 via-[#D4FD00]/0 to-[#D4FD00]/0 group-hover:from-[#D4FD00]/5 group-hover:via-[#D4FD00]/0 group-hover:to-[#D4FD00]/5 transition-all duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent)]/0 via-[var(--color-accent)]/0 to-[var(--color-accent)]/0 group-hover:from-[var(--color-accent)]/5 group-hover:via-[var(--color-accent)]/0 group-hover:to-[var(--color-accent)]/5 transition-all duration-500" />
 
         <div className="relative p-6">
           {/* Header avec icône */}
           <div className="flex items-center gap-2 mb-4">
-            <div className="flex items-center justify-center w-8 h-8 rounded-none bg-[#D4FD00]/20 border border-[#D4FD00]/30">
+            <div className="flex items-center justify-center w-8 h-8 rounded-none bg-accent/20 border border-accent/30">
               <Lightbulb size={16} className="text-black" />
             </div>
             <span className="text-xs font-bold tracking-wider text-zinc-600 uppercase">
@@ -63,7 +63,7 @@ export function RelatedInlineCard({ article, index = 0 }: RelatedInlineCardProps
             {/* Contenu */}
             <div className="flex-1 min-w-0">
               {/* Catégorie */}
-              <span className="inline-block px-2.5 py-1 text-[10px] font-bold tracking-wide text-black bg-[#D4FD00]/30 rounded-none mb-2">
+              <span className="inline-block px-2.5 py-1 text-[10px] font-bold tracking-wide text-black bg-accent/30 rounded-none mb-2">
                 {article.category}
               </span>
 
@@ -89,7 +89,7 @@ export function RelatedInlineCard({ article, index = 0 }: RelatedInlineCardProps
         </div>
 
         {/* Barre accent lime en bas */}
-        <div className="h-1 bg-gradient-to-r from-transparent via-[#D4FD00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="h-1 bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </Link>
     </motion.div>
   );

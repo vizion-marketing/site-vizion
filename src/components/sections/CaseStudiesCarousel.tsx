@@ -57,12 +57,12 @@ export function CaseStudiesCarousel({
   }, [emblaApi, onSelect]);
 
   return (
-    <section className={`py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`} style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}>
+    <section className={`py-16 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`} style={{ background: isDark ? "var(--bg-dark)" : "var(--bg-card)" }}>
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -77,8 +77,8 @@ export function CaseStudiesCarousel({
                 transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                 className="relative flex h-2 w-2"
               >
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -8 }}
@@ -113,7 +113,7 @@ export function CaseStudiesCarousel({
                   <div className="relative h-48 sm:h-56 overflow-hidden">
                     <Image src={caseStudy.image} alt={caseStudy.logo} fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 right-4 bg-[#D4FD00] p-3 sm:p-4">
+                    <div className="absolute bottom-4 right-4 bg-accent p-3 sm:p-4">
                       <span className="font-[var(--font-body)] font-[900] text-2xl sm:text-3xl tracking-[-0.03em] text-primary leading-none block">{caseStudy.metric}</span>
                       <span className="text-[9px] font-semibold tracking-wider text-primary/70 uppercase">{caseStudy.metricLabel}</span>
                     </div>
@@ -123,7 +123,7 @@ export function CaseStudiesCarousel({
                     <h3 className={`font-heading font-medium text-lg sm:text-xl mb-2 text-primary`}>{caseStudy.logo}</h3>
                     <p className={`text-base sm:text-lg font-[var(--font-body)] mb-4 text-muted`}>{caseStudy.title}</p>
                     <p className={`text-sm font-[var(--font-body)] leading-relaxed mb-6 text-muted`}>{caseStudy.description}</p>
-                    <Link href={`${ctaBaseHref}/${caseStudy.slug}`} className={`inline-flex items-center gap-2 text-sm font-[var(--font-body)] font-semibold hover:text-[#D4FD00] transition-colors group text-primary`}>
+                    <Link href={`${ctaBaseHref}/${caseStudy.slug}`} className={`inline-flex items-center gap-2 text-sm font-[var(--font-body)] font-semibold hover:text-accent transition-colors group text-primary`}>
                       {ctaText}
                       <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
@@ -137,7 +137,7 @@ export function CaseStudiesCarousel({
         {/* Dots */}
         <div className="flex justify-center gap-2 mt-6 sm:mt-8">
           {cases.map((_, index) => (
-            <button key={index} onClick={() => scrollTo(index)} className={`w-2 h-2 transition-all duration-300 ${index === selectedIndex ? "bg-[#D4FD00] w-6" : isDark ? "bg-white/20 hover:bg-white/40" : "bg-black/20 hover:bg-black/40"}`} aria-label={`Aller au cas ${index + 1}`} />
+            <button key={index} onClick={() => scrollTo(index)} className={`w-2 h-2 transition-all duration-300 ${index === selectedIndex ? "bg-accent w-6" : isDark ? "bg-white/20 hover:bg-white/40" : "bg-black/20 hover:bg-black/40"}`} aria-label={`Aller au cas ${index + 1}`} />
           ))}
         </div>
       </div>

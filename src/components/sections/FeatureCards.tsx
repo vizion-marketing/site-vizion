@@ -36,7 +36,7 @@ export function FeatureCards({
   variant = "white",
 }: FeatureCardsProps) {
   const isDark = variant === "dark";
-  const bg = isDark ? "#0c0c0a" : variant === "light" ? "#f8f8f6" : "#ffffff";
+  const bg = isDark ? "var(--bg-dark)" : variant === "light" ? "var(--bg-card)" : "#ffffff";
   const colClass = columns === 2 ? "sm:grid-cols-2" : columns === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-2 lg:grid-cols-3";
 
   return (
@@ -46,9 +46,9 @@ export function FeatureCards({
     >
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -63,8 +63,8 @@ export function FeatureCards({
               className="flex items-center gap-2.5 mb-4 sm:mb-5"
             >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
               </span>
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted">
                 {surtitre}
@@ -80,7 +80,7 @@ export function FeatureCards({
             className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-4 sm:mb-5 text-primary"
           >
             {title}{" "}
-            {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+            {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
           </motion.h2>
 
           {description && (
@@ -109,11 +109,11 @@ export function FeatureCards({
                 transition={{ duration: 0.5, delay: index * 0.08, ease: [0.19, 1, 0.22, 1] }}
                 className="group"
               >
-                <div className={`relative h-full min-h-[220px] lg:min-h-[240px] border overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] hover:-translate-y-2 hover:shadow-[0_8px_32px_rgba(212,253,0,0.2)] flex flex-col p-6 sm:p-7 lg:p-8 ${isDark ? "bg-white/[0.03] border-white/10 group-hover:border-[#D4FD00]/30" : "bg-white border-black/10 group-hover:border-[#D4FD00]/40"}`}>
+                <div className={`relative h-full min-h-[220px] lg:min-h-[240px] border overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] hover:-translate-y-2 hover:shadow-[0_8px_32px_rgba(var(--color-accent-rgb),0.2)] flex flex-col p-6 sm:p-7 lg:p-8 ${isDark ? "bg-white/[0.03] border-white/10 group-hover:border-accent/30" : "bg-white border-black/10 group-hover:border-accent/40"}`}>
                   {/* Lime fill from bottom */}
-                  <div className="absolute inset-0 bg-[#D4FD00] scale-y-0 origin-bottom group-hover:scale-y-100 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] z-0" />
+                  <div className="absolute inset-0 bg-accent scale-y-0 origin-bottom group-hover:scale-y-100 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] z-0" />
                   {/* Accent line bottom with glow */}
-                  <div className={`absolute bottom-0 left-0 h-[4px] w-0 group-hover:w-full transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] z-[1] ${isDark ? "bg-white/30 shadow-[0_0_12px_rgba(255,255,255,0.3)]" : "bg-[#1a1a1a] shadow-[0_0_12px_rgba(26,26,26,0.4)]"}`} />
+                  <div className={`absolute bottom-0 left-0 h-[4px] w-0 group-hover:w-full transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] z-[1] ${isDark ? "bg-white/30 shadow-[0_0_12px_rgba(255,255,255,0.3)]" : "bg-[var(--text-primary)] shadow-[0_0_12px_rgba(26,26,26,0.4)]"}`} />
 
                   {/* Background image with improved opacity */}
                   {feature.image && (
@@ -125,8 +125,8 @@ export function FeatureCards({
                   {/* Icon with enhanced animation */}
                   {Icon && (
                     <div className="mb-5 relative z-10">
-                      <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110 group-hover:rotate-3 ${isDark ? "bg-white/5 group-hover:bg-white/15 group-hover:shadow-[0_0_20px_rgba(212,253,0,0.3)]" : "bg-[#f5f5f5] group-hover:bg-[#1a1a1a] group-hover:shadow-[0_0_20px_rgba(212,253,0,0.25)]"}`}>
-                        <Icon size={24} className={`transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] ${isDark ? "text-[#D4FD00] group-hover:text-[#D4FD00] group-hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.6)]" : "text-primary group-hover:text-[#D4FD00] group-hover:drop-shadow-[0_0_8px_rgba(212,253,0,0.5)]"}`} />
+                      <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110 group-hover:rotate-3 ${isDark ? "bg-white/5 group-hover:bg-white/15 group-hover:shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.3)]" : "bg-[#f5f5f5] group-hover:bg-[var(--text-primary)] group-hover:shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.25)]"}`}>
+                        <Icon size={24} className={`transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] ${isDark ? "text-accent group-hover:text-accent group-hover:drop-shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.6)]" : "text-primary group-hover:text-accent group-hover:drop-shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]"}`} />
                       </div>
                     </div>
                   )}
@@ -147,7 +147,7 @@ export function FeatureCards({
                   {feature.tags && feature.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mb-4 relative z-10">
                       {feature.tags.map((tag) => (
-                        <span key={tag} className={`px-2.5 py-1 text-[10px] lg:text-[11px] font-medium transition-all duration-700 border border-transparent ${isDark ? "bg-white/5 text-white/70 group-hover:bg-[#1a1a1a]/10 group-hover:text-primary group-hover:border-[#1a1a1a]/30" : "bg-[#f5f5f5] text-primary group-hover:bg-[#1a1a1a]/10 group-hover:text-primary group-hover:border-[#1a1a1a]/30"}`}>
+                        <span key={tag} className={`px-2.5 py-1 text-[10px] lg:text-[11px] font-medium transition-all duration-700 border border-transparent ${isDark ? "bg-white/5 text-white/70 group-hover:bg-[var(--text-primary)]/10 group-hover:text-primary group-hover:border-black/30" : "bg-[#f5f5f5] text-primary group-hover:bg-[var(--text-primary)]/10 group-hover:text-primary group-hover:border-black/30"}`}>
                           {tag}
                         </span>
                       ))}
@@ -156,12 +156,12 @@ export function FeatureCards({
 
                   {/* Link */}
                   {feature.href && (
-                    <div className={`pt-4 border-t transition-colors duration-500 relative z-10 ${isDark ? "border-white/10 group-hover:border-white/20" : "border-black/10 group-hover:border-[#1a1a1a]/20"}`}>
+                    <div className={`pt-4 border-t transition-colors duration-500 relative z-10 ${isDark ? "border-white/10 group-hover:border-white/20" : "border-black/10 group-hover:border-black/20"}`}>
                       <Link
                         href={feature.href}
                         className={`inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold group/btn transition-colors ${isDark ? "text-primary group-hover:text-white" : "text-primary"}`}
                       >
-                        <span className={`border-b border-transparent transition-colors duration-300 ${isDark ? "group-hover/btn:border-white" : "group-hover/btn:border-[#1a1a1a]"}`}>
+                        <span className={`border-b border-transparent transition-colors duration-300 ${isDark ? "group-hover/btn:border-white" : "group-hover/btn:border-black"}`}>
                           En savoir plus
                         </span>
                         <ArrowUpRightIcon className="shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" size={14} />

@@ -43,7 +43,7 @@ export function TwoColSection({
   badge,
 }: TwoColSectionProps) {
   const isDark = variant === "dark";
-  const bg = variant === "dark" ? "#0c0c0a" : variant === "light" ? "#f8f8f6" : "#ffffff";
+  const bg = variant === "dark" ? "var(--bg-dark)" : variant === "light" ? "var(--bg-card)" : "#ffffff";
   const grain = isDark ? "grain-overlay" : "grain-light";
 
   const imageRef = useRef<HTMLDivElement>(null);
@@ -60,7 +60,7 @@ export function TwoColSection({
     >
       {/* Ambient glow */}
       <div
-        className={`absolute top-[20%] ${imagePosition === "right" ? "left-[-5%]" : "right-[-5%]"} w-[500px] h-[500px] bg-[#D4FD00] ${isDark ? "opacity-[0.05]" : "opacity-[0.04]"} rounded-full blur-[200px] pointer-events-none`}
+        className={`absolute top-[20%] ${imagePosition === "right" ? "left-[-5%]" : "right-[-5%]"} w-[500px] h-[500px] bg-accent ${isDark ? "opacity-[0.05]" : "opacity-[0.04]"} rounded-full blur-[200px] pointer-events-none`}
       />
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -82,8 +82,8 @@ export function TwoColSection({
                   transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                   className="relative flex h-2 w-2"
                 >
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}
@@ -99,7 +99,7 @@ export function TwoColSection({
 
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] mb-5 sm:mb-6 text-primary">
               {title}{" "}
-              {titleHighlight && <span className="text-[#D4FD00]">{titleHighlight}</span>}
+              {titleHighlight && <span className="text-accent">{titleHighlight}</span>}
             </h2>
 
             <motion.div
@@ -151,7 +151,7 @@ export function TwoColSection({
               </motion.div>
 
               {/* Accent frame with glow */}
-              <div className="absolute -top-3 -right-3 w-full h-full border-2 border-[#D4FD00]/20 -z-10 hidden lg:block transition-all duration-500 group-hover/image:border-[#D4FD00]/40 group-hover/image:shadow-[0_0_32px_rgba(212,253,0,0.25)]" />
+              <div className="absolute -top-3 -right-3 w-full h-full border-2 border-accent/20 -z-10 hidden lg:block transition-all duration-500 group-hover/image:border-accent/40 group-hover/image:shadow-[0_0_32px_rgba(var(--color-accent-rgb),0.25)]" />
             </div>
 
             {/* Badge overlay with animation */}
@@ -161,7 +161,7 @@ export function TwoColSection({
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.19, 1, 0.22, 1] }}
-                className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-[#D4FD00] p-4 sm:p-5 shadow-[0_8px_24px_rgba(212,253,0,0.3)]"
+                className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-accent p-4 sm:p-5 shadow-[0_8px_24px_rgba(var(--color-accent-rgb),0.3)]"
               >
                 <span className="font-heading font-bold text-[24px] sm:text-[32px] text-primary leading-none block">
                   {badge.text}

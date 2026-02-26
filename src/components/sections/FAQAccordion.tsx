@@ -38,16 +38,16 @@ export function FAQAccordion({
 
   return (
     <section className={`py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden ${isDark ? "grain-overlay dark-section" : "grain-light"}`}
-      style={{ background: isDark ? "#0c0c0a" : "#f8f8f6" }}
+      style={{ background: isDark ? "var(--bg-dark)" : "var(--bg-card)" }}
     >
       {isDark ? (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       ) : (
-        <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-[#D4FD00] opacity-[0.04] rounded-full blur-[200px] pointer-events-none" />
+        <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-accent opacity-[0.04] rounded-full blur-[200px] pointer-events-none" />
       )}
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -69,8 +69,8 @@ export function FAQAccordion({
                 transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.05 }}
                 className="relative flex h-2 w-2"
               >
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4FD00] opacity-40" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[#D4FD00] via-[#D4FD00]/80 to-[#D4FD00]/60 shadow-[0_0_8px_rgba(212,253,0,0.5)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/60 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -6 }}
@@ -86,7 +86,7 @@ export function FAQAccordion({
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[40px] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 text-primary">
               {title}
               {titleHighlight && (
-                <span className="text-[#D4FD00]"> {titleHighlight}</span>
+                <span className="text-accent"> {titleHighlight}</span>
               )}
             </h2>
 
@@ -99,7 +99,7 @@ export function FAQAccordion({
             {ctaText && (
               <Link
                 href={ctaHref}
-                className="group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold transition-colors text-primary hover:text-[#D4FD00]"
+                className="group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold transition-colors text-primary hover:text-accent"
               >
                 {ctaText}
                 <motion.span
@@ -128,16 +128,16 @@ export function FAQAccordion({
                     className={`relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] border ${
                       isDark
                         ? openIndex === index
-                          ? "bg-white/[0.06] border-[#D4FD00]/40 shadow-[0_0_24px_rgba(212,253,0,0.15)]"
+                          ? "bg-white/[0.06] border-accent/40 shadow-[0_0_24px_rgba(var(--color-accent-rgb),0.15)]"
                           : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]"
                         : openIndex === index
-                          ? "bg-white border-[#D4FD00]/30 shadow-[0_4px_16px_rgba(212,253,0,0.1)]"
+                          ? "bg-white border-accent/30 shadow-[0_4px_16px_rgba(var(--color-accent-rgb),0.1)]"
                           : "bg-white border-black/[0.06] hover:border-black/[0.15] hover:shadow-sm"
                     }`}
                   >
                     {/* Left accent bar */}
                     <motion.div
-                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#D4FD00]"
+                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-accent"
                       initial={false}
                       animate={{ scaleY: openIndex === index ? 1 : 0 }}
                       transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
@@ -157,7 +157,7 @@ export function FAQAccordion({
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
                         className={`shrink-0 w-8 h-8 flex items-center justify-center transition-colors duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ${
                           openIndex === index
-                            ? "bg-[#D4FD00] text-primary shadow-[0_0_16px_rgba(212,253,0,0.5)]"
+                            ? "bg-accent text-primary shadow-[0_0_16px_rgba(var(--color-accent-rgb),0.5)]"
                             : isDark ? "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70" : "bg-black/5 text-muted hover:bg-black/10 hover:text-primary"
                         }`}
                       >

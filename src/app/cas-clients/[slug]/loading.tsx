@@ -1,7 +1,7 @@
 export default function CaseStudyLoading() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="grain-overlay pt-[140px] pb-[80px] px-6 md:px-12 dark-section" style={{ background: "#0c0c0a" }}>
+      <div className="grain-overlay pt-[140px] pb-[80px] px-6 md:px-12 dark-section" style={{ background: "var(--bg-dark)" }}>
         <div className="max-w-[82.5rem] mx-auto">
           <div className="h-5 w-32 bg-white/10 rounded-none animate-pulse mb-6" />
           <div className="h-14 w-[60%] bg-white/10 rounded-none animate-pulse mb-4" />

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { allPosts, allServices, allCaseStudies } from "contentlayer/generated";
+import { allPosts, allCaseStudies } from "contentlayer/generated";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://by-vizion.com";
 
@@ -50,10 +50,6 @@ export async function GET(request: NextRequest) {
       .map((post) => `${baseUrl}${post.url}`);
 
     urls.push(...blogUrls);
-
-    // Service pages
-    const serviceUrls = allServices.map((service) => `${baseUrl}${service.url}`);
-    urls.push(...serviceUrls);
 
     // Case studies
     const caseStudyUrls = allCaseStudies

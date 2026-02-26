@@ -20,10 +20,10 @@ export function AuthorBio() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-[#F2F2F2] p-6 sm:p-8 rounded-none"
+      className="bg-grey p-6 sm:p-8 rounded-none"
     >
       <div className="flex items-center gap-2.5 mb-6">
-        <div className="w-2 h-2 rounded-full bg-[#D4FD00] shrink-0" />
+        <div className="w-2 h-2 rounded-full bg-accent shrink-0" />
         <h4 className="surtitre text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-black/50">
           À propos de l&apos;auteur
         </h4>

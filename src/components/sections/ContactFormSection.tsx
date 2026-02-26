@@ -48,7 +48,7 @@ export function ContactFormSection({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">("idle");
   const isDark = variant === "dark";
-  const bg = isDark ? "#0c0c0a" : "#f8f8f6";
+  const bg = isDark ? "var(--bg-dark)" : "var(--bg-card)";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -73,8 +73,8 @@ export function ContactFormSection({
   };
 
   const inputClass = isDark
-    ? "bg-white/5 border border-white/10 text-primary placeholder-white/30 focus:border-[#D4FD00]/50 focus:ring-1 focus:ring-[#D4FD00]/20"
-    : "bg-white border border-black/10 text-primary placeholder-black/30 focus:border-[#D4FD00] focus:ring-1 focus:ring-[#D4FD00]/20";
+    ? "bg-white/5 border border-white/10 text-primary placeholder-white/30 focus:border-accent/50 focus:ring-1 focus:ring-[var(--color-accent)]/20"
+    : "bg-white border border-black/10 text-primary placeholder-black/30 focus:border-accent focus:ring-1 focus:ring-[var(--color-accent)]/20";
 
   const labelClass = "text-muted";
 
@@ -85,9 +85,9 @@ export function ContactFormSection({
     >
       {isDark && (
         <>
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.12) 0%, transparent 55%)" }} />
-          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.08) 0%, transparent 55%)" }} />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(212, 253, 0, 0.06) 0%, transparent 55%)" }} />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] animate-gradient-float-1 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] animate-gradient-float-2 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] animate-gradient-float-3 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }} />
         </>
       )}
       <div className="max-w-[82.5rem] mx-auto relative z-10">
@@ -101,7 +101,7 @@ export function ContactFormSection({
           >
             {surtitre && (
               <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
-                <div className="w-2 h-2 rounded-full bg-[#D4FD00]" />
+                <div className="w-2 h-2 rounded-full bg-accent" />
                 <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-muted">
                   {surtitre}
                 </span>
@@ -123,15 +123,15 @@ export function ContactFormSection({
               <div className="space-y-4">
                 {contactInfo.map((info) => (
                   <div key={info.label} className="flex items-center gap-3">
-                    <div className={`w-10 h-10 flex items-center justify-center ${isDark ? "bg-[#D4FD00]/10" : "bg-[#D4FD00]/10"}`}>
-                      <info.icon size={18} className="text-[#D4FD00]" />
+                    <div className={`w-10 h-10 flex items-center justify-center ${isDark ? "bg-accent/10" : "bg-accent/10"}`}>
+                      <info.icon size={18} className="text-accent" />
                     </div>
                     <div>
                       <p className="text-[11px] font-[var(--font-body)] uppercase tracking-wide text-muted/70">
                         {info.label}
                       </p>
                       {info.href ? (
-                        <a href={info.href} className="text-[14px] font-[var(--font-body)] font-medium text-primary hover:text-[#D4FD00] transition-colors">
+                        <a href={info.href} className="text-[14px] font-[var(--font-body)] font-medium text-primary hover:text-accent transition-colors">
                           {info.value}
                         </a>
                       ) : (
@@ -158,7 +158,7 @@ export function ContactFormSection({
               {fields.map((field) => (
                 <div key={field.name} className={field.colSpan === 2 ? "sm:col-span-2" : ""}>
                   <label htmlFor={field.name} className={`block text-[12px] sm:text-[13px] font-[var(--font-body)] font-medium mb-1.5 ${labelClass}`}>
-                    {field.label} {field.required && <span className="text-[#D4FD00]">*</span>}
+                    {field.label} {field.required && <span className="text-accent">*</span>}
                   </label>
                   {field.type === "textarea" ? (
                     <textarea
@@ -208,7 +208,7 @@ export function ContactFormSection({
 
               {/* Status messages */}
               {formStatus === "success" && (
-                <div className={`sm:col-span-2 p-4 bg-[#D4FD00]/10 border border-[#D4FD00]/30`}>
+                <div className={`sm:col-span-2 p-4 bg-accent/10 border border-accent/30`}>
                   <p className="text-[14px] font-[var(--font-body)] text-primary">
                     Message envoyé avec succès. Nous vous recontactons rapidement.
                   </p>

@@ -65,24 +65,25 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="bg-white border border-zinc-100 rounded-none overflow-hidden"
+      className="border border-white/10 rounded-none overflow-hidden flex flex-col min-h-0 grain-overlay dark-section"
+      style={{ background: "var(--bg-dark)" }}
     >
       {/* Top accent bar */}
-      <div className="h-0.5 bg-[#D4FD00]" />
+      <div className="h-0.5 bg-accent shrink-0" />
 
-      <div className="p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <List size={16} className="text-black/40" />
-          <h4 className="text-[10px] font-light tracking-[0.12em] text-black/50">
+      <div className="p-6 flex flex-col min-h-0">
+        <div className="flex items-center gap-2 mb-4 shrink-0">
+          <List size={16} className="text-white/40" />
+          <h4 className="text-[10px] font-light tracking-[0.12em] text-white/50">
             Sommaire
           </h4>
         </div>
 
-        <div className="relative">
+        <div className="relative overflow-y-auto min-h-0 toc-scroll">
           {/* Vertical progress track */}
-          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-zinc-100 overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-white/10 overflow-hidden">
             <div
-              className="w-full bg-[#D4FD00] transition-all duration-300 ease-out"
+              className="w-full bg-accent transition-all duration-300 ease-out"
               style={{ height: `${progressPercent}%` }}
             />
           </div>
@@ -92,10 +93,10 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
               <li key={heading.id}>
                 <button
                   onClick={() => scrollToHeading(heading.id)}
-                  className={`text-left text-sm py-1.5 px-3 transition-all duration-200 hover:text-black hover:translate-x-0.5 w-full ${
+                  className={`text-left text-sm py-1.5 px-3 transition-all duration-200 hover:text-white hover:translate-x-0.5 w-full ${
                     activeId === heading.id
-                      ? "text-black font-semibold bg-[#D4FD00]/10 border-l-2 border-[#D4FD00] -ml-[2px]"
-                      : "text-zinc-400"
+                      ? "text-white font-semibold bg-accent/10 border-l-2 border-accent -ml-[2px]"
+                      : "text-white/70"
                   }`}
                   style={{
                     paddingLeft:

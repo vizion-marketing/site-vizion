@@ -42,7 +42,7 @@ export function ReadingProgress() {
       aria-hidden="true"
     >
       <div
-        className="h-full bg-[#D4FD00] transition-all duration-150 ease-out shadow-[0_0_8px_rgba(212,253,0,0.5)]"
+        className="h-full bg-accent transition-all duration-150 ease-out shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]"
         style={{ width: `${progress}%` }}
       />
     </div>

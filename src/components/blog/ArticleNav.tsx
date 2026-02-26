@@ -19,7 +19,7 @@ export function ArticleNav({ prevPost, nextPost }: ArticleNavProps) {
   if (!prevPost && !nextPost) return null;
 
   return (
-    <section className="bg-[#F2F2F2] border-y border-black/5">
+    <section className="bg-grey border-y border-black/5">
       <div className="max-w-[82.5rem] mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Previous Post */}
