@@ -273,8 +273,8 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Agence Marketing B2B Toulouse | Vizion - Positionnement & Sales",
-    description: "Agence marketing B2B à Toulouse. Transformez votre offre complexe en message clair qui déclenche la décision d'achat. Positionnement, sales enablement, tunnel aligné. +70 entreprises accompagnées depuis 2021.",
+    title: "Agence Marketing Toulouse - Devenez la référence",
+    description: "Agence marketing à Toulouse. Transformez votre offre complexe en message clair qui déclenche la décision d'achat. Positionnement, sales enablement, tunnel aligné. +70 entreprises accompagnées depuis 2021.",
     keywords: [
       "agence marketing toulouse",
       "agence marketing b2b toulouse",
@@ -294,8 +294,8 @@ export const homeContent: HomeContent = {
   // HERO SECTION
   // --------------------------------------------------------------------------
   hero: {
-    badge: "AGENCE MARKETING B2B - TOULOUSE",
-    h1: "Votre agence Marketing spécialiste du B2B à Toulouse",
+    badge: "AGENCE MARKETING - TOULOUSE",
+    h1: "Votre agence Marketing à Toulouse",
     h1Highlight: "Toulouse",
     h1RotatingWords: ["offre", "produit", "innovation", "solution SaaS", "franchise", "service"],
     baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialisée dans le B2B et des cycles de ventes longs.",
@@ -314,8 +314,8 @@ export const homeContent: HomeContent = {
     surtitre: "[ NOS RÉALISATIONS ]",
     h2: "DES OFFRES COMPLEXES DEVENUES L'ÉVIDENCE SUR LEUR MARCHÉ",
     h2Highlight: "L'ÉVIDENCE",
-    description: "Notre agence marketing B2B accompagne les entreprises dans les moments critiques de leur développement : lancement, restructuration, accélération. Notre spécialité : transformer une offre complexe en un message clair qui déclenche la décision d'achat. Voici comment nos clients sont devenus l'évidence sur leur marché.",
-    trustBanner: "Depuis 2021, plus de 70 PME, ETI et entreprises en croissance font confiance à notre agence marketing B2B à Toulouse",
+    description: "Notre agence marketing accompagne les entreprises dans les moments critiques de leur développement : lancement, restructuration, accélération. Notre spécialité : transformer une offre complexe en un message clair qui déclenche la décision d'achat. Voici comment nos clients sont devenus l'évidence sur leur marché.",
+    trustBanner: "Depuis 2021, plus de 70 PME, ETI et entreprises en croissance font confiance à notre agence marketing à Toulouse",
     trustBannerHighlight: "70 PME, ETI et entreprises en croissance",
 
     clients: [
@@ -428,9 +428,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   iaHighlight: {
     surtitre: "NOTRE DIFFÉRENCIATION",
-    h2: "UNE AGENCE MARKETING B2B QUI INTÈGRE L'IA À BON ESCIENT",
+    h2: "UNE AGENCE MARKETING QUI INTÈGRE L'IA À BON ESCIENT",
     h2Highlight: "L'IA À BON ESCIENT",
-    introduction: "Ce qui distingue notre agence marketing B2B : nous intégrons l'intelligence artificielle là où elle apporte une valeur mesurable. Production de contenu accélérée, qualification de prospects, personnalisation à l'échelle. La stratégie et les décisions restent pilotées par l'expertise humaine. Nous ne vendons pas de l'IA, nous l'utilisons pour livrer plus vite et mieux.",
+    introduction: "Ce qui distingue notre agence marketing : nous intégrons l'intelligence artificielle là où elle apporte une valeur mesurable. Production de contenu accélérée, qualification de prospects, personnalisation à l'échelle. La stratégie et les décisions restent pilotées par l'expertise humaine. Nous ne vendons pas de l'IA, nous l'utilisons pour livrer plus vite et mieux.",
     whyImportant: [
       "Production de contenus d'acquisition en une fraction du temps habituel, sans sacrifier la qualité.",
       "Qualification et enrichissement des listes de prospection pour prioriser les comptes à fort potentiel.",
@@ -485,9 +485,9 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   quandCommencer: {
     surtitre: "Notre méthode",
-    h2: "LA MÉTHODE DE NOTRE AGENCE MARKETING B2B",
-    h2Highlight: "AGENCE MARKETING B2B",
-    description: "Chaque mission de notre agence marketing B2B suit un cadre structuré en quatre phases. La séquence reste la même : on ne crée jamais de publicité sans avoir posé le positionnement d'abord. Nous adaptons l'intensité selon votre maturité, mission ciblée ou accompagnement dans la durée.",
+    h2: "LA MÉTHODE DE NOTRE AGENCE MARKETING",
+    h2Highlight: "AGENCE MARKETING",
+    description: "Chaque mission de notre agence marketing suit un cadre structuré en quatre phases. La séquence reste la même : on ne crée jamais de publicité sans avoir posé le positionnement d'abord. Nous adaptons l'intensité selon votre maturité, mission ciblée ou accompagnement dans la durée.",
     scenarios: [
       {
         number: "01",
@@ -555,7 +555,7 @@ export const homeContent: HomeContent = {
     },
     photoCaption: {
       label: "Vizion",
-      title: "Agence marketing à Toulouse - Marketing produit B2B"
+      title: "Agence marketing à Toulouse"
     },
     valeursTitre: "NOS ENGAGEMENTS",
     valeurs: [
@@ -583,8 +583,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   equipe: {
     surtitre: "L'ÉQUIPE",
-    h2: "L'équipe de notre agence marketing B2B à Toulouse",
-    h2Highlight: "agence marketing B2B",
+    h2: "L'équipe de notre agence marketing à Toulouse",
+    h2Highlight: "agence marketing",
     description: "Un interlocuteur dédié qui pilote votre stratégie, appuyé par des spécialistes en acquisition, SEO, aide à la vente et automatisation. Pas de sous-traitance cachée : vous savez exactement qui travaille sur votre projet.",
     modelExplanation: {
       director: "Votre interlocuteur dédié",
@@ -635,8 +635,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   blog: {
     surtitre: "Ressources",
-    h2: "Nos analyses marketing B2B",
-    h2Highlight: "marketing B2B",
+    h2: "Nos analyses marketing",
+    h2Highlight: "marketing",
     ctaText: "Accéder aux ressources"
   },
 
@@ -714,7 +714,7 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   localSEO: {
     surtitre: "Notre ancrage",
-    h2: "L'agence marketing B2B à Toulouse",
+    h2: "L'agence marketing à Toulouse",
     h2Highlight: "Toulouse",
     description: "Basés à Toulouse, nous accompagnons les entreprises B2B d'Occitanie et de toute la France. Proximité quand il faut, efficacité à distance quand c'est mieux.",
     paragraphs: [
@@ -800,10 +800,10 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://by-vizion.com/#organization",
-  "name": "Vizion - Agence marketing Toulouse, marketing produit B2B",
+  "name": "Vizion - Agence marketing à Toulouse",
   "alternateName": ["Vizion", "Vizion Marketing Produit", "Agence marketing Toulouse", "Agence marketing B2B Toulouse"],
   "slogan": "Transformez votre offre B2B en évidence sur votre marché",
-  "description": "Agence marketing B2B à Toulouse spécialisée en positionnement stratégique, sales enablement et tunnel de vente aligné. Vizion accompagne les PME et ETI dans leur transformation marketing : lancement de produit, repositionnement, accélération commerciale. Expertise en marketing produit, automatisation et intelligence artificielle appliquée. Plus de 70 entreprises accompagnées à Toulouse, Occitanie et en France depuis 2021.",
+  "description": "Agence marketing à Toulouse spécialisée en positionnement stratégique, sales enablement et tunnel de vente aligné. Vizion accompagne les PME et ETI dans leur transformation marketing : lancement de produit, repositionnement, accélération commerciale. Expertise en marketing produit, automatisation et intelligence artificielle appliquée. Plus de 70 entreprises accompagnées à Toulouse, Occitanie et en France depuis 2021.",
   "url": "https://by-vizion.com",
   "knowsAbout": ["Marketing B2B", "Positionnement stratégique", "Sales Enablement", "Marketing Produit", "Automatisation Marketing", "Intelligence Artificielle", "SEO", "LinkedIn Ads", "CRM", "Tunnel de vente"],
   "logo": {

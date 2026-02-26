@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         url: homeContent.seo.ogImage,
         width: 1200,
         height: 630,
-        alt: "Vizion — Agence marketing B2B à Toulouse",
+        alt: "Vizion — Agence marketing à Toulouse",
       },
     ],
     type: "website",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: homeContent.seo.ogImage,
-        alt: "Vizion — Agence marketing B2B à Toulouse",
+        alt: "Vizion — Agence marketing à Toulouse",
       },
     ],
   },
