@@ -79,7 +79,16 @@ const SNAP_DEBOUNCE_MS = 120;
 const SNAP_DURATION = 0.35;
 const ASSETS_TRIGGER_ID = "assets-tabs";
 
-export function AssetsSection() {
+export interface AssetsSectionHeaderContent {
+  h2?: string;
+  description?: string;
+}
+
+interface AssetsSectionProps {
+  content?: AssetsSectionHeaderContent;
+}
+
+export function AssetsSection({ content: headerContent }: AssetsSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState("siteweb");
@@ -270,11 +279,11 @@ export function AssetsSection() {
             className="max-w-3xl"
           >
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-4">
-              Des livrables d'excellence, conçus pour vous aider à vendre, pas pour rester au fond d'un drive.
+              {headerContent?.h2 ?? "Des livrables d'excellence, conçus pour vous aider à vendre, pas pour rester au fond d'un drive."}
             </h2>
 
             <p className="text-muted text-base font-[var(--font-body)] leading-relaxed">
-              Chaque support que nous créons a une raison stratégique d'exister. Il s'inscrit dans le tunnel de vente et porte le même message, de la première impression au closing.
+              {headerContent?.description ?? "Chaque support que nous créons a une raison stratégique d'exister. Il s'inscrit dans le tunnel de vente et porte le même message, de la première impression au closing."}
             </p>
           </motion.div>
         </div>

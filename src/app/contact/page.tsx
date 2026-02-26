@@ -23,11 +23,12 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setIsSubmitting(true);
     setFormStatus('idle');
     setErrorMessage('');
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     const data = {
       firstName: formData.get('firstName') as string,
       lastName: formData.get('lastName') as string,
@@ -51,7 +52,7 @@ export default function ContactPage() {
       }
 
       setFormStatus('success');
-      e.currentTarget.reset();
+      form.reset();
     } catch (error) {
       setFormStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Une erreur est survenue');
@@ -235,7 +236,7 @@ export default function ContactPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}
-                  className="w-full h-14 rounded-none flex items-center justify-center gap-3 mt-6 group disabled:opacity-70 disabled:cursor-not-allowed text-[15px] font-[var(--font-body)] font-semibold tracking-[-0.01em] transition-all duration-300 bg-accent/90 backdrop-blur-xl text-black border border-accent/50 shadow-[0_4px_24px_-1px_rgba(var(--color-accent-rgb),0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:bg-accent hover:shadow-[0_8px_32px_-4px_rgba(var(--color-accent-rgb),0.4),inset_0_1px_0_0_rgba(255,255,255,0.4)]"
+                  className="w-full h-14 rounded-none flex items-center justify-center gap-3 mt-6 group disabled:opacity-70 disabled:cursor-not-allowed text-[15px] font-[var(--font-body)] font-semibold tracking-[-0.01em] transition-all duration-300 bg-accent text-black border border-accent/50 shadow-[0_4px_24px_-1px_rgba(var(--color-accent-rgb),0.25)] hover:shadow-[0_8px_32px_-4px_rgba(var(--color-accent-rgb),0.4)]"
                 >
                   {isSubmitting ? (
                     <>

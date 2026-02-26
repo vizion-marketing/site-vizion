@@ -230,6 +230,7 @@ export interface LocalSEOContent {
   villes: {
     name: string;
     label: string;
+    href?: string;
   }[];
   cta: CTA;
 }
@@ -521,7 +522,7 @@ export const homeContent: HomeContent = {
         ],
         deliverables: ["Interlocuteur dédié", "Tunnel de vente aligné", "Accès aux experts (pub, SEO, aide à la vente)", "Suivi et optimisation continue"],
         duration: "Engagement 6 mois minimum",
-        investment: "À partir de 4 500 €/mois",
+        investment: "Budget adapté à chaque projet",
         idealFor: "SaaS, franchises, ETI en phase de croissance",
         cta: "Découvrir l'accompagnement"
       }
@@ -661,7 +662,7 @@ export const homeContent: HomeContent = {
       },
       {
         question: "Comment travaille Vizion : mission ponctuelle ou accompagnement long terme ?",
-        answer: "Vizion propose deux modes d'intervention. La mission ciblée (8 à 16 semaines) intervient sur un enjeu précis : lancement, repositionnement, alignement du tunnel. L'accompagnement dans la durée (6 mois minimum, à partir de 4 500 €/mois) : nous endossons le rôle de votre équipe marketing produit. Un interlocuteur dédié, un tunnel aligné, accès aux experts selon les besoins. Dans les deux cas, nous ne créons jamais de pub sans avoir posé le positionnement d'abord."
+        answer: "Vizion propose deux modes d'intervention. La mission ciblée (8 à 16 semaines) intervient sur un enjeu précis : lancement, repositionnement, alignement du tunnel. L'accompagnement dans la durée (6 mois minimum) : nous endossons le rôle de votre équipe marketing produit. Un interlocuteur dédié, un tunnel aligné, accès aux experts selon les besoins. Dans les deux cas, nous ne créons jamais de pub sans avoir posé le positionnement d'abord."
       },
       {
         question: "Vizion travaille-t-elle uniquement à Toulouse et en Occitanie ?",
@@ -677,7 +678,7 @@ export const homeContent: HomeContent = {
       },
       {
         question: "Quel est le prix d'un accompagnement marketing avec Vizion ?",
-        answer: "Vizion propose des accompagnements à partir de 4 500 €/mois pour un suivi dans la durée (minimum 6 mois). Les missions ciblées (8 à 16 semaines) varient selon l'enjeu et le périmètre. Nous travaillons principalement avec des PME de 10 à 250 collaborateurs, des ETI et des scale-ups en phase de croissance. Chaque projet démarre par un diagnostic gratuit pour évaluer si nous sommes le bon partenaire."
+        answer: "Nous n'avons pas de tarif fixe : chaque accompagnement est dimensionné selon vos enjeux, votre maturité marketing et le périmètre d'intervention. Missions ciblées (8 à 16 semaines) ou accompagnement dans la durée (6 mois minimum), le budget est construit sur mesure. Nous travaillons principalement avec des PME de 10 à 250 collaborateurs, des ETI et des scale-ups en phase de croissance. Chaque projet démarre par un diagnostic gratuit pour évaluer si nous sommes le bon partenaire."
       }
     ],
     ctaText: "Une autre question ? Échangeons directement.",
@@ -723,15 +724,16 @@ export const homeContent: HomeContent = {
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.5!2d1.5102!3d43.5416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7552ff%3A0x40ae6168453a970!2sLab%C3%A8ge!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr",
     villes: [
       { name: "Toulouse", label: "Siège" },
-      { name: "Montpellier", label: "Hérault" },
+      { name: "Montpellier", label: "Hérault", href: "/agence-marketing-montpellier" },
       { name: "Perpignan", label: "Pyrénées-Orientales" },
       { name: "Nîmes", label: "Gard" },
       { name: "Carcassonne", label: "Aude" },
-      { name: "Albi", label: "Tarn" },
+      { name: "Albi", label: "Tarn", href: "/agence-marketing-albi" },
+      { name: "Mazamet", label: "Tarn", href: "/agence-marketing-communication-mazamet" },
       { name: "Montauban", label: "Tarn-et-Garonne" },
-      { name: "Rodez", label: "Aveyron" },
+      { name: "Rodez", label: "Aveyron", href: "/agence-marketing-rodez" },
       { name: "Mende", label: "Lozère" },
-      { name: "Auch", label: "Gers" },
+      { name: "Auch", label: "Gers", href: "/agence-marketing-auch" },
       { name: "Tarbes", label: "Hautes-Pyrénées" },
       { name: "Foix", label: "Ariège" },
       { name: "Paris", label: "Île-de-France" }

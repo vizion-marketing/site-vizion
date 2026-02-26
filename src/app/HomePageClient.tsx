@@ -2,6 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
+import type { HomeContent } from "@/content/home";
 
 // Above-the-fold — eagerly loaded
 import { HeroSection } from "@/components/home/HeroSection";
@@ -33,39 +34,56 @@ interface Post {
 
 interface HomePageClientProps {
   latestPosts: Post[];
+  content?: HomeContent;
 }
 
 // =============================================================================
 // MAIN COMPONENT
 // =============================================================================
-export default function HomePageClient({ latestPosts }: HomePageClientProps) {
+export default function HomePageClient({ latestPosts, content }: HomePageClientProps) {
   return (
     <>
       <main>
         {/* Hero */}
-        <HeroSection />
+        <HeroSection content={content?.hero} />
         {/* Bandeau industries défilant */}
         <IndustriesMarquee />
         {/* Introduction - Manifeste */}
-        <IntroSection />
+        <IntroSection
+          content={content ? {
+            title: content.aPropos.h2,
+            paragraphs: content.aPropos.paragraphs ?? [],
+            mission: content.aPropos.introLaius ?? "",
+          } : undefined}
+        />
         {/* Services - 5 Piliers */}
-        <ServicesSection />
+        <ServicesSection
+          surtitre={content?.piliers.surtitre}
+          h2={content?.piliers.h2}
+          description={content?.piliers.description}
+          piliers={content?.piliers.piliers}
+        />
         {/* Assets Section */}
         <AssetsSection />
         {/* Cas Clients */}
         <CasClientsSection />
         {/* À propos + Localisation (Fusion Pourquoi Vizion + SEO Local) */}
-        <AboutLocalSection />
+        <AboutLocalSection content={content?.localSEO} />
         {/* Équipe — masquée temporairement */}
         {/* <TeamSection /> */}
         {/* Blog - Derniers articles */}
-        <BlogSectionComponent articles={latestPosts} />
+        <BlogSectionComponent
+          articles={latestPosts}
+          surtitre={content?.blog.surtitre}
+          h2={content?.blog.h2}
+          ctaText={content?.blog.ctaText}
+        />
         {/* FAQ */}
-        <FAQSection />
+        <FAQSection content={content?.faq} />
         {/* Ils parlent de nous — masquée temporairement */}
         {/* <IlsParlentDeNousSection /> */}
         {/* CTA Final */}
-        <FinalCTASection />
+        <FinalCTASection content={content?.finalCta} />
       </main>
     </>
   );

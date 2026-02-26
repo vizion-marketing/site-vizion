@@ -1,10 +1,14 @@
 "use client";
 
 import { FAQAccordion } from "@/components/sections";
-import { homeContent } from "@/content/home";
+import { homeContent, type FAQContent } from "@/content/home";
 
-export function FAQSection() {
-  const faq = homeContent.faq;
+interface FAQSectionProps {
+  content?: FAQContent;
+}
+
+export function FAQSection({ content }: FAQSectionProps = {}) {
+  const faq = content ?? homeContent.faq;
 
   return (
     <FAQAccordion

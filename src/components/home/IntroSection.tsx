@@ -5,15 +5,21 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const MANIFESTO_TITLE = "Les entreprises toulousaines méritent mieux qu'un coup de communication.";
+const DEFAULT_MANIFESTO_TITLE = "Les entreprises toulousaines méritent mieux qu'un coup de communication.";
 
-const MANIFESTO_PARAGRAPHS = [
+const DEFAULT_MANIFESTO_PARAGRAPHS = [
   "Vos cycles de vente durent des mois. Vos décideurs comparent, challengent, arbitrent. Ils ne cherchent pas de la créativité. Ils veulent de la clarté, de la structure, des preuves.",
   "Ce qui fonctionne pour vous, c'est la répétition. Un positionnement ancré. Un discours cohérent à chaque étape. Des fondations solides qui tiennent sur des cycles longs.",
   "On construit le socle que personne ne pose : positionnement, architecture de message, alignement marketing-ventes. Vous cherchez la rigueur nécessaire pour transformer votre offre en référence sur votre marché.",
 ];
 
-const MISSION_STATEMENT = "Alors on s'est donné une mission : faire de votre produit une évidence.";
+const DEFAULT_MISSION_STATEMENT = "Alors on s'est donné une mission : faire de votre produit une évidence.";
+
+export interface IntroSectionContent {
+  title: string;
+  paragraphs: string[];
+  mission?: string;
+}
 
 /** Split text into lines for line-by-line scroll animation */
 function LineSplit({ text, className, as: Tag = "p" }: { text: string; className?: string; as?: "p" | "h2" }) {
@@ -36,7 +42,14 @@ function LineSplit({ text, className, as: Tag = "p" }: { text: string; className
   );
 }
 
-export function IntroSection() {
+interface IntroSectionProps {
+  content?: IntroSectionContent;
+}
+
+export function IntroSection({ content }: IntroSectionProps = {}) {
+  const title = content?.title ?? DEFAULT_MANIFESTO_TITLE;
+  const paragraphs = content?.paragraphs ?? DEFAULT_MANIFESTO_PARAGRAPHS;
+  const mission = content?.mission ?? DEFAULT_MISSION_STATEMENT;
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -163,12 +176,12 @@ export function IntroSection() {
           {/* Title */}
           <LineSplit
             as="h2"
-            text={MANIFESTO_TITLE}
+            text={title}
             className="manifesto-block font-heading font-medium text-[28px] sm:text-[38px] md:text-[48px] lg:text-[60px] xl:text-[68px] leading-[1.05] tracking-[-0.03em] mb-4 sm:mb-6 md:mb-8"
           />
 
           {/* Paragraphs */}
-          {MANIFESTO_PARAGRAPHS.map((paragraph, i) => (
+          {paragraphs.map((paragraph, i) => (
             <LineSplit
               key={i}
               text={paragraph}
@@ -185,10 +198,7 @@ export function IntroSection() {
             className="pt-6 sm:pt-8 md:pt-10"
           >
             <p className="font-heading font-medium text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] leading-[1.2] tracking-[-0.01em] text-primary">
-              Alors on s'est donné une mission :{" "}
-              <span className="text-primary">
-                faire de votre produit une évidence
-              </span>
+              {mission}
             </p>
           </motion.div>
         </div>

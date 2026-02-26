@@ -14,6 +14,17 @@ const footerLinks = {
   ],
 };
 
+const implantations = [
+  { name: 'Toulouse', href: '/', label: 'Siège' },
+  { name: 'Montpellier', href: '/agence-marketing-montpellier' },
+  { name: 'Albi', href: '/agence-marketing-albi' },
+  { name: 'Auch', href: '/agence-marketing-auch' },
+  { name: 'Agen', href: '/agence-marketing-agen' },
+  { name: 'Castres', href: '/agence-marketing-castres' },
+  { name: 'Mazamet', href: '/agence-marketing-communication-mazamet' },
+  { name: 'Rodez', href: '/agence-marketing-rodez' },
+];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -74,6 +85,24 @@ export function Footer() {
                   <li key={link.name}>
                     <Link href={link.href} className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
                       {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="lg:col-span-2">
+            <div className="flex flex-col gap-6">
+              <h4 className="surtitre text-black">Implantations</h4>
+              <ul className="flex flex-col gap-3">
+                {implantations.map((city) => (
+                  <li key={city.name}>
+                    <Link href={city.href} className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
+                      {city.name}
+                      {'label' in city && city.label && (
+                        <span className="text-[10px] text-black/40 ml-1">({city.label})</span>
+                      )}
                     </Link>
                   </li>
                 ))}

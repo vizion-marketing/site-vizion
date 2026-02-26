@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Target, PenTool, TrendingUp, Presentation, Cog, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
-import { homeContent } from "@/content/home";
+import { homeContent, type Pilier } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
 import Image from "next/image";
 
@@ -12,6 +12,7 @@ interface ServicesSectionProps {
   surtitre?: string;
   h2?: string;
   description?: string;
+  piliers?: Pilier[];
 }
 
 const SERVICES = [
@@ -310,13 +311,19 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
   );
 }
 
-export function ServicesSection({ surtitre, h2, description }: ServicesSectionProps = {}) {
+export function ServicesSection({ surtitre, h2, description, piliers }: ServicesSectionProps = {}) {
   const piliersSurtitre = surtitre ?? homeContent.piliers.surtitre;
   const piliersH2 = h2 ?? homeContent.piliers.h2;
   const piliersDescription = description ?? homeContent.piliers.description;
-  const featuredService = SERVICES.find(s => s.span === "featured")! as Service;
-  const otherServices = SERVICES.filter(s => s.span !== "featured") as Service[];
-  const total = SERVICES.length;
+
+  // Override service descriptions from city-specific piliers when provided
+  const services: Service[] = piliers
+    ? SERVICES.map((s, i) => (piliers[i] ? { ...s, description: piliers[i].description } : s))
+    : SERVICES;
+
+  const featuredService = services.find(s => s.span === "featured")! as Service;
+  const otherServices = services.filter(s => s.span !== "featured") as Service[];
+  const total = services.length;
 
   return (
     <section id="services" className="relative bg-white py-16 sm:py-20 md:py-24 lg:py-28">

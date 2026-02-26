@@ -84,9 +84,17 @@ export function FAQAccordion({
             </div>
 
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[40px] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 text-primary">
-              {title}
-              {titleHighlight && (
-                <span className="text-accent"> {titleHighlight}</span>
+              {titleHighlight && title.includes(titleHighlight) ? (
+                <>
+                  {title.split(titleHighlight)[0]}
+                  <span className="text-accent">{titleHighlight}</span>
+                  {title.split(titleHighlight)[1]}
+                </>
+              ) : (
+                <>
+                  {title}
+                  {titleHighlight && <span className="text-accent"> {titleHighlight}</span>}
+                </>
               )}
             </h2>
 

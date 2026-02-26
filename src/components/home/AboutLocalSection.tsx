@@ -6,7 +6,8 @@ import { MapPin, Flame, TrendingUp, HeartHandshake } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { homeContent } from "@/content/home";
+import Link from "next/link";
+import { homeContent, type LocalSEOContent } from "@/content/home";
 
 const MILESTONES = [
   {
@@ -29,7 +30,11 @@ const MILESTONES = [
   },
 ];
 
-export function AboutLocalSection() {
+interface AboutLocalSectionProps {
+  content?: LocalSEOContent;
+}
+
+export function AboutLocalSection({ content }: AboutLocalSectionProps = {}) {
   const timelineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -67,7 +72,7 @@ export function AboutLocalSection() {
     };
   }, []);
 
-  const localData = homeContent.localSEO;
+  const localData = content ?? homeContent.localSEO;
 
   return (
     <section
@@ -128,12 +133,17 @@ export function AboutLocalSection() {
           </div>
 
           <h2 className="font-heading font-medium text-[26px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.08] tracking-[-0.02em] text-primary mb-4 sm:mb-5">
-            <span className="text-accent">Vizion</span>, une agence de la ville rose
-            <br className="hidden sm:inline" /> au service des entreprises d&apos;Occitanie et d&apos;ailleurs
+            {localData.h2Highlight ? (
+              <>
+                {localData.h2.split(localData.h2Highlight)[0]}
+                <span className="text-accent">{localData.h2Highlight}</span>
+                {localData.h2.split(localData.h2Highlight)[1]}
+              </>
+            ) : localData.h2}
           </h2>
 
           <p className="text-muted text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed max-w-3xl">
-            Basés à Labège dans la technopole de Toulouse, nous accompagnons les entreprises de toute l'Occitanie et de France. Proximité pour les clients locaux, efficacité à distance pour les autres.
+            {localData.description}
           </p>
         </motion.div>
 
@@ -145,9 +155,11 @@ export function AboutLocalSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-12 sm:mb-16"
         >
-          <p className="text-[15px] sm:text-[16px] leading-relaxed text-muted max-w-4xl">
-            Plus de 70 entreprises nous font confiance depuis 2021 pour structurer leur marketing produit, aligner leurs équipes commerciales et transformer leur offre en évidence sur leur marché. L'expertise reste la même, seule la distance change.
-          </p>
+          {localData.paragraphs.map((paragraph, i) => (
+            <p key={i} className="text-[15px] sm:text-[16px] leading-relaxed text-muted max-w-4xl mb-4 last:mb-0">
+              {paragraph}
+            </p>
+          ))}
         </motion.div>
 
         {/* ========== PHOTO + STATS GRID ========== */}
@@ -288,7 +300,7 @@ export function AboutLocalSection() {
                 height="100%"
                 style={{ border: 0 }}
                 loading="lazy"
-                title="Vizion - Agence marketing Toulouse, Occitanie"
+                title={`Vizion - ${localData.h2}`}
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0"
               />
@@ -296,16 +308,30 @@ export function AboutLocalSection() {
 
             {/* Villes badges */}
             <div className="flex flex-wrap gap-2">
-              {localData.villes.map((ville) => (
-                <span
-                  key={ville.name}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white light-card border border-black/[0.06] rounded-full text-xs font-medium text-primary"
-                >
-                  {ville.name === "Toulouse" && <MapPin size={12} className="text-accent" />}
-                  {ville.name}
-                  <span className="text-[10px] text-muted">• {ville.label}</span>
-                </span>
-              ))}
+              {localData.villes.map((ville) => {
+                const baseClasses = "inline-flex items-center gap-1.5 px-3 py-1.5 bg-white light-card border border-black/[0.06] rounded-full text-xs font-medium text-primary";
+                const inner = (
+                  <>
+                    {ville.name === "Toulouse" && <MapPin size={12} className="text-accent" />}
+                    {ville.name}
+                    <span className="text-[10px] text-muted">• {ville.label}</span>
+                  </>
+                );
+
+                return ville.href ? (
+                  <Link
+                    key={ville.name}
+                    href={ville.href}
+                    className={`${baseClasses} hover:border-accent hover:shadow-sm transition-all duration-300`}
+                  >
+                    {inner}
+                  </Link>
+                ) : (
+                  <span key={ville.name} className={baseClasses}>
+                    {inner}
+                  </span>
+                );
+              })}
             </div>
 
             {/* CTA */}

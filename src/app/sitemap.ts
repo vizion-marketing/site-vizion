@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { allPosts, allCaseStudies } from "contentlayer/generated";
+import { CITY_SLUGS } from "@/content/cities";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://by-vizion.com";
 
@@ -41,5 +42,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     }));
 
-  return [...staticPages, ...blogPages, ...caseStudyPages];
+  // City landing pages (SEO local)
+  const cityPages = CITY_SLUGS.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...blogPages, ...caseStudyPages, ...cityPages];
 }

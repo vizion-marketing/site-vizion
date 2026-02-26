@@ -329,21 +329,23 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             {hero.baseline}
           </p>
 
-          <div
-            ref={badgesRef}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pb-3 sm:pb-4 border-b border-white/10 opacity-0"
-          >
-            {hero.badges.map((item, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-tight"
-                style={{ color: "rgba(255,255,255,0.8)" }}
-              >
-                <CheckCircle2 size={14} className="shrink-0" style={{ color: "var(--color-accent)" }} />
-                {item}
-              </div>
-            ))}
-          </div>
+          {hero.badges.length > 0 && (
+            <div
+              ref={badgesRef}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pb-3 sm:pb-4 border-b border-white/10 opacity-0"
+            >
+              {hero.badges.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-tight"
+                  style={{ color: "rgba(255,255,255,0.8)" }}
+                >
+                  <CheckCircle2 size={14} className="shrink-0" style={{ color: "var(--color-accent)" }} />
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
 
           <div ref={ctasRef} className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 mt-4 opacity-0">
             <Link
