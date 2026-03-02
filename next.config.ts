@@ -36,6 +36,16 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+  // Redirects (ancien routing cas-clients → nouveau nested)
+  async redirects() {
+    return [
+      {
+        source: '/cas-clients/easyvirtual-tours-franchise',
+        destination: '/cas-clients/easyvirtual-tours/easyvirtual-tours-franchise',
+        permanent: true,
+      },
+    ];
+  },
   // Security headers
   async headers() {
     return [
@@ -72,7 +82,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google.com; frame-src 'self' https://www.google.com;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://region1.google-analytics.com; frame-src 'self' https://www.google.com https://www.googletagmanager.com;"
           }
         ]
       }
