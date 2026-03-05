@@ -113,7 +113,6 @@ export interface QuandCommencerScenario {
   whenToChoose: string[];
   deliverables: string[];
   duration: string;
-  investment: string;
   idealFor: string;
   cta: string;
 }
@@ -502,7 +501,6 @@ export const homeContent: HomeContent = {
         ],
         deliverables: ["Positionnement & discours de marque", "Supports commerciaux alignés", "Campagnes ou landing pages selon le périmètre"],
         duration: "8 à 16 semaines",
-        investment: "Sur devis",
         idealFor: "Startups, PME & ETI avec un enjeu identifié",
         cta: "Échanger sur votre enjeu"
       },
@@ -521,7 +519,6 @@ export const homeContent: HomeContent = {
         ],
         deliverables: ["Interlocuteur dédié", "Tunnel de vente aligné", "Accès aux experts (pub, SEO, aide à la vente)", "Suivi et optimisation continue"],
         duration: "Engagement 6 mois minimum",
-        investment: "Budget adapté à chaque projet",
         idealFor: "SaaS, franchises, ETI en phase de croissance",
         cta: "Découvrir l'accompagnement"
       }
@@ -676,8 +673,8 @@ export const homeContent: HomeContent = {
         answer: "Non, Vizion ne remplace pas les équipes internes, nous les renforçons. Nous travaillons aux côtés des directions marketing et commerciales : positionnement, supports de vente alignés, boucle de retours (les objections remontées par les commerciaux alimentent les prochaines campagnes). Un accompagnement réussi, c'est une équipe plus autonome et un message unifié du clic à la signature."
       },
       {
-        question: "Quel est le prix d'un accompagnement marketing avec Vizion ?",
-        answer: "Nous n'avons pas de tarif fixe : chaque accompagnement est dimensionné selon vos enjeux, votre maturité marketing et le périmètre d'intervention. Missions ciblées (8 à 16 semaines) ou accompagnement dans la durée (6 mois minimum), le budget est construit sur mesure. Nous travaillons principalement avec des PME de 10 à 250 collaborateurs, des ETI et des scale-ups en phase de croissance. Chaque projet démarre par un diagnostic gratuit pour évaluer si nous sommes le bon partenaire."
+        question: "Combien de temps pour voir des résultats concrets ?",
+        answer: "Les premiers livrables (positionnement, discours de marque, supports de vente) sont opérationnels en 4 à 8 semaines. Les résultats d'acquisition (SEO, campagnes, pipeline qualifié) se mesurent à partir de 3 à 6 mois. Nous cadrons des indicateurs concrets dès le départ pour mesurer l'avancement."
       }
     ],
     ctaText: "Une autre question ? Échangeons directement.",
@@ -833,7 +830,6 @@ export const organizationSchema = {
     "latitude": 43.5416,
     "longitude": 1.5102
   },
-  "priceRange": "€€€",
   "currenciesAccepted": "EUR",
   "paymentAccepted": "Virement bancaire, Carte de crédit",
   "openingHoursSpecification": [

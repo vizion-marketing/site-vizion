@@ -63,7 +63,6 @@ export function buildOrganizationSchema(meta: CityMeta) {
     sameAs: [
       "https://www.linkedin.com/company/vizion-marketing-b2b/",
     ],
-    priceRange: "€€€",
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5.0",

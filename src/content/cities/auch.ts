@@ -39,11 +39,6 @@ const faqQuestions = [
       "Cela dépend de votre point de départ et de vos objectifs. Sur une mission de 6 mois typique, nos clients observent une augmentation mesurable du trafic qualifié, une amélioration du taux de conversion des prospects en clients, et une diminution du temps de cycle commercial. Nous cadrons des indicateurs concrets dès le départ pour mesurer l'avancement.",
   },
   {
-    question: "Quel est votre tarif pour une PME ?",
-    answer:
-      "Nos accompagnements démarrent à 4 500 euros par mois pour un suivi dans la durée. Les missions ciblées (audit, repositionnement) sont facturées sur devis selon le périmètre. Nous adaptons l'intensité de l'intervention à votre budget et à vos priorités.",
-  },
-  {
     question: "Travaillez-vous dans le secteur agricole et agroalimentaire ?",
     answer:
       "Nous accompagnons des entreprises B2B de tous secteurs, y compris l'agroalimentaire et les services liés à l'agriculture. Notre expertise porte sur les offres complexes vendues à des professionnels. Si votre cycle de vente implique plusieurs décideurs et des enjeux techniques, nous sommes dans notre domaine.",

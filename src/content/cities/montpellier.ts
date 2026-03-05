@@ -39,11 +39,6 @@ const faqQuestions = [
       "Trois différences concrètes. D'abord, nous ne faisons pas d'exécution sans stratégie : chaque action repose sur un positionnement validé. Ensuite, nous intervenons jusqu'à la vente — supports commerciaux, objections, closing. Enfin, nous intégrons l'IA dans nos processus pour livrer plus vite sans sacrifier la qualité. La plupart des agences locales se concentrent sur la production de contenu ou la publicité, pas sur l'alignement complet marketing-ventes.",
   },
   {
-    question: "Quel budget prévoir pour un accompagnement marketing ?",
-    answer:
-      "Nos missions ciblées (lancement, repositionnement) démarrent sur 8 à 16 semaines, sur devis. Nos accompagnements dans la durée impliquent un engagement de 6 mois minimum, avec un budget adapté à votre structure et vos objectifs. Nous travaillons typiquement avec des entreprises investissant entre 4 500 et 15 000 euros par mois dans leur marketing.",
-  },
-  {
     question: "Pouvez-vous intervenir en complément d'une équipe marketing interne ?",
     answer:
       "Absolument. Beaucoup de nos clients disposent déjà d'une équipe. Nous intervenons alors sur les sujets stratégiques (positionnement, architecture de message) ou techniques (automatisation CRM, IA appliquée) que l'équipe interne n'a pas le temps ou l'expertise de traiter. Le transfert de compétences fait partie de notre approche.",

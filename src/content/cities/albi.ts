@@ -46,7 +46,7 @@ const faqQuestions = [
   {
     question: "Nous sommes une petite structure. Vizion travaille-t-elle avec des TPE ?",
     answer:
-      "Notre modèle est conçu pour les entreprises de 10 à 250 collaborateurs avec un budget marketing structuré (à partir de 4 500 euros par mois). Pour les très petites structures, nos tarifs ne sont généralement pas adaptés. En revanche, si vous avez une offre complexe et un vrai enjeu commercial, la taille ne nous arrête pas.",
+      "Notre modèle est conçu pour les entreprises de 10 à 250 collaborateurs avec un enjeu commercial structuré. Pour les très petites structures, notre approche n'est généralement pas adaptée. En revanche, si vous avez une offre complexe et un vrai enjeu commercial, la taille ne nous arrête pas.",
   },
 ];
 

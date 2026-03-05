@@ -43,11 +43,6 @@ const faqQuestions = [
     answer:
       "Les délais dépendent du point de départ. Positionnement et discours de marque : 4 à 6 semaines. Premiers prospects qualifiés : 2 à 3 mois. Impact commercial mesurable : 4 à 6 mois. Nous sommes transparents sur les délais, pas de promesse de résultats en 2 semaines. Construire un positionnement solide et un tunnel de vente aligné demande du temps et de l'itération.",
   },
-  {
-    question: "Quel est le prix d'un accompagnement marketing avec Vizion ?",
-    answer:
-      "Nous n'avons pas de tarif fixe : chaque accompagnement est dimensionné selon vos enjeux, votre maturité marketing et le périmètre d'intervention. Missions ciblées (8 à 16 semaines) ou accompagnement dans la durée (6 mois minimum), le budget est construit sur mesure. Nous travaillons principalement avec des PME de 10 à 250 collaborateurs, des ETI et des scale-ups en phase de croissance. Chaque projet démarre par un diagnostic gratuit pour évaluer si nous sommes le bon partenaire.",
-  },
 ];
 
 const content: CityPageData["content"] = {

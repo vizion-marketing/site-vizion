@@ -218,11 +218,6 @@ const faqQuestions = [
       "Chaque accompagnement démarre par un diagnostic : positionnement actuel, tunnel de vente, outils existants, discours commercial. À partir de ce diagnostic, nous construisons une feuille de route priorisée. Deux formats possibles : la mission ciblée (8 à 16 semaines sur un enjeu précis) ou l'accompagnement dans la durée (direction marketing externalisée, 6 mois minimum). Dans les deux cas, un directeur marketing senior est votre interlocuteur unique.",
   },
   {
-    question: "Quel budget prévoir pour un marketing B2B structuré ?",
-    answer:
-      "Nos accompagnements dans la durée démarrent à 4 500 euros par mois sur un engagement de 6 mois. Les missions ciblées (audit, repositionnement, création de supports) sont facturées sur devis selon le périmètre. Nous travaillons avec des entreprises dont le budget marketing se situe entre 4 500 et 15 000 euros par mois. Le diagnostic initial est gratuit.",
-  },
-  {
     question: "Vizion remplace-t-elle l'équipe marketing interne ?",
     answer:
       "Pas nécessairement. Beaucoup de nos clients disposent déjà d'une équipe marketing. Nous intervenons alors en direction marketing externalisée ou sur des sujets spécifiques que l'équipe interne n'a pas le temps ou l'expertise de traiter : positionnement stratégique, architecture de message, automatisation CRM, IA appliquée. Le transfert de compétences fait partie de notre approche — l'objectif est que votre équipe soit plus autonome à la fin de la mission.",
@@ -317,7 +312,6 @@ export const organizationSchema = {
   sameAs: [
     "https://www.linkedin.com/company/vizion-marketing-b2b/",
   ],
-  priceRange: "€€€",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "5.0",

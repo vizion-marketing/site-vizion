@@ -41,7 +41,7 @@ const faqQuestions = [
   {
     question: "Comment savoir si notre entreprise est prête pour un accompagnement marketing ?",
     answer:
-      "Si vous avez une offre solide mais que la croissance stagne, si vos commerciaux n'ont pas les bons outils, si votre positionnement n'est pas formalisé — vous êtes prêt. Nous travaillons avec des entreprises de 10 à 250 collaborateurs, avec un budget marketing à partir de 4 500 euros par mois. L'audit initial est gratuit et vous donnera une vision claire de vos priorités.",
+      "Si vous avez une offre solide mais que la croissance stagne, si vos commerciaux n'ont pas les bons outils, si votre positionnement n'est pas formalisé — vous êtes prêt. Nous travaillons avec des entreprises de 10 à 250 collaborateurs. L'audit initial est gratuit et vous donnera une vision claire de vos priorités.",
   },
   {
     question: "Quelle est votre approche pour les entreprises agroalimentaires B2B ?",

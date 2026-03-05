@@ -43,11 +43,6 @@ const faqQuestions = [
     answer:
       "C'est l'un de nos métiers. Nous déployons des stratégies d'acquisition adaptées à votre cible : SEO pour capter l'intention de recherche, campagnes publicitaires ciblées (Google, LinkedIn, Meta), stratégie de contenu, et notoriété dirigeant sur LinkedIn. Chaque canal est choisi en fonction de votre marché et de vos objectifs, pas par effet de mode. L'objectif : que les bons prospects vous trouvent avant vos concurrents.",
   },
-  {
-    question: "Combien coûte un accompagnement marketing avec Vizion ?",
-    answer:
-      "Chaque accompagnement est dimensionné selon vos enjeux et votre maturité marketing. Mission ciblée (8 à 16 semaines) ou accompagnement dans la durée (6 mois minimum), le budget est construit sur mesure. Nous travaillons principalement avec des PME et ETI. Chaque projet démarre par un diagnostic gratuit pour évaluer si nous sommes le bon partenaire et définir le périmètre d'intervention.",
-  },
 ];
 
 const content: CityPageData["content"] = {

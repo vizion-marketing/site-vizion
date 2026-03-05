@@ -43,11 +43,6 @@ const faqQuestions = [
     answer:
       "La différence est stratégique, pas esthétique. Vos supports internes reflètent votre vision du produit. Les nôtres sont construits à partir de ce que vos acheteurs ont besoin d'entendre pour décider. Nous analysons le parcours de décision, identifions les objections courantes, et créons des documents qui répondent à chaque question avant qu'elle ne soit posée. Le résultat : des supports qui sont réellement utilisés par vos commerciaux parce qu'ils accélèrent les ventes.",
   },
-  {
-    question: "Combien coûte un accompagnement marketing pour une PME industrielle ?",
-    answer:
-      "Nos missions ciblées (audit + repositionnement + création de supports) se déroulent sur 8 à 16 semaines, sur devis selon le périmètre. Les accompagnements dans la durée (direction marketing externalisée) démarrent à 4 500 euros par mois sur un engagement de 6 mois. Nous calibrons l'intensité de l'intervention à votre budget et à la taille de votre équipe commerciale.",
-  },
 ];
 
 const content: CityPageData["content"] = {
