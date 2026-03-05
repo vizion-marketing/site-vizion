@@ -1,9 +1,9 @@
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Contact — Agence Marketing Toulouse",
+  title: "Contact — Agence Marketing B2B",
   description:
-    "Contactez Vizion, agence marketing à Toulouse. Réponse garantie sous 24h. Échangeons sur votre projet de croissance B2B : positionnement, sales enablement, tunnel de vente.",
+    "Contactez Vizion, agence marketing B2B. Réponse garantie sous 24h ouvrées. Échangeons sur votre projet de croissance : positionnement, sales enablement, tunnel de vente.",
   path: "/contact",
 });
 
@@ -11,7 +11,7 @@ export const metadata = createMetadata({
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact — Vizion, Agence Marketing Toulouse",
+  name: "Contact — Vizion, Agence Marketing B2B",
   url: "https://by-vizion.com/contact",
   mainEntity: {
     "@type": "LocalBusiness",
@@ -26,6 +26,14 @@ const contactSchema = {
       addressRegion: "Occitanie",
       postalCode: "31670",
       addressCountry: "FR",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: "10",
+      reviewCount: "10",
     },
   },
 };

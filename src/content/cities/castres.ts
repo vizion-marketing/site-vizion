@@ -52,9 +52,9 @@ const faqQuestions = [
 
 const content: CityPageData["content"] = {
   seo: {
-    title: "Agence Marketing Castres - Positionnement et automatisation pour l'industrie",
+    title: "Vizion | Votre agence marketing stratégique à Castres",
     description:
-      "Agence marketing pour entreprises industrielles et pharmaceutiques à Castres. Positionnement d'offre technique, automatisation CRM, IA appliquée. Basée à Toulouse. +70 entreprises accompagnées.",
+      "Vizion accompagne les PME et ETI B2B à Castres : positionnement, stratégie marketing, sales enablement. +70 clients accompagnés. Ancrée dans le Sud-Ouest et à Paris. Réponse en 24h ouvrées.",
     keywords: [
       "agence marketing castres",
       "marketing industriel castres",

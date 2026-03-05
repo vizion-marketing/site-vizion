@@ -52,9 +52,9 @@ const faqQuestions = [
 
 const content: CityPageData["content"] = {
   seo: {
-    title: "Agence Marketing Albi - Équipez vos commerciaux pour vendre mieux",
+    title: "Vizion | Votre agence marketing stratégique à Albi",
     description:
-      "Agence marketing pour PME à Albi et dans le Tarn. Positionnement d'offre technique, supports de vente alignés, sales enablement. Basée à Toulouse, à 1h15 d'Albi. +70 entreprises accompagnées.",
+      "Vizion accompagne les PME et ETI B2B à Albi : positionnement, stratégie marketing, sales enablement. +70 clients accompagnés. Ancrée dans le Sud-Ouest et à Paris. Réponse en 24h ouvrées.",
     keywords: [
       "agence marketing albi",
       "marketing b2b albi",

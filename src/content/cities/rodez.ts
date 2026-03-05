@@ -52,9 +52,9 @@ const faqQuestions = [
 
 const content: CityPageData["content"] = {
   seo: {
-    title: "Agence Marketing Rodez - Accompagnez vos cycles de vente industriels",
+    title: "Vizion | Votre agence marketing stratégique à Rodez",
     description:
-      "Agence marketing pour PME industrielles à Rodez et en Aveyron. Audit stratégique, supports de vente B2B, sales enablement. Basée à Toulouse. +70 entreprises accompagnées depuis 2021.",
+      "Vizion accompagne les PME et ETI B2B à Rodez : positionnement, stratégie marketing, sales enablement. +70 clients accompagnés. Ancrée dans le Sud-Ouest et à Paris. Réponse en 24h ouvrées.",
     keywords: [
       "agence marketing rodez",
       "marketing industriel aveyron",

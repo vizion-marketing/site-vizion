@@ -52,9 +52,9 @@ const faqQuestions = [
 
 const content: CityPageData["content"] = {
   seo: {
-    title: "Agence Marketing et Communication à Mazamet - Vizion",
+    title: "Vizion | Votre agence marketing stratégique à Mazamet",
     description:
-      "Agence marketing et communication pour les entreprises de Mazamet et du Tarn. Positionnement, stratégie digitale, SEO, campagnes publicitaires. Basée à Toulouse. +70 entreprises accompagnées.",
+      "Vizion accompagne les PME et ETI B2B à Mazamet : positionnement, stratégie marketing, sales enablement. +70 clients accompagnés. Ancrée dans le Sud-Ouest et à Paris. Réponse en 24h ouvrées.",
     keywords: [
       "agence marketing mazamet",
       "agence communication mazamet",

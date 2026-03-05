@@ -13,7 +13,7 @@ export const MAP_EMBED_URL =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.5!2d1.5102!3d43.5416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7552ff%3A0x40ae6168453a970!2sLab%C3%A8ge!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr";
 
 export const VILLES_BADGES = [
-  { name: "Toulouse", label: "Siège", href: "/" },
+  { name: "Toulouse", label: "Siège", href: "/agence-marketing-toulouse" },
   { name: "Montpellier", label: "Active", href: "/agence-marketing-montpellier" },
   { name: "Albi", label: "Interventions", href: "/agence-marketing-albi" },
   { name: "Auch", label: "Interventions", href: "/agence-marketing-auch" },
@@ -64,6 +64,14 @@ export function buildOrganizationSchema(meta: CityMeta) {
       "https://www.linkedin.com/company/vizion-marketing-b2b/",
     ],
     priceRange: "€€€",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: "10",
+      reviewCount: "10",
+    },
   };
 }
 

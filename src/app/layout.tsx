@@ -21,20 +21,19 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://by-vizion.com"),
   title: {
-    default: "Agence Marketing Toulouse | Vizion — Stratégie B2B & Sales Enablement",
-    template: "%s | Vizion — Agence Marketing Toulouse",
+    default: "Vizion | Marketing stratégique pour PME et ETI B2B",
+    template: "%s | Vizion",
   },
   description:
-    "Vizion, agence marketing à Toulouse spécialisée en B2B. Positionnement, sales enablement, tunnel de vente aligné. +70 PME et ETI accompagnées depuis 2021.",
+    "Vizion transforme votre offre complexe en message clair qui déclenche la décision d'achat. Positionnement, sales enablement, tunnel aligné. +70 entreprises accompagnées. Sud-Ouest et Paris.",
   keywords: [
-    "agence marketing toulouse",
-    "agence marketing b2b toulouse",
-    "marketing produit toulouse",
-    "positionnement b2b toulouse",
-    "sales enablement toulouse",
-    "go-to-market toulouse",
-    "conseil marketing toulouse",
-    "accompagnement marketing b2b toulouse",
+    "vizion marketing",
+    "marketing stratégique b2b",
+    "positionnement offre complexe",
+    "sales enablement",
+    "tunnel de vente b2b",
+    "go-to-market",
+    "accompagnement marketing pme",
   ],
   authors: [{ name: "Vizion" }],
   openGraph: {
@@ -62,7 +61,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://by-vizion.com/#website",
-  name: "Vizion — Agence Marketing Toulouse",
+  name: "Vizion — Agence Marketing B2B",
   url: "https://by-vizion.com",
   publisher: {
     "@id": "https://by-vizion.com/#organization",

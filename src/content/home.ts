@@ -274,17 +274,16 @@ export const homeContent: HomeContent = {
   // SEO & MÉTADONNÉES
   // --------------------------------------------------------------------------
   seo: {
-    title: "Agence Marketing Toulouse - Devenez la référence",
-    description: "Agence marketing à Toulouse. Transformez votre offre complexe en message clair qui déclenche la décision d'achat. Positionnement, sales enablement, tunnel aligné. +70 entreprises accompagnées depuis 2021.",
+    title: "Vizion | Marketing stratégique pour PME et ETI B2B",
+    description: "Vizion transforme votre offre complexe en message clair qui déclenche la décision d'achat. Positionnement, sales enablement, tunnel aligné. +70 entreprises accompagnées. Sud-Ouest et Paris.",
     keywords: [
-      "agence marketing toulouse",
-      "marketing produit toulouse",
-      "aide à la vente toulouse",
-      "positionnement toulouse",
-      "agence marketing digital toulouse",
-      "conseil marketing toulouse",
-      "stratégie marketing toulouse",
-      "accompagnement marketing toulouse"
+      "vizion marketing",
+      "marketing stratégique b2b",
+      "positionnement offre complexe",
+      "sales enablement",
+      "tunnel de vente b2b",
+      "go-to-market",
+      "accompagnement marketing pme"
     ],
     ogImage: "/hero-binoculars.avif"
   },
@@ -864,8 +863,8 @@ export const organizationSchema = {
     "ratingValue": "5.0",
     "bestRating": "5",
     "worstRating": "1",
-    "ratingCount": "5",
-    "reviewCount": "5"
+    "ratingCount": "10",
+    "reviewCount": "10"
   },
   "review": [
     {

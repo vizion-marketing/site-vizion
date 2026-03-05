@@ -1,25 +1,31 @@
 import type { Metadata } from "next";
-import { allPosts } from "contentlayer/generated";
-import { homeContent, organizationSchema, faqSchema } from "@/content/home";
-import HomePageClient from "./HomePageClient";
+import { allPosts, allClients } from "contentlayer/generated";
+import {
+  b2bSEO,
+  organizationSchema,
+  faqSchema,
+  breadcrumbSchema,
+} from "@/content/b2b";
+import B2BPageClient from "@/app/B2BPageClient";
 
 // ============================================================================
 // SEO METADATA
 // ============================================================================
 
 export const metadata: Metadata = {
-  title: homeContent.seo.title,
-  description: homeContent.seo.description,
-  keywords: homeContent.seo.keywords,
+  title: b2bSEO.title,
+  description: b2bSEO.description,
+  keywords: b2bSEO.keywords,
   openGraph: {
-    title: homeContent.seo.title,
-    description: homeContent.seo.description,
+    title: b2bSEO.title,
+    description: b2bSEO.description,
+    url: "https://by-vizion.com",
     images: [
       {
-        url: homeContent.seo.ogImage,
+        url: b2bSEO.ogImage,
         width: 1200,
         height: 630,
-        alt: "Vizion — Agence marketing à Toulouse",
+        alt: "Vizion — Agence Marketing B2B",
       },
     ],
     type: "website",
@@ -28,12 +34,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: homeContent.seo.title,
-    description: homeContent.seo.description,
+    title: b2bSEO.title,
+    description: b2bSEO.description,
     images: [
       {
-        url: homeContent.seo.ogImage,
-        alt: "Vizion — Agence marketing à Toulouse",
+        url: b2bSEO.ogImage,
+        alt: "Vizion — Agence Marketing B2B",
       },
     ],
   },
@@ -73,9 +79,32 @@ export default function HomePage() {
       featuredImage: post.featuredImage,
     }));
 
+  // Build carousel data from Contentlayer clients
+  const carouselClients = allClients
+    .filter((c) => !c.draft && c.featured)
+    .sort((a, b) => (a.order || 0) - (b.order || 0))
+    .map((client, idx) => {
+      const testimonial = client.testimonial as { quote: string; author: string; role: string };
+      const stat = client.carouselStat as { value: string; label: string };
+      return {
+        id: idx + 1,
+        company: client.name,
+        sector: client.sector,
+        title: client.carouselTitle,
+        quote: testimonial.quote,
+        author: testimonial.author,
+        role: testimonial.role,
+        avatar: client.logo || "",
+        mainImage: client.mainImage,
+        secondaryImage: client.secondaryImage,
+        stats: stat,
+        href: client.url,
+      };
+    });
+
   return (
     <>
-      {/* JSON-LD schemas — rendered server-side, no client JS needed */}
+      {/* JSON-LD schemas — rendered server-side */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -84,7 +113,11 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <HomePageClient latestPosts={latestPosts} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <B2BPageClient latestPosts={latestPosts} carouselClients={carouselClients} />
     </>
   );
 }

@@ -44,6 +44,11 @@ const nextConfig: NextConfig = {
         destination: '/cas-clients/easyvirtual-tours/easyvirtual-tours-franchise',
         permanent: true,
       },
+      {
+        source: '/agence-marketing-b2b',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
   // Security headers

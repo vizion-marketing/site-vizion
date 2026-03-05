@@ -15,7 +15,7 @@ const footerLinks = {
 };
 
 const implantations = [
-  { name: 'Toulouse', href: '/', label: 'Siège' },
+  { name: 'Toulouse', href: '/agence-marketing-toulouse', label: 'Siège' },
   { name: 'Montpellier', href: '/agence-marketing-montpellier' },
   { name: 'Albi', href: '/agence-marketing-albi' },
   { name: 'Auch', href: '/agence-marketing-auch' },

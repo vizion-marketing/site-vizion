@@ -52,9 +52,9 @@ const faqQuestions = [
 
 const content: CityPageData["content"] = {
   seo: {
-    title: "Agence Marketing Auch - Rendez votre entreprise visible dans le Gers",
+    title: "Vizion | Votre agence marketing stratégique à Auch",
     description:
-      "Agence marketing pour entreprises du Gers. Audit stratégique, visibilité digitale, acquisition de prospects B2B. Basée à Toulouse, à 1h15 d'Auch. +70 entreprises accompagnées depuis 2021.",
+      "Vizion accompagne les PME et ETI B2B à Auch : positionnement, stratégie marketing, sales enablement. +70 clients accompagnés. Ancrée dans le Sud-Ouest et à Paris. Réponse en 24h ouvrées.",
     keywords: [
       "agence marketing auch",
       "marketing gers",

@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { allPosts, allCaseStudies } from "contentlayer/generated";
+import { allPosts, allCaseStudies, allClients } from "contentlayer/generated";
 import { CITY_SLUGS } from "@/content/cities";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://by-vizion.com";
@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: "", priority: 1, changeFrequency: "weekly" as const },
     { route: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
     { route: "/contact", priority: 0.8, changeFrequency: "monthly" as const },
-{ route: "/cas-clients", priority: 0.7, changeFrequency: "monthly" as const },
+    { route: "/cas-clients", priority: 0.7, changeFrequency: "monthly" as const },
     { route: "/mentions-legales", priority: 0.3, changeFrequency: "yearly" as const },
     { route: "/confidentialite", priority: 0.3, changeFrequency: "yearly" as const },
   ];
@@ -32,9 +32,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }));
 
+  // Client profile pages (pillar pages — higher priority)
+  const clientPages = allClients
+    .filter((c) => !c.draft && !c._raw.sourceFileName.startsWith("_"))
+    .map((c) => ({
+      url: `${baseUrl}${c.url}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+
   // Case studies
   const caseStudyPages = allCaseStudies
-    .filter((cs) => !cs._raw.sourceFileName.startsWith("_"))
+    .filter((cs) => !cs.draft && !cs._raw.sourceFileName.startsWith("_"))
     .map((cs) => ({
       url: `${baseUrl}${cs.url}`,
       lastModified: new Date(),
@@ -50,5 +60,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...blogPages, ...caseStudyPages, ...cityPages];
+  return [...staticPages, ...blogPages, ...clientPages, ...caseStudyPages, ...cityPages];
 }

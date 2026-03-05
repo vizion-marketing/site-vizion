@@ -1,6 +1,7 @@
 export type { CityMeta, CityPageData, CityContent } from "./types";
 
 export const CITY_SLUGS = [
+  "agence-marketing-toulouse",
   "agence-marketing-montpellier",
   "agence-marketing-albi",
   "agence-marketing-auch",
@@ -14,6 +15,7 @@ export type CitySlug = (typeof CITY_SLUGS)[number];
 
 export async function getCityData(routeSlug: string) {
   const cityMap: Record<string, () => Promise<{ default: import("./types").CityPageData }>> = {
+    "agence-marketing-toulouse": () => import("./toulouse"),
     "agence-marketing-montpellier": () => import("./montpellier"),
     "agence-marketing-albi": () => import("./albi"),
     "agence-marketing-auch": () => import("./auch"),

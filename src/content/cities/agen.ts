@@ -52,9 +52,9 @@ const faqQuestions = [
 
 const content: CityPageData["content"] = {
   seo: {
-    title: "Agence Marketing Agen - Structurez votre marketing industriel",
+    title: "Vizion | Votre agence marketing stratégique à Agen",
     description:
-      "Agence marketing pour PME industrielles et agroalimentaires à Agen. Audit stratégique, positionnement d'offre, supports de vente. Basée à Toulouse, à 1h30 d'Agen. +70 entreprises accompagnées.",
+      "Vizion accompagne les PME et ETI B2B à Agen : positionnement, stratégie marketing, sales enablement. +70 clients accompagnés. Ancrée dans le Sud-Ouest et à Paris. Réponse en 24h ouvrées.",
     keywords: [
       "agence marketing agen",
       "marketing industriel agen",

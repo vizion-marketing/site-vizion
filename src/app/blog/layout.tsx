@@ -3,7 +3,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Blog — Stratégies Marketing B2B & Conseils",
   description:
-    "Le blog de Vizion, agence marketing à Toulouse. Articles sur le marketing B2B, le positionnement produit, le sales enablement et la croissance commerciale des PME et ETI.",
+    "Le blog de Vizion, agence marketing B2B. Articles sur le positionnement produit, le sales enablement et la croissance commerciale des PME et ETI.",
   path: "/blog",
 });
 

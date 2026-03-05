@@ -57,9 +57,9 @@ const faqQuestions = [
 
 const content: CityPageData["content"] = {
   seo: {
-    title: "Agence Marketing Montpellier - Structurez votre croissance tech",
+    title: "Vizion | Votre agence marketing stratégique à Montpellier",
     description:
-      "Agence marketing pour startups et entreprises tech à Montpellier. Positionnement produit, acquisition B2B, automatisation IA. Basée en Occitanie, +70 entreprises accompagnées depuis 2021.",
+      "Vizion accompagne les PME et ETI B2B à Montpellier : positionnement, stratégie marketing, sales enablement. +70 clients accompagnés. Ancrée dans le Sud-Ouest et à Paris. Réponse en 24h ouvrées.",
     keywords: [
       "agence marketing montpellier",
       "marketing startup montpellier",

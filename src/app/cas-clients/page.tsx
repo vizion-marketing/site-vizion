@@ -1,26 +1,29 @@
-import { allCaseStudies } from "contentlayer/generated";
+import { allClients, allCaseStudies } from "contentlayer/generated";
 import { CasClientsContent } from "./CasClientsContent";
 import { createMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata = createMetadata({
   title: "Cas Clients — Résultats de notre agence marketing B2B",
-  description: "Études de cas de notre agence marketing à Toulouse : franchise, SaaS, industrie, services B2B. Résultats concrets et mesurables pour des PME et ETI accompagnées par Vizion.",
+  description: "Études de cas de notre agence marketing B2B : franchise, SaaS, industrie, services. Résultats concrets et mesurables pour des PME et ETI accompagnées par Vizion.",
   path: "/cas-clients",
 });
 
 export default function CasClientsPage() {
-  // Sort case studies by order, then by featured
-  const sortedCaseStudies = [...allCaseStudies].sort((a, b) => {
-    if (a.featured && !b.featured) return -1;
-    if (!a.featured && b.featured) return 1;
-    return (a.order || 0) - (b.order || 0);
-  });
+  const publishedClients = allClients
+    .filter((c) => !c.draft)
+    .sort((a, b) => {
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return (a.order || 0) - (b.order || 0);
+    });
 
-  // Get featured case study
-  const featuredCase = sortedCaseStudies.find(cs => cs.featured) || null;
+  const publishedCaseStudies = allCaseStudies.filter((cs) => !cs.draft);
 
-  // Schema.org structured data for the listing page
+  // Featured client
+  const featuredClient = publishedClients.find((c) => c.featured) || null;
+
+  // Schema.org structured data
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -29,14 +32,14 @@ export default function CasClientsPage() {
     url: `${SITE_URL}/cas-clients`,
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: sortedCaseStudies.map((caseStudy, index) => ({
+      itemListElement: publishedClients.map((client, index) => ({
         "@type": "ListItem",
         position: index + 1,
         item: {
-          "@type": "Article",
-          name: caseStudy.title,
-          description: caseStudy.description,
-          url: `${SITE_URL}${caseStudy.url}`,
+          "@type": "Organization",
+          name: client.name,
+          description: client.description,
+          url: `${SITE_URL}${client.url}`,
         },
       })),
     },
@@ -44,15 +47,14 @@ export default function CasClientsPage() {
 
   return (
     <>
-      {/* Schema.org JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
       <CasClientsContent
-        caseStudies={sortedCaseStudies}
-        featuredCase={featuredCase}
+        clients={publishedClients}
+        caseStudies={publishedCaseStudies}
+        featuredClient={featuredClient}
       />
     </>
   );
