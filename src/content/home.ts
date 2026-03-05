@@ -293,8 +293,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   hero: {
     badge: "AGENCE MARKETING - TOULOUSE",
-    h1: "Votre agence Marketing à Toulouse",
-    h1Highlight: "Toulouse",
+    h1: "L'agence Marketing spécialiste du B2B qui fait de votre produit une évidence",
+    h1Highlight: "une évidence",
     h1RotatingWords: ["offre", "produit", "innovation", "solution SaaS", "franchise", "service"],
     baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialisée dans les cycles de ventes longs.",
     badges: [],

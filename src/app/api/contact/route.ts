@@ -117,7 +117,7 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: "Vizion <contact@by-vizion.com>",
-      to: ["lucas@by-vizion.com"],
+      to: ["lucas@by-vizion.com", "hugo@by-vizion.com"],
       replyTo: email,
       subject: `[Contact Site] ${subjectLabel} - ${firstName} ${lastName}`,
       html: `
