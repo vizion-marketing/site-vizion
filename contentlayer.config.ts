@@ -314,6 +314,58 @@ export const CaseTemplate = defineDocumentType(() => ({
   },
 }));
 
+// Schema pour les clients (entité parente des cas clients)
+export const Client = defineDocumentType(() => ({
+  name: "Client",
+  filePathPattern: "clients/*.mdx",
+  contentType: "mdx",
+  fields: {
+    // Identité
+    name: { type: "string", required: true },
+    sector: {
+      type: "enum",
+      options: ["Franchise", "SaaS B2B", "Services B2B", "Industrie B2B", "Business Local"],
+      required: true,
+    },
+    sectorIcon: { type: "string", required: true },
+    logo: { type: "string" },
+    description: { type: "string", required: true },
+    size: { type: "string" },
+    location: { type: "string" },
+    website: { type: "string" },
+
+    // Carousel homepage
+    mainImage: { type: "string", required: true },
+    secondaryImage: { type: "string", required: true },
+    carouselTitle: { type: "string", required: true },
+    carouselStat: { type: "json", required: true },
+    // Format: { value: "x10", label: "revenu récurrent" }
+
+    // Témoignage principal
+    testimonial: { type: "json", required: true },
+    // Format: { quote: "...", author: "...", role: "...", photo?: "..." }
+
+    // Méta
+    featured: { type: "boolean", default: false },
+    order: { type: "number", default: 0 },
+    draft: { type: "boolean", default: false },
+
+    // SEO
+    metaTitle: { type: "string" },
+    metaDescription: { type: "string" },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.replace("clients/", ""),
+    },
+    url: {
+      type: "string",
+      resolve: (doc) => `/cas-clients/${doc._raw.flattenedPath.replace("clients/", "")}`,
+    },
+  },
+}));
+
 // Schema pour les études de cas clients premium (long-form)
 export const CaseStudy = defineDocumentType(() => ({
   name: "CaseStudy",
@@ -323,31 +375,32 @@ export const CaseStudy = defineDocumentType(() => ({
     // Informations de base
     title: { type: "string", required: true },
     description: { type: "string", required: true },
-    sector: { 
-      type: "enum", 
+    sector: {
+      type: "enum",
       options: ["Franchise", "SaaS B2B", "Services B2B", "Industrie B2B", "Business Local"],
-      required: true 
+      required: true
     },
     sectorIcon: { type: "string", required: true }, // Nom de l'icône Lucide
     company: { type: "string", required: true },
+    clientSlug: { type: "string", required: true }, // Lien vers le Client parent
     companyLogo: { type: "string" },
     heroImage: { type: "string" },
-    
+
     // Executive summary pour décideurs pressés
     executiveSummary: { type: "string", required: true },
-    
+
     // Timeline du projet
     projectDuration: { type: "string", required: true },
     projectYear: { type: "string", required: true },
-    
+
     // Contexte et défis
     context: { type: "string", required: true },
-    challenges: { 
-      type: "list", 
+    challenges: {
+      type: "list",
       of: { type: "string" },
-      required: true 
+      required: true
     },
-    
+
     // Solution et approche
     approachPhases: {
       type: "list",
@@ -355,7 +408,7 @@ export const CaseStudy = defineDocumentType(() => ({
       required: true,
       // Format: { phase: "Phase 1", title: "Audit", description: "...", deliverables: ["..."] }
     },
-    
+
     // Métriques et résultats
     metrics: {
       type: "list",
@@ -363,28 +416,29 @@ export const CaseStudy = defineDocumentType(() => ({
       required: true,
       // Format: { value: "+200%", label: "Croissance", trend: "up" | "down" | "neutral" }
     },
-    
+
     // Résultats détaillés (pour le contenu long-form)
     resultsDetails: { type: "string" },
-    
+
     // Témoignage client
     testimonial: {
       type: "json",
       // Format: { quote: "...", author: "...", role: "...", company: "...", photo: "..." }
     },
-    
+
     // Livrables clés
     deliverables: {
       type: "list",
       of: { type: "json" },
       // Format: { title: "...", description: "...", icon: "..." }
     },
-    
+
     // Métadonnées
     publishedAt: { type: "date", required: true },
     featured: { type: "boolean", default: false },
     order: { type: "number", default: 0 },
-    
+    draft: { type: "boolean", default: false },
+
     // SEO
     metaTitle: { type: "string" },
     metaDescription: { type: "string" },
@@ -396,7 +450,7 @@ export const CaseStudy = defineDocumentType(() => ({
     },
     url: {
       type: "string",
-      resolve: (doc) => `/cas-clients/${doc._raw.flattenedPath.replace("cas-clients/", "")}`,
+      resolve: (doc) => `/cas-clients/${doc.clientSlug}/${doc._raw.flattenedPath.replace("cas-clients/", "")}`,
     },
     readingTime: {
       type: "string",
@@ -593,7 +647,7 @@ export const Service = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Page, Post, CaseTemplate, CaseStudy, Service],
+  documentTypes: [Page, Post, CaseTemplate, CaseStudy, Client, Service],
   disableImportAliasWarning: true,
   mdx: {
     remarkPlugins: [remarkGfm],

@@ -2,40 +2,44 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
   Filter,
   X,
   Star,
-  TrendingUp,
   Building2,
 } from "lucide-react";
-import { CaseStudy } from "contentlayer/generated";
-import { ImagePlaceholder } from "@/components/ui";
+import type { Client, CaseStudy } from "contentlayer/generated";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { fadeInUp, staggerContainer, cardVariant } from "@/lib/animations";
 import { sectors, sectorIconMap } from "@/lib/sectorIcons";
 
 interface CasClientsContentProps {
+  clients: Client[];
   caseStudies: CaseStudy[];
-  featuredCase: CaseStudy | null;
+  featuredClient: Client | null;
 }
 
-export function CasClientsContent({ caseStudies, featuredCase }: CasClientsContentProps) {
+export function CasClientsContent({ clients, caseStudies, featuredClient }: CasClientsContentProps) {
   const [selectedSector, setSelectedSector] = useState("all");
-  
-  // Filter case studies
-  const filteredCaseStudies = selectedSector === "all" 
-    ? caseStudies 
-    : caseStudies.filter(cs => cs.sector === selectedSector);
+
+  // Filter clients by sector
+  const filteredClients = selectedSector === "all"
+    ? clients
+    : clients.filter((c) => c.sector === selectedSector);
+
+  // Count case studies per client
+  function caseCountForClient(clientSlug: string): number {
+    return caseStudies.filter((cs) => cs.clientSlug === clientSlug).length;
+  }
 
   return (
     <main className="min-h-screen bg-white font-[var(--font-body)]">
-      
+
       {/* HERO SECTION */}
       <section className="relative pt-[120px] pb-[80px] md:pt-[140px] md:pb-[100px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "var(--bg-dark)" }}>
-        {/* Base + radial gradients jaune Vizion animés */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div
             className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
@@ -58,26 +62,12 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                 "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
             }}
           />
-          <div
-            className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
-            }}
-          />
-          <div
-            className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
-            }}
-          />
         </div>
-        
+
         <div className="max-w-[82.5rem] mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             {/* Left content */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
@@ -85,27 +75,27 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
             >
               <div className="flex items-center gap-2 mb-6">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-accent opacity-75"></span>
-                  <span className="relative inline-flex rounded-none h-2 w-2 bg-accent"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full bg-accent opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 bg-accent"></span>
                 </span>
                 <span className="text-[10px] font-light tracking-[0.12em] text-white/60">
                   +70 entreprises accompagnées
                 </span>
               </div>
-              
+
               <h1 className="font-[var(--font-body)] font-[900] text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-tight text-white mb-6">
                 NOS CAS <span className="text-white/40">CLIENTS</span>
               </h1>
-              
+
               <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl mb-8">
                 Découvrez comment nous avons accompagné des PME et ETI B2B dans leur transformation marketing et commerciale. Des résultats concrets, mesurables et durables.
               </p>
-              
+
               <div className="flex flex-wrap gap-3">
                 {["Franchise", "SaaS B2B", "Services B2B", "Industrie B2B", "Business Local"].map((sector) => (
-                  <span 
+                  <span
                     key={sector}
-                    className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-none text-[11px] font-medium text-white/80"
+                    className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-[11px] font-medium text-white/80"
                   >
                     {sector}
                   </span>
@@ -114,7 +104,7 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
             </motion.div>
 
             {/* Right - Stats */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
@@ -123,16 +113,16 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { value: "+70", label: "Clients accompagnés" },
-                  { value: "5", label: "Secteurs d'expertise" },
+                  { value: String(clients.length), label: "Études détaillées" },
                   { value: "92%", label: "Objectifs atteints" },
                   { value: "x3", label: "ROI moyen" },
                 ].map((stat, idx) => (
-                  <motion.div 
+                  <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + idx * 0.1 }}
-                    className="bg-white/10 backdrop-blur-md rounded-none p-5 border border-white/20 text-center"
+                    className="bg-white/10 backdrop-blur-md p-5 border border-white/20 text-center"
                   >
                     <span className="text-3xl md:text-4xl font-black text-white block mb-1">
                       {stat.value}
@@ -148,74 +138,94 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
         </div>
       </section>
 
-      {/* FEATURED CASE (if exists) */}
-      {featuredCase && (
-        <section className="py-12 px-6 md:px-12 bg-grey border-b border-neutral-200">
+      {/* FEATURED CLIENT */}
+      {featuredClient && (
+        <section className="py-12 px-6 md:px-12 bg-card border-b border-black/[0.06]">
           <div className="max-w-[82.5rem] mx-auto">
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
             >
-              <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold block mb-4">
-                Cas client mis en avant
+              <span className="text-[10px] tracking-[0.12em] text-muted font-light block mb-4 uppercase">
+                Client mis en avant
               </span>
-              
-              <Link 
-                href={featuredCase.url}
-                className="block bg-white rounded-none overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group"
+
+              <Link
+                href={featuredClient.url}
+                className="block bg-white overflow-hidden border border-black/[0.06] hover:shadow-xl transition-all duration-500 group"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2">
-                  {/* Image placeholder */}
+                  {/* Image */}
                   <div className="relative min-h-[300px] lg:min-h-[400px] overflow-hidden">
-                    <ImagePlaceholder
-                      width={700}
-                      height={400}
-                      label={`Visuel cas client ${featuredCase.company}`}
-                      rounded="none"
-                      variant="dark"
-                      className="w-full h-full absolute inset-0"
+                    <Image
+                      src={featuredClient.mainImage}
+                      alt={featuredClient.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
                     <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-between z-10">
                       <div>
-                        <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-none border border-white/20 text-[10px] font-bold tracking-widest text-white">
+                        <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-[10px] font-bold tracking-widest text-white">
                           <Star size={12} className="fill-[var(--color-accent)] text-accent" />
-                          {featuredCase.sector}
+                          {featuredClient.sector}
                         </span>
                       </div>
-                      <div>
-                        <span className="font-[var(--font-body)] font-black text-4xl lg:text-5xl text-white">
-                          {featuredCase.company}
+                      <div className="flex items-center gap-4">
+                        {featuredClient.logo && (
+                          <div className="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden shrink-0">
+                            <Image
+                              src={featuredClient.logo}
+                              alt=""
+                              width={36}
+                              height={36}
+                              className="w-9 h-9 object-contain"
+                            />
+                          </div>
+                        )}
+                        <span className="font-[var(--font-body)] font-black text-3xl lg:text-4xl text-white">
+                          {featuredClient.name}
                         </span>
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Content */}
                   <div className="p-8 lg:p-12 flex flex-col justify-between">
                     <div>
-                      <h2 className="font-[var(--font-body)] font-black text-2xl lg:text-3xl tracking-tight text-black mb-4 group-hover:text-neutral-600 transition-colors">
-                        {featuredCase.title}
+                      <h2 className="font-[var(--font-body)] font-black text-2xl lg:text-3xl tracking-tight text-primary mb-4 group-hover:text-secondary transition-colors">
+                        {featuredClient.carouselTitle}
                       </h2>
-                      <p className="text-neutral-600 text-base leading-relaxed mb-6">
-                        {featuredCase.executiveSummary}
+                      <p className="text-secondary text-base leading-relaxed mb-6">
+                        {featuredClient.description}
                       </p>
                     </div>
-                    
+
                     <div>
-                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                        {featuredCase.metrics.slice(0, 4).map((metric: { value: string; label: string }, idx: number) => (
-                          <div key={idx} className="text-center">
-                            <span className="text-2xl font-black text-black block">{metric.value}</span>
-                            <span className="text-[10px] font-medium text-neutral-500">{metric.label}</span>
-                          </div>
-                        ))}
+                      <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="text-center">
+                          <span className="text-2xl font-black text-primary block">
+                            {(featuredClient.carouselStat as { value: string; label: string }).value}
+                          </span>
+                          <span className="text-[10px] font-medium text-muted">
+                            {(featuredClient.carouselStat as { value: string; label: string }).label}
+                          </span>
+                        </div>
+                        <div className="text-center">
+                          <span className="text-2xl font-black text-primary block">
+                            {caseCountForClient(featuredClient.slug)}
+                          </span>
+                          <span className="text-[10px] font-medium text-muted">
+                            cas détaillés
+                          </span>
+                        </div>
                       </div>
-                      
-                      <span className="inline-flex items-center gap-2 text-sm font-bold tracking-wider text-black group-hover:gap-3 transition-all">
-                        Découvrir ce cas <ArrowUpRightIcon size={16} />
+
+                      <span className="inline-flex items-center gap-2 text-sm font-bold tracking-wider text-primary group-hover:gap-3 transition-all">
+                        Découvrir {featuredClient.name} <ArrowUpRightIcon size={16} />
                       </span>
                     </div>
                   </div>
@@ -229,9 +239,9 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
       {/* FILTER & GRID SECTION */}
       <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
         <div className="max-w-[82.5rem] mx-auto">
-          
+
           {/* Section Header */}
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             initial="initial"
             whileInView="whileInView"
@@ -240,17 +250,17 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
           >
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
               <div>
-                <span className="font-mono text-[10px] tracking-[0.4em] text-neutral-400 font-bold block mb-2">
-                  Toutes nos études de cas
+                <span className="text-[10px] tracking-[0.12em] text-muted font-light block mb-2 uppercase">
+                  Tous nos clients
                 </span>
-                <h2 className="font-[var(--font-body)] font-black text-3xl md:text-4xl tracking-tight text-black">
-                  Des résultats <span className="text-[#B7B7B7]">mesurables</span>
+                <h2 className="font-[var(--font-body)] font-black text-3xl md:text-4xl tracking-tight text-primary">
+                  Des résultats <span className="text-[var(--color-grey-mid)]">mesurables</span>
                 </h2>
               </div>
-              
-              <div className="flex items-center gap-2 text-sm text-neutral-500">
+
+              <div className="flex items-center gap-2 text-sm text-muted">
                 <Filter size={16} />
-                <span>{filteredCaseStudies.length} cas client{filteredCaseStudies.length > 1 ? 's' : ''}</span>
+                <span>{filteredClients.length} client{filteredClients.length > 1 ? "s" : ""}</span>
               </div>
             </div>
 
@@ -264,10 +274,10 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                     key={sector.id}
                     onClick={() => setSelectedSector(sector.id)}
                     className={`
-                      inline-flex items-center gap-2 px-4 py-2.5 rounded-none text-sm font-medium transition-all duration-300
-                      ${isActive 
-                        ? 'bg-black text-white shadow-lg' 
-                        : 'bg-grey text-neutral-600 hover:bg-neutral-200'
+                      inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all duration-300
+                      ${isActive
+                        ? "bg-[var(--text-primary)] text-white shadow-lg"
+                        : "bg-card text-secondary hover:bg-grey"
                       }
                     `}
                   >
@@ -282,17 +292,17 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
             </div>
           </motion.div>
 
-          {/* Case Studies Grid */}
-          <motion.div 
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
+          {/* Clients Grid */}
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">
-              {filteredCaseStudies.map((caseStudy, idx) => {
-                const SectorIcon = sectorIconMap[caseStudy.sectorIcon] || Building2;
+              {filteredClients.map((client, idx) => {
+                const SectorIcon = sectorIconMap[client.sectorIcon] || Building2;
+                const casCount = caseCountForClient(client.slug);
+                const stat = client.carouselStat as { value: string; label: string };
+
                 return (
                   <motion.div
-                    key={caseStudy.slug}
+                    key={client.slug}
                     layout
                     variants={cardVariant}
                     initial="initial"
@@ -301,72 +311,88 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                     transition={{ duration: 0.3, delay: idx * 0.05 }}
                   >
                     <Link
-                      href={caseStudy.url}
-                      className="block bg-white border border-neutral-100 rounded-none overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
+                      href={client.url}
+                      className="block bg-white border border-black/[0.06] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
                     >
-                      {/* Card Image */}
-                      <div className="relative">
-                        <ImagePlaceholder
-                          width={400}
-                          height={200}
-                          label={`Visuel ${caseStudy.company}`}
-                          rounded="none"
-                          className="w-full"
+                      {/* Client image */}
+                      <div className="relative h-[200px] overflow-hidden">
+                        <Image
+                          src={client.mainImage}
+                          alt={client.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        {client.logo && (
+                          <div className="absolute bottom-3 left-3 w-10 h-10 bg-white/90 backdrop-blur-sm flex items-center justify-center overflow-hidden">
+                            <Image
+                              src={client.logo}
+                              alt=""
+                              width={32}
+                              height={32}
+                              className="w-8 h-8 object-contain"
+                            />
+                          </div>
+                        )}
                       </div>
 
-                      {/* Card Header */}
+                      {/* Card Content */}
                       <div className="p-6 pb-0">
                         <div className="flex items-center justify-between mb-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-grey rounded-lg flex items-center justify-center">
-                              <SectorIcon size={16} className="text-black" />
+                            <div className="w-8 h-8 bg-card flex items-center justify-center">
+                              <SectorIcon size={16} className="text-primary" />
                             </div>
-                            <span className="text-[10px] font-bold tracking-widest text-neutral-400">
-                              {caseStudy.sector}
+                            <span className="text-[10px] font-bold tracking-widest text-muted">
+                              {client.sector}
                             </span>
                           </div>
-                          {caseStudy.featured && (
+                          {client.featured && (
                             <Star size={14} className="fill-[var(--color-accent)] text-accent" />
                           )}
                         </div>
-                        
-                        <span className="text-xs font-bold text-neutral-400 tracking-wider block mb-2">
-                          {caseStudy.company}
-                        </span>
-                        
-                        <h3 className="font-[var(--font-body)] font-black text-lg tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2 min-h-[56px]">
-                          {caseStudy.title}
+
+                        <h3 className="font-[var(--font-body)] font-black text-lg tracking-tight text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-1">
+                          {client.name}
                         </h3>
-                        
-                        <p className="text-neutral-500 text-sm leading-relaxed mb-4 line-clamp-2 min-h-[44px]">
-                          {caseStudy.description}
+
+                        <p className="text-secondary text-sm leading-relaxed mb-4 line-clamp-2 min-h-[44px]">
+                          {client.description}
                         </p>
                       </div>
-                      
-                      {/* Metrics */}
-                      <div className="px-6 py-4 bg-[#F9F9F9] border-t border-neutral-100">
-                        <div className="grid grid-cols-3 gap-3">
-                          {caseStudy.metrics.slice(0, 3).map((metric: { value: string; label: string }, mIdx: number) => (
-                            <div key={mIdx} className="text-center">
-                              <span className="text-lg font-black text-black block leading-tight">
-                                {metric.value}
-                              </span>
-                              <span className="text-[9px] font-medium text-neutral-400 leading-tight block">
-                                {metric.label}
-                              </span>
-                            </div>
-                          ))}
+
+                      {/* Stats */}
+                      <div className="px-6 py-4 bg-card border-t border-black/[0.06]">
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="text-center">
+                            <span className="text-lg font-black text-primary block leading-tight">
+                              {stat.value}
+                            </span>
+                            <span className="text-[9px] font-medium text-muted leading-tight block">
+                              {stat.label}
+                            </span>
+                          </div>
+                          <div className="text-center">
+                            <span className="text-lg font-black text-primary block leading-tight">
+                              {casCount}
+                            </span>
+                            <span className="text-[9px] font-medium text-muted leading-tight block">
+                              {casCount > 1 ? "cas clients" : "cas client"}
+                            </span>
+                          </div>
                         </div>
                       </div>
-                      
+
                       {/* Footer */}
-                      <div className="px-6 py-4 flex items-center justify-between border-t border-neutral-100">
-                        <span className="text-[10px] font-medium text-neutral-400">
-                          {caseStudy.projectDuration} • {caseStudy.projectYear}
-                        </span>
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold tracking-wider text-black group-hover:gap-2 transition-all">
-                          Lire <ChevronRight size={14} />
+                      <div className="px-6 py-4 flex items-center justify-between border-t border-black/[0.06]">
+                        {client.location && (
+                          <span className="text-[10px] font-medium text-muted">
+                            {client.location}
+                          </span>
+                        )}
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold tracking-wider text-primary group-hover:gap-2 transition-all">
+                          Voir <ChevronRight size={14} />
                         </span>
                       </div>
                     </Link>
@@ -377,26 +403,26 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
           </motion.div>
 
           {/* Empty state */}
-          {filteredCaseStudies.length === 0 && (
-            <motion.div 
+          {filteredClients.length === 0 && (
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="text-center py-16"
             >
-              <div className="w-16 h-16 bg-grey rounded-none flex items-center justify-center mx-auto mb-4">
-                <Filter size={24} className="text-neutral-400" />
+              <div className="w-16 h-16 bg-card flex items-center justify-center mx-auto mb-4">
+                <Filter size={24} className="text-muted" />
               </div>
-              <h3 className="font-[var(--font-body)] font-black text-xl text-black mb-2">
-                Aucun cas client
+              <h3 className="font-[var(--font-body)] font-black text-xl text-primary mb-2">
+                Aucun client
               </h3>
-              <p className="text-neutral-500 mb-4">
-                Aucun cas client ne correspond à ce filtre.
+              <p className="text-secondary mb-4">
+                Aucun client ne correspond à ce filtre.
               </p>
               <button
                 onClick={() => setSelectedSector("all")}
-                className="text-sm font-bold text-black underline"
+                className="text-sm font-bold text-primary underline"
               >
-                Voir tous les cas clients
+                Voir tous les clients
               </button>
             </motion.div>
           )}
@@ -404,16 +430,15 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-16 md:py-24 px-6 md:px-12 bg-grey">
+      <section className="py-16 md:py-24 px-6 md:px-12 bg-card">
         <div className="max-w-[82.5rem] mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="rounded-none p-8 md:p-16 text-center relative overflow-hidden grain-overlay dark-section"
+            className="p-8 md:p-16 text-center relative overflow-hidden grain-overlay dark-section"
             style={{ background: "var(--bg-dark)" }}
           >
-            {/* Base + radial gradients jaune Vizion animés */}
             <div className="absolute inset-0 pointer-events-none z-0">
               <div
                 className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
@@ -429,39 +454,18 @@ export function CasClientsContent({ caseStudies, featuredCase }: CasClientsConte
                     "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
                 }}
               />
-              <div
-                className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
-                }}
-              />
-              <div
-                className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
-                }}
-              />
-              <div
-                className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
-                }}
-              />
             </div>
-            
+
             <div className="relative z-10">
               <h2 className="font-[var(--font-body)] font-[900] text-[32px] md:text-[48px] leading-[1.1] tracking-tight mb-6 text-white">
                 Écrivons ensemble <br />
                 <span className="text-white/50">votre success story</span>
               </h2>
-              
+
               <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-[var(--font-body)]">
                 Chaque entreprise mérite une stratégie sur-mesure. Discutons de vos enjeux et définissons ensemble le chemin vers vos objectifs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact" className="btn btn-primary group">
                   Démarrer un projet <ArrowUpRightIcon size={16} className="group-hover:translate-x-0.5 transition-transform" />

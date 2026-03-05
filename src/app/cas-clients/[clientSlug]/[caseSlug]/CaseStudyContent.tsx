@@ -304,9 +304,11 @@ const mdxComponents = {
 interface CaseStudyContentProps {
   caseStudy: CaseStudy;
   relatedCases: CaseStudy[];
+  clientSlug: string;
+  clientName?: string;
 }
 
-export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentProps) {
+export function CaseStudyContent({ caseStudy, relatedCases, clientSlug, clientName }: CaseStudyContentProps) {
   const MDXContent = useMDXComponent(caseStudy.body.code);
   
   // Get sector icon
@@ -363,12 +365,25 @@ export function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentPr
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
-            <Link 
-              href="/cas-clients" 
-              className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors font-medium"
-            >
-              <ArrowLeft size={16} /> Retour aux cas clients
-            </Link>
+            <div className="flex items-center gap-2 text-sm text-white/60">
+              <Link
+                href="/cas-clients"
+                className="hover:text-white transition-colors font-medium"
+              >
+                Cas clients
+              </Link>
+              {clientName && (
+                <>
+                  <ChevronRight size={14} />
+                  <Link
+                    href={`/cas-clients/${clientSlug}`}
+                    className="hover:text-white transition-colors font-medium"
+                  >
+                    {clientName}
+                  </Link>
+                </>
+              )}
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">

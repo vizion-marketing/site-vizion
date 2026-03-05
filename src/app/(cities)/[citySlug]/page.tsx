@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { allPosts } from "contentlayer/generated";
+import { allPosts, allClients } from "contentlayer/generated";
 import { getCityData, CITY_SLUGS } from "@/content/cities";
 import CityPageClient from "@/app/CityPageClient";
 
@@ -74,6 +74,29 @@ export default async function CityPage(
   const cityData = await getCityData(citySlug);
   if (!cityData) notFound();
 
+  // Build carousel data from Contentlayer clients
+  const carouselClients = allClients
+    .filter((c) => !c.draft && c.featured)
+    .sort((a, b) => (a.order || 0) - (b.order || 0))
+    .map((client, idx) => {
+      const testimonial = client.testimonial as { quote: string; author: string; role: string };
+      const stat = client.carouselStat as { value: string; label: string };
+      return {
+        id: idx + 1,
+        company: client.name,
+        sector: client.sector,
+        title: client.carouselTitle,
+        quote: testimonial.quote,
+        author: testimonial.author,
+        role: testimonial.role,
+        avatar: client.logo || "",
+        mainImage: client.mainImage,
+        secondaryImage: client.secondaryImage,
+        stats: stat,
+        href: client.url,
+      };
+    });
+
   const latestPosts = allPosts
     .filter((post) => !post.draft)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -102,7 +125,7 @@ export default async function CityPage(
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(cityData.breadcrumbSchema) }}
       />
-      <CityPageClient content={cityData.content} latestPosts={latestPosts} />
+      <CityPageClient content={cityData.content} latestPosts={latestPosts} carouselClients={carouselClients} />
     </>
   );
 }

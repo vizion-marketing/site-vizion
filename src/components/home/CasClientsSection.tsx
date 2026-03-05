@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote, Play, Pause } from "lucide-react";
-
+import Link from "next/link";
 import Image from "next/image";
 
 export interface CasClientItem {
@@ -18,49 +18,8 @@ export interface CasClientItem {
   mainImage: string;
   secondaryImage: string;
   stats: { value: string; label: string };
+  href?: string;
 }
-
-const DEFAULT_CAS_CLIENTS: CasClientItem[] = [
-  {
-    id: 1,
-    company: "Eldo Wallet",
-    sector: "FinTech",
-    title: "De 1 000 à 10 000 € de revenus récurrents mensuels grâce à la bonne stratégie de mise en marché.",
-    quote: "Vizion a structuré notre mise en marché de A à Z. Le positionnement, le tunnel de vente, les outils commerciaux, tout était aligné. Les résultats ont suivi naturellement.",
-    author: "Paul Scandella",
-    role: "Fondateur",
-    avatar: "/images/clients/eldo.avif",
-    mainImage: "/images/cas-clients/eldo-mainimage.avif",
-    secondaryImage: "/images/cas-clients/eldo-secondaryimage.avif",
-    stats: { value: "x10", label: "revenu récurrent" },
-  },
-  {
-    id: 2,
-    company: "easyVirtual.tours",
-    sector: "Franchise",
-    title: "D'acteur local à +25 agences en France grâce à notre accompagnement global.",
-    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, aide à la vente, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
-    author: "Clément Carrère",
-    role: "Fondateur",
-    avatar: "/images/clients/easyvirtual.avif",
-    mainImage: "/images/cas-clients/easyvirtual-mainimage.avif",
-    secondaryImage: "/images/cas-clients/easyvirtual-secondaryimage.avif",
-    stats: { value: "+25", label: "agences en France" },
-  },
-  {
-    id: 3,
-    company: "Ensenat Coaching",
-    sector: "Coaching & Formation",
-    title: "De zéro structure marketing à un système d'acquisition reproductible pour Ensenat Coaching.",
-    quote: "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !",
-    author: "Thomas Ensenat",
-    role: "Fondateur",
-    avatar: "/images/clients/ensenat.avif",
-    mainImage: "/images/cas-clients/ensenat-mainimage.avif",
-    secondaryImage: "/images/cas-clients/ensenat-secondaryimage.avif",
-    stats: { value: "100%", label: "marketing structuré" },
-  },
-];
 
 interface CasClientsSectionProps {
   cases?: CasClientItem[];
@@ -71,7 +30,7 @@ interface CasClientsSectionProps {
 const AUTO_SLIDE_INTERVAL = 6000;
 
 export function CasClientsSection({ cases, surtitreText, titleText }: CasClientsSectionProps = {}) {
-  const CAS_CLIENTS = cases ?? DEFAULT_CAS_CLIENTS;
+  const CAS_CLIENTS = cases ?? [];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -127,6 +86,8 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     exit: { opacity: 0, y: -20 },
   };
+
+  if (CAS_CLIENTS.length === 0) return null;
 
   return (
     <section id="cas-clients" className="relative py-12 sm:py-16 md:py-20 lg:py-28 bg-card overflow-hidden">
@@ -304,9 +265,15 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
                     {currentCase.sector}
                   </span>
                 </div>
-                <p className="text-primary/70 text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed">
-                  Découvrez comment {currentCase.company} a transformé sa stratégie marketing et commerciale avec Vizion.
-                </p>
+                {currentCase.href ? (
+                  <Link href={currentCase.href} className="inline-flex items-center gap-2 text-primary text-[14px] sm:text-[15px] font-semibold font-[var(--font-body)] hover:gap-3 transition-all">
+                    Découvrir {currentCase.company} <ArrowRight size={16} />
+                  </Link>
+                ) : (
+                  <p className="text-primary/70 text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed">
+                    Découvrez comment {currentCase.company} a transformé sa stratégie marketing et commerciale avec Vizion.
+                  </p>
+                )}
               </div>
             </motion.div>
 

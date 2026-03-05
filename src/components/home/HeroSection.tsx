@@ -71,6 +71,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const wordRef = useRef<HTMLSpanElement>(null);
+  const rafRef = useRef<number>(0);
 
   // Rotate testimonials with auto-play that resets on manual navigation
   const testimonialIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -120,13 +121,19 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
     return () => clearInterval(interval);
   }, [rotatingWords]);
 
-  // Mouse parallax effect
+  // Mouse parallax effect — throttled via rAF to avoid forced reflows
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMousePosition({ x, y });
+    if (rafRef.current) return; // skip if a frame is already pending
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = 0;
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = (clientX - rect.left) / rect.width - 0.5;
+      const y = (clientY - rect.top) / rect.height - 0.5;
+      setMousePosition({ x, y });
+    });
   };
 
   useGSAP(
@@ -410,6 +417,8 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                     alt={testimonial.author}
                     width={48}
                     height={48}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    sizes="48px"
                     className="w-12 h-12 rounded-full object-cover border-2 border-accent/40 shrink-0"
                   />
                   <div className="flex-1 min-w-0">
@@ -455,7 +464,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
               alt="Agence marketing Toulouse Vizion - positionnement stratégique, sales enablement et tunnel de vente aligné pour PME et ETI"
               fill
               priority
-              sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
+              sizes="(max-width: 1023px) 0px, 50vw"
               className="object-contain object-center"
             />
           </div>
@@ -524,6 +533,8 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                     alt={testimonial.author}
                     width={48}
                     height={48}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    sizes="48px"
                     className="w-12 h-12 rounded-full object-cover border-2 border-accent/40 shrink-0 mt-0.5"
                   />
 

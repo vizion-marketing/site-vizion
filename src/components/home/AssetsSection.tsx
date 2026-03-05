@@ -542,7 +542,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
                           ? "opacity-100 scale-100"
                           : "opacity-60 scale-105"
                     }`}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 75vw"
                     priority={activeTab === "siteweb"}
                     loading={activeTab === "siteweb" ? "eager" : "lazy"}
                   />

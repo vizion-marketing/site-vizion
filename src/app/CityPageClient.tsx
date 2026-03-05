@@ -31,15 +31,31 @@ interface Post {
   featuredImage?: string;
 }
 
+interface CarouselClient {
+  id: number;
+  company: string;
+  sector: string;
+  title: string;
+  quote: string;
+  author: string;
+  role: string;
+  avatar: string;
+  mainImage: string;
+  secondaryImage: string;
+  stats: { value: string; label: string };
+  href?: string;
+}
+
 interface CityPageClientProps {
   content: CityContent;
   latestPosts: Post[];
+  carouselClients?: CarouselClient[];
 }
 
 // =============================================================================
 // MAIN COMPONENT
 // =============================================================================
-export default function CityPageClient({ content, latestPosts }: CityPageClientProps) {
+export default function CityPageClient({ content, latestPosts, carouselClients }: CityPageClientProps) {
   return (
     <main>
       {/* Hero */}
@@ -79,7 +95,7 @@ export default function CityPageClient({ content, latestPosts }: CityPageClientP
       <AssetsSection />
 
       {/* Cas Clients */}
-      <CasClientsSection />
+      <CasClientsSection cases={carouselClients} />
 
       {/* À propos + Localisation (map, badges, stats) */}
       <AboutLocalSection content={content.localSEO} />
