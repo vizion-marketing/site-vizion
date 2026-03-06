@@ -1,5 +1,3 @@
-import { allPosts } from "contentlayer/generated";
-
 /**
  * Interface pour un article suggéré
  */
@@ -7,10 +5,23 @@ export interface SuggestedArticle {
   slug: string;
   title: string;
   category: string;
-  readingTime: string;
+  readingTime?: string;
   featuredImage?: string;
   tags: string[];
   score: number; // Nombre de tags en commun
+}
+
+/**
+ * Interface minimale pour un post passé en paramètre
+ */
+interface PostLike {
+  slug: string;
+  title: string;
+  category: string;
+  readingTime?: string;
+  featuredImage?: string;
+  tags?: string[];
+  draft?: boolean;
 }
 
 /**
@@ -19,26 +30,28 @@ export interface SuggestedArticle {
  * @param currentSlug - Le slug de l'article actuel
  * @param currentTags - Les tags de l'article actuel
  * @param limit - Nombre maximum de suggestions (défaut: 3)
+ * @param posts - Liste des posts à comparer
  * @returns Array d'articles suggérés triés par pertinence
  *
  * @example
- * const suggestions = getSuggestedArticles("product-marketing-guide", ["product marketing", "b2b", "positionnement"]);
- * // Retourne les 3 articles les plus pertinents
+ * const suggestions = getSuggestedArticles("product-marketing-guide", ["product marketing", "b2b"], 3, allPosts);
  */
 export function getSuggestedArticles(
   currentSlug: string,
   currentTags: string[],
-  limit: number = 3
+  limit: number = 3,
+  posts: PostLike[],
 ): SuggestedArticle[] {
   // Filtrer les articles publiés, excluant l'article courant
-  const eligiblePosts = allPosts.filter(
+  const eligiblePosts = posts.filter(
     (post) => !post.draft && post.slug !== currentSlug
   );
 
   // Calculer le score de similarité pour chaque article
   const scoredPosts = eligiblePosts.map((post) => {
+    const postTags = post.tags || [];
     // Compter les tags en commun
-    const commonTags = post.tags.filter((tag) =>
+    const commonTags = postTags.filter((tag) =>
       currentTags.some((currentTag) =>
         currentTag.toLowerCase() === tag.toLowerCase()
       )
@@ -50,7 +63,7 @@ export function getSuggestedArticles(
       category: post.category,
       readingTime: post.readingTime,
       featuredImage: post.featuredImage,
-      tags: post.tags,
+      tags: postTags,
       score: commonTags.length,
     };
   });
@@ -75,9 +88,6 @@ export function getSuggestedArticles(
  * @param headings - Les headings extraits de l'article
  * @param insertAfterH2Index - Index du H2 après lequel insérer (0-based)
  * @returns true si on doit afficher la suggestion
- *
- * @example
- * shouldShowSuggestion(headings, 1) // True si au moins 2 H2
  */
 export function shouldShowSuggestion(
   headings: Array<{ level: number; text: string; slug: string }>,
@@ -98,12 +108,6 @@ export function getSuggestionCount(
   headings: Array<{ level: number; text: string; slug: string }>
 ): number {
   const h2Count = headings.filter((h) => h.level === 2).length;
-
-  // Logique de décision :
-  // - 0-2 H2 : aucune suggestion (article trop court)
-  // - 3-4 H2 : 1 suggestion (après le 2ème H2)
-  // - 5-6 H2 : 2 suggestions (après les 2ème et 4ème H2)
-  // - 7+ H2 : 3 suggestions (après les 2ème, 4ème et 6ème H2)
 
   if (h2Count < 3) return 0;
   if (h2Count < 5) return 1;

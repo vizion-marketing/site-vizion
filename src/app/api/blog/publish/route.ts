@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
+import { createClient } from "next-sanity";
 import { slugify } from "@/lib/slug";
-import {
-  buildMdxDocument,
-  type BlogFrontmatterInput,
-  type BlogResource,
-} from "@/lib/blog-frontmatter";
+
+// Sanity write client (needs token with write access)
+const writeClient = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "odavbqx4",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2026-03-06",
+  useCdn: false,
+  token: process.env.SANITY_API_TOKEN,
+});
 
 const MAX_BODY_SIZE_BYTES = 1024 * 1024; // 1 Mo
 
@@ -38,171 +43,209 @@ interface PublishBody {
   category?: string;
   author?: string;
   tags?: string[];
-  featuredImage?: string;
+  featuredImageUrl?: string;
   draft?: boolean;
   body?: string;
-  resources?: Array< { title?: string; url?: string; type?: string; description?: string } >;
+  resources?: Array<{
+    title?: string;
+    url?: string;
+    type?: string;
+    description?: string;
+  }>;
   ctaTitle?: string;
   ctaDescription?: string;
   ctaLink?: string;
   slug?: string;
 }
 
-function validateResource(r: unknown): r is BlogResource {
-  if (!r || typeof r !== "object") return false;
-  const o = r as Record<string, unknown>;
-  return (
-    typeof o.title === "string" &&
-    o.title.length > 0 &&
-    typeof o.url === "string" &&
-    o.url.length > 0 &&
-    (o.type === "internal" || o.type === "external")
-  );
+interface ValidatedData {
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  author: string;
+  tags: string[];
+  featuredImageUrl?: string;
+  draft: boolean;
+  body: string;
+  resources: Array<{
+    title: string;
+    url: string;
+    type: "internal" | "external";
+    description?: string;
+  }>;
+  ctaTitle?: string;
+  ctaDescription?: string;
+  ctaLink?: string;
+  slug: string;
 }
 
-function validateBody(body: PublishBody): { ok: true; data: BlogFrontmatterInput & { body: string; slug: string } } | { ok: false; error: string; status: number } {
+function validateBody(
+  body: PublishBody,
+):
+  | { ok: true; data: ValidatedData }
+  | { ok: false; error: string; status: number } {
   if (!body.title || typeof body.title !== "string" || !body.title.trim()) {
-    return { ok: false, error: "Le champ 'title' est requis et doit être une chaîne non vide.", status: 400 };
+    return {
+      ok: false,
+      error: "Le champ 'title' est requis et doit être une chaîne non vide.",
+      status: 400,
+    };
   }
-  if (!body.description || typeof body.description !== "string" || !body.description.trim()) {
-    return { ok: false, error: "Le champ 'description' est requis et doit être une chaîne non vide.", status: 400 };
+  if (
+    !body.description ||
+    typeof body.description !== "string" ||
+    !body.description.trim()
+  ) {
+    return {
+      ok: false,
+      error:
+        "Le champ 'description' est requis et doit être une chaîne non vide.",
+      status: 400,
+    };
   }
   if (!body.date || typeof body.date !== "string" || !body.date.trim()) {
-    return { ok: false, error: "Le champ 'date' est requis (format ISO 8601).", status: 400 };
+    return {
+      ok: false,
+      error: "Le champ 'date' est requis (format ISO 8601).",
+      status: 400,
+    };
   }
   if (!isValidDate(body.date)) {
-    return { ok: false, error: "Le champ 'date' doit être une date valide (ISO 8601).", status: 400 };
+    return {
+      ok: false,
+      error: "Le champ 'date' doit être une date valide (ISO 8601).",
+      status: 400,
+    };
   }
-  if (!body.category || typeof body.category !== "string" || !body.category.trim()) {
-    return { ok: false, error: "Le champ 'category' est requis et doit être une chaîne non vide.", status: 400 };
+  if (
+    !body.category ||
+    typeof body.category !== "string" ||
+    !body.category.trim()
+  ) {
+    return {
+      ok: false,
+      error: "Le champ 'category' est requis et doit être une chaîne non vide.",
+      status: 400,
+    };
   }
 
-  if (body.featuredImage !== undefined && body.featuredImage !== null && body.featuredImage !== "") {
-    if (typeof body.featuredImage !== "string" || !isValidUrl(body.featuredImage)) {
-      return { ok: false, error: "Le champ 'featuredImage' doit être une URL valide (http ou https).", status: 400 };
+  if (
+    body.featuredImageUrl !== undefined &&
+    body.featuredImageUrl !== null &&
+    body.featuredImageUrl !== ""
+  ) {
+    if (
+      typeof body.featuredImageUrl !== "string" ||
+      !isValidUrl(body.featuredImageUrl)
+    ) {
+      return {
+        ok: false,
+        error:
+          "Le champ 'featuredImageUrl' doit être une URL valide (http ou https).",
+        status: 400,
+      };
     }
   }
 
   if (body.resources !== undefined) {
     if (!Array.isArray(body.resources)) {
-      return { ok: false, error: "Le champ 'resources' doit être un tableau.", status: 400 };
+      return {
+        ok: false,
+        error: "Le champ 'resources' doit être un tableau.",
+        status: 400,
+      };
     }
     for (let i = 0; i < body.resources.length; i++) {
       const r = body.resources[i];
-      if (!validateResource(r)) {
-        return { ok: false, error: `L'élément resources[${i}] doit avoir title, url et type ('internal' ou 'external').`, status: 400 };
+      if (
+        !r ||
+        typeof r !== "object" ||
+        !r.title ||
+        !r.url ||
+        (r.type !== "internal" && r.type !== "external")
+      ) {
+        return {
+          ok: false,
+          error: `L'élément resources[${i}] doit avoir title, url et type ('internal' ou 'external').`,
+          status: 400,
+        };
       }
     }
   }
 
-  const slug = body.slug?.trim()
-    ? slugify(body.slug)
-    : slugify(body.title);
+  const slug = body.slug?.trim() ? slugify(body.slug) : slugify(body.title);
   if (!slug) {
-    return { ok: false, error: "Impossible de générer un slug à partir du titre. Fournissez un 'slug' explicite.", status: 400 };
+    return {
+      ok: false,
+      error:
+        "Impossible de générer un slug à partir du titre. Fournissez un 'slug' explicite.",
+      status: 400,
+    };
   }
 
   const tags = Array.isArray(body.tags)
-    ? body.tags.filter((t): t is string => typeof t === "string" && t.trim().length > 0).map((t) => t.trim())
+    ? body.tags
+        .filter(
+          (t): t is string => typeof t === "string" && t.trim().length > 0,
+        )
+        .map((t) => t.trim())
     : [];
 
-  const resources: BlogResource[] = Array.isArray(body.resources)
+  const resources = Array.isArray(body.resources)
     ? body.resources.map((r) => ({
-        title: (r as BlogResource).title,
-        url: (r as BlogResource).url,
-        type: (r as BlogResource).type,
-        description: (r as BlogResource).description,
+        title: String(r?.title || ""),
+        url: String(r?.url || ""),
+        type: (r?.type === "internal" ? "internal" : "external") as
+          | "internal"
+          | "external",
+        description: r?.description ? String(r.description) : undefined,
       }))
     : [];
 
-  const frontmatter: BlogFrontmatterInput = {
-    title: body.title.trim(),
-    description: body.description.trim(),
-    date: body.date.trim(),
-    category: body.category.trim(),
-    author: body.author?.trim() || "Vizion",
-    tags: tags.length > 0 ? tags : undefined,
-    featuredImage: body.featuredImage?.trim() || undefined,
-    draft: body.draft === true,
-    resources: resources.length > 0 ? resources : undefined,
-    ctaTitle: body.ctaTitle?.trim() || undefined,
-    ctaDescription: body.ctaDescription?.trim() || undefined,
-    ctaLink: body.ctaLink?.trim() || undefined,
-  };
-
-  const bodyContent = typeof body.body === "string" ? body.body : "";
-
   return {
     ok: true,
-    data: { ...frontmatter, body: bodyContent, slug },
+    data: {
+      title: body.title.trim(),
+      description: body.description.trim(),
+      date: body.date.trim(),
+      category: body.category.trim(),
+      author: body.author?.trim() || "Vizion",
+      tags,
+      featuredImageUrl: body.featuredImageUrl?.trim() || undefined,
+      draft: body.draft === true,
+      body: typeof body.body === "string" ? body.body : "",
+      resources,
+      ctaTitle: body.ctaTitle?.trim() || undefined,
+      ctaDescription: body.ctaDescription?.trim() || undefined,
+      ctaLink: body.ctaLink?.trim() || undefined,
+      slug,
+    },
   };
 }
 
-async function getGitHubRepo(): Promise<{ owner: string; repo: string } | null> {
-  const repo = process.env.GITHUB_REPO;
-  if (repo && repo.includes("/")) {
-    const [owner, name] = repo.split("/", 2);
-    if (owner && name) return { owner: owner.trim(), repo: name.trim() };
-  }
-  const owner = process.env.GITHUB_REPO_OWNER;
-  const name = process.env.GITHUB_REPO_NAME;
-  if (owner && name) return { owner: owner.trim(), repo: name.trim() };
-  return null;
-}
+/**
+ * Convert plain text body to Portable Text blocks.
+ * Splits on double newlines for paragraphs.
+ */
+function textToPortableText(text: string) {
+  if (!text.trim()) return [];
 
-async function githubFileExists(
-  token: string,
-  owner: string,
-  repo: string,
-  path: string,
-  branch: string
-): Promise<boolean> {
-  const res = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`,
-    {
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-        Authorization: `Bearer ${token}`,
+  const paragraphs = text.split(/\n\n+/).filter((p) => p.trim());
+  return paragraphs.map((p, i) => ({
+    _type: "block" as const,
+    _key: `block-${i}`,
+    style: "normal" as const,
+    children: [
+      {
+        _type: "span" as const,
+        _key: `span-${i}`,
+        text: p.trim(),
+        marks: [] as string[],
       },
-    }
-  );
-  if (res.status === 404) return false;
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`GitHub GET failed: ${res.status} ${text}`);
-  }
-  return true;
-}
-
-async function githubCreateFile(
-  token: string,
-  owner: string,
-  repo: string,
-  path: string,
-  content: string,
-  branch: string,
-  message: string
-): Promise<void> {
-  const res = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
-    {
-      method: "PUT",
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message,
-        content: Buffer.from(content, "utf-8").toString("base64"),
-        branch,
-      }),
-    }
-  );
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`GitHub PUT failed: ${res.status} ${text}`);
-  }
+    ],
+    markDefs: [] as never[],
+  }));
 }
 
 export async function POST(request: Request) {
@@ -211,8 +254,21 @@ export async function POST(request: Request) {
     const expectedKey = process.env.BLOG_PUBLISH_API_KEY;
     if (!expectedKey || !apiKey || apiKey !== expectedKey) {
       return NextResponse.json(
-        { error: "Non autorisé. Fournissez un token valide (Authorization: Bearer <token> ou x-api-key)." },
-        { status: 401 }
+        {
+          error:
+            "Non autorisé. Fournissez un token valide (Authorization: Bearer <token> ou x-api-key).",
+        },
+        { status: 401 },
+      );
+    }
+
+    if (!process.env.SANITY_API_TOKEN) {
+      return NextResponse.json(
+        {
+          error:
+            "Configuration serveur incomplète (SANITY_API_TOKEN manquant).",
+        },
+        { status: 503 },
       );
     }
 
@@ -221,8 +277,10 @@ export async function POST(request: Request) {
       const len = parseInt(contentLength, 10);
       if (!Number.isNaN(len) && len > MAX_BODY_SIZE_BYTES) {
         return NextResponse.json(
-          { error: `Corps de la requête trop volumineux (max ${MAX_BODY_SIZE_BYTES / 1024 / 1024} Mo).` },
-          { status: 400 }
+          {
+            error: `Corps de la requête trop volumineux (max ${MAX_BODY_SIZE_BYTES / 1024 / 1024} Mo).`,
+          },
+          { status: 400 },
         );
       }
     }
@@ -230,8 +288,10 @@ export async function POST(request: Request) {
     const raw = await request.text();
     if (raw.length > MAX_BODY_SIZE_BYTES) {
       return NextResponse.json(
-        { error: `Corps de la requête trop volumineux (max ${MAX_BODY_SIZE_BYTES / 1024 / 1024} Mo).` },
-        { status: 400 }
+        {
+          error: `Corps de la requête trop volumineux (max ${MAX_BODY_SIZE_BYTES / 1024 / 1024} Mo).`,
+        },
+        { status: 400 },
       );
     }
 
@@ -241,7 +301,7 @@ export async function POST(request: Request) {
     } catch {
       return NextResponse.json(
         { error: "Le corps de la requête doit être un JSON valide." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -249,102 +309,77 @@ export async function POST(request: Request) {
     if (!validated.ok) {
       return NextResponse.json(
         { error: validated.error },
-        { status: validated.status }
+        { status: validated.status },
       );
     }
 
     const { data } = validated;
-    const token = process.env.GITHUB_TOKEN;
-    if (!token) {
-      console.error("GITHUB_TOKEN non configuré");
-      return NextResponse.json(
-        { error: "Configuration serveur incomplète (GitHub)." },
-        { status: 503 }
-      );
-    }
 
-    const repoInfo = await getGitHubRepo();
-    if (!repoInfo) {
-      console.error("GITHUB_REPO (ou GITHUB_REPO_OWNER + GITHUB_REPO_NAME) non configuré");
-      return NextResponse.json(
-        { error: "Configuration serveur incomplète (répo GitHub)." },
-        { status: 503 }
-      );
-    }
-
-    const branch = process.env.GITHUB_BRANCH || "main";
-    const filePath = `content/blog/${data.slug}.mdx`;
-
-    const exists = await githubFileExists(
-      token,
-      repoInfo.owner,
-      repoInfo.repo,
-      filePath,
-      branch
+    // Check if a post with this slug already exists
+    const existing = await writeClient.fetch(
+      `count(*[_type == "post" && slug.current == $slug])`,
+      { slug: data.slug },
     );
-    if (exists) {
+    if (existing > 0) {
       return NextResponse.json(
-        { error: `Un article avec le slug '${data.slug}' existe déjà. Choisissez un autre slug ou titre.` },
-        { status: 409 }
+        {
+          error: `Un article avec le slug '${data.slug}' existe déjà. Choisissez un autre slug ou titre.`,
+        },
+        { status: 409 },
       );
     }
 
-    const frontmatter: BlogFrontmatterInput = {
+    // Create Sanity document
+    const doc = {
+      _type: "post",
       title: data.title,
+      slug: { _type: "slug", current: data.slug },
       description: data.description,
       date: data.date,
-      category: data.category,
       author: data.author,
-      tags: data.tags,
-      featuredImage: data.featuredImage,
+      category: data.category,
+      tags: data.tags.length > 0 ? data.tags : undefined,
+      featuredImageUrl: data.featuredImageUrl,
       draft: data.draft,
-      resources: data.resources,
+      body: textToPortableText(data.body),
+      resources:
+        data.resources.length > 0
+          ? data.resources.map((r, i) => ({
+              _type: "resource",
+              _key: `res-${i}`,
+              title: r.title,
+              url: r.url,
+              type: r.type,
+              description: r.description,
+            }))
+          : undefined,
       ctaTitle: data.ctaTitle,
       ctaDescription: data.ctaDescription,
       ctaLink: data.ctaLink,
     };
-    const mdxContent = buildMdxDocument(frontmatter, data.body);
 
-    await githubCreateFile(
-      token,
-      repoInfo.owner,
-      repoInfo.repo,
-      filePath,
-      mdxContent,
-      branch,
-      `Blog: ajout de l'article "${data.title}" (${data.slug})`
-    );
-
-    let deployTriggered = false;
-    const deployHookUrl = process.env.VERCEL_DEPLOY_HOOK_URL;
-    if (deployHookUrl) {
-      try {
-        const hookRes = await fetch(deployHookUrl, { method: "POST" });
-        deployTriggered = hookRes.ok || hookRes.status === 202;
-        if (!deployTriggered) {
-          console.warn("Deploy hook returned", hookRes.status, await hookRes.text());
-        }
-      } catch (err) {
-        console.error("Deploy hook failed:", err);
-      }
-    }
+    const result = await writeClient.create(doc);
 
     return NextResponse.json(
       {
         success: true,
         slug: data.slug,
-        path: filePath,
-        deployTriggered,
+        documentId: result._id,
+        url: `/blog/${data.slug}`,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err) {
     console.error("Blog publish API error:", err);
     const message = err instanceof Error ? err.message : "Erreur serveur";
-    const isGitHub = message.includes("GitHub");
+    const isSanity = message.includes("Sanity") || message.includes("sanity");
     return NextResponse.json(
-      { error: isGitHub ? "Erreur lors de l’écriture sur GitHub. Réessayez plus tard." : "Une erreur est survenue." },
-      { status: isGitHub ? 502 : 500 }
+      {
+        error: isSanity
+          ? "Erreur lors de l'écriture dans Sanity. Réessayez plus tard."
+          : "Une erreur est survenue.",
+      },
+      { status: isSanity ? 502 : 500 },
     );
   }
 }

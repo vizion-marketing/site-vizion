@@ -1,4 +1,5 @@
-import { allClients, allCaseStudies } from "contentlayer/generated";
+import { getAllClients } from "@/lib/sanity/clients";
+import { getAllCaseStudies } from "@/lib/sanity/caseStudies";
 import { CasClientsContent } from "./CasClientsContent";
 import { createMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/constants";
@@ -9,16 +10,19 @@ export const metadata = createMetadata({
   path: "/cas-clients",
 });
 
-export default function CasClientsPage() {
-  const publishedClients = allClients
-    .filter((c) => !c.draft)
-    .sort((a, b) => {
-      if (a.featured && !b.featured) return -1;
-      if (!a.featured && b.featured) return 1;
-      return (a.order || 0) - (b.order || 0);
-    });
+export default async function CasClientsPage() {
+  const [allClients, allCaseStudies] = await Promise.all([
+    getAllClients(),
+    getAllCaseStudies(),
+  ]);
 
-  const publishedCaseStudies = allCaseStudies.filter((cs) => !cs.draft);
+  const publishedClients = allClients.sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    return (a.order || 0) - (b.order || 0);
+  });
+
+  const publishedCaseStudies = allCaseStudies;
 
   // Featured client
   const featuredClient = publishedClients.find((c) => c.featured) || null;

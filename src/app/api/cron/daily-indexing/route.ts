@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { allPosts, allCaseStudies } from "contentlayer/generated";
+import { SITEMAP_QUERY } from "../../../../../sanity/lib/queries";
+import { sanityFetch } from "@/lib/sanity/fetch";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://by-vizion.com";
+
+interface SitemapData {
+  posts: { url: string }[];
+  clients: { url: string }[];
+  caseStudies: { url: string }[];
+  services: { url: string }[];
+}
 
 /**
  * Vercel Cron endpoint - runs daily to request indexing for all site URLs
@@ -31,7 +39,14 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Collect all URLs from sitemap
+    // Fetch all URLs from Sanity
+    const data = await sanityFetch<SitemapData>(
+      SITEMAP_QUERY,
+      {},
+      { tags: ["posts", "clients", "caseStudies", "services"] },
+    );
+
+    // Collect all URLs
     const urls: string[] = [];
 
     // Static pages
@@ -44,19 +59,19 @@ export async function GET(request: NextRequest) {
 
     urls.push(...staticRoutes.map((route) => `${baseUrl}${route}`));
 
-    // Blog posts
-    const blogUrls = allPosts
-      .filter((post) => !post.draft && !post._raw.sourceFileName.startsWith("_"))
-      .map((post) => `${baseUrl}${post.url}`);
-
-    urls.push(...blogUrls);
-
-    // Case studies
-    const caseStudyUrls = allCaseStudies
-      .filter((cs) => !cs._raw.sourceFileName.startsWith("_"))
-      .map((cs) => `${baseUrl}${cs.url}`);
-
-    urls.push(...caseStudyUrls);
+    // Dynamic pages from Sanity
+    if (data.posts) {
+      urls.push(...data.posts.map((p) => `${baseUrl}${p.url}`));
+    }
+    if (data.clients) {
+      urls.push(...data.clients.map((c) => `${baseUrl}${c.url}`));
+    }
+    if (data.caseStudies) {
+      urls.push(...data.caseStudies.map((cs) => `${baseUrl}${cs.url}`));
+    }
+    if (data.services) {
+      urls.push(...data.services.map((s) => `${baseUrl}${s.url}`));
+    }
 
     console.log(`Requesting indexing for ${urls.length} URLs`);
 

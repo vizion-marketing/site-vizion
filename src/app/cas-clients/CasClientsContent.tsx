@@ -11,7 +11,8 @@ import {
   Star,
   Building2,
 } from "lucide-react";
-import type { Client, CaseStudy } from "contentlayer/generated";
+import type { Client, CaseStudy } from "../../../sanity/lib/types";
+import { resolveImageUrl } from "../../../sanity/lib/image";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { fadeInUp, staggerContainer, cardVariant } from "@/lib/animations";
 import { sectors, sectorIconMap } from "@/lib/sectorIcons";
@@ -153,19 +154,21 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
               </span>
 
               <Link
-                href={featuredClient.url}
+                href={featuredClient.url || `/cas-clients/${featuredClient.slug}`}
                 className="block bg-white overflow-hidden border border-black/[0.06] hover:shadow-xl transition-all duration-500 group"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   {/* Image */}
                   <div className="relative min-h-[300px] lg:min-h-[400px] overflow-hidden">
+                    {resolveImageUrl(featuredClient.mainImage, 1200) && (
                     <Image
-                      src={featuredClient.mainImage}
+                      src={resolveImageUrl(featuredClient.mainImage, 1200)}
                       alt={featuredClient.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
                     <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-between z-10">
                       <div>
@@ -178,7 +181,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
                         {featuredClient.logo && (
                           <div className="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden shrink-0">
                             <Image
-                              src={featuredClient.logo}
+                              src={resolveImageUrl(featuredClient.logo)}
                               alt=""
                               width={36}
                               height={36}
@@ -311,23 +314,25 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
                     transition={{ duration: 0.3, delay: idx * 0.05 }}
                   >
                     <Link
-                      href={client.url}
+                      href={client.url || `/cas-clients/${client.slug}`}
                       className="block bg-white border border-black/[0.06] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
                     >
                       {/* Client image */}
                       <div className="relative h-[200px] overflow-hidden">
+                        {resolveImageUrl(client.mainImage, 800) && (
                         <Image
-                          src={client.mainImage}
+                          src={resolveImageUrl(client.mainImage, 800)}
                           alt={client.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                         {client.logo && (
                           <div className="absolute bottom-3 left-3 w-10 h-10 bg-white/90 backdrop-blur-sm flex items-center justify-center overflow-hidden">
                             <Image
-                              src={client.logo}
+                              src={resolveImageUrl(client.logo)}
                               alt=""
                               width={32}
                               height={32}

@@ -1,22 +1,23 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { allClients, allCaseStudies } from "contentlayer/generated";
+import { getClientBySlug, getAllClientSlugs } from "@/lib/sanity/clients";
+import { getCaseStudiesForClient } from "@/lib/sanity/caseStudies";
 import { ClientProfileContent } from "./ClientProfileContent";
 import { SITE_URL } from "@/lib/constants";
+import { resolveImageUrl } from "../../../../sanity/lib/image";
 
 type Props = {
   params: Promise<{ clientSlug: string }>;
 };
 
 export async function generateStaticParams() {
-  return allClients
-    .filter((c) => !c.draft)
-    .map((client) => ({ clientSlug: client.slug }));
+  const slugs = await getAllClientSlugs();
+  return slugs.map((clientSlug) => ({ clientSlug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { clientSlug } = await params;
-  const client = allClients.find((c) => c.slug === clientSlug && !c.draft);
+  const client = await getClientBySlug(clientSlug);
 
   if (!client) {
     return { title: "Client non trouvé" };
@@ -25,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = client.metaTitle || `${client.name} — Cas client Vizion`;
   const description = client.metaDescription || client.description;
   const url = `${SITE_URL}${client.url}`;
+  const imageUrl = resolveImageUrl(client.mainImage, 1200);
 
   return {
     title,
@@ -35,15 +37,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: "Vizion",
       type: "website",
-      images: client.mainImage
-        ? [{ url: client.mainImage, width: 1200, height: 630, alt: client.name }]
-        : [],
+      images: imageUrl ? [{ url: imageUrl, width: 1200, height: 630, alt: client.name }] : [],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: client.mainImage ? [client.mainImage] : [],
+      images: imageUrl ? [imageUrl] : [],
     },
     alternates: { canonical: url },
   };
@@ -51,24 +51,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ClientProfilePage({ params }: Props) {
   const { clientSlug } = await params;
-  const client = allClients.find((c) => c.slug === clientSlug && !c.draft);
+  const client = await getClientBySlug(clientSlug);
 
   if (!client) {
     notFound();
   }
 
   // Case studies for this client
-  const clientCaseStudies = allCaseStudies
-    .filter((cs) => cs.clientSlug === clientSlug && !cs.draft)
-    .sort((a, b) => (a.order || 0) - (b.order || 0));
+  const clientCaseStudies = await getCaseStudiesForClient(clientSlug);
 
   // JSON-LD
+  const logoUrl = resolveImageUrl(client.logo);
   const organizationLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: client.name,
     description: client.description,
-    ...(client.logo && { logo: `${SITE_URL}${client.logo}` }),
+    ...(logoUrl && { logo: logoUrl.startsWith("/") ? `${SITE_URL}${logoUrl}` : logoUrl }),
     ...(client.website && { url: client.website }),
     ...(client.location && {
       address: { "@type": "PostalAddress", addressLocality: client.location },

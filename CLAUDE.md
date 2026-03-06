@@ -58,7 +58,7 @@ Agence de marketing stratégique B2B basée à Toulouse, pionnière de l'IA appl
 | Runtime | React | 19.2.3 |
 | Langage | TypeScript | 5.x |
 | CSS | Tailwind CSS v4 + CSS custom properties | 4.x |
-| CMS | Contentlayer2 (MDX) | 0.5.8 |
+| CMS | Sanity (Studio embarqué à /studio) | 5.x |
 | Animations | Framer Motion + GSAP + Lenis | 12.x / 3.14 / 1.3 |
 | Icons | Lucide React | 0.562.0 |
 | Email | Resend | 6.8.0 |
@@ -67,8 +67,8 @@ Agence de marketing stratégique B2B basée à Toulouse, pionnière de l'IA appl
 | Carousel | Embla Carousel | 8.6.0 |
 | Utilitaires | clsx, tailwind-merge, github-slugger | — |
 
-**Build :** `contentlayer2 build && next build`
-**Dev :** `next dev --webpack`
+**Build :** `next build`
+**Dev :** `next dev`
 **Déploiement :** Vercel
 
 ---
@@ -77,30 +77,37 @@ Agence de marketing stratégique B2B basée à Toulouse, pionnière de l'IA appl
 
 ```
 site-vizion/
-├── content/                    # Contenu MDX (source de vérité)
+├── sanity/                     # Sanity CMS
+│   ├── sanity.config.ts        # Config Studio
+│   ├── sanity.cli.ts           # Config CLI
+│   ├── env.ts                  # Variables d'environnement
+│   ├── lib/                    # Client, queries GROQ, types, image helpers
+│   ├── schemas/                # Schemas documents + objects
+│   └── structure/              # Desk structure personnalisée (FR)
+├── content/                    # Contenu legacy MDX (en cours de migration)
 │   ├── blog/                   # Articles de blog
-│   ├── services/               # Pages services (6)
-│   ├── cas-clients/            # Études de cas (10+)
-│   ├── pages/                  # Pages statiques
-│   └── local/                  # Pages SEO local
+│   ├── services/               # Pages services
+│   ├── cas-clients/            # Études de cas
+│   └── pages/                  # Pages statiques
 ├── src/
 │   ├── app/                    # App Router Next.js
 │   │   ├── layout.tsx          # Layout racine (fonts, providers, shell)
 │   │   ├── page.tsx            # Page d'accueil
 │   │   ├── globals.css         # Design system complet (1185 lignes)
 │   │   ├── sitemap.ts          # Sitemap XML dynamique
+│   │   ├── studio/             # Sanity Studio embarqué (/studio)
 │   │   ├── blog/               # /blog et /blog/[slug]
 │   │   ├── services/           # /services et /services/[slug]
-│   │   ├── cas-clients/        # /cas-clients et /cas-clients/[slug]
+│   │   ├── cas-clients/        # /cas-clients, /cas-clients/[clientSlug], /cas-clients/[clientSlug]/[caseSlug]
 │   │   ├── contact/            # /contact
-│   │   └── api/                # Routes API (contact, indexing, cron)
+│   │   └── api/                # Routes API (contact, indexing, cron, draft, revalidate)
 │   ├── components/
 │   │   ├── home/               # Sections homepage (barrel export via index.ts)
 │   │   ├── blog/               # Composants blog (barrel export via index.ts)
 │   │   ├── services/           # Composants services
 │   │   ├── sections/           # Sections réutilisables (barrel export via index.ts)
 │   │   ├── ui/                 # Primitives UI
-│   │   ├── mdx/                # Composants MDX (index.tsx)
+│   │   ├── mdx/                # Composants MDX legacy (index.tsx)
 │   │   ├── icons/              # Icônes custom
 │   │   ├── Header.tsx          # Navigation
 │   │   ├── Footer.tsx          # Pied de page
@@ -112,8 +119,9 @@ site-vizion/
 │       ├── constants.ts        # SITE_URL, SITE_NAME, SOCIAL_LINKS
 │       ├── mdx.ts              # Extraction TOC (extractHeadings)
 │       ├── metadata.ts         # Helper createMetadata()
-│       ├── contentlayer.ts     # Bridge Contentlayer
+│       ├── portable-text-utils.ts # TOC + reading time (Portable Text)
 │       ├── slug.ts             # Utilitaires slug
+│       └── sanity/             # Couche d'accès Sanity (posts, clients, caseStudies, services)
 │       ├── internal-linking.ts # Suggestions d'articles liés
 │       ├── blog-frontmatter.ts # Parsing frontmatter blog
 │       └── animations.ts       # Constantes d'animation
@@ -371,22 +379,25 @@ export function MonComposant({ title, items }: MonComposantProps) {
 ### 6.3 Data Fetching
 
 ```typescript
+// Données via Sanity (GROQ + cache tag-based)
+import { getAllPosts, getPostBySlug } from "@/lib/sanity/posts";
+import { getAllClients, getClientBySlug } from "@/lib/sanity/clients";
+import { getCaseStudyBySlug, getAllCaseStudyParams } from "@/lib/sanity/caseStudies";
+
 // SSG avec generateStaticParams
 export async function generateStaticParams() {
-  return allPosts
-    .filter((post) => !post.draft)
-    .map((post) => ({ slug: post.slug }));
+  const slugs = await getAllPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
-// Metadata dynamique
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const post = allPosts.find((p) => p.slug === slug && !p.draft);
-  // ...
-}
+// Rich text
+import { PortableText } from "@portabletext/react";
+import { portableTextComponents } from "../../../../sanity/lib/portable-text";
+<PortableText value={post.body} components={portableTextComponents} />
 
-// Import direct Contentlayer
-import { allPosts, allServices, allCaseStudies } from "contentlayer/generated";
+// Images (Sanity CDN ou legacy string)
+import { resolveImageUrl } from "../../../../sanity/lib/image";
+const url = resolveImageUrl(doc.featuredImage, 800);
 ```
 
 ### 6.4 Styling
@@ -426,30 +437,38 @@ Chaque page doit inclure :
 
 ---
 
-## 7. Contenu (Contentlayer)
+## 7. Contenu (Sanity CMS)
+
+### Studio
+
+Sanity Studio est embarqué à `/studio`. Il permet l'édition visuelle du contenu via Portable Text.
 
 ### Schémas disponibles
 
-| Type | Dossier | Route | Champs clés |
-|------|---------|-------|-------------|
-| `Post` | `content/blog/` | `/blog/[slug]` | title, description, date, author, category, tags, featuredImage, draft |
-| `Service` | `content/services/` | `/services/[slug]` | heroTitle, heroSubtitle, icon, metrics, painPoints, features, processSteps, faqs |
-| `CaseStudy` | `content/cas-clients/` | `/cas-clients/[slug]` | title, sector, company, challenges, approachPhases, metrics, testimonial |
-| `Page` | `content/pages/` | Variable | title, description, template |
+| Type | Route | Champs clés |
+|------|-------|-------------|
+| `post` | `/blog/[slug]` | title, description, date, author, category, tags, featuredImage, body (Portable Text), faq[] |
+| `service` | `/services/[slug]` | heroTitle, heroSubtitle, icon, metrics, painPoints, features, processSteps, faqs |
+| `caseStudy` | `/cas-clients/[clientSlug]/[caseSlug]` | title, sector, company, client (ref), challenges, approachPhases, metrics, testimonial, body |
+| `client` | `/cas-clients/[clientSlug]` | name, sector, logo, mainImage, testimonial, carouselStat, body |
+| `page` | Variable | title, description, body |
 
-### Computed fields automatiques
+### Objets réutilisables
 
-- `slug` : dérivé du chemin fichier
-- `url` : préfixé avec la route (`/blog/`, `/services/`, etc.)
-- `readingTime` : calculé automatiquement (200 mots/min)
+testimonial, metric, faq, processStep, painPoint, feature, approachPhase, resource, comparisonRow, blockContent (Portable Text)
 
-### Convention de nommage fichiers MDX
+### Architecture données
 
-```
-content/blog/blog__mon-titre-article.mdx
-content/services/services__nom-service.mdx
-content/cas-clients/cas-clients__nom-client.mdx
-```
+- **Requêtes GROQ** centralisées dans `sanity/lib/queries.ts`
+- **Types TypeScript** dans `sanity/lib/types.ts`
+- **Data access** dans `src/lib/sanity/` (posts.ts, clients.ts, caseStudies.ts, services.ts)
+- **Cache** tag-based ISR via `next: { tags: [...] }`
+- **Revalidation** webhook Sanity → `/api/revalidate` → `revalidateTag()`
+- **Preview** Draft Mode via `/api/draft` + `@sanity/preview-url-secret`
+
+### Homepage + Villes
+
+Le contenu homepage et pages villes reste en TypeScript (`src/content/home.ts`, `src/content/b2b.ts`, `src/content/cities/`). Seuls les posts et clients sont fetchés depuis Sanity.
 
 ---
 
@@ -489,9 +508,11 @@ const fadeInUp = {
 | Route | Méthode | Rôle | Sécurité |
 |-------|---------|------|----------|
 | `/api/contact` | POST | Soumission formulaire (Resend) | CSRF, rate limit (3/15min), XSS escape |
-| `/api/blog/publish` | POST | Webhook publication blog | Auth token |
+| `/api/draft` | GET | Active Draft Mode (preview Sanity) | `@sanity/preview-url-secret` |
+| `/api/disable-draft` | GET | Désactive Draft Mode | — |
+| `/api/revalidate` | POST | Webhook Sanity → revalidateTag() | Secret header |
 | `/api/request-indexing` | POST | Demande indexation Google | Auth |
-| `/api/cron/daily-indexing` | POST | Indexation quotidienne SEO | Cron auth |
+| `/api/cron/daily-indexing` | GET | Indexation quotidienne SEO | Cron auth |
 
 ---
 
@@ -513,9 +534,11 @@ const fadeInUp = {
 
 | Pattern | Source |
 |---------|--------|
-| `/blog/[slug]` | `allPosts` (Contentlayer) |
-| `/services/[slug]` | `allServices` (Contentlayer) |
-| `/cas-clients/[slug]` | `allCaseStudies` (Contentlayer) |
+| `/blog/[slug]` | Sanity (posts) |
+| `/services/[slug]` | Sanity (services) |
+| `/cas-clients/[clientSlug]` | Sanity (clients) |
+| `/cas-clients/[clientSlug]/[caseSlug]` | Sanity (caseStudies) |
+| `/studio/[[...tool]]` | Sanity Studio |
 
 ---
 
@@ -556,8 +579,8 @@ const fadeInUp = {
 ### Commandes utiles
 
 ```bash
-npm run dev          # Serveur de développement (webpack)
-npm run build        # Build production (contentlayer + next)
+npm run dev          # Serveur de développement (Turbopack)
+npm run build        # Build production
 npm run start        # Serveur de production
 npm run lint         # ESLint
 ```

@@ -1,10 +1,24 @@
 import { MetadataRoute } from "next";
-import { allPosts, allCaseStudies, allClients } from "contentlayer/generated";
+import { SITEMAP_QUERY } from "../../sanity/lib/queries";
+import { sanityFetch } from "@/lib/sanity/fetch";
 import { CITY_SLUGS } from "@/content/cities";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://by-vizion.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+interface SitemapData {
+  posts: { url: string; lastModified?: string }[];
+  clients: { url: string }[];
+  caseStudies: { url: string; lastModified?: string }[];
+  services: { url: string; lastModified?: string }[];
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const data = await sanityFetch<SitemapData>(
+    SITEMAP_QUERY,
+    {},
+    { tags: ["posts", "clients", "caseStudies", "services"], revalidate: 3600 },
+  );
+
   // Static pages
   const staticRoutes = [
     { route: "", priority: 1, changeFrequency: "weekly" as const },
@@ -23,34 +37,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Blog posts
-  const blogPages = allPosts
-    .filter((post) => !post.draft && !post._raw.sourceFileName.startsWith("_"))
-    .map((post) => ({
-      url: `${baseUrl}${post.url}`,
-      lastModified: new Date(post.date),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    }));
+  const blogPages = (data.posts || []).map((post) => ({
+    url: `${baseUrl}${post.url}`,
+    lastModified: post.lastModified ? new Date(post.lastModified) : new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   // Client profile pages (pillar pages — higher priority)
-  const clientPages = allClients
-    .filter((c) => !c.draft && !c._raw.sourceFileName.startsWith("_"))
-    .map((c) => ({
-      url: `${baseUrl}${c.url}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    }));
+  const clientPages = (data.clients || []).map((c) => ({
+    url: `${baseUrl}${c.url}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   // Case studies
-  const caseStudyPages = allCaseStudies
-    .filter((cs) => !cs.draft && !cs._raw.sourceFileName.startsWith("_"))
-    .map((cs) => ({
-      url: `${baseUrl}${cs.url}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    }));
+  const caseStudyPages = (data.caseStudies || []).map((cs) => ({
+    url: `${baseUrl}${cs.url}`,
+    lastModified: cs.lastModified ? new Date(cs.lastModified) : new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  // Services
+  const servicePages = (data.services || []).map((s) => ({
+    url: `${baseUrl}${s.url}`,
+    lastModified: s.lastModified ? new Date(s.lastModified) : new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   // City landing pages (SEO local)
   const cityPages = CITY_SLUGS.map((slug) => ({
@@ -60,5 +76,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...blogPages, ...clientPages, ...caseStudyPages, ...cityPages];
+  return [
+    ...staticPages,
+    ...blogPages,
+    ...clientPages,
+    ...caseStudyPages,
+    ...servicePages,
+    ...cityPages,
+  ];
 }

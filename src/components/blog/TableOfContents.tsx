@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { List } from "lucide-react";
 
-import type { TOCHeading } from "@/lib/mdx";
+import type { TOCHeading } from "@/lib/portable-text-utils";
 export type { TOCHeading };
 
 interface TableOfContentsProps {

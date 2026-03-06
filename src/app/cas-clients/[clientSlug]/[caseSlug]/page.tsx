@@ -1,27 +1,22 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { allCaseStudies, allClients } from "contentlayer/generated";
+import { getCaseStudyBySlug, getAllCaseStudies, getAllCaseStudyParams } from "@/lib/sanity/caseStudies";
+import { getClientBySlug } from "@/lib/sanity/clients";
 import { CaseStudyContent } from "./CaseStudyContent";
 import { SITE_URL } from "@/lib/constants";
+import { resolveImageUrl } from "../../../../../sanity/lib/image";
 
 type Props = {
   params: Promise<{ clientSlug: string; caseSlug: string }>;
 };
 
 export async function generateStaticParams() {
-  return allCaseStudies
-    .filter((cs) => !cs.draft && !cs._raw.sourceFileName.startsWith("_"))
-    .map((cs) => ({
-      clientSlug: cs.clientSlug,
-      caseSlug: cs.slug,
-    }));
+  return getAllCaseStudyParams();
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { clientSlug, caseSlug } = await params;
-  const caseStudy = allCaseStudies.find(
-    (cs) => cs.slug === caseSlug && cs.clientSlug === clientSlug && !cs.draft
-  );
+  const caseStudy = await getCaseStudyBySlug(clientSlug, caseSlug);
 
   if (!caseStudy) {
     return { title: "Cas client non trouvé" };
@@ -30,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = caseStudy.metaTitle || `${caseStudy.title} | Cas Client`;
   const description = caseStudy.metaDescription || caseStudy.description;
   const url = `${SITE_URL}${caseStudy.url}`;
+  const imageUrl = resolveImageUrl(caseStudy.heroImage, 1200);
 
   return {
     title,
@@ -42,15 +38,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: caseStudy.publishedAt,
       authors: ["Vizion"],
-      images: caseStudy.heroImage
-        ? [{ url: caseStudy.heroImage, width: 1200, height: 630, alt: caseStudy.title }]
+      images: imageUrl
+        ? [{ url: imageUrl, width: 1200, height: 630, alt: caseStudy.title }]
         : [],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: caseStudy.heroImage ? [caseStudy.heroImage] : [],
+      images: imageUrl ? [imageUrl] : [],
     },
     alternates: { canonical: url },
   };
@@ -59,19 +55,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function CaseStudyPage({ params }: Props) {
   const { clientSlug, caseSlug } = await params;
 
-  const caseStudy = allCaseStudies.find(
-    (cs) => cs.slug === caseSlug && cs.clientSlug === clientSlug && !cs.draft
-  );
+  const caseStudy = await getCaseStudyBySlug(clientSlug, caseSlug);
 
   if (!caseStudy) {
     notFound();
   }
 
-  const client = allClients.find((c) => c.slug === clientSlug && !c.draft);
+  const client = await getClientBySlug(clientSlug);
 
   // Related cases: same client first, then same sector
-  const relatedCases = allCaseStudies
-    .filter((cs) => cs.slug !== caseSlug && !cs.draft)
+  const allCases = await getAllCaseStudies();
+  const relatedCases = allCases
+    .filter((cs) => cs.slug !== caseSlug)
     .sort((a, b) => {
       // Same client first
       if (a.clientSlug === clientSlug && b.clientSlug !== clientSlug) return -1;

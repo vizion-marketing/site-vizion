@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X } from "lucide-react";
-import type { TOCHeading } from "@/lib/mdx";
+import type { TOCHeading } from "@/lib/portable-text-utils";
 
 interface MobileTOCProps {
   headings: TOCHeading[];

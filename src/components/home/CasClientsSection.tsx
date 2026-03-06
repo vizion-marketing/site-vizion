@@ -14,9 +14,9 @@ export interface CasClientItem {
   quote: string;
   author: string;
   role: string;
-  avatar: string;
-  mainImage: string;
-  secondaryImage: string;
+  avatar?: string;
+  mainImage?: string;
+  secondaryImage?: string;
   stats: { value: string; label: string };
   href?: string;
 }
@@ -282,6 +282,7 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
               <div className="relative h-full overflow-hidden">
                 {/* Decorative frame */}
                 <div className="absolute -inset-1 border border-accent/20 pointer-events-none z-10" />
+                {currentCase.mainImage && (
                 <Image
                   src={currentCase.mainImage}
                   alt={currentCase.company}
@@ -289,6 +290,7 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
+                )}
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
@@ -305,6 +307,7 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
             <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4">
               {/* Secondary Image + Author glassmorphism badge */}
               <div className="relative h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden">
+                {currentCase.secondaryImage && (
                 <Image
                   src={currentCase.secondaryImage}
                   alt={`${currentCase.company} - secondaire`}
@@ -312,6 +315,7 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 30vw"
                 />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
 
                 {/* Author glassmorphism badge */}

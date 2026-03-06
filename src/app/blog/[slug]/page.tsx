@@ -1,6 +1,11 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { allPosts } from "contentlayer/generated";
+import { getPostBySlug, getAllPosts, getAllPostSlugs } from "@/lib/sanity/posts";
+import { PortableText } from "@portabletext/react";
+import { toPlainText } from "@portabletext/react";
+import { portableTextComponents } from "../../../../sanity/lib/portable-text";
+import { resolveImageUrl } from "../../../../sanity/lib/image";
+import { extractHeadingsFromPortableText } from "@/lib/portable-text-utils";
 import {
   ArticleHero,
   TableOfContents,
@@ -10,13 +15,11 @@ import {
   RelatedPosts,
   ArticleNav,
   ShareButtons,
-  MdxContent,
   ReadingProgress,
   RelatedInlineCard,
   MobileTOC,
 } from "@/components/blog";
 import { ArticleSidebar } from "@/components/blog/ArticleSidebar";
-import { extractHeadings } from "@/lib/mdx";
 import type { Resource } from "@/components/blog";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import { getSuggestedArticles } from "@/lib/internal-linking";
@@ -27,28 +30,26 @@ type Props = {
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
-  return allPosts
-    .filter((post) => !post.draft)
-    .map((post) => ({
-      slug: post.slug,
-    }));
+  const slugs = await getAllPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = allPosts.find((p) => p.slug === slug && !p.draft);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return { title: "Article non trouvé" };
   }
 
   const publishedDate = new Date(post.date).toISOString();
+  const imageUrl = resolveImageUrl(post.featuredImage, 1200) || post.featuredImageUrl;
 
   return {
     title: `${post.title} | Blog ${SITE_NAME}`,
     description: post.description,
-    keywords: [post.category, ...post.tags],
+    keywords: [post.category, ...(post.tags || [])],
     authors: [{ name: post.author || "Lucas Gonzalez" }],
     creator: SITE_NAME,
     publisher: SITE_NAME,
@@ -76,12 +77,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : publishedDate,
       authors: [post.author || "Lucas Gonzalez"],
       tags: post.tags,
-      images: post.featuredImage
+      images: imageUrl
         ? [
             {
-              url: post.featuredImage.startsWith("http")
-                ? post.featuredImage
-                : `${SITE_URL}${post.featuredImage}`,
+              url: imageUrl.startsWith("http")
+                ? imageUrl
+                : `${SITE_URL}${imageUrl}`,
               width: 1200,
               height: 630,
               alt: post.title,
@@ -93,11 +94,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: post.featuredImage
+      images: imageUrl
         ? [
-            post.featuredImage.startsWith("http")
-              ? post.featuredImage
-              : `${SITE_URL}${post.featuredImage}`,
+            imageUrl.startsWith("http")
+              ? imageUrl
+              : `${SITE_URL}${imageUrl}`,
           ]
         : [],
     },
@@ -117,34 +118,47 @@ function formatDate(dateString: string): string {
   });
 }
 
-// Get prev/next posts
-function getAdjacentPosts(currentSlug: string) {
-  const publishedPosts = allPosts
-    .filter((p) => !p.draft)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
-  const currentIndex = publishedPosts.findIndex((p) => p.slug === currentSlug);
+  if (!post) {
+    notFound();
+  }
 
-  const prevPost =
+  // All posts for related/suggested/navigation
+  const allPostsList = await getAllPosts();
+
+  // Extract headings for table of contents
+  const headings = post.body
+    ? extractHeadingsFromPortableText(post.body)
+    : [];
+
+  // Get adjacent posts for navigation
+  const publishedPosts = [...allPostsList].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  const currentIndex = publishedPosts.findIndex((p) => p.slug === slug);
+  const prevPostData =
     currentIndex < publishedPosts.length - 1
       ? publishedPosts[currentIndex + 1]
       : null;
-  const nextPost = currentIndex > 0 ? publishedPosts[currentIndex - 1] : null;
+  const nextPostData =
+    currentIndex > 0 ? publishedPosts[currentIndex - 1] : null;
+  const prevPost = prevPostData
+    ? { slug: prevPostData.slug, title: prevPostData.title }
+    : undefined;
+  const nextPost = nextPostData
+    ? { slug: nextPostData.slug, title: nextPostData.title }
+    : undefined;
 
-  return {
-    prevPost: prevPost ? { slug: prevPost.slug, title: prevPost.title } : undefined,
-    nextPost: nextPost ? { slug: nextPost.slug, title: nextPost.title } : undefined,
-  };
-}
-
-// Get related posts (same category or tags)
-function getRelatedPosts(currentPost: (typeof allPosts)[0]) {
-  return allPosts
-    .filter((p) => !p.draft && p.slug !== currentPost.slug)
+  // Get related posts (same category or tags)
+  const relatedPosts = allPostsList
+    .filter((p) => p.slug !== post.slug)
     .filter(
       (p) =>
-        p.category === currentPost.category ||
-        p.tags.some((tag) => currentPost.tags.includes(tag))
+        p.category === post.category ||
+        (p.tags || []).some((tag) => (post.tags || []).includes(tag))
     )
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3)
@@ -153,39 +167,42 @@ function getRelatedPosts(currentPost: (typeof allPosts)[0]) {
       title: p.title,
       category: p.category,
       date: formatDate(p.date),
-      readingTime: p.readingTime,
-      featuredImage: p.featuredImage,
+      readingTime: p.readingTime || "1 min de lecture",
+      featuredImage:
+        resolveImageUrl(p.featuredImage) || p.featuredImageUrl || undefined,
     }));
-}
-
-export default async function BlogPostPage({ params }: Props) {
-  const { slug } = await params;
-  const post = allPosts.find((p) => p.slug === slug && !p.draft);
-
-  if (!post) {
-    notFound();
-  }
-
-  // Extract headings for table of contents
-  const headings = extractHeadings(post.body.raw);
-
-  // Get adjacent posts for navigation
-  const { prevPost, nextPost } = getAdjacentPosts(slug);
-
-  // Get related posts
-  const relatedPosts = getRelatedPosts(post);
 
   // Get suggested articles for internal linking (automatic based on tags)
-  const suggestedArticles = getSuggestedArticles(slug, post.tags, 3);
+  const suggestedArticles = getSuggestedArticles(
+    slug,
+    post.tags || [],
+    3,
+    allPostsList.map((p) => ({
+      ...p,
+      featuredImage:
+        resolveImageUrl(p.featuredImage) || p.featuredImageUrl || undefined,
+    })),
+  );
 
   // Parse resources
   const resources = (post.resources as Resource[]) || [];
 
   // Format dates
   const formattedDate = formatDate(post.date);
-  const formattedDateModified = post.dateModified ? formatDate(post.dateModified) : undefined;
+  const formattedDateModified = post.dateModified
+    ? formatDate(post.dateModified)
+    : undefined;
 
-  // JSON-LD BlogPosting Schema (more specific than Article for SEO)
+  // Resolve featured image URL for components
+  const featuredImageUrl =
+    resolveImageUrl(post.featuredImage) || post.featuredImageUrl || undefined;
+
+  // Word count for schema
+  const wordCount = post.body
+    ? toPlainText(post.body).split(/\s+/).length
+    : 0;
+
+  // JSON-LD BlogPosting Schema
   const blogPostingSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -221,19 +238,19 @@ export default async function BlogPostPage({ params }: Props) {
       "@type": "WebPage",
       "@id": `${SITE_URL}/blog/${slug}`,
     },
-    image: post.featuredImage
+    image: featuredImageUrl
       ? {
           "@type": "ImageObject",
-          url: post.featuredImage.startsWith("http")
-            ? post.featuredImage
-            : `${SITE_URL}${post.featuredImage}`,
+          url: featuredImageUrl.startsWith("http")
+            ? featuredImageUrl
+            : `${SITE_URL}${featuredImageUrl}`,
           width: 1200,
           height: 630,
         }
       : undefined,
     articleSection: post.category,
-    keywords: post.tags.join(", "),
-    wordCount: post.body.raw.split(/\s+/).length,
+    keywords: (post.tags || []).join(", "),
+    wordCount,
     articleBody: post.description,
     inLanguage: "fr-FR",
     isAccessibleForFree: true,
@@ -268,21 +285,24 @@ export default async function BlogPostPage({ params }: Props) {
     ],
   };
 
-  // FAQ Schema for featured snippets (if FAQ exists in frontmatter)
-  const faqSchema = post.faq && Array.isArray(post.faq) && post.faq.length > 0
-    ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: post.faq.map((item: { question: string; answer: string }) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: item.answer,
-          },
-        })),
-      }
-    : null;
+  // FAQ Schema for featured snippets (if FAQ exists)
+  const faqSchema =
+    post.faq && Array.isArray(post.faq) && post.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faq.map(
+            (item: { question: string; answer: string }) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer,
+              },
+            })
+          ),
+        }
+      : null;
 
   return (
     <>
@@ -316,16 +336,16 @@ export default async function BlogPostPage({ params }: Props) {
           date={formattedDate}
           dateModified={formattedDateModified}
           author={post.author || "Lucas Gonzalez"}
-          readingTime={post.readingTime}
-          featuredImage={post.featuredImage}
-          tags={post.tags}
+          readingTime={post.readingTime || "1 min de lecture"}
+          featuredImage={featuredImageUrl}
+          tags={post.tags || []}
         />
 
-        {/* Main Content - style home */}
+        {/* Main Content */}
         <section className="py-12 sm:py-16 lg:py-24 bg-white relative">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#f4f4f5_1px,transparent_1px),linear-gradient(to_bottom,#f4f4f5_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none" />
-          
+
           <div className="max-w-[82.5rem] mx-auto px-6 md:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12">
               {/* Contenu - Gauche */}
@@ -333,7 +353,12 @@ export default async function BlogPostPage({ params }: Props) {
                 {/* Content wrapper */}
                 <div className="bg-white rounded-none p-5 sm:p-8 lg:p-12 shadow-sm border border-zinc-100">
                   <article className="prose max-w-none">
-                    <MdxContent code={post.body.code} />
+                    {post.body && post.body.length > 0 && (
+                      <PortableText
+                        value={post.body}
+                        components={portableTextComponents}
+                      />
+                    )}
                   </article>
                 </div>
 
@@ -356,10 +381,15 @@ export default async function BlogPostPage({ params }: Props) {
                 )}
 
                 {/* Resources Library */}
-                {resources.length > 0 && <ResourcesLibrary resources={resources} />}
+                {resources.length > 0 && (
+                  <ResourcesLibrary resources={resources} />
+                )}
 
                 {/* Share section */}
-                <ShareButtons title={post.title} url={`${SITE_URL}/blog/${slug}`} />
+                <ShareButtons
+                  title={post.title}
+                  url={`${SITE_URL}/blog/${slug}`}
+                />
 
                 {/* Bio auteur - fin du contenu */}
                 <div className="mt-12">
@@ -367,7 +397,7 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
               </div>
 
-              {/* Sidebar Droite - Sommaire + CTA Newsletter (fixed) */}
+              {/* Sidebar Droite */}
               <aside className="hidden lg:block lg:col-span-4 order-2">
                 <ArticleSidebar headings={headings} />
               </aside>

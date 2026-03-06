@@ -37,8 +37,8 @@ export const b2bSEO = {
 
 export const b2bHero: HeroContent = {
   badge: "AGENCE MARKETING B2B",
-  h1: "L'agence Marketing spécialiste du B2B qui fait de votre produit une évidence",
-  h1Highlight: "une évidence",
+  h1: "L'agence Marketing spécialiste du B2B",
+  h1Highlight: "",
   h1RotatingWords: [],
   baseline:
     "Cycles de 3 à 18 mois. 4 à 7 décideurs impliqués. Des objections techniques à chaque étape. Le marketing B2B exige une approche structurée, alignée sur le cycle de vente réel. Vizion pose le positionnement, déploie les canaux d'acquisition et équipe vos commerciaux pour convertir plus vite.",

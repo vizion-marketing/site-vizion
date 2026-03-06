@@ -49,9 +49,9 @@ interface CarouselClient {
   quote: string;
   author: string;
   role: string;
-  avatar: string;
-  mainImage: string;
-  secondaryImage: string;
+  avatar?: string;
+  mainImage?: string;
+  secondaryImage?: string;
   stats: { value: string; label: string };
   href?: string;
 }

@@ -17,8 +17,10 @@ import {
   Minus,
   Star,
 } from "lucide-react";
-import type { Client, CaseStudy } from "contentlayer/generated";
-import { useMDXComponent } from "next-contentlayer2/hooks";
+import type { Client, CaseStudy } from "../../../../sanity/lib/types";
+import { resolveImageUrl } from "../../../../sanity/lib/image";
+import { PortableText } from "@portabletext/react";
+import { portableTextComponents } from "../../../../sanity/lib/portable-text";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { sectorIconMap } from "@/lib/sectorIcons";
 
@@ -39,10 +41,9 @@ interface ClientProfileContentProps {
 }
 
 export function ClientProfileContent({ client, caseStudies }: ClientProfileContentProps) {
-  const MDXContent = useMDXComponent(client.body.code);
   const SectorIcon = sectorIconMap[client.sectorIcon] || Building2;
-  const testimonial = client.testimonial as { quote: string; author: string; role: string; photo?: string };
-  const carouselStat = client.carouselStat as { value: string; label: string };
+  const testimonial = client.testimonial;
+  const carouselStat = client.carouselStat;
 
   return (
     <main className="min-h-screen bg-white font-[var(--font-body)]">
@@ -106,7 +107,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                 {client.logo && (
                   <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden shrink-0">
                     <Image
-                      src={client.logo}
+                      src={resolveImageUrl(client.logo)}
                       alt={client.name}
                       width={48}
                       height={48}
@@ -209,7 +210,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                   {testimonial.photo ? (
                     <div className="w-14 h-14 overflow-hidden shrink-0">
                       <Image
-                        src={testimonial.photo}
+                        src={resolveImageUrl(testimonial.photo)}
                         alt={testimonial.author}
                         width={56}
                         height={56}
@@ -236,23 +237,11 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
         </section>
       )}
 
-      {/* MDX CONTENT — Client description */}
-      {client.body.raw.trim().length > 0 && (
+      {/* PORTABLE TEXT CONTENT — Client description */}
+      {client.body && client.body.length > 0 && (
         <section className="py-16 md:py-20 px-6 md:px-12 bg-white">
           <div className="max-w-3xl mx-auto prose prose-lg">
-            <MDXContent
-              components={{
-                h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-                  <h2 className="font-heading font-normal text-2xl md:text-3xl tracking-tight text-primary mt-12 mb-6" {...props} />
-                ),
-                h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-                  <h3 className="font-heading font-normal text-xl tracking-tight text-primary mt-8 mb-4" {...props} />
-                ),
-                p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-                  <p className="text-secondary text-lg leading-relaxed mb-6" {...props} />
-                ),
-              }}
-            />
+            <PortableText value={client.body} components={portableTextComponents} />
           </div>
         </section>
       )}
@@ -285,12 +274,12 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {caseStudies.map((cs, idx) => {
+              {caseStudies.map((cs) => {
                 const CsSectorIcon = sectorIconMap[cs.sectorIcon] || Building2;
                 return (
                   <motion.div key={cs.slug} variants={fadeInUp}>
                     <Link
-                      href={cs.url}
+                      href={cs.url || `/cas-clients/${cs.clientSlug}/${cs.slug}`}
                       className="block bg-white border border-black/[0.06] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
                     >
                       {/* Card Header */}
@@ -321,7 +310,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                       {/* Metrics */}
                       <div className="px-6 py-4 bg-card border-t border-black/[0.06]">
                         <div className="grid grid-cols-3 gap-3">
-                          {cs.metrics.slice(0, 3).map((metric: { value: string; label: string; trend?: string }, mIdx: number) => (
+                          {cs.metrics.slice(0, 3).map((metric, mIdx) => (
                             <div key={mIdx} className="text-center">
                               <span className="text-lg font-black text-primary block leading-tight">
                                 {metric.value}

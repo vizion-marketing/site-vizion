@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { TableOfContents } from "./TableOfContents";
-import type { TOCHeading } from "@/lib/mdx";
+import type { TOCHeading } from "@/lib/portable-text-utils";
 
 interface ArticleSidebarProps {
   headings: TOCHeading[];

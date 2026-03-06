@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { allPosts, allClients } from "contentlayer/generated";
+import { getLatestPosts } from "@/lib/sanity/posts";
+import { getFeaturedClients } from "@/lib/sanity/clients";
+import { resolveImageUrl } from "../../../../sanity/lib/image";
 import { getCityData, CITY_SLUGS } from "@/content/cities";
 import CityPageClient from "@/app/CityPageClient";
 
@@ -74,42 +76,37 @@ export default async function CityPage(
   const cityData = await getCityData(citySlug);
   if (!cityData) notFound();
 
-  // Build carousel data from Contentlayer clients
-  const carouselClients = allClients
-    .filter((c) => !c.draft && c.featured)
-    .sort((a, b) => (a.order || 0) - (b.order || 0))
-    .map((client, idx) => {
-      const testimonial = client.testimonial as { quote: string; author: string; role: string };
-      const stat = client.carouselStat as { value: string; label: string };
-      return {
-        id: idx + 1,
-        company: client.name,
-        sector: client.sector,
-        title: client.carouselTitle,
-        quote: testimonial.quote,
-        author: testimonial.author,
-        role: testimonial.role,
-        avatar: client.logo || "",
-        mainImage: client.mainImage,
-        secondaryImage: client.secondaryImage,
-        stats: stat,
-        href: client.url,
-      };
-    });
+  const [rawPosts, featuredClients] = await Promise.all([
+    getLatestPosts(3),
+    getFeaturedClients(),
+  ]);
 
-  const latestPosts = allPosts
-    .filter((post) => !post.draft)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 3)
-    .map((post) => ({
-      slug: post.slug,
-      title: post.title,
-      description: post.description,
-      date: post.date,
-      category: post.category,
-      readingTime: post.readingTime,
-      featuredImage: post.featuredImage,
-    }));
+  // Build carousel data from Sanity clients
+  const carouselClients = featuredClients.map((client, idx) => ({
+    id: idx + 1,
+    company: client.name,
+    sector: client.sector,
+    title: client.carouselTitle,
+    quote: client.testimonial?.quote || "",
+    author: client.testimonial?.author || "",
+    role: client.testimonial?.role || "",
+    avatar: resolveImageUrl(client.logo) || undefined,
+    mainImage: resolveImageUrl(client.mainImage) || undefined,
+    secondaryImage: resolveImageUrl(client.secondaryImage) || undefined,
+    stats: client.carouselStat,
+    href: client.url,
+  }));
+
+  const latestPosts = rawPosts.map((post) => ({
+    slug: post.slug,
+    title: post.title,
+    description: post.description,
+    date: post.date,
+    category: post.category,
+    readingTime: post.readingTime,
+    featuredImage:
+      resolveImageUrl(post.featuredImage) || post.featuredImageUrl || undefined,
+  }));
 
   return (
     <>

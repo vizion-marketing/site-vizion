@@ -1,0 +1,653 @@
+"use client";
+
+import React, { useState, useMemo } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRightIcon } from "@/components/icons";
+import {
+  Search,
+  Mail,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Calendar,
+  Sparkles,
+  BookOpen,
+  Star,
+  CheckCircle2,
+  TrendingUp
+} from "lucide-react";
+import { ImagePlaceholder } from "@/components/ui";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
+
+// Serializable post for client component
+export interface BlogListPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  readingTime?: string;
+  featuredImage?: string;
+  tags: string[];
+  url?: string;
+}
+
+// Fixed categories for the blog
+const categories = [
+  "Tous",
+  "Actualité",
+  "IA for Sales",
+  "Product Marketing",
+  "Vente",
+];
+
+// Format date
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+// Posts per page
+const POSTS_PER_PAGE = 6;
+
+interface BlogPageContentProps {
+  posts: BlogListPost[];
+}
+
+export function BlogPageContent({ posts }: BlogPageContentProps) {
+  const [activeCategory, setActiveCategory] = useState<string>("Tous");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Sort posts by date
+  const publishedPosts = useMemo(() => {
+    return [...posts].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+  }, [posts]);
+
+  // Get featured posts
+  const featuredPost = publishedPosts[0]; // À la une (right side)
+  const editorPick = publishedPosts[1]; // Le préféré de la rédac
+  const readerFavorite = publishedPosts[0]; // Le préféré des lecteurs (same as featured for now)
+
+  // Filter by category and search
+  const filteredPosts = useMemo(() => {
+    return publishedPosts.filter((post) => {
+      const matchesCategory =
+        activeCategory === "Tous" || post.category === activeCategory;
+      const matchesSearch =
+        searchQuery === "" ||
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [publishedPosts, activeCategory, searchQuery]);
+
+  // Pagination
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
+  // Reset page when filter changes
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    setCurrentPage(1);
+  };
+
+  return (
+    <main className="min-h-screen bg-white font-[var(--font-body)] selection:bg-black selection:text-white">
+      {/* HERO SECTION - Style Homepage (dark bg + radial gradients accent) */}
+      <section className="relative pt-[120px] pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "var(--bg-dark)" }}>
+        {/* Base + radial gradients jaune Vizion (comme home hero) */}
+        <div
+          className="absolute inset-0 pointer-events-none z-0"
+          aria-hidden
+          style={{
+            background: `
+              radial-gradient(ellipse 80% 60% at 20% 30%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%),
+              radial-gradient(ellipse 70% 50% at 80% 20%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%),
+              radial-gradient(ellipse 60% 70% at 50% 85%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%),
+              radial-gradient(ellipse 50% 50% at 90% 70%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%),
+              radial-gradient(ellipse 45% 45% at 8% 60%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)
+            `,
+          }}
+        />
+
+        <div className="max-w-[82.5rem] mx-auto w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+
+            {/* LEFT COLUMN */}
+            <div className="lg:col-span-7 flex flex-col gap-6">
+              {/* TOP - Blog Title Block */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+                className="bg-black/40 backdrop-blur-md rounded-none p-8 md:p-10 border border-white/10"
+              >
+                {/* Status Badge */}
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-accent opacity-75"></span>
+                    <span className="relative inline-flex rounded-none h-2 w-2 bg-accent"></span>
+                  </span>
+                  <span className="text-[10px] font-light tracking-[0.12em] text-white/60">
+                    Le laboratoire de performance
+                  </span>
+                </div>
+
+                <h1 className="font-[var(--font-body)] font-[900] text-[56px] md:text-[80px] lg:text-[100px] leading-[0.9] tracking-tight text-white mb-4">
+                  <span className="relative inline-block">
+                    <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[14px] bg-accent -z-10"></span>
+                    Blog
+                  </span>
+                </h1>
+
+                <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-md">
+                  Stratégies d&apos;élite et insights exclusifs pour propulser votre croissance B2B.
+                </p>
+              </motion.div>
+
+              {/* BOTTOM - 2 Article Cards Side by Side */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Le préféré de la rédac */}
+                {editorPick && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
+                  >
+                    <Link href={`/blog/${editorPick.slug}`} className="group block h-full">
+                      <div className="h-full bg-black/30 backdrop-blur-sm rounded-none border border-white/10 overflow-hidden hover:border-accent/30 transition-all duration-500">
+                        {/* Image */}
+                        <div className="aspect-[16/10] relative overflow-hidden">
+                          {editorPick.featuredImage ? (
+                            <Image
+                              src={editorPick.featuredImage}
+                              alt={editorPick.title}
+                              fill
+                              className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                            />
+                          ) : (
+                            <ImagePlaceholder
+                              width={300}
+                              height={200}
+                              label="Image article"
+                              rounded="sm"
+                              variant="dark"
+                              className="w-full h-full"
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+
+                          {/* Badge */}
+                          <div className="absolute top-3 left-3 z-10">
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white text-black text-[9px] font-black tracking-wider rounded-none">
+                              <Star size={10} className="fill-black" />
+                              Rédac
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="p-5">
+                          <span className="text-[9px] font-light tracking-[0.12em] text-white/40 mb-1.5 block">
+                            {editorPick.category}
+                          </span>
+                          <h3 className="font-[var(--font-body)] font-black text-sm leading-tight text-white group-hover:text-accent transition-colors line-clamp-2">
+                            {editorPick.title}
+                          </h3>
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                )}
+
+                {/* Le préféré des lecteurs */}
+                {readerFavorite && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+                  >
+                    <Link href={`/blog/${readerFavorite.slug}`} className="group block h-full">
+                      <div className="h-full bg-black/30 backdrop-blur-sm rounded-none border border-white/10 overflow-hidden hover:border-accent/30 transition-all duration-500">
+                        {/* Image */}
+                        <div className="aspect-[16/10] relative overflow-hidden">
+                          {readerFavorite.featuredImage ? (
+                            <Image
+                              src={readerFavorite.featuredImage}
+                              alt={readerFavorite.title}
+                              fill
+                              className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                            />
+                          ) : (
+                            <ImagePlaceholder
+                              width={300}
+                              height={200}
+                              label="Image article"
+                              rounded="sm"
+                              variant="dark"
+                              className="w-full h-full"
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+
+                          {/* Badge */}
+                          <div className="absolute top-3 left-3 z-10">
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-accent text-black text-[9px] font-black tracking-wider rounded-none">
+                              <TrendingUp size={10} />
+                              Populaire
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="p-5">
+                          <span className="text-[9px] font-light tracking-[0.12em] text-white/40 mb-1.5 block">
+                            {readerFavorite.category}
+                          </span>
+                          <h3 className="font-[var(--font-body)] font-black text-sm leading-tight text-white group-hover:text-accent transition-colors line-clamp-2">
+                            {readerFavorite.title}
+                          </h3>
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                )}
+              </div>
+            </div>
+
+            {/* RIGHT - Featured Post Card (À la une) */}
+            {featuredPost && (
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.19, 1, 0.22, 1] }}
+                className="lg:col-span-5 hidden lg:block relative"
+              >
+                <Link href={`/blog/${featuredPost.slug}`} className="group block h-full">
+                  <div className="relative h-full rounded-none overflow-hidden border border-white/10 bg-black/30 backdrop-blur-sm">
+                    {/* Image - Full height */}
+                    <div className="absolute inset-0">
+                      {featuredPost.featuredImage ? (
+                        <Image
+                          src={featuredPost.featuredImage}
+                          alt={featuredPost.title}
+                          fill
+                          className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                        />
+                      ) : (
+                        <ImagePlaceholder
+                          width={500}
+                          height={600}
+                          label="Image article à la une"
+                          rounded="sm"
+                          variant="dark"
+                          className="w-full h-full"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
+                    </div>
+
+                    {/* Badge - Top */}
+                    <div className="absolute top-6 left-6 z-10">
+                      <span className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-black text-[10px] font-black tracking-wider rounded-none shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.3)]">
+                        <Sparkles size={12} />
+                        À la une
+                      </span>
+                    </div>
+
+                    {/* Content - Bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
+                      <span className="text-[10px] font-light tracking-[0.12em] text-white/50 mb-3 block">
+                        {featuredPost.category}
+                      </span>
+                      <h3 className="font-[var(--font-body)] font-black text-2xl md:text-3xl leading-[1.1] text-white mb-4 group-hover:text-accent transition-colors">
+                        {featuredPost.title}
+                      </h3>
+                      <p className="text-white/60 text-sm line-clamp-2 mb-6 max-w-md">
+                        {featuredPost.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4 text-white/40 text-xs">
+                          <span className="flex items-center gap-1.5">
+                            <Calendar size={14} />
+                            {formatDate(featuredPost.date)}
+                          </span>
+                          {featuredPost.readingTime && (
+                            <span className="flex items-center gap-1.5">
+                              <Clock size={14} />
+                              {featuredPost.readingTime}
+                            </span>
+                          )}
+                        </div>
+                        <span className="flex items-center gap-2 text-[11px] font-black text-white group-hover:text-accent transition-colors">
+                          Lire l&apos;article <ArrowUpRightIcon size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Decorative elements */}
+                <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-accent/40 pointer-events-none z-20" />
+                <div className="absolute -bottom-3 -left-3 w-12 h-12 border-b-2 border-l-2 border-white/30 pointer-events-none z-20" />
+              </motion.div>
+            )}
+          </div>
+        </div>
+
+        {/* Floating elements */}
+        <motion.div
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-32 right-[5%] w-40 h-40 border border-white/5 rounded-none blur-[2px] pointer-events-none hidden xl:block"
+        />
+        <motion.div
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-32 left-[3%] w-24 h-24 border border-white/5 rounded-none blur-[2px] pointer-events-none hidden xl:block"
+        />
+      </section>
+
+      {/* FILTERS SECTION - fond blanc */}
+      <section className="bg-white py-10 px-6 md:px-12 border-b border-black/5">
+        <div className="max-w-[82.5rem] mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            {/* Left - Categories */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => handleCategoryChange(cat)}
+                  className={`px-5 py-2.5 text-[11px] font-black tracking-wider transition-all duration-300 rounded-none border ${
+                    activeCategory === cat
+                      ? "bg-black border-black text-white shadow-[0_0_20px_rgba(0,0,0,0.15)]"
+                      : "bg-transparent border-black/20 text-black hover:border-black hover:bg-black hover:text-white"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Right - Search + Count */}
+            <div className="flex items-center gap-6">
+              {/* Search */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/30" />
+                <input
+                  type="text"
+                  placeholder="Rechercher..."
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  className="w-full md:w-56 bg-grey border-none rounded-none px-10 py-2.5 text-sm text-black placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/10 transition-all"
+                />
+              </div>
+
+              {/* Results count */}
+              <div className="hidden md:flex items-center gap-2 text-sm text-black/50">
+                <BookOpen size={16} />
+                <span><strong className="text-black">{filteredPosts.length}</strong> articles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ARTICLES GRID - collection sur fond blanc */}
+      <section className="bg-white py-20 px-6 md:px-12">
+        <div className="max-w-[82.5rem] mx-auto">
+          {paginatedPosts.length > 0 ? (
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              <AnimatePresence mode="popLayout">
+                {paginatedPosts.map((post) => (
+                  <motion.article
+                    key={post.slug}
+                    variants={fadeInUp}
+                    layout
+                    className="group bg-white rounded-none overflow-hidden border border-transparent hover:border-accent/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500"
+                  >
+                    {/* Image */}
+                    <Link href={`/blog/${post.slug}`} className="block">
+                      <div className="aspect-video w-full overflow-hidden bg-grey relative">
+                        {post.featuredImage ? (
+                          <Image
+                            src={post.featuredImage}
+                            alt={post.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-700"
+                          />
+                        ) : (
+                          <ImagePlaceholder
+                            width={400}
+                            height={225}
+                            label="Image article"
+                            rounded="none"
+                            className="w-full h-full"
+                          />
+                        )}
+
+                        {/* Category badge on image */}
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1.5 bg-white/90 text-black text-[9px] font-black tracking-wider rounded-none">
+                            {post.category}
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <Link href={`/blog/${post.slug}`}>
+                        <h3 className="font-[var(--font-body)] font-black text-lg leading-tight mb-3 text-black group-hover:text-black/80 transition-colors line-clamp-2">
+                          {post.title}
+                        </h3>
+                      </Link>
+                      <p className="text-black/60 text-sm leading-relaxed mb-4 line-clamp-2">
+                        {post.description}
+                      </p>
+
+                      {/* Meta */}
+                      <div className="pt-4 border-t border-black/5 flex items-center justify-between">
+                        <div className="flex items-center gap-3 text-[10px] font-bold text-black/40">
+                          <span className="flex items-center gap-1">
+                            <Calendar size={12} />
+                            {formatDate(post.date)}
+                          </span>
+                          {post.readingTime && (
+                            <>
+                              <span>•</span>
+                              <span className="flex items-center gap-1">
+                                <Clock size={12} />
+                                {post.readingTime}
+                              </span>
+                            </>
+                          )}
+                        </div>
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className="flex items-center gap-1 text-[10px] font-black tracking-wider text-black group-hover:text-black transition-colors"
+                        >
+                          Lire <ArrowUpRightIcon size={12} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.article>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          ) : (
+            <div className="text-center py-20">
+              <div className="w-16 h-16 rounded-none bg-black/5 flex items-center justify-center mx-auto mb-6">
+                <Search size={24} className="text-black/30" />
+              </div>
+              <h3 className="font-[var(--font-body)] font-black text-xl mb-2 text-black">Aucun article trouvé</h3>
+              <p className="text-black/50">Essayez une autre recherche ou catégorie</p>
+            </div>
+          )}
+
+          {/* PAGINATION */}
+          {totalPages > 1 && (
+            <div className="mt-16 flex items-center justify-center gap-3">
+              <button
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="w-12 h-12 flex items-center justify-center rounded-none border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft size={18} />
+              </button>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
+                <button
+                  key={num}
+                  onClick={() => setCurrentPage(num)}
+                  className={`w-12 h-12 flex items-center justify-center rounded-none text-sm font-black transition-all ${
+                    num === currentPage
+                      ? "bg-black text-white shadow-[0_0_20px_rgba(0,0,0,0.15)]"
+                      : "border border-black/10 hover:border-black hover:bg-black hover:text-white"
+                  }`}
+                >
+                  {num.toString().padStart(2, "0")}
+                </button>
+              ))}
+
+              <button
+                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="w-12 h-12 flex items-center justify-center rounded-none border border-black/10 hover:bg-black hover:text-white hover:border-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* CTA NEWSLETTER - Style Homepage */}
+      <section className="py-24 px-6 md:px-12 bg-grey">
+        <div className="max-w-[82.5rem] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="rounded-none p-12 md:p-20 relative overflow-hidden grain-overlay dark-section"
+            style={{ background: "var(--bg-dark)" }}
+          >
+            {/* Base + radial gradients jaune Vizion animés */}
+            <div className="absolute inset-0 pointer-events-none z-0">
+              <div
+                className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
+                }}
+              />
+              <div
+                className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
+                }}
+              />
+              <div
+                className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
+                }}
+              />
+              <div
+                className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
+                }}
+              />
+              <div
+                className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
+                }}
+              />
+            </div>
+
+            {/* Decorative elements */}
+            <div className="absolute top-8 left-8 w-24 h-24 border-t-2 border-l-2 border-accent/20" />
+            <div className="absolute bottom-8 right-8 w-24 h-24 border-b-2 border-r-2 border-accent/20" />
+
+            <div className="relative z-10 max-w-3xl mx-auto text-center">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-black/30 backdrop-blur-sm rounded-none border border-white/20 mb-8">
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-[var(--color-accent)] text-accent" />)}
+                </div>
+                <span className="text-[10px] font-black text-white tracking-wider">Newsletter exclusive</span>
+              </div>
+
+              <h2 className="font-[var(--font-body)] font-[900] text-[40px] md:text-[56px] leading-[1] tracking-tight mb-6 text-white">
+                Restez à la <span className="relative inline-block"><span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[10px] bg-accent -z-10"></span>pointe</span>
+              </h2>
+              <p className="text-white/70 text-lg md:text-xl mb-10 max-w-xl mx-auto">
+                Recevez nos meilleures analyses et stratégies B2B directement dans votre boîte mail, une fois par semaine.
+              </p>
+
+              <form
+                className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-8"
+                onSubmit={(e) => e.preventDefault()}
+              >
+                <div className="relative flex-grow">
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+                  <input
+                    type="email"
+                    placeholder="votre@email.com"
+                    className="w-full bg-black/30 border border-white/20 rounded-none px-12 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-all backdrop-blur-sm"
+                  />
+                </div>
+                <button type="button" className="btn btn-primary group">
+                  S&apos;inscrire <ArrowUpRightIcon size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </form>
+
+              {/* Trust elements */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <CheckCircle2 size={14} className="text-accent" />
+                  <span>Pas de spam</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <CheckCircle2 size={14} className="text-accent" />
+                  <span>Désinscription en 1 clic</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <CheckCircle2 size={14} className="text-accent" />
+                  <span>+500 abonnés</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </main>
+  );
+}
