@@ -200,7 +200,7 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4"
+            className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[520px] gap-3 sm:gap-4"
           >
             {/* Left - Text Content - padding mobile réduit */}
             <motion.div variants={itemVariants} className="lg:col-span-4 relative flex flex-col justify-between h-full bg-accent p-4 sm:p-6 lg:p-8 overflow-hidden">
@@ -278,7 +278,7 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
             </motion.div>
 
             {/* Center - Main Image - hauteur mobile adaptée */}
-            <motion.div variants={itemVariants} className="lg:col-span-5 relative h-[220px] sm:h-[260px] md:h-[300px] lg:h-[520px]">
+            <motion.div variants={itemVariants} className="lg:col-span-5 relative h-[220px] sm:h-[260px] md:h-[300px] lg:h-auto">
               <div className="relative h-full overflow-hidden">
                 {/* Decorative frame */}
                 <div className="absolute -inset-1 border border-accent/20 pointer-events-none z-10" />
@@ -306,7 +306,7 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
             {/* Right - Secondary Image + Quote */}
             <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4">
               {/* Secondary Image + Author glassmorphism badge */}
-              <div className="relative h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden">
+              <div className="relative h-[280px] sm:h-[320px] lg:flex-1 overflow-hidden">
                 {currentCase.secondaryImage && (
                 <Image
                   src={currentCase.secondaryImage}
