@@ -69,8 +69,9 @@ function MobileMenu({
           className="lg:hidden bg-white border-b border-gray-200"
         >
           <div className="px-4 sm:px-6 py-6 flex flex-col gap-2">
-            {navItems.map((item) =>
-              isHomePage ? (
+            {navItems.map((item) => {
+              const isAnchor = isHomePage && (item.href === "/" || item.href.startsWith("/#"));
+              return isAnchor ? (
                 <button
                   key={item.target}
                   onClick={() => handleClick(item)}
@@ -91,8 +92,8 @@ function MobileMenu({
                     {item.label}
                   </span>
                 </Link>
-              )
-            )}
+              );
+            })}
 
             {/* CTA */}
             <div className="pt-4 mt-2">
@@ -153,8 +154,9 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-            {navItems.map((item) =>
-              isHomePage ? (
+            {navItems.map((item) => {
+              const isAnchor = isHomePage && (item.href === "/" || item.href.startsWith("/#"));
+              return isAnchor ? (
                 <button
                   key={item.target}
                   onClick={() => scrollToTarget(item.target)}
@@ -172,8 +174,8 @@ export function Header() {
                   {item.label}
                   <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
                 </Link>
-              )
-            )}
+              );
+            })}
           </nav>
 
           {/* Right side - CTA */}

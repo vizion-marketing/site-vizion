@@ -5,16 +5,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRightIcon } from "@/components/icons";
 import {
-  ArrowLeft,
-  Quote,
   ChevronRight,
   Building2,
-  MapPin,
-  Users,
   Globe,
-  TrendingUp,
-  TrendingDown,
-  Minus,
   Star,
 } from "lucide-react";
 import type { Client, CaseStudy } from "../../../../sanity/lib/types";
@@ -23,17 +16,6 @@ import { PortableText } from "@portabletext/react";
 import { portableTextComponents } from "../../../../sanity/lib/portable-text";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { sectorIconMap } from "@/lib/sectorIcons";
-
-function TrendIcon({ trend }: { trend: string }) {
-  switch (trend) {
-    case "up":
-      return <TrendingUp size={16} className="text-emerald-500" />;
-    case "down":
-      return <TrendingDown size={16} className="text-emerald-500" />;
-    default:
-      return <Minus size={16} className="text-neutral-400" />;
-  }
-}
 
 interface ClientProfileContentProps {
   client: Client;
@@ -48,11 +30,14 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
   return (
     <main className="min-h-screen bg-white font-[var(--font-body)]">
 
-      {/* HERO SECTION */}
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 1 — HERO (dark, premium, like homepage)
+      ═══════════════════════════════════════════════════════════ */}
       <section
-        className="relative pt-[120px] pb-[60px] md:pt-[140px] md:pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section"
+        className="dark-section relative pt-20 sm:pt-24 md:pt-28 lg:pt-36 pb-0 overflow-hidden grain-overlay"
         style={{ background: "var(--bg-dark)" }}
       >
+        {/* Animated radial gradients */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div
             className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
@@ -68,9 +53,16 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                 "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
             }}
           />
+          <div
+            className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
+            }}
+          />
         </div>
 
-        <div className="max-w-[82.5rem] mx-auto relative z-10">
+        <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
           {/* Breadcrumb */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -86,169 +78,251 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            {/* Left content */}
+          {/* Two columns: H1 left | description + CTAs right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-10 md:mb-14">
+            {/* LEFT — Badge + H1 */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-              className="lg:col-span-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
             >
-              {/* Sector badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
-                <SectorIcon size={14} className="text-white" />
-                <span className="text-[11px] font-bold tracking-widest text-white">
+              {/* Glassmorphism sector badge with ping */}
+              <div className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full mb-6">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-50" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/50 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]" />
+                </span>
+                <span className="text-[9px] sm:text-[10px] font-medium tracking-[0.08em] uppercase text-white/90">
                   {client.sector}
                 </span>
               </div>
 
-              {/* Client name */}
-              <div className="flex items-center gap-4 mb-6">
-                {client.logo && (
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden shrink-0">
-                    <Image
-                      src={resolveImageUrl(client.logo)}
-                      alt={client.name}
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 object-contain"
-                    />
-                  </div>
-                )}
-                <h1 className="font-heading font-normal text-[32px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tight text-white">
-                  {client.name}
-                </h1>
-              </div>
+              {/* H1 with gradient text — problématique */}
+              <h1
+                className="font-heading font-normal text-[22px] min-[400px]:text-[26px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                {client.headline || client.name}
+              </h1>
+            </motion.div>
 
-              {/* Description */}
-              <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-3xl mb-8">
+            {/* RIGHT — Logo + Description + CTAs + meta */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1], delay: 0.15 }}
+              className="flex flex-col justify-end"
+            >
+              {/* Logo glassmorphism */}
+              {client.logo && (
+                <div className="w-14 h-14 bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden mb-5">
+                  <Image
+                    src={resolveImageUrl(client.logo)}
+                    alt={client.name}
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 object-contain"
+                  />
+                </div>
+              )}
+
+              <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-6 max-w-lg">
                 {client.description}
               </p>
 
-              {/* Meta info */}
-              <div className="flex flex-wrap items-center gap-6 text-white/60">
-                {client.location && (
-                  <div className="flex items-center gap-2">
-                    <MapPin size={16} />
-                    <span className="text-sm font-medium">{client.location}</span>
-                  </div>
-                )}
-                {client.size && (
-                  <div className="flex items-center gap-2">
-                    <Users size={16} />
-                    <span className="text-sm font-medium">{client.size}</span>
-                  </div>
-                )}
+              {/* CTA buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                <a href="#etudes-de-cas" className="btn btn-primary group">
+                  Découvrir les projets
+                  <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
+                </a>
                 {client.website && (
                   <a
                     href={client.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 hover:text-white transition-colors"
+                    className="btn btn-secondary group"
                   >
-                    <Globe size={16} />
-                    <span className="text-sm font-medium">Site web</span>
+                    Voir le site web
+                    <Globe size={16} className="shrink-0 group-hover:translate-x-0.5 transition-transform" />
                   </a>
                 )}
               </div>
-            </motion.div>
 
-            {/* Right — Stat + case count */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
-              className="lg:col-span-4"
-            >
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/10 backdrop-blur-md p-5 border border-white/20 text-center">
-                  <span className="text-3xl md:text-4xl font-black text-white block mb-1">
-                    {carouselStat.value}
-                  </span>
-                  <span className="text-[10px] font-medium text-white/60 tracking-wider">
-                    {carouselStat.label}
-                  </span>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md p-5 border border-white/20 text-center">
-                  <span className="text-3xl md:text-4xl font-black text-white block mb-1">
-                    {caseStudies.length}
-                  </span>
-                  <span className="text-[10px] font-medium text-white/60 tracking-wider">
-                    {caseStudies.length > 1 ? "cas clients" : "cas client"}
-                  </span>
-                </div>
-              </div>
             </motion.div>
           </div>
+
+          {/* Full-width image with accent frames + testimonial overlay */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.3 }}
+            className="relative w-full aspect-[16/7] sm:aspect-[16/6] overflow-visible mb-8 sm:mb-12"
+          >
+            {/* Accent border frames (like homepage hero) */}
+            <div className="absolute -inset-2 sm:-inset-3 border border-accent/20 pointer-events-none hidden lg:block z-10" />
+            <div className="absolute -inset-4 sm:-inset-6 border border-accent/10 pointer-events-none hidden lg:block z-10" />
+
+            {/* Corner accents */}
+            <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent pointer-events-none hidden lg:block z-10" />
+            <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-accent pointer-events-none hidden lg:block z-10" />
+
+            <div className="relative w-full h-full overflow-hidden">
+              <Image
+                src={resolveImageUrl(client.mainImage, 1600)}
+                alt={client.name}
+                width={1600}
+                height={700}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
+
+            {/* Glassmorphism testimonial card overlay (bottom-left, like homepage) */}
+            {testimonial && (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 z-20 bg-black/40 backdrop-blur-xl border border-white/10 px-5 py-4 sm:px-6 sm:py-5 shadow-2xl max-w-[90%] sm:max-w-md lg:max-w-lg"
+              >
+                {/* Stars */}
+                <div className="flex items-center gap-0.5 mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="var(--color-accent)" aria-hidden="true">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="text-[12px] sm:text-[13px] leading-relaxed text-white mb-3 line-clamp-3">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+
+                {/* Author with photo */}
+                <div className="flex items-center gap-3">
+                  {testimonial.photo ? (
+                    <Image
+                      src={resolveImageUrl(testimonial.photo)}
+                      alt={testimonial.author}
+                      width={36}
+                      height={36}
+                      className="w-9 h-9 object-cover border-2 border-accent/40 shrink-0 rounded-full"
+                    />
+                  ) : (
+                    <div className="w-9 h-9 bg-white/10 border-2 border-accent/40 shrink-0 rounded-full flex items-center justify-center">
+                      <span className="text-white/80 text-[11px] font-bold">{testimonial.author.charAt(0)}</span>
+                    </div>
+                  )}
+                  <div>
+                    <span className="text-white text-[11px] sm:text-[12px] font-semibold block">{testimonial.author}</span>
+                    <span className="text-white/50 text-[10px] sm:text-[11px]">{testimonial.role}, {client.name}</span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
         </div>
       </section>
 
-      {/* TESTIMONIAL */}
-      {testimonial && (
-        <section className="py-16 md:py-20 px-6 md:px-12 bg-card">
-          <div className="max-w-[82.5rem] mx-auto">
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 3 — À PROPOS DE NOTRE COLLABORATION (light accent bg)
+          Body content (Portable Text)
+      ═══════════════════════════════════════════════════════════ */}
+      <section
+        className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12"
+        style={{ background: "rgba(var(--color-accent-rgb), 0.05)" }}
+      >
+        <div className="max-w-[82.5rem] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+            {/* LEFT — Sticky: title + image with glassmorphism info cards */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 md:p-12 border border-black/[0.06] relative overflow-hidden"
+              transition={{ duration: 0.6 }}
+              className="lg:sticky lg:top-24 lg:self-start"
             >
-              <Quote className="absolute top-8 right-8 w-24 h-24 text-neutral-100 -rotate-12 pointer-events-none" />
+              <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
+                <div className="w-2 h-2 bg-accent" />
+                <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
+                  Le client
+                </span>
+              </div>
+              <h2 className="font-heading font-normal text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] text-primary mb-8">
+                À propos de {client.name}
+              </h2>
 
-              <div className="relative z-10 max-w-4xl">
-                <div className="flex gap-1 mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={20} className="fill-black text-black" />
-                  ))}
-                </div>
+              {/* Image with glassmorphism info cards overlay */}
+              <div className="relative">
+                {client.secondaryImage && (
+                  <div className="relative w-full aspect-square overflow-hidden">
+                    <Image
+                      src={resolveImageUrl(client.secondaryImage, 800)}
+                      alt={`Vizion × ${client.name}`}
+                      width={800}
+                      height={1067}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
 
-                <blockquote className="text-xl md:text-2xl lg:text-3xl font-medium text-primary leading-relaxed mb-8 italic">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </blockquote>
-
-                <div className="flex items-center gap-4">
-                  {testimonial.photo ? (
-                    <div className="w-14 h-14 overflow-hidden shrink-0">
-                      <Image
-                        src={resolveImageUrl(testimonial.photo)}
-                        alt={testimonial.author}
-                        width={56}
-                        height={56}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-14 h-14 bg-card flex items-center justify-center shrink-0">
-                      <Building2 size={20} className="text-muted" />
+                {/* Glassmorphism info cards overlay */}
+                <div className="absolute inset-x-3 sm:inset-x-4 bottom-3 sm:bottom-4 z-10 grid grid-cols-2 gap-2 sm:gap-3">
+                  <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-3 sm:p-4">
+                    <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">Secteur</span>
+                    <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{client.sector}</span>
+                  </div>
+                  <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-3 sm:p-4">
+                    <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">{carouselStat.label}</span>
+                    <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{carouselStat.value}</span>
+                  </div>
+                  {client.location && (
+                    <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-3 sm:p-4">
+                      <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">Localisation</span>
+                      <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{client.location}</span>
                     </div>
                   )}
-                  <div>
-                    <span className="font-heading text-lg font-medium text-primary block">
-                      {testimonial.author}
-                    </span>
-                    <span className="text-sm text-secondary">
-                      {testimonial.role}, {client.name}
-                    </span>
-                  </div>
+                  {client.size && (
+                    <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-3 sm:p-4">
+                      <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">Taille</span>
+                      <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{client.size}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
-          </div>
-        </section>
-      )}
 
-      {/* PORTABLE TEXT CONTENT — Client description */}
-      {client.body && client.body.length > 0 && (
-        <section className="py-16 md:py-20 px-6 md:px-12 bg-white">
-          <div className="max-w-3xl mx-auto prose prose-lg">
-            <PortableText value={client.body} components={portableTextComponents} />
+            {/* RIGHT — Body content (Portable Text) */}
+            {client.body && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="prose prose-lg max-w-none text-secondary"
+              >
+                <PortableText value={client.body} components={portableTextComponents} />
+              </motion.div>
+            )}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
-      {/* CASE STUDIES GRID */}
+
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 5 — CASE STUDIES COLLECTION (bg-card)
+      ═══════════════════════════════════════════════════════════ */}
       {caseStudies.length > 0 && (
-        <section className="py-16 md:py-24 px-6 md:px-12 bg-card">
+        <section id="etudes-de-cas" className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 bg-white scroll-mt-20">
           <div className="max-w-[82.5rem] mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -262,7 +336,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                   Études de cas
                 </span>
               </div>
-              <h2 className="font-heading font-normal text-[28px] md:text-[40px] leading-[1.1] tracking-tight text-primary">
+              <h2 className="font-heading font-normal text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.02em] text-primary">
                 Nos missions avec {client.name}
               </h2>
             </motion.div>
@@ -282,14 +356,30 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                       href={cs.url || `/cas-clients/${cs.clientSlug}/${cs.slug}`}
                       className="block bg-white border border-black/[0.06] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
                     >
-                      {/* Card Header */}
+                      {/* Hero image or placeholder */}
+                      <div className="relative w-full aspect-[16/9] overflow-hidden bg-card">
+                        {cs.heroImage ? (
+                          <Image
+                            src={resolveImageUrl(cs.heroImage, 600)}
+                            alt={cs.title}
+                            width={600}
+                            height={338}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <CsSectorIcon size={40} className="text-muted/30" />
+                          </div>
+                        )}
+                      </div>
+
                       <div className="p-6 pb-0">
                         <div className="flex items-center justify-between mb-4">
                           <div className="flex items-center gap-2">
                             <div className="w-8 h-8 bg-card flex items-center justify-center">
                               <CsSectorIcon size={16} className="text-primary" />
                             </div>
-                            <span className="text-[10px] font-bold tracking-widest text-muted">
+                            <span className="text-[10px] font-bold tracking-widest text-muted uppercase">
                               {cs.sector}
                             </span>
                           </div>
@@ -307,23 +397,23 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                         </p>
                       </div>
 
-                      {/* Metrics */}
-                      <div className="px-6 py-4 bg-card border-t border-black/[0.06]">
-                        <div className="grid grid-cols-3 gap-3">
-                          {cs.metrics.slice(0, 3).map((metric, mIdx) => (
-                            <div key={mIdx} className="text-center">
-                              <span className="text-lg font-black text-primary block leading-tight">
-                                {metric.value}
-                              </span>
-                              <span className="text-[9px] font-medium text-muted leading-tight block">
-                                {metric.label}
-                              </span>
-                            </div>
-                          ))}
+                      {cs.metrics && cs.metrics.length > 0 && (
+                        <div className="px-6 py-4 bg-card border-t border-black/[0.06]">
+                          <div className="grid grid-cols-3 gap-3">
+                            {cs.metrics.slice(0, 3).map((metric, mIdx) => (
+                              <div key={mIdx} className="text-center">
+                                <span className="text-lg font-black text-primary block leading-tight">
+                                  {metric.value}
+                                </span>
+                                <span className="text-[9px] font-medium text-muted leading-tight block">
+                                  {metric.label}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
 
-                      {/* Footer */}
                       <div className="px-6 py-4 flex items-center justify-between border-t border-black/[0.06]">
                         <span className="text-[10px] font-medium text-muted">
                           {cs.projectDuration} &bull; {cs.projectYear}
@@ -341,8 +431,10 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
         </section>
       )}
 
-      {/* CTA SECTION */}
-      <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 6 — CTA FINAL (dark background)
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-white">
         <div className="max-w-[82.5rem] mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
@@ -382,17 +474,13 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="h-[56px] px-8 text-[15px] font-bold flex items-center justify-center gap-2 bg-white text-black hover:bg-white/90 transition-all"
-                >
-                  Prendre rendez-vous <ArrowUpRightIcon size={16} />
+                <Link href="/contact" className="btn btn-primary group">
+                  Prendre rendez-vous
+                  <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
                 </Link>
-                <Link
-                  href="/cas-clients"
-                  className="h-[56px] px-8 text-[15px] font-bold flex items-center justify-center border-2 border-white/20 text-white hover:bg-white/10 transition-all"
-                >
+                <Link href="/cas-clients" className="btn btn-secondary group">
                   Voir tous les cas clients
+                  <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
                 </Link>
               </div>
             </div>

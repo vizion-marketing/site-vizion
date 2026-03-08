@@ -126,6 +126,7 @@ export interface Client {
   sector: string;
   sectorIcon: string;
   logo?: SanityImage;
+  headline: string;
   description: string;
   size?: string;
   location?: string;

@@ -46,6 +46,15 @@ export const clientSchema = defineType({
       type: "image",
     }),
     defineField({
+      name: "headline",
+      title: "Problématique (H1)",
+      type: "text",
+      rows: 2,
+      description:
+        'Phrase d\'accroche qui résume la mission. Ex: "Accompagner le leader français de la visite virtuelle dans son déploiement en franchise"',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "text",

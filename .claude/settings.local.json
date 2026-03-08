@@ -40,7 +40,23 @@
       "Bash(npx contentlayer2 build:*)",
       "Bash(npx rimraf .next)",
       "Bash(npx sharp:*)",
-      "Bash(git status:*)"
+      "Bash(git status:*)",
+      "Bash(find \"c:/Users/Lucas Gonzalez/Documents/GitHub/site-vizion/src/app/\\(cities\\)\" -type f -name \"*.tsx\" -o -name \"*.ts\")",
+      "Bash(find \"c:/Users/Lucas Gonzalez/Documents/GitHub/site-vizion/src/app/\\(cities\\)\" -type f)",
+      "Bash(npx mammoth vizion-positionnement.docx --output-dir=.)",
+      "Bash(python -c \"import docx; doc=docx.Document\\(''vizion-positionnement.docx''\\); [print\\(p.text\\) for p in doc.paragraphs]\")",
+      "Bash(pandoc vizion-positionnement.docx -t plain)",
+      "Bash(npx --yes mammoth vizion-positionnement.docx --output-format=markdown)",
+      "Bash(PORT=3001 npx next dev --webpack -p 3001)",
+      "Bash(npx next dev --webpack -p 3002)",
+      "Bash(taskkill //F //IM node.exe)",
+      "WebFetch(domain:by-vizion.com)",
+      "Bash(find \"/c/Users/Lucas Gonzalez/Documents/GitHub/site-vizion/src/app\" -name \"page.tsx\" -exec sh -c 'echo \"\"===== {} =====\"\" && grep -l \"\"metadata\\\\|generateMetadata\"\" \"\"$1\"\" || echo \"\"NO METADATA\"\"' _ {} ;)",
+      "Bash(test -f \"c:\\\\Users\\\\Lucas Gonzalez\\\\Documents\\\\GitHub\\\\site-vizion\\\\.env.local\")",
+      "Bash(npm ls dotenv)",
+      "Bash(node scripts/migrate-to-sanity.mjs)",
+      "Bash(node scripts/upload-images-to-sanity.mjs)",
+      "Bash(npx sanity documents query '*[_type == \"\"client\"\"]{_id, name, \"\"slug\"\": slug.current, headline}' --apiVersion 2024-01-01)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Lucas Gonzalez\\OneDrive\\Bureau\\Apps\\site-vizion"
