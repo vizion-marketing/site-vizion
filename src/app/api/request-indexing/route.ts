@@ -78,10 +78,11 @@ async function requestGoogleIndexing(urls: string[]): Promise<IndexingResponse> 
           message: "Indexing requested successfully",
         });
       } catch (error: any) {
+        console.error("Google indexing error for URL:", url, error);
         results.push({
           url,
           status: "error",
-          message: error.message || "Failed to request indexing",
+          message: "Failed to request indexing",
         });
       }
     }
@@ -99,12 +100,13 @@ async function requestGoogleIndexing(urls: string[]): Promise<IndexingResponse> 
       },
     };
   } catch (error: any) {
+    console.error("Google Indexing API initialization error:", error);
     return {
       success: false,
       results: urls.map((url) => ({
         url,
         status: "error",
-        message: error.message || "Failed to initialize Google Indexing API",
+        message: "Indexing service temporarily unavailable",
       })),
       summary: {
         total: urls.length,
@@ -173,12 +175,13 @@ async function submitToIndexNow(urls: string[]): Promise<IndexingResponse> {
       };
     } else {
       const errorText = await response.text();
+      console.error("IndexNow error:", errorText);
       return {
         success: false,
         results: urls.map((url) => ({
           url,
           status: "error",
-          message: `IndexNow error: ${errorText}`,
+          message: "IndexNow submission failed",
         })),
         summary: {
           total: urls.length,
@@ -188,12 +191,13 @@ async function submitToIndexNow(urls: string[]): Promise<IndexingResponse> {
       };
     }
   } catch (error: any) {
+    console.error("IndexNow submission error:", error);
     return {
       success: false,
       results: urls.map((url) => ({
         url,
         status: "error",
-        message: error.message || "Failed to submit to IndexNow",
+        message: "IndexNow submission failed",
       })),
       summary: {
         total: urls.length,
@@ -242,7 +246,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     console.error("Error requesting indexing:", error);
     return NextResponse.json(
-      { error: error.message || "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

@@ -86,13 +86,9 @@ export async function GET(request: NextRequest) {
     });
 
     if (!indexingResponse.ok) {
-      const errorText = await indexingResponse.text();
-      console.error("Indexing API error:", errorText);
+      console.error("Indexing API error:", await indexingResponse.text());
       return NextResponse.json(
-        {
-          error: "Failed to request indexing",
-          details: errorText,
-        },
+        { error: "Failed to request indexing" },
         { status: 500 }
       );
     }
@@ -115,10 +111,7 @@ export async function GET(request: NextRequest) {
   } catch (error: any) {
     console.error("Error in daily indexing cron:", error);
     return NextResponse.json(
-      {
-        error: "Internal server error",
-        message: error.message,
-      },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

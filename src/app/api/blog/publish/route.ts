@@ -22,10 +22,25 @@ function getApiKey(request: Request): string | null {
   return xKey?.trim() || null;
 }
 
+const ALLOWED_IMAGE_DOMAINS = ["unsplash.com", "images.unsplash.com", "pexels.com", "images.pexels.com", "cdn.sanity.io", "placehold.co"];
+
 function isValidUrl(s: string): boolean {
   try {
     const u = new URL(s);
-    return u.protocol === "http:" || u.protocol === "https:";
+    if (u.protocol !== "http:" && u.protocol !== "https:") return false;
+
+    const hostname = u.hostname;
+    // Block private/internal IPs (SSRF prevention)
+    if (/^(localhost|127\.|10\.|172\.(1[6-9]|2\d|3[0-1])\.|192\.168\.|169\.254\.|::1$|fe80:)/i.test(hostname)) {
+      return false;
+    }
+
+    // Whitelist allowed image CDNs
+    if (!ALLOWED_IMAGE_DOMAINS.some(d => hostname === d || hostname.endsWith(`.${d}`))) {
+      return false;
+    }
+
+    return true;
   } catch {
     return false;
   }
@@ -80,6 +95,17 @@ interface ValidatedData {
   slug: string;
 }
 
+const FIELD_MAX_LENGTHS = {
+  title: 300,
+  description: 1000,
+  body: 100000,
+  author: 100,
+  category: 100,
+  slug: 200,
+};
+const MAX_TAGS = 20;
+const MAX_RESOURCES = 50;
+
 function validateBody(
   body: PublishBody,
 ):
@@ -130,6 +156,28 @@ function validateBody(
     };
   }
 
+  // Field length validation
+  if (body.title.length > FIELD_MAX_LENGTHS.title) {
+    return { ok: false, error: `Le titre ne doit pas dépasser ${FIELD_MAX_LENGTHS.title} caractères.`, status: 400 };
+  }
+  if (body.description.length > FIELD_MAX_LENGTHS.description) {
+    return { ok: false, error: `La description ne doit pas dépasser ${FIELD_MAX_LENGTHS.description} caractères.`, status: 400 };
+  }
+  if (body.body && body.body.length > FIELD_MAX_LENGTHS.body) {
+    return { ok: false, error: `Le corps ne doit pas dépasser ${FIELD_MAX_LENGTHS.body} caractères.`, status: 400 };
+  }
+  if (body.author && body.author.length > FIELD_MAX_LENGTHS.author) {
+    return { ok: false, error: `L'auteur ne doit pas dépasser ${FIELD_MAX_LENGTHS.author} caractères.`, status: 400 };
+  }
+  if (body.category.length > FIELD_MAX_LENGTHS.category) {
+    return { ok: false, error: `La catégorie ne doit pas dépasser ${FIELD_MAX_LENGTHS.category} caractères.`, status: 400 };
+  }
+
+  // Array bounds validation
+  if (Array.isArray(body.tags) && body.tags.length > MAX_TAGS) {
+    return { ok: false, error: `Maximum ${MAX_TAGS} tags autorisés.`, status: 400 };
+  }
+
   if (
     body.featuredImageUrl !== undefined &&
     body.featuredImageUrl !== null &&
@@ -153,6 +201,13 @@ function validateBody(
       return {
         ok: false,
         error: "Le champ 'resources' doit être un tableau.",
+        status: 400,
+      };
+    }
+    if (body.resources.length > MAX_RESOURCES) {
+      return {
+        ok: false,
+        error: `Maximum ${MAX_RESOURCES} ressources autorisées.`,
         status: 400,
       };
     }
@@ -371,15 +426,9 @@ export async function POST(request: Request) {
     );
   } catch (err) {
     console.error("Blog publish API error:", err);
-    const message = err instanceof Error ? err.message : "Erreur serveur";
-    const isSanity = message.includes("Sanity") || message.includes("sanity");
     return NextResponse.json(
-      {
-        error: isSanity
-          ? "Erreur lors de l'écriture dans Sanity. Réessayez plus tard."
-          : "Une erreur est survenue.",
-      },
-      { status: isSanity ? 502 : 500 },
+      { error: "Une erreur est survenue lors de la publication. Réessayez plus tard." },
+      { status: 500 },
     );
   }
 }
