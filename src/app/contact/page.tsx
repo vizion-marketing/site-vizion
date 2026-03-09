@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { ArrowUpRightIcon } from "@/components/icons";
 import {
   Mail,
@@ -20,6 +21,8 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,6 +39,8 @@ export default function ContactPage() {
       company: formData.get('company') as string,
       subject: formData.get('subject') as string,
       message: formData.get('message') as string,
+      honeypot: formData.get('website') as string,
+      turnstileToken: turnstileToken,
     };
 
     try {
@@ -53,6 +58,8 @@ export default function ContactPage() {
 
       setFormStatus('success');
       form.reset();
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
     } catch (error) {
       setFormStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Une erreur est survenue');
@@ -141,6 +148,15 @@ export default function ContactPage() {
 
               {/* Formulaire */}
               <form onSubmit={handleSubmit} className="space-y-5 flex-grow">
+                {/* Honeypot field - hidden from users, catches bots */}
+                <input
+                  type="text"
+                  name="website"
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 {/* Success Message */}
                 {formStatus === 'success' && (
                   <div className="bg-accent/20 border border-accent/40 rounded-none p-4 mb-4">
@@ -166,6 +182,7 @@ export default function ContactPage() {
                       required
                       name="firstName"
                       type="text"
+                      maxLength={100}
                       placeholder="Jean"
                       className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                     />
@@ -176,6 +193,7 @@ export default function ContactPage() {
                       required
                       name="lastName"
                       type="text"
+                      maxLength={100}
                       placeholder="Dupont"
                       className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                     />
@@ -188,6 +206,7 @@ export default function ContactPage() {
                     required
                     name="email"
                     type="email"
+                    maxLength={255}
                     placeholder="contact@entreprise.com"
                     className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                   />
@@ -199,6 +218,7 @@ export default function ContactPage() {
                     <input
                       name="company"
                       type="text"
+                      maxLength={200}
                       placeholder="Nom de votre entreprise"
                       className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300"
                     />
@@ -227,15 +247,30 @@ export default function ContactPage() {
                     required
                     name="message"
                     rows={4}
+                    minLength={10}
+                    maxLength={5000}
                     placeholder="Décrivez brièvement votre projet ou votre demande..."
                     className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-white/60 transition-all duration-300 resize-none"
                   />
                 </div>
 
+                {/* Cloudflare Turnstile CAPTCHA */}
+                {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+                  <div className="flex justify-center">
+                    <Turnstile
+                      ref={turnstileRef}
+                      siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                      onSuccess={(token) => setTurnstileToken(token)}
+                      onExpire={() => setTurnstileToken(null)}
+                      options={{ theme: "dark", size: "flexible" }}
+                    />
+                  </div>
+                )}
+
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !turnstileToken}
                   className="w-full h-14 rounded-none flex items-center justify-center gap-3 mt-6 group disabled:opacity-70 disabled:cursor-not-allowed text-[15px] font-[var(--font-body)] font-semibold tracking-[-0.01em] transition-all duration-300 bg-accent text-black border border-accent/50 shadow-[0_4px_24px_-1px_rgba(var(--color-accent-rgb),0.25)] hover:shadow-[0_8px_32px_-4px_rgba(var(--color-accent-rgb),0.4)]"
                 >
                   {isSubmitting ? (

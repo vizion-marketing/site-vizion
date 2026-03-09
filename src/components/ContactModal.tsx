@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { X, Send, CheckCircle2, Loader2, Phone } from "lucide-react";
 
 interface ContactModalProps {
@@ -12,28 +13,58 @@ interface ContactModalProps {
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
     message: "",
   });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState("loading");
+    setErrorMessage("");
 
-    // Simulate form submission - replace with actual API call
+    const nameParts = formData.name.trim().split(/\s+/);
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || firstName;
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email: formData.email,
+          company: formData.company,
+          subject: "contact-modal",
+          message: formData.message,
+          turnstileToken,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Une erreur est survenue");
+      }
+
       setFormState("success");
       setTimeout(() => {
         onClose();
         setFormState("idle");
+        setErrorMessage("");
         setFormData({ name: "", email: "", company: "", message: "" });
+        setTurnstileToken(null);
+        turnstileRef.current?.reset();
       }, 2000);
-    } catch {
+    } catch (error) {
       setFormState("error");
+      setErrorMessage(error instanceof Error ? error.message : "Une erreur est survenue");
     }
   };
 
@@ -103,16 +134,34 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
+                      {/* Honeypot field - hidden from users */}
+                      <input
+                        type="text"
+                        name="website"
+                        style={{ display: 'none' }}
+                        tabIndex={-1}
+                        autoComplete="off"
+                        aria-hidden="true"
+                      />
+
+                      {/* Error Message */}
+                      {formState === "error" && errorMessage && (
+                        <div className="bg-red-50 border border-red-200 rounded-none p-3">
+                          <p className="text-red-600 text-sm">{errorMessage}</p>
+                        </div>
+                      )}
+
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label htmlFor="name" className="block text-xs font-bold text-neutral-600 mb-1.5">
+                          <label htmlFor="modal-name" className="block text-xs font-bold text-neutral-600 mb-1.5">
                             Nom *
                           </label>
                           <input
                             type="text"
-                            id="name"
+                            id="modal-name"
                             name="name"
                             required
+                            maxLength={200}
                             value={formData.name}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
@@ -120,13 +169,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                           />
                         </div>
                         <div>
-                          <label htmlFor="company" className="block text-xs font-bold text-neutral-600 mb-1.5">
+                          <label htmlFor="modal-company" className="block text-xs font-bold text-neutral-600 mb-1.5">
                             Entreprise
                           </label>
                           <input
                             type="text"
-                            id="company"
+                            id="modal-company"
                             name="company"
+                            maxLength={200}
                             value={formData.company}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
@@ -136,14 +186,15 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       </div>
 
                       <div>
-                        <label htmlFor="email" className="block text-xs font-bold text-neutral-600 mb-1.5">
+                        <label htmlFor="modal-email" className="block text-xs font-bold text-neutral-600 mb-1.5">
                           Email *
                         </label>
                         <input
                           type="email"
-                          id="email"
+                          id="modal-email"
                           name="email"
                           required
+                          maxLength={255}
                           value={formData.email}
                           onChange={handleChange}
                           className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
@@ -152,14 +203,16 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       </div>
 
                       <div>
-                        <label htmlFor="message" className="block text-xs font-bold text-neutral-600 mb-1.5">
+                        <label htmlFor="modal-message" className="block text-xs font-bold text-neutral-600 mb-1.5">
                           Message *
                         </label>
                         <textarea
-                          id="message"
+                          id="modal-message"
                           name="message"
                           required
                           rows={4}
+                          minLength={10}
+                          maxLength={5000}
                           value={formData.message}
                           onChange={handleChange}
                           className="w-full px-4 py-3 bg-grey border-0 rounded-none text-sm text-black placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] resize-none"
@@ -167,9 +220,22 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         />
                       </div>
 
+                      {/* Cloudflare Turnstile CAPTCHA */}
+                      {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+                        <div className="flex justify-center">
+                          <Turnstile
+                            ref={turnstileRef}
+                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                            onSuccess={(token) => setTurnstileToken(token)}
+                            onExpire={() => setTurnstileToken(null)}
+                            options={{ theme: "light", size: "flexible" }}
+                          />
+                        </div>
+                      )}
+
                       <button
                         type="submit"
-                        disabled={formState === "loading"}
+                        disabled={formState === "loading" || !turnstileToken}
                         className="w-full h-12 bg-black text-white font-bold text-sm flex items-center justify-center gap-2 hover:bg-neutral-800 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                       >
                         {formState === "loading" ? (
@@ -186,7 +252,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       </button>
 
                       <p className="text-[11px] text-neutral-400 text-center">
-                        En soumettant ce formulaire, vous acceptez d'être recontacté par Vizion.
+                        En soumettant ce formulaire, vous acceptez d&apos;être recontacté par Vizion.
                       </p>
 
                       {/* Divider */}
@@ -254,7 +320,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       </span>
                     </div>
                     <p className="text-white text-lg font-medium leading-relaxed">
-                      "Je lis personnellement chaque message et reviens vers vous rapidement."
+                      &quot;Je lis personnellement chaque message et reviens vers vous rapidement.&quot;
                     </p>
                     <p className="text-white/60 text-sm mt-2">
                       — Lucas Gonzalez, Fondateur
