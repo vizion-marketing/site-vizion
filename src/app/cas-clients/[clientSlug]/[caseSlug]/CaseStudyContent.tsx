@@ -36,11 +36,13 @@ import {
   Rocket
 } from "lucide-react";
 import type { CaseStudy } from "../../../../../sanity/lib/types";
+import type { RelatedService } from "@/lib/sanity/services";
 import { resolveImageUrl } from "../../../../../sanity/lib/image";
 import { urlFor } from "../../../../../sanity/lib/image";
 import { calculateReadingTime } from "@/lib/portable-text-utils";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { sectorIconMap } from "@/lib/sectorIcons";
+import { DeliverablesGallery } from "@/components/sections/DeliverablesGallery";
 
 // Icon mapping
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -230,11 +232,12 @@ const caseStudyPTComponents: PortableTextComponents = {
 interface CaseStudyContentProps {
   caseStudy: CaseStudy;
   relatedCases: CaseStudy[];
+  relatedServices?: RelatedService[];
   clientSlug: string;
   clientName?: string;
 }
 
-export function CaseStudyContent({ caseStudy, relatedCases, clientSlug, clientName }: CaseStudyContentProps) {
+export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, clientSlug, clientName }: CaseStudyContentProps) {
   // Compute reading time from body
   const readingTime = caseStudy.body
     ? calculateReadingTime(caseStudy.body)
@@ -289,7 +292,8 @@ export function CaseStudyContent({ caseStudy, relatedCases, clientSlug, clientNa
 
         <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Breadcrumb */}
-          <motion.div
+          <motion.nav
+            aria-label="Fil d'Ariane"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
@@ -313,15 +317,13 @@ export function CaseStudyContent({ caseStudy, relatedCases, clientSlug, clientNa
                 </>
               )}
             </div>
-          </motion.div>
+          </motion.nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            {/* Left content */}
+          <div>
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-              className="lg:col-span-8"
             >
               {/* Sector badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-none border border-white/20 mb-6">
@@ -358,28 +360,6 @@ export function CaseStudyContent({ caseStudy, relatedCases, clientSlug, clientNa
                 <div className="flex items-center gap-2">
                   <FileText size={16} />
                   <span className="text-sm font-medium">{readingTime}</span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right - Quick metrics preview */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
-              className="lg:col-span-4 hidden lg:block"
-            >
-              <div className="bg-white/10 backdrop-blur-md rounded-none p-6 border border-white/20">
-                <span className="text-[10px] font-bold tracking-widest text-white/60 mb-4 block">
-                  Résultats clés
-                </span>
-                <div className="space-y-4">
-                  {caseStudy.metrics.slice(0, 3).map((metric, idx) => (
-                    <div key={idx} className="flex items-center justify-between">
-                      <span className="text-sm text-white/70">{metric.label}</span>
-                      <span className="text-xl font-black text-white">{metric.value}</span>
-                    </div>
-                  ))}
                 </div>
               </div>
             </motion.div>
@@ -555,6 +535,36 @@ export function CaseStudyContent({ caseStudy, relatedCases, clientSlug, clientNa
                     </div>
                   </motion.div>
                 )}
+
+                {/* Related Services */}
+                {relatedServices && relatedServices.length > 0 && (
+                  <motion.div
+                    variants={fadeInUp}
+                    initial="initial"
+                    whileInView="whileInView"
+                    viewport={{ once: true }}
+                    className="bg-white border border-neutral-100 rounded-none p-6 shadow-sm"
+                  >
+                    <h3 className="font-heading font-normal text-sm tracking-wider text-black mb-4">
+                      Services associés
+                    </h3>
+                    <ul className="space-y-3">
+                      {relatedServices.map((service) => (
+                        <li key={service._id}>
+                          <Link
+                            href={service.url}
+                            className="flex items-center gap-3 text-sm text-neutral-600 hover:text-black transition-colors group"
+                          >
+                            <div className="w-8 h-8 bg-grey rounded-none flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors">
+                              <ChevronRight size={14} className="text-black" />
+                            </div>
+                            <span className="font-medium">{service.title}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
               </div>
             </aside>
 
@@ -591,6 +601,14 @@ export function CaseStudyContent({ caseStudy, relatedCases, clientSlug, clientNa
           </div>
         </div>
       </section>
+
+      {/* DELIVERABLES GALLERY */}
+      {caseStudy.galleryImages && caseStudy.galleryImages.length > 0 && (
+        <DeliverablesGallery
+          images={caseStudy.galleryImages}
+          clientName={caseStudy.company}
+        />
+      )}
 
       {/* TESTIMONIAL SECTION */}
       {caseStudy.testimonial && (

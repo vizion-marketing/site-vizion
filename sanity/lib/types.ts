@@ -89,6 +89,21 @@ export interface Deliverable {
   icon?: string;
 }
 
+export interface DeliverableVisual {
+  title: string;
+  description?: string;
+  image: SanityImage;
+}
+
+export interface GalleryImage {
+  _key: string;
+  asset: { _ref: string; _type: "reference" };
+  hotspot?: { x: number; y: number; width: number; height: number };
+  crop?: { top: number; bottom: number; left: number; right: number };
+  title?: string;
+  caption?: string;
+}
+
 // ============================================================
 // Document types (mirroring Sanity document schemas)
 // ============================================================
@@ -137,6 +152,7 @@ export interface Client {
   carouselStat: { value: string; label: string };
   testimonial: Testimonial;
   body?: PortableTextBlock[];
+  galleryImages?: GalleryImage[];
   featured: boolean;
   order: number;
   draft: boolean;
@@ -170,7 +186,9 @@ export interface CaseStudy {
   testimonial?: Testimonial;
   deliverables?: Deliverable[];
   body?: PortableTextBlock[];
+  galleryImages?: GalleryImage[];
   publishedAt: string;
+  dateModified?: string;
   featured: boolean;
   order: number;
   draft: boolean;
@@ -197,8 +215,11 @@ export interface Service {
   category: string;
   metrics?: Metric[];
   painPointsTitle?: string;
+  painPointsSubtitle?: string;
+  painPointsDescription?: string;
   painPoints?: PainPoint[];
   featuresTitle?: string;
+  featuresSubtitle?: string;
   features?: Feature[];
   processTitle?: string;
   processSubtitle?: string;
@@ -213,6 +234,9 @@ export interface Service {
   comparisonTitle?: string;
   comparisonRows?: ComparisonRow[];
   trackRecord?: TrackRecordStat[];
+  deliverablesTitle?: string;
+  deliverablesSubtitle?: string;
+  deliverables?: DeliverableVisual[];
   relatedBlogTags?: string[];
   ctaTitle?: string;
   ctaDescription?: string;

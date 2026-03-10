@@ -8,6 +8,10 @@ export const metadata = createMetadata({
   title: "Cas Clients — Résultats de notre agence marketing B2B",
   description: "Études de cas de notre agence marketing B2B : franchise, SaaS, industrie, services. Résultats concrets et mesurables pour des PME et ETI accompagnées par Vizion.",
   path: "/cas-clients",
+  image: {
+    url: "/images/og-cas-clients.avif",
+    alt: "Cas clients B2B — Vizion agence marketing stratégique",
+  },
 });
 
 export default async function CasClientsPage() {
@@ -31,6 +35,7 @@ export default async function CasClientsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    inLanguage: "fr",
     name: "Cas Clients B2B",
     description: "Collection d'études de cas B2B démontrant notre expertise en marketing et croissance commerciale.",
     url: `${SITE_URL}/cas-clients`,

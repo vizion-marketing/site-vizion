@@ -118,6 +118,23 @@ export const clientSchema = defineType({
       type: "blockContent",
     }),
     defineField({
+      name: "galleryImages",
+      title: "Galerie de livrables (visuels)",
+      type: "array",
+      description:
+        "Visuels des livrables produits pour ce client (brochures, sites, campagnes, etc.)",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            { name: "title", title: "Titre", type: "string" },
+            { name: "caption", title: "Légende", type: "string" },
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: "featured",
       title: "Mis en avant",
       type: "boolean",

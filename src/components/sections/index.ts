@@ -64,6 +64,8 @@ export type { CaseStudiesCarouselProps, CaseStudy } from "./CaseStudiesCarousel"
 export { ImageSlider } from "./ImageSlider";
 export type { ImageSliderProps, ImageSlide } from "./ImageSlider";
 
+export { DeliverablesGallery } from "./DeliverablesGallery";
+
 export { BeforeAfter } from "./BeforeAfter";
 export type { BeforeAfterProps } from "./BeforeAfter";
 

@@ -91,6 +91,17 @@ export const service = defineType({
       type: "string",
     }),
     defineField({
+      name: "painPointsSubtitle",
+      title: "Sous-titre problematiques",
+      type: "string",
+    }),
+    defineField({
+      name: "painPointsDescription",
+      title: "Paragraphe de contexte problematiques",
+      type: "text",
+      rows: 4,
+    }),
+    defineField({
       name: "painPoints",
       title: "Problematiques",
       type: "array",
@@ -101,6 +112,11 @@ export const service = defineType({
     defineField({
       name: "featuresTitle",
       title: "Titre fonctionnalites",
+      type: "string",
+    }),
+    defineField({
+      name: "featuresSubtitle",
+      title: "Sous-titre fonctionnalites",
       type: "string",
     }),
     defineField({
@@ -206,6 +222,24 @@ export const service = defineType({
           },
         },
       ],
+    }),
+
+    // Deliverables
+    defineField({
+      name: "deliverablesTitle",
+      title: "Titre livrables",
+      type: "string",
+    }),
+    defineField({
+      name: "deliverablesSubtitle",
+      title: "Sous-titre livrables",
+      type: "string",
+    }),
+    defineField({
+      name: "deliverables",
+      title: "Livrables visuels",
+      type: "array",
+      of: [{ type: "deliverableVisual" }],
     }),
 
     // Related blog tags

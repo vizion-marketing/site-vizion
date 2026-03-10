@@ -16,6 +16,7 @@ import { PortableText } from "@portabletext/react";
 import { portableTextComponents } from "../../../../sanity/lib/portable-text";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { sectorIconMap } from "@/lib/sectorIcons";
+import { DeliverablesGallery } from "@/components/sections/DeliverablesGallery";
 
 interface ClientProfileContentProps {
   client: Client;
@@ -64,7 +65,8 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
 
         <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
           {/* Breadcrumb */}
-          <motion.div
+          <motion.nav
+            aria-label="Fil d'Ariane"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
@@ -76,7 +78,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
               <ChevronRight size={14} />
               <span className="text-white/80">{client.name}</span>
             </div>
-          </motion.div>
+          </motion.nav>
 
           {/* Two columns: H1 left | description + CTAs right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-10 md:mb-14">
@@ -97,16 +99,10 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                 </span>
               </div>
 
-              {/* H1 with gradient text — problématique */}
+              {/* H1 */}
               <h1
-                className="font-heading font-normal text-[22px] min-[400px]:text-[26px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em]"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  color: "transparent",
-                }}
+                className="font-heading font-normal leading-[1.15] tracking-[-0.02em] text-white"
+                style={{ fontSize: "clamp(22px, 5vw, 64px)" }}
               >
                 {client.headline || client.name}
               </h1>
@@ -124,7 +120,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                 <div className="w-14 h-14 bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden mb-5">
                   <Image
                     src={resolveImageUrl(client.logo)}
-                    alt={client.name}
+                    alt={`Logo ${client.name}`}
                     width={40}
                     height={40}
                     className="w-10 h-10 object-contain"
@@ -155,6 +151,26 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                 )}
               </div>
 
+              {/* Client metadata chips */}
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-3 sm:p-4">
+                  <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">Secteur</span>
+                  <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{client.sector}</span>
+                </div>
+                {client.location && (
+                  <div className="bg-white/5 backdrop-blur-md border border-white/10 p-3 sm:p-4">
+                    <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">Localisation</span>
+                    <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{client.location}</span>
+                  </div>
+                )}
+                {client.size && (
+                  <div className="bg-white/5 backdrop-blur-md border border-white/10 p-3 sm:p-4">
+                    <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">Taille</span>
+                    <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{client.size}</span>
+                  </div>
+                )}
+              </div>
+
             </motion.div>
           </div>
 
@@ -176,7 +192,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
             <div className="relative w-full h-full overflow-hidden">
               <Image
                 src={resolveImageUrl(client.mainImage, 1600)}
-                alt={client.name}
+                alt={`${client.name} — collaboration marketing ${client.sector}`}
                 width={1600}
                 height={700}
                 className="w-full h-full object-cover"
@@ -184,50 +200,6 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
               />
             </div>
 
-            {/* Glassmorphism testimonial card overlay (bottom-left, like homepage) */}
-            {testimonial && (
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 z-20 bg-black/40 backdrop-blur-xl border border-white/10 px-5 py-4 sm:px-6 sm:py-5 shadow-2xl max-w-[90%] sm:max-w-md lg:max-w-lg"
-              >
-                {/* Stars */}
-                <div className="flex items-center gap-0.5 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="var(--color-accent)" aria-hidden="true">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <p className="text-[12px] sm:text-[13px] leading-relaxed text-white mb-3 line-clamp-3">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
-
-                {/* Author with photo */}
-                <div className="flex items-center gap-3">
-                  {testimonial.photo ? (
-                    <Image
-                      src={resolveImageUrl(testimonial.photo)}
-                      alt={testimonial.author}
-                      width={36}
-                      height={36}
-                      className="w-9 h-9 object-cover border-2 border-accent/40 shrink-0 rounded-full"
-                    />
-                  ) : (
-                    <div className="w-9 h-9 bg-white/10 border-2 border-accent/40 shrink-0 rounded-full flex items-center justify-center">
-                      <span className="text-white/80 text-[11px] font-bold">{testimonial.author.charAt(0)}</span>
-                    </div>
-                  )}
-                  <div>
-                    <span className="text-white text-[11px] sm:text-[12px] font-semibold block">{testimonial.author}</span>
-                    <span className="text-white/50 text-[10px] sm:text-[11px]">{testimonial.role}, {client.name}</span>
-                  </div>
-                </div>
-              </motion.div>
-            )}
           </motion.div>
         </div>
       </section>
@@ -274,49 +246,113 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                   </div>
                 )}
 
-                {/* Glassmorphism info cards overlay */}
-                <div className="absolute inset-x-3 sm:inset-x-4 bottom-3 sm:bottom-4 z-10 grid grid-cols-2 gap-2 sm:gap-3">
-                  <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-3 sm:p-4">
-                    <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">Secteur</span>
-                    <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{client.sector}</span>
-                  </div>
-                  <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-3 sm:p-4">
-                    <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">{carouselStat.label}</span>
-                    <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{carouselStat.value}</span>
-                  </div>
-                  {client.location && (
-                    <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-3 sm:p-4">
-                      <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">Localisation</span>
-                      <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{client.location}</span>
+                {/* Testimonial overlay */}
+                {testimonial && (
+                  <div className="absolute inset-x-3 sm:inset-x-4 bottom-3 sm:bottom-4 z-10 bg-black/40 backdrop-blur-xl border border-white/10 px-5 py-4 sm:px-6 sm:py-5 shadow-2xl dark-section">
+                    <div className="flex items-center gap-0.5 mb-2">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="var(--color-accent)" aria-hidden="true">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
                     </div>
-                  )}
-                  {client.size && (
-                    <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-3 sm:p-4">
-                      <span className="text-[9px] sm:text-[10px] font-medium tracking-wider text-white/60 uppercase block mb-1">Taille</span>
-                      <span className="font-heading text-sm sm:text-base font-normal tracking-tight text-white">{client.size}</span>
+                    <p className="text-[12px] sm:text-[13px] leading-relaxed text-white mb-3">
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </p>
+                    <div className="flex items-center gap-3">
+                      {testimonial.photo ? (
+                        <Image
+                          src={resolveImageUrl(testimonial.photo)}
+                          alt={`${testimonial.author}, ${testimonial.role || client.name}`}
+                          width={36}
+                          height={36}
+                          className="w-9 h-9 object-cover border-2 border-accent/40 shrink-0 rounded-full"
+                        />
+                      ) : (
+                        <div className="w-9 h-9 bg-white/10 border-2 border-accent/40 shrink-0 rounded-full flex items-center justify-center">
+                          <span className="text-white/80 text-[11px] font-bold">{testimonial.author.charAt(0)}</span>
+                        </div>
+                      )}
+                      <div>
+                        <span className="text-white text-[11px] sm:text-[12px] font-semibold block">{testimonial.author}</span>
+                        <span className="text-white/50 text-[10px] sm:text-[11px]">{testimonial.role}, {client.name}</span>
+                      </div>
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </motion.div>
 
-            {/* RIGHT — Body content (Portable Text) */}
-            {client.body && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.15 }}
-                className="prose prose-lg max-w-none text-secondary"
-              >
-                <PortableText value={client.body} components={portableTextComponents} />
-              </motion.div>
-            )}
+            {/* RIGHT — Body content (Portable Text) + deliverables preview */}
+            <div>
+              {client.body && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.15 }}
+                  className="prose prose-lg max-w-none text-secondary"
+                >
+                  <PortableText value={client.body} components={portableTextComponents} />
+                </motion.div>
+              )}
+
+              {/* Mini gallery preview */}
+              {client.galleryImages && client.galleryImages.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.25 }}
+                  className="mt-10"
+                >
+                  <div className="flex items-center gap-2.5 mb-4">
+                    <div className="w-2 h-2 bg-accent" />
+                    <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
+                      Nos livrables
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {client.galleryImages.slice(0, 6).map((img, index) => (
+                      <div
+                        key={img._key || index}
+                        className="relative aspect-[4/3] overflow-hidden bg-card border border-black/[0.06] group"
+                      >
+                        <Image
+                          src={resolveImageUrl(img, 400)}
+                          alt={img.title || `Livrable produit pour ${client.name}`}
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        {img.title && (
+                          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-2 pt-6">
+                            <span className="text-white text-[10px] sm:text-[11px] font-medium leading-tight block">
+                              {img.title}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
 
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 4 — GALERIE DE LIVRABLES
+      ═══════════════════════════════════════════════════════════ */}
+      {client.galleryImages && client.galleryImages.length > 0 && (
+        <DeliverablesGallery
+          images={client.galleryImages}
+          clientName={client.name}
+        />
+      )}
 
       {/* ═══════════════════════════════════════════════════════════
           SECTION 5 — CASE STUDIES COLLECTION (bg-card)
@@ -361,7 +397,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                         {cs.heroImage ? (
                           <Image
                             src={resolveImageUrl(cs.heroImage, 600)}
-                            alt={cs.title}
+                            alt={`${cs.title} — étude de cas ${client.name}`}
                             width={600}
                             height={338}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

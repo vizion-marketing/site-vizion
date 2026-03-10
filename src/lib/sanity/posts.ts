@@ -40,3 +40,15 @@ export async function getLatestPosts(limit: number = 3): Promise<Post[]> {
   const posts = await getAllPosts();
   return posts.slice(0, limit);
 }
+
+export async function getPostsByTags(
+  tags: string[],
+  limit: number = 3,
+): Promise<Post[]> {
+  if (!tags || tags.length === 0) return [];
+  const posts = await getAllPosts();
+  const matched = posts.filter(
+    (p) => p.tags && p.tags.some((t) => tags.includes(t)),
+  );
+  return matched.slice(0, limit);
+}

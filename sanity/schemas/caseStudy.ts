@@ -150,10 +150,33 @@ export const caseStudy = defineType({
       type: "blockContent",
     }),
     defineField({
+      name: "galleryImages",
+      title: "Galerie de livrables (visuels)",
+      type: "array",
+      description:
+        "Visuels des livrables produits pour cette mission (brochures, sites, campagnes, etc.)",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            { name: "title", title: "Titre", type: "string" },
+            { name: "caption", title: "Légende", type: "string" },
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: "publishedAt",
       title: "Date de publication",
       type: "datetime",
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "dateModified",
+      title: "Date de modification",
+      type: "datetime",
+      description: "Renseigner lors d'une mise à jour significative du contenu (SEO: article:modified_time)",
     }),
     defineField({
       name: "featured",

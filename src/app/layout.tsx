@@ -11,7 +11,7 @@ import { ComingSoonProvider } from "@/components/ComingSoonProvider";
 // DM Sans pour titres et corps
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
   preload: true,

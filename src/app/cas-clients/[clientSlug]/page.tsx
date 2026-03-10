@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: "Vizion",
       type: "website",
+      locale: "fr_FR",
       images: imageUrl ? [{ url: imageUrl, width: 1200, height: 630, alt: client.name }] : [],
     },
     twitter: {

@@ -2,9 +2,11 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCaseStudyBySlug, getAllCaseStudies, getAllCaseStudyParams } from "@/lib/sanity/caseStudies";
 import { getClientBySlug } from "@/lib/sanity/clients";
+import { getServicesForCaseStudy } from "@/lib/sanity/services";
 import { CaseStudyContent } from "./CaseStudyContent";
 import { SITE_URL } from "@/lib/constants";
 import { resolveImageUrl } from "../../../../../sanity/lib/image";
+import { calculateReadingTime } from "@/lib/portable-text-utils";
 
 type Props = {
   params: Promise<{ clientSlug: string; caseSlug: string }>;
@@ -36,7 +38,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: "Vizion",
       type: "article",
+      locale: "fr_FR",
       publishedTime: caseStudy.publishedAt,
+      ...(caseStudy.dateModified && { modifiedTime: caseStudy.dateModified }),
       authors: ["Vizion"],
       images: imageUrl
         ? [{ url: imageUrl, width: 1200, height: 630, alt: caseStudy.title }]
@@ -61,7 +65,10 @@ export default async function CaseStudyPage({ params }: Props) {
     notFound();
   }
 
-  const client = await getClientBySlug(clientSlug);
+  const [client, relatedServices] = await Promise.all([
+    getClientBySlug(clientSlug),
+    getServicesForCaseStudy(caseStudy._id),
+  ]);
 
   // Related cases: same client first, then same sector
   const allCases = await getAllCaseStudies();
@@ -80,20 +87,65 @@ export default async function CaseStudyPage({ params }: Props) {
     })
     .slice(0, 3);
 
-  // JSON-LD
+  // Compute reading time for schema
+  const readingTime = caseStudy.body
+    ? calculateReadingTime(caseStudy.body)
+    : "1 min de lecture";
+  const readingMinutes = parseInt(readingTime) || 1;
+
+  // Resolve hero image for schema
+  const heroImageUrl = resolveImageUrl(caseStudy.heroImage, 1200);
+
+  // JSON-LD Article
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
+    inLanguage: "fr",
     headline: caseStudy.title,
     description: caseStudy.description,
     author: { "@type": "Organization", name: "Vizion", url: SITE_URL },
     publisher: { "@type": "Organization", name: "Vizion", url: SITE_URL },
     datePublished: caseStudy.publishedAt,
+    ...(caseStudy.dateModified && { dateModified: caseStudy.dateModified }),
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}${caseStudy.url}` },
     about: { "@type": "Organization", name: caseStudy.company },
     articleSection: caseStudy.sector,
     keywords: [caseStudy.sector, "cas client", "étude de cas", "B2B", "marketing", caseStudy.company].join(", "),
+    ...(heroImageUrl && {
+      image: {
+        "@type": "ImageObject",
+        url: heroImageUrl.startsWith("/") ? `${SITE_URL}${heroImageUrl}` : heroImageUrl,
+        width: 1200,
+        height: 630,
+      },
+    }),
+    timeRequired: `PT${readingMinutes}M`,
   };
+
+  // JSON-LD Review (testimonial)
+  const reviewLd = caseStudy.testimonial
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        inLanguage: "fr",
+        reviewBody: caseStudy.testimonial.quote,
+        author: {
+          "@type": "Person",
+          name: caseStudy.testimonial.author,
+          ...(caseStudy.testimonial.role && { jobTitle: caseStudy.testimonial.role }),
+        },
+        itemReviewed: {
+          "@type": "Organization",
+          name: "Vizion",
+          url: SITE_URL,
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: caseStudy.testimonial.rating || 5,
+          bestRating: 5,
+        },
+      }
+    : null;
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -123,9 +175,16 @@ export default async function CaseStudyPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
+      {reviewLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewLd) }}
+        />
+      )}
       <CaseStudyContent
         caseStudy={caseStudy}
         relatedCases={relatedCases}
+        relatedServices={relatedServices}
         clientSlug={clientSlug}
         clientName={client?.name}
       />

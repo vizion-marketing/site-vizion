@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SITEMAP_QUERY } from "../../../../../sanity/lib/queries";
 import { sanityFetch } from "@/lib/sanity/fetch";
+import { allServices } from "@/content/services";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://by-vizion.com";
 
@@ -8,7 +9,6 @@ interface SitemapData {
   posts: { url: string }[];
   clients: { url: string }[];
   caseStudies: { url: string }[];
-  services: { url: string }[];
 }
 
 /**
@@ -69,9 +69,8 @@ export async function GET(request: NextRequest) {
     if (data.caseStudies) {
       urls.push(...data.caseStudies.map((cs) => `${baseUrl}${cs.url}`));
     }
-    if (data.services) {
-      urls.push(...data.services.map((s) => `${baseUrl}${s.url}`));
-    }
+    // Services (from TypeScript content)
+    urls.push(...allServices.map((s) => `${baseUrl}/services/${s.slug}`));
 
     console.log(`Requesting indexing for ${urls.length} URLs`);
 

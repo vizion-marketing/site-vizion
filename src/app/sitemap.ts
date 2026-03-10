@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { SITEMAP_QUERY } from "../../sanity/lib/queries";
 import { sanityFetch } from "@/lib/sanity/fetch";
 import { CITY_SLUGS } from "@/content/cities";
+import { allServices } from "@/content/services";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://by-vizion.com";
 
@@ -9,7 +10,6 @@ interface SitemapData {
   posts: { url: string; lastModified?: string }[];
   clients: { url: string }[];
   caseStudies: { url: string; lastModified?: string }[];
-  services: { url: string; lastModified?: string }[];
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -60,12 +60,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  // Services
-  const servicePages = (data.services || []).map((s) => ({
-    url: `${baseUrl}${s.url}`,
-    lastModified: s.lastModified ? new Date(s.lastModified) : new Date(),
+  // Services (from TypeScript content)
+  const servicePages = allServices.map((s) => ({
+    url: `${baseUrl}/services/${s.slug}`,
+    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,
+  }));
+
+  // Sector landing pages (SEO sectoriel)
+  const sectorSlugs = ["franchise", "saas-b2b", "services-b2b", "industrie-b2b", "business-local"];
+  const sectorPages = sectorSlugs.map((slug) => ({
+    url: `${baseUrl}/cas-clients/secteur/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
   }));
 
   // City landing pages (SEO local)
@@ -82,6 +91,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...clientPages,
     ...caseStudyPages,
     ...servicePages,
+    ...sectorPages,
     ...cityPages,
   ];
 }

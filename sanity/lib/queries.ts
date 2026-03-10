@@ -105,6 +105,7 @@ export const CLIENT_BY_SLUG_QUERY = groq`
     carouselStat,
     testimonial,
     body,
+    galleryImages[] { _key, asset, hotspot, crop, title, caption },
     featured,
     order,
     metaTitle,
@@ -156,6 +157,7 @@ export const ALL_CASE_STUDIES_QUERY = groq`
     featured,
     order,
     publishedAt,
+    dateModified,
     metaTitle,
     metaDescription,
     "url": "/cas-clients/" + client->slug.current + "/" + slug.current
@@ -180,6 +182,7 @@ export const CASE_STUDIES_FOR_CLIENT_QUERY = groq`
     featured,
     order,
     publishedAt,
+    dateModified,
     metaTitle,
     metaDescription,
     "url": "/cas-clients/" + client->slug.current + "/" + slug.current
@@ -209,7 +212,9 @@ export const CASE_STUDY_BY_SLUG_QUERY = groq`
     testimonial,
     deliverables,
     body,
+    galleryImages[] { _key, asset, hotspot, crop, title, caption },
     publishedAt,
+    dateModified,
     featured,
     order,
     metaTitle,
@@ -222,6 +227,20 @@ export const ALL_CASE_STUDY_PARAMS_QUERY = groq`
   *[_type == "caseStudy" && !draft] {
     "caseSlug": slug.current,
     "clientSlug": client->slug.current
+  }
+`;
+
+// ============================================================
+// Reverse lookup: services referencing a given case study
+// ============================================================
+
+export const SERVICES_FOR_CASE_STUDY_QUERY = groq`
+  *[_type == "service" && references($caseStudyId)] {
+    _id,
+    title,
+    "slug": slug.current,
+    icon,
+    "url": "/services/" + slug.current
   }
 `;
 
@@ -282,7 +301,7 @@ export const SITEMAP_QUERY = groq`
     },
     "caseStudies": *[_type == "caseStudy" && !draft] {
       "url": "/cas-clients/" + client->slug.current + "/" + slug.current,
-      "lastModified": publishedAt
+      "lastModified": coalesce(dateModified, publishedAt)
     },
     "services": *[_type == "service"] {
       "url": "/services/" + slug.current,

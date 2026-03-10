@@ -17,14 +17,24 @@ import { ArrowUpRightIcon } from "@/components/icons";
 import { fadeInUp, staggerContainer, cardVariant } from "@/lib/animations";
 import { sectors, sectorIconMap } from "@/lib/sectorIcons";
 
+// Map sector name → URL slug for SEO-friendly links
+const sectorSlugMap: Record<string, string> = {
+  Franchise: "franchise",
+  "SaaS B2B": "saas-b2b",
+  "Services B2B": "services-b2b",
+  "Industrie B2B": "industrie-b2b",
+  "Business Local": "business-local",
+};
+
 interface CasClientsContentProps {
   clients: Client[];
   caseStudies: CaseStudy[];
   featuredClient: Client | null;
+  initialSector?: string;
 }
 
-export function CasClientsContent({ clients, caseStudies, featuredClient }: CasClientsContentProps) {
-  const [selectedSector, setSelectedSector] = useState("all");
+export function CasClientsContent({ clients, caseStudies, featuredClient, initialSector }: CasClientsContentProps) {
+  const [selectedSector, setSelectedSector] = useState(initialSector || "all");
 
   // Filter clients by sector
   const filteredClients = selectedSector === "all"
@@ -66,13 +76,11 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
         </div>
 
         <div className="max-w-[82.5rem] mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            {/* Left content */}
+          <div>
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-              className="lg:col-span-7"
             >
               <div className="flex items-center gap-2 mb-6">
                 <span className="relative flex h-2 w-2">
@@ -85,7 +93,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
               </div>
 
               <h1 className="font-[var(--font-body)] font-[900] text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-tight text-white mb-6">
-                NOS CAS <span className="text-white/40">CLIENTS</span>
+                Nos cas <span className="text-white/40">clients</span>
               </h1>
 
               <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl mb-8">
@@ -100,38 +108,6 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
                   >
                     {sector}
                   </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Right - Stats */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
-              className="lg:col-span-5"
-            >
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { value: "+70", label: "Clients accompagnés" },
-                  { value: String(clients.length), label: "Études détaillées" },
-                  { value: "92%", label: "Objectifs atteints" },
-                  { value: "x3", label: "ROI moyen" },
-                ].map((stat, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + idx * 0.1 }}
-                    className="bg-white/10 backdrop-blur-md p-5 border border-white/20 text-center"
-                  >
-                    <span className="text-3xl md:text-4xl font-black text-white block mb-1">
-                      {stat.value}
-                    </span>
-                    <span className="text-[10px] font-medium text-white/60 tracking-wider">
-                      {stat.label}
-                    </span>
-                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -163,7 +139,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
                     {resolveImageUrl(featuredClient.mainImage, 1200) && (
                     <Image
                       src={resolveImageUrl(featuredClient.mainImage, 1200)}
-                      alt={featuredClient.name}
+                      alt={`${featuredClient.name} — cas client ${featuredClient.sector}`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 1024px) 100vw, 50vw"
@@ -208,8 +184,8 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
                     </div>
 
                     <div>
-                      <div className="grid grid-cols-2 gap-4 mb-6">
-                        <div className="text-center">
+                      <div className="flex gap-4 mb-6">
+                        <div className="bg-card border border-black/[0.06] px-5 py-4">
                           <span className="text-2xl font-black text-primary block">
                             {(featuredClient.carouselStat as { value: string; label: string }).value}
                           </span>
@@ -217,7 +193,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
                             {(featuredClient.carouselStat as { value: string; label: string }).label}
                           </span>
                         </div>
-                        <div className="text-center">
+                        <div className="bg-card border border-black/[0.06] px-5 py-4">
                           <span className="text-2xl font-black text-primary block">
                             {caseCountForClient(featuredClient.slug)}
                           </span>
@@ -267,15 +243,23 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
               </div>
             </div>
 
-            {/* Filters */}
+            {/* Filters — buttons for UX + hidden links for SEO */}
             <div className="flex flex-wrap gap-2">
               {sectors.map((sector) => {
                 const isActive = selectedSector === sector.id;
                 const IconComponent = sector.icon;
+                const sectorSlug = sectorSlugMap[sector.id];
+                const href = sector.id === "all"
+                  ? "/cas-clients"
+                  : `/cas-clients/secteur/${sectorSlug}`;
                 return (
-                  <button
+                  <Link
                     key={sector.id}
-                    onClick={() => setSelectedSector(sector.id)}
+                    href={href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedSector(sector.id);
+                    }}
                     className={`
                       inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all duration-300
                       ${isActive
@@ -289,7 +273,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
                     {isActive && selectedSector !== "all" && (
                       <X size={14} className="ml-1 opacity-60" />
                     )}
-                  </button>
+                  </Link>
                 );
               })}
             </div>
@@ -322,7 +306,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient }: CasC
                         {resolveImageUrl(client.mainImage, 800) && (
                         <Image
                           src={resolveImageUrl(client.mainImage, 800)}
-                          alt={client.name}
+                          alt={`Cas client ${client.name} — ${client.sector}`}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

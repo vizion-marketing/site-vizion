@@ -15,6 +15,7 @@ import { feature } from "./objects/feature";
 import { approachPhase } from "./objects/approachPhase";
 import { resource } from "./objects/resource";
 import { comparisonRow } from "./objects/comparisonRow";
+import { deliverableVisual } from "./objects/deliverableVisual";
 import { blockContent } from "./objects/blockContent";
 
 export const schemaTypes = [
@@ -34,5 +35,6 @@ export const schemaTypes = [
   approachPhase,
   resource,
   comparisonRow,
+  deliverableVisual,
   blockContent,
 ];
