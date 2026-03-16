@@ -1,8 +1,14 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Zap, Search, Palette, Plug, TrendingUp } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -15,6 +21,25 @@ const stagger = {
 };
 
 export function WebFeaturesBento() {
+  const metricRef = useRef<HTMLDivElement>(null);
+  const [metricValue, setMetricValue] = useState(0);
+
+  // Animated counter for "95+"
+  useGSAP(() => {
+    const counter = { val: 0 };
+    gsap.to(counter, {
+      val: 95,
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: metricRef.current,
+        start: "top 80%",
+        once: true,
+      },
+      onUpdate: () => setMetricValue(Math.round(counter.val)),
+    });
+  });
+
   return (
     <section className="bg-white py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12">
       <div className="max-w-[82.5rem] mx-auto">
@@ -26,17 +51,25 @@ export function WebFeaturesBento() {
           variants={stagger}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
         >
-          {/* Row 1 — Featured accent (2/3) + Perf metric (1/3) */}
+          {/* Row 1 — Featured dark (2/3) + Perf metric (1/3) */}
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-2 dark-section grain-overlay p-8 sm:p-10 flex flex-col justify-between min-h-[260px] relative overflow-hidden"
+            className="lg:col-span-2 dark-section grain-overlay p-8 sm:p-10 flex flex-col justify-between min-h-[260px] relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
             style={{ background: "var(--bg-dark)" }}
           >
-            <div className="w-10 h-10 bg-white/10 flex items-center justify-center">
-              <TrendingUp size={18} className="text-white" />
+            {/* Decorative accent gradient */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse 80% 80% at 30% 70%, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 55%)",
+              }}
+            />
+            <div className="w-10 h-10 bg-white/10 flex items-center justify-center group-hover:bg-accent transition-all duration-300 relative z-10">
+              <TrendingUp size={18} className="text-white group-hover:text-black transition-colors duration-300" />
             </div>
-            <div>
+            <div className="relative z-10">
               <h3 className="font-heading font-medium text-[22px] sm:text-[28px] leading-[1.1] tracking-[-0.02em] text-white mb-3">
                 Conçu pour convertir,
                 <br />
@@ -50,21 +83,22 @@ export function WebFeaturesBento() {
           </motion.div>
 
           <motion.div
+            ref={metricRef}
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[260px]"
+            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[260px] group hover:bg-accent hover:-translate-y-1 transition-all duration-500"
           >
-            <div className="w-10 h-10 bg-accent flex items-center justify-center">
-              <Zap size={18} className="text-black" />
+            <div className="w-10 h-10 bg-accent flex items-center justify-center group-hover:bg-black transition-colors duration-300">
+              <Zap size={18} className="text-black group-hover:text-accent transition-colors duration-300" />
             </div>
             <div>
               <div className="text-[52px] font-bold text-primary leading-none mb-1">
-                95+
+                {metricValue}+
               </div>
               <h3 className="text-[15px] sm:text-[16px] font-semibold text-primary mb-1">
                 Score Google
               </h3>
-              <p className="text-[13px] text-muted leading-relaxed">
+              <p className="text-[13px] text-muted leading-relaxed group-hover:text-primary/70">
                 Performance, accessibilité, SEO — mesurés et maintenus dans la
                 durée.
               </p>
@@ -75,13 +109,13 @@ export function WebFeaturesBento() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="relative overflow-hidden min-h-[280px] border border-black/[0.06]"
+            className="relative overflow-hidden min-h-[280px] border border-black/[0.06] group"
           >
             <Image
               src="/images/why-vizion/equipe-vizion.avif"
               alt="L'équipe Vizion au travail"
               fill
-              className="object-cover"
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
               sizes="(max-width: 768px) 100vw, 33vw"
             />
           </motion.div>
@@ -89,16 +123,16 @@ export function WebFeaturesBento() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[280px]"
+            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[280px] group hover:bg-accent hover:-translate-y-1 transition-all duration-500"
           >
-            <div className="w-10 h-10 bg-accent flex items-center justify-center">
-              <Search size={18} className="text-black" />
+            <div className="w-10 h-10 bg-accent flex items-center justify-center group-hover:bg-black transition-colors duration-300">
+              <Search size={18} className="text-black group-hover:text-accent transition-colors duration-300" />
             </div>
             <div>
               <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary mb-2">
                 SEO technique intégré dès la conception
               </h3>
-              <p className="text-[13px] text-muted leading-relaxed">
+              <p className="text-[13px] text-muted leading-relaxed group-hover:text-primary/70">
                 Schema.org, sitemap dynamique, Core Web Vitals, balises
                 sémantiques — rien n&apos;est laissé au hasard.
               </p>
@@ -108,16 +142,16 @@ export function WebFeaturesBento() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[280px]"
+            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[280px] group hover:bg-accent hover:-translate-y-1 transition-all duration-500"
           >
-            <div className="w-10 h-10 bg-accent flex items-center justify-center">
-              <Palette size={18} className="text-black" />
+            <div className="w-10 h-10 bg-accent flex items-center justify-center group-hover:bg-black transition-colors duration-300">
+              <Palette size={18} className="text-black group-hover:text-accent transition-colors duration-300" />
             </div>
             <div>
               <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary mb-2">
                 Design 100% sur mesure
               </h3>
-              <p className="text-[13px] text-muted leading-relaxed">
+              <p className="text-[13px] text-muted leading-relaxed group-hover:text-primary/70">
                 Pas de template, pas de thème WordPress. Chaque site est conçu
                 depuis une page blanche pour refléter votre identité.
               </p>
@@ -128,13 +162,13 @@ export function WebFeaturesBento() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-2 bg-accent p-7 sm:p-8 flex flex-col justify-between min-h-[240px]"
+            className="lg:col-span-2 bg-accent p-7 sm:p-8 flex flex-col justify-between min-h-[240px] hover:shadow-xl transition-shadow duration-300"
           >
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold tracking-[0.14em] text-black uppercase">
                 Nouveau
               </span>
-              <div className="w-1.5 h-1.5 bg-black/60 rounded-full" />
+              <div className="w-1.5 h-1.5 bg-black/60" />
               <span className="text-[10px] font-medium tracking-[0.08em] text-black uppercase">
                 Exclusif France
               </span>
@@ -152,27 +186,24 @@ export function WebFeaturesBento() {
             </div>
           </motion.div>
 
-          {/* Row 3 cont. — Intégrations (1/3) + Dark (2/3) */}
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[240px]"
+            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[240px] group hover:bg-accent hover:-translate-y-1 transition-all duration-500"
           >
-            <div className="w-10 h-10 bg-accent flex items-center justify-center">
-              <Plug size={18} className="text-black" />
+            <div className="w-10 h-10 bg-accent flex items-center justify-center group-hover:bg-black transition-colors duration-300">
+              <Plug size={18} className="text-black group-hover:text-accent transition-colors duration-300" />
             </div>
             <div>
               <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary mb-2">
                 Intégrations CRM & outils
               </h3>
-              <p className="text-[13px] text-muted leading-relaxed">
+              <p className="text-[13px] text-muted leading-relaxed group-hover:text-primary/70">
                 HubSpot, Pipedrive, Notion, Zapier — votre site s&apos;intègre
                 à votre stack commerciale.
               </p>
             </div>
           </motion.div>
-
-
         </motion.div>
       </div>
     </section>

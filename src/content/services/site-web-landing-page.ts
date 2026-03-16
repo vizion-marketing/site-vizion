@@ -166,46 +166,32 @@ export const siteWebLandingPage: ServiceContent = {
   ],
 
   // Process
-  processTitle: "De la stratégie au lancement en 6 étapes",
+  processTitle: "De la stratégie au lancement en 4 étapes",
   processSubtitle:
     "Un processus éprouvé qui garantit un site aligné sur vos objectifs commerciaux, livré dans les délais.",
   processSteps: [
     {
-      title: "Audit et stratégie",
+      title: "Stratégie et positionnement",
       description:
-        "Analyse de votre marché, personas, parcours d'achat et concurrence. Définition des objectifs de conversion et de l'architecture du site.",
-      duration: "1 semaine",
+        "Audit de votre marché, personas, parcours d'achat et concurrence. Définition de votre proposition de valeur, hiérarchie des arguments et architecture du site.",
+      duration: "2 semaines",
       deliverables: [
         "Audit concurrentiel",
         "Personas B2B",
+        "Proposition de valeur",
         "Arborescence",
-        "Brief stratégique",
       ],
     },
     {
-      title: "Architecture de message",
+      title: "UX et design",
       description:
-        "Rédaction de la proposition de valeur, hiérarchie des arguments, CTAs et preuves sociales pour chaque page stratégique.",
-      duration: "1 semaine",
-      deliverables: ["Proposition de valeur", "Messages clés par page", "CTAs"],
-    },
-    {
-      title: "Wireframes et UX",
-      description:
-        "Maquettes fil de fer de chaque page avec parcours de conversion. Validation de l'architecture avant le design.",
-      duration: "1 semaine",
+        "Wireframes, parcours de conversion et direction artistique alignée sur votre positionnement. Design system complet pour garantir la cohérence visuelle.",
+      duration: "2 semaines",
       deliverables: [
         "Wireframes desktop/mobile",
-        "Parcours utilisateur",
-        "Spécifications UX",
+        "Maquettes Figma",
+        "Design system",
       ],
-    },
-    {
-      title: "Design et identité",
-      description:
-        "Direction artistique alignée sur votre positionnement. Design system complet pour garantir la cohérence visuelle.",
-      duration: "2 semaines",
-      deliverables: ["Maquettes Figma", "Design system", "Assets visuels"],
     },
     {
       title: "Développement",
@@ -222,7 +208,7 @@ export const siteWebLandingPage: ServiceContent = {
     {
       title: "Lancement et optimisation",
       description:
-        "Mise en production, redirection des anciennes URLs, soumission aux moteurs de recherche. Suivi post-lancement pendant 1 mois.",
+        "Mise en production, redirections, soumission aux moteurs de recherche et suivi post-lancement. Accompagnement pendant 3 mois.",
       duration: "1 semaine",
       deliverables: [
         "Mise en production",

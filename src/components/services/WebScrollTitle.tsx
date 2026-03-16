@@ -38,35 +38,29 @@ export function WebScrollTitle() {
         if (el) gsap.set(el, { opacity: 0 });
       });
 
-      // ═══════════════════════════════════════════════
-      // PHASE 1: "Bref." — starts normal, zooms until it flies past you
-      // ═══════════════════════════════════════════════
+      // PHASE 1: "Bref." — zooms until it flies past you
       tl.fromTo(
         brefRef.current,
         { scale: 1, opacity: 1 },
-        { scale: 35, opacity: 0, duration: 2.5, ease: "power3.in" },
+        { scale: 35, opacity: 0, duration: 1.5, ease: "power3.in" },
       );
 
-      // ═══════════════════════════════════════════════
       // PHASE 2: "Chez Vizion, on crée des sites internet..."
-      // ═══════════════════════════════════════════════
       tl.fromTo(
         phraseRef.current,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
-        "+=0.3",
+        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+        "+=0.1",
       );
-      tl.to({}, { duration: 1.5 }); // hold
+      tl.to({}, { duration: 0.8 }); // hold
       tl.to(phraseRef.current, {
         opacity: 0,
         y: -30,
-        duration: 0.8,
+        duration: 0.5,
         ease: "power2.inOut",
       });
 
-      // ═══════════════════════════════════════════════
       // PHASE 3: Adjectives — each with unique effect
-      // ═══════════════════════════════════════════════
       const [w0, w1, w2] = wordRefs.current;
 
       // 1. "simples" — bouncy scale from bottom
@@ -74,11 +68,11 @@ export function WebScrollTitle() {
         tl.fromTo(
           w0,
           { opacity: 0, y: 100, scale: 0.8 },
-          { opacity: 1, y: 0, scale: 1, duration: 1, ease: "back.out(1.7)" },
-          "+=0.2",
+          { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.7)" },
+          "+=0.1",
         );
-        tl.to({}, { duration: 1.2 }); // hold
-        tl.to(w0, { opacity: 0, y: -60, duration: 0.7, ease: "power3.in" });
+        tl.to({}, { duration: 0.6 }); // hold
+        tl.to(w0, { opacity: 0, y: -60, duration: 0.5, ease: "power3.in" });
       }
 
       // 2. "performants" — clip-path wipe left to right
@@ -86,13 +80,13 @@ export function WebScrollTitle() {
         tl.set(w1, { opacity: 1, clipPath: "inset(0 100% 0 0)" });
         tl.to(
           w1,
-          { clipPath: "inset(0 0% 0 0)", duration: 1, ease: "power3.inOut" },
-          "+=0.2",
+          { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power3.inOut" },
+          "+=0.1",
         );
-        tl.to({}, { duration: 1.2 }); // hold
+        tl.to({}, { duration: 0.6 }); // hold
         tl.to(w1, {
           clipPath: "inset(0 0 0 100%)",
-          duration: 0.8,
+          duration: 0.5,
           ease: "power3.inOut",
         });
       }
@@ -106,19 +100,19 @@ export function WebScrollTitle() {
             opacity: 1,
             filter: "blur(0px)",
             y: 0,
-            duration: 1.2,
+            duration: 0.8,
             ease: "power2.out",
           },
-          "+=0.2",
+          "+=0.1",
         );
-        tl.to({}, { duration: 1.5 }); // final hold
+        tl.to({}, { duration: 0.8 }); // final hold
       }
     },
     { scope: containerRef },
   );
 
   return (
-    <div ref={containerRef} style={{ height: "550vh" }}>
+    <div ref={containerRef} style={{ height: "350vh" }}>
       <div className="sticky top-0 h-screen bg-card relative overflow-hidden">
         {/* Decorative accent gradient */}
         <div
@@ -142,7 +136,7 @@ export function WebScrollTitle() {
           ref={phraseRef}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-6"
         >
-          <p className="font-heading font-normal text-[36px] sm:text-[52px] lg:text-[68px] leading-[1.05] tracking-[-0.035em] text-primary max-w-5xl mx-auto">
+          <p className="font-heading font-normal text-[36px] sm:text-[52px] lg:text-[68px] leading-[1.05] tracking-[-0.035em] text-primary max-w-5xl mx-auto text-center">
             Chez Vizion, on crée
             <br />
             des sites internet...
@@ -164,11 +158,14 @@ export function WebScrollTitle() {
         ))}
 
         {/* Progress bar */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-32 h-[2px] bg-black/[0.06]">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-32 h-[3px] bg-black/[0.06]">
           <div
             ref={progressBarRef}
             className="h-full bg-accent origin-left"
-            style={{ transform: "scaleX(0)" }}
+            style={{
+              transform: "scaleX(0)",
+              boxShadow: "0 0 8px rgba(var(--color-accent-rgb), 0.3)",
+            }}
           />
         </div>
       </div>

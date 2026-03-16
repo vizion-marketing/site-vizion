@@ -54,7 +54,12 @@ export function ServiceDetailContent({
       {/* 7. Particularités bento (blanc) */}
       <WebFeaturesBento />
 
-      {/* 8. Process / Timeline (card) — ancre #processus */}
+      {/* 8. Témoignages (sombre) */}
+      {service.testimonials.length > 0 && (
+        <TestimonialShowcase testimonials={service.testimonials} />
+      )}
+
+      {/* 9. Process / Timeline (card) — ancre #processus */}
       {service.processSteps.length > 0 && (
         <ProcessTimeline
           title={service.processTitle}
@@ -63,13 +68,8 @@ export function ServiceDetailContent({
         />
       )}
 
-      {/* 9. Garanties de qualité (sombre) */}
+      {/* 10. Garanties de qualité (sombre) */}
       <QualityGuarantees />
-
-      {/* 10. Témoignages (sombre) */}
-      {service.testimonials.length > 0 && (
-        <TestimonialShowcase testimonials={service.testimonials} />
-      )}
 
       {/* 11. FAQ (card) */}
       {service.faqs.length > 0 && (

@@ -1,8 +1,9 @@
 "use client";
 
+import { useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Check } from "lucide-react";
 
 interface ServiceHeroProps {
@@ -27,6 +28,35 @@ export function ServiceHero({
   breadcrumbLabel,
 }: ServiceHeroProps) {
   const heroSrc = imageUrl || FALLBACK_IMAGE;
+  const sectionRef = useRef<HTMLElement>(null);
+  const rafRef = useRef<number>(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Scroll parallax for desktop image
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+
+  // Mouse parallax for blobs
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        const rect = sectionRef.current?.getBoundingClientRect();
+        if (!rect) {
+          rafRef.current = 0;
+          return;
+        }
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        setMousePos({ x, y });
+        rafRef.current = 0;
+      });
+    },
+    [],
+  );
 
   const handleScrollToProcess = () => {
     const el = document.getElementById("processus");
@@ -35,30 +65,35 @@ export function ServiceHero({
 
   return (
     <section
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
       className="dark-section grain-overlay relative overflow-hidden px-4 sm:px-6 md:px-12 py-20 sm:py-24 md:py-32 lg:py-40"
       style={{ background: "var(--bg-dark)" }}
     >
-      {/* Blobs décoratifs */}
+      {/* Blobs décoratifs — mouse-reactive */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div
-          className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
+          className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1 transition-transform duration-700 ease-out"
           style={{
             background:
               "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
+            transform: `translate(${mousePos.x * 20}px, ${mousePos.y * 20}px)`,
           }}
         />
         <div
-          className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
+          className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2 transition-transform duration-700 ease-out"
           style={{
             background:
               "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
+            transform: `translate(${mousePos.x * -15}px, ${mousePos.y * -15}px)`,
           }}
         />
         <div
-          className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
+          className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3 transition-transform duration-700 ease-out"
           style={{
             background:
               "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
+            transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)`,
           }}
         />
       </div>
@@ -127,7 +162,7 @@ export function ServiceHero({
               }}
               className="flex items-center gap-2.5"
             >
-              <div className="w-2 h-2 rounded-full bg-accent" />
+              <div className="w-2 h-2 bg-accent" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-white/60">
                 {category}
               </span>
@@ -173,17 +208,17 @@ export function ServiceHero({
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-3 bg-accent text-black font-semibold px-8 py-4 hover:bg-accent/90 hover:scale-[1.02] transition-all duration-200"
+                className="relative inline-flex items-center justify-center gap-3 bg-accent text-black font-semibold px-8 py-4 hover:bg-accent/90 hover:scale-[1.02] active:scale-[0.97] transition-all duration-200 overflow-hidden group"
               >
                 <span className="w-2 h-2 bg-black" />
                 Discuter de votre projet
               </Link>
               <button
                 onClick={handleScrollToProcess}
-                className="group inline-flex items-center justify-center gap-3 border border-white/20 text-white px-8 py-4 hover:bg-white/5 transition-all duration-200"
+                className="group inline-flex items-center justify-center gap-3 border border-white/20 text-white px-8 py-4 hover:bg-white/5 hover:border-white/30 active:scale-[0.97] transition-all duration-200"
               >
                 Voir notre méthode
-                <span className="inline-block group-hover:translate-y-1 transition-transform duration-200">
+                <span className="inline-block group-hover:translate-y-1.5 transition-transform duration-300">
                   ↓
                 </span>
               </button>
@@ -208,7 +243,7 @@ export function ServiceHero({
             )}
           </div>
 
-          {/* Image desktop — colonne droite, collée en bas */}
+          {/* Image desktop — colonne droite with scroll parallax */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -227,7 +262,10 @@ export function ServiceHero({
             <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent" />
             <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-accent" />
 
-            <div className="relative aspect-[3/4] overflow-hidden shadow-2xl">
+            <motion.div
+              style={{ y: imageY }}
+              className="relative aspect-[3/4] overflow-hidden shadow-2xl"
+            >
               <Image
                 src={heroSrc}
                 alt={imageAlt || title}
@@ -236,7 +274,7 @@ export function ServiceHero({
                 sizes="(max-width: 1023px) 0px, 45vw"
                 className="object-cover object-top"
               />
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

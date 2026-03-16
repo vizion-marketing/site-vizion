@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ClipboardList, Wrench, Zap, ArrowRight, UserCheck } from "lucide-react";
+import { ClipboardList, Wrench, Zap, ArrowUpRight, UserCheck } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -14,6 +14,27 @@ const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
+
+const featureRows = [
+  {
+    Icon: ClipboardList,
+    title: "Bilan livrable — 50 points d'optimisation",
+    description:
+      "Checklist complète : sécurité, SEO technique, performance, accessibilité et bonnes pratiques.",
+  },
+  {
+    Icon: Wrench,
+    title: "3 mois de maintenance offerts",
+    description:
+      "Corrections, mises à jour et petites évolutions incluses pendant 3 mois après la livraison.",
+  },
+  {
+    Icon: Zap,
+    title: "Score Google 90+ garanti",
+    description:
+      "Performance, accessibilité, SEO et bonnes pratiques — mesurés et validés avant chaque livraison.",
+  },
+];
 
 export function QualityGuarantees() {
   return (
@@ -86,50 +107,26 @@ export function QualityGuarantees() {
               </p>
             </div>
 
-            {/* Feature rows */}
+            {/* Feature rows with hover */}
             <div className="mt-8 space-y-0">
-              <div className="flex items-start gap-4 py-4 border-t border-white/10">
-                <div className="w-10 h-10 shrink-0 bg-accent flex items-center justify-center">
-                  <ClipboardList size={18} className="text-black" />
+              {featureRows.map(({ Icon, title, description }, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-4 py-4 border-t border-white/10 hover:bg-white/[0.03] hover:pl-2 transition-all duration-300 group"
+                >
+                  <div className="w-10 h-10 shrink-0 bg-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Icon size={18} className="text-black" />
+                  </div>
+                  <div>
+                    <h4 className="text-[14px] sm:text-[15px] font-semibold text-primary leading-snug">
+                      {title}
+                    </h4>
+                    <p className="text-[13px] text-muted leading-relaxed mt-1">
+                      {description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-[14px] sm:text-[15px] font-semibold text-primary leading-snug">
-                    Bilan livrable — 50 points d&apos;optimisation
-                  </h4>
-                  <p className="text-[13px] text-muted leading-relaxed mt-1">
-                    Checklist complète : sécurité, SEO technique, performance,
-                    accessibilité et bonnes pratiques.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 py-4 border-t border-white/10">
-                <div className="w-10 h-10 shrink-0 bg-accent flex items-center justify-center">
-                  <Wrench size={18} className="text-black" />
-                </div>
-                <div>
-                  <h4 className="text-[14px] sm:text-[15px] font-semibold text-primary leading-snug">
-                    3 mois de maintenance offerts
-                  </h4>
-                  <p className="text-[13px] text-muted leading-relaxed mt-1">
-                    Corrections, mises à jour et petites évolutions incluses
-                    pendant 3 mois après la livraison.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 py-4 border-t border-white/10">
-                <div className="w-10 h-10 shrink-0 bg-accent flex items-center justify-center">
-                  <Zap size={18} className="text-black" />
-                </div>
-                <div>
-                  <h4 className="text-[14px] sm:text-[15px] font-semibold text-primary leading-snug">
-                    Score Google 90+ garanti
-                  </h4>
-                  <p className="text-[13px] text-muted leading-relaxed mt-1">
-                    Performance, accessibilité, SEO et bonnes pratiques —
-                    mesurés et validés avant chaque livraison.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </motion.div>
 
@@ -137,13 +134,13 @@ export function QualityGuarantees() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="border border-white/10 overflow-hidden relative min-h-[320px] md:min-h-0"
+            className="border border-white/10 overflow-hidden relative min-h-[320px] md:min-h-0 group"
           >
             <Image
               src="/images/portrait-lucas.png"
               alt="Lucas Gonzalez, Fondateur de Vizion"
               fill
-              className="object-cover object-top"
+              className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
               sizes="(max-width: 768px) 100vw, 30vw"
             />
           </motion.div>
@@ -173,23 +170,26 @@ export function QualityGuarantees() {
               </div>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 mt-6 text-[13px] sm:text-[14px] font-semibold text-primary group"
+                className="relative inline-flex items-center gap-2 mt-6 text-[13px] sm:text-[14px] font-semibold text-primary group"
               >
-                En savoir plus
-                <ArrowRight
+                <span className="relative">
+                  En savoir plus
+                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-300" />
+                </span>
+                <ArrowUpRight
                   size={15}
-                  className="group-hover:translate-x-1 transition-transform"
+                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
                 />
               </Link>
             </div>
 
             {/* Second photo */}
-            <div className="border border-white/10 overflow-hidden relative min-h-[200px] flex-1">
+            <div className="border border-white/10 overflow-hidden relative min-h-[200px] flex-1 group">
               <Image
                 src="/images/why-vizion/equipe-vizion.avif"
                 alt="L'équipe Vizion en action"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 25vw"
               />
             </div>

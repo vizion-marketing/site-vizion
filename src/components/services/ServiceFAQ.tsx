@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus } from "lucide-react";
 import Link from "next/link";
 
 interface FAQ {
@@ -27,8 +27,8 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
   return (
     <section className="bg-card py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12">
       <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16">
-        {/* Left column */}
-        <div>
+        {/* Left column — sticky on desktop */}
+        <div className="lg:sticky lg:top-32 lg:self-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -36,7 +36,7 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
-              <div className="w-2 h-2 rounded-full bg-accent" />
+              <div className="w-2 h-2 bg-accent" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
                 Questions fréquentes
               </span>
@@ -66,44 +66,64 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          {faqs.map((faq, i) => (
-            <div key={i} className="border-b border-black/[0.06]">
-              <button
-                onClick={() => toggle(i)}
-                className="w-full py-5 flex justify-between items-center text-left group cursor-pointer"
+          {faqs.map((faq, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div
+                key={i}
+                className={`border-b border-black/[0.06] transition-all duration-300 ${
+                  isOpen
+                    ? "bg-white px-5 -mx-5 shadow-sm border-b-transparent"
+                    : ""
+                }`}
               >
-                <span
-                  className={`text-base font-medium transition-colors duration-200 ${
-                    openIndex === i
-                      ? "text-accent"
-                      : "text-primary group-hover:text-accent"
-                  }`}
+                <button
+                  onClick={() => toggle(i)}
+                  className="w-full py-5 flex justify-between items-center text-left group cursor-pointer"
                 >
-                  {faq.question}
-                </span>
-                {openIndex === i ? (
-                  <Minus className="w-5 h-5 text-secondary shrink-0 ml-4" />
-                ) : (
-                  <Plus className="w-5 h-5 text-secondary shrink-0 ml-4" />
-                )}
-              </button>
-              <AnimatePresence initial={false}>
-                {openIndex === i && (
+                  <div className="flex items-center gap-3">
+                    <span className="text-[14px] font-light text-muted/50 tabular-nums shrink-0 w-6">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className={`text-base font-medium transition-colors duration-200 ${
+                        isOpen
+                          ? "text-accent"
+                          : "text-primary group-hover:text-accent"
+                      }`}
+                    >
+                      {faq.question}
+                    </span>
+                  </div>
                   <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
+                    animate={{ rotate: isOpen ? 45 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="shrink-0 ml-4"
                   >
-                    <p className="text-sm text-secondary leading-relaxed pb-5">
-                      {faq.answer}
-                    </p>
+                    <Plus className="w-5 h-5 text-secondary" />
                   </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0, y: -8 }}
+                      animate={{ height: "auto", opacity: 1, y: 0 }}
+                      exit={{ height: 0, opacity: 0, y: -8 }}
+                      transition={{
+                        duration: 0.35,
+                        ease: [0.25, 0.1, 0.25, 1],
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <p className="text-sm text-secondary leading-relaxed pb-5 pl-9">
+                        {faq.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
 
           {/* Mobile CTA duplicate */}
           <div className="lg:hidden mt-8">
