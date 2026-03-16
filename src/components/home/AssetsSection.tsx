@@ -73,11 +73,13 @@ const TAB_CONTENT = {
   },
 };
 
-const SCROLL_DURATION_VH = 2.5;
-const TRIGGER_OFFSET_PX = 80;
+const SCROLL_DURATION_VH = 3.5;
+const TRIGGER_OFFSET_PX = 0;
 const SNAP_DEBOUNCE_MS = 120;
 const SNAP_DURATION = 0.35;
 const ASSETS_TRIGGER_ID = "assets-tabs";
+
+const COLLAPSED_WIDTH_LG = 72;
 
 export interface AssetsSectionHeaderContent {
   h2?: string;
@@ -93,11 +95,11 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
   const triggerRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState("siteweb");
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({});
   const lenis = useLenis();
   const snapTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isChangingTabRef = useRef(false);
-  const content = TAB_CONTENT[activeTab as keyof typeof TAB_CONTENT];
+
+  const activeIndex = TABS.findIndex(t => t.id === activeTab);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -107,23 +109,14 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  // Preload all images on mount for instant transitions
+  // Preload all images on mount
   useEffect(() => {
-    const preloadImages = () => {
-      Object.entries(TAB_CONTENT).forEach(([key, tab]) => {
+    const timer = setTimeout(() => {
+      Object.values(TAB_CONTENT).forEach((tab) => {
         const img = new window.Image();
-        img.onload = () => {
-          setImagesLoaded(prev => ({ ...prev, [key]: true }));
-        };
-        img.onerror = () => {
-          setImagesLoaded(prev => ({ ...prev, [key]: false }));
-        };
         img.src = tab.image;
       });
-    };
-
-    // Start preloading after a small delay to not block initial render
-    const timer = setTimeout(preloadImages, 100);
+    }, 100);
     return () => clearTimeout(timer);
   }, []);
 
@@ -134,9 +127,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
     const steps = TABS.length - 1;
     const snappedProgress = Math.round(progress * steps) / steps;
     if (Math.abs(progress - snappedProgress) < 0.01) return;
-    const start = st.start;
-    const end = st.end;
-    const targetScroll = start + snappedProgress * (end - start);
+    const targetScroll = st.start + snappedProgress * (st.end - st.start);
     lenis.scrollTo(targetScroll, {
       duration: SNAP_DURATION,
       easing: (t: number) => t * (2 - t),
@@ -147,19 +138,11 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
     (index: number) => {
       const st = ScrollTrigger.getById(ASSETS_TRIGGER_ID);
       if (!st || !lenis) return;
-      const steps = TABS.length - 1;
-      const progress = index / steps;
-      const start = st.start;
-      const end = st.end;
-      const targetScroll = start + progress * (end - start);
-
-      // Smoother easing function for click-triggered scrolls
+      const progress = index / (TABS.length - 1);
+      const targetScroll = st.start + progress * (st.end - st.start);
       lenis.scrollTo(targetScroll, {
         duration: 0.5,
-        easing: (t: number) => {
-          // Custom ease-out-cubic for more natural feel
-          return 1 - Math.pow(1 - t, 3);
-        },
+        easing: (t: number) => 1 - Math.pow(1 - t, 3),
       });
     },
     [lenis]
@@ -184,8 +167,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
     if (!trigger) return undefined;
     let ctx: gsap.Context | null = null;
     const timer = setTimeout(() => {
-      const viewportHeight = window.innerHeight;
-      const scrollDuration = viewportHeight * SCROLL_DURATION_VH;
+      const scrollDuration = window.innerHeight * SCROLL_DURATION_VH;
       ctx = gsap.context(() => {
         ScrollTrigger.create({
           id: ASSETS_TRIGGER_ID,
@@ -212,43 +194,31 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
   }, [reducedMotion]);
 
   const handleTabClick = useCallback(
-    (tabId: string, index: number, e?: React.MouseEvent<HTMLButtonElement>) => {
-      if (e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-
+    (tabId: string, index: number) => {
       if (isChangingTabRef.current || activeTab === tabId) return;
       isChangingTabRef.current = true;
 
-      // Clear any pending snap timeout to prevent conflicts
       if (snapTimeoutRef.current) {
         clearTimeout(snapTimeoutRef.current);
         snapTimeoutRef.current = null;
       }
 
-      // IMPORTANT: Change tab immediately for instant visual feedback
       setActiveTab(tabId);
 
-      if (reducedMotion) {
-        setTimeout(() => { isChangingTabRef.current = false; }, 300);
-      } else {
-        // Also trigger scroll animation for smooth transition
+      if (!reducedMotion) {
         goToTab(index);
-        setTimeout(() => { isChangingTabRef.current = false; }, 500);
       }
+      setTimeout(() => { isChangingTabRef.current = false; }, 500);
     },
     [reducedMotion, goToTab, activeTab]
   );
 
   return (
     <>
-      {/* Header Banner - Same background as Manifeste */}
+      {/* Header Banner */}
       <div className="relative py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden grain-overlay">
-        {/* Background base */}
         <div className="absolute inset-0 bg-card" />
 
-        {/* Subtle gradient blobs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
             className="absolute w-[70%] h-[60%] top-[-10%] left-[-15%]"
@@ -281,7 +251,6 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-4">
               {headerContent?.h2 ?? "Des livrables d'excellence, conçus pour vous aider à vendre, pas pour rester au fond d'un drive."}
             </h2>
-
             <p className="text-muted text-base font-[var(--font-body)] leading-relaxed">
               {headerContent?.description ?? "Chaque support que nous créons a une raison stratégique d'exister. Il s'inscrit dans le tunnel de vente et porte le même message, de la première impression au closing."}
             </p>
@@ -289,296 +258,236 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
         </div>
       </div>
 
-      {/* Main Section - Dark background */}
+      {/* Full-height accordion section — scroll-driven */}
       <section
         id="assets"
         ref={sectionRef}
-        className="dark-section relative overflow-hidden grain-overlay scroll-mt-20"
+        className="dark-section relative overflow-hidden"
         style={{ background: "var(--bg-dark)" }}
       >
         <div
           ref={triggerRef}
-          className={`relative pt-10 sm:pt-12 pb-16 sm:pb-20 ${!reducedMotion ? "min-h-screen" : ""}`}
+          className={`relative ${!reducedMotion ? "h-[90vh]" : ""}`}
         >
-        {/* Background gradients */}
-        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-          <div
-            className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
-            }}
-          />
-          <div
-            className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
-            }}
-          />
-          <div
-            className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
-            }}
-          />
-        </div>
+          {/* ─── Desktop / Tablet: Horizontal Accordion ─── */}
+          <div className="hidden md:flex h-full">
+            {TABS.map((tab, index) => {
+              const isActive = activeTab === tab.id;
+              const tabContent = TAB_CONTENT[tab.id as keyof typeof TAB_CONTENT];
+              const Icon = tab.icon;
 
-        {/* Floating decorative elements */}
-        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden hidden lg:block">
-          <motion.div
-            animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[15%] right-[8%] w-3 h-3 bg-accent/30 rounded-sm"
-          />
-          <motion.div
-            animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute top-[35%] right-[15%] w-2 h-2 bg-accent/20 rounded-full"
-          />
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-[25%] left-[5%] w-4 h-1 bg-accent/25 rounded-full"
-          />
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[50%] left-[3%] w-2 h-2 border border-accent/30 rounded-full"
-          />
-        </div>
-
-        <div className="max-w-[82.5rem] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
-          {/* Mobile: compact active tab indicator */}
-          <div className="sm:hidden mb-8">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center gap-3"
-            >
-              <span className="inline-flex items-center justify-center w-7 h-7 bg-accent rounded-md text-primary font-heading font-bold text-[11px]">
-                {String(TABS.findIndex(t => t.id === activeTab) + 1).padStart(2, '0')}
-              </span>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={activeTab}
-                  initial={{ opacity: 0, x: 8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="text-white text-[14px] font-[var(--font-body)] font-medium"
-                >
-                  {content.title}
-                </motion.span>
-              </AnimatePresence>
-              <span className="text-white/40 text-[12px] font-[var(--font-body)]">
-                / {String(TABS.length).padStart(2, '0')}
-              </span>
-            </motion.div>
-            {/* Progress dots */}
-            <div className="flex gap-1.5 mt-3">
-              {TABS.map((tab) => (
+              return (
                 <div
                   key={tab.id}
-                  className={`h-1 rounded-full transition-all duration-300 ${
-                    activeTab === tab.id ? "w-6 bg-accent" : "w-1.5 bg-white/20"
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isActive}
+                  aria-label={tab.label}
+                  onClick={() => handleTabClick(tab.id, index)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleTabClick(tab.id, index);
+                    }
+                  }}
+                  className={`relative overflow-hidden cursor-pointer ${
+                    index < TABS.length - 1 ? "border-r border-white/[0.08]" : ""
                   }`}
-                />
-              ))}
-            </div>
+                  style={{
+                    flex: isActive ? "1 0 0px" : `0 0 ${COLLAPSED_WIDTH_LG}px`,
+                    transition: "flex 700ms cubic-bezier(0.65, 0, 0.35, 1)",
+                  }}
+                >
+                  {/* Background image */}
+                  <div
+                    className="absolute inset-0 transition-opacity duration-500"
+                    style={{ opacity: isActive ? 1 : 0 }}
+                  >
+                    <Image
+                      src={tabContent.image}
+                      alt={tabContent.title}
+                      fill
+                      className="object-cover"
+                      sizes="80vw"
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                    {/* Overlay gradients for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10" />
+                  </div>
+
+                  {/* Collapsed panel — vertical title + number at bottom */}
+                  <div
+                    className="absolute inset-0 flex flex-col items-center justify-end pb-8 transition-opacity duration-300"
+                    style={{ opacity: isActive ? 0 : 1, pointerEvents: isActive ? "none" : "auto" }}
+                  >
+                    <div
+                      className="relative z-10 mb-6"
+                      style={{ writingMode: "vertical-rl" }}
+                    >
+                      <h3 className="text-white/60 text-[clamp(18px,2vw,24px)] font-heading font-medium tracking-[-0.02em] rotate-180 whitespace-nowrap select-none leading-none">
+                        {tab.label}
+                      </h3>
+                    </div>
+
+                    <span className="text-white/25 text-[18px] font-heading font-bold relative z-10 select-none">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* Active panel content — overlaid on image */}
+                  <div
+                    className="relative z-10 h-full flex flex-col justify-between p-8 lg:p-12 transition-opacity duration-500"
+                    style={{ opacity: isActive ? 1 : 0, pointerEvents: isActive ? "auto" : "none" }}
+                  >
+                    {/* Top: number badge + icon */}
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-4">
+                        <span className="inline-flex items-center justify-center w-11 h-11 bg-accent text-black font-heading font-bold text-sm">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <div className="w-11 h-11 bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                          <Icon size={20} className="text-white" />
+                        </div>
+                      </div>
+
+                      {/* Progress indicator */}
+                      <div className="hidden lg:flex items-center gap-1.5">
+                        {TABS.map((_, i) => (
+                          <div
+                            key={i}
+                            className={`h-1 transition-all duration-500 ${
+                              i === activeIndex
+                                ? "w-6 bg-accent"
+                                : i < activeIndex
+                                  ? "w-2 bg-white/30"
+                                  : "w-2 bg-white/10"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Bottom: text content */}
+                    <div className="max-w-xl">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={activeTab}
+                          initial={{ opacity: 0, y: 24 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.4, delay: 0.2 }}
+                        >
+                          <h3 className="font-heading font-medium text-[28px] md:text-[36px] lg:text-[48px] leading-[1.05] tracking-[-0.03em] text-white mb-4">
+                            {tabContent.title}
+                          </h3>
+                          <p className="text-white/75 text-[15px] lg:text-[16px] font-[var(--font-body)] leading-relaxed mb-8 max-w-lg">
+                            {tabContent.description}
+                          </p>
+                          <ComingSoonLink className="group inline-flex items-center gap-3">
+                            <span className="bg-accent text-black px-6 py-3 text-[14px] font-[var(--font-body)] font-semibold transition-all duration-300 group-hover:bg-white">
+                              En savoir plus
+                            </span>
+                            <ArrowUpRight size={18} className="text-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          </ComingSoonLink>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+                  </div>
+
+                  {/* Accent line on active panel left edge */}
+                  <div
+                    className="absolute top-0 left-0 w-[3px] h-full bg-accent transition-opacity duration-500 z-20"
+                    style={{ opacity: isActive ? 1 : 0 }}
+                  />
+                </div>
+              );
+            })}
           </div>
 
-          {/* Desktop: full glassmorphism tab bar */}
-          <div className="hidden sm:block pb-2 mb-10 sm:mb-14">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            role="tablist"
-            aria-label="Livrables marketing"
-            className="relative inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1.5"
-          >
-          {TABS.map((tab, index) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                role="tab"
-                onClick={(e) => handleTabClick(tab.id, index, e)}
-                className={`relative flex items-center gap-2 px-5 py-2.5 text-[13px] font-[var(--font-body)] font-medium transition-all duration-300 rounded-md ${
-                  isActive
-                    ? "text-primary cursor-default"
-                    : "text-white/60 hover:text-white hover:bg-white/5 active:scale-95 cursor-pointer"
-                } ${isChangingTabRef.current ? "opacity-70 pointer-events-none" : ""}`}
-                aria-selected={isActive}
-                aria-controls={`panel-${tab.id}`}
-                disabled={isChangingTabRef.current}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-accent rounded-md"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-                <span className={`relative z-10 flex items-center gap-2 ${isActive ? "text-primary" : ""}`}>
-                  <Icon size={14} className={isActive ? "text-primary" : ""} />
-                  <span className={isActive ? "text-primary" : ""}>{tab.label}</span>
-                </span>
-                {isActive && (
-                  <span className="relative z-10 hidden lg:flex items-center justify-center w-5 h-5 rounded-full bg-dark text-accent text-[10px] font-bold">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </motion.div>
-        </div>
+          {/* ─── Mobile: Vertical Accordion ─── */}
+          <div className="flex md:hidden flex-col h-[90vh]">
+            {TABS.map((tab, index) => {
+              const isActive = activeTab === tab.id;
+              const tabContent = TAB_CONTENT[tab.id as keyof typeof TAB_CONTENT];
 
-        {/* Content - Image behind, card overlay */}
-        <div className="relative">
-          {/* Info Card - Floating on top */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative z-20 max-w-md lg:ml-0 mb-8 lg:mb-0 lg:absolute lg:top-8 lg:left-0"
-          >
-            {/* Card accent line */}
-            <div className="absolute -left-0 top-6 bottom-6 w-1 bg-gradient-to-b from-[var(--color-accent)] via-[var(--color-accent)]/50 to-transparent rounded-full hidden lg:block" />
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="relative bg-white light-card rounded-lg p-6 sm:p-8 shadow-2xl border border-black/5 lg:ml-3"
-              >
-                {/* Numéro badge */}
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-accent rounded-lg flex items-center justify-center shadow-lg">
-                  <span className="text-primary font-heading font-bold text-xs">
-                    {String(TABS.findIndex(t => t.id === activeTab) + 1).padStart(2, '0')}
-                  </span>
-                </div>
-
-                {/* Icon - Dynamic based on tab */}
-                <motion.div
-                  key={`icon-${activeTab}`}
-                  initial={{ scale: 0.8, rotate: -10 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  className="w-12 h-12 rounded-lg bg-dark flex items-center justify-center mb-5"
+              return (
+                <div
+                  key={tab.id}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isActive}
+                  onClick={() => handleTabClick(tab.id, index)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleTabClick(tab.id, index);
+                    }
+                  }}
+                  className={`relative overflow-hidden cursor-pointer ${
+                    index < TABS.length - 1 ? "border-b border-white/[0.08]" : ""
+                  }`}
+                  style={{
+                    flex: isActive ? "1 0 0px" : "0 0 48px",
+                    transition: "flex 500ms cubic-bezier(0.65, 0, 0.35, 1)",
+                  }}
                 >
-                  {(() => {
-                    const Icon = TABS.find(t => t.id === activeTab)?.icon || Globe;
-                    return <Icon size={22} className="text-accent" />;
-                  })()}
-                </motion.div>
-
-                {/* Title */}
-                <h3 className="font-heading font-semibold text-[24px] sm:text-[28px] leading-[1.1] tracking-[-0.02em] text-primary mb-4">
-                  {content.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-muted text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed mb-6">
-                  {content.description}
-                </p>
-
-                {/* CTA Button */}
-                <ComingSoonLink
-                  className="group inline-flex items-center justify-between w-full h-[52px] px-6 text-[14px] font-[var(--font-body)] font-semibold bg-dark text-white rounded-lg hover:bg-[var(--text-primary)] transition-all duration-300"
-                >
-                  <span>En savoir plus</span>
-                  <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </ComingSoonLink>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-
-          {/* Large Asset Image - Behind, at bottom */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative z-10 lg:ml-auto lg:w-[75%]"
-          >
-            {/* Accent border frame */}
-            <div className="absolute -inset-2 sm:-inset-3 border border-accent/30 rounded-t-xl pointer-events-none" />
-            <div className="absolute -inset-4 sm:-inset-6 border border-accent/10 rounded-t-xl pointer-events-none hidden lg:block" />
-
-            {/* Decorative corner accents */}
-            <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent rounded-tr-lg hidden lg:block" />
-            <div className="absolute -top-3 left-1/4 w-8 h-1 bg-accent/40 hidden lg:block" />
-
-            <div className="relative aspect-[14/9] overflow-hidden rounded-t-lg">
-              <AnimatePresence initial={false} mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={content.image}
-                    alt={content.title}
-                    fill
-                    className={`object-cover transition-all duration-300 ${
-                      imagesLoaded[activeTab] === false
-                        ? "opacity-60 scale-105"
-                        : imagesLoaded[activeTab]
-                          ? "opacity-100 scale-100"
-                          : "opacity-60 scale-105"
-                    }`}
-                    sizes="(max-width: 1024px) 100vw, 75vw"
-                    priority={activeTab === "siteweb"}
-                    loading={activeTab === "siteweb" ? "eager" : "lazy"}
-                  />
-
-                  {/* Loading skeleton overlay */}
-                  {!imagesLoaded[activeTab] && (
-                    <motion.div
-                      initial={{ opacity: 1 }}
-                      animate={{ opacity: 0 }}
-                      transition={{ duration: 0.3, delay: 0.2 }}
-                      className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent)]/10 via-white/5 to-transparent animate-pulse"
+                  {/* Background image for active */}
+                  <div
+                    className="absolute inset-0 transition-opacity duration-500"
+                    style={{ opacity: isActive ? 1 : 0 }}
+                  >
+                    <Image
+                      src={tabContent.image}
+                      alt={tabContent.title}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
                     />
-                  )}
-                </motion.div>
-              </AnimatePresence>
-              {/* Subtle overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)]/20 via-transparent to-transparent pointer-events-none z-10" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-dark)]/30 via-transparent to-transparent pointer-events-none lg:block hidden z-10" />
-            </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+                  </div>
 
-            {/* Floating stat badge */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute bottom-8 right-4 sm:right-8 bg-accent px-4 py-2 rounded-lg shadow-lg hidden lg:block"
-            >
-              <span className="text-primary font-heading font-bold text-sm">+150%</span>
-              <span className="text-primary/70 text-xs ml-1">conversion</span>
-            </motion.div>
-          </motion.div>
+                  {/* Collapsed: horizontal bar */}
+                  <div
+                    className="absolute inset-0 flex items-center px-5 gap-4 transition-opacity duration-300"
+                    style={{ opacity: isActive ? 0 : 1, pointerEvents: isActive ? "none" : "auto" }}
+                  >
+                    <span className="text-white/25 text-[12px] font-heading font-bold">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-white/50 text-[13px] font-[var(--font-body)] font-medium">
+                      {tab.label}
+                    </span>
+                  </div>
+
+                  {/* Active: content overlay */}
+                  <div
+                    className="relative z-10 h-full flex flex-col justify-end p-5 transition-opacity duration-500"
+                    style={{ opacity: isActive ? 1 : 0, pointerEvents: isActive ? "auto" : "none" }}
+                  >
+                    <span className="text-accent text-[11px] font-heading font-bold mb-2">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="font-heading font-medium text-[22px] leading-[1.1] tracking-[-0.02em] text-white mb-2" aria-hidden="true">
+                      {tabContent.title}
+                    </h3>
+                    <p className="text-white/70 text-[13px] font-[var(--font-body)] leading-relaxed line-clamp-3">
+                      {tabContent.description}
+                    </p>
+                  </div>
+
+                  {/* Accent bar top edge */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[2px] bg-accent transition-opacity duration-500 z-20"
+                    style={{ opacity: isActive ? 1 : 0 }}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-        </div>
-    </section>
+      </section>
     </>
   );
 }
