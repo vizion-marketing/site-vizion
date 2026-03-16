@@ -1,35 +1,30 @@
 "use client";
 
 import type { ServiceContent } from "@/content/services";
-import type { Post, CaseStudy } from "../../../../sanity/lib/types";
 import {
   ServiceHero,
   ServiceNarrative,
-  QualityGuarantees,
+  ServiceHighlights,
   SolutionSticky,
-  RecentProjects,
-  WebFeaturesBento,
   WebScrollTitle,
+  WebFeaturesBento,
+  ProcessTimeline,
+  QualityGuarantees,
   TestimonialShowcase,
   ServiceFAQ,
-  RelatedArticles,
   ServiceCTA,
 } from "@/components/services";
 
 interface ServiceDetailContentProps {
   service: ServiceContent;
-  relatedPosts: Post[];
-  recentProjects: CaseStudy[];
 }
 
 export function ServiceDetailContent({
   service,
-  relatedPosts,
-  recentProjects,
 }: ServiceDetailContentProps) {
   return (
     <main>
-      {/* 1. Hero */}
+      {/* 1. Hero (sombre) */}
       <ServiceHero
         category={service.category}
         title={service.heroTitle}
@@ -40,10 +35,10 @@ export function ServiceDetailContent({
         breadcrumbLabel={service.title}
       />
 
-      {/* 2. Le constat */}
+      {/* 2. Le constat (card) */}
       <ServiceNarrative constat={service.constat} />
 
-      {/* 3. Notre solution — sticky */}
+      {/* 3. Notre solution — sticky (sombre) */}
       {service.solutionItems.length > 0 && (
         <SolutionSticky
           title={service.solutionTitle}
@@ -53,32 +48,35 @@ export function ServiceDetailContent({
         />
       )}
 
-      {/* 4. Titre animé au scroll */}
+      {/* 6. Titre animé au scroll (blanc — interstitial) */}
       <WebScrollTitle />
 
-      {/* 5. Particularités bento */}
+      {/* 7. Particularités bento (blanc) */}
       <WebFeaturesBento />
 
-      {/* 6. Garanties de qualité */}
+      {/* 8. Process / Timeline (card) — ancre #processus */}
+      {service.processSteps.length > 0 && (
+        <ProcessTimeline
+          title={service.processTitle}
+          subtitle={service.processSubtitle}
+          steps={service.processSteps}
+        />
+      )}
+
+      {/* 9. Garanties de qualité (sombre) */}
       <QualityGuarantees />
 
-      {/* 7. Derniers projets */}
-      <RecentProjects caseStudies={recentProjects} />
-
-      {/* 8. Témoignages */}
+      {/* 10. Témoignages (sombre) */}
       {service.testimonials.length > 0 && (
         <TestimonialShowcase testimonials={service.testimonials} />
       )}
 
-      {/* 9. FAQ */}
+      {/* 11. FAQ (card) */}
       {service.faqs.length > 0 && (
         <ServiceFAQ title={service.faqTitle} faqs={service.faqs} />
       )}
 
-      {/* 10. Articles liés */}
-      {relatedPosts.length > 0 && <RelatedArticles posts={relatedPosts} />}
-
-      {/* 11. CTA final */}
+      {/* 12. CTA final (sombre) */}
       <ServiceCTA
         title={service.ctaTitle}
         description={service.ctaDescription}

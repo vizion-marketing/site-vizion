@@ -4,8 +4,6 @@ import {
   getServiceBySlug,
   getAllServiceSlugs,
 } from "@/content/services";
-import { getPostsByTags } from "@/lib/sanity/posts";
-import { getAllCaseStudies } from "@/lib/sanity/caseStudies";
 import { createMetadata } from "@/lib/metadata";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import { ServiceDetailContent } from "./ServiceDetailContent";
@@ -39,15 +37,6 @@ export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) notFound();
-
-  const [relatedPosts, allCaseStudies] = await Promise.all([
-    getPostsByTags(service.relatedBlogTags || [], 3),
-    getAllCaseStudies(),
-  ]);
-  const projectSlugs = service.relatedProjectSlugs || [];
-  const recentProjects = allCaseStudies.filter((cs) =>
-    projectSlugs.includes(cs.slug),
-  );
 
   // JSON-LD
   const jsonLd = [
@@ -118,7 +107,7 @@ export default async function ServicePage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
-      <ServiceDetailContent service={service} relatedPosts={relatedPosts} recentProjects={recentProjects} />
+      <ServiceDetailContent service={service} />
     </>
   );
 }

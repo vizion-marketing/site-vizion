@@ -1,5 +1,6 @@
 export { ServiceHero } from "./ServiceHero";
 export { ServiceNarrative } from "./ServiceNarrative";
+export { ServiceHighlights } from "./ServiceHighlights";
 export { MetricsBar } from "./MetricsBar";
 export { PainPoints } from "./PainPoints";
 export { FeaturesSticky } from "./FeaturesSticky";

@@ -1,130 +1,176 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const WORDS = [
-  "simples à utiliser",
-  "simples à comprendre",
-  "performants",
-  "qui convertissent",
-];
+const ADJECTIVES = ["simples", "performants", "qui convertissent"];
 
 export function WebScrollTitle() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const brefRef = useRef<HTMLSpanElement>(null);
+  const phraseRef = useRef<HTMLDivElement>(null);
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const progressRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      // Initial states — all words hidden except first
-      wordRefs.current.forEach((el, i) => {
-        if (!el) return;
-        gsap.set(el, { opacity: i === 0 ? 1 : 0, y: i === 0 ? 0 : 28 });
-      });
-
-      const holdDuration = 1;
-      const transDuration = 0.5;
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
           end: "bottom bottom",
-          scrub: 1.5,
+          scrub: 1,
           onUpdate: (self) => {
-            setCurrentIndex(
-              Math.min(
-                Math.floor(self.progress * WORDS.length),
-                WORDS.length - 1,
-              ),
-            );
+            if (progressBarRef.current) {
+              progressBarRef.current.style.transform = `scaleX(${self.progress})`;
+            }
           },
         },
       });
 
-      // Progress bar scrubs with the full timeline
-      tl.to(progressRef.current, { scaleX: 1, ease: "none", duration: (WORDS.length - 1) * (holdDuration + transDuration) + holdDuration }, 0);
+      // Init: hide everything except Bref
+      gsap.set(phraseRef.current, { opacity: 0, y: 40 });
+      wordRefs.current.forEach((el) => {
+        if (el) gsap.set(el, { opacity: 0 });
+      });
 
-      // Word transitions
-      for (let i = 0; i < WORDS.length - 1; i++) {
-        const t = i * (holdDuration + transDuration);
+      // ═══════════════════════════════════════════════
+      // PHASE 1: "Bref." — starts normal, zooms until it flies past you
+      // ═══════════════════════════════════════════════
+      tl.fromTo(
+        brefRef.current,
+        { scale: 1, opacity: 1 },
+        { scale: 35, opacity: 0, duration: 2.5, ease: "power3.in" },
+      );
 
-        // Exit — current word lifts up and fades
-        tl.to(
-          wordRefs.current[i],
-          { opacity: 0, y: -28, ease: "power2.inOut", duration: transDuration },
-          t + holdDuration,
-        );
+      // ═══════════════════════════════════════════════
+      // PHASE 2: "Chez Vizion, on crée des sites internet..."
+      // ═══════════════════════════════════════════════
+      tl.fromTo(
+        phraseRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+        "+=0.3",
+      );
+      tl.to({}, { duration: 1.5 }); // hold
+      tl.to(phraseRef.current, {
+        opacity: 0,
+        y: -30,
+        duration: 0.8,
+        ease: "power2.inOut",
+      });
 
-        // Enter — next word rises from below
+      // ═══════════════════════════════════════════════
+      // PHASE 3: Adjectives — each with unique effect
+      // ═══════════════════════════════════════════════
+      const [w0, w1, w2] = wordRefs.current;
+
+      // 1. "simples" — bouncy scale from bottom
+      if (w0) {
         tl.fromTo(
-          wordRefs.current[i + 1],
-          { opacity: 0, y: 28 },
-          { opacity: 1, y: 0, ease: "power2.inOut", duration: transDuration },
-          t + holdDuration,
+          w0,
+          { opacity: 0, y: 100, scale: 0.8 },
+          { opacity: 1, y: 0, scale: 1, duration: 1, ease: "back.out(1.7)" },
+          "+=0.2",
         );
+        tl.to({}, { duration: 1.2 }); // hold
+        tl.to(w0, { opacity: 0, y: -60, duration: 0.7, ease: "power3.in" });
+      }
+
+      // 2. "performants" — clip-path wipe left to right
+      if (w1) {
+        tl.set(w1, { opacity: 1, clipPath: "inset(0 100% 0 0)" });
+        tl.to(
+          w1,
+          { clipPath: "inset(0 0% 0 0)", duration: 1, ease: "power3.inOut" },
+          "+=0.2",
+        );
+        tl.to({}, { duration: 1.2 }); // hold
+        tl.to(w1, {
+          clipPath: "inset(0 0 0 100%)",
+          duration: 0.8,
+          ease: "power3.inOut",
+        });
+      }
+
+      // 3. "qui convertissent" — blur reveal, stays visible
+      if (w2) {
+        tl.fromTo(
+          w2,
+          { opacity: 0, filter: "blur(20px)", y: 20 },
+          {
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0,
+            duration: 1.2,
+            ease: "power2.out",
+          },
+          "+=0.2",
+        );
+        tl.to({}, { duration: 1.5 }); // final hold
       }
     },
     { scope: containerRef },
   );
 
   return (
-    <div ref={containerRef} style={{ height: `${WORDS.length * 100}vh` }}>
-      <div className="sticky top-0 h-screen bg-white flex items-center justify-center px-4 sm:px-6 md:px-12 relative">
-        <div className="max-w-[82.5rem] mx-auto w-full text-center">
+    <div ref={containerRef} style={{ height: "550vh" }}>
+      <div className="sticky top-0 h-screen bg-card relative overflow-hidden">
+        {/* Decorative accent gradient */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 60%)",
+          }}
+        />
 
-          {/* Label */}
-          <div className="flex items-center justify-center gap-2.5 mb-6 sm:mb-8">
-            <div className="w-2 h-2 bg-accent" />
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
-              Notre approche
-            </span>
-          </div>
+        {/* Phase 1: "Bref." */}
+        <span
+          ref={brefRef}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-medium text-[80px] sm:text-[120px] lg:text-[180px] leading-none tracking-[-0.04em] text-primary select-none"
+        >
+          Bref.
+        </span>
 
-          {/* Static first line */}
-          <p className="font-heading font-medium text-[30px] sm:text-[44px] md:text-[56px] lg:text-[64px] leading-[1.1] tracking-[-0.035em] text-primary mb-2 sm:mb-3">
-            Nous créons des sites webs
+        {/* Phase 2: "Chez Vizion..." */}
+        <div
+          ref={phraseRef}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-6"
+        >
+          <p className="font-heading font-normal text-[36px] sm:text-[52px] lg:text-[68px] leading-[1.05] tracking-[-0.035em] text-primary max-w-5xl mx-auto">
+            Chez Vizion, on crée
+            <br />
+            des sites internet...
           </p>
-
-          {/* Animated word — stacked absolute */}
-          <div
-            className="relative mx-auto"
-            style={{ height: "1.4em", maxWidth: "100%" }}
-          >
-            {WORDS.map((word, i) => (
-              <span
-                key={word}
-                ref={(el) => {
-                  wordRefs.current[i] = el;
-                }}
-                className="absolute left-1/2 -translate-x-1/2 font-heading font-medium text-[30px] sm:text-[44px] md:text-[56px] lg:text-[64px] leading-[1.1] tracking-[-0.035em] bg-accent text-black px-4 sm:px-6 whitespace-nowrap"
-                style={{ opacity: i === 0 ? 1 : 0 }}
-              >
-                {word}
-              </span>
-            ))}
-          </div>
-
-          {/* Counter */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-            <span className="text-[11px] tracking-[0.18em] text-muted font-light uppercase tabular-nums">
-              0{currentIndex + 1}&ensp;—&ensp;0{WORDS.length}
-            </span>
-          </div>
         </div>
 
-        {/* Progress bar — bottom of screen */}
-        <div
-          ref={progressRef}
-          className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent"
-          style={{ transform: "scaleX(0)", transformOrigin: "left center" }}
-        />
+        {/* Phase 3: Adjective words */}
+        {ADJECTIVES.map((word, i) => (
+          <span
+            key={word}
+            ref={(el) => {
+              wordRefs.current[i] = el;
+            }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-normal text-[44px] sm:text-[68px] lg:text-[96px] leading-none tracking-[-0.04em] bg-accent text-black px-6 sm:px-8 py-2 sm:py-3 whitespace-nowrap"
+            style={{ opacity: 0 }}
+          >
+            {word}
+          </span>
+        ))}
+
+        {/* Progress bar */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-32 h-[2px] bg-black/[0.06]">
+          <div
+            ref={progressBarRef}
+            className="h-full bg-accent origin-left"
+            style={{ transform: "scaleX(0)" }}
+          />
+        </div>
       </div>
     </div>
   );

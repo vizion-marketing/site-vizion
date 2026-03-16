@@ -1,121 +1,6 @@
-// ============================================================
-// Services — Contenu TypeScript (pas Sanity)
-// Même logique que home.ts / b2b.ts
-// ============================================================
+import type { ServiceContent } from "./types";
 
-export interface ServiceFeature {
-  icon: string;
-  title: string;
-  description: string;
-}
-
-export interface ServiceProcessStep {
-  title: string;
-  description: string;
-  duration: string;
-  deliverables: string[];
-}
-
-export interface ServiceFAQ {
-  question: string;
-  answer: string;
-}
-
-export interface ServiceTestimonial {
-  quote: string;
-  detail?: string;
-  author: string;
-  role: string;
-  company: string;
-  photo?: string;
-  rating?: number;
-}
-
-// Statement structuré (headline + description)
-export interface NarrativeStatement {
-  headline: string;
-  description: string;
-}
-
-// Bloc narratif — 3 sections qui s'enchaînent
-export interface NarrativeBlock {
-  surtitre: string;
-  title: string;
-  paragraphs: string[];
-  highlights?: string[];
-  statements?: NarrativeStatement[];
-}
-
-export interface SolutionItem {
-  title: string;
-  description: string;
-}
-
-export interface ServiceContent {
-  // Identité
-  slug: string;
-  title: string;
-  icon: string;
-  category: string;
-  order: number;
-
-  // SEO
-  metaTitle: string;
-  metaDescription: string;
-  keywords: string[];
-
-  // Hero
-  heroTitle: string;
-  heroSubtitle: string;
-  heroBadge?: string;
-  heroImage?: string;
-
-  // Narrative — les 3 blocs éditoriaux
-  constat: NarrativeBlock;
-  consequences: NarrativeBlock;
-  promesse: NarrativeBlock;
-
-  // Solution sticky
-  solutionTitle: string;
-  solutionSubtitle?: string;
-  solutionImage: string;
-  solutionItems: SolutionItem[];
-
-  // Features / Bénéfices
-  featuresTitle: string;
-  featuresSubtitle: string;
-  features: ServiceFeature[];
-
-  // Process
-  processTitle: string;
-  processSubtitle: string;
-  processSteps: ServiceProcessStep[];
-
-  // Testimonials
-  testimonials: ServiceTestimonial[];
-
-  // FAQ
-  faqTitle: string;
-  faqs: ServiceFAQ[];
-
-  // CTA
-  ctaTitle: string;
-  ctaDescription: string;
-  ctaButtonText: string;
-  ctaButtonLink: string;
-
-  // Related blog tags (pour fetch Sanity des articles liés)
-  relatedBlogTags?: string[];
-
-  // Slugs des cas clients à afficher (filtre par service)
-  relatedProjectSlugs?: string[];
-}
-
-// ============================================================
-// Site Web & Landing Page
-// ============================================================
-
-const siteWebLandingPage: ServiceContent = {
+export const siteWebLandingPage: ServiceContent = {
   slug: "site-web-landing-page",
   title: "Site Web et Landing Page",
   icon: "Globe",
@@ -204,11 +89,10 @@ const siteWebLandingPage: ServiceContent = {
     ],
   },
 
-  // Solution sticky
-  solutionTitle:
-    "Chez Vizion, nous ne nous contentons pas de faire des sites web",
+  // Solution sticky (contenu fusionné depuis la promesse)
+  solutionTitle: "Pas un site web. Un système de conversion.",
   solutionSubtitle:
-    "Chaque projet part de votre stratégie commerciale — pas d'un template. Voici comment nous construisons des sites qui travaillent pour vous.",
+    "Nous ne construisons pas de jolis sites. Nous architecturons des actifs stratégiques où chaque page a un objectif, chaque section fait avancer le visiteur, et chaque mot est choisi pour convaincre votre cible.",
   solutionImage: "/images/why-vizion/equipe-vizion.avif",
   solutionItems: [
     {
@@ -291,7 +175,12 @@ const siteWebLandingPage: ServiceContent = {
       description:
         "Analyse de votre marché, personas, parcours d'achat et concurrence. Définition des objectifs de conversion et de l'architecture du site.",
       duration: "1 semaine",
-      deliverables: ["Audit concurrentiel", "Personas B2B", "Arborescence", "Brief stratégique"],
+      deliverables: [
+        "Audit concurrentiel",
+        "Personas B2B",
+        "Arborescence",
+        "Brief stratégique",
+      ],
     },
     {
       title: "Architecture de message",
@@ -305,7 +194,11 @@ const siteWebLandingPage: ServiceContent = {
       description:
         "Maquettes fil de fer de chaque page avec parcours de conversion. Validation de l'architecture avant le design.",
       duration: "1 semaine",
-      deliverables: ["Wireframes desktop/mobile", "Parcours utilisateur", "Spécifications UX"],
+      deliverables: [
+        "Wireframes desktop/mobile",
+        "Parcours utilisateur",
+        "Spécifications UX",
+      ],
     },
     {
       title: "Design et identité",
@@ -319,14 +212,23 @@ const siteWebLandingPage: ServiceContent = {
       description:
         "Intégration pixel-perfect, animations, SEO technique, performance et responsive. Tests cross-browser et cross-device.",
       duration: "3-4 semaines",
-      deliverables: ["Site fonctionnel", "CMS configuré", "SEO technique", "Analytics"],
+      deliverables: [
+        "Site fonctionnel",
+        "CMS configuré",
+        "SEO technique",
+        "Analytics",
+      ],
     },
     {
       title: "Lancement et optimisation",
       description:
         "Mise en production, redirection des anciennes URLs, soumission aux moteurs de recherche. Suivi post-lancement pendant 1 mois.",
       duration: "1 semaine",
-      deliverables: ["Mise en production", "Redirections 301", "Rapport de performance"],
+      deliverables: [
+        "Mise en production",
+        "Redirections 301",
+        "Rapport de performance",
+      ],
     },
   ],
 
@@ -408,30 +310,4 @@ const siteWebLandingPage: ServiceContent = {
     "Premier échange sans engagement — on analyse votre site actuel et vos objectifs.",
   ctaButtonText: "Demander un audit gratuit",
   ctaButtonLink: "/contact",
-
-  // Blog tags
-  relatedBlogTags: ["site-web", "landing-page", "conversion", "seo"],
-
-  // Cas clients liés (slugs des case studies)
-  relatedProjectSlugs: [
-    "easyvirtual-tours-franchise",
-    "eldo-wallet-lancement",
-    "ensenat-coaching-acquisition",
-  ],
 };
-
-// ============================================================
-// Registry — tous les services
-// ============================================================
-
-export const allServices: ServiceContent[] = [siteWebLandingPage].sort(
-  (a, b) => a.order - b.order,
-);
-
-export function getServiceBySlug(slug: string): ServiceContent | undefined {
-  return allServices.find((s) => s.slug === slug);
-}
-
-export function getAllServiceSlugs(): string[] {
-  return allServices.map((s) => s.slug);
-}
