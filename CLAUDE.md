@@ -84,11 +84,6 @@ site-vizion/
 │   ├── lib/                    # Client, queries GROQ, types, image helpers
 │   ├── schemas/                # Schemas documents + objects
 │   └── structure/              # Desk structure personnalisée (FR)
-├── content/                    # Contenu legacy MDX (en cours de migration)
-│   ├── blog/                   # Articles de blog
-│   ├── services/               # Pages services
-│   ├── cas-clients/            # Études de cas
-│   └── pages/                  # Pages statiques
 ├── src/
 │   ├── app/                    # App Router Next.js
 │   │   ├── layout.tsx          # Layout racine (fonts, providers, shell)
@@ -107,29 +102,24 @@ site-vizion/
 │   │   ├── services/           # Composants services
 │   │   ├── sections/           # Sections réutilisables (barrel export via index.ts)
 │   │   ├── ui/                 # Primitives UI
-│   │   ├── mdx/                # Composants MDX legacy (index.tsx)
 │   │   ├── icons/              # Icônes custom
 │   │   ├── Header.tsx          # Navigation
 │   │   ├── Footer.tsx          # Pied de page
-│   │   ├── CallWidget.tsx      # Widget CTA flottant
-│   │   └── ContactModal.tsx    # Modale de contact
+│   │   └── CallWidget.tsx      # Widget CTA flottant
 │   ├── content/
 │   │   └── home.ts             # Contenu centralisé homepage (1000+ lignes)
 │   └── lib/                    # Utilitaires
 │       ├── constants.ts        # SITE_URL, SITE_NAME, SOCIAL_LINKS
-│       ├── mdx.ts              # Extraction TOC (extractHeadings)
 │       ├── metadata.ts         # Helper createMetadata()
 │       ├── portable-text-utils.ts # TOC + reading time (Portable Text)
 │       ├── slug.ts             # Utilitaires slug
 │       └── sanity/             # Couche d'accès Sanity (posts, clients, caseStudies, services)
 │       ├── internal-linking.ts # Suggestions d'articles liés
-│       ├── blog-frontmatter.ts # Parsing frontmatter blog
 │       └── animations.ts       # Constantes d'animation
 ├── public/images/              # Assets statiques (AVIF, PNG, WebP)
-├── contentlayer.config.ts      # Schémas Contentlayer (563 lignes)
 ├── next.config.ts              # Config Next.js (images, headers, security)
 ├── postcss.config.mjs          # PostCSS (Tailwind v4 plugin)
-└── tsconfig.json               # TypeScript (paths: @/*, contentlayer/generated)
+└── tsconfig.json               # TypeScript (paths: @/*)
 ```
 
 ---
