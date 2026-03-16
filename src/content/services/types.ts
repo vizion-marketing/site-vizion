@@ -48,6 +48,65 @@ export interface SolutionItem {
   description: string;
 }
 
+// Scroll title (interstitial animated section)
+export interface ScrollTitleContent {
+  hook: string; // ex: "Bref."
+  phrase: string; // ex: "Chez Vizion, on crée\ndes sites internet..."
+  adjectives: string[]; // ex: ["simples", "performants", "qui convertissent"]
+}
+
+// Bento featured cards (WebFeaturesBento hardcoded cards)
+export interface BentoFeaturedCard {
+  title: string;
+  description: string;
+}
+
+export interface BentoMetricCard {
+  value: number;
+  label: string;
+  description: string;
+}
+
+export interface BentoAICard {
+  label: string;
+  title: string;
+  description: string;
+}
+
+export interface BentoCards {
+  featured: BentoFeaturedCard;
+  metric: BentoMetricCard;
+  seo: BentoFeaturedCard;
+  design: BentoFeaturedCard;
+  ai: BentoAICard;
+  integrations: BentoFeaturedCard;
+}
+
+// Quality guarantees
+export interface QualityGuarantee {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface QualityFeatureCard {
+  title: string;
+  description: string;
+  linkText: string;
+  linkHref: string;
+}
+
+export interface QualityGuaranteesContent {
+  surtitre: string;
+  sectionTitle: string;
+  sectionDescription: string;
+  cardSurtitre: string;
+  cardTitle: string;
+  cardDescription: string;
+  guarantees: QualityGuarantee[];
+  featureCard: QualityFeatureCard;
+}
+
 export interface ServiceContent {
   // Identité
   slug: string;
@@ -78,15 +137,24 @@ export interface ServiceContent {
   solutionImage: string;
   solutionItems: SolutionItem[];
 
+  // Scroll title (interstitial)
+  scrollTitle?: ScrollTitleContent;
+
   // Features / Bénéfices
   featuresTitle: string;
   featuresSubtitle: string;
   features: ServiceFeature[];
 
+  // Bento featured cards
+  bentoCards?: BentoCards;
+
   // Process
   processTitle: string;
   processSubtitle: string;
   processSteps: ServiceProcessStep[];
+
+  // Quality guarantees
+  qualityGuarantees?: QualityGuaranteesContent;
 
   // Testimonials
   testimonials: ServiceTestimonial[];

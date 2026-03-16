@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import {
   Search,
   MessageSquareText,
@@ -12,6 +11,11 @@ import {
   Clock,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ProcessStep {
   title: string;
@@ -42,16 +46,11 @@ function StepRow({
   step: ProcessStep;
   index: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
   const Icon = STEP_ICONS[index % STEP_ICONS.length];
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.12 }}
+    <div
+      data-process="row"
       className="border-t border-black/[0.08] hover:bg-white/80 transition-colors duration-300 group"
     >
       {/* Desktop — 4 colonnes */}
@@ -127,7 +126,7 @@ function StepRow({
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -136,12 +135,70 @@ export function ProcessTimeline({
   subtitle,
   steps,
 }: ProcessTimelineProps) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const progressHeight = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // Title + surtitre
+      gsap.from("[data-process='header']", {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      // Subtitle
+      gsap.from("[data-process='subtitle']", {
+        opacity: 0,
+        y: 20,
+        duration: 0.7,
+        delay: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      // Step rows — stagger
+      gsap.fromTo(
+        "[data-process='row']",
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "[data-process='rows']",
+            start: "top 85%",
+          },
+        },
+      );
+
+      // Progress bar — scroll-linked
+      gsap.fromTo(
+        "[data-process='progress']",
+        { height: "0%" },
+        {
+          height: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: "[data-process='rows']",
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true,
+          },
+        },
+      );
+    },
+    { scope: sectionRef },
+  );
 
   if (!steps || steps.length === 0) return null;
 
@@ -153,38 +210,37 @@ export function ProcessTimeline({
     >
       <div className="max-w-[82.5rem] mx-auto">
         {/* Section label + title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-10 sm:mb-14"
-        >
-          <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
-            <div className="w-2 h-2 bg-accent" />
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
-              Notre méthode
-            </span>
+        <div className="mb-10 sm:mb-14">
+          <div data-process="header">
+            <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
+              <div className="w-2 h-2 bg-accent" />
+              <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
+                Notre méthode
+              </span>
+            </div>
+            {title && (
+              <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary max-w-3xl">
+                {title}
+              </h2>
+            )}
           </div>
-          {title && (
-            <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary max-w-3xl">
-              {title}
-            </h2>
-          )}
           {subtitle && (
-            <p className="text-[15px] text-secondary leading-relaxed mt-4 max-w-2xl">
+            <p
+              data-process="subtitle"
+              className="text-[15px] text-secondary leading-relaxed mt-4 max-w-2xl"
+            >
               {subtitle}
             </p>
           )}
-        </motion.div>
+        </div>
 
         {/* Rows with accent progress bar */}
-        <div className="relative">
+        <div data-process="rows" className="relative">
           {/* Accent progress bar */}
           <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-black/[0.04] hidden lg:block">
-            <motion.div
+            <div
+              data-process="progress"
               className="w-full bg-accent origin-top"
-              style={{ height: progressHeight }}
             />
           </div>
 

@@ -49,10 +49,12 @@ export function ServiceDetailContent({
       )}
 
       {/* 6. Titre animé au scroll (blanc — interstitial) */}
-      <WebScrollTitle />
+      {service.scrollTitle && (
+        <WebScrollTitle content={service.scrollTitle} />
+      )}
 
       {/* 7. Particularités bento (blanc) */}
-      <WebFeaturesBento />
+      {service.bentoCards && <WebFeaturesBento cards={service.bentoCards} />}
 
       {/* 8. Témoignages (sombre) */}
       {service.testimonials.length > 0 && (
@@ -69,7 +71,9 @@ export function ServiceDetailContent({
       )}
 
       {/* 10. Garanties de qualité (sombre) */}
-      <QualityGuarantees />
+      {service.qualityGuarantees && (
+        <QualityGuarantees content={service.qualityGuarantees} />
+      )}
 
       {/* 11. FAQ (card) */}
       {service.faqs.length > 0 && (

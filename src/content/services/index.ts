@@ -12,6 +12,14 @@ export type {
   NarrativeBlock,
   NarrativeStatement,
   SolutionItem,
+  ScrollTitleContent,
+  BentoCards,
+  BentoFeaturedCard,
+  BentoMetricCard,
+  BentoAICard,
+  QualityGuaranteesContent,
+  QualityGuarantee,
+  QualityFeatureCard,
 } from "./types";
 
 import type { ServiceContent } from "./types";

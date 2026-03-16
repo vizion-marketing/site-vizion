@@ -290,6 +290,89 @@ export const siteWebLandingPage: ServiceContent = {
     },
   ],
 
+  // Scroll title (interstitial animé)
+  scrollTitle: {
+    hook: "Bref.",
+    phrase: "Chez Vizion, on crée\ndes sites internet...",
+    adjectives: ["simples", "performants", "qui convertissent"],
+  },
+
+  // Bento featured cards
+  bentoCards: {
+    featured: {
+      title: "Conçu pour convertir,\npas juste pour plaire",
+      description:
+        "Chaque page, chaque CTA, chaque parcours utilisateur est pensé pour faire avancer votre prospect dans le cycle d'achat.",
+    },
+    metric: {
+      value: 95,
+      label: "Score Google",
+      description:
+        "Performance, accessibilité, SEO — mesurés et maintenus dans la durée.",
+    },
+    seo: {
+      title: "SEO technique intégré dès la conception",
+      description:
+        "Schema.org, sitemap dynamique, Core Web Vitals, balises sémantiques — rien n'est laissé au hasard.",
+    },
+    design: {
+      title: "Design 100% sur mesure",
+      description:
+        "Pas de template, pas de thème WordPress. Chaque site est conçu depuis une page blanche pour refléter votre identité.",
+    },
+    ai: {
+      label: "Nouveau — Exclusif France",
+      title:
+        "Vizion est la première agence en France à proposer des sites 100% générés par IA — sans compromis sur la qualité.",
+      description:
+        "En plus du développement traditionnel, nous proposons un nouveau format de sites plus agile et plus performant, développé en interne par nos développeurs IA. Même exigence. Délais réduits.",
+    },
+    integrations: {
+      title: "Intégrations CRM & outils",
+      description:
+        "HubSpot, Pipedrive, Notion, Zapier — votre site s'intègre à votre stack commerciale.",
+    },
+  },
+
+  // Quality guarantees
+  qualityGuarantees: {
+    surtitre: "Nos engagements",
+    sectionTitle: "Pourquoi choisir Vizion\npour votre site web ?",
+    sectionDescription:
+      "Pas de promesses vagues — des engagements concrets, mesurables et documentés, valables sur chaque projet que nous livrons.",
+    cardSurtitre: "Nos engagements",
+    cardTitle: "Nos garanties\nde qualité",
+    cardDescription:
+      "Chaque projet est piloté avec la même rigueur. Pas de promesses vagues — des engagements concrets, mesurables et documentés.",
+    guarantees: [
+      {
+        icon: "ClipboardList",
+        title: "Bilan livrable — 50 points d'optimisation",
+        description:
+          "Checklist complète : sécurité, SEO technique, performance, accessibilité et bonnes pratiques.",
+      },
+      {
+        icon: "Wrench",
+        title: "3 mois de maintenance offerts",
+        description:
+          "Corrections, mises à jour et petites évolutions incluses pendant 3 mois après la livraison.",
+      },
+      {
+        icon: "Zap",
+        title: "Score Google 90+ garanti",
+        description:
+          "Performance, accessibilité, SEO et bonnes pratiques — mesurés et validés avant chaque livraison.",
+      },
+    ],
+    featureCard: {
+      title: "Une coopération unique\nentre stratégie et technique",
+      description:
+        "Stratèges marketing et développeurs chevronnés travaillent ensemble sur chaque projet — pour que votre site serve vraiment vos objectifs commerciaux.",
+      linkText: "En savoir plus",
+      linkHref: "/contact",
+    },
+  },
+
   // CTA
   ctaTitle: "Votre site mérite de travailler pour vous",
   ctaDescription:

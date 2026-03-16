@@ -1,9 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface FAQ {
   question: string;
@@ -16,7 +21,39 @@ interface ServiceFAQProps {
 }
 
 export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
+  const sectionRef = useRef<HTMLElement>(null);
   const [openIndex, setOpenIndex] = useState(0);
+
+  // GSAP entrance animations
+  useGSAP(
+    () => {
+      // Left column
+      gsap.from("[data-faq='left']", {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      // Accordion column
+      gsap.from("[data-faq='accordion']", {
+        opacity: 0,
+        y: 25,
+        duration: 0.8,
+        delay: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+    },
+    { scope: sectionRef },
+  );
 
   if (!faqs || faqs.length === 0) return null;
 
@@ -25,16 +62,14 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
   };
 
   return (
-    <section className="bg-card py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12">
+    <section
+      ref={sectionRef}
+      className="bg-card py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12"
+    >
       <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16">
         {/* Left column — sticky on desktop */}
         <div className="lg:sticky lg:top-32 lg:self-start">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <div data-faq="left">
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
               <div className="w-2 h-2 bg-accent" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
@@ -56,16 +91,11 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
             >
               Nous contacter →
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Right column — accordion */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
+        <div data-faq="accordion">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
@@ -134,7 +164,7 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
               Nous contacter →
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -3,8 +3,12 @@
 import { useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { Check } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ServiceHeroProps {
   category: string;
@@ -32,13 +36,6 @@ export function ServiceHero({
   const rafRef = useRef<number>(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Scroll parallax for desktop image
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, -40]);
-
   // Mouse parallax for blobs
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
@@ -62,6 +59,93 @@ export function ServiceHero({
     const el = document.getElementById("processus");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
+
+  // GSAP entrance timeline (plays once on mount)
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      // Breadcrumb
+      tl.from("[data-hero='breadcrumb']", {
+        opacity: 0,
+        duration: 0.6,
+      });
+
+      // Mobile image
+      tl.from(
+        "[data-hero='image-mobile']",
+        { opacity: 0, scale: 1.06, duration: 0.9, ease: "expo.out" },
+        0.1,
+      );
+
+      // Surtitre
+      tl.from(
+        "[data-hero='surtitre']",
+        { opacity: 0, y: 20, duration: 0.6 },
+        0.15,
+      );
+
+      // H1
+      tl.from(
+        "[data-hero='title']",
+        { opacity: 0, y: 30, duration: 0.8 },
+        0.25,
+      );
+
+      // Subtitle
+      tl.from(
+        "[data-hero='subtitle']",
+        { opacity: 0, y: 25, duration: 0.7 },
+        0.4,
+      );
+
+      // CTAs
+      tl.from(
+        "[data-hero='ctas']",
+        { opacity: 0, y: 20, duration: 0.6 },
+        0.55,
+      );
+
+      // Badge
+      tl.from(
+        "[data-hero='badge']",
+        { opacity: 0, scale: 0.96, duration: 0.5 },
+        0.65,
+      );
+
+      // Desktop image + frames
+      tl.from(
+        "[data-hero='image-desktop']",
+        { opacity: 0, y: 40, duration: 1, ease: "expo.out" },
+        0.2,
+      );
+
+      // Corner accents
+      tl.from(
+        "[data-hero='corner']",
+        { opacity: 0, scale: 0, duration: 0.4, stagger: 0.1 },
+        0.8,
+      );
+    },
+    { scope: sectionRef },
+  );
+
+  // Scroll parallax for desktop image
+  useGSAP(
+    () => {
+      gsap.to("[data-hero='image-inner']", {
+        y: -40,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section
@@ -100,10 +184,8 @@ export function ServiceHero({
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
         {/* Breadcrumbs */}
-        <motion.nav
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+        <nav
+          data-hero="breadcrumb"
           className="hidden md:flex items-center gap-2 text-sm text-white/60 mb-10"
           aria-label="Breadcrumb"
         >
@@ -119,18 +201,12 @@ export function ServiceHero({
           </Link>
           <span>/</span>
           <span className="text-white/90">{breadcrumbLabel}</span>
-        </motion.nav>
+        </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-10 lg:gap-16 items-end">
-          {/* Image mobile — au-dessus du texte */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.9,
-              delay: 0.2,
-              ease: [0.25, 0.1, 0.25, 1],
-            }}
+          {/* Image mobile */}
+          <div
+            data-hero="image-mobile"
             className="relative lg:hidden aspect-[16/9] overflow-hidden border border-white/10"
           >
             <Image
@@ -147,36 +223,24 @@ export function ServiceHero({
                   "linear-gradient(to top, rgba(12,12,10,0.6) 0%, transparent 40%)",
               }}
             />
-          </motion.div>
+          </div>
 
           {/* Colonne texte */}
           <div className="flex flex-col gap-6">
             {/* Surtitre */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.1,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
+            <div
+              data-hero="surtitre"
               className="flex items-center gap-2.5"
             >
               <div className="w-2 h-2 bg-accent" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-white/60">
                 {category}
               </span>
-            </motion.div>
+            </div>
 
             {/* H1 */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.2,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
+            <h1
+              data-hero="title"
               className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[44px] md:text-[58px] lg:text-[72px] leading-[0.95] tracking-[-0.03em]"
               style={{
                 backgroundImage:
@@ -187,23 +251,19 @@ export function ServiceHero({
               }}
             >
               {title}
-            </motion.h1>
+            </h1>
 
             {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
+            <p
+              data-hero="subtitle"
               className="text-sm sm:text-base md:text-lg leading-relaxed text-white/80 max-w-xl"
             >
               {subtitle}
-            </motion.p>
+            </p>
 
             {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.45, ease: "easeOut" }}
+            <div
+              data-hero="ctas"
               className="flex flex-col sm:flex-row gap-4 mt-2"
             >
               <Link
@@ -222,36 +282,23 @@ export function ServiceHero({
                   ↓
                 </span>
               </button>
-            </motion.div>
+            </div>
 
             {/* Badge */}
             {badge && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  duration: 0.4,
-                  delay: 0.55,
-                  type: "spring",
-                  stiffness: 200,
-                }}
+              <div
+                data-hero="badge"
                 className="hidden sm:inline-flex items-center gap-2.5 px-4 py-2 bg-white/[0.08] backdrop-blur-sm border border-white/[0.15] w-fit"
               >
                 <Check className="w-4 h-4 text-accent" />
                 <span className="text-sm text-white/90">{badge}</span>
-              </motion.div>
+              </div>
             )}
           </div>
 
-          {/* Image desktop — colonne droite with scroll parallax */}
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.9,
-              delay: 0.2,
-              ease: [0.25, 0.1, 0.25, 1],
-            }}
+          {/* Image desktop with scroll parallax */}
+          <div
+            data-hero="image-desktop"
             className="relative hidden lg:block self-end overflow-visible lg:-mb-40"
           >
             {/* Accent border frames */}
@@ -259,11 +306,17 @@ export function ServiceHero({
             <div className="absolute -inset-6 border border-accent/10 pointer-events-none" />
 
             {/* Corner accents */}
-            <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent" />
-            <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-accent" />
+            <div
+              data-hero="corner"
+              className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent"
+            />
+            <div
+              data-hero="corner"
+              className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-accent"
+            />
 
-            <motion.div
-              style={{ y: imageY }}
+            <div
+              data-hero="image-inner"
               className="relative aspect-[3/4] overflow-hidden shadow-2xl"
             >
               <Image
@@ -274,8 +327,8 @@ export function ServiceHero({
                 sizes="(max-width: 1023px) 0px, 45vw"
                 className="object-cover object-top"
               />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

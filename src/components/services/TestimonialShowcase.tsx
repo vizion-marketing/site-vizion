@@ -1,12 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { ServiceTestimonial } from "@/content/services";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface TestimonialShowcaseProps {
   testimonials: ServiceTestimonial[];
@@ -20,6 +24,7 @@ type Slide = {
 export function TestimonialShowcase({
   testimonials,
 }: TestimonialShowcaseProps) {
+  const sectionRef = useRef<HTMLElement>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start", slidesToScroll: 1 },
     [Autoplay({ delay: 4000, stopOnInteraction: true })],
@@ -43,6 +48,48 @@ export function TestimonialShowcase({
     };
   }, [emblaApi]);
 
+  // GSAP entrance animations
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      // Header: surtitre + title + description
+      tl.from("[data-testimonial='header']", {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+      });
+
+      // Navigation desktop
+      tl.from(
+        "[data-testimonial='nav-desktop']",
+        { opacity: 0, y: 20, duration: 0.6 },
+        "-=0.5",
+      );
+
+      // Carousel
+      tl.from(
+        "[data-testimonial='carousel']",
+        { opacity: 0, y: 25, duration: 0.8 },
+        "-=0.4",
+      );
+
+      // Mobile navigation
+      tl.from(
+        "[data-testimonial='nav-mobile']",
+        { opacity: 0, duration: 0.5 },
+        "-=0.3",
+      );
+    },
+    { scope: sectionRef },
+  );
+
   if (testimonials.length === 0) return null;
 
   // Build slides: photo card + text card for each testimonial with a photo, else just text
@@ -56,6 +103,7 @@ export function TestimonialShowcase({
 
   return (
     <section
+      ref={sectionRef}
       className="dark-section grain-overlay py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden"
       style={{ background: "var(--bg-dark)" }}
     >
@@ -69,14 +117,8 @@ export function TestimonialShowcase({
       />
       <div className="max-w-[82.5rem] mx-auto relative">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex items-end justify-between mb-10 sm:mb-14"
-        >
-          <div>
+        <div className="flex items-end justify-between mb-10 sm:mb-14">
+          <div data-testimonial="header">
             <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
               <div className="w-2 h-2 bg-accent" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
@@ -93,7 +135,10 @@ export function TestimonialShowcase({
           </div>
 
           {/* Navigation — desktop */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div
+            data-testimonial="nav-desktop"
+            className="hidden sm:flex items-center gap-3"
+          >
             <button
               onClick={scrollPrev}
               className="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white/5 hover:border-accent/40 active:scale-95 transition-all duration-200 cursor-pointer"
@@ -126,10 +171,14 @@ export function TestimonialShowcase({
               <ChevronRight size={18} className="text-primary" />
             </button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Carousel */}
-        <div ref={emblaRef} className="overflow-hidden">
+        <div
+          data-testimonial="carousel"
+          ref={emblaRef}
+          className="overflow-hidden"
+        >
           <div className="flex gap-4 sm:gap-5">
             {slides.map((slide, i) => (
               <div
@@ -147,10 +196,13 @@ export function TestimonialShowcase({
         </div>
 
         {/* Navigation — mobile */}
-        <div className="flex sm:hidden items-center justify-center gap-3 mt-8">
+        <div
+          data-testimonial="nav-mobile"
+          className="flex sm:hidden items-center justify-center gap-3 mt-8"
+        >
           <button
             onClick={scrollPrev}
-            className="w-10 h-10 border border-black/[0.12] flex items-center justify-center active:scale-95 transition-all cursor-pointer"
+            className="w-10 h-10 border border-white/20 flex items-center justify-center active:scale-95 transition-all cursor-pointer"
             aria-label="Précédent"
           >
             <ChevronLeft size={18} className="text-primary" />
@@ -171,7 +223,7 @@ export function TestimonialShowcase({
           </div>
           <button
             onClick={scrollNext}
-            className="w-10 h-10 border border-black/[0.12] flex items-center justify-center active:scale-95 transition-all cursor-pointer"
+            className="w-10 h-10 border border-white/20 flex items-center justify-center active:scale-95 transition-all cursor-pointer"
             aria-label="Suivant"
           >
             <ChevronRight size={18} className="text-primary" />
@@ -243,7 +295,8 @@ function TextCard({ testimonial }: { testimonial: ServiceTestimonial }) {
       {/* Quote content */}
       <div className="flex-1 flex flex-col justify-center relative z-10">
         <h3 className="font-heading font-medium text-[18px] sm:text-[20px] leading-[1.2] tracking-[-0.01em] text-primary mb-3">
-          &laquo;&nbsp;{testimonial.quote.length > 100
+          &laquo;&nbsp;
+          {testimonial.quote.length > 100
             ? testimonial.quote.slice(0, 100) + "…"
             : testimonial.quote}
           &nbsp;&raquo;

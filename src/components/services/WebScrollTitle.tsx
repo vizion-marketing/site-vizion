@@ -4,17 +4,23 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { ScrollTitleContent } from "@/content/services/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ADJECTIVES = ["simples", "performants", "qui convertissent"];
+interface WebScrollTitleProps {
+  content: ScrollTitleContent;
+}
 
-export function WebScrollTitle() {
+export function WebScrollTitle({ content }: WebScrollTitleProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const brefRef = useRef<HTMLSpanElement>(null);
   const phraseRef = useRef<HTMLDivElement>(null);
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const progressBarRef = useRef<HTMLDivElement>(null);
+
+  // Split phrase on \n for line breaks
+  const phraseLines = content.phrase.split("\n");
 
   useGSAP(
     () => {
@@ -32,20 +38,20 @@ export function WebScrollTitle() {
         },
       });
 
-      // Init: hide everything except Bref
+      // Init: hide everything except hook
       gsap.set(phraseRef.current, { opacity: 0, y: 40 });
       wordRefs.current.forEach((el) => {
         if (el) gsap.set(el, { opacity: 0 });
       });
 
-      // PHASE 1: "Bref." — zooms until it flies past you
+      // PHASE 1: Hook — zooms until it flies past you
       tl.fromTo(
         brefRef.current,
         { scale: 1, opacity: 1 },
         { scale: 35, opacity: 0, duration: 1.5, ease: "power3.in" },
       );
 
-      // PHASE 2: "Chez Vizion, on crée des sites internet..."
+      // PHASE 2: Phrase
       tl.fromTo(
         phraseRef.current,
         { opacity: 0, y: 40 },
@@ -63,7 +69,7 @@ export function WebScrollTitle() {
       // PHASE 3: Adjectives — each with unique effect
       const [w0, w1, w2] = wordRefs.current;
 
-      // 1. "simples" — bouncy scale from bottom
+      // 1. bouncy scale from bottom
       if (w0) {
         tl.fromTo(
           w0,
@@ -75,7 +81,7 @@ export function WebScrollTitle() {
         tl.to(w0, { opacity: 0, y: -60, duration: 0.5, ease: "power3.in" });
       }
 
-      // 2. "performants" — clip-path wipe left to right
+      // 2. clip-path wipe left to right
       if (w1) {
         tl.set(w1, { opacity: 1, clipPath: "inset(0 100% 0 0)" });
         tl.to(
@@ -91,7 +97,7 @@ export function WebScrollTitle() {
         });
       }
 
-      // 3. "qui convertissent" — blur reveal, stays visible
+      // 3. blur reveal, stays visible
       if (w2) {
         tl.fromTo(
           w2,
@@ -123,28 +129,31 @@ export function WebScrollTitle() {
           }}
         />
 
-        {/* Phase 1: "Bref." */}
+        {/* Phase 1: Hook */}
         <span
           ref={brefRef}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-medium text-[80px] sm:text-[120px] lg:text-[180px] leading-none tracking-[-0.04em] text-primary select-none"
         >
-          Bref.
+          {content.hook}
         </span>
 
-        {/* Phase 2: "Chez Vizion..." */}
+        {/* Phase 2: Phrase */}
         <div
           ref={phraseRef}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-6"
         >
           <p className="font-heading font-normal text-[36px] sm:text-[52px] lg:text-[68px] leading-[1.05] tracking-[-0.035em] text-primary max-w-5xl mx-auto text-center">
-            Chez Vizion, on crée
-            <br />
-            des sites internet...
+            {phraseLines.map((line, i) => (
+              <span key={i}>
+                {i > 0 && <br />}
+                {line}
+              </span>
+            ))}
           </p>
         </div>
 
         {/* Phase 3: Adjective words */}
-        {ADJECTIVES.map((word, i) => (
+        {content.adjectives.map((word, i) => (
           <span
             key={word}
             ref={(el) => {
