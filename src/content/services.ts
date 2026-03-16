@@ -77,6 +77,7 @@ export interface ServiceContent {
 
   // Solution sticky
   solutionTitle: string;
+  solutionSubtitle?: string;
   solutionImage: string;
   solutionItems: SolutionItem[];
 
@@ -206,6 +207,8 @@ const siteWebLandingPage: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Chez Vizion, nous ne nous contentons pas de faire des sites web",
+  solutionSubtitle:
+    "Chaque projet part de votre stratégie commerciale — pas d'un template. Voici comment nous construisons des sites qui travaillent pour vous.",
   solutionImage: "/images/why-vizion/equipe-vizion.avif",
   solutionItems: [
     {

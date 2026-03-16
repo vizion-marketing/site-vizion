@@ -8,8 +8,8 @@ import {
   QualityGuarantees,
   SolutionSticky,
   RecentProjects,
-
-  ProcessTimeline,
+  WebFeaturesBento,
+  WebScrollTitle,
   TestimonialShowcase,
   ServiceFAQ,
   RelatedArticles,
@@ -47,40 +47,38 @@ export function ServiceDetailContent({
       {service.solutionItems.length > 0 && (
         <SolutionSticky
           title={service.solutionTitle}
+          subtitle={service.solutionSubtitle}
           image={service.solutionImage}
           items={service.solutionItems}
         />
       )}
 
-      {/* 4. Derniers projets */}
-      <RecentProjects caseStudies={recentProjects} />
+      {/* 4. Titre animé au scroll */}
+      <WebScrollTitle />
 
-      {/* 5. Garanties de qualité */}
+      {/* 5. Particularités bento */}
+      <WebFeaturesBento />
+
+      {/* 6. Garanties de qualité */}
       <QualityGuarantees />
 
-      {/* 6. Process Steps */}
-      {service.processSteps.length > 0 && (
-        <ProcessTimeline
-          title={service.processTitle}
-          subtitle={service.processSubtitle}
-          steps={service.processSteps}
-        />
-      )}
+      {/* 7. Derniers projets */}
+      <RecentProjects caseStudies={recentProjects} />
 
-      {/* 7. Témoignages */}
+      {/* 8. Témoignages */}
       {service.testimonials.length > 0 && (
         <TestimonialShowcase testimonials={service.testimonials} />
       )}
 
-      {/* 8. FAQ */}
+      {/* 9. FAQ */}
       {service.faqs.length > 0 && (
         <ServiceFAQ title={service.faqTitle} faqs={service.faqs} />
       )}
 
-      {/* 9. Articles liés */}
+      {/* 10. Articles liés */}
       {relatedPosts.length > 0 && <RelatedArticles posts={relatedPosts} />}
 
-      {/* 10. CTA final */}
+      {/* 11. CTA final */}
       <ServiceCTA
         title={service.ctaTitle}
         description={service.ctaDescription}

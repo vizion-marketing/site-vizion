@@ -27,8 +27,8 @@ function StatementCard({
   const Icon = statementIcons[index % statementIcons.length];
   return (
     <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
-      <div className="w-10 h-10 bg-accent/10 flex items-center justify-center mb-4">
-        <Icon size={18} className="text-primary" />
+      <div className="w-10 h-10 bg-accent flex items-center justify-center mb-4">
+        <Icon size={18} className="text-black" />
       </div>
       <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary leading-snug mb-2">
         {statement.headline}

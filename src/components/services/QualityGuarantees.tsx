@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Shield, Clock, ArrowRight, UserCheck } from "lucide-react";
+import { ClipboardList, Wrench, Zap, ArrowRight, UserCheck } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -21,7 +21,39 @@ export function QualityGuarantees() {
       className="dark-section grain-overlay py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 relative overflow-hidden"
       style={{ background: "var(--bg-dark)" }}
     >
-      <div className="max-w-[82.5rem] mx-auto">
+      {/* Decorative gradient */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 80% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
+        }}
+      />
+      <div className="max-w-[82.5rem] mx-auto relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-10 sm:mb-14"
+        >
+          <div className="flex items-center gap-2.5 mb-3 sm:mb-4">
+            <div className="w-2 h-2 bg-accent" />
+            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
+              Nos engagements
+            </span>
+          </div>
+          <h2 className="font-heading font-medium text-[28px] sm:text-[38px] md:text-[48px] leading-[1.05] tracking-[-0.035em] text-primary max-w-3xl">
+            Pourquoi choisir Vizion
+            <br />
+            pour votre site web ?
+          </h2>
+          <p className="text-[15px] sm:text-[16px] text-muted leading-relaxed mt-4 sm:mt-5 max-w-xl">
+            Pas de promesses vagues — des engagements concrets, mesurables et
+            documentés, valables sur chaque projet que nous livrons.
+          </p>
+        </motion.div>
+
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -57,30 +89,44 @@ export function QualityGuarantees() {
             {/* Feature rows */}
             <div className="mt-8 space-y-0">
               <div className="flex items-start gap-4 py-4 border-t border-white/10">
-                <div className="w-10 h-10 shrink-0 bg-accent/10 flex items-center justify-center">
-                  <Shield size={18} className="text-primary" />
+                <div className="w-10 h-10 shrink-0 bg-accent flex items-center justify-center">
+                  <ClipboardList size={18} className="text-black" />
                 </div>
                 <div>
                   <h4 className="text-[14px] sm:text-[15px] font-semibold text-primary leading-snug">
-                    Résultats mesurables
+                    Bilan livrable — 50 points d&apos;optimisation
                   </h4>
                   <p className="text-[13px] text-muted leading-relaxed mt-1">
-                    Chaque action est trackée. Rapports mensuels transparents
-                    avec KPIs concrets.
+                    Checklist complète : sécurité, SEO technique, performance,
+                    accessibilité et bonnes pratiques.
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-4 py-4 border-t border-white/10">
-                <div className="w-10 h-10 shrink-0 bg-accent/10 flex items-center justify-center">
-                  <Clock size={18} className="text-primary" />
+                <div className="w-10 h-10 shrink-0 bg-accent flex items-center justify-center">
+                  <Wrench size={18} className="text-black" />
                 </div>
                 <div>
                   <h4 className="text-[14px] sm:text-[15px] font-semibold text-primary leading-snug">
-                    Délais respectés
+                    3 mois de maintenance offerts
                   </h4>
                   <p className="text-[13px] text-muted leading-relaxed mt-1">
-                    Planning détaillé dès le kickoff. Chaque milestone est
-                    tenu — ou communiqué en amont.
+                    Corrections, mises à jour et petites évolutions incluses
+                    pendant 3 mois après la livraison.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 py-4 border-t border-white/10">
+                <div className="w-10 h-10 shrink-0 bg-accent flex items-center justify-center">
+                  <Zap size={18} className="text-black" />
+                </div>
+                <div>
+                  <h4 className="text-[14px] sm:text-[15px] font-semibold text-primary leading-snug">
+                    Score Google 90+ garanti
+                  </h4>
+                  <p className="text-[13px] text-muted leading-relaxed mt-1">
+                    Performance, accessibilité, SEO et bonnes pratiques —
+                    mesurés et validés avant chaque livraison.
                   </p>
                 </div>
               </div>
@@ -115,13 +161,14 @@ export function QualityGuarantees() {
                   <UserCheck size={18} className="text-primary" />
                 </div>
                 <h3 className="text-[18px] sm:text-[20px] font-semibold text-primary leading-snug mb-3">
-                  Un interlocuteur
+                  Une coopération unique
                   <br />
-                  unique
+                  entre stratégie et technique
                 </h3>
                 <p className="text-[14px] sm:text-[15px] text-muted leading-relaxed">
-                  Un directeur marketing dédié pilote votre projet de A à Z.
-                  Pas de turnover, pas de perte de contexte.
+                  Stratèges marketing et développeurs chevronnés travaillent
+                  ensemble sur chaque projet — pour que votre site serve vraiment
+                  vos objectifs commerciaux.
                 </p>
               </div>
               <Link

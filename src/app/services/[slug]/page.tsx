@@ -45,9 +45,9 @@ export default async function ServicePage({ params }: PageProps) {
     getAllCaseStudies(),
   ]);
   const projectSlugs = service.relatedProjectSlugs || [];
-  const recentProjects = projectSlugs.length > 0
-    ? allCaseStudies.filter((cs) => projectSlugs.includes(cs.slug))
-    : allCaseStudies.slice(0, 3);
+  const recentProjects = allCaseStudies.filter((cs) =>
+    projectSlugs.includes(cs.slug),
+  );
 
   // JSON-LD
   const jsonLd = [

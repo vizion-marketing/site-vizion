@@ -12,5 +12,8 @@ export { ServiceFAQ } from "./ServiceFAQ";
 export { RelatedArticles } from "./RelatedArticles";
 export { SolutionSticky } from "./SolutionSticky";
 export { RecentProjects } from "./RecentProjects";
+export { WebFeaturesBento } from "./WebFeaturesBento";
+export { WebScrollTitle } from "./WebScrollTitle";
+export { VizionDifference } from "./VizionDifference";
 export { QualityGuarantees } from "./QualityGuarantees";
 export { ServiceCTA } from "./ServiceCTA";

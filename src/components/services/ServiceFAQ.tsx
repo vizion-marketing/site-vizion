@@ -23,8 +23,8 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
   return (
     <section className="bg-card py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12">
       <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16">
-        {/* Left column — sticky */}
-        <div className="lg:sticky lg:top-[120px] lg:self-start">
+        {/* Left column */}
+        <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
