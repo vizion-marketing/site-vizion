@@ -44,5 +44,8 @@ next-env.d.ts
 # Contentlayer
 .contentlayer
 
+# MCP config (contient des clés API)
+.mcp.json
+
 # Windows artifacts
 nul
