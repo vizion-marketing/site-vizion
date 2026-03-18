@@ -22,11 +22,11 @@ export const siteWebLandingPage: ServiceContent = {
   ],
 
   // Hero
-  heroTitle: "Un site web qui convertit\nvos visiteurs en clients",
+  heroTitle: "Votre site web devrait être votre meilleur commercial",
   heroSubtitle:
-    "Nous concevons des sites web et landing pages B2B qui ne se contentent pas d'être beaux — ils sont architecturés pour transformer chaque visite en opportunité commerciale.",
+    "C'est pourquoi chez Vizion, nous construisons des sites web pensés pour devenir de véritables actifs stratégiques. Architecture, design, copywriting — tout est millimétré pour éduquer et convaincre vos prospects.",
   heroBadge: "+40 sites et landing pages livrés",
-  heroImage: "/images/services/site-web-hero.avif",
+  heroImage: "/images/services/website.png",
 
   // ── Narrative : 3 blocs éditoriaux ──
 
