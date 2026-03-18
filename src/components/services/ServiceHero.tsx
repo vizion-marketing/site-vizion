@@ -105,6 +105,46 @@ export function ServiceHero({
         repeat: -1,
         yoyo: true,
       });
+
+      // Accent square pulse
+      gsap.to("[data-hero='accent-square']", {
+        scale: 1.3,
+        opacity: 0.6,
+        duration: 1.2,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+
+      // Phone icon — subtle ring
+      gsap.to("[data-hero='phone-icon']", {
+        rotation: 8,
+        duration: 0.15,
+        ease: "power2.inOut",
+        repeat: -1,
+        yoyo: true,
+        repeatDelay: 3,
+      });
+
+      // Badge glow pulse
+      gsap.to("[data-hero='badge']", {
+        boxShadow: "0 0 20px rgba(var(--color-accent-rgb), 0.15)",
+        duration: 2,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+
+      // CTA shimmer
+      gsap.fromTo("[data-hero='cta-shimmer']", {
+        x: "-100%",
+      }, {
+        x: "200%",
+        duration: 2,
+        ease: "power2.inOut",
+        repeat: -1,
+        repeatDelay: 4,
+      });
     },
     { scope: sectionRef },
   );
@@ -272,7 +312,10 @@ export function ServiceHero({
 
               {/* Surtitre */}
               <div data-hero="surtitre" className="flex items-center gap-2.5 mb-6">
-                <div className="w-2 h-2 bg-accent" />
+                <div className="relative w-2 h-2">
+                  <div className="absolute inset-0 bg-accent" />
+                  <div data-hero="accent-square" className="absolute inset-0 bg-accent" />
+                </div>
                 <span className="text-[11px] font-light tracking-[0.12em] uppercase text-white/60">
                   {category}
                 </span>
@@ -308,8 +351,9 @@ export function ServiceHero({
               >
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center justify-center gap-3 bg-accent text-black font-semibold px-8 py-4 hover:bg-accent/90 active:scale-[0.97] transition-all duration-200"
+                  className="group relative inline-flex items-center justify-center gap-3 bg-accent text-black font-semibold px-8 py-4 hover:bg-accent/90 active:scale-[0.97] transition-all duration-200 overflow-hidden"
                 >
+                  <span data-hero="cta-shimmer" className="absolute inset-y-0 w-[40%] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
                   Discuter de votre projet
                   <ArrowRight
                     size={16}
@@ -319,7 +363,7 @@ export function ServiceHero({
 
                 <div className="flex items-center gap-3 text-white/70">
                   <div className="w-10 h-10 border border-white/20 flex items-center justify-center">
-                    <Phone size={16} className="text-white/80" />
+                    <Phone data-hero="phone-icon" size={16} className="text-white/80" />
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[11px] font-light tracking-[0.05em] uppercase text-white/50">
@@ -347,8 +391,12 @@ export function ServiceHero({
           <div className="relative">
             <div
               data-hero="image-inner"
-              className="absolute left-[-35%] right-[-30%] z-20"
-              style={{ top: "-15%", bottom: "-20%" }}
+              className="absolute left-[-35%] right-[-30%] z-20 transition-transform duration-300 ease-out"
+              style={{
+                top: "-15%",
+                bottom: "-20%",
+                transform: `perspective(1000px) rotateY(${mousePos.x * 5}deg) rotateX(${mousePos.y * -3}deg)`,
+              }}
             >
               <Image
                 src={heroSrc}

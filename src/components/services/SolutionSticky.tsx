@@ -23,10 +23,10 @@ export function SolutionSticky({
   items,
 }: SolutionStickyProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [reachedIndex, setReachedIndex] = useState(-1);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Active card detection via IntersectionObserver
+  // Track highest reached card — once activated, stays activated
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
@@ -34,9 +34,11 @@ export function SolutionSticky({
       if (!ref) return;
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setActiveIndex(i);
+          if (entry.isIntersecting) {
+            setReachedIndex((prev) => Math.max(prev, i));
+          }
         },
-        { threshold: 0.6 },
+        { threshold: 0.4 },
       );
       observer.observe(ref);
       observers.push(observer);
@@ -44,6 +46,21 @@ export function SolutionSticky({
 
     return () => observers.forEach((o) => o.disconnect());
   }, [items.length]);
+
+  // Scroll progress for the section
+  const [scrollProgress, setScrollProgress] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = rect.height;
+      const scrolled = -rect.top;
+      const progress = Math.min(Math.max(scrolled / (sectionHeight - window.innerHeight), 0), 1);
+      setScrollProgress(progress);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // GSAP entrance animations
   useGSAP(
@@ -205,9 +222,10 @@ export function SolutionSticky({
             )}
           </div>
 
-          {/* Cards */}
+          {/* Cards with progress bar */}
+          <div className="relative lg:pl-5 flex flex-col gap-4 sm:gap-5">
           {items.map((item, i) => {
-            const isActive = activeIndex === i;
+            const isReached = i <= reachedIndex;
             const num = String(i + 1).padStart(2, "0");
 
             return (
@@ -220,16 +238,16 @@ export function SolutionSticky({
                     cardRefs.current[i] = el;
                   }}
                   data-solution="card"
-                  className={`py-7 sm:py-8 px-6 sm:px-8 transition-all duration-300 ${
-                    isActive
+                  className={`py-7 sm:py-8 px-6 sm:px-8 transition-all duration-500 ${
+                    isReached
                       ? "bg-white/[0.06] backdrop-blur-sm"
                       : "hover:bg-white/[0.03]"
                   }`}
                 >
                   <div className="flex items-start gap-5">
                     <span
-                      className={`text-[13px] font-medium tracking-wide shrink-0 mt-1 transition-colors duration-300 ${
-                        isActive ? "text-accent" : "text-white/30"
+                      className={`text-[13px] font-medium tracking-wide shrink-0 mt-1 transition-colors duration-500 ${
+                        isReached ? "text-accent" : "text-white/30"
                       }`}
                     >
                       {num}
@@ -247,6 +265,14 @@ export function SolutionSticky({
               </div>
             );
           })}
+          {/* Scroll progress bar — left edge of cards only */}
+          <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-white/[0.08] hidden lg:block">
+            <div
+              className="w-full bg-accent origin-top transition-none"
+              style={{ height: `${scrollProgress * 100}%` }}
+            />
+          </div>
+          </div>
         </div>
       </div>
     </section>
