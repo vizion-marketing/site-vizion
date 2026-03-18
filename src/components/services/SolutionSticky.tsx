@@ -85,6 +85,25 @@ export function SolutionSticky({
         },
       });
 
+      // Chart container — fade in
+      gsap.from("[data-solution='chart']", {
+        opacity: 0, y: 20, duration: 0.6, delay: 0.4,
+        ease: "power3.out",
+        scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
+      });
+
+      // Bars — grow from bottom with stagger
+      gsap.from("[data-solution='bar']", {
+        scaleY: 0, duration: 0.8, stagger: 0.1, delay: 0.6,
+        ease: "elastic.out(1, 0.5)",
+        scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
+      });
+
+      // Continuous floating motion on chart
+      gsap.to("[data-solution='chart']", {
+        y: "-=8", duration: 3, ease: "sine.inOut", repeat: -1, yoyo: true,
+      });
+
       // Cards — stagger
       gsap.fromTo(
         "[data-solution='card']",
@@ -108,11 +127,23 @@ export function SolutionSticky({
   return (
     <section
       ref={sectionRef}
-      className="dark-section grain-overlay py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12"
+      className="dark-section grain-overlay relative py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12"
       style={{ background: "var(--bg-dark)" }}
     >
-      <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16">
-        {/* Left — Image sticky */}
+      {/* Accent blobs */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <div
+          className="absolute w-[50%] h-[50%] top-[10%] right-[-10%]"
+          style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }}
+        />
+        <div
+          className="absolute w-[40%] h-[40%] bottom-[5%] left-[-5%]"
+          style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)" }}
+        />
+      </div>
+
+      <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 relative z-10">
+        {/* Left — Image sticky with gradients + floating UI elements */}
         <div className="lg:sticky lg:top-[100px] lg:self-start">
           <div
             data-solution="image"
@@ -120,12 +151,37 @@ export function SolutionSticky({
           >
             <Image
               src={image}
-              alt="L'équipe Vizion"
+              alt="Mockup site web Vizion"
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+            {/* Gradient bottom — black fade */}
+            <div
+              className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+              style={{ background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)" }}
+            />
+            {/* Gradient left — black fade */}
+            <div
+              className="absolute inset-y-0 left-0 w-1/4 pointer-events-none"
+              style={{ background: "linear-gradient(to right, var(--bg-dark) 0%, transparent 100%)" }}
+            />
+
+            {/* Floating bar chart */}
+            <div
+              data-solution="chart"
+              className="absolute bottom-[28%] left-[6%] bg-white/[0.08] backdrop-blur-md border border-white/15 p-4"
+            >
+              <div className="flex items-end gap-[6px] h-[80px]">
+                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "35%" }} />
+                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "55%" }} />
+                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "40%" }} />
+                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "75%" }} />
+                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "60%" }} />
+                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "90%" }} />
+                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "70%" }} />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -152,26 +208,42 @@ export function SolutionSticky({
           {/* Cards */}
           {items.map((item, i) => {
             const isActive = activeIndex === i;
+            const num = String(i + 1).padStart(2, "0");
 
             return (
-              <div
-                key={i}
-                ref={(el) => {
-                  cardRefs.current[i] = el;
-                }}
-                data-solution="card"
-                className={`border border-l-[3px] p-7 sm:p-8 transition-all duration-300 ${
-                  isActive
-                    ? "bg-white/[0.08] border-accent/30 border-l-accent"
-                    : "bg-white/[0.03] border-white/10 border-l-transparent hover:bg-white/[0.06] hover:border-white/15"
-                }`}
-              >
-                <h3 className="text-[17px] sm:text-[19px] font-semibold text-white leading-snug mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-[14px] sm:text-[15px] text-white/60 leading-relaxed">
-                  {item.description}
-                </p>
+              <div key={i}>
+                {i > 0 && (
+                  <div className="h-px bg-white/[0.08]" />
+                )}
+                <div
+                  ref={(el) => {
+                    cardRefs.current[i] = el;
+                  }}
+                  data-solution="card"
+                  className={`py-7 sm:py-8 px-6 sm:px-8 transition-all duration-300 ${
+                    isActive
+                      ? "bg-white/[0.06] backdrop-blur-sm"
+                      : "hover:bg-white/[0.03]"
+                  }`}
+                >
+                  <div className="flex items-start gap-5">
+                    <span
+                      className={`text-[13px] font-medium tracking-wide shrink-0 mt-1 transition-colors duration-300 ${
+                        isActive ? "text-accent" : "text-white/30"
+                      }`}
+                    >
+                      {num}
+                    </span>
+                    <div>
+                      <h3 className="text-[17px] sm:text-[19px] font-semibold text-white leading-snug mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-[14px] sm:text-[15px] text-white/60 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}

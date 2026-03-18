@@ -24,38 +24,38 @@ export const siteWebLandingPage: ServiceContent = {
   // Hero
   heroTitle: "Votre site web devrait être votre meilleur commercial",
   heroSubtitle:
-    "C'est pourquoi chez Vizion, nous construisons des sites web pensés pour devenir de véritables actifs stratégiques. Architecture, design, copywriting — tout est millimétré pour éduquer et convaincre vos prospects.",
+    "C'est pourquoi chez Vizion, nous ne construisons pas des sites web classiques. Nous construisons de véritables actifs stratégiques. Architecture, design, copywriting, référencement : tout est millimétré pour servir votre croissance, pas votre égo.",
   heroBadge: "+40 sites et landing pages livrés",
   heroImage: "/images/services/website.png",
 
   // ── Narrative : 3 blocs éditoriaux ──
 
   constat: {
-    surtitre: "Le constat",
-    title: "En B2B, votre site web est votre arme stratégique n°1",
+    surtitre: "Le problème",
+    title: "Votre site web est au cœur de votre croissance. Pourtant…",
     paragraphs: [
-      "Vos prospects ne décrochent pas le téléphone au premier contact. Ils cherchent, comparent, analysent. Votre site est souvent le premier — et parfois le seul — point de contact avant une prise de décision.",
+      "LinkedIn, salon, bouche-à-oreille — peu importe comment vos prospects entendent parler de vous. Le réflexe est toujours le même : ils cherchent votre nom et finissent sur votre site.",
     ],
     statements: [
       {
-        headline: "Vos prospects comparent avant de vous contacter",
+        headline: "Votre site n'est pas à la hauteur de votre produit",
         description:
-          "En B2B, 70% du parcours d'achat se fait en ligne avant le premier appel. Votre site est jugé, comparé et évalué — souvent sans que vous le sachiez.",
+          "Vos commerciaux vous le disent, vos clients aussi. Un site daté envoie un signal de méfiance — et vos prospects ne vous rappelleront jamais pour vous dire pourquoi.",
       },
       {
-        headline: "Plusieurs décideurs, un seul point d'entrée",
+        headline: "Vous avez du trafic, mais zéro leads",
         description:
-          "Avec des cycles de 3 à 18 mois et un comité de décision complet, votre site doit convaincre un CTO, rassurer un DAF et donner envie à un DG — simultanément.",
+          "Votre site attire des visiteurs, mais personne ne passe à l'action. Le problème n'est pas votre offre — c'est le parcours qui ne guide pas vers la conversion.",
       },
       {
-        headline: "Votre meilleur commercial travaille 24h/24",
+        headline: "Vous êtes invisibles sur Google",
         description:
-          "Ce n'est pas une vitrine. C'est un actif stratégique qui fait le travail de qualification, d'éducation et de conversion sans jamais prendre de congés.",
+          "Vos concurrents apparaissent en première page, pas vous. Sans fondations SEO solides, votre site est invisible pour ceux qui cherchent ce que vous vendez.",
       },
       {
-        headline: "Un site daté vous coûte des opportunités",
+        headline: "Personne ne comprend ce que vous faites",
         description:
-          "Chaque visiteur qui repart sans comprendre votre offre en 5 secondes est un prospect que votre concurrent va capter avec un meilleur site.",
+          "Votre offre est claire dans votre tête, mais pas sur votre site. Un prospect qui ne comprend pas votre valeur en 5 secondes ira voir quelqu'un qui l'explique mieux.",
       },
     ],
   },
@@ -75,50 +75,49 @@ export const siteWebLandingPage: ServiceContent = {
   },
 
   promesse: {
-    surtitre: "L'approche Vizion",
-    title: "Pas un site web. Un système de conversion.",
+    surtitre: "Notre approche",
+    title: "Chez Vizion, nous créons des sites web qui servent (vraiment) votre croissance",
     paragraphs: [
       "Nous ne construisons pas de jolis sites. Nous architecturons des actifs stratégiques où chaque page a un objectif, chaque section fait avancer le visiteur, et chaque mot est choisi pour convaincre votre cible.",
-      "Chaque décideur a son parcours. Un CTO ne lit pas comme un CEO. Nous créons des chemins de navigation et des argumentaires adaptés à chacun de vos interlocuteurs — pour que votre site parle à tout le comité de décision, pas juste au premier contact.",
     ],
     highlights: [
       "Un parcours dédié pour chaque profil de décideur",
-      "Du copywriting qui vend, pas qui décrit",
+      "Du copywriting qui vend, pas qui meuble",
       "Un SEO pensé pour capter vos requêtes business",
       "Des pages qui font le travail commercial avant le premier appel",
     ],
   },
 
-  // Solution sticky (contenu fusionné depuis la promesse)
-  solutionTitle: "Pas un site web. Un système de conversion.",
+  // Solution sticky
+  solutionTitle: "Chez Vizion, nous créons des sites web qui servent (vraiment) votre croissance",
   solutionSubtitle:
-    "Nous ne construisons pas de jolis sites. Nous architecturons des actifs stratégiques où chaque page a un objectif, chaque section fait avancer le visiteur, et chaque mot est choisi pour convaincre votre cible.",
-  solutionImage: "/images/why-vizion/equipe-vizion.avif",
+    "Pas de jolis sites. Des actifs stratégiques pensés pour convertir.",
+  solutionImage: "/images/services/website_mockup.png",
   solutionItems: [
     {
-      title: "Un positionnement avant un design",
+      title: "Nous pensons marketing avant design.",
       description:
-        "Avant de toucher un pixel, on définit votre message, vos cibles et votre avantage concurrentiel. Le design vient servir la stratégie — pas l'inverse.",
+        "Avant de toucher un pixel, nous analysons votre marché, vos cibles et ce qui vous différencie. Le design vient ensuite servir cette stratégie. Pas l'inverse.",
     },
     {
-      title: "Du copywriting qui vend, pas qui décrit",
+      title: "Nous créons un site qui parle à vos cibles.",
       description:
-        "Chaque titre, chaque paragraphe, chaque CTA est rédigé pour votre acheteur B2B. On ne remplit pas des pages — on construit des argumentaires de vente.",
+        "Chaque titre et chaque paragraphe est écrit pour votre acheteur B2B. Nous ne remplissons pas des pages. Nous construisons des argumentaires de vente.",
     },
     {
-      title: "Une architecture pensée pour la conversion",
+      title: "Nous intégrons le SEO dès la conception.",
       description:
-        "Chaque page a un objectif mesurable. Le parcours utilisateur est architecturé pour transformer un visiteur curieux en prospect qualifié.",
+        "Structure sémantique, maillage interne, performance technique. Le référencement n'est pas un ajout en fin de projet. C'est un pilier de chaque décision.",
     },
     {
-      title: "Un SEO intégré dès la conception",
+      title: "Nous vous livrons un actif évolutif.",
       description:
-        "Structure sémantique, maillage interne, Core Web Vitals — le référencement n'est pas un add-on, c'est un pilier de chaque décision technique.",
+        "CMS intuitif, formation incluse, documentation complète. Vous publiez, modifiez et faites évoluer votre site sans dépendre de personne.",
     },
     {
-      title: "Un site que vous maîtrisez",
+      title: "Nous mesurons tout et optimisons en continu.",
       description:
-        "CMS intuitif, formation incluse, documentation complète. Vous publiez, modifiez et faites évoluer votre site sans dépendre d'un développeur.",
+        "Analytics, heatmaps, taux de conversion. Chaque décision est guidée par la donnée. Votre site s'améliore après le lancement, pas seulement avant.",
     },
   ],
 
