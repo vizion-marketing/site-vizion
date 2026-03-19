@@ -264,7 +264,7 @@ export const siteWebLandingPage: ServiceContent = {
       alt: "L'équipe Vizion au travail",
     },
     technology: {
-      title: "CMS ou code sur mesure :\nà chacun sa préférence",
+      title: "CMS ou code sur-mesure :\nc'est vous qui choisissez.",
       description:
         "Un site que vos équipes peuvent mettre à jour en autonomie ? Nous nous appuyons sur WordPress. Un site ultra-rapide, animé, avec des fonctionnalités sur mesure ? Nous développons avec les frameworks les plus performants du marché. Dans les deux cas, c'est votre besoin qui dicte la technologie, pas l'inverse.",
       logos: [
@@ -285,15 +285,15 @@ export const siteWebLandingPage: ServiceContent = {
       suffix: "+",
       label: "Score Google",
       description:
-        "Performance, accessibilité, SEO : à la livraison, nous vous garantissons tous les indicateurs au vert. Et nous veillons à ce qu'ils le restent.",
+        "Votre performance est garantie. À la livraison, tous les indicateurs sont au vert — et nous veillons à ce qu'ils le restent.",
     },
     noTemplate: {
-      title: "Un site sur mesure, zéro template",
+      title: "Votre site est constitué à 100% sur-mesure par nos designers",
       description:
         "Pas de thème préfabriqué. Chaque site est conçu depuis une page blanche pour refléter votre identité visuelle et vos objectifs.",
     },
     widgets: {
-      title: "Des widgets développés sur mesure",
+      title: "Nous créons pour vous des widgets et modules exclusifs",
       description:
         "Chaque fonctionnalité est pensée pour votre métier. Pas de plugin générique, du code taillé pour vos cas d'usage.",
       tags: [
@@ -305,7 +305,7 @@ export const siteWebLandingPage: ServiceContent = {
       ],
     },
     integrations: {
-      title: "Connecté à vos outils existants",
+      title: "Votre nouveau site est connecté à tous vos outils existants",
       description:
         "CRM, ERP, outil de facturation, plateforme emailing : votre site s'intègre nativement à votre stack. Pas de ressaisie, pas de friction entre les équipes.",
       logos: [
@@ -322,7 +322,7 @@ export const siteWebLandingPage: ServiceContent = {
       ],
     },
     growth: {
-      title: "Prêt à mesurer dès le jour 1",
+      title: "Vous savez précisément ce qui se passe dessus",
       description:
         "Google Tag Manager, Google Analytics, pixels de conversion, événements personnalisés. Nous installons et configurons tous vos outils de growth dès la conception. Chaque visite, chaque clic, chaque formulaire est traçable.",
     },
