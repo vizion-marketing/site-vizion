@@ -138,13 +138,14 @@ export const siteWebLandingPage: ServiceContent = {
         "Site fonctionnel",
         "CMS configuré",
         "SEO technique",
+        "Plan de redirections 301",
         "Analytics",
       ],
     },
     {
       title: "Lancement et suivi",
       description:
-        "Mise en production, redirections, indexation Google et configuration des outils de tracking. Nous restons à vos côtés pendant 3 mois pour ajuster ce qui doit l'être.",
+        "Mise en production, exécution du plan de redirections 301 pour préserver votre trafic existant, indexation Google et configuration des outils de tracking. Nous restons à vos côtés pendant 3 mois pour ajuster ce qui doit l'être.",
       duration: "1 semaine",
       deliverables: [
         "Mise en production",
