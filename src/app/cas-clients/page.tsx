@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { getAllClients } from "@/lib/sanity/clients";
 import { getAllCaseStudies } from "@/lib/sanity/caseStudies";
 import { CasClientsContent } from "./CasClientsContent";
@@ -11,55 +12,6 @@ export const metadata = createMetadata({
 });
 
 export default async function CasClientsPage() {
-  const [allClients, allCaseStudies] = await Promise.all([
-    getAllClients(),
-    getAllCaseStudies(),
-  ]);
-
-  const publishedClients = allClients.sort((a, b) => {
-    if (a.featured && !b.featured) return -1;
-    if (!a.featured && b.featured) return 1;
-    return (a.order || 0) - (b.order || 0);
-  });
-
-  const publishedCaseStudies = allCaseStudies;
-
-  // Featured client
-  const featuredClient = publishedClients.find((c) => c.featured) || null;
-
-  // Schema.org structured data
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Cas Clients B2B",
-    description: "Collection d'études de cas B2B démontrant notre expertise en marketing et croissance commerciale.",
-    url: `${SITE_URL}/cas-clients`,
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: publishedClients.map((client, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        item: {
-          "@type": "Organization",
-          name: client.name,
-          description: client.description,
-          url: `${SITE_URL}${client.url}`,
-        },
-      })),
-    },
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <CasClientsContent
-        clients={publishedClients}
-        caseStudies={publishedCaseStudies}
-        featuredClient={featuredClient}
-      />
-    </>
-  );
+  // Temporarily disabled — return 404
+  return notFound();
 }

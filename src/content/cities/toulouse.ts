@@ -71,7 +71,7 @@ const content: CityPageData["content"] = {
       "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialisée dans les cycles de ventes longs.",
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES À TOULOUSE ET EN FRANCE DEPUIS 2021",
   },
@@ -171,7 +171,7 @@ const content: CityPageData["content"] = {
       "30 minutes avec un fondateur. On analyse votre positionnement actuel, on identifie les écarts avec votre marché, et on vous dit concrètement ce qu'on ferait. Sans engagement.",
     cta: {
       primary: { text: "Réserver un appel avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     trustElements: [
       "30 minutes",

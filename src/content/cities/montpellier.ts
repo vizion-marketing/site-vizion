@@ -76,7 +76,7 @@ const content: CityPageData["content"] = {
       "L'écosystème tech montpelliérain bouillonne, mais la concurrence aussi. Votre solution est performante, vos prospects ne le savent pas encore. Vizion structure le positionnement, l'acquisition et les outils de vente des entreprises innovantes de l'Hérault. Pour que votre offre devienne le choix évident de votre marché.",
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",
   },
@@ -202,7 +202,7 @@ const content: CityPageData["content"] = {
       "Échangez 30 minutes avec un fondateur de Vizion. Nous analysons votre positionnement, identifions les freins à votre croissance et vous proposons une feuille de route concrète. Sans engagement.",
     cta: {
       primary: { text: "Réserver un échange", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     trustElements: [
       "30 minutes avec un fondateur",

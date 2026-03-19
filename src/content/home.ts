@@ -299,7 +299,7 @@ export const homeContent: HomeContent = {
     badges: [],
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" }
+      secondary: { text: "Découvrir nos services", href: "/services" }
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES À TOULOUSE ET EN FRANCE DEPUIS 2021"
   },
@@ -415,7 +415,7 @@ export const homeContent: HomeContent = {
     ctaText: "Rejoignez les 70+ entreprises qui ont aligné leur tunnel de vente avec Vizion.",
     socialProofText: "+70 entreprises accompagnées à Toulouse et en France depuis 2021",
     cta: {
-      secondary: { text: "Voir nos réalisations", href: "/cas-clients" },
+      secondary: { text: "Voir nos réalisations", href: "/services" },
       primary: { text: "Parlons de vos enjeux", href: "/contact" }
     }
   },
@@ -778,7 +778,7 @@ export const homeContent: HomeContent = {
     description: "30 minutes avec un fondateur. On analyse votre positionnement actuel, on identifie les écarts avec votre marché, et on vous dit concrètement ce qu'on ferait. Sans engagement.",
     cta: {
       primary: { text: "Réserver un appel avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" }
+      secondary: { text: "Découvrir nos services", href: "/services" }
     },
     trustElements: [
       "30 minutes",

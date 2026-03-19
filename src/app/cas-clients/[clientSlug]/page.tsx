@@ -11,8 +11,8 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const slugs = await getAllClientSlugs();
-  return slugs.map((clientSlug) => ({ clientSlug }));
+  // Temporarily disabled — no static params generated
+  return [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -50,6 +50,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ClientProfilePage({ params }: Props) {
+  // Temporarily disabled — return 404
+  return notFound();
+
+  /* Original implementation preserved for re-enabling later:
+
   const { clientSlug } = await params;
   const client = await getClientBySlug(clientSlug);
 
@@ -57,10 +62,8 @@ export default async function ClientProfilePage({ params }: Props) {
     notFound();
   }
 
-  // Case studies for this client
   const clientCaseStudies = await getCaseStudiesForClient(clientSlug);
 
-  // JSON-LD
   const logoUrl = resolveImageUrl(client.logo);
   const organizationLd = {
     "@context": "https://schema.org",
@@ -121,4 +124,5 @@ export default async function ClientProfilePage({ params }: Props) {
       <ClientProfileContent client={client} caseStudies={clientCaseStudies} />
     </>
   );
+  */
 }

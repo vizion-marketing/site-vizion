@@ -71,7 +71,7 @@ const content: CityPageData["content"] = {
       "Les entreprises industrielles de l'Aveyron vendent sur des cycles longs à des acheteurs exigeants. Leur marketing doit être à la hauteur de cette complexité. Vizion structure l'audit stratégique et les outils de vente des PME aveyronnaises pour raccourcir les cycles et augmenter le taux de conversion.",
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",
   },
@@ -197,7 +197,7 @@ const content: CityPageData["content"] = {
       "Échangez 30 minutes avec un fondateur de Vizion. Nous analysons votre pipeline, identifions les étapes critiques et vous proposons un plan d'action. Sans engagement.",
     cta: {
       primary: { text: "Réserver un échange", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     trustElements: [
       "30 minutes avec un fondateur",

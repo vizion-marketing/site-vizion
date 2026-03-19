@@ -76,7 +76,7 @@ const content: CityPageData["content"] = {
       "Le bassin industriel castrais regorge d'expertises techniques, mais les processus marketing et commerciaux restent souvent artisanaux. Vizion structure le positionnement et automatise les flux des entreprises de Castres pour gagner en efficacité sans sacrifier la rigueur.",
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",
   },
@@ -202,7 +202,7 @@ const content: CityPageData["content"] = {
       "Échangez 30 minutes avec un fondateur de Vizion. Nous analysons votre positionnement et vos processus marketing, puis identifions les automatisations prioritaires. Sans engagement.",
     cta: {
       primary: { text: "Réserver un échange", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     trustElements: [
       "30 minutes avec un fondateur",

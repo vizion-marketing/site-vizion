@@ -76,7 +76,7 @@ const content: CityPageData["content"] = {
       "Votre savoir-faire est reconnu dans le Tarn, mais vos commerciaux peinent à le traduire en arguments qui déclenchent la signature. Vizion structure le positionnement et les outils de vente des PME tarnaises pour que chaque interaction commerciale porte le même message, du premier contact au closing.",
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",
   },
@@ -202,7 +202,7 @@ const content: CityPageData["content"] = {
       "Échangez 30 minutes avec un fondateur de Vizion. Nous analysons votre positionnement et vos supports de vente, puis nous identifions les leviers prioritaires. Sans engagement.",
     cta: {
       primary: { text: "Réserver un échange", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     trustElements: [
       "30 minutes avec un fondateur",

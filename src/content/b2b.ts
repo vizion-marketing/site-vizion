@@ -45,7 +45,7 @@ export const b2bHero: HeroContent = {
   badges: [],
   cta: {
     primary: { text: "Échanger avec un fondateur", href: "/contact" },
-    secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+    secondary: { text: "Découvrir nos services", href: "/services" },
   },
   socialProof: "+70 ENTREPRISES B2B ACCOMPAGNÉES DEPUIS 2021",
 };
@@ -147,7 +147,7 @@ export const b2bPiliers: PiliersContent = {
   socialProofText: "",
   cta: {
     primary: { text: "Échanger avec un fondateur", href: "/contact" },
-    secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+    secondary: { text: "Découvrir nos services", href: "/services" },
   },
 };
 
@@ -252,7 +252,7 @@ export const b2bFinalCta = {
     "Échangez 30 minutes avec un fondateur de Vizion. Nous analysons votre positionnement actuel, identifions les points de friction dans votre cycle de vente, et vous proposons un plan d'action concret. Sans engagement.",
   cta: {
     primary: { text: "Réserver un échange", href: "/contact" },
-    secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+    secondary: { text: "Découvrir nos services", href: "/services" },
   },
   trustElements: [
     "30 minutes avec un fondateur",

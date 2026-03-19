@@ -11,7 +11,8 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return getAllCaseStudyParams();
+  // Temporarily disabled — no static params generated
+  return [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -53,6 +54,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CaseStudyPage({ params }: Props) {
+  // Temporarily disabled — return 404
+  return notFound();
+
+  /* Original implementation preserved for re-enabling later:
+
   const { clientSlug, caseSlug } = await params;
 
   const caseStudy = await getCaseStudyBySlug(clientSlug, caseSlug);
@@ -63,15 +69,12 @@ export default async function CaseStudyPage({ params }: Props) {
 
   const client = await getClientBySlug(clientSlug);
 
-  // Related cases: same client first, then same sector
   const allCases = await getAllCaseStudies();
   const relatedCases = allCases
     .filter((cs) => cs.slug !== caseSlug)
     .sort((a, b) => {
-      // Same client first
       if (a.clientSlug === clientSlug && b.clientSlug !== clientSlug) return -1;
       if (a.clientSlug !== clientSlug && b.clientSlug === clientSlug) return 1;
-      // Then same sector
       if (a.sector === caseStudy.sector && b.sector !== caseStudy.sector) return -1;
       if (a.sector !== caseStudy.sector && b.sector === caseStudy.sector) return 1;
       if (a.featured && !b.featured) return -1;
@@ -80,7 +83,6 @@ export default async function CaseStudyPage({ params }: Props) {
     })
     .slice(0, 3);
 
-  // JSON-LD
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -131,4 +133,5 @@ export default async function CaseStudyPage({ params }: Props) {
       />
     </>
   );
+  */
 }

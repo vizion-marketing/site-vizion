@@ -54,7 +54,7 @@ export async function GET(request: NextRequest) {
       "",
       "/blog",
       "/contact",
-      "/cas-clients",
+      // "/cas-clients", // Temporarily disabled
     ];
 
     urls.push(...staticRoutes.map((route) => `${baseUrl}${route}`));
@@ -63,12 +63,13 @@ export async function GET(request: NextRequest) {
     if (data.posts) {
       urls.push(...data.posts.map((p) => `${baseUrl}${p.url}`));
     }
-    if (data.clients) {
-      urls.push(...data.clients.map((c) => `${baseUrl}${c.url}`));
-    }
-    if (data.caseStudies) {
-      urls.push(...data.caseStudies.map((cs) => `${baseUrl}${cs.url}`));
-    }
+    // Clients and case studies temporarily disabled
+    // if (data.clients) {
+    //   urls.push(...data.clients.map((c) => `${baseUrl}${c.url}`));
+    // }
+    // if (data.caseStudies) {
+    //   urls.push(...data.caseStudies.map((cs) => `${baseUrl}${cs.url}`));
+    // }
     if (data.services) {
       urls.push(...data.services.map((s) => `${baseUrl}${s.url}`));
     }

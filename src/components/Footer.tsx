@@ -9,7 +9,7 @@ import { SOCIAL_LINKS } from '@/lib/constants';
 const footerLinks = {
   entreprise: [
     { name: 'Blog', href: '/blog' },
-    { name: 'Cas clients', href: '/cas-clients' },
+    // "Cas clients" hidden — pages temporarily disabled
     { name: 'Contact', href: '/contact' },
   ],
 };

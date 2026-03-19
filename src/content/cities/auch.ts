@@ -71,7 +71,7 @@ const content: CityPageData["content"] = {
       "Votre entreprise gersoise a un savoir-faire solide, mais elle reste invisible en dehors de son réseau habituel. Vizion structure la stratégie marketing et la visibilité digitale des PME du Gers pour qu'elles atteignent les acheteurs qui ne les connaissent pas encore.",
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",
   },
@@ -197,7 +197,7 @@ const content: CityPageData["content"] = {
       "Échangez 30 minutes avec un fondateur de Vizion. Nous faisons le point sur votre situation, identifions les leviers prioritaires et vous proposons une feuille de route. Sans engagement.",
     cta: {
       primary: { text: "Réserver un échange", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     trustElements: [
       "30 minutes avec un fondateur",

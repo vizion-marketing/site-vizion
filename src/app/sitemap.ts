@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { route: "", priority: 1, changeFrequency: "weekly" as const },
     { route: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
     { route: "/contact", priority: 0.8, changeFrequency: "monthly" as const },
-    { route: "/cas-clients", priority: 0.7, changeFrequency: "monthly" as const },
+    // { route: "/cas-clients", priority: 0.7, changeFrequency: "monthly" as const }, // Temporarily disabled
     { route: "/mentions-legales", priority: 0.3, changeFrequency: "yearly" as const },
     { route: "/confidentialite", priority: 0.3, changeFrequency: "yearly" as const },
   ];
@@ -44,21 +44,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // Client profile pages (pillar pages — higher priority)
-  const clientPages = (data.clients || []).map((c) => ({
-    url: `${baseUrl}${c.url}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  // Client profile pages — temporarily disabled
+  const clientPages: MetadataRoute.Sitemap = [];
 
-  // Case studies
-  const caseStudyPages = (data.caseStudies || []).map((cs) => ({
-    url: `${baseUrl}${cs.url}`,
-    lastModified: cs.lastModified ? new Date(cs.lastModified) : new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
+  // Case studies — temporarily disabled
+  const caseStudyPages: MetadataRoute.Sitemap = [];
 
   // Services
   const servicePages = (data.services || []).map((s) => ({

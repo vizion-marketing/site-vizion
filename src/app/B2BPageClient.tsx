@@ -11,7 +11,8 @@ import { IndustriesMarquee } from "@/components/home/IndustriesMarquee";
 const IntroSection = dynamic(() => import("@/components/home/IntroSection"), { ssr: true });
 const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"), { ssr: true });
 const AssetsSection = dynamic(() => import("@/components/home/AssetsSection"), { ssr: true });
-const CasClientsSection = dynamic(() => import("@/components/home/CasClientsSection"), { ssr: true });
+// Temporarily disabled — cas-clients pages hidden
+// const CasClientsSection = dynamic(() => import("@/components/home/CasClientsSection"), { ssr: true });
 const AboutLocalSection = dynamic(() => import("@/components/home/AboutLocalSection"), { ssr: true });
 const BlogSectionComponent = dynamic(() => import("@/components/home/BlogSection"), { ssr: true });
 const FAQSection = dynamic(() => import("@/components/home/FAQSection"), { ssr: true });
@@ -93,8 +94,8 @@ export default function B2BPageClient({ latestPosts, carouselClients }: B2BPageC
       {/* Assets Section */}
       <AssetsSection />
 
-      {/* Cas Clients */}
-      <CasClientsSection cases={carouselClients} />
+      {/* Cas Clients — temporarily disabled */}
+      {/* <CasClientsSection cases={carouselClients} /> */}
 
       {/* À propos + Localisation */}
       <AboutLocalSection content={b2bLocalSEO} />

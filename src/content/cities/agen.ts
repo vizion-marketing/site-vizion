@@ -76,7 +76,7 @@ const content: CityPageData["content"] = {
       "Les PME du Lot-et-Garonne maîtrisent leur métier, mais leur marketing ne suit pas. Positionnement flou, supports obsolètes, prospection au fil de l'eau. Vizion structure l'ensemble pour que votre expertise industrielle ou agroalimentaire devienne un avantage commercial mesurable.",
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",
   },
@@ -202,7 +202,7 @@ const content: CityPageData["content"] = {
       "Échangez 30 minutes avec un fondateur de Vizion. Nous analysons votre situation commerciale, identifions les points de friction et vous proposons un plan d'action concret. Sans engagement.",
     cta: {
       primary: { text: "Réserver un échange", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     trustElements: [
       "30 minutes avec un fondateur",

@@ -32,7 +32,7 @@ export function CaseStudiesCarousel({
   surtitre = "Cas clients & résultats",
   title,
   cases,
-  ctaBaseHref = "/cas-clients",
+  ctaBaseHref = "/contact", // Was "/cas-clients" — temporarily disabled
   ctaText = "Lire le cas complet",
   variant = "light",
 }: CaseStudiesCarouselProps) {

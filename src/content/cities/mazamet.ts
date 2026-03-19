@@ -71,7 +71,7 @@ const content: CityPageData["content"] = {
       "Mazamet porte un héritage industriel rare, mais les entreprises du territoire peinent à le valoriser sur les marchés actuels. Vizion aide les PME mazamétaines à clarifier leur positionnement et à déployer une communication qui génère du résultat, pas juste de la visibilité.",
     cta: {
       primary: { text: "Échanger avec un fondateur", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",
   },
@@ -197,7 +197,7 @@ const content: CityPageData["content"] = {
       "Échangez 30 minutes avec un fondateur de Vizion. Nous analysons votre positionnement actuel, identifions les leviers de communication prioritaires, et vous disons concrètement ce qu'on ferait. Sans engagement.",
     cta: {
       primary: { text: "Réserver un échange", href: "/contact" },
-      secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+      secondary: { text: "Découvrir nos services", href: "/services" },
     },
     trustElements: [
       "30 minutes avec un fondateur",
