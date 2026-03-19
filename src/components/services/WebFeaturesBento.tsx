@@ -224,15 +224,15 @@ export function WebFeaturesBento({ cards }: WebFeaturesBentoProps) {
           <div
             ref={metricRef}
             data-bento="cell"
-            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[280px] group hover:bg-accent hover:-translate-y-1 transition-all duration-500"
+            className="bg-card border border-black/[0.06] p-6 sm:p-8 flex flex-col min-h-[280px] group hover:bg-accent hover:-translate-y-1 transition-all duration-500"
           >
-            <div className="w-10 h-10 bg-accent flex items-center justify-center group-hover:bg-black transition-colors duration-300">
+            <div className="w-10 h-10 bg-accent flex items-center justify-center mb-5 group-hover:bg-black transition-colors duration-300">
               <Zap
                 size={18}
                 className="text-black group-hover:text-accent transition-colors duration-300"
               />
             </div>
-            <div>
+            <div className="mt-auto">
               <div className="text-[56px] sm:text-[64px] font-bold text-primary leading-none mb-1">
                 {metricValue}{cards.performance.suffix || "+"}
               </div>
@@ -263,46 +263,42 @@ export function WebFeaturesBento({ cards }: WebFeaturesBentoProps) {
 
           <div
             data-bento="cell"
-            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col min-h-[280px] overflow-hidden group hover:border-black/[0.12] hover:shadow-lg transition-all duration-300"
+            className="bg-card border border-black/[0.06] p-6 sm:p-8 flex flex-col min-h-[280px] overflow-hidden group hover:border-black/[0.12] hover:shadow-lg transition-all duration-300"
           >
-            <div className="w-10 h-10 bg-accent flex items-center justify-center">
+            <div className="w-10 h-10 bg-accent flex items-center justify-center mb-5">
               <Ban size={18} className="text-black" />
             </div>
-            <div className="mt-auto">
-              <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary mb-2">
-                {cards.noTemplate.title}
-              </h3>
-              <p className="text-[13px] text-muted leading-relaxed">
-                {cards.noTemplate.description}
-              </p>
-            </div>
+            <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary mb-2">
+              {cards.noTemplate.title}
+            </h3>
+            <p className="text-[13px] text-muted leading-relaxed">
+              {cards.noTemplate.description}
+            </p>
             <WireframeMockup />
           </div>
 
           <div
             data-bento="cell"
-            className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col justify-between min-h-[280px] group hover:border-black/[0.12] hover:shadow-lg transition-all duration-300"
+            className="bg-card border border-black/[0.06] p-6 sm:p-8 flex flex-col min-h-[280px] group hover:border-black/[0.12] hover:shadow-lg transition-all duration-300"
           >
-            <div className="w-10 h-10 bg-accent flex items-center justify-center">
+            <div className="w-10 h-10 bg-accent flex items-center justify-center mb-5">
               <Blocks size={18} className="text-black" />
             </div>
-            <div>
-              <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary mb-2">
-                {cards.widgets.title}
-              </h3>
-              <p className="text-[13px] text-muted leading-relaxed mb-4">
-                {cards.widgets.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {cards.widgets.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[11px] sm:text-[12px] font-medium tracking-wide text-primary bg-white border border-black/[0.08] px-3 py-1.5"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary mb-2">
+              {cards.widgets.title}
+            </h3>
+            <p className="text-[13px] text-muted leading-relaxed mb-4">
+              {cards.widgets.description}
+            </p>
+            <div className="flex flex-wrap gap-2 mt-auto">
+              {cards.widgets.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[11px] sm:text-[12px] font-medium tracking-wide text-primary bg-white border border-black/[0.08] px-3 py-1.5"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
 
@@ -310,19 +306,17 @@ export function WebFeaturesBento({ cards }: WebFeaturesBentoProps) {
           {cards.integrations && (
             <div
               data-bento="cell"
-              className="bg-card border border-black/[0.06] p-7 sm:p-8 flex flex-col min-h-[240px] overflow-hidden"
+              className="bg-card border border-black/[0.06] p-6 sm:p-8 flex flex-col min-h-[240px] overflow-hidden"
             >
-              <div className="w-10 h-10 bg-accent flex items-center justify-center">
+              <div className="w-10 h-10 bg-accent flex items-center justify-center mb-5">
                 <Plug size={18} className="text-black" />
               </div>
-              <div className="mt-3">
-                <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary mb-2">
-                  {cards.integrations.title}
-                </h3>
-                <p className="text-[13px] text-muted leading-relaxed">
-                  {cards.integrations.description}
-                </p>
-              </div>
+              <h3 className="text-[15px] sm:text-[17px] font-semibold text-primary mb-2">
+                {cards.integrations.title}
+              </h3>
+              <p className="text-[13px] text-muted leading-relaxed">
+                {cards.integrations.description}
+              </p>
               {cards.integrations.logos && (
                 <ToolsMarquee logos={cards.integrations.logos} />
               )}

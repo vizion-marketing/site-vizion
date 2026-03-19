@@ -1,10 +1,12 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useCallback } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import { X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import type { ScrollTitleContent } from "@/content/services/types";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,14 +38,25 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
   const blurOverlayRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const [galleryRevealed, setGalleryRevealed] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const hasImages = content.showcaseImages && content.showcaseImages.length > 0;
+  const allImages = content.showcaseImages ?? [];
   const columns = useMemo(
-    () => (hasImages ? splitIntoColumns(content.showcaseImages!) : null),
-    [hasImages, content.showcaseImages],
+    () => (hasImages ? splitIntoColumns(allImages) : null),
+    [hasImages, allImages],
   );
 
   // Split phrase on \n for line breaks
   const phraseLines = content.phrase.split("\n");
+
+  const handleImageClick = useCallback(
+    (src: string) => {
+      if (galleryRevealed) setSelectedImage(src);
+    },
+    [galleryRevealed],
+  );
 
   useGSAP(
     () => {
@@ -189,40 +202,44 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
           duration: 0.8,
           stagger: 0.05,
           ease: "power2.out",
+          onComplete: () => setGalleryRevealed(true),
         }, "<");
 
-        tl.to({}, { duration: 1 }); // final hold
+        // When scrolling back up, disable interactivity
+        tl.to({}, {
+          duration: 1,
+          onReverseComplete: () => setGalleryRevealed(false),
+        }); // final hold
       }
     },
     { scope: containerRef },
   );
 
   return (
-    <div ref={containerRef} style={{ height: "420vh" }}>
-      <div className="sticky top-0 h-screen bg-card relative overflow-hidden">
-        {/* Decorative accent gradient */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 60%)",
-          }}
-        />
-
-        {/* ── Parallax showcase gallery ── */}
-        {hasImages && columns && (
+    <>
+      <div ref={containerRef} style={{ height: "420vh" }}>
+        <div className="sticky top-0 h-screen bg-card relative overflow-hidden">
+          {/* Decorative accent gradient */}
           <div
-            ref={galleryRef}
-            className="absolute inset-0 pointer-events-none z-0"
-            style={{ opacity: 0 }}
-          >
-            {/* Blur + dim overlay on images */}
-            <div ref={blurOverlayRef} className="absolute inset-0 z-[1] backdrop-blur-[1px]" />
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 60%)",
+            }}
+          />
 
-            <div className="absolute inset-0 flex gap-3 sm:gap-4 px-4 sm:px-8 lg:px-16 justify-center items-center">
-              {columns.map((colImages, colIndex) => {
-                let imgCounter = colIndex; // track global index for refs
-                return (
+          {/* ── Parallax showcase gallery ── */}
+          {hasImages && columns && (
+            <div
+              ref={galleryRef}
+              className={`absolute inset-0 z-0 ${galleryRevealed ? "pointer-events-auto" : "pointer-events-none"}`}
+              style={{ opacity: 0 }}
+            >
+              {/* Blur + dim overlay on images */}
+              <div ref={blurOverlayRef} className="absolute inset-0 z-[1] backdrop-blur-[1px] pointer-events-none" />
+
+              <div className="absolute inset-0 flex gap-3 sm:gap-4 px-4 sm:px-8 lg:px-16 justify-center items-center">
+                {columns.map((colImages, colIndex) => (
                   <div
                     key={colIndex}
                     ref={colIndex === 0 ? col1Ref : colIndex === 1 ? col2Ref : col3Ref}
@@ -234,7 +251,8 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
                         <div
                           key={imgIndex}
                           ref={(el) => { imageRefs.current[globalIdx] = el; }}
-                          className="relative w-full aspect-[4/3] overflow-hidden border border-black/[0.06] shadow-lg opacity-45"
+                          className={`relative w-full aspect-[4/3] overflow-hidden border border-black/[0.06] shadow-lg opacity-45 ${galleryRevealed ? "cursor-pointer" : ""}`}
+                          onClick={() => handleImageClick(src)}
                         >
                           <Image
                             src={src}
@@ -247,61 +265,103 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
                       );
                     })}
                   </div>
-                );
-              })}
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Phase 1: Hook */}
-        <span
-          ref={brefRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-medium text-[80px] sm:text-[120px] lg:text-[180px] leading-none tracking-[-0.04em] text-primary select-none"
-        >
-          {content.hook}
-        </span>
-
-        {/* Phase 2: Phrase */}
-        <div
-          ref={phraseRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-6"
-        >
-          <p className="font-heading font-normal text-[36px] sm:text-[52px] lg:text-[68px] leading-[1.05] tracking-[-0.035em] text-primary max-w-5xl mx-auto text-center">
-            {phraseLines.map((line, i) => (
-              <span key={i}>
-                {i > 0 && <br />}
-                {line}
-              </span>
-            ))}
-          </p>
-        </div>
-
-        {/* Phase 3: Adjective words */}
-        {content.adjectives.map((word, i) => (
+          {/* Phase 1: Hook */}
           <span
-            key={word}
-            ref={(el) => {
-              wordRefs.current[i] = el;
-            }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-normal text-[44px] sm:text-[68px] lg:text-[96px] leading-none tracking-[-0.04em] bg-accent text-black px-6 sm:px-8 py-2 sm:py-3 whitespace-nowrap"
-            style={{ opacity: 0 }}
+            ref={brefRef}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-medium text-[80px] sm:text-[120px] lg:text-[180px] leading-none tracking-[-0.04em] text-primary select-none"
           >
-            {word}
+            {content.hook}
           </span>
-        ))}
 
-        {/* Progress bar */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-32 h-[3px] bg-black/[0.06]">
+          {/* Phase 2: Phrase */}
           <div
-            ref={progressBarRef}
-            className="h-full bg-accent origin-left"
-            style={{
-              transform: "scaleX(0)",
-              boxShadow: "0 0 8px rgba(var(--color-accent-rgb), 0.3)",
-            }}
-          />
+            ref={phraseRef}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-6"
+          >
+            <p className="font-heading font-normal text-[36px] sm:text-[52px] lg:text-[68px] leading-[1.05] tracking-[-0.035em] text-primary max-w-5xl mx-auto text-center">
+              {phraseLines.map((line, i) => (
+                <span key={i}>
+                  {i > 0 && <br />}
+                  {line}
+                </span>
+              ))}
+            </p>
+          </div>
+
+          {/* Phase 3: Adjective words */}
+          {content.adjectives.map((word, i) => (
+            <span
+              key={word}
+              ref={(el) => {
+                wordRefs.current[i] = el;
+              }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-normal text-[44px] sm:text-[68px] lg:text-[96px] leading-none tracking-[-0.04em] bg-accent text-black px-6 sm:px-8 py-2 sm:py-3 whitespace-nowrap"
+              style={{ opacity: 0 }}
+            >
+              {word}
+            </span>
+          ))}
+
+          {/* Progress bar */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-32 h-[3px] bg-black/[0.06]">
+            <div
+              ref={progressBarRef}
+              className="h-full bg-accent origin-left"
+              style={{
+                transform: "scaleX(0)",
+                boxShadow: "0 0 8px rgba(var(--color-accent-rgb), 0.3)",
+              }}
+            />
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* ── Lightbox modal ── */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-8"
+            onClick={() => setSelectedImage(null)}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-10 h-10 flex items-center justify-center bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+              aria-label="Fermer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Image */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="relative w-full max-w-4xl aspect-[16/10] shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={selectedImage}
+                alt="Exemple de réalisation Vizion"
+                fill
+                sizes="(max-width: 768px) 100vw, 900px"
+                className="object-contain"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
