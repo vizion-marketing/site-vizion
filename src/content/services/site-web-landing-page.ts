@@ -30,7 +30,7 @@ export const siteWebLandingPage: ServiceContent = {
   // Hero
   heroTitle: "Votre site web devrait être votre meilleur commercial",
   heroSubtitle:
-    "Création ou refonte de site web sur mesure. Chez Vizion, nous ne construisons pas des sites classiques. Nous construisons de véritables actifs stratégiques, qui facilitent la vente. Architecture, design, copywriting, référencement : tout est millimétré pour servir durablement votre croissance.",
+    "Vous envisagez une création ou une refonte de site Internet ? Chez Vizion, nous ne construisons pas des sites classiques. Nous construisons de véritables actifs stratégiques, qui facilitent la vente. Architecture, design, copywriting, référencement : tout est millimétré pour servir durablement votre croissance.",
   heroBadge: "+40 sites et landing pages livrés",
   heroImage: "/images/services/site-web/hero.png",
 
@@ -156,7 +156,7 @@ export const siteWebLandingPage: ServiceContent = {
 
   // Testimonials
   testimonialsTitle: "Ils nous ont confié la création de leur site web",
-  testimonialsSubtitle: "Retours d'expérience de dirigeants et responsables marketing qui ont fait appel à Vizion pour leur site internet.",
+  testimonialsSubtitle: "Consultez les retours d'expérience de dirigeants et responsables marketing qui ont fait appel à Vizion pour créer ou refondre leur site Internet.",
   testimonials: [
     {
       quote:
