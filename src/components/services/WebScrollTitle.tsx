@@ -73,6 +73,11 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
             if (progressBarRef.current) {
               progressBarRef.current.style.transform = `scaleX(${self.progress})`;
             }
+            // Enable gallery interactivity when scroll is near the end (phase 4)
+            if (hasImages) {
+              const revealed = self.progress > 0.9;
+              setGalleryRevealed(revealed);
+            }
           },
         },
       });
@@ -212,7 +217,6 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
           duration: 0.8,
           stagger: 0.05,
           ease: "power2.out",
-          onComplete: () => setGalleryRevealed(true),
         }, "<");
 
         // Show tap hint
@@ -222,11 +226,7 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
           "-=0.3",
         );
 
-        // When scrolling back up, disable interactivity
-        tl.to({}, {
-          duration: 1,
-          onReverseComplete: () => setGalleryRevealed(false),
-        }); // final hold
+        tl.to({}, { duration: 1 }); // final hold
       }
     },
     { scope: containerRef },

@@ -4,7 +4,7 @@ export const siteWebLandingPage: ServiceContent = {
   slug: "site-web-landing-page",
   title: "Site Web et Landing Page",
   icon: "Globe",
-  category: "ACQUISITION DIGITALE",
+  category: "PRODUCT MARKETING",
   order: 1,
 
   // SEO
