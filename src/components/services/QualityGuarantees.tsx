@@ -3,26 +3,14 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ClipboardList,
-  Wrench,
-  Zap,
-  ArrowUpRight,
-  UserCheck,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowUpRight, UserCheck } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { QualityGuaranteesContent } from "@/content/services/types";
+import { resolveIcon } from "@/lib/icon-resolver";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const iconMap: Record<string, LucideIcon> = {
-  ClipboardList,
-  Wrench,
-  Zap,
-};
 
 interface QualityGuaranteesProps {
   content: QualityGuaranteesContent;
@@ -137,7 +125,7 @@ export function QualityGuarantees({ content }: QualityGuaranteesProps) {
             {/* Feature rows with hover */}
             <div className="mt-8 space-y-0">
               {content.guarantees.map((guarantee, i) => {
-                const Icon = iconMap[guarantee.icon] ?? Zap;
+                const Icon = resolveIcon(guarantee.icon);
                 return (
                   <div
                     key={i}
@@ -185,6 +173,11 @@ export function QualityGuarantees({ content }: QualityGuaranteesProps) {
                 <div className="w-10 h-10 bg-accent/10 flex items-center justify-center mb-5">
                   <UserCheck size={18} className="text-primary" />
                 </div>
+                {content.featureCard.surtitre && (
+                  <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase mb-3 block">
+                    {content.featureCard.surtitre}
+                  </span>
+                )}
                 <h3 className="text-[18px] sm:text-[20px] font-semibold text-primary leading-snug mb-3">
                   {featureTitleLines.map((line, i) => (
                     <span key={i}>

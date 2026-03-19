@@ -1,6 +1,5 @@
 export { ServiceHero } from "./ServiceHero";
 export { ServiceNarrative } from "./ServiceNarrative";
-export { ServiceHighlights } from "./ServiceHighlights";
 export { ProcessTimeline } from "./ProcessTimeline";
 export { TestimonialShowcase } from "./TestimonialShowcase";
 export { ServiceFAQ } from "./ServiceFAQ";
@@ -8,4 +7,6 @@ export { SolutionSticky } from "./SolutionSticky";
 export { WebFeaturesBento } from "./WebFeaturesBento";
 export { WebScrollTitle } from "./WebScrollTitle";
 export { QualityGuarantees } from "./QualityGuarantees";
+export { RelatedServices } from "./RelatedServices";
 export { ServiceCTA } from "./ServiceCTA";
+export { InlineCTA } from "./InlineCTA";

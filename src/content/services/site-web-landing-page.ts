@@ -8,44 +8,50 @@ export const siteWebLandingPage: ServiceContent = {
   order: 1,
 
   // SEO
-  metaTitle: "Création de Site Web & Landing Page B2B | Vizion",
+  metaTitle: "Création & Refonte de Site Web B2B sur mesure | Vizion",
   metaDescription:
-    "Vizion conçoit des sites web et landing pages B2B à forte conversion. Design stratégique, optimisation SEO et parcours utilisateur pensé pour générer des leads qualifiés.",
+    "Création et refonte de site web B2B sur mesure. Sites vitrine et landing pages pensés pour convertir vos visiteurs en leads qualifiés. Design, copywriting, SEO inclus.",
   keywords: [
     "site web B2B",
     "landing page",
     "création site internet",
+    "refonte site web",
+    "site sur mesure",
+    "site vitrine",
+    "page de vente",
     "conversion",
     "génération de leads",
     "design web",
-    "UX B2B",
+    "expérience utilisateur",
+    "responsive design",
+    "taux de conversion",
   ],
 
   // Hero
   heroTitle: "Votre site web devrait être votre meilleur commercial",
   heroSubtitle:
-    "C'est pourquoi chez Vizion, nous ne construisons pas des sites web classiques. Nous construisons de véritables actifs stratégiques. Architecture, design, copywriting, référencement : tout est millimétré pour servir votre croissance, pas votre égo.",
+    "Création ou refonte de site web sur mesure. Chez Vizion, nous ne construisons pas des sites classiques. Nous construisons de véritables actifs stratégiques, qui facilitent la vente. Architecture, design, copywriting, référencement : tout est millimétré pour servir durablement votre croissance.",
   heroBadge: "+40 sites et landing pages livrés",
-  heroImage: "/images/services/website.png",
+  heroImage: "/images/services/site-web/hero.png",
 
   // ── Narrative : 3 blocs éditoriaux ──
 
   constat: {
     surtitre: "Le problème",
-    title: "Votre site web est au cœur de votre croissance. Pourtant…",
+    title: "Votre site web est au cœur de votre stratégie digitale. Pourtant…",
     paragraphs: [
-      "LinkedIn, salon, bouche-à-oreille — peu importe comment vos prospects entendent parler de vous. Le réflexe est toujours le même : ils cherchent votre nom et finissent sur votre site.",
+      "LinkedIn, salon, bouche-à-oreille. Peu importe comment vos prospects entendent parler de vous. Le réflexe est toujours le même : ils cherchent votre nom et finissent sur votre site.",
     ],
     statements: [
       {
-        headline: "Votre site n'est pas à la hauteur de votre produit",
+        headline: "Il n'est pas à la hauteur de votre produit",
         description:
-          "Vos commerciaux vous le disent, vos clients aussi. Un site daté envoie un signal de méfiance — et vos prospects ne vous rappelleront jamais pour vous dire pourquoi.",
+          "Vos commerciaux vous le disent, vos clients aussi. Un site daté envoie un signal de méfiance. Et vos prospects ne vous rappelleront jamais pour vous dire pourquoi.",
       },
       {
         headline: "Vous avez du trafic, mais zéro leads",
         description:
-          "Votre site attire des visiteurs, mais personne ne passe à l'action. Le problème n'est pas votre offre — c'est le parcours qui ne guide pas vers la conversion.",
+          "Votre site attire des visiteurs, mais votre taux de conversion est au plancher. Le problème n'est pas votre offre, c'est le tunnel de vente qui ne guide pas vers l'action.",
       },
       {
         headline: "Vous êtes invisibles sur Google",
@@ -60,39 +66,11 @@ export const siteWebLandingPage: ServiceContent = {
     ],
   },
 
-  consequences: {
-    surtitre: "Les conséquences",
-    title: "Ce que vous perdez chaque jour avec un site qui ne convertit pas",
-    paragraphs: [
-      "Un site B2B qui ne convertit pas n'est pas neutre — il vous coûte activement des opportunités. Chaque visiteur qui repart sans agir est un prospect que votre concurrent va capter.",
-    ],
-    highlights: [
-      "Vos prospects ne comprennent pas ce que vous faites en 5 secondes — ils partent",
-      "Votre expertise réelle est invisible derrière un design daté et un message générique",
-      "Vos concurrents avec un meilleur site captent le trafic organique que vous méritez",
-      "Vos commerciaux compensent un site faible en sur-expliquant à chaque rendez-vous",
-    ],
-  },
-
-  promesse: {
-    surtitre: "Notre approche",
-    title: "Chez Vizion, nous créons des sites web qui servent (vraiment) votre croissance",
-    paragraphs: [
-      "Nous ne construisons pas de jolis sites. Nous architecturons des actifs stratégiques où chaque page a un objectif, chaque section fait avancer le visiteur, et chaque mot est choisi pour convaincre votre cible.",
-    ],
-    highlights: [
-      "Un parcours dédié pour chaque profil de décideur",
-      "Du copywriting qui vend, pas qui meuble",
-      "Un SEO pensé pour capter vos requêtes business",
-      "Des pages qui font le travail commercial avant le premier appel",
-    ],
-  },
-
   // Solution sticky
   solutionTitle: "Chez Vizion, nous créons des sites web qui servent (vraiment) votre croissance",
   solutionSubtitle:
     "Pas de jolis sites. Des actifs stratégiques pensés pour convertir.",
-  solutionImage: "/images/services/website_mockup.png",
+  solutionImage: "/images/services/site-web/solution-mockup.png",
   solutionItems: [
     {
       title: "Nous pensons marketing avant design.",
@@ -110,93 +88,52 @@ export const siteWebLandingPage: ServiceContent = {
         "Structure sémantique, maillage interne, performance technique. Le référencement n'est pas un ajout en fin de projet. C'est un pilier de chaque décision.",
     },
     {
-      title: "Nous vous livrons un actif évolutif.",
+      title: "Nous livrons un outil qui aide vraiment vos équipes commerciales.",
       description:
-        "CMS intuitif, formation incluse, documentation complète. Vous publiez, modifiez et faites évoluer votre site sans dépendre de personne.",
+        "Argumentaires structurés, parcours de conversion clairs, ressources téléchargeables. Votre site devient le meilleur allié de vos commerciaux pour convaincre, pas juste informer.",
     },
     {
-      title: "Nous mesurons tout et optimisons en continu.",
+      title: "Nous restons à vos côtés après la livraison.",
       description:
-        "Analytics, heatmaps, taux de conversion. Chaque décision est guidée par la donnée. Votre site s'améliore après le lancement, pas seulement avant.",
-    },
-  ],
-
-  // Features
-  featuresTitle: "Un site pensé comme un outil commercial",
-  featuresSubtitle:
-    "Chaque page, chaque section, chaque CTA est conçu pour faire avancer le visiteur dans son parcours de décision.",
-  features: [
-    {
-      icon: "Target",
-      title: "Architecture de conversion",
-      description:
-        "Chaque page suit un parcours psychologique précis : attirer l'attention, créer la confiance, lever les objections, déclencher l'action. Pas de design gratuit — chaque pixel a un rôle.",
-    },
-    {
-      icon: "Pencil",
-      title: "Copywriting stratégique",
-      description:
-        "Les textes sont rédigés pour votre cible, pas pour vous. Messages de valeur, preuves sociales, CTAs contextuels — le contenu fait le travail commercial à votre place.",
-    },
-    {
-      icon: "Search",
-      title: "SEO technique et sémantique",
-      description:
-        "Structure technique irréprochable (Core Web Vitals, schema.org, sitemap) combinée à une stratégie de contenu ciblée sur vos requêtes business.",
-    },
-    {
-      icon: "Smartphone",
-      title: "Mobile-first et performant",
-      description:
-        "Plus de 60% du trafic B2B est mobile. Chaque interface est conçue et testée mobile d'abord, avec des temps de chargement inférieurs à 2 secondes.",
-    },
-    {
-      icon: "BarChart3",
-      title: "Tracking et analytics intégrés",
-      description:
-        "Google Analytics 4, événements de conversion, heatmaps — vous savez exactement ce qui fonctionne et ce qui doit être optimisé.",
-    },
-    {
-      icon: "Repeat",
-      title: "CMS autonome",
-      description:
-        "Vous gardez le contrôle. Interface d'administration intuitive pour modifier vos contenus, publier des articles et gérer vos landing pages sans développeur.",
+        "Corrections, évolutions, questions techniques : pendant 3 mois, notre équipe reste disponible pour ajuster ce qui doit l'être. Vous n'êtes jamais livrés puis abandonnés.",
     },
   ],
 
   // Process
-  processTitle: "De la stratégie au lancement en 4 étapes",
+  processTitle: "Un projet web avec Vizion : comment ça se passe ?",
   processSubtitle:
     "Un processus éprouvé qui garantit un site aligné sur vos objectifs commerciaux, livré dans les délais.",
   processSteps: [
     {
-      title: "Stratégie et positionnement",
+      title: "Workshop de positionnement",
       description:
-        "Audit de votre marché, personas, parcours d'achat et concurrence. Définition de votre proposition de valeur, hiérarchie des arguments et architecture du site.",
-      duration: "2 semaines",
+        "On commence par comprendre votre marché, vos cibles et ce qui vous différencie. On en sort avec une proposition de valeur claire, un cahier des charges précis, une arborescence validée et les arguments qui feront mouche. Si votre secteur est complexe, on prévoit plusieurs sessions.",
+      duration: "1 à 2 semaines",
       deliverables: [
         "Audit concurrentiel",
+        "Cahier des charges",
         "Personas B2B",
         "Proposition de valeur",
         "Arborescence",
       ],
     },
     {
-      title: "UX et design",
+      title: "Webdesign et direction artistique",
       description:
-        "Wireframes, parcours de conversion et direction artistique alignée sur votre positionnement. Design system complet pour garantir la cohérence visuelle.",
+        "On dessine chaque parcours pour qu'il mène à une action. Wireframes, maquettes Figma, charte graphique : tout est pensé pour convertir, pas juste pour être joli. L'identité visuelle est déclinée sur chaque écran.",
       duration: "2 semaines",
       deliverables: [
         "Wireframes desktop/mobile",
         "Maquettes Figma",
-        "Design system",
+        "Charte graphique",
+        "Identité visuelle web",
       ],
     },
     {
-      title: "Développement",
+      title: "Développement et intégration",
       description:
-        "Intégration pixel-perfect, animations, SEO technique, performance et responsive. Tests cross-browser et cross-device.",
-      duration: "3-4 semaines",
+        "On code votre site au pixel près. Animations, responsive, SEO technique, performance : chaque détail est testé sur tous les écrans avant de vous le montrer.",
+      duration: "3 à 4 semaines",
       deliverables: [
         "Site fonctionnel",
         "CMS configuré",
@@ -205,9 +142,9 @@ export const siteWebLandingPage: ServiceContent = {
       ],
     },
     {
-      title: "Lancement et optimisation",
+      title: "Lancement et suivi",
       description:
-        "Mise en production, redirections, soumission aux moteurs de recherche et suivi post-lancement. Accompagnement pendant 3 mois.",
+        "Mise en production, redirections, indexation Google et configuration des outils de tracking. On reste à vos côtés pendant 3 mois pour ajuster ce qui doit l'être.",
       duration: "1 semaine",
       deliverables: [
         "Mise en production",
@@ -218,44 +155,49 @@ export const siteWebLandingPage: ServiceContent = {
   ],
 
   // Testimonials
+  testimonialsTitle: "Ils nous ont confié la création de leur site web",
+  testimonialsSubtitle: "Retours d'expérience de dirigeants et responsables marketing qui ont fait appel à Vizion pour leur site internet.",
   testimonials: [
     {
       quote:
-        "Vizion a transformé notre site en véritable machine à leads — le ROI est indiscutable.",
+        "Ce qui est impressionnant, c'est qu'ils ont toujours une solution.",
       detail:
-        "En 3 mois, nous avons triplé nos demandes de contact qualifiées. Le nouveau site fait le travail commercial avant même le premier appel. L'équipe a su comprendre nos enjeux B2B et traduire notre expertise en un parcours qui convertit.",
-      author: "Directeur commercial",
-      role: "PME industrielle",
-      company: "Client Vizion",
-      photo: "/images/clients/placeholder.avif",
+        "Vizion a déployé deux sites et trois landing pages pour notre groupe de marques liées au sport. Un très bon rapport qualité-prix, une vraie capacité à s'adapter à chaque univers de marque.",
+      author: "Thomas Ensenat",
+      role: "Dirigeant",
+      company: "Groupe Aura",
+      photo: "/images/services/site-web/temoignage-thomas-ensenat.avif",
+      linkedin: "https://www.linkedin.com/in/thomas-ensenat/",
       rating: 5,
     },
     {
       quote:
-        "Un site qui parle enfin à nos vrais décideurs — pas juste une vitrine générique.",
+        "Une landing page où les visiteurs passent 4 minutes ? Vous en rêvez, Vizion l'a fait.",
       detail:
-        "Avant Vizion, notre site ne reflétait pas notre niveau d'expertise. Aujourd'hui, les directeurs techniques et les DAF trouvent les réponses à leurs questions avant même de nous contacter. Le cycle de vente s'est raccourci de plusieurs semaines.",
-      author: "CEO",
-      role: "Éditeur SaaS B2B",
-      company: "Client Vizion",
-      photo: "/images/clients/placeholder.avif",
+        "Nous leur avons confié la refonte de la landing page Cash Converters. Le résultat est une vraie différence : un parcours engageant, des temps de session que nous n'avions jamais atteints, et un impact mesurable sur les conversions.",
+      author: "Adrien Erena",
+      role: "Responsable marketing",
+      company: "Cash Converters",
+      photo: "/images/services/site-web/temoignage-adrien-erena.avif",
+      linkedin: "https://www.linkedin.com/in/adrien-erena/",
       rating: 5,
     },
     {
       quote:
-        "Notre trafic organique a doublé en 6 mois grâce au SEO intégré dès la conception.",
+        "Au moindre problème sur notre site, il est réglé dans les 24 heures.",
       detail:
-        "Le site précédent était beau mais invisible sur Google. Vizion a repensé toute l'architecture de contenu avec une stratégie SEO dès le brief initial. Les résultats sont concrets : +120% de trafic organique et des leads beaucoup plus qualifiés.",
-      author: "Directrice marketing",
-      role: "ETI Services B2B",
+        "Vous cherchez un partenaire réactif ? C'est un confort au quotidien de pouvoir compter sur les équipes de Vizion. La disponibilité et la rapidité d'intervention font toute la différence quand on gère un site à fort trafic.",
+      author: "Barthélémy Delcampe",
+      role: "Dirigeant",
       company: "Client Vizion",
-      photo: "/images/clients/placeholder.avif",
+      photo: "/images/services/site-web/temoignage-bartehlemy-delcampe.avif",
+      linkedin: "https://www.linkedin.com/in/barthelemydelcampe/",
       rating: 5,
     },
   ],
 
   // FAQ
-  faqTitle: "Questions fréquentes",
+  faqTitle: "Des questions sur votre futur site web ?",
   faqs: [
     {
       question: "Combien coûte la création d'un site web B2B ?",
@@ -283,9 +225,14 @@ export const siteWebLandingPage: ServiceContent = {
         "Nous travaillons principalement avec Next.js + Sanity CMS pour les performances et la flexibilité. Cependant, nous pouvons intervenir sur WordPress si votre écosystème l'exige. Nous recommandons toujours la solution la plus adaptée à vos objectifs.",
     },
     {
+      question: "Vous faites aussi la refonte de sites existants ?",
+      answer:
+        "Oui. La refonte de site web représente la majorité de nos projets. Nous reprenons l'existant, auditons ce qui fonctionne et ce qui freine, puis nous reconstruisons un site sur mesure avec une vraie stratégie de conversion. Redirections, SEO et migration de contenu sont inclus.",
+    },
+    {
       question: "Que se passe-t-il après le lancement ?",
       answer:
-        "Nous assurons un suivi post-lancement d'1 mois inclus (corrections, ajustements, monitoring). Au-delà, nous proposons des forfaits de maintenance et d'optimisation continue pour faire évoluer votre site avec votre activité.",
+        "Nous assurons un suivi post-lancement d'1 mois inclus (corrections, ajustements, monitoring). Au-delà, nous proposons des forfaits de maintenance site web et d'optimisation continue pour faire évoluer votre site avec votre activité. L'hébergement est géré sur des infrastructures performantes (Vercel, OVH ou AWS selon le projet).",
     },
   ],
 
@@ -293,43 +240,91 @@ export const siteWebLandingPage: ServiceContent = {
   scrollTitle: {
     hook: "Bref.",
     phrase: "Chez Vizion, on crée\ndes sites internet...",
-    adjectives: ["simples", "performants", "qui convertissent"],
+    adjectives: ["beaux", "performants", "et surtout utiles"],
+    showcaseImages: [
+      "/images/services/site-web/screenshots/01.avif",
+      "/images/services/site-web/screenshots/02.avif",
+      "/images/services/site-web/screenshots/03.avif",
+      "/images/services/site-web/screenshots/04.avif",
+      "/images/services/site-web/screenshots/05.avif",
+      "/images/services/site-web/screenshots/06.avif",
+      "/images/services/site-web/screenshots/07.avif",
+      "/images/services/site-web/screenshots/08.avif",
+      "/images/services/site-web/screenshots/09.avif",
+    ],
   },
 
   // Bento featured cards
   bentoCards: {
-    featured: {
-      title: "Conçu pour convertir,\npas juste pour plaire",
-      description:
-        "Chaque page, chaque CTA, chaque parcours utilisateur est pensé pour faire avancer votre prospect dans le cycle d'achat.",
+    sectionTitle: "Les spécificités de notre agence de développement web",
+    sectionDescription:
+      "Nous ne sommes pas une agence web généraliste. Chaque site que nous livrons est pensé pour servir votre stratégie commerciale, du choix technologique jusqu'au dernier pixel de tracking.",
+    image: {
+      src: "/images/services/site-web/bento-equipe.avif",
+      alt: "L'équipe Vizion au travail",
     },
-    metric: {
-      value: 95,
+    technology: {
+      title: "CMS ou code sur mesure :\nà chacun sa préférence",
+      description:
+        "Un site que vos équipes peuvent mettre à jour en autonomie ? On s'appuie sur WordPress. Un site ultra-rapide, animé, avec des fonctionnalités sur mesure ? On développe avec les frameworks les plus performants du marché. Dans les deux cas, c'est votre besoin qui dicte la technologie, pas l'inverse.",
+      logos: [
+        "Next.js",
+        "React",
+        "WordPress",
+
+        "Sanity",
+        "Shopify",
+        "HubSpot",
+        "Strapi",
+        "Figma",
+        "Vercel",
+      ],
+    },
+    performance: {
+      value: 90,
+      suffix: "+",
       label: "Score Google",
       description:
-        "Performance, accessibilité, SEO — mesurés et maintenus dans la durée.",
+        "Performance, accessibilité, SEO : à la livraison, tous les indicateurs sont au vert. Et nous veillons à ce qu'ils le restent.",
     },
-    seo: {
-      title: "SEO technique intégré dès la conception",
+    noTemplate: {
+      title: "Un site sur mesure, zéro template",
       description:
-        "Schema.org, sitemap dynamique, Core Web Vitals, balises sémantiques — rien n'est laissé au hasard.",
+        "Pas de thème préfabriqué. Chaque site est conçu depuis une page blanche pour refléter votre identité visuelle et vos objectifs.",
     },
-    design: {
-      title: "Design 100% sur mesure",
+    widgets: {
+      title: "Des widgets développés sur mesure",
       description:
-        "Pas de template, pas de thème WordPress. Chaque site est conçu depuis une page blanche pour refléter votre identité.",
-    },
-    ai: {
-      label: "Nouveau — Exclusif France",
-      title:
-        "Vizion est la première agence en France à proposer des sites 100% générés par IA — sans compromis sur la qualité.",
-      description:
-        "En plus du développement traditionnel, nous proposons un nouveau format de sites plus agile et plus performant, développé en interne par nos développeurs IA. Même exigence. Délais réduits.",
+        "Chaque fonctionnalité est pensée pour votre métier. Pas de plugin générique, du code taillé pour vos cas d'usage.",
+      tags: [
+        "Chatbot IA",
+        "Formulaires interactifs",
+        "Calculateur de ROI",
+        "Simulateur produit",
+        "Prise de RDV",
+      ],
     },
     integrations: {
-      title: "Intégrations CRM & outils",
+      title: "Connecté à vos outils existants",
       description:
-        "HubSpot, Pipedrive, Notion, Zapier — votre site s'intègre à votre stack commerciale.",
+        "CRM, ERP, outil de facturation, plateforme emailing : votre site s'intègre nativement à votre stack. Pas de ressaisie, pas de friction entre les équipes.",
+      logos: [
+        "HubSpot",
+        "Salesforce",
+        "Pipedrive",
+        "Zapier",
+        "Make",
+        "Notion",
+        "Stripe",
+        "Mailchimp",
+        "Slack",
+        "Google Sheets",
+      ],
+    },
+    growth: {
+      title: "Prêt à mesurer dès le jour 1",
+      description:
+        "Google Tag Manager, Google Analytics, pixels de conversion, événements personnalisés. Tous les outils de growth sont installés et configurés dès la conception. Chaque visite, chaque clic, chaque formulaire est traçable.",
     },
   },
 
@@ -338,44 +333,76 @@ export const siteWebLandingPage: ServiceContent = {
     surtitre: "Nos engagements",
     sectionTitle: "Pourquoi choisir Vizion\npour votre site web ?",
     sectionDescription:
-      "Pas de promesses vagues — des engagements concrets, mesurables et documentés, valables sur chaque projet que nous livrons.",
-    cardSurtitre: "Nos engagements",
-    cardTitle: "Nos garanties\nde qualité",
+      "Pas de promesses vagues. Des engagements concrets, mesurables et documentés, valables sur chaque projet que nous livrons.",
+    cardSurtitre: "Ce que nous garantissons",
+    cardTitle: "Des garanties\nde qualité uniques",
     cardDescription:
-      "Chaque projet est piloté avec la même rigueur. Pas de promesses vagues — des engagements concrets, mesurables et documentés.",
+      "Chaque projet est piloté avec la même rigueur. Pas de promesses vagues. Des engagements concrets, mesurables et documentés.",
     guarantees: [
       {
         icon: "ClipboardList",
-        title: "Bilan livrable — 50 points d'optimisation",
+        title: "Nous auditons 50 points avant de vous livrer",
         description:
-          "Checklist complète : sécurité, SEO technique, performance, accessibilité et bonnes pratiques.",
+          "Sécurité, SEO technique, performance, accessibilité, bonnes pratiques — nous passons votre site au crible et vous livrons un rapport ultra-complet pour que vous partiez sur des bases solides.",
       },
       {
-        icon: "Wrench",
-        title: "3 mois de maintenance offerts",
+        icon: "LineChart",
+        title: "Nous vous livrons un tableau de bord en temps réel",
         description:
-          "Corrections, mises à jour et petites évolutions incluses pendant 3 mois après la livraison.",
+          "Trafic, conversions, vitesse, SEO — vous gardez un œil sur la performance réelle de votre site à tout moment, sans nous demander un rapport.",
       },
       {
         icon: "Zap",
-        title: "Score Google 90+ garanti",
+        title: "Nous vous garantissons un score Google 90+",
         description:
-          "Performance, accessibilité, SEO et bonnes pratiques — mesurés et validés avant chaque livraison.",
+          "Performance, accessibilité, SEO et bonnes pratiques — nous mesurons et validons chaque indicateur avant de vous remettre les clés.",
       },
     ],
     featureCard: {
+      surtitre: "Notre vraie différence ?",
       title: "Une coopération unique\nentre stratégie et technique",
       description:
-        "Stratèges marketing et développeurs chevronnés travaillent ensemble sur chaque projet — pour que votre site serve vraiment vos objectifs commerciaux.",
-      linkText: "En savoir plus",
+        "Stratèges marketing et développeurs chevronnés travaillent ensemble sur chaque projet, pour que votre site serve vraiment vos objectifs commerciaux.",
+      linkText: "Discuter de votre projet",
       linkHref: "/contact",
     },
   },
 
+  // Related services
+  relatedServicesTitle: "Vous voulez aller plus loin que votre site web ?",
+  relatedServicesSubtitle:
+    "Un site performant, c'est le socle. Ces services complémentaires accélèrent vos résultats.",
+  relatedServices: [
+    {
+      slug: "seo-referencement",
+      icon: "Search",
+      title: "SEO & Référencement",
+      description:
+        "Votre site est en ligne, mais vos prospects ne vous trouvent pas. Nous construisons une stratégie SEO complète (technique, contenu, backlinks) pour que Google travaille pour vous.",
+      href: "/contact",
+    },
+    {
+      slug: "strategie-contenu",
+      icon: "FileText",
+      title: "Stratégie de contenu",
+      description:
+        "Un site sans contenu est un commercial muet. Nous créons les articles, les landing pages et les ressources qui attirent vos cibles et les font avancer dans leur parcours d'achat.",
+      href: "/contact",
+    },
+    {
+      slug: "automatisation-crm",
+      icon: "Zap",
+      title: "Automatisation & CRM",
+      description:
+        "Chaque formulaire rempli, chaque téléchargement, chaque visite, connectés à votre CRM en temps réel. Nous automatisons le passage du marketing aux ventes pour ne perdre aucun lead.",
+      href: "/contact",
+    },
+  ],
+
   // CTA
   ctaTitle: "Votre site mérite de travailler pour vous",
   ctaDescription:
-    "Premier échange sans engagement — on analyse votre site actuel et vos objectifs.",
-  ctaButtonText: "Demander un audit gratuit",
+    "Premier échange sans engagement. On analyse votre site actuel et vos objectifs.",
+  ctaButtonText: "Discuter de votre projet",
   ctaButtonLink: "/contact",
 };

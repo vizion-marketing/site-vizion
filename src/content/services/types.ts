@@ -2,13 +2,8 @@
 // Services — Types partagés
 // ============================================================
 
-export interface ServiceFeature {
-  icon: string;
-  title: string;
-  description: string;
-}
-
 export interface ServiceProcessStep {
+  icon?: string;
   title: string;
   description: string;
   duration: string;
@@ -27,6 +22,7 @@ export interface ServiceTestimonial {
   role: string;
   company: string;
   photo?: string;
+  linkedin?: string;
   rating?: number;
 }
 
@@ -53,33 +49,44 @@ export interface ScrollTitleContent {
   hook: string; // ex: "Bref."
   phrase: string; // ex: "Chez Vizion, on crée\ndes sites internet..."
   adjectives: string[]; // ex: ["simples", "performants", "qui convertissent"]
+  showcaseImages?: string[]; // Screenshots parallax en arrière-plan (6-9 images recommandées)
 }
 
-// Bento featured cards (WebFeaturesBento hardcoded cards)
-export interface BentoFeaturedCard {
+// Bento featured cards (WebFeaturesBento)
+export interface BentoTechnologyCard {
   title: string;
   description: string;
+  logos: string[];
 }
 
 export interface BentoMetricCard {
   value: number;
+  suffix?: string;
   label: string;
   description: string;
 }
 
-export interface BentoAICard {
-  label: string;
+export interface BentoSimpleCard {
   title: string;
   description: string;
 }
 
+export interface BentoWidgetsCard {
+  title: string;
+  description: string;
+  tags: string[];
+}
+
 export interface BentoCards {
-  featured: BentoFeaturedCard;
-  metric: BentoMetricCard;
-  seo: BentoFeaturedCard;
-  design: BentoFeaturedCard;
-  ai: BentoAICard;
-  integrations: BentoFeaturedCard;
+  sectionTitle?: string;
+  sectionDescription?: string;
+  image?: { src: string; alt: string };
+  technology: BentoTechnologyCard;
+  performance: BentoMetricCard;
+  noTemplate: BentoSimpleCard;
+  widgets: BentoWidgetsCard;
+  integrations?: BentoSimpleCard & { logos?: string[] };
+  growth?: BentoSimpleCard;
 }
 
 // Quality guarantees
@@ -90,6 +97,7 @@ export interface QualityGuarantee {
 }
 
 export interface QualityFeatureCard {
+  surtitre?: string;
   title: string;
   description: string;
   linkText: string;
@@ -105,6 +113,14 @@ export interface QualityGuaranteesContent {
   cardDescription: string;
   guarantees: QualityGuarantee[];
   featureCard: QualityFeatureCard;
+}
+
+export interface RelatedService {
+  slug: string;
+  icon: string;
+  title: string;
+  description: string;
+  href: string;
 }
 
 export interface ServiceContent {
@@ -126,10 +142,9 @@ export interface ServiceContent {
   heroBadge?: string;
   heroImage?: string;
 
-  // Narrative — les 3 blocs éditoriaux
+
+  // Narrative
   constat: NarrativeBlock;
-  consequences: NarrativeBlock;
-  promesse: NarrativeBlock;
 
   // Solution sticky
   solutionTitle: string;
@@ -137,15 +152,10 @@ export interface ServiceContent {
   solutionImage: string;
   solutionItems: SolutionItem[];
 
-  // Scroll title (interstitial)
+  /** Animated scroll interstitial. Web-specific — omit if not needed. */
   scrollTitle?: ScrollTitleContent;
 
-  // Features / Bénéfices
-  featuresTitle: string;
-  featuresSubtitle: string;
-  features: ServiceFeature[];
-
-  // Bento featured cards
+  /** Web-specific bento grid. Other services should omit this field. */
   bentoCards?: BentoCards;
 
   // Process
@@ -157,11 +167,18 @@ export interface ServiceContent {
   qualityGuarantees?: QualityGuaranteesContent;
 
   // Testimonials
+  testimonialsTitle?: string;
+  testimonialsSubtitle?: string;
   testimonials: ServiceTestimonial[];
 
   // FAQ
   faqTitle: string;
   faqs: ServiceFAQ[];
+
+  // Related services
+  relatedServicesTitle?: string;
+  relatedServicesSubtitle?: string;
+  relatedServices?: RelatedService[];
 
   // CTA
   ctaTitle: string;

@@ -42,6 +42,8 @@ Agence de marketing stratégique B2B basée à Toulouse, pionnière de l'IA appl
 
 **Termes à éviter :** promesses excessives, anglicismes inutiles, jargon vague, vocabulaire d'agence d'exécution.
 
+**Caractères interdits dans tout le contenu du site :** Le tiret cadratin `—` (em dash, U+2014) est **strictement interdit** dans tous les textes visibles (titres, descriptions, paragraphes, FAQ, témoignages, meta descriptions). C'est un artefact typique de la génération IA. Utiliser à la place : `.` (point), `,` (virgule), `:` (deux-points) ou `()` (parenthèses) selon le contexte.
+
 ### Coordonnées
 
 - **Site :** https://by-vizion.com

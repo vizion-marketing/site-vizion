@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import type { ScrollTitleContent } from "@/content/services/types";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,12 +13,32 @@ interface WebScrollTitleProps {
   content: ScrollTitleContent;
 }
 
+/**
+ * Distribute images across 3 columns for parallax effect.
+ * Returns [col1, col2, col3] arrays of image paths.
+ */
+function splitIntoColumns(images: string[]): [string[], string[], string[]] {
+  const cols: [string[], string[], string[]] = [[], [], []];
+  images.forEach((img, i) => cols[i % 3].push(img));
+  return cols;
+}
+
 export function WebScrollTitle({ content }: WebScrollTitleProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const brefRef = useRef<HTMLSpanElement>(null);
   const phraseRef = useRef<HTMLDivElement>(null);
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const progressBarRef = useRef<HTMLDivElement>(null);
+  const col1Ref = useRef<HTMLDivElement>(null);
+  const col2Ref = useRef<HTMLDivElement>(null);
+  const col3Ref = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  const hasImages = content.showcaseImages && content.showcaseImages.length > 0;
+  const columns = useMemo(
+    () => (hasImages ? splitIntoColumns(content.showcaseImages!) : null),
+    [hasImages, content.showcaseImages],
+  );
 
   // Split phrase on \n for line breaks
   const phraseLines = content.phrase.split("\n");
@@ -43,6 +64,41 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
       wordRefs.current.forEach((el) => {
         if (el) gsap.set(el, { opacity: 0 });
       });
+
+      // ── Parallax columns (different speeds per column) ──
+      if (hasImages) {
+        // Gallery fades in during phase 1
+        gsap.set(galleryRef.current, { opacity: 0 });
+
+        // Separate ScrollTrigger for continuous parallax movement
+        const colRefs = [col1Ref.current, col2Ref.current, col3Ref.current];
+        const speeds = [-15, 25, -20]; // % of movement — alternating directions
+
+        colRefs.forEach((col, i) => {
+          if (!col) return;
+          gsap.fromTo(
+            col,
+            { yPercent: speeds[i] > 0 ? -Math.abs(speeds[i]) : Math.abs(speeds[i]) },
+            {
+              yPercent: speeds[i],
+              ease: "none",
+              scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1,
+              },
+            },
+          );
+        });
+
+        // Gallery opacity: fade in at start, stay visible
+        tl.to(galleryRef.current, {
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        }, 0);
+      }
 
       // PHASE 1: Hook — zooms until it flies past you
       tl.fromTo(
@@ -128,6 +184,43 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
               "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 60%)",
           }}
         />
+
+        {/* ── Parallax showcase gallery ── */}
+        {hasImages && columns && (
+          <div
+            ref={galleryRef}
+            className="absolute inset-0 pointer-events-none z-0"
+            style={{ opacity: 0 }}
+          >
+            {/* Blur + dim overlay on images */}
+            <div className="absolute inset-0 z-[1] backdrop-blur-[1px]" />
+
+            <div className="absolute inset-0 flex gap-4 px-4 sm:px-8 lg:px-16 justify-center">
+              {columns.map((colImages, colIndex) => (
+                <div
+                  key={colIndex}
+                  ref={colIndex === 0 ? col1Ref : colIndex === 1 ? col2Ref : col3Ref}
+                  className="flex-1 max-w-[320px] flex flex-col gap-4"
+                >
+                  {colImages.map((src, imgIndex) => (
+                    <div
+                      key={imgIndex}
+                      className="relative w-full aspect-[4/3] overflow-hidden border border-black/[0.06] shadow-lg"
+                    >
+                      <Image
+                        src={src}
+                        alt=""
+                        fill
+                        sizes="320px"
+                        className="object-cover opacity-[0.45]"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Phase 1: Hook */}
         <span

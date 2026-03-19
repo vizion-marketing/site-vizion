@@ -326,7 +326,7 @@ function DesktopCasClientsMegaMenu({
             </span>
           </div>
 
-          <div className="flex flex-col gap-0.5 flex-1 overflow-y-auto max-h-[320px]">
+          <div className="flex flex-col gap-0.5 flex-1">
             {clients.map((client) => (
               <Link
                 key={client._id}
@@ -357,15 +357,11 @@ function DesktopCasClientsMegaMenu({
                   <span className="text-[13px] font-medium text-primary leading-tight block truncate group-hover/client:translate-x-0.5 transition-transform duration-200">
                     {client.name}
                   </span>
-                  <span className="text-[10px] text-muted leading-snug block">
-                    {client.sector}
-                    {client.caseStudyCount > 0 && (
-                      <> · {client.caseStudyCount} étude{client.caseStudyCount > 1 ? "s" : ""}</>
-                    )}
-                  </span>
                 </div>
 
-                <ArrowRight size={12} className="text-muted shrink-0 opacity-0 group-hover/client:opacity-100 group-hover/client:translate-x-0.5 transition-all duration-200" />
+                <span className="text-[9px] font-medium tracking-[0.04em] uppercase px-1.5 py-0.5 bg-card border border-black/[0.06] text-muted shrink-0 whitespace-nowrap">
+                  {client.sector}
+                </span>
               </Link>
             ))}
           </div>

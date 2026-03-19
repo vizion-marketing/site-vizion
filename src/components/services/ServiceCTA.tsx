@@ -68,12 +68,28 @@ export function ServiceCTA({
       className="dark-section grain-overlay relative overflow-hidden py-24 sm:py-32 md:py-40 px-4 sm:px-6 md:px-12"
       style={{ background: "var(--bg-dark)" }}
     >
-      {/* Blob */}
+      {/* Primary glow — center */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 50%)",
+            "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 55%)",
+        }}
+      />
+      {/* Secondary glow — top-left */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 50% at 15% 20%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 50%)",
+        }}
+      />
+      {/* Tertiary glow — bottom-right */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 45% 45% at 85% 80%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 50%)",
         }}
       />
 

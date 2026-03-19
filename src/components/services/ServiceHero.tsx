@@ -20,7 +20,7 @@ interface ServiceHeroProps {
   breadcrumbLabel: string;
 }
 
-const FALLBACK_IMAGE = "/images/services/website.png";
+const FALLBACK_IMAGE = "/images/services/default-hero.png";
 
 export function ServiceHero({
   category,
@@ -95,17 +95,9 @@ export function ServiceHero({
     { scope: sectionRef },
   );
 
-  // Floating animation — subtle continuous bob on image
+  // Floating animation — accent elements only
   useGSAP(
     () => {
-      gsap.to("[data-hero='image-inner']", {
-        y: "-=12",
-        duration: 2.5,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-
       // Accent square pulse
       gsap.to("[data-hero='accent-square']", {
         scale: 1.3,
@@ -149,21 +141,9 @@ export function ServiceHero({
     { scope: sectionRef },
   );
 
-  // Scroll parallax — image moves up slower (depth effect)
+  // Scroll parallax — text and accent only (no image parallax)
   useGSAP(
     () => {
-      // Image parallax — moves up at different rate
-      gsap.to("[data-hero='image-inner']", {
-        y: -80,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.5,
-        },
-      });
-
       // Accent panel parallax — subtle shift
       gsap.to("[data-hero='accent-col']", {
         y: -30,
@@ -391,11 +371,10 @@ export function ServiceHero({
           <div className="relative">
             <div
               data-hero="image-inner"
-              className="absolute left-[-35%] right-[-30%] z-20 transition-transform duration-300 ease-out"
+              className="absolute left-[-35%] right-[-30%] z-20"
               style={{
                 top: "-15%",
                 bottom: "-20%",
-                transform: `perspective(1000px) rotateY(${mousePos.x * 5}deg) rotateX(${mousePos.y * -3}deg)`,
               }}
             >
               <Image
@@ -412,6 +391,7 @@ export function ServiceHero({
           </div>
         </div>
       </div>
+
     </section>
   );
 }

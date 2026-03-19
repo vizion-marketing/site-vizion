@@ -51,30 +51,41 @@ export function ServiceNarrative({ constat }: { constat: NarrativeBlock }) {
       });
 
       // Accent line grows from top
-      tl.from("[data-narrative='line']", {
+      tl.fromTo("[data-narrative='line']", {
         scaleY: 0,
+      }, {
+        scaleY: 1,
         duration: 1,
         ease: "expo.out",
       }, 0);
 
       // Surtitre slides in from left
-      tl.from("[data-narrative='surtitre']", {
+      tl.fromTo("[data-narrative='surtitre']", {
         opacity: 0,
         x: -30,
+      }, {
+        opacity: 1,
+        x: 0,
         duration: 0.6,
       }, 0.1);
 
       // Paragraph fades up
-      tl.from("[data-narrative='paragraph']", {
+      tl.fromTo("[data-narrative='paragraph']", {
         opacity: 0,
         y: 25,
+      }, {
+        opacity: 1,
+        y: 0,
         duration: 0.7,
       }, 0.2);
 
       // Title — big reveal
-      tl.from("[data-narrative='title']", {
+      tl.fromTo("[data-narrative='title']", {
         opacity: 0,
         y: 50,
+      }, {
+        opacity: 1,
+        y: 0,
         duration: 1,
         ease: "expo.out",
       }, 0.35);
@@ -95,14 +106,19 @@ export function ServiceNarrative({ constat }: { constat: NarrativeBlock }) {
       );
 
       // Card icons — pop in after cards
-      tl.from("[data-narrative='card-icon']", {
-        opacity: 0,
-        scale: 0,
-        rotation: -15,
-        duration: 0.4,
-        stagger: 0.08,
-        ease: "back.out(2)",
-      }, 0.7);
+      tl.fromTo(
+        "[data-narrative='card-icon']",
+        { opacity: 0, scale: 0, rotation: -15 },
+        {
+          opacity: 1,
+          scale: 1,
+          rotation: 0,
+          duration: 0.4,
+          stagger: 0.08,
+          ease: "back.out(2)",
+        },
+        0.7,
+      );
     },
     { scope: sectionRef },
   );

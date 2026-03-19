@@ -14,10 +14,12 @@ import type { LucideIcon } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { resolveIcon } from "@/lib/icon-resolver";
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface ProcessStep {
+  icon?: string;
   title: string;
   description: string;
   duration?: string;
@@ -30,7 +32,7 @@ interface ProcessTimelineProps {
   steps: ProcessStep[];
 }
 
-const STEP_ICONS: LucideIcon[] = [
+const FALLBACK_ICONS: LucideIcon[] = [
   Search,
   MessageSquareText,
   Layout,
@@ -46,7 +48,9 @@ function StepRow({
   step: ProcessStep;
   index: number;
 }) {
-  const Icon = STEP_ICONS[index % STEP_ICONS.length];
+  const Icon = step.icon
+    ? resolveIcon(step.icon)
+    : FALLBACK_ICONS[index % FALLBACK_ICONS.length];
 
   return (
     <div

@@ -4,7 +4,6 @@ import type { ServiceContent } from "@/content/services";
 import {
   ServiceHero,
   ServiceNarrative,
-  ServiceHighlights,
   SolutionSticky,
   WebScrollTitle,
   WebFeaturesBento,
@@ -12,7 +11,9 @@ import {
   QualityGuarantees,
   TestimonialShowcase,
   ServiceFAQ,
+  RelatedServices,
   ServiceCTA,
+  InlineCTA,
 } from "@/components/services";
 
 interface ServiceDetailContentProps {
@@ -33,6 +34,7 @@ export function ServiceDetailContent({
         imageUrl={service.heroImage}
         imageAlt={service.heroTitle}
         breadcrumbLabel={service.title}
+
       />
 
       {/* 2. Le constat (card) */}
@@ -58,8 +60,21 @@ export function ServiceDetailContent({
 
       {/* 8. Témoignages (sombre) */}
       {service.testimonials.length > 0 && (
-        <TestimonialShowcase testimonials={service.testimonials} />
+        <TestimonialShowcase
+          testimonials={service.testimonials}
+          sectionTitle={service.testimonialsTitle}
+          sectionSubtitle={service.testimonialsSubtitle}
+        />
       )}
+
+      {/* CTA intermédiaire après témoignages */}
+      <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-12 bg-white">
+        <InlineCTA
+          text="Vous avez un projet de site web en tête ?"
+          buttonText="Discuter de votre projet"
+          href="/contact"
+        />
+      </div>
 
       {/* 9. Process / Timeline (card) — ancre #processus */}
       {service.processSteps.length > 0 && (
@@ -69,6 +84,15 @@ export function ServiceDetailContent({
           steps={service.processSteps}
         />
       )}
+
+      {/* CTA intermédiaire après process */}
+      <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-12 bg-white">
+        <InlineCTA
+          text="Prêt à lancer votre projet ?"
+          buttonText="Discuter de votre projet"
+          href="/contact"
+        />
+      </div>
 
       {/* 10. Garanties de qualité (sombre) */}
       {service.qualityGuarantees && (
@@ -80,7 +104,16 @@ export function ServiceDetailContent({
         <ServiceFAQ title={service.faqTitle} faqs={service.faqs} />
       )}
 
-      {/* 12. CTA final (sombre) */}
+      {/* 12. Services complémentaires (blanc) */}
+      {service.relatedServices && service.relatedServices.length > 0 && (
+        <RelatedServices
+          title={service.relatedServicesTitle}
+          subtitle={service.relatedServicesSubtitle}
+          services={service.relatedServices}
+        />
+      )}
+
+      {/* 13. CTA final (sombre) */}
       <ServiceCTA
         title={service.ctaTitle}
         description={service.ctaDescription}

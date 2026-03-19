@@ -121,15 +121,15 @@ export function SolutionSticky({
         y: "-=8", duration: 3, ease: "sine.inOut", repeat: -1, yoyo: true,
       });
 
-      // Cards — stagger
+      // Cards — slide in from right
       gsap.fromTo(
         "[data-solution='card']",
-        { opacity: 0, y: 30 },
+        { opacity: 0, x: 80 },
         {
           opacity: 1,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.12,
+          x: 0,
+          duration: 0.8,
+          stagger: 0.15,
           ease: "power3.out",
           scrollTrigger: {
             trigger: "[data-solution='cards']",

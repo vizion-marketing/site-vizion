@@ -5,7 +5,6 @@
 
 export type {
   ServiceContent,
-  ServiceFeature,
   ServiceProcessStep,
   ServiceFAQ,
   ServiceTestimonial,
@@ -14,12 +13,14 @@ export type {
   SolutionItem,
   ScrollTitleContent,
   BentoCards,
-  BentoFeaturedCard,
+  BentoTechnologyCard,
   BentoMetricCard,
-  BentoAICard,
+  BentoSimpleCard,
+  BentoWidgetsCard,
   QualityGuaranteesContent,
   QualityGuarantee,
   QualityFeatureCard,
+  RelatedService,
 } from "./types";
 
 import type { ServiceContent } from "./types";

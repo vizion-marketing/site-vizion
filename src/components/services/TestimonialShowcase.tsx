@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,6 +14,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface TestimonialShowcaseProps {
   testimonials: ServiceTestimonial[];
+  sectionTitle?: string;
+  sectionSubtitle?: string;
 }
 
 type Slide = {
@@ -23,6 +25,8 @@ type Slide = {
 
 export function TestimonialShowcase({
   testimonials,
+  sectionTitle,
+  sectionSubtitle,
 }: TestimonialShowcaseProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -126,11 +130,10 @@ export function TestimonialShowcase({
               </span>
             </div>
             <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
-              Ce qu&apos;ils disent de nous
+              {sectionTitle || "Ce qu\u2019ils disent de nous"}
             </h2>
             <p className="text-[14px] sm:text-[15px] text-muted leading-relaxed mt-3 max-w-lg">
-              Découvrez les retours de nos clients sur leur collaboration avec
-              Vizion.
+              {sectionSubtitle || "Découvrez les retours de nos clients sur leur collaboration avec Vizion."}
             </p>
           </div>
 
@@ -179,11 +182,11 @@ export function TestimonialShowcase({
           ref={emblaRef}
           className="overflow-hidden"
         >
-          <div className="flex gap-4 sm:gap-5">
+          <div className="flex">
             {slides.map((slide, i) => (
               <div
                 key={`${slide.type}-${i}`}
-                className="flex-none w-[260px] sm:w-[300px] lg:w-[340px]"
+                className="flex-none w-[260px] sm:w-[290px] lg:w-[320px] pr-4 sm:pr-5"
               >
                 {slide.type === "photo" ? (
                   <PhotoCard testimonial={slide.testimonial} />
@@ -246,13 +249,25 @@ function PhotoCard({ testimonial }: { testimonial: ServiceTestimonial }) {
         sizes="(max-width: 640px) 260px, (max-width: 1024px) 300px, 340px"
       />
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 p-5">
-        <p className="text-white font-semibold text-[13px] uppercase tracking-[0.06em]">
-          {testimonial.author}
-        </p>
-        <p className="text-white/60 text-[12px] mt-0.5">
-          {testimonial.role} &mdash; {testimonial.company}
-        </p>
+      <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
+        <div>
+          <p className="text-white font-semibold text-[13px] uppercase tracking-[0.06em]">
+            {testimonial.author}
+          </p>
+          <p className="text-white/60 text-[12px] mt-0.5">
+            {testimonial.role} &mdash; {testimonial.company}
+          </p>
+        </div>
+        {testimonial.linkedin && (
+          <a
+            href={testimonial.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/50 hover:text-accent transition-colors duration-300"
+          >
+            <Linkedin size={16} />
+          </a>
+        )}
       </div>
     </div>
   );
@@ -294,12 +309,8 @@ function TextCard({ testimonial }: { testimonial: ServiceTestimonial }) {
 
       {/* Quote content */}
       <div className="flex-1 flex flex-col justify-center relative z-10">
-        <h3 className="font-heading font-medium text-[18px] sm:text-[20px] leading-[1.2] tracking-[-0.01em] text-primary mb-3">
-          &laquo;&nbsp;
-          {testimonial.quote.length > 100
-            ? testimonial.quote.slice(0, 100) + "…"
-            : testimonial.quote}
-          &nbsp;&raquo;
+        <h3 className="font-heading font-medium text-[16px] sm:text-[18px] lg:text-[20px] leading-[1.2] tracking-[-0.01em] text-primary mb-3">
+          &laquo;&nbsp;{testimonial.quote}&nbsp;&raquo;
         </h3>
         {testimonial.detail && (
           <p className="text-[13px] text-muted leading-relaxed line-clamp-3">
@@ -309,13 +320,25 @@ function TextCard({ testimonial }: { testimonial: ServiceTestimonial }) {
       </div>
 
       {/* Author */}
-      <div className="pt-4 border-t border-white/10">
-        <p className="text-[13px] font-semibold text-primary uppercase tracking-[0.06em]">
-          {testimonial.author}
-        </p>
-        <p className="text-[12px] text-muted mt-0.5">
-          {testimonial.role} &mdash; {testimonial.company}
-        </p>
+      <div className="pt-4 border-t border-white/10 flex items-end justify-between">
+        <div>
+          <p className="text-[13px] font-semibold text-primary uppercase tracking-[0.06em]">
+            {testimonial.author}
+          </p>
+          <p className="text-[12px] text-muted mt-0.5">
+            {testimonial.role} &mdash; {testimonial.company}
+          </p>
+        </div>
+        {testimonial.linkedin && (
+          <a
+            href={testimonial.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/40 hover:text-accent transition-colors duration-300"
+          >
+            <Linkedin size={16} />
+          </a>
+        )}
       </div>
     </div>
   );
