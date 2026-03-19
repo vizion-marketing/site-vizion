@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
+import { HeaderServer } from "@/components/HeaderServer";
 import { Footer } from "@/components/Footer";
 import { LazyCallWidget } from "@/components/LazyCallWidget";
 import { MotionProvider } from "@/components/MotionProvider";
@@ -105,7 +105,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <SmoothScroller>
           <MotionProvider>
             <ComingSoonProvider>
-              <Header />
+              <HeaderServer />
               <main>{children}</main>
               <Footer />
               <LazyCallWidget />

@@ -136,6 +136,36 @@ export const FEATURED_CLIENTS_QUERY = groq`
 `;
 
 // ============================================================
+// Menu — Cas Clients (lightweight for header mega menu)
+// ============================================================
+
+export const MENU_CASE_STUDIES_QUERY = groq`
+  *[_type == "caseStudy" && !draft] | order(publishedAt desc) [0...3] {
+    _id,
+    title,
+    "slug": slug.current,
+    company,
+    sector,
+    "clientSlug": client->slug.current,
+    "heroImageUrl": heroImage.asset->url,
+    metrics[0...2],
+    "url": "/cas-clients/" + client->slug.current + "/" + slug.current
+  }
+`;
+
+export const MENU_CLIENTS_QUERY = groq`
+  *[_type == "client" && !draft] | order(order asc) {
+    _id,
+    name,
+    "slug": slug.current,
+    sector,
+    "logoUrl": logo.asset->url,
+    "url": "/cas-clients/" + slug.current,
+    "caseStudyCount": count(*[_type == "caseStudy" && client._ref == ^._id && !draft])
+  }
+`;
+
+// ============================================================
 // Case Studies
 // ============================================================
 

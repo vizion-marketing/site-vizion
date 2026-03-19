@@ -15,23 +15,36 @@ import {
   TrendingUp,
   Handshake,
   Sparkles,
+  Building2,
 } from "lucide-react";
 import {
   SERVICE_MENU_CATEGORIES,
   SERVICE_MENU_BANNER,
 } from "@/lib/constants";
 import type { ServiceMenuItem } from "@/lib/constants";
+import type { MenuCaseStudy, MenuClient } from "../../sanity/lib/types";
+
+// ============================================================================
+// TYPES
+// ============================================================================
+
+type ActiveMenu = "services" | "cas-clients" | null;
+
+interface HeaderProps {
+  menuCaseStudies?: MenuCaseStudy[];
+  menuClients?: MenuClient[];
+}
 
 // ============================================================================
 // NAV ITEMS
 // ============================================================================
 
 const navItems = [
-  { label: "Accueil", target: "top", href: "/" },
-  { label: "Services", target: "services", href: "/services", hasMegaMenu: true },
-  { label: "Cas Clients", target: "cas-clients", href: "/cas-clients" },
-  { label: "Notre agence", target: "agence", href: "/#agence" },
-  { label: "Blog", target: "blog", href: "/blog" },
+  { label: "Accueil", target: "top", href: "/", megaMenu: null as ActiveMenu },
+  { label: "Services", target: "services", href: "/services", megaMenu: "services" as ActiveMenu },
+  { label: "Cas Clients", target: "cas-clients", href: "/cas-clients", megaMenu: "cas-clients" as ActiveMenu },
+  { label: "Notre agence", target: "agence", href: "/#agence", megaMenu: null as ActiveMenu },
+  { label: "Blog", target: "blog", href: "/blog", megaMenu: null as ActiveMenu },
 ];
 
 const HEADER_HEIGHT = 80;
@@ -70,14 +83,10 @@ function CategoryIcon({ name, size = 14, className }: { name: string; size?: num
 }
 
 // ============================================================================
-// DESKTOP MEGA MENU
+// DESKTOP MEGA MENU — SERVICES
 // ============================================================================
 
-function DesktopMegaMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  // 3 colonnes :
-  // Col 1: Audit & Stratégie (2) + Growth (3)
-  // Col 2: Product Marketing (4) + Sales Enablement (3)
-  // Col 3: Marketing Automation & IA (2) en haut + bloc Externalisation en dessous
+function DesktopServicesMegaMenu({ onClose }: { onClose: () => void }) {
   const col1 = SERVICE_MENU_CATEGORIES.filter((c) =>
     ["Audit & Stratégie", "Growth"].includes(c.title)
   );
@@ -89,108 +98,88 @@ function DesktopMegaMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
   );
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="fixed inset-0 top-[80px] bg-black/10 z-40"
-            onClick={onClose}
+    <motion.div
+      initial={{ opacity: 0, y: -4 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.18, ease: "easeOut" }}
+      className="absolute top-full left-1/2 -translate-x-1/2 z-50 w-[1060px] bg-white border border-black/[0.08] shadow-xl"
+    >
+      <div className="grid grid-cols-[1fr_1fr_1fr_240px]">
+        {/* Col 1 — Audit & Stratégie + Growth */}
+        <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
+          {col1.map((category, i) => (
+            <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
+          ))}
+        </div>
+
+        {/* Col 2 — Product Marketing + Sales Enablement */}
+        <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
+          {col2.map((category, i) => (
+            <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
+          ))}
+        </div>
+
+        {/* Col 3 — Marketing Automation & IA */}
+        <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
+          {col3Category && (
+            <MegaMenuCategory category={col3Category} onClose={onClose} isFirst />
+          )}
+        </div>
+
+        {/* Col 4 — CTA Externalisation */}
+        <Link
+          href={SERVICE_MENU_BANNER.href}
+          onClick={onClose}
+          className="flex flex-col justify-between p-5 group relative overflow-hidden"
+          style={{ background: "var(--bg-dark)" }}
+        >
+          <div
+            className="absolute -top-20 -right-20 w-60 h-60 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse at center, rgba(var(--color-accent-rgb), 0.15) 0%, transparent 70%)" }}
+          />
+          <div
+            className="absolute -bottom-10 -left-10 w-40 h-40 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse at center, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 70%)" }}
           />
 
-          {/* Menu panel */}
-          <motion.div
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute top-full left-1/2 -translate-x-1/2 z-50 w-[1060px] bg-white border border-black/[0.08] shadow-xl"
-          >
-            {/* Layout : 3 cols services + panneau CTA */}
-            <div className="grid grid-cols-[1fr_1fr_1fr_240px]">
-              {/* Col 1 — Audit & Stratégie + Growth */}
-              <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
-                {col1.map((category, i) => (
-                  <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
-                ))}
-              </div>
+          <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
+            <Image
+              src="/images/menu.png"
+              alt=""
+              width={240}
+              height={400}
+              className="object-contain object-bottom group-hover:scale-105 transition-transform duration-700 max-h-full"
+            />
+          </div>
 
-              {/* Col 2 — Product Marketing + Sales Enablement */}
-              <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
-                {col2.map((category, i) => (
-                  <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
-                ))}
-              </div>
+          <div className="relative z-10">
+            <span className="text-[10px] font-medium tracking-[0.15em] uppercase text-accent block mb-3">
+              Sur mesure
+            </span>
+            <span className="text-[20px] font-semibold text-white leading-[1.2] tracking-[-0.02em] block">
+              Externalisez votre stratégie Marketing de A à Z
+            </span>
+          </div>
 
-              {/* Col 3 — Marketing Automation & IA */}
-              <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
-                {col3Category && (
-                  <MegaMenuCategory category={col3Category} onClose={onClose} isFirst />
-                )}
-              </div>
-
-              {/* Col 4 — CTA Externalisation, pleine hauteur */}
-              <Link
-                href={SERVICE_MENU_BANNER.href}
-                onClick={onClose}
-                className="flex flex-col justify-between p-5 group relative overflow-hidden"
-                style={{ background: "var(--bg-dark)" }}
-              >
-                {/* Diffusion accent */}
-                <div
-                  className="absolute -top-20 -right-20 w-60 h-60 pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse at center, rgba(var(--color-accent-rgb), 0.15) 0%, transparent 70%)" }}
-                />
-                <div
-                  className="absolute -bottom-10 -left-10 w-40 h-40 pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse at center, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 70%)" }}
-                />
-
-                {/* Image PNG par dessus */}
-                <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
-                  <Image
-                    src="/images/menu.png"
-                    alt=""
-                    width={240}
-                    height={400}
-                    className="object-contain object-bottom group-hover:scale-105 transition-transform duration-700 max-h-full"
-                  />
-                </div>
-
-                <div className="relative z-10">
-                  <span className="text-[10px] font-medium tracking-[0.15em] uppercase text-accent block mb-3">
-                    Sur mesure
-                  </span>
-                  <span className="text-[20px] font-semibold text-white leading-[1.2] tracking-[-0.02em] block">
-                    Externalisez votre stratégie Marketing de A à Z
-                  </span>
-                </div>
-
-                <div className="relative z-10">
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {["CMO à temps partagé", "Exécution complète", "Niveau d'implication au choix"].map((tag) => (
-                      <span key={tag} className="text-[10px] font-medium text-white/80 bg-white/10 backdrop-blur-sm border border-white/10 px-2 py-1">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-2 text-[13px] font-semibold text-white">
-                    Nous contacter
-                    <div className="w-6 h-6 flex items-center justify-center bg-accent text-primary group-hover:translate-x-1 transition-transform duration-200">
-                      <ArrowRight size={14} />
-                    </div>
-                  </div>
-                </div>
-              </Link>
+          <div className="relative z-10">
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {["CMO à temps partagé", "Exécution complète", "Niveau d'implication au choix"].map((tag) => (
+                <span key={tag} className="text-[10px] font-medium text-white/80 bg-white/10 backdrop-blur-sm border border-white/10 px-2 py-1">
+                  {tag}
+                </span>
+              ))}
             </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+            <div className="flex items-center gap-2 text-[13px] font-semibold text-white">
+              Nous contacter
+              <div className="w-6 h-6 flex items-center justify-center bg-accent text-primary group-hover:translate-x-1 transition-transform duration-200">
+                <ArrowRight size={14} />
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div>
+    </motion.div>
   );
 }
 
@@ -231,6 +220,221 @@ function MegaMenuServiceItem({ item, onClose }: { item: ServiceMenuItem; onClose
 }
 
 // ============================================================================
+// DESKTOP MEGA MENU — CAS CLIENTS
+// ============================================================================
+
+function DesktopCasClientsMegaMenu({
+  onClose,
+  caseStudies,
+  clients,
+}: {
+  onClose: () => void;
+  caseStudies: MenuCaseStudy[];
+  clients: MenuClient[];
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -4 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.18, ease: "easeOut" }}
+      className="absolute top-full left-1/2 -translate-x-1/2 z-50 w-[1060px] bg-white border border-black/[0.08] shadow-xl"
+    >
+      <div className="grid grid-cols-[1fr_280px]">
+        {/* Left — 3 dernières études de cas */}
+        <div className="p-5 border-r border-black/[0.06]">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2 px-2 py-1.5 bg-card -mx-1">
+              <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-primary">
+                Dernières études de cas
+              </span>
+            </div>
+            <Link
+              href="/cas-clients"
+              onClick={onClose}
+              className="flex items-center gap-1.5 text-[12px] font-medium text-secondary hover:text-primary transition-colors group/all"
+            >
+              Voir toutes
+              <ArrowRight size={12} className="group-hover/all:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            {caseStudies.map((cs) => (
+              <Link
+                key={cs._id}
+                href={cs.url}
+                onClick={onClose}
+                className="group/card block border border-black/[0.06] hover:border-black/[0.12] hover:shadow-lg transition-all duration-300 overflow-hidden"
+              >
+                {/* Image */}
+                {cs.heroImageUrl ? (
+                  <div className="relative h-[120px] overflow-hidden bg-card">
+                    <Image
+                      src={cs.heroImageUrl}
+                      alt={cs.title}
+                      fill
+                      sizes="220px"
+                      className="object-cover group-hover/card:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                ) : (
+                  <div className="h-[120px] bg-card flex items-center justify-center">
+                    <Building2 size={24} className="text-muted" />
+                  </div>
+                )}
+
+                {/* Content */}
+                <div className="p-3">
+                  <span className="text-[10px] font-medium tracking-[0.08em] uppercase text-accent block mb-1">
+                    {cs.sector}
+                  </span>
+                  <span className="text-[13px] font-semibold text-primary leading-tight block mb-1 line-clamp-2">
+                    {cs.title}
+                  </span>
+                  <span className="text-[11px] text-muted block mb-2">
+                    {cs.company}
+                  </span>
+
+                  {/* Metrics (max 2) */}
+                  {cs.metrics && cs.metrics.length > 0 && (
+                    <div className="flex gap-3 pt-2 border-t border-black/[0.06]">
+                      {cs.metrics.slice(0, 2).map((m, i) => (
+                        <div key={i} className="flex flex-col">
+                          <span className="text-[13px] font-semibold text-primary leading-none">
+                            {m.value}
+                          </span>
+                          <span className="text-[9px] text-muted leading-tight mt-0.5">
+                            {m.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Right — Liste des clients */}
+        <div className="p-5 flex flex-col">
+          <div className="flex items-center gap-2 px-2 py-1.5 bg-card -mx-1 mb-3">
+            <Building2 size={13} className="text-muted" />
+            <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-primary">
+              Nos clients
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-0.5 flex-1 overflow-y-auto max-h-[320px]">
+            {clients.map((client) => (
+              <Link
+                key={client._id}
+                href={client.url}
+                onClick={onClose}
+                className="flex items-center gap-3 py-2 px-2 -mx-1 hover:bg-accent transition-all duration-200 group/client"
+              >
+                {/* Logo ou initiale */}
+                {client.logoUrl ? (
+                  <div className="w-7 h-7 shrink-0 bg-white border border-black/[0.06] flex items-center justify-center overflow-hidden">
+                    <Image
+                      src={client.logoUrl}
+                      alt={client.name}
+                      width={28}
+                      height={28}
+                      className="object-contain w-full h-full p-0.5"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-7 h-7 shrink-0 bg-card border border-black/[0.06] flex items-center justify-center">
+                    <span className="text-[11px] font-semibold text-primary">
+                      {client.name.charAt(0)}
+                    </span>
+                  </div>
+                )}
+
+                <div className="flex-1 min-w-0">
+                  <span className="text-[13px] font-medium text-primary leading-tight block truncate group-hover/client:translate-x-0.5 transition-transform duration-200">
+                    {client.name}
+                  </span>
+                  <span className="text-[10px] text-muted leading-snug block">
+                    {client.sector}
+                    {client.caseStudyCount > 0 && (
+                      <> · {client.caseStudyCount} étude{client.caseStudyCount > 1 ? "s" : ""}</>
+                    )}
+                  </span>
+                </div>
+
+                <ArrowRight size={12} className="text-muted shrink-0 opacity-0 group-hover/client:opacity-100 group-hover/client:translate-x-0.5 transition-all duration-200" />
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA bottom */}
+          <Link
+            href="/cas-clients"
+            onClick={onClose}
+            className="flex items-center justify-between mt-4 pt-4 border-t border-black/[0.06] group/cta"
+          >
+            <span className="text-[12px] font-semibold text-primary">
+              Tous les cas clients
+            </span>
+            <div className="w-6 h-6 flex items-center justify-center bg-accent text-primary group-hover/cta:translate-x-0.5 transition-transform duration-200">
+              <ArrowRight size={12} />
+            </div>
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// ============================================================================
+// DESKTOP MEGA MENU WRAPPER
+// ============================================================================
+
+function DesktopMegaMenu({
+  activeMenu,
+  onClose,
+  caseStudies,
+  clients,
+}: {
+  activeMenu: ActiveMenu;
+  onClose: () => void;
+  caseStudies: MenuCaseStudy[];
+  clients: MenuClient[];
+}) {
+  return (
+    <AnimatePresence>
+      {activeMenu && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 top-[80px] bg-black/10 z-40"
+            onClick={onClose}
+          />
+
+          {activeMenu === "services" && (
+            <DesktopServicesMegaMenu onClose={onClose} />
+          )}
+          {activeMenu === "cas-clients" && (
+            <DesktopCasClientsMegaMenu
+              onClose={onClose}
+              caseStudies={caseStudies}
+              clients={clients}
+            />
+          )}
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
+
+// ============================================================================
 // MOBILE MENU
 // ============================================================================
 
@@ -238,17 +442,26 @@ function MobileMenu({
   isOpen,
   onClose,
   isHomePage,
+  caseStudies,
+  clients,
 }: {
   isOpen: boolean;
   onClose: () => void;
   isHomePage: boolean;
+  caseStudies: MenuCaseStudy[];
+  clients: MenuClient[];
 }) {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [casClientsOpen, setCasClientsOpen] = useState(false);
 
   const handleClick = useCallback(
     (item: (typeof navItems)[number]) => {
-      if (item.hasMegaMenu) {
+      if (item.megaMenu === "services") {
         setServicesOpen((prev) => !prev);
+        return;
+      }
+      if (item.megaMenu === "cas-clients") {
+        setCasClientsOpen((prev) => !prev);
         return;
       }
       onClose();
@@ -271,7 +484,8 @@ function MobileMenu({
         >
           <div className="px-4 sm:px-6 py-6 flex flex-col gap-2">
             {navItems.map((item) => {
-              if (item.hasMegaMenu) {
+              // Services accordion
+              if (item.megaMenu === "services") {
                 return (
                   <div key={item.target}>
                     <button
@@ -302,9 +516,9 @@ function MobileMenu({
                             {SERVICE_MENU_CATEGORIES.map((category) => (
                               <div key={category.title}>
                                 <p className="surtitre text-secondary mb-2 flex items-center gap-1.5">
-                          <CategoryIcon name={category.icon} size={13} className="text-muted" />
-                          {category.title}
-                        </p>
+                                  <CategoryIcon name={category.icon} size={13} className="text-muted" />
+                                  {category.title}
+                                </p>
                                 <div className="flex flex-col gap-1">
                                   {category.items.map((sItem) => {
                                     const itemContent = (
@@ -343,6 +557,113 @@ function MobileMenu({
                                   {SERVICE_MENU_BANNER.description}
                                 </span>
                               </div>
+                              <ArrowRight size={16} className="text-primary shrink-0" />
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              // Cas Clients accordion
+              if (item.megaMenu === "cas-clients") {
+                return (
+                  <div key={item.target}>
+                    <button
+                      onClick={() => handleClick(item)}
+                      className="flex items-center justify-between w-full py-3 border-b border-black/5 text-left cursor-pointer"
+                    >
+                      <span className="text-[16px] font-semibold text-primary">
+                        {item.label}
+                      </span>
+                      <ChevronDown
+                        size={18}
+                        className={`text-secondary transition-transform duration-200 ${
+                          casClientsOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <AnimatePresence>
+                      {casClientsOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="py-3 flex flex-col gap-3">
+                            {/* Dernières études */}
+                            {caseStudies.length > 0 && (
+                              <div>
+                                <p className="surtitre text-secondary mb-2">
+                                  Dernières études
+                                </p>
+                                <div className="flex flex-col gap-1">
+                                  {caseStudies.map((cs) => (
+                                    <Link key={cs._id} href={cs.url} onClick={onClose}>
+                                      <div className="py-1.5 pl-2">
+                                        <span className="text-[14px] font-medium text-primary leading-tight block">
+                                          {cs.title}
+                                        </span>
+                                        <span className="text-[12px] text-secondary leading-snug block">
+                                          {cs.company} · {cs.sector}
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Clients */}
+                            {clients.length > 0 && (
+                              <div>
+                                <p className="surtitre text-secondary mb-2 flex items-center gap-1.5">
+                                  <Building2 size={13} className="text-muted" />
+                                  Nos clients
+                                </p>
+                                <div className="flex flex-col gap-1">
+                                  {clients.map((client) => (
+                                    <Link key={client._id} href={client.url} onClick={onClose}>
+                                      <div className="py-1.5 pl-2 flex items-center gap-2">
+                                        {client.logoUrl ? (
+                                          <Image
+                                            src={client.logoUrl}
+                                            alt={client.name}
+                                            width={20}
+                                            height={20}
+                                            className="object-contain shrink-0"
+                                          />
+                                        ) : (
+                                          <div className="w-5 h-5 bg-card flex items-center justify-center shrink-0">
+                                            <span className="text-[9px] font-semibold text-primary">
+                                              {client.name.charAt(0)}
+                                            </span>
+                                          </div>
+                                        )}
+                                        <span className="text-[14px] font-medium text-primary leading-tight">
+                                          {client.name}
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* CTA */}
+                            <Link
+                              href="/cas-clients"
+                              onClick={onClose}
+                              className="flex items-center justify-between p-3 bg-accent mt-2"
+                            >
+                              <span className="text-[13px] font-semibold text-primary">
+                                Tous les cas clients
+                              </span>
                               <ArrowRight size={16} className="text-primary shrink-0" />
                             </Link>
                           </div>
@@ -399,13 +720,13 @@ function MobileMenu({
 // MAIN HEADER
 // ============================================================================
 
-export function Header() {
+export function Header({ menuCaseStudies = [], menuClients = [] }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<ActiveMenu>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const megaMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const menuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -413,23 +734,23 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Fermer le mega menu quand on change de page
+  // Fermer les menus quand on change de page
   useEffect(() => {
-    setMegaMenuOpen(false);
+    setActiveMenu(null);
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  const handleMegaMenuEnter = useCallback(() => {
-    if (megaMenuTimeoutRef.current) {
-      clearTimeout(megaMenuTimeoutRef.current);
-      megaMenuTimeoutRef.current = null;
+  const handleMenuEnter = useCallback((menu: ActiveMenu) => {
+    if (menuTimeoutRef.current) {
+      clearTimeout(menuTimeoutRef.current);
+      menuTimeoutRef.current = null;
     }
-    setMegaMenuOpen(true);
+    setActiveMenu(menu);
   }, []);
 
-  const handleMegaMenuLeave = useCallback(() => {
-    megaMenuTimeoutRef.current = setTimeout(() => {
-      setMegaMenuOpen(false);
+  const handleMenuLeave = useCallback(() => {
+    menuTimeoutRef.current = setTimeout(() => {
+      setActiveMenu(null);
     }, 150);
   }, []);
 
@@ -460,22 +781,22 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {navItems.map((item) => {
-              if (item.hasMegaMenu) {
+              if (item.megaMenu) {
                 return (
                   <div
                     key={item.target}
-                    onMouseEnter={handleMegaMenuEnter}
-                    onMouseLeave={handleMegaMenuLeave}
+                    onMouseEnter={() => handleMenuEnter(item.megaMenu)}
+                    onMouseLeave={handleMenuLeave}
                     className="relative"
                   >
                     <button
                       className="relative text-[14px] font-medium text-secondary hover:text-primary transition-colors duration-200 cursor-pointer group flex items-center gap-1"
-                      onClick={() => setMegaMenuOpen((prev) => !prev)}
+                      onClick={() => setActiveMenu((prev) => prev === item.megaMenu ? null : item.megaMenu)}
                     >
                       {item.label}
                       <ChevronDown
                         size={14}
-                        className={`transition-transform duration-200 ${megaMenuOpen ? "rotate-180" : ""}`}
+                        className={`transition-transform duration-200 ${activeMenu === item.megaMenu ? "rotate-180" : ""}`}
                       />
                       <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
                     </button>
@@ -530,12 +851,19 @@ export function Header() {
 
       {/* Desktop Mega Menu */}
       <div
-        onMouseEnter={handleMegaMenuEnter}
-        onMouseLeave={handleMegaMenuLeave}
+        onMouseEnter={() => {
+          if (menuTimeoutRef.current) {
+            clearTimeout(menuTimeoutRef.current);
+            menuTimeoutRef.current = null;
+          }
+        }}
+        onMouseLeave={handleMenuLeave}
       >
         <DesktopMegaMenu
-          isOpen={megaMenuOpen}
-          onClose={() => setMegaMenuOpen(false)}
+          activeMenu={activeMenu}
+          onClose={() => setActiveMenu(null)}
+          caseStudies={menuCaseStudies}
+          clients={menuClients}
         />
       </div>
 
@@ -544,6 +872,8 @@ export function Header() {
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         isHomePage={isHomePage}
+        caseStudies={menuCaseStudies}
+        clients={menuClients}
       />
     </header>
   );

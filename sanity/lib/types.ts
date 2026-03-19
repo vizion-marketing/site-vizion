@@ -249,6 +249,32 @@ export interface Service {
   url?: string;
 }
 
+// ============================================================
+// Menu types (lightweight projections for header mega menu)
+// ============================================================
+
+export interface MenuCaseStudy {
+  _id: string;
+  title: string;
+  slug: string;
+  company: string;
+  sector: string;
+  clientSlug: string;
+  heroImageUrl?: string;
+  metrics?: Metric[];
+  url: string;
+}
+
+export interface MenuClient {
+  _id: string;
+  name: string;
+  slug: string;
+  sector: string;
+  logoUrl?: string;
+  url: string;
+  caseStudyCount: number;
+}
+
 export interface Page {
   _id: string;
   _type: "page";

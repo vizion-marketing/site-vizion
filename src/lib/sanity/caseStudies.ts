@@ -4,8 +4,9 @@ import {
   CASE_STUDIES_FOR_CLIENT_QUERY,
   CASE_STUDY_BY_SLUG_QUERY,
   ALL_CASE_STUDY_PARAMS_QUERY,
+  MENU_CASE_STUDIES_QUERY,
 } from "../../../sanity/lib/queries";
-import type { CaseStudy } from "../../../sanity/lib/types";
+import type { CaseStudy, MenuCaseStudy } from "../../../sanity/lib/types";
 
 export async function getAllCaseStudies(): Promise<CaseStudy[]> {
   return sanityFetch<CaseStudy[]>(
@@ -41,6 +42,14 @@ export async function getAllCaseStudyParams(): Promise<
 > {
   return sanityFetch<{ clientSlug: string; caseSlug: string }[]>(
     ALL_CASE_STUDY_PARAMS_QUERY,
+    {},
+    { tags: ["caseStudies"] },
+  );
+}
+
+export async function getMenuCaseStudies(): Promise<MenuCaseStudy[]> {
+  return sanityFetch<MenuCaseStudy[]>(
+    MENU_CASE_STUDIES_QUERY,
     {},
     { tags: ["caseStudies"] },
   );

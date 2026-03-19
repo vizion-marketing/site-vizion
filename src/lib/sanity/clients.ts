@@ -4,8 +4,9 @@ import {
   CLIENT_BY_SLUG_QUERY,
   ALL_CLIENT_SLUGS_QUERY,
   FEATURED_CLIENTS_QUERY,
+  MENU_CLIENTS_QUERY,
 } from "../../../sanity/lib/queries";
-import type { Client } from "../../../sanity/lib/types";
+import type { Client, MenuClient } from "../../../sanity/lib/types";
 
 export async function getAllClients(): Promise<Client[]> {
   return sanityFetch<Client[]>(ALL_CLIENTS_QUERY, {}, { tags: ["clients"] });
@@ -30,6 +31,14 @@ export async function getAllClientSlugs(): Promise<string[]> {
 export async function getFeaturedClients(): Promise<Client[]> {
   return sanityFetch<Client[]>(
     FEATURED_CLIENTS_QUERY,
+    {},
+    { tags: ["clients"] },
+  );
+}
+
+export async function getMenuClients(): Promise<MenuClient[]> {
+  return sanityFetch<MenuClient[]>(
+    MENU_CLIENTS_QUERY,
     {},
     { tags: ["clients"] },
   );
