@@ -34,7 +34,8 @@ export function RelatedServices({
         ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 80%",
+          start: "top 85%",
+          once: true,
         },
       });
 
@@ -47,7 +48,8 @@ export function RelatedServices({
         ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 75%",
+          start: "top 85%",
+          once: true,
         },
       });
     },

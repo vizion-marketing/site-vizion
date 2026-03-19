@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { X, ChevronDown, Maximize2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ScrollTitleContent } from "@/content/services/types";
 
@@ -37,6 +37,9 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
   const galleryRef = useRef<HTMLDivElement>(null);
   const blurOverlayRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const scrollHintRef = useRef<HTMLDivElement>(null);
+  const tapHintRef = useRef<HTMLDivElement>(null);
 
   const [galleryRevealed, setGalleryRevealed] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -188,6 +191,13 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
 
       // PHASE 4: Gallery reveal — full opacity, no blur
       if (hasImages) {
+        // Hide scroll hint before gallery reveal
+        tl.to(scrollHintRef.current, {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+        });
+
         // Remove blur overlay
         tl.to(blurOverlayRef.current, {
           opacity: 0,
@@ -204,6 +214,13 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
           ease: "power2.out",
           onComplete: () => setGalleryRevealed(true),
         }, "<");
+
+        // Show tap hint
+        tl.fromTo(tapHintRef.current,
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+          "-=0.3",
+        );
 
         // When scrolling back up, disable interactivity
         tl.to({}, {
@@ -306,6 +323,28 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
               {word}
             </span>
           ))}
+
+          {/* Mobile scroll hint */}
+          <div
+            ref={scrollHintRef}
+            className="lg:hidden absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5"
+          >
+            <span className="text-[11px] font-light tracking-[0.1em] uppercase text-primary/50">
+              Scroll
+            </span>
+            <ChevronDown size={16} className="text-primary/40 animate-bounce" />
+          </div>
+
+          {/* Mobile tap hint (gallery revealed) */}
+          <div
+            ref={tapHintRef}
+            className="lg:hidden absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-black/60 backdrop-blur-sm px-4 py-2 opacity-0"
+          >
+            <Maximize2 size={14} className="text-white/80" />
+            <span className="text-[11px] font-light tracking-[0.05em] text-white/80">
+              Appuyez pour agrandir
+            </span>
+          </div>
 
           {/* Progress bar */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-32 h-[3px] bg-black/[0.06]">

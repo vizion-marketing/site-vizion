@@ -116,10 +116,10 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span
-                      className={`text-base font-medium transition-colors duration-200 ${
+                      className={`text-base font-medium transition-all duration-200 ${
                         isOpen
-                          ? "text-accent"
-                          : "text-primary group-hover:text-accent"
+                          ? "text-primary underline decoration-accent decoration-2 underline-offset-4"
+                          : "text-primary group-hover:underline group-hover:decoration-accent group-hover:decoration-2 group-hover:underline-offset-4"
                       }`}
                     >
                       {faq.question}

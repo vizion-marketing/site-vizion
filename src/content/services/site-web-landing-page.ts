@@ -32,7 +32,7 @@ export const siteWebLandingPage: ServiceContent = {
   heroSubtitle:
     "Vous envisagez une création ou une refonte de site Internet ? Chez Vizion, nous ne construisons pas des sites classiques. Nous construisons de véritables actifs stratégiques, qui facilitent la vente. Architecture, design, copywriting, référencement : tout est millimétré pour servir durablement votre croissance.",
   heroBadge: "+40 sites et landing pages livrés",
-  heroImage: "/images/services/site-web/hero.png",
+  heroImage: "/images/services/site-web/hero.avif",
 
   // ── Narrative : 3 blocs éditoriaux ──
 
@@ -70,7 +70,7 @@ export const siteWebLandingPage: ServiceContent = {
   solutionTitle: "Chez Vizion, nous créons des sites web qui servent (vraiment) votre croissance",
   solutionSubtitle:
     "Pas de jolis sites. Des actifs stratégiques pensés pour convertir.",
-  solutionImage: "/images/services/site-web/solution-mockup.png",
+  solutionImage: "/images/services/site-web/solution.avif",
   solutionItems: [
     {
       title: "Nous pensons marketing avant design.",
@@ -167,7 +167,7 @@ export const siteWebLandingPage: ServiceContent = {
       author: "Thomas Ensenat",
       role: "Dirigeant",
       company: "Groupe Aura",
-      photo: "/images/services/site-web/temoignage-thomas-ensenat.avif",
+      photo: "/images/services/site-web/testimonials/01.avif",
       linkedin: "https://www.linkedin.com/in/thomas-ensenat/",
       rating: 5,
     },
@@ -179,7 +179,7 @@ export const siteWebLandingPage: ServiceContent = {
       author: "Adrien Erena",
       role: "Responsable marketing",
       company: "Cash Converters",
-      photo: "/images/services/site-web/temoignage-adrien-erena.avif",
+      photo: "/images/services/site-web/testimonials/02.avif",
       linkedin: "https://www.linkedin.com/in/adrien-erena/",
       rating: 5,
     },
@@ -191,7 +191,7 @@ export const siteWebLandingPage: ServiceContent = {
       author: "Barthélémy Delcampe",
       role: "Dirigeant",
       company: "Client Vizion",
-      photo: "/images/services/site-web/temoignage-bartehlemy-delcampe.avif",
+      photo: "/images/services/site-web/testimonials/03.avif",
       linkedin: "https://www.linkedin.com/in/barthelemydelcampe/",
       rating: 5,
     },
@@ -261,7 +261,7 @@ export const siteWebLandingPage: ServiceContent = {
     sectionDescription:
       "Nous ne sommes pas une agence web généraliste. Chaque site que nous livrons est pensé pour servir votre stratégie commerciale, du choix technologique jusqu'au dernier pixel de tracking.",
     image: {
-      src: "/images/services/site-web/bento-equipe.avif",
+      src: "/images/services/site-web/bento.avif",
       alt: "L'équipe Vizion au travail",
     },
     technology: {
@@ -332,9 +332,9 @@ export const siteWebLandingPage: ServiceContent = {
   // Quality guarantees
   qualityGuarantees: {
     surtitre: "Nos engagements",
-    sectionTitle: "Pourquoi choisir Vizion\npour votre site web ?",
+    sectionTitle: "Pourquoi choisir Vizion\npour créer ou refondre votre site web ?",
     sectionDescription:
-      "Pas de promesses vagues. Des engagements concrets, mesurables et documentés, valables sur chaque projet que nous livrons.",
+      "Nous ne vous faisons pas de promesses vagues. Vous recevez des engagements concrets, mesurables et documentés, valables sur chaque projet que nous vous livrons.",
     cardSurtitre: "Ce que nous garantissons",
     cardTitle: "Des garanties\nde qualité uniques",
     cardDescription:
@@ -408,7 +408,7 @@ export const siteWebLandingPage: ServiceContent = {
       href: "/contact",
     },
     afterProcess: {
-      text: "Prêt à lancer votre projet ?",
+      text: "Prêt pour la refonte de votre site web ?",
       buttonText: "Discuter de votre projet",
       href: "/contact",
     },
