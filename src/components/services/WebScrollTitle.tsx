@@ -33,6 +33,8 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
   const col2Ref = useRef<HTMLDivElement>(null);
   const col3Ref = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const blurOverlayRef = useRef<HTMLDivElement>(null);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const hasImages = content.showcaseImages && content.showcaseImages.length > 0;
   const columns = useMemo(
@@ -153,7 +155,7 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
         });
       }
 
-      // 3. blur reveal, stays visible
+      // 3. blur reveal
       if (w2) {
         tl.fromTo(
           w2,
@@ -167,14 +169,36 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
           },
           "+=0.1",
         );
-        tl.to({}, { duration: 0.8 }); // final hold
+        tl.to({}, { duration: 0.6 }); // hold
+        tl.to(w2, { opacity: 0, y: -40, duration: 0.5, ease: "power3.in" });
+      }
+
+      // PHASE 4: Gallery reveal — full opacity, no blur
+      if (hasImages) {
+        // Remove blur overlay
+        tl.to(blurOverlayRef.current, {
+          opacity: 0,
+          duration: 0.6,
+          ease: "power2.out",
+        }, "-=0.3");
+
+        // All images to full opacity
+        const imgs = imageRefs.current.filter(Boolean);
+        tl.to(imgs, {
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.05,
+          ease: "power2.out",
+        }, "<");
+
+        tl.to({}, { duration: 1 }); // final hold
       }
     },
     { scope: containerRef },
   );
 
   return (
-    <div ref={containerRef} style={{ height: "350vh" }}>
+    <div ref={containerRef} style={{ height: "420vh" }}>
       <div className="sticky top-0 h-screen bg-card relative overflow-hidden">
         {/* Decorative accent gradient */}
         <div
@@ -193,31 +217,38 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
             style={{ opacity: 0 }}
           >
             {/* Blur + dim overlay on images */}
-            <div className="absolute inset-0 z-[1] backdrop-blur-[1px]" />
+            <div ref={blurOverlayRef} className="absolute inset-0 z-[1] backdrop-blur-[1px]" />
 
-            <div className="absolute inset-0 flex gap-4 px-4 sm:px-8 lg:px-16 justify-center">
-              {columns.map((colImages, colIndex) => (
-                <div
-                  key={colIndex}
-                  ref={colIndex === 0 ? col1Ref : colIndex === 1 ? col2Ref : col3Ref}
-                  className="flex-1 max-w-[320px] flex flex-col gap-4"
-                >
-                  {colImages.map((src, imgIndex) => (
-                    <div
-                      key={imgIndex}
-                      className="relative w-full aspect-[4/3] overflow-hidden border border-black/[0.06] shadow-lg"
-                    >
-                      <Image
-                        src={src}
-                        alt=""
-                        fill
-                        sizes="320px"
-                        className="object-cover opacity-[0.45]"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ))}
+            <div className="absolute inset-0 flex gap-3 sm:gap-4 px-4 sm:px-8 lg:px-16 justify-center items-center">
+              {columns.map((colImages, colIndex) => {
+                let imgCounter = colIndex; // track global index for refs
+                return (
+                  <div
+                    key={colIndex}
+                    ref={colIndex === 0 ? col1Ref : colIndex === 1 ? col2Ref : col3Ref}
+                    className="flex-1 max-w-[320px] flex flex-col gap-3 sm:gap-4"
+                  >
+                    {colImages.map((src, imgIndex) => {
+                      const globalIdx = imgIndex * 3 + colIndex;
+                      return (
+                        <div
+                          key={imgIndex}
+                          ref={(el) => { imageRefs.current[globalIdx] = el; }}
+                          className="relative w-full aspect-[4/3] overflow-hidden border border-black/[0.06] shadow-lg opacity-45"
+                        >
+                          <Image
+                            src={src}
+                            alt=""
+                            fill
+                            sizes="320px"
+                            className="object-cover"
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

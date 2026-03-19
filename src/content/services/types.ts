@@ -180,7 +180,13 @@ export interface ServiceContent {
   relatedServicesSubtitle?: string;
   relatedServices?: RelatedService[];
 
-  // CTA
+  // CTA intermédiaires (bandeaux inline entre les sections)
+  inlineCTAs?: {
+    afterTestimonials?: { text: string; buttonText: string; href: string };
+    afterProcess?: { text: string; buttonText: string; href: string };
+  };
+
+  // CTA final
   ctaTitle: string;
   ctaDescription: string;
   ctaButtonText: string;

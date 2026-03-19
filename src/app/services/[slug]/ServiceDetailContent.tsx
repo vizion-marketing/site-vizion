@@ -68,13 +68,15 @@ export function ServiceDetailContent({
       )}
 
       {/* CTA intermédiaire après témoignages */}
-      <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-12 bg-white">
-        <InlineCTA
-          text="Vous avez un projet de site web en tête ?"
-          buttonText="Discuter de votre projet"
-          href="/contact"
-        />
-      </div>
+      {service.inlineCTAs?.afterTestimonials && (
+        <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-12 bg-white">
+          <InlineCTA
+            text={service.inlineCTAs.afterTestimonials.text}
+            buttonText={service.inlineCTAs.afterTestimonials.buttonText}
+            href={service.inlineCTAs.afterTestimonials.href}
+          />
+        </div>
+      )}
 
       {/* 9. Process / Timeline (card) — ancre #processus */}
       {service.processSteps.length > 0 && (
@@ -86,13 +88,15 @@ export function ServiceDetailContent({
       )}
 
       {/* CTA intermédiaire après process */}
-      <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-12 bg-white">
-        <InlineCTA
-          text="Prêt à lancer votre projet ?"
-          buttonText="Discuter de votre projet"
-          href="/contact"
-        />
-      </div>
+      {service.inlineCTAs?.afterProcess && (
+        <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-12 bg-white">
+          <InlineCTA
+            text={service.inlineCTAs.afterProcess.text}
+            buttonText={service.inlineCTAs.afterProcess.buttonText}
+            href={service.inlineCTAs.afterProcess.href}
+          />
+        </div>
+      )}
 
       {/* 10. Garanties de qualité (sombre) */}
       {service.qualityGuarantees && (

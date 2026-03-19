@@ -121,8 +121,8 @@ export function TestimonialShowcase({
       />
       <div className="max-w-[82.5rem] mx-auto relative">
         {/* Header */}
-        <div className="flex items-end justify-between mb-10 sm:mb-14">
-          <div data-testimonial="header">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 sm:gap-8 mb-10 sm:mb-14">
+          <div data-testimonial="header" className="max-w-xl">
             <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
               <div className="w-2 h-2 bg-accent" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
@@ -132,7 +132,7 @@ export function TestimonialShowcase({
             <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
               {sectionTitle || "Ce qu\u2019ils disent de nous"}
             </h2>
-            <p className="text-[14px] sm:text-[15px] text-muted leading-relaxed mt-3 max-w-lg">
+            <p className="text-[14px] sm:text-[15px] text-muted leading-relaxed mt-3">
               {sectionSubtitle || "Découvrez les retours de nos clients sur leur collaboration avec Vizion."}
             </p>
           </div>
@@ -140,7 +140,7 @@ export function TestimonialShowcase({
           {/* Navigation — desktop */}
           <div
             data-testimonial="nav-desktop"
-            className="hidden sm:flex items-center gap-3"
+            className="hidden sm:flex items-center gap-3 flex-shrink-0"
           >
             <button
               onClick={scrollPrev}
@@ -186,7 +186,7 @@ export function TestimonialShowcase({
             {slides.map((slide, i) => (
               <div
                 key={`${slide.type}-${i}`}
-                className="flex-none w-[260px] sm:w-[290px] lg:w-[320px] pr-4 sm:pr-5"
+                className="flex-none w-[75vw] min-[480px]:w-[55vw] sm:w-[290px] lg:w-[320px] pr-4 sm:pr-5"
               >
                 {slide.type === "photo" ? (
                   <PhotoCard testimonial={slide.testimonial} />
@@ -240,7 +240,7 @@ export function TestimonialShowcase({
 /* ── Photo Card ── */
 function PhotoCard({ testimonial }: { testimonial: ServiceTestimonial }) {
   return (
-    <div className="relative overflow-hidden aspect-[3/4] group">
+    <div className="relative overflow-hidden aspect-[4/5] sm:aspect-[3/4] group">
       <Image
         src={testimonial.photo!}
         alt={testimonial.author}
@@ -276,7 +276,7 @@ function PhotoCard({ testimonial }: { testimonial: ServiceTestimonial }) {
 /* ── Text Card ── */
 function TextCard({ testimonial }: { testimonial: ServiceTestimonial }) {
   return (
-    <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 sm:p-7 flex flex-col justify-between aspect-[3/4] relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+    <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 sm:p-6 lg:p-7 flex flex-col justify-between aspect-[4/5] sm:aspect-[3/4] relative overflow-hidden group hover:border-white/20 transition-all duration-300">
       {/* Avatar */}
       {testimonial.photo ? (
         <div className="w-10 h-10 relative overflow-hidden border border-white/10">
@@ -309,11 +309,11 @@ function TextCard({ testimonial }: { testimonial: ServiceTestimonial }) {
 
       {/* Quote content */}
       <div className="flex-1 flex flex-col justify-center relative z-10">
-        <h3 className="font-heading font-medium text-[16px] sm:text-[18px] lg:text-[20px] leading-[1.2] tracking-[-0.01em] text-primary mb-3">
+        <h3 className="font-heading font-medium text-[15px] sm:text-[18px] lg:text-[20px] leading-[1.25] tracking-[-0.01em] text-primary mb-2 sm:mb-3">
           &laquo;&nbsp;{testimonial.quote}&nbsp;&raquo;
         </h3>
         {testimonial.detail && (
-          <p className="text-[13px] text-muted leading-relaxed line-clamp-3">
+          <p className="text-[12px] sm:text-[13px] text-muted leading-relaxed line-clamp-3">
             {testimonial.detail}
           </p>
         )}

@@ -183,7 +183,7 @@ export function ServiceHero({
         {/* Mobile image */}
         <div
           data-hero="image-mobile"
-          className="relative overflow-hidden mb-8"
+          className="relative overflow-hidden -mb-2"
         >
           <Image
             src={heroSrc}
@@ -194,9 +194,9 @@ export function ServiceHero({
             className="w-full h-auto"
           />
           <div
-            className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+            className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
             style={{
-              background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)",
+              background: "linear-gradient(to top, var(--bg-dark) 0%, var(--bg-dark) 10%, transparent 100%)",
             }}
           />
         </div>

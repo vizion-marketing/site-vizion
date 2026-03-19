@@ -107,7 +107,7 @@ export const siteWebLandingPage: ServiceContent = {
     {
       title: "Workshop de positionnement",
       description:
-        "On commence par comprendre votre marché, vos cibles et ce qui vous différencie. On en sort avec une proposition de valeur claire, un cahier des charges précis, une arborescence validée et les arguments qui feront mouche. Si votre secteur est complexe, on prévoit plusieurs sessions.",
+        "Nous commençons par comprendre votre marché, vos cibles et ce qui vous différencie. Vous repartez avec une proposition de valeur claire, un cahier des charges précis, une arborescence validée et les arguments qui feront mouche. Si votre secteur est complexe, nous prévoyons plusieurs sessions.",
       duration: "1 à 2 semaines",
       deliverables: [
         "Audit concurrentiel",
@@ -120,7 +120,7 @@ export const siteWebLandingPage: ServiceContent = {
     {
       title: "Webdesign et direction artistique",
       description:
-        "On dessine chaque parcours pour qu'il mène à une action. Wireframes, maquettes Figma, charte graphique : tout est pensé pour convertir, pas juste pour être joli. L'identité visuelle est déclinée sur chaque écran.",
+        "Nous dessinons chaque parcours pour qu'il vous mène à une action. Wireframes, maquettes Figma, charte graphique : tout est pensé pour convertir, pas juste pour être joli. Votre identité visuelle est déclinée sur chaque écran.",
       duration: "2 semaines",
       deliverables: [
         "Wireframes desktop/mobile",
@@ -132,7 +132,7 @@ export const siteWebLandingPage: ServiceContent = {
     {
       title: "Développement et intégration",
       description:
-        "On code votre site au pixel près. Animations, responsive, SEO technique, performance : chaque détail est testé sur tous les écrans avant de vous le montrer.",
+        "Nous codons votre site au pixel près. Animations, responsive, SEO technique, performance : chaque détail est testé sur tous les écrans avant de vous le montrer.",
       duration: "3 à 4 semaines",
       deliverables: [
         "Site fonctionnel",
@@ -144,7 +144,7 @@ export const siteWebLandingPage: ServiceContent = {
     {
       title: "Lancement et suivi",
       description:
-        "Mise en production, redirections, indexation Google et configuration des outils de tracking. On reste à vos côtés pendant 3 mois pour ajuster ce qui doit l'être.",
+        "Mise en production, redirections, indexation Google et configuration des outils de tracking. Nous restons à vos côtés pendant 3 mois pour ajuster ce qui doit l'être.",
       duration: "1 semaine",
       deliverables: [
         "Mise en production",
@@ -266,7 +266,7 @@ export const siteWebLandingPage: ServiceContent = {
     technology: {
       title: "CMS ou code sur mesure :\nà chacun sa préférence",
       description:
-        "Un site que vos équipes peuvent mettre à jour en autonomie ? On s'appuie sur WordPress. Un site ultra-rapide, animé, avec des fonctionnalités sur mesure ? On développe avec les frameworks les plus performants du marché. Dans les deux cas, c'est votre besoin qui dicte la technologie, pas l'inverse.",
+        "Un site que vos équipes peuvent mettre à jour en autonomie ? Nous nous appuyons sur WordPress. Un site ultra-rapide, animé, avec des fonctionnalités sur mesure ? Nous développons avec les frameworks les plus performants du marché. Dans les deux cas, c'est votre besoin qui dicte la technologie, pas l'inverse.",
       logos: [
         "Next.js",
         "React",
@@ -285,7 +285,7 @@ export const siteWebLandingPage: ServiceContent = {
       suffix: "+",
       label: "Score Google",
       description:
-        "Performance, accessibilité, SEO : à la livraison, tous les indicateurs sont au vert. Et nous veillons à ce qu'ils le restent.",
+        "Performance, accessibilité, SEO : à la livraison, nous vous garantissons tous les indicateurs au vert. Et nous veillons à ce qu'ils le restent.",
     },
     noTemplate: {
       title: "Un site sur mesure, zéro template",
@@ -324,7 +324,7 @@ export const siteWebLandingPage: ServiceContent = {
     growth: {
       title: "Prêt à mesurer dès le jour 1",
       description:
-        "Google Tag Manager, Google Analytics, pixels de conversion, événements personnalisés. Tous les outils de growth sont installés et configurés dès la conception. Chaque visite, chaque clic, chaque formulaire est traçable.",
+        "Google Tag Manager, Google Analytics, pixels de conversion, événements personnalisés. Nous installons et configurons tous vos outils de growth dès la conception. Chaque visite, chaque clic, chaque formulaire est traçable.",
     },
   },
 
@@ -399,10 +399,24 @@ export const siteWebLandingPage: ServiceContent = {
     },
   ],
 
-  // CTA
+  // CTA intermédiaires
+  inlineCTAs: {
+    afterTestimonials: {
+      text: "Vous avez un projet de site web en tête ?",
+      buttonText: "Discuter de votre projet",
+      href: "/contact",
+    },
+    afterProcess: {
+      text: "Prêt à lancer votre projet ?",
+      buttonText: "Discuter de votre projet",
+      href: "/contact",
+    },
+  },
+
+  // CTA final
   ctaTitle: "Votre site mérite de travailler pour vous",
   ctaDescription:
-    "Premier échange sans engagement. On analyse votre site actuel et vos objectifs.",
+    "Premier échange sans engagement. Nous analysons votre site actuel et vos objectifs.",
   ctaButtonText: "Discuter de votre projet",
   ctaButtonLink: "/contact",
 };
