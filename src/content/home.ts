@@ -25,7 +25,6 @@ export interface HeroContent {
   badge: string;
   h1: string;
   h1Highlight: string;
-  h1RotatingWords: string[];
   baseline: string;
   badges: string[];
   cta: {
@@ -292,9 +291,8 @@ export const homeContent: HomeContent = {
   // --------------------------------------------------------------------------
   hero: {
     badge: "AGENCE MARKETING - TOULOUSE",
-    h1: "L'agence Marketing spécialiste du B2B qui fait de votre produit une évidence",
-    h1Highlight: "une évidence",
-    h1RotatingWords: ["offre", "produit", "innovation", "solution SaaS", "franchise", "service"],
+    h1: "L'agence marketing B2B de référence",
+    h1Highlight: "de référence",
     baseline: "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialisée dans les cycles de ventes longs.",
     badges: [],
     cta: {

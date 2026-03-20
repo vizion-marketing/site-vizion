@@ -69,8 +69,6 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const wordRef = useRef<HTMLSpanElement>(null);
   const rafRef = useRef<number>(0);
 
   // Rotate testimonials with auto-play that resets on manual navigation
@@ -98,28 +96,6 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
     );
     startTestimonialAutoPlay();
   };
-
-  // Rotate H1 words
-  const rotatingWords = hero.h1RotatingWords;
-  useEffect(() => {
-    if (rotatingWords.length <= 1) return;
-    const interval = setInterval(() => {
-      if (!wordRef.current) return;
-      const el = wordRef.current;
-      gsap.to(el, {
-        y: -20,
-        opacity: 0,
-        duration: 0.35,
-        ease: "power2.in",
-        onComplete: () => {
-          setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
-          gsap.set(el, { y: 20 });
-          gsap.to(el, { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" });
-        },
-      });
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [rotatingWords]);
 
   // Mouse parallax effect — throttled via rAF to avoid forced reflows
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -197,54 +173,23 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
     { scope: containerRef }
   );
 
-  // Parse h1 to add highlight + rotating word
+  // Parse h1 to add highlight
   const renderH1 = () => {
     const text = hero.h1;
     const highlightWord = hero.h1Highlight;
-    const baseWord = rotatingWords[0]; // "produit" — the word to replace with slider
-
-    // Build fragments by splitting on both special words
-    // The h1 is: "Faites de votre produit une évidence sur son marché."
-    // We need to handle the rotating word AND the highlight
-    const parts: React.ReactNode[] = [];
-    let remaining = text;
-
-    // First, split on the rotating base word
-    const rotatingIdx = remaining.indexOf(baseWord);
-    if (rotatingIdx !== -1) {
-      parts.push(remaining.slice(0, rotatingIdx));
-      parts.push(
-        <span key="rotating" className="inline-block relative align-baseline" style={{ minWidth: '3ch', paddingBottom: '0.15em' }}>
-          <span
-            ref={wordRef}
-            className="inline-block text-accent"
-          >
-            {rotatingWords[currentWordIndex]}
-          </span>
-        </span>
-      );
-      remaining = remaining.slice(rotatingIdx + baseWord.length);
-    }
-
-    // Then handle highlight in the remaining text
-    if (highlightWord && remaining.includes(highlightWord)) {
-      const hlIdx = remaining.indexOf(highlightWord);
-      parts.push(remaining.slice(0, hlIdx));
-      parts.push(
-        <span key="highlight" className="relative inline-block">
-          <span className="relative z-10 text-accent">{highlightWord}</span>
-          <span
-            className="absolute bottom-2 left-0 w-full h-3 bg-accent/20 -z-0"
-            style={{ transform: 'skewX(-3deg)' }}
-          />
-        </span>
-      );
-      parts.push(remaining.slice(hlIdx + highlightWord.length));
-    } else {
-      parts.push(remaining);
-    }
-
-    return parts;
+    if (!highlightWord || !text.includes(highlightWord)) return text;
+    const hlIdx = text.indexOf(highlightWord);
+    return [
+      text.slice(0, hlIdx),
+      <span key="highlight" className="relative inline-block">
+        <span className="relative z-10 text-accent">{highlightWord}</span>
+        <span
+          className="absolute bottom-2 left-0 w-full h-3 bg-accent/20 -z-0"
+          style={{ transform: 'skewX(-3deg)' }}
+        />
+      </span>,
+      text.slice(hlIdx + highlightWord.length),
+    ];
   };
 
   return (
