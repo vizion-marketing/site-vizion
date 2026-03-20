@@ -64,7 +64,6 @@ export default function CityPageClient({ content, latestPosts, carouselClients }
           badge: content.hero.badge,
           h1: content.hero.h1,
           h1Highlight: content.hero.h1Highlight,
-          h1RotatingWords: [],
           baseline: content.hero.baseline,
           badges: [],
           cta: content.hero.cta,
