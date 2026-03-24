@@ -26,33 +26,6 @@ export const caseStudy = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "sector",
-      title: "Secteur",
-      type: "string",
-      options: {
-        list: [
-          { title: "Franchise", value: "Franchise" },
-          { title: "SaaS B2B", value: "SaaS B2B" },
-          { title: "Services B2B", value: "Services B2B" },
-          { title: "Industrie B2B", value: "Industrie B2B" },
-          { title: "Business Local", value: "Business Local" },
-        ],
-      },
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "sectorIcon",
-      title: "Icone secteur",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "company",
-      title: "Entreprise",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: "client",
       title: "Client",
       type: "reference",
@@ -60,22 +33,10 @@ export const caseStudy = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "companyLogo",
-      title: "Logo entreprise",
-      type: "image",
-    }),
-    defineField({
       name: "heroImage",
       title: "Image hero",
       type: "image",
       options: { hotspot: true },
-    }),
-    defineField({
-      name: "executiveSummary",
-      title: "Resume executif",
-      type: "text",
-      rows: 4,
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "projectDuration",
@@ -118,12 +79,6 @@ export const caseStudy = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "resultsDetails",
-      title: "Details des resultats",
-      type: "text",
-      rows: 4,
-    }),
-    defineField({
       name: "testimonial",
       title: "Temoignage",
       type: "testimonial",
@@ -143,11 +98,6 @@ export const caseStudy = defineType({
           preview: { select: { title: "title" } },
         },
       ],
-    }),
-    defineField({
-      name: "body",
-      title: "Contenu",
-      type: "blockContent",
     }),
     defineField({
       name: "galleryImages",
@@ -211,7 +161,7 @@ export const caseStudy = defineType({
   preview: {
     select: {
       title: "title",
-      subtitle: "company",
+      subtitle: "client.name",
       media: "heroImage",
     },
   },

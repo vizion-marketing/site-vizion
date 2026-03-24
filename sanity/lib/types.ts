@@ -23,6 +23,7 @@ export interface Testimonial {
   company?: string;
   photo?: SanityImage;
   rating?: number;
+  linkedinUrl?: string;
 }
 
 export interface Metric {
@@ -138,6 +139,7 @@ export interface Client {
   _type: "client";
   name: string;
   slug: string;
+  companyType: string;
   sector: string;
   sectorIcon: string;
   logo?: SanityImage;
@@ -147,11 +149,8 @@ export interface Client {
   location?: string;
   website?: string;
   mainImage: SanityImage;
-  secondaryImage: SanityImage;
-  carouselTitle: string;
-  carouselStat: { value: string; label: string };
   testimonial: Testimonial;
-  body?: PortableTextBlock[];
+  highlightMetrics?: Metric[];
   galleryImages?: GalleryImage[];
   featured: boolean;
   order: number;
@@ -161,6 +160,7 @@ export interface Client {
   // Computed
   url?: string;
   caseStudyCount?: number;
+  firstMetric?: Metric;
 }
 
 export interface CaseStudy {
@@ -169,23 +169,22 @@ export interface CaseStudy {
   title: string;
   slug: string;
   description: string;
+  // Resolved from client reference
+  companyType: string;
   sector: string;
   sectorIcon: string;
   company: string;
-  clientSlug?: string; // resolved from client->slug.current
+  clientSlug?: string;
   companyLogo?: SanityImage;
   heroImage?: SanityImage;
-  executiveSummary: string;
   projectDuration: string;
   projectYear: string;
   context: string;
   challenges: string[];
   approachPhases: ApproachPhase[];
   metrics: Metric[];
-  resultsDetails?: string;
   testimonial?: Testimonial;
   deliverables?: Deliverable[];
-  body?: PortableTextBlock[];
   galleryImages?: GalleryImage[];
   publishedAt: string;
   dateModified?: string;
@@ -195,7 +194,6 @@ export interface CaseStudy {
   metaTitle?: string;
   metaDescription?: string;
   // Computed
-  readingTime?: string;
   url?: string;
 }
 

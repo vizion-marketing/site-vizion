@@ -19,18 +19,25 @@ export const clientSchema = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "sector",
-      title: "Secteur",
+      name: "companyType",
+      title: "Type d'entreprise",
       type: "string",
       options: {
         list: [
           { title: "Franchise", value: "Franchise" },
-          { title: "SaaS B2B", value: "SaaS B2B" },
-          { title: "Services B2B", value: "Services B2B" },
-          { title: "Industrie B2B", value: "Industrie B2B" },
-          { title: "Business Local", value: "Business Local" },
+          { title: "PME", value: "PME" },
+          { title: "ETI", value: "ETI" },
+          { title: "Scale-up", value: "Scale-up" },
+          { title: "Start-up", value: "Start-up" },
         ],
       },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "sector",
+      title: "Secteur d'activite",
+      type: "string",
+      description: 'Ex: "Immobilier", "Technologie", "Finance", "Conseil"',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -47,11 +54,10 @@ export const clientSchema = defineType({
     }),
     defineField({
       name: "headline",
-      title: "Problématique (H1)",
+      title: "Problematique",
       type: "text",
       rows: 2,
-      description:
-        'Phrase d\'accroche qui résume la mission. Ex: "Accompagner le leader français de la visite virtuelle dans son déploiement en franchise"',
+      description: 'Ex: "Accompagner une filiale du groupe Easy dans son deploiement en franchise en France et au Royaume-Uni"',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -84,38 +90,18 @@ export const clientSchema = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "secondaryImage",
-      title: "Image secondaire",
-      type: "image",
-      options: { hotspot: true },
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "carouselTitle",
-      title: "Titre carousel",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "carouselStat",
-      title: "Stat carousel",
-      type: "object",
-      fields: [
-        { name: "value", title: "Valeur", type: "string" },
-        { name: "label", title: "Label", type: "string" },
-      ],
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: "testimonial",
       title: "Temoignage",
       type: "testimonial",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "body",
-      title: "Contenu",
-      type: "blockContent",
+      name: "highlightMetrics",
+      title: "Chiffres cles (bande hero)",
+      type: "array",
+      description: "3 metriques affichees sous le hero header",
+      of: [{ type: "metric" }],
+      validation: (rule) => rule.max(4),
     }),
     defineField({
       name: "galleryImages",

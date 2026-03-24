@@ -40,5 +40,11 @@ export const testimonial = defineType({
       type: "number",
       validation: (rule) => rule.min(1).max(5),
     },
+    {
+      name: "linkedinUrl",
+      title: "LinkedIn",
+      type: "url",
+      description: "URL du profil LinkedIn (lien nofollow)",
+    },
   ],
 });
