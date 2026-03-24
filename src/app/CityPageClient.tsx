@@ -34,14 +34,17 @@ interface Post {
 interface CarouselClient {
   id: number;
   company: string;
+  companyType: string;
   sector: string;
   title: string;
+  description?: string;
   quote: string;
   author: string;
   role: string;
   avatar?: string;
   mainImage?: string;
-  secondaryImage?: string;
+  authorPhoto?: string;
+  highlightMetrics?: { value: string; label: string }[];
   stats: { value: string; label: string };
   href?: string;
 }
