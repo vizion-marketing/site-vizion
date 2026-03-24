@@ -4,7 +4,7 @@ export const deploiementCrm: ServiceContent = {
   slug: "deploiement-crm",
   title: "Déploiement de CRM",
   icon: "Settings",
-  category: "MARKETING AUTOMATION",
+  category: "Transformation Digitale",
   order: 14,
 
   // SEO

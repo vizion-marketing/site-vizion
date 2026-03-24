@@ -4,7 +4,7 @@ export const creationLandingPage: ServiceContent = {
   slug: "creation-landing-page",
   title: "Création de Landing Page",
   icon: "Layout",
-  category: "PRODUCT MARKETING",
+  category: "Product Marketing",
   order: 2,
 
   // SEO

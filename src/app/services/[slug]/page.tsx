@@ -7,6 +7,7 @@ import {
 import { createMetadata } from "@/lib/metadata";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import { ServiceDetailContent } from "./ServiceDetailContent";
+import { CategoryDetailContent } from "./CategoryDetailContent";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -200,7 +201,11 @@ export default async function ServicePage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
-      <ServiceDetailContent service={service} />
+      {service.isPilier ? (
+        <CategoryDetailContent service={service} />
+      ) : (
+        <ServiceDetailContent service={service} />
+      )}
     </>
   );
 }

@@ -1,10 +1,11 @@
 import type { ServiceContent } from "./types";
 
 export const credibilitePositionnement: ServiceContent = {
-  slug: "credibilite-positionnement",
+  slug: "product-marketing",
   title: "Crédibilité et positionnement B2B",
   icon: "Rocket",
-  category: "Pilier",
+  category: "Product Marketing",
+  isPilier: true,
   order: 101,
 
   metaTitle: "Positionnement B2B : crédibilité, contenu et personal branding | Vizion",

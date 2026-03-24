@@ -4,7 +4,7 @@ export const pitchDecksArgumentaires: ServiceContent = {
   slug: "pitch-decks-argumentaires",
   title: "Pitch Decks et Argumentaires",
   icon: "Rocket",
-  category: "SALES ENABLEMENT",
+  category: "Sales Enablement",
   order: 12,
 
   // SEO

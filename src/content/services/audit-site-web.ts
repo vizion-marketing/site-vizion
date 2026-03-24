@@ -4,7 +4,7 @@ export const auditSiteWeb: ServiceContent = {
   slug: "audit-site-web",
   title: "Audit de Site Web",
   icon: "SearchCheck",
-  category: "PRODUCT MARKETING",
+  category: "Transformation Digitale",
   order: 18,
 
   // SEO

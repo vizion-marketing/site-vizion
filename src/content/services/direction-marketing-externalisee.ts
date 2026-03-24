@@ -4,7 +4,7 @@ export const directionMarketingExternalisee: ServiceContent = {
   slug: "direction-marketing-externalisee",
   title: "Direction Marketing Externalisée",
   icon: "UserCog",
-  category: "AUDIT ET STRATEGIE",
+  category: "Stratégie",
   order: 19,
 
   // SEO

@@ -1,10 +1,11 @@
 import type { ServiceContent } from "./types";
 
 export const acquisitionB2b: ServiceContent = {
-  slug: "acquisition-b2b",
+  slug: "growth-marketing",
   title: "Acquisition clients B2B",
   icon: "TrendingUp",
-  category: "Pilier",
+  category: "Growth Marketing",
+  isPilier: true,
   order: 102,
 
   metaTitle: "Acquisition Clients B2B : SEO, campagnes et prospection | Vizion",

@@ -4,7 +4,7 @@ export const battlecardsCaseStudies: ServiceContent = {
   slug: "battlecards-case-studies",
   title: "Battlecards et Case Studies",
   icon: "Shield",
-  category: "SALES ENABLEMENT",
+  category: "Sales Enablement",
   order: 13,
 
   // SEO

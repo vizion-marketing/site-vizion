@@ -30,7 +30,7 @@ const SERVICES = [
       "Feuille de route priorisée sur 6 à 12 mois",
       "Un directeur marketing dédié comme interlocuteur unique",
     ],
-    href: "/services/strategie-marketing",
+    href: "/services/strategie",
     ctaLabel: "Stratégie et audit marketing B2B",
   },
   {
@@ -41,7 +41,7 @@ const SERVICES = [
     icon: Rocket,
     tags: ["Positionnement", "Contenu B2B", "Landing pages", "Personal branding"],
     span: "normal" as const,
-    href: "/services/credibilite-positionnement",
+    href: "/services/product-marketing",
     ctaLabel: "Crédibilité et positionnement B2B",
   },
   {
@@ -52,7 +52,7 @@ const SERVICES = [
     icon: TrendingUp,
     tags: ["SEO", "Campagnes publicitaires", "Cold outreach"],
     span: "normal" as const,
-    href: "/services/acquisition-b2b",
+    href: "/services/growth-marketing",
     ctaLabel: "Acquisition clients B2B",
   },
   {
@@ -74,7 +74,7 @@ const SERVICES = [
     icon: Monitor,
     tags: ["Site web", "Déploiement CRM", "Applications IA"],
     span: "normal" as const,
-    href: "/services/digitalisation",
+    href: "/services/transformation-digitale",
     ctaLabel: "Digitalisation entreprise B2B",
   },
 ];

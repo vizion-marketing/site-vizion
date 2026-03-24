@@ -4,7 +4,7 @@ export const creationWorkflows: ServiceContent = {
   slug: "creation-workflows",
   title: "Création de Workflows",
   icon: "Repeat",
-  category: "MARKETING AUTOMATION",
+  category: "Sales Enablement",
   order: 16,
 
   // SEO

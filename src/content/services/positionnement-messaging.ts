@@ -4,7 +4,7 @@ export const positionnementMessaging: ServiceContent = {
   slug: "positionnement-messaging",
   title: "Positionnement et Messaging",
   icon: "Crosshair",
-  category: "PRODUCT MARKETING",
+  category: "Product Marketing",
   order: 5,
 
   // SEO

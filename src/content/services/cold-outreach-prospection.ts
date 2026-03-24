@@ -4,7 +4,7 @@ export const coldOutreachProspection: ServiceContent = {
   slug: "cold-outreach-prospection",
   title: "Cold Outreach et Prospection",
   icon: "Mail",
-  category: "GROWTH",
+  category: "Growth Marketing",
   order: 10,
 
   // SEO

@@ -4,7 +4,7 @@ export const creationRefonteSiteWeb: ServiceContent = {
   slug: "creation-refonte-site-web",
   title: "Création ou Refonte de Site Web",
   icon: "Globe",
-  category: "PRODUCT MARKETING",
+  category: "Transformation Digitale",
   order: 1,
 
   // SEO

@@ -1,10 +1,11 @@
 import type { ServiceContent } from "./types";
 
 export const digitalisation: ServiceContent = {
-  slug: "digitalisation",
+  slug: "transformation-digitale",
   title: "Digitalisation entreprise B2B",
   icon: "Monitor",
-  category: "Pilier",
+  category: "Transformation Digitale",
+  isPilier: true,
   order: 104,
 
   metaTitle: "Digitalisation Entreprise B2B : site web, CRM et applications IA | Vizion",

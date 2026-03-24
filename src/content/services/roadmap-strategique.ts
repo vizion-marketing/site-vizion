@@ -4,7 +4,7 @@ export const roadmapStrategique: ServiceContent = {
   slug: "roadmap-strategique",
   title: "Roadmap Stratégique",
   icon: "CalendarCheck",
-  category: "AUDIT ET STRATEGIE",
+  category: "Stratégie",
   order: 4,
 
   // SEO

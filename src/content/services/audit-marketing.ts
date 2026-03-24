@@ -4,7 +4,7 @@ export const auditMarketing: ServiceContent = {
   slug: "audit-marketing",
   title: "Audit Marketing",
   icon: "Search",
-  category: "AUDIT ET STRATEGIE",
+  category: "Stratégie",
   order: 3,
 
   // SEO

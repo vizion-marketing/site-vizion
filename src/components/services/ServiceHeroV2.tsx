@@ -3,10 +3,11 @@
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { PILIER_MAP } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +19,7 @@ interface ServiceHeroV2Props {
   imageUrl?: string;
   imageAlt?: string;
   breadcrumbLabel: string;
+  isPilier?: boolean;
 }
 
 const FALLBACK_IMAGE = "/images/services/default-hero.png";
@@ -29,6 +31,7 @@ export function ServiceHeroV2({
   imageUrl,
   imageAlt,
   breadcrumbLabel,
+  isPilier,
 }: ServiceHeroV2Props) {
   const heroSrc = imageUrl || FALLBACK_IMAGE;
   const sectionRef = useRef<HTMLElement>(null);
@@ -140,22 +143,41 @@ export function ServiceHeroV2({
         </div>
 
         {/* Mobile text */}
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 mt-6">
           {/* Breadcrumb */}
-          <nav
-            className="flex items-center gap-2 text-xs text-white/60"
-            aria-label="Breadcrumb"
-          >
-            <Link href="/" className="hover:text-white/80 transition-colors">
-              Accueil
-            </Link>
-            <span>/</span>
-            <Link href="/services" className="hover:text-white/80 transition-colors">
-              Services
-            </Link>
-            <span>/</span>
-            <span className="text-white/90">{breadcrumbLabel}</span>
-          </nav>
+          {(() => {
+            const pilier = PILIER_MAP[category];
+            return (
+              <nav
+                className="flex items-center gap-2 text-xs text-white/60"
+                aria-label="Breadcrumb"
+              >
+                <Link href="/" className="hover:text-white/80 transition-colors">
+                  Accueil
+                </Link>
+                <span>/</span>
+                {isPilier ? (
+                  <span className="text-white/90">{breadcrumbLabel}</span>
+                ) : pilier ? (
+                  <>
+                    <Link href={`/services/${pilier.slug}`} className="hover:text-white/80 transition-colors">
+                      {pilier.label}
+                    </Link>
+                    <span>/</span>
+                    <span className="text-white/90">{breadcrumbLabel}</span>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/services" className="hover:text-white/80 transition-colors">
+                      Services
+                    </Link>
+                    <span>/</span>
+                    <span className="text-white/90">{breadcrumbLabel}</span>
+                  </>
+                )}
+              </nav>
+            );
+          })()}
 
           <h1
             data-v2="title"
@@ -174,7 +196,7 @@ export function ServiceHeroV2({
               className="group inline-flex items-center justify-center gap-3 bg-accent text-black font-semibold px-8 py-4 hover:bg-accent/90 active:scale-[0.97] transition-all duration-200"
             >
               Discuter de votre projet
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowUpRightIcon size={16} className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <button
               onClick={() => {
@@ -184,7 +206,7 @@ export function ServiceHeroV2({
               className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/[0.15] text-white font-medium hover:bg-white/[0.06] active:scale-[0.97] transition-all duration-200"
             >
               En savoir plus
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowUpRightIcon size={16} className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
         </div>
@@ -253,21 +275,40 @@ export function ServiceHeroV2({
           <div data-v2="text-col" className="relative z-10 w-[55%] flex flex-col justify-center min-h-dvh">
             <div className="relative z-10">
               {/* Breadcrumbs */}
-              <nav
-                data-v2="breadcrumb"
-                className="flex items-center gap-2 text-sm text-white/60 mb-10"
-                aria-label="Breadcrumb"
-              >
-                <Link href="/" className="hover:text-white/80 transition-colors">
-                  Accueil
-                </Link>
-                <span>/</span>
-                <Link href="/services" className="hover:text-white/80 transition-colors">
-                  Services
-                </Link>
-                <span>/</span>
-                <span className="text-white/90">{breadcrumbLabel}</span>
-              </nav>
+              {(() => {
+                const pilier = PILIER_MAP[category];
+                return (
+                  <nav
+                    data-v2="breadcrumb"
+                    className="flex items-center gap-2 text-sm text-white/60 mb-10"
+                    aria-label="Breadcrumb"
+                  >
+                    <Link href="/" className="hover:text-white/80 transition-colors">
+                      Accueil
+                    </Link>
+                    <span>/</span>
+                    {isPilier ? (
+                      <span className="text-white/90">{breadcrumbLabel}</span>
+                    ) : pilier ? (
+                      <>
+                        <Link href={`/services/${pilier.slug}`} className="hover:text-white/80 transition-colors">
+                          {pilier.label}
+                        </Link>
+                        <span>/</span>
+                        <span className="text-white/90">{breadcrumbLabel}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Link href="/services" className="hover:text-white/80 transition-colors">
+                          Services
+                        </Link>
+                        <span>/</span>
+                        <span className="text-white/90">{breadcrumbLabel}</span>
+                      </>
+                    )}
+                  </nav>
+                );
+              })()}
 
               {/* H1 */}
               <h1
@@ -296,10 +337,7 @@ export function ServiceHeroV2({
                 >
                   <span data-v2="cta-shimmer" className="absolute inset-y-0 w-[40%] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
                   Discuter de votre projet
-                  <ArrowRight
-                    size={16}
-                    className="group-hover:translate-x-1 transition-transform duration-200"
-                  />
+                  <ArrowUpRightIcon size={16} className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" />
                 </Link>
 
                 <button
@@ -311,10 +349,7 @@ export function ServiceHeroV2({
                   className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/[0.15] text-white font-medium hover:bg-white/[0.06] active:scale-[0.97] transition-all duration-200"
                 >
                   En savoir plus
-                  <ArrowRight
-                    size={16}
-                    className="group-hover:translate-x-1 transition-transform duration-200"
-                  />
+                  <ArrowUpRightIcon size={16} className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
             </div>

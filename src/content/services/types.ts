@@ -129,6 +129,7 @@ export interface ServiceContent {
   title: string;
   icon: string;
   category: string;
+  isPilier?: boolean;
   order: number;
 
   // SEO

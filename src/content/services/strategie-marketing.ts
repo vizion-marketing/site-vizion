@@ -1,10 +1,11 @@
 import type { ServiceContent } from "./types";
 
 export const strategieMarketing: ServiceContent = {
-  slug: "strategie-marketing",
+  slug: "strategie",
   title: "Stratégie marketing B2B",
   icon: "Compass",
-  category: "Pilier",
+  category: "Stratégie",
+  isPilier: true,
   order: 100,
 
   metaTitle: "Stratégie Marketing B2B : audit, roadmap et direction marketing | Vizion",

@@ -4,7 +4,7 @@ export const seoContenuOrganique: ServiceContent = {
   slug: "seo-contenu-organique",
   title: "SEO et Contenu Organique",
   icon: "TrendingUp",
-  category: "GROWTH",
+  category: "Growth Marketing",
   order: 7,
 
   // SEO

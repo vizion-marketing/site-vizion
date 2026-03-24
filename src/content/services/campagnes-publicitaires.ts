@@ -4,7 +4,7 @@ export const campagnesPublicitaires: ServiceContent = {
   slug: "campagnes-publicitaires",
   title: "Campagnes Publicitaires",
   icon: "Zap",
-  category: "GROWTH",
+  category: "Growth Marketing",
   order: 9,
 
   // SEO

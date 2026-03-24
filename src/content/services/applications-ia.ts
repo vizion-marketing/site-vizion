@@ -4,7 +4,7 @@ export const applicationsIa: ServiceContent = {
   slug: "applications-ia",
   title: "Applications IA",
   icon: "Brain",
-  category: "MARKETING AUTOMATION",
+  category: "Transformation Digitale",
   order: 17,
 
   // SEO

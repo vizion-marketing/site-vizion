@@ -4,7 +4,7 @@ export const leadNurturing: ServiceContent = {
   slug: "lead-nurturing",
   title: "Lead Nurturing",
   icon: "Mail",
-  category: "MARKETING AUTOMATION",
+  category: "Sales Enablement",
   order: 15,
 
   // SEO

@@ -30,7 +30,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
   {
     title: "Prenez les bonnes décisions",
     icon: "Compass",
-    href: "/services/strategie-marketing",
+    href: "/services/strategie",
     items: [
       {
         label: "Audit marketing",
@@ -55,7 +55,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
   {
     title: "Bâtissez votre crédibilité",
     icon: "Rocket",
-    href: "/services/credibilite-positionnement",
+    href: "/services/product-marketing",
     items: [
       {
         label: "Positionnement & Messaging",
@@ -86,7 +86,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
   {
     title: "Générez du revenu",
     icon: "TrendingUp",
-    href: "/services/acquisition-b2b",
+    href: "/services/growth-marketing",
     items: [
       {
         label: "SEO & contenu organique",
@@ -142,7 +142,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
   {
     title: "Digitalisez votre entreprise",
     icon: "Monitor",
-    href: "/services/digitalisation",
+    href: "/services/transformation-digitale",
     items: [
       {
         label: "Création ou refonte de site web",
@@ -165,6 +165,15 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
     ],
   },
 ];
+
+// --- Mapping catégorie → page pilier (pour breadcrumbs) ---
+export const PILIER_MAP: Record<string, { label: string; slug: string }> = {
+  "Stratégie": { label: "Stratégie", slug: "strategie" },
+  "Product Marketing": { label: "Product Marketing", slug: "product-marketing" },
+  "Growth Marketing": { label: "Growth Marketing", slug: "growth-marketing" },
+  "Sales Enablement": { label: "Sales Enablement", slug: "sales-enablement" },
+  "Transformation Digitale": { label: "Transformation Digitale", slug: "transformation-digitale" },
+};
 
 export const SERVICE_MENU_BANNER = {
   label: "Externalisation — Stratégie ou Production",

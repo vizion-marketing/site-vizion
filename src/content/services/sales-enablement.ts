@@ -4,7 +4,8 @@ export const salesEnablement: ServiceContent = {
   slug: "sales-enablement",
   title: "Sales enablement B2B",
   icon: "Handshake",
-  category: "Pilier",
+  category: "Sales Enablement",
+  isPilier: true,
   order: 103,
 
   metaTitle: "Sales Enablement B2B : armez vos commerciaux pour closer | Vizion",

@@ -4,7 +4,7 @@ export const creationContenuB2b: ServiceContent = {
   slug: "creation-contenu-b2b",
   title: "Création de Contenu B2B",
   icon: "PenTool",
-  category: "PRODUCT MARKETING",
+  category: "Product Marketing",
   order: 6,
 
   // SEO
