@@ -139,7 +139,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           </div>
 
           <h1
-            className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[44px] leading-[0.95] tracking-[-0.03em]"
+            className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[40px] leading-[0.95] tracking-[-0.035em]"
             style={{
               backgroundImage:
                 "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
@@ -295,7 +295,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
               {/* H1 */}
               <h1
                 data-hero="h1"
-                className="font-heading font-normal text-[44px] lg:text-[58px] xl:text-[72px] leading-[0.92] tracking-[-0.04em] mb-6"
+                className="font-heading font-normal text-[36px] lg:text-[44px] xl:text-[48px] leading-[0.95] tracking-[-0.035em] mb-6"
                 style={{
                   backgroundImage:
                     "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
