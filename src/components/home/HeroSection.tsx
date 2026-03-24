@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { homeContent, type HeroContent } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
+import { TestimonialMarquee } from "./TestimonialMarquee";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -313,6 +314,11 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           </div>
         </div>
 
+      </div>
+
+      {/* Testimonial marquee — pleine largeur, collé sous le contenu */}
+      <div className="relative z-20">
+        <TestimonialMarquee embedded />
       </div>
 
       {/* Bottom gradient — transition vers la section suivante */}

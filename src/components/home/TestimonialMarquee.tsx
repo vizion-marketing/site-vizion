@@ -77,12 +77,14 @@ function TestimonialCard({ quote, author, role, photo }: typeof TESTIMONIALS[num
   );
 }
 
-export function TestimonialMarquee() {
-  return (
-    <section
-      className="dark-section py-8 sm:py-10 overflow-hidden relative"
-      style={{ background: "var(--bg-dark)" }}
-    >
+interface TestimonialMarqueeProps {
+  /** When true, renders as a div (no section wrapper), for embedding inside hero */
+  embedded?: boolean;
+}
+
+export function TestimonialMarquee({ embedded = false }: TestimonialMarqueeProps) {
+  const content = (
+    <div className={`overflow-hidden relative ${embedded ? "pb-4" : "py-8 sm:py-10"}`}>
       {/* Fade edges — transparent to dark */}
       <div
         className="absolute left-0 top-0 bottom-0 w-24 sm:w-40 z-10 pointer-events-none"
@@ -93,20 +95,29 @@ export function TestimonialMarquee() {
         style={{ background: "linear-gradient(to left, var(--bg-dark) 0%, transparent 100%)" }}
       />
 
-      <div className="max-w-[82.5rem] mx-auto overflow-hidden">
-        <div
-          className="flex gap-4 animate-scroll-left"
-          style={{ width: "max-content" }}
-        >
-          {[...Array(4)].map((_, setIndex) => (
-            <div key={setIndex} className="flex gap-4 shrink-0">
-              {TESTIMONIALS.map((testimonial, i) => (
-                <TestimonialCard key={`${setIndex}-${i}`} {...testimonial} />
-              ))}
-            </div>
-          ))}
-        </div>
+      <div
+        className="flex gap-4 animate-scroll-left"
+        style={{ width: "max-content" }}
+      >
+        {[...Array(4)].map((_, setIndex) => (
+          <div key={setIndex} className="flex gap-4 shrink-0">
+            {TESTIMONIALS.map((testimonial, i) => (
+              <TestimonialCard key={`${setIndex}-${i}`} {...testimonial} />
+            ))}
+          </div>
+        ))}
       </div>
+    </div>
+  );
+
+  if (embedded) return content;
+
+  return (
+    <section
+      className="dark-section overflow-hidden relative"
+      style={{ background: "var(--bg-dark)" }}
+    >
+      {content}
     </section>
   );
 }
