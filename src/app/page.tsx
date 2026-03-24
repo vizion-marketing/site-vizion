@@ -87,15 +87,18 @@ export default async function HomePage() {
   const carouselClients = featuredClients.map((client, idx) => ({
     id: idx + 1,
     company: client.name,
+    companyType: client.companyType || "",
     sector: client.sector,
-    title: client.carouselTitle,
+    title: client.headline || client.name,
+    description: client.description,
     quote: client.testimonial?.quote || "",
     author: client.testimonial?.author || "",
     role: client.testimonial?.role || "",
     avatar: resolveImageUrl(client.logo) || undefined,
-    mainImage: resolveImageUrl(client.mainImage) || undefined,
-    secondaryImage: resolveImageUrl(client.secondaryImage) || undefined,
-    stats: client.carouselStat,
+    mainImage: resolveImageUrl(client.mainImage, 1200) || undefined,
+    authorPhoto: resolveImageUrl(client.testimonial?.photo) || undefined,
+    highlightMetrics: client.highlightMetrics?.map((m) => ({ value: m.value, label: m.label })),
+    stats: client.firstMetric || { value: "", label: "" },
     href: client.url,
   }));
 
