@@ -8,9 +8,9 @@ export const creationLandingPage: ServiceContent = {
   order: 2,
 
   // SEO
-  metaTitle: "Création Landing Page : Pages B2B qui Convertissent | Vizion",
+  metaTitle: "Création Landing Page : Pages B2B qui Convertissent",
   metaDescription:
-    "Création de landing page B2B optimisée pour la conversion. Pages de vente, campagnes, lancements produit. Copywriting, design et tracking inclus. Livrée en 3 semaines.",
+    "Création de landing page B2B optimisée pour la conversion. Copywriting, design et tracking inclus. Pages de vente et campagnes livrées en 3 semaines.",
   keywords: [
     "création landing page",
     "création landing page B2B",
@@ -70,8 +70,6 @@ export const creationLandingPage: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Chez Vizion, nous créons des landing pages qui transforment vos campagnes en pipeline",
-  solutionSubtitle:
-    "Pas de pages génériques. Des pages de conversion sur mesure, testées et mesurées.",
   solutionImage: "/images/services/creation-landing-page/solution.avif",
   solutionItems: [
     {
@@ -107,14 +105,15 @@ export const creationLandingPage: ServiceContent = {
     phrase: "Chez Vizion, on conçoit\ndes landing pages...",
     adjectives: ["ciblées", "persuasives", "et surtout rentables"],
     showcaseImages: [
-      "/images/services/creation-landing-page/screenshots/01.avif",
-      "/images/services/creation-landing-page/screenshots/02.avif",
-      "/images/services/creation-landing-page/screenshots/03.avif",
-      "/images/services/creation-landing-page/screenshots/04.avif",
-      "/images/services/creation-landing-page/screenshots/05.avif",
-      "/images/services/creation-landing-page/screenshots/06.avif",
-      "/images/services/creation-landing-page/screenshots/07.avif",
-      "/images/services/creation-landing-page/screenshots/08.avif",
+      "/images/services/site-web/screenshots/01.avif",
+      "/images/services/site-web/screenshots/02.avif",
+      "/images/services/site-web/screenshots/03.avif",
+      "/images/services/site-web/screenshots/04.avif",
+      "/images/services/site-web/screenshots/05.avif",
+      "/images/services/site-web/screenshots/06.avif",
+      "/images/services/site-web/screenshots/07.avif",
+      "/images/services/site-web/screenshots/08.avif",
+      "/images/services/site-web/screenshots/09.avif",
     ],
   },
 

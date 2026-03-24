@@ -15,6 +15,7 @@ import {
   TrendingUp,
   Handshake,
   Sparkles,
+  Monitor,
   Building2,
 } from "lucide-react";
 import {
@@ -73,6 +74,7 @@ const CATEGORY_ICON_MAP: Record<string, React.ComponentType<{ size?: number; str
   Rocket,
   TrendingUp,
   Handshake,
+  Monitor,
   Sparkles,
 };
 
@@ -88,13 +90,13 @@ function CategoryIcon({ name, size = 14, className }: { name: string; size?: num
 
 function DesktopServicesMegaMenu({ onClose }: { onClose: () => void }) {
   const col1 = SERVICE_MENU_CATEGORIES.filter((c) =>
-    ["Audit & Stratégie", "Growth"].includes(c.title)
+    ["Prenez les bonnes décisions", "Générez du revenu"].includes(c.title)
   );
   const col2 = SERVICE_MENU_CATEGORIES.filter((c) =>
-    ["Product Marketing", "Sales Enablement"].includes(c.title)
+    ["Bâtissez votre crédibilité", "Armez vos commerciaux"].includes(c.title)
   );
-  const col3Category = SERVICE_MENU_CATEGORIES.find((c) =>
-    c.title === "Marketing Automation & IA"
+  const col3 = SERVICE_MENU_CATEGORIES.filter((c) =>
+    ["Digitalisez votre entreprise"].includes(c.title)
   );
 
   return (
@@ -120,11 +122,11 @@ function DesktopServicesMegaMenu({ onClose }: { onClose: () => void }) {
           ))}
         </div>
 
-        {/* Col 3 — Marketing Automation & IA */}
+        {/* Col 3 — Digitalisez + Automatisez */}
         <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
-          {col3Category && (
-            <MegaMenuCategory category={col3Category} onClose={onClose} isFirst />
-          )}
+          {col3.map((category, i) => (
+            <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
+          ))}
         </div>
 
         {/* Col 4 — CTA Externalisation */}
@@ -184,14 +186,27 @@ function DesktopServicesMegaMenu({ onClose }: { onClose: () => void }) {
 }
 
 function MegaMenuCategory({ category, onClose, isFirst = false }: { category: (typeof SERVICE_MENU_CATEGORIES)[number]; onClose: () => void; isFirst?: boolean }) {
+  const titleContent = (
+    <div className="flex items-center gap-2 mb-3 px-2 py-1.5 bg-card -mx-1 group/cat">
+      <CategoryIcon name={category.icon} size={13} className="text-muted" />
+      <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-primary group-hover/cat:text-accent transition-colors duration-200">
+        {category.title}
+      </span>
+      {category.href && (
+        <ArrowRight size={10} className="text-muted group-hover/cat:text-accent transition-colors duration-200 ml-auto" />
+      )}
+    </div>
+  );
+
   return (
     <div className={isFirst ? "" : "pt-4 border-t border-black/[0.04]"}>
-      <div className="flex items-center gap-2 mb-3 px-2 py-1.5 bg-card -mx-1">
-        <CategoryIcon name={category.icon} size={13} className="text-muted" />
-        <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-primary">
-          {category.title}
-        </span>
-      </div>
+      {category.href ? (
+        <Link href={category.href} onClick={onClose}>
+          {titleContent}
+        </Link>
+      ) : (
+        titleContent
+      )}
       <div className="flex flex-col gap-0.5">
         {category.items.map((item) => (
           <MegaMenuServiceItem key={item.label} item={item} onClose={onClose} />
@@ -511,10 +526,18 @@ function MobileMenu({
                           <div className="py-3 flex flex-col gap-4">
                             {SERVICE_MENU_CATEGORIES.map((category) => (
                               <div key={category.title}>
-                                <p className="surtitre text-secondary mb-2 flex items-center gap-1.5">
-                                  <CategoryIcon name={category.icon} size={13} className="text-muted" />
-                                  {category.title}
-                                </p>
+                                {category.href ? (
+                                  <Link href={category.href} onClick={onClose} className="surtitre text-secondary mb-2 flex items-center gap-1.5 hover:text-primary transition-colors">
+                                    <CategoryIcon name={category.icon} size={13} className="text-muted" />
+                                    {category.title}
+                                    <ArrowRight size={10} className="text-muted ml-auto" />
+                                  </Link>
+                                ) : (
+                                  <p className="surtitre text-secondary mb-2 flex items-center gap-1.5">
+                                    <CategoryIcon name={category.icon} size={13} className="text-muted" />
+                                    {category.title}
+                                  </p>
+                                )}
                                 <div className="flex flex-col gap-1">
                                   {category.items.map((sItem) => {
                                     const itemContent = (

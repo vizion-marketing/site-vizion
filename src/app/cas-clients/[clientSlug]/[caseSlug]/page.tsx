@@ -6,7 +6,7 @@ import { getServicesForCaseStudy } from "@/lib/sanity/services";
 import { CaseStudyContent } from "./CaseStudyContent";
 import { SITE_URL } from "@/lib/constants";
 import { resolveImageUrl } from "../../../../../sanity/lib/image";
-import { calculateReadingTime } from "@/lib/portable-text-utils";
+
 
 type Props = {
   params: Promise<{ clientSlug: string; caseSlug: string }>;
@@ -87,11 +87,8 @@ export default async function CaseStudyPage({ params }: Props) {
     })
     .slice(0, 3);
 
-  // Compute reading time for schema
-  const readingTime = caseStudy.body
-    ? calculateReadingTime(caseStudy.body)
-    : "1 min de lecture";
-  const readingMinutes = parseInt(readingTime) || 1;
+  // Reading time estimate for schema
+  const readingMinutes = 1;
 
   // Resolve hero image for schema
   const heroImageUrl = resolveImageUrl(caseStudy.heroImage, 1200);

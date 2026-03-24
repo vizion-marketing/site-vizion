@@ -6,50 +6,50 @@ import { CasClientsContent } from "../../CasClientsContent";
 import { SITE_URL } from "@/lib/constants";
 import { resolveImageUrl } from "../../../../../sanity/lib/image";
 
-// Sector slug → display name + description SEO
-const SECTOR_META: Record<
+// Company type slug → display name + description SEO
+const TYPE_META: Record<
   string,
   { name: string; title: string; description: string }
 > = {
   franchise: {
     name: "Franchise",
-    title: "Cas Clients Franchise — Marketing B2B pour réseaux de franchise",
+    title: "Cas Clients Franchise — Marketing B2B pour reseaux de franchise",
     description:
-      "Découvrez nos études de cas en marketing B2B pour les réseaux de franchise : développement réseau, génération de candidats franchisés, stratégie de marque.",
+      "Decouvrez nos etudes de cas en marketing B2B pour les reseaux de franchise : developpement reseau, generation de candidats franchises, strategie de marque.",
   },
-  "saas-b2b": {
-    name: "SaaS B2B",
-    title: "Cas Clients SaaS B2B — Marketing pour éditeurs de logiciels",
+  pme: {
+    name: "PME",
+    title: "Cas Clients PME — Marketing B2B pour PME",
     description:
-      "Études de cas marketing pour éditeurs SaaS B2B : acquisition, positionnement produit, stratégie de contenu, sales enablement et growth marketing.",
+      "Etudes de cas marketing pour PME B2B : positionnement, generation de leads, alignement marketing-ventes, strategie de croissance.",
   },
-  "services-b2b": {
-    name: "Services B2B",
-    title: "Cas Clients Services B2B — Marketing pour sociétés de services",
+  eti: {
+    name: "ETI",
+    title: "Cas Clients ETI — Marketing B2B pour ETI",
     description:
-      "Nos cas clients en marketing B2B pour les entreprises de services : positionnement, génération de leads, alignement marketing-ventes.",
+      "Nos cas clients en marketing B2B pour les ETI : transformation digitale, strategie commerciale, positionnement et lead generation.",
   },
-  "industrie-b2b": {
-    name: "Industrie B2B",
-    title: "Cas Clients Industrie B2B — Marketing pour l'industrie",
+  "scale-up": {
+    name: "Scale-up",
+    title: "Cas Clients Scale-up — Marketing B2B pour scale-ups",
     description:
-      "Études de cas marketing pour l'industrie B2B : transformation digitale, positionnement technique, stratégie commerciale et lead generation.",
+      "Etudes de cas marketing pour scale-ups B2B : acceleration, acquisition, positionnement produit, growth marketing.",
   },
-  "business-local": {
-    name: "Business Local",
-    title: "Cas Clients Business Local — Marketing pour entreprises locales",
+  "start-up": {
+    name: "Start-up",
+    title: "Cas Clients Start-up — Marketing B2B pour start-ups",
     description:
-      "Nos cas clients en marketing pour les entreprises locales : visibilité digitale, acquisition clients, stratégie de proximité.",
+      "Nos cas clients en marketing pour les start-ups B2B : go-to-market, positionnement, generation de leads, sales enablement.",
   },
 };
 
-// Map sector slug to Sanity value
-function sectorSlugToValue(slug: string): string | null {
-  return SECTOR_META[slug]?.name ?? null;
+// Map type slug to Sanity value
+function typeSlugToValue(slug: string): string | null {
+  return TYPE_META[slug]?.name ?? null;
 }
 
 export async function generateStaticParams() {
-  return Object.keys(SECTOR_META).map((sector) => ({ sector }));
+  return Object.keys(TYPE_META).map((sector) => ({ sector }));
 }
 
 type Props = {
@@ -58,18 +58,17 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { sector } = await params;
-  const meta = SECTOR_META[sector];
+  const meta = TYPE_META[sector];
 
   if (!meta) {
-    return { title: "Secteur non trouvé" };
+    return { title: "Type non trouve" };
   }
 
   const url = `${SITE_URL}/cas-clients/secteur/${sector}`;
 
-  // Use the first sector client's mainImage as og:image
   const allClients = await getAllClients();
-  const sectorClient = allClients.find((c) => c.sector === meta.name);
-  const ogImageUrl = sectorClient ? resolveImageUrl(sectorClient.mainImage, 1200) : null;
+  const typeClient = allClients.find((c) => c.companyType === meta.name);
+  const ogImageUrl = typeClient ? resolveImageUrl(typeClient.mainImage, 1200) : null;
 
   return {
     title: `${meta.title} | Vizion`,
@@ -97,9 +96,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function SectorPage({ params }: Props) {
   const { sector } = await params;
-  const sectorValue = sectorSlugToValue(sector);
+  const typeValue = typeSlugToValue(sector);
 
-  if (!sectorValue) {
+  if (!typeValue) {
     notFound();
   }
 
@@ -108,28 +107,28 @@ export default async function SectorPage({ params }: Props) {
     getAllCaseStudies(),
   ]);
 
-  // Filter by sector
-  const sectorClients = allClients
-    .filter((c) => c.sector === sectorValue)
+  // Filter by company type
+  const typeClients = allClients
+    .filter((c) => c.companyType === typeValue)
     .sort((a, b) => {
       if (a.featured && !b.featured) return -1;
       if (!a.featured && b.featured) return 1;
       return (a.order || 0) - (b.order || 0);
     });
 
-  const featuredClient = sectorClients.find((c) => c.featured) || null;
+  const featuredClient = typeClients.find((c) => c.featured) || null;
 
   // JSON-LD
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     inLanguage: "fr",
-    name: `Cas Clients ${sectorValue}`,
-    description: SECTOR_META[sector].description,
+    name: `Cas Clients ${typeValue}`,
+    description: TYPE_META[sector].description,
     url: `${SITE_URL}/cas-clients/secteur/${sector}`,
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: sectorClients.map((client, index) => ({
+      itemListElement: typeClients.map((client, index) => ({
         "@type": "ListItem",
         position: index + 1,
         item: {
@@ -148,7 +147,7 @@ export default async function SectorPage({ params }: Props) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "Cas clients", item: `${SITE_URL}/cas-clients` },
-      { "@type": "ListItem", position: 3, name: sectorValue, item: `${SITE_URL}/cas-clients/secteur/${sector}` },
+      { "@type": "ListItem", position: 3, name: typeValue, item: `${SITE_URL}/cas-clients/secteur/${sector}` },
     ],
   };
 
@@ -163,10 +162,10 @@ export default async function SectorPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <CasClientsContent
-        clients={sectorClients}
+        clients={typeClients}
         caseStudies={allCaseStudies}
         featuredClient={featuredClient}
-        initialSector={sectorValue}
+        initialSector={typeValue}
       />
     </>
   );

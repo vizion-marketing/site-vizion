@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 
 // Above-the-fold — eagerly loaded
 import { HeroSection } from "@/components/home/HeroSection";
-import { IndustriesMarquee } from "@/components/home/IndustriesMarquee";
+
 
 // Below-the-fold — lazy-loaded (SSR preserved, JS split into separate chunks)
 const IntroSection = dynamic(() => import("@/components/home/IntroSection"), { ssr: true });
@@ -72,9 +72,6 @@ export default function B2BPageClient({ latestPosts, carouselClients }: B2BPageC
     <main>
       {/* Hero */}
       <HeroSection content={b2bHero} />
-
-      {/* Bandeau industries défilant */}
-      <IndustriesMarquee />
 
       {/* Intro — Pourquoi le B2B est différent */}
       <IntroSection

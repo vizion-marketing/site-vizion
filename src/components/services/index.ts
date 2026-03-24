@@ -1,4 +1,5 @@
 export { ServiceHero } from "./ServiceHero";
+export { ServiceHeroV2 } from "./ServiceHeroV2";
 export { ServiceNarrative } from "./ServiceNarrative";
 export { ProcessTimeline } from "./ProcessTimeline";
 export { TestimonialShowcase } from "./TestimonialShowcase";

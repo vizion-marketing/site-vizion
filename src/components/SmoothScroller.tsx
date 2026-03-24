@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, createContext, useContext, type ReactNode } from "react";
+import { useEffect, useState, createContext, useContext, type ReactNode } from "react";
 
 // Lenis instance type (imported dynamically)
 type LenisInstance = {
@@ -21,7 +21,7 @@ interface SmoothScrollerProps {
 }
 
 export default function SmoothScroller({ children }: SmoothScrollerProps) {
-  const lenisRef = useRef<LenisInstance | null>(null);
+  const [lenisInstance, setLenisInstance] = useState<LenisInstance | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -52,7 +52,7 @@ export default function SmoothScroller({ children }: SmoothScrollerProps) {
         infinite: false,
       }) as LenisInstance;
 
-      lenisRef.current = lenis;
+      setLenisInstance(lenis);
 
       ScrollTrigger.scrollerProxy(document.body, {
         scrollTop(value?: number) {
@@ -79,7 +79,7 @@ export default function SmoothScroller({ children }: SmoothScrollerProps) {
       cancelled = true;
       if (lenis) {
         lenis.destroy();
-        lenisRef.current = null;
+        setLenisInstance(null);
       }
       if (tickerCallback) {
         import("gsap").then(({ gsap }) => {
@@ -90,7 +90,7 @@ export default function SmoothScroller({ children }: SmoothScrollerProps) {
   }, []);
 
   return (
-    <LenisContext.Provider value={lenisRef.current}>
+    <LenisContext.Provider value={lenisInstance}>
       {children}
     </LenisContext.Provider>
   );

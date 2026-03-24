@@ -9,14 +9,17 @@ import Image from "next/image";
 export interface CasClientItem {
   id: number;
   company: string;
+  companyType: string;
   sector: string;
   title: string;
+  description?: string;
   quote: string;
   author: string;
   role: string;
   avatar?: string;
   mainImage?: string;
-  secondaryImage?: string;
+  authorPhoto?: string;
+  highlightMetrics?: { value: string; label: string }[];
   stats: { value: string; label: string };
   href?: string;
 }
@@ -200,7 +203,7 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[520px] gap-3 sm:gap-4"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4"
           >
             {/* Left - Text Content - padding mobile réduit */}
             <motion.div variants={itemVariants} className="lg:col-span-4 relative flex flex-col justify-between h-full bg-accent p-4 sm:p-6 lg:p-8 overflow-hidden">
@@ -251,28 +254,42 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
 
               </div>
 
-              {/* Top - Title */}
+              {/* Top - Badges + Title + Description */}
               <div className="relative z-10">
-                <h3 className="font-heading font-semibold text-[22px] sm:text-[30px] md:text-[40px] leading-[1.1] tracking-[-0.02em] text-primary mb-4 sm:mb-6">
-                  {currentCase.title}
-                </h3>
-              </div>
-
-              {/* Bottom - Sector, description, button */}
-              <div className="relative z-10 mt-auto">
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="inline-block px-3 py-1.5 border border-black text-primary text-[11px] font-medium tracking-wide uppercase">
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <span className="inline-block px-2.5 py-1 border border-black text-primary text-[10px] font-medium tracking-wide uppercase">
+                    {currentCase.companyType}
+                  </span>
+                  <span className="inline-block px-2.5 py-1 border border-black/40 text-primary/70 text-[10px] font-medium tracking-wide uppercase">
                     {currentCase.sector}
                   </span>
                 </div>
-                {currentCase.href ? (
+                <h3 className="font-heading font-semibold text-[22px] sm:text-[30px] md:text-[36px] leading-[1.1] tracking-[-0.02em] text-primary mb-3 sm:mb-4">
+                  {currentCase.title}
+                </h3>
+                {currentCase.description && (
+                  <p className="text-primary/60 text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed line-clamp-3">
+                    {currentCase.description}
+                  </p>
+                )}
+              </div>
+
+              {/* Bottom - Metrics + CTA */}
+              <div className="relative z-10 mt-auto">
+                {currentCase.highlightMetrics && currentCase.highlightMetrics.length > 0 && (
+                  <div className="flex gap-4 mb-4 pt-4 border-t border-black/10">
+                    {currentCase.highlightMetrics.slice(0, 3).map((m, i) => (
+                      <div key={i} className="flex-1">
+                        <span className="text-[18px] sm:text-[22px] font-black text-primary block leading-tight">{m.value}</span>
+                        <span className="text-[9px] sm:text-[10px] font-medium text-primary/50 leading-tight">{m.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {currentCase.href && (
                   <Link href={currentCase.href} className="inline-flex items-center gap-2 text-primary text-[14px] sm:text-[15px] font-semibold font-[var(--font-body)] hover:gap-3 transition-all">
                     Découvrir {currentCase.company} <ArrowRight size={16} />
                   </Link>
-                ) : (
-                  <p className="text-primary/70 text-[14px] sm:text-[15px] font-[var(--font-body)] leading-relaxed">
-                    Découvrez comment {currentCase.company} a transformé sa stratégie marketing et commerciale avec Vizion.
-                  </p>
                 )}
               </div>
             </motion.div>
@@ -304,33 +321,31 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
             </motion.div>
 
             {/* Right - Secondary Image + Quote */}
-            <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-2 sm:gap-4">
-              {/* Secondary Image + Author glassmorphism badge */}
-              <div className="relative h-[280px] sm:h-[320px] lg:flex-1 overflow-hidden">
-                {currentCase.secondaryImage && (
+            <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col gap-0">
+              {/* Author Image */}
+              <div className="relative overflow-hidden bg-grey shrink-0 aspect-[4/3]">
+                {(currentCase.authorPhoto || currentCase.mainImage) && (
                 <Image
-                  src={currentCase.secondaryImage}
-                  alt={`${currentCase.company} - secondaire`}
+                  src={currentCase.authorPhoto || currentCase.mainImage || ""}
+                  alt={currentCase.author || currentCase.company}
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 30vw"
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 25vw"
                 />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-
-                {/* Author glassmorphism badge */}
-                <div className="absolute bottom-3 left-3 right-3 bg-black/70 backdrop-blur-md border border-white/10 px-3 py-2 rounded-lg">
-                  <p className="font-heading font-semibold text-[13px] !text-white" style={{ color: '#ffffff' }}>
-                    {currentCase.author}
-                  </p>
-                  <p className="text-[11px] !text-white" style={{ color: '#ffffff' }}>
-                    {currentCase.role}, {currentCase.company}
-                  </p>
-                </div>
+              </div>
+              {/* Author name below photo */}
+              <div className="bg-dark dark-section px-4 py-2.5 shrink-0">
+                <p className="font-heading font-semibold text-[13px] text-white">
+                  {currentCase.author}
+                </p>
+                <p className="text-[11px] text-white/60">
+                  {currentCase.role}, {currentCase.company}
+                </p>
               </div>
 
               {/* Quote Box */}
-              <div className="relative bg-card p-3 sm:p-5 flex flex-col justify-between border border-black/[0.06]">
+              <div className="relative bg-card p-3 sm:p-5 flex-1 border-t border-black/[0.06]">
                 <div className="relative z-10">
                   <Quote size={28} className="text-accent mb-3" />
                   <p className="text-primary/80 text-[13px] sm:text-[14px] font-[var(--font-body)] leading-relaxed">

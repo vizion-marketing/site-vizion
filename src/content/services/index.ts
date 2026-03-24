@@ -33,10 +33,9 @@ import { roadmapStrategique } from "./roadmap-strategique";
 import { positionnementMessaging } from "./positionnement-messaging";
 import { creationContenuB2b } from "./creation-contenu-b2b";
 import { seoContenuOrganique } from "./seo-contenu-organique";
-import { linkedinForGrowth } from "./linkedin-for-growth";
 import { campagnesPublicitaires } from "./campagnes-publicitaires";
 import { coldOutreachProspection } from "./cold-outreach-prospection";
-import { constitutionBasesDonnees } from "./constitution-bases-donnees";
+
 import { pitchDecksArgumentaires } from "./pitch-decks-argumentaires";
 import { battlecardsCaseStudies } from "./battlecards-case-studies";
 import { deploiementCrm } from "./deploiement-crm";
@@ -44,6 +43,15 @@ import { leadNurturing } from "./lead-nurturing";
 import { creationWorkflows } from "./creation-workflows";
 import { applicationsIa } from "./applications-ia";
 import { auditSiteWeb } from "./audit-site-web";
+import { directionMarketingExternalisee } from "./direction-marketing-externalisee";
+import { strategiePersonalBranding } from "./strategie-personal-branding";
+
+// ── Pages piliers (hub) ──
+import { strategieMarketing } from "./strategie-marketing";
+import { credibilitePositionnement } from "./credibilite-positionnement";
+import { acquisitionB2b } from "./acquisition-b2b";
+import { salesEnablement } from "./sales-enablement";
+import { digitalisation } from "./digitalisation";
 
 // ── Registry ──
 export const allServices: ServiceContent[] = [
@@ -54,10 +62,9 @@ export const allServices: ServiceContent[] = [
   positionnementMessaging,
   creationContenuB2b,
   seoContenuOrganique,
-  linkedinForGrowth,
   campagnesPublicitaires,
   coldOutreachProspection,
-  constitutionBasesDonnees,
+
   pitchDecksArgumentaires,
   battlecardsCaseStudies,
   deploiementCrm,
@@ -65,6 +72,13 @@ export const allServices: ServiceContent[] = [
   creationWorkflows,
   applicationsIa,
   auditSiteWeb,
+  directionMarketingExternalisee,
+  strategiePersonalBranding,
+  strategieMarketing,
+  credibilitePositionnement,
+  acquisitionB2b,
+  salesEnablement,
+  digitalisation,
 ].sort((a, b) => a.order - b.order);
 
 export function getServiceBySlug(slug: string): ServiceContent | undefined {

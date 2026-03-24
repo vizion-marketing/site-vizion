@@ -8,9 +8,9 @@ export const applicationsIa: ServiceContent = {
   order: 17,
 
   // SEO
-  metaTitle: "Intelligence artificielle marketing B2B : applications | Vizion",
+  metaTitle: "Intelligence artificielle marketing B2B : applications",
   metaDescription:
-    "Intelligence artificielle marketing appliquée au B2B : chatbots, scoring prédictif, génération de contenu, personnalisation. Applications IA concrètes et mesurables pour vos équipes.",
+    "Intelligence artificielle appliquée au marketing B2B : chatbots, scoring prédictif, génération de contenu. Applications IA concrètes et mesurables.",
   keywords: [
     "intelligence artificielle marketing",
     "intelligence artificielle marketing B2B",
@@ -71,8 +71,6 @@ export const applicationsIa: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Intelligence artificielle marketing : nous intégrons l'IA dans vos process pour des résultats concrets",
-  solutionSubtitle:
-    "Pas de gadgets. Des applications IA qui résolvent de vrais problèmes.",
   solutionImage: "/images/services/applications-ia/solution.avif",
   solutionItems: [
     {
@@ -107,17 +105,7 @@ export const applicationsIa: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on déploie\ndes applications IA...",
     adjectives: ["utiles", "maîtrisées", "et surtout rentables"],
-    showcaseImages: [
-      "/images/services/applications-ia/screenshots/01.avif",
-      "/images/services/applications-ia/screenshots/02.avif",
-      "/images/services/applications-ia/screenshots/03.avif",
-      "/images/services/applications-ia/screenshots/04.avif",
-      "/images/services/applications-ia/screenshots/05.avif",
-      "/images/services/applications-ia/screenshots/06.avif",
-      "/images/services/applications-ia/screenshots/07.avif",
-      "/images/services/applications-ia/screenshots/08.avif",
-      "/images/services/applications-ia/screenshots/09.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

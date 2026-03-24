@@ -8,9 +8,9 @@ export const creationRefonteSiteWeb: ServiceContent = {
   order: 1,
 
   // SEO
-  metaTitle: "Création Site Web B2B : Sites qui Convertissent | Vizion",
+  metaTitle: "Création Site Web B2B : Sites qui Convertissent",
   metaDescription:
-    "Création et refonte de site web B2B sur mesure. Sites vitrine et landing pages pensés pour convertir vos visiteurs en leads qualifiés. Design, copywriting, SEO inclus.",
+    "Création et refonte de site web B2B sur mesure. Sites vitrine et landing pages pensés pour convertir vos visiteurs en leads. Design, copywriting, SEO.",
   keywords: [
     "création site web B2B",
     "création site internet B2B",
@@ -69,8 +69,6 @@ export const creationRefonteSiteWeb: ServiceContent = {
 
   // Solution sticky
   solutionTitle: "Chez Vizion, nous créons des sites web qui servent (vraiment) votre croissance",
-  solutionSubtitle:
-    "Pas de jolis sites. Des actifs stratégiques pensés pour convertir.",
   solutionImage: "/images/services/site-web/solution.avif",
   solutionItems: [
     {

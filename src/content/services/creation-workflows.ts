@@ -8,9 +8,9 @@ export const creationWorkflows: ServiceContent = {
   order: 16,
 
   // SEO
-  metaTitle: "Automatisation marketing : workflows sur mesure | Vizion",
+  metaTitle: "Automatisation marketing : workflows sur mesure",
   metaDescription:
-    "L'automatisation marketing libère vos équipes des tâches répétitives. Vizion conçoit des workflows sur mesure (Make, HubSpot, n8n) pour accélérer votre cycle de vente B2B.",
+    "Automatisation marketing B2B : workflows sur mesure (Make, HubSpot, n8n) pour libérer vos équipes des tâches répétitives et accélérer vos ventes.",
   keywords: [
     "automatisation marketing",
     "automatisation marketing B2B",
@@ -71,8 +71,6 @@ export const creationWorkflows: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Notre approche de l'automatisation marketing : des workflows conçus pour vos équipes",
-  solutionSubtitle:
-    "Pas d'usine à gaz. Des workflows ciblés, testés et maintenables.",
   solutionImage: "/images/services/creation-workflows/solution.avif",
   solutionItems: [
     {
@@ -107,16 +105,7 @@ export const creationWorkflows: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on construit\ndes workflows...",
     adjectives: ["fiables", "intelligents", "et surtout rentables"],
-    showcaseImages: [
-      "/images/services/creation-workflows/screenshots/01.avif",
-      "/images/services/creation-workflows/screenshots/02.avif",
-      "/images/services/creation-workflows/screenshots/03.avif",
-      "/images/services/creation-workflows/screenshots/04.avif",
-      "/images/services/creation-workflows/screenshots/05.avif",
-      "/images/services/creation-workflows/screenshots/06.avif",
-      "/images/services/creation-workflows/screenshots/07.avif",
-      "/images/services/creation-workflows/screenshots/08.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

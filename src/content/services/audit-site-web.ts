@@ -8,9 +8,9 @@ export const auditSiteWeb: ServiceContent = {
   order: 18,
 
   // SEO
-  metaTitle: "Audit de Site Web B2B : Diagnostic Complet | Vizion",
+  metaTitle: "Audit de Site Web B2B : Diagnostic Complet",
   metaDescription:
-    "Audit de site web B2B complet : performance, SEO, UX, conversion et contenu. Identifiez ce qui freine vos résultats et repartez avec un plan d'action priorisé.",
+    "Audit de site web B2B complet : performance, SEO, UX, conversion et contenu. Identifiez ce qui freine vos résultats avec un plan d'action concret.",
   keywords: [
     "audit site web",
     "audit site internet",
@@ -70,8 +70,6 @@ export const auditSiteWeb: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Chez Vizion, nous auditons votre site web pour transformer chaque faiblesse en levier de croissance",
-  solutionSubtitle:
-    "Pas d'audit générique. Un diagnostic sur mesure, priorisé par impact business.",
   solutionImage: "/images/services/audit-site-web/solution.avif",
   solutionItems: [
     {
@@ -106,16 +104,7 @@ export const auditSiteWeb: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on audite\nvotre site web...",
     adjectives: ["en profondeur", "sans complaisance", "et surtout pour agir"],
-    showcaseImages: [
-      "/images/services/audit-site-web/screenshots/01.avif",
-      "/images/services/audit-site-web/screenshots/02.avif",
-      "/images/services/audit-site-web/screenshots/03.avif",
-      "/images/services/audit-site-web/screenshots/04.avif",
-      "/images/services/audit-site-web/screenshots/05.avif",
-      "/images/services/audit-site-web/screenshots/06.avif",
-      "/images/services/audit-site-web/screenshots/07.avif",
-      "/images/services/audit-site-web/screenshots/08.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

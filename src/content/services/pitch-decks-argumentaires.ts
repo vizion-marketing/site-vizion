@@ -8,9 +8,9 @@ export const pitchDecksArgumentaires: ServiceContent = {
   order: 12,
 
   // SEO
-  metaTitle: "Pitch Deck B2B : convaincre dès le premier slide | Vizion",
+  metaTitle: "Pitch Deck B2B : convaincre dès le premier slide",
   metaDescription:
-    "Création de pitch deck B2B et argumentaires de vente sur mesure. Des supports commerciaux structurés pour convaincre vos prospects à chaque étape du cycle de vente.",
+    "Pitch deck B2B et argumentaires de vente sur mesure. Supports commerciaux structurés pour convaincre vos prospects à chaque étape du cycle de vente.",
   keywords: [
     "pitch deck",
     "pitch deck B2B",
@@ -71,8 +71,6 @@ export const pitchDecksArgumentaires: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Chez Vizion, nous créons des pitch decks et argumentaires qui accélèrent chaque étape du cycle commercial",
-  solutionSubtitle:
-    "Pas de jolis slides. Des outils de vente pensés pour convaincre.",
   solutionImage: "/images/services/pitch-decks-argumentaires/solution.avif",
   solutionItems: [
     {
@@ -107,16 +105,7 @@ export const pitchDecksArgumentaires: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on crée\ndes supports de vente...",
     adjectives: ["structurés", "percutants", "et surtout utilisés"],
-    showcaseImages: [
-      "/images/services/pitch-decks-argumentaires/screenshots/01.avif",
-      "/images/services/pitch-decks-argumentaires/screenshots/02.avif",
-      "/images/services/pitch-decks-argumentaires/screenshots/03.avif",
-      "/images/services/pitch-decks-argumentaires/screenshots/04.avif",
-      "/images/services/pitch-decks-argumentaires/screenshots/05.avif",
-      "/images/services/pitch-decks-argumentaires/screenshots/06.avif",
-      "/images/services/pitch-decks-argumentaires/screenshots/07.avif",
-      "/images/services/pitch-decks-argumentaires/screenshots/08.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

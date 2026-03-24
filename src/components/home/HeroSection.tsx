@@ -8,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { homeContent, type HeroContent } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
-import { TestimonialMarquee } from "./TestimonialMarquee";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -96,19 +95,29 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
     >
       {/* ===== MOBILE LAYOUT ===== */}
       <div className="lg:hidden grain-overlay relative px-4 sm:px-6 pt-28 sm:pt-32 pb-12 sm:pb-16">
-        {/* Mobile image with bottom fade */}
-        <div className="relative overflow-hidden -mb-2 aspect-[3/4] max-h-[50vh]">
+        {/* Mobile cloud effect */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute w-[80%] h-[50%] top-[10%] left-[10%]"
+            style={{
+              background: "radial-gradient(ellipse 80% 70% at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 65%)",
+              filter: "blur(40px)",
+            }}
+          />
+        </div>
+        {/* Mobile image — floating */}
+        <div className="relative -mb-2 aspect-[3/4] max-h-[50vh] mx-auto max-w-[280px] sm:max-w-[320px]">
           <Image
-            src="/images/hero-header.avif"
+            src="/images/hero-jumelles.avif"
             alt="Agence marketing B2B Vizion Toulouse"
             fill
             priority
-            className="object-cover object-top"
+            className="object-contain object-bottom"
           />
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
             style={{
-              background: "linear-gradient(to top, var(--bg-dark) 0%, var(--bg-dark) 5%, transparent 50%)",
+              background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)",
             }}
           />
         </div>
@@ -181,35 +190,50 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
         </div>
       </div>
 
-      {/* ===== DESKTOP LAYOUT — Image pleine hauteur à droite ===== */}
+      {/* ===== DESKTOP LAYOUT — Image flottante avec effet nuages ===== */}
       <div className="hidden lg:block relative min-h-screen">
         <div className="grain-overlay absolute inset-0 z-0" style={{ background: "var(--bg-dark)" }} />
 
-        {/* Image — pleine hauteur, colonne droite */}
-        <div
-          data-hero="image"
-          className="absolute top-0 right-0 bottom-0 w-[45%] z-[1]"
-        >
-          <Image
-            src="/images/hero-header.avif"
-            alt="Agence marketing B2B Vizion Toulouse"
-            fill
-            priority
-            sizes="50vw"
-            className="object-cover object-[center_25%]"
-          />
-          {/* Gradient fade to left */}
+        {/* Cloud / mist effect behind the photo */}
+        <div className="absolute inset-0 pointer-events-none z-[2] overflow-hidden">
+          {/* Large cloud mass — behind person */}
           <div
-            className="absolute -left-1 top-0 bottom-0 right-0 pointer-events-none"
+            className="absolute w-[60%] h-[80%] top-[5%] right-[0%]"
             style={{
-              background: "linear-gradient(to right, var(--bg-dark) 0%, rgba(12,12,10,0.7) 30%, rgba(12,12,10,0.2) 60%, transparent 100%)",
+              background: "radial-gradient(ellipse 70% 60% at 55% 45%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.02) 55%, transparent 70%)",
+              filter: "blur(35px)",
             }}
           />
-          {/* Bottom fade */}
+          {/* Upper cloud wisp */}
           <div
-            className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
+            className="absolute w-[45%] h-[35%] top-[5%] right-[8%]"
             style={{
-              background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)",
+              background: "radial-gradient(ellipse 90% 70% at 50% 40%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 50%, transparent 70%)",
+              filter: "blur(45px)",
+            }}
+          />
+          {/* Mid-level cloud — tighter behind shoulders */}
+          <div
+            className="absolute w-[35%] h-[45%] top-[20%] right-[10%]"
+            style={{
+              background: "radial-gradient(ellipse 80% 80% at 50% 50%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 40%, transparent 65%)",
+              filter: "blur(25px)",
+            }}
+          />
+          {/* Lower mist — fading down */}
+          <div
+            className="absolute w-[50%] h-[40%] bottom-[8%] right-[2%]"
+            style={{
+              background: "radial-gradient(ellipse 100% 80% at 50% 60%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 45%, transparent 65%)",
+              filter: "blur(50px)",
+            }}
+          />
+          {/* Accent tint in the cloud */}
+          <div
+            className="absolute w-[30%] h-[40%] top-[25%] right-[15%]"
+            style={{
+              background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 50%)",
+              filter: "blur(35px)",
             }}
           />
         </div>
@@ -223,18 +247,33 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                 "radial-gradient(ellipse 100% 100% at 30% 50%, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 55%)",
             }}
           />
+        </div>
+
+        {/* Photo — floating, no edges */}
+        <div
+          data-hero="image"
+          className="absolute bottom-0 right-[12%] z-[3] w-[44%] h-[92%]"
+        >
+          <Image
+            src="/images/hero-jumelles.avif"
+            alt="Agence marketing B2B Vizion Toulouse"
+            fill
+            priority
+            sizes="40vw"
+            className="object-contain object-bottom"
+          />
+          {/* Soft bottom fade into background */}
           <div
-            className="absolute w-[40%] h-[50%] bottom-[5%] left-[5%]"
+            className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
             style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 40% 70%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 50%)",
+              background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)",
             }}
           />
         </div>
 
         {/* Content — left column */}
         <div className="relative z-10 max-w-[82.5rem] mx-auto min-h-screen px-6 md:px-12">
-          <div data-hero="text-col" className="relative z-10 w-[60%] flex flex-col justify-center min-h-screen py-20">
+          <div data-hero="text-col" className="relative z-10 w-[55%] flex flex-col justify-center min-h-screen pt-28 pb-20">
             <div className="relative z-10">
               {/* Badge */}
               <div
@@ -289,36 +328,31 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
                 </Link>
               </div>
 
-              {/* Stats Bar */}
-              <div
-                data-hero="stats"
-                className="flex items-center gap-6 pt-4 border-t border-white/5 mb-8"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="text-accent font-heading font-bold text-2xl">70+</span>
-                  <span className="text-white/50 text-xs leading-tight">clients<br/>accompagnés</span>
-                </div>
-                <div className="w-px h-8 bg-white/10" />
-                <div className="flex items-center gap-2">
-                  <span className="text-accent font-heading font-bold text-2xl">5 ans</span>
-                  <span className="text-white/50 text-xs leading-tight">d&apos;expertise</span>
-                </div>
-                <div className="w-px h-8 bg-white/10" />
-                <div className="flex items-center gap-2">
-                  <span className="text-accent font-heading font-bold text-2xl">+500</span>
-                  <span className="text-white/50 text-xs leading-tight">assets marketing<br/>déjà livrés</span>
-                </div>
-              </div>
 
             </div>
           </div>
         </div>
 
-      </div>
+        {/* Stats cards — floating over the photo */}
+        <div
+          data-hero="stats"
+          className="absolute bottom-[14%] right-[5%] z-[5] flex gap-3"
+        >
+          {[
+            { value: "70+", label: "clients\naccompagnés" },
+            { value: "5 ans", label: "d'expertise" },
+            { value: "+500", label: "assets marketing\ndéjà livrés" },
+          ].map((stat) => (
+            <div
+              key={stat.value}
+              className="bg-white/5 backdrop-blur-md border border-white/10 px-5 py-3 flex items-center gap-3"
+            >
+              <span className="text-accent font-heading font-bold text-xl">{stat.value}</span>
+              <span className="text-white/60 text-[11px] leading-tight whitespace-pre-line">{stat.label}</span>
+            </div>
+          ))}
+        </div>
 
-      {/* Testimonial marquee — pleine largeur, collé sous le contenu */}
-      <div className="relative z-20">
-        <TestimonialMarquee embedded />
       </div>
 
       {/* Bottom gradient — transition vers la section suivante */}

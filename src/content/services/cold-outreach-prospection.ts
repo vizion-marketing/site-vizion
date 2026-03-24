@@ -8,9 +8,9 @@ export const coldOutreachProspection: ServiceContent = {
   order: 10,
 
   // SEO
-  metaTitle: "Prospection commerciale B2B : plus de RDV qualifiés | Vizion",
+  metaTitle: "Prospection commerciale B2B : plus de RDV qualifiés",
   metaDescription:
-    "Externalisez votre prospection commerciale B2B. Séquences multi-canal (email, LinkedIn, téléphone), personnalisation à l'échelle et rendez-vous qualifiés dès le premier mois.",
+    "Externalisez votre prospection commerciale B2B. Séquences multi-canal (email, LinkedIn, téléphone) et rendez-vous qualifiés dès le premier mois.",
   keywords: [
     "prospection commerciale",
     "prospection commerciale B2B",
@@ -71,8 +71,6 @@ export const coldOutreachProspection: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Nous structurons votre prospection commerciale pour générer des rendez-vous réguliers",
-  solutionSubtitle:
-    "Pas de messages en masse. Des séquences personnalisées, multi-canal et mesurables.",
   solutionImage: "/images/services/cold-outreach-prospection/solution.avif",
   solutionItems: [
     {
@@ -107,16 +105,7 @@ export const coldOutreachProspection: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on construit\ndes systèmes de prospection...",
     adjectives: ["personnalisés", "automatisés", "et surtout rentables"],
-    showcaseImages: [
-      "/images/services/cold-outreach-prospection/screenshots/01.avif",
-      "/images/services/cold-outreach-prospection/screenshots/02.avif",
-      "/images/services/cold-outreach-prospection/screenshots/03.avif",
-      "/images/services/cold-outreach-prospection/screenshots/04.avif",
-      "/images/services/cold-outreach-prospection/screenshots/05.avif",
-      "/images/services/cold-outreach-prospection/screenshots/06.avif",
-      "/images/services/cold-outreach-prospection/screenshots/07.avif",
-      "/images/services/cold-outreach-prospection/screenshots/08.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards
@@ -391,12 +380,12 @@ export const coldOutreachProspection: ServiceContent = {
     "Le cold outreach remplit votre pipeline. Ces services complètent le dispositif pour convertir plus et mieux.",
   relatedServices: [
     {
-      slug: "constitution-bases-donnees",
-      icon: "Users",
-      title: "Constitution de Bases de Données",
+      slug: "deploiement-crm",
+      icon: "Database",
+      title: "Deploiement CRM",
       description:
-        "La qualité de votre prospection dépend de la qualité de vos contacts. Nous construisons des bases de décideurs qualifiés, enrichies et vérifiées, prêtes à alimenter vos séquences d'outreach.",
-      href: "/services/cold-outreach-prospection",
+        "La qualite de votre prospection depend de la qualite de vos outils. Nous deploiement et configurons votre CRM pour centraliser vos contacts et piloter votre pipeline commercial.",
+      href: "/services/deploiement-crm",
     },
     {
       slug: "linkedin-for-growth",

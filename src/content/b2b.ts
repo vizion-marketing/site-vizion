@@ -1,9 +1,8 @@
 // ============================================================================
-// CONTENU PAGE "AGENCE MARKETING B2B" — /agence-marketing-b2b
+// CONTENU PAGE D'ACCUEIL — /
 // ============================================================================
-// Mot-clé primaire : "agence marketing b2b"
-// Angle : spécialisation B2B (cycles longs, multi-décideurs, sales enablement)
-// Anti-cannibalisation : homepage cible "agence marketing toulouse" (local)
+// Angle : partenaire de croissance pour les entreprises B2B (France & Europe)
+// 5 piliers alignés sur le menu services
 // ============================================================================
 
 import type { HeroContent, PiliersContent, FAQContent, BlogContent, LocalSEOContent } from "./home";
@@ -15,18 +14,18 @@ const SITE_URL = "https://by-vizion.com";
 // ============================================================================
 
 export const b2bSEO = {
-  title: "Agence Marketing B2B — Cycles de vente longs & multi-décideurs | Vizion",
+  title: "Vizion | Partenaire de croissance des entreprises B2B | France & Europe",
   description:
-    "Agence marketing B2B spécialisée dans les cycles de vente complexes. Positionnement, sales enablement, automatisation. +70 entreprises accompagnées. Basée à Toulouse.",
+    "Vizion accompagne les entreprises B2B françaises et européennes dans leur croissance. Stratégie, acquisition, sales enablement, digitalisation. +70 entreprises accompagnées depuis 2021.",
   keywords: [
     "agence marketing b2b",
-    "marketing b2b",
-    "agence marketing b2b toulouse",
+    "partenaire croissance b2b",
     "marketing b2b france",
+    "agence marketing b2b europe",
     "sales enablement b2b",
-    "positionnement b2b",
-    "agence b2b",
-    "marketing cycles de vente longs",
+    "croissance entreprise b2b",
+    "stratégie marketing b2b",
+    "accompagnement marketing b2b",
   ],
   ogImage: "/hero-binoculars.avif",
 };
@@ -36,17 +35,17 @@ export const b2bSEO = {
 // ============================================================================
 
 export const b2bHero: HeroContent = {
-  badge: "AGENCE MARKETING B2B",
-  h1: "L'agence marketing B2B de référence",
-  h1Highlight: "de référence",
+  badge: "PARTENAIRE DE CROISSANCE B2B",
+  h1: "Le partenaire de croissance des entreprises B2B",
+  h1Highlight: "de croissance",
   baseline:
-    "Cycles de 3 à 18 mois. 4 à 7 décideurs impliqués. Des objections techniques à chaque étape. Le marketing B2B exige une approche structurée, alignée sur le cycle de vente réel. Vizion pose le positionnement, déploie les canaux d'acquisition et équipe vos commerciaux pour convertir plus vite.",
+    "Votre offre est solide, mais votre marketing ne produit pas les résultats attendus. Vizion structure votre stratégie, construit votre crédibilité, déploie vos canaux d'acquisition et équipe vos commerciaux. Un partenaire qui intervient du diagnostic à la signature, pour accélérer votre développement.",
   badges: [],
   cta: {
     primary: { text: "Échanger avec un fondateur", href: "/contact" },
-    secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+    secondary: { text: "Nos études de cas clients B2B", href: "/cas-clients" },
   },
-  socialProof: "+70 ENTREPRISES B2B ACCOMPAGNÉES DEPUIS 2021",
+  socialProof: "+70 ENTREPRISES B2B ACCOMPAGNÉES EN FRANCE ET EN EUROPE DEPUIS 2021",
 };
 
 // ============================================================================
@@ -54,13 +53,13 @@ export const b2bHero: HeroContent = {
 // ============================================================================
 
 export const b2bIntro = {
-  title: "Le marketing B2B ne fonctionne pas comme le marketing grand public",
+  title: "La croissance B2B ne se décrète pas. Elle se structure.",
   paragraphs: [
-    "En B2B, la décision d'achat implique des comités, des budgets justifiés en ROI, des cycles de validation qui s'étalent sur des mois. Un prospect ne clique pas sur une publicité et n'achète pas dans la foulée. Il compare, consulte, négocie. Chaque interaction entre le premier contact et la signature doit porter le même message et lever les mêmes objections.",
-    "Le problème : la plupart des agences marketing appliquent des recettes pensées pour le B2C — de la notoriété, des likes, du contenu viral — à des contextes B2B où la décision d'achat prend 6 mois et mobilise un directeur technique, un acheteur et un DAF. Le résultat : beaucoup de bruit, peu de pipeline.",
-    "Vizion est une agence marketing B2B construite pour ces réalités. Nous partons du positionnement de votre offre, nous structurons le tunnel d'acquisition de bout en bout, et nous créons les outils qui permettent à vos commerciaux de closer. Pas de vanity metrics, pas de jargon : des résultats commerciaux mesurables.",
+    "Votre produit est bon. Vos clients existants sont satisfaits. Mais la croissance stagne : les prospects ne comprennent pas votre valeur, le pipeline n'est pas prévisible, vos commerciaux avancent sans outils adaptés. Le problème n'est pas votre offre. C'est le système qui la porte.",
+    "Vizion est le partenaire de croissance des entreprises B2B françaises et européennes. Nous intervenons là où le marketing devient un levier de développement : diagnostic des freins, construction du positionnement, déploiement des canaux d'acquisition, création des outils de vente, digitalisation des processus. Chaque action est calibrée pour rapprocher votre entreprise de son prochain palier de croissance.",
+    "Pas de livrables décoratifs, pas de vanity metrics. Un interlocuteur dédié, une feuille de route partagée, des résultats qui se mesurent en pipeline et en signatures.",
   ],
-  mission: "Notre mission : faire de votre offre B2B l'évidence sur son marché.",
+  mission: "Notre mission : être le levier de croissance que votre entreprise B2B n'a pas encore.",
 };
 
 // ============================================================================
@@ -68,77 +67,78 @@ export const b2bIntro = {
 // ============================================================================
 
 export const b2bPiliers: PiliersContent = {
-  surtitre: "Notre approche B2B",
-  h2: "Du positionnement au closing : nos 5 piliers pour les entreprises B2B",
+  surtitre: "Notre approche",
+  h2: "5 leviers de croissance pour les entreprises B2B",
   description:
-    "Les entreprises B2B ont besoin de clarté stratégique, d'un message qui résonne auprès de décideurs multiples, de canaux d'acquisition calibrés pour les cycles longs, de processus automatisés et d'outils qui accélèrent chaque étape du cycle de vente.",
+    "Chaque entreprise B2B qui accélère passe par les mêmes étapes : comprendre ses freins, affirmer son positionnement, générer du revenu, convertir plus vite, digitaliser ses processus. Nos 5 piliers couvrent l'ensemble du parcours de croissance.",
   badgeText: "",
   badgeStatus: "",
   piliers: [
     {
       numero: "01",
-      surtitre: "AUDIT & STRATÉGIE",
-      titre: "Audit et stratégie marketing",
+      surtitre: "PRENEZ LES BONNES DÉCISIONS",
+      titre: "Audit, stratégie et direction marketing",
       description:
-        "Vos opportunités stagnent, votre pipeline manque de visibilité et vous ne savez pas si le problème vient du message, des canaux ou du processus commercial. Nous auditons votre tunnel de vente B2B de bout en bout : du premier point de contact à la signature. Où les prospects décrochent-ils ? À quelle étape le concurrent prend-il l'avantage ? Quels outils manquent à vos équipes ? Le diagnostic produit une feuille de route qui cible les leviers à plus fort impact pour votre situation.",
+        "Vous investissez dans des actions marketing sans savoir lesquelles génèrent du résultat. Nous auditons votre positionnement, vos canaux et vos processus, puis nous construisons la feuille de route qui concentre vos ressources sur les leviers à plus fort impact. Direction marketing externalisée ou mission ciblée : nous nous adaptons à votre stade de croissance.",
       services: [
-        "Audit du tunnel de vente B2B",
-        "Analyse des pertes d'opportunités",
-        "Cartographie du parcours acheteur",
-        "Feuille de route priorisée",
+        "Audit marketing complet",
+        "Roadmap stratégique 6-12 mois",
+        "Direction marketing externalisée",
+        "Analyse concurrentielle",
+        "Cadrage budgétaire",
       ],
       cta: "DEMANDER UN AUDIT",
     },
     {
       numero: "02",
-      surtitre: "POSITIONNEMENT & NARRATIF",
-      titre: "Positionnement et narratif produit",
+      surtitre: "BÂTISSEZ VOTRE CRÉDIBILITÉ",
+      titre: "Positionnement, contenu et personal branding",
       description:
-        "Vos prospects comparent 4 ou 5 solutions aux fonctionnalités similaires. La différence se joue dans la capacité à formuler votre valeur de manière immédiate. Nous construisons un positionnement qui traduit la complexité technique de votre offre en bénéfices business compréhensibles par chaque profil décideur — du DSI au DAF. Un seul message, décliné par persona, porté avec cohérence par toute votre équipe commerciale.",
+        "Vos prospects vous comparent à vos concurrents sans percevoir la différence. Nous construisons un positionnement clair, un messaging adapté à chaque cible et les contenus qui installent votre expertise sur votre marché. Pour que votre valeur devienne évidente avant même le premier échange commercial.",
       services: [
-        "Matrice de positionnement concurrentiel",
-        "Proposition de valeur par persona",
-        "Architecture de message produit",
-        "Discours de marque unifié",
+        "Positionnement et messaging",
+        "Création de contenu B2B",
+        "Landing pages",
+        "Stratégie de personal branding",
       ],
     },
     {
       numero: "03",
-      surtitre: "TRAFIC & NOTORIÉTÉ",
-      titre: "Trafic et notoriété",
+      surtitre: "GÉNÉREZ DU REVENU",
+      titre: "SEO, campagnes publicitaires et prospection",
       description:
-        "Votre expertise est reconnue par vos clients existants, mais les prospects hors réseau ne vous trouvent pas. Nous déployons les canaux d'acquisition calibrés pour le B2B : référencement naturel sur vos requêtes métier, campagnes LinkedIn ciblées par fonction et secteur, contenu d'expertise qui positionne votre autorité, ABM pour les comptes stratégiques. Le trafic qualifié arrive convaincu avant même le premier échange commercial.",
+        "Votre expertise est reconnue par vos clients existants, mais invisible pour le reste du marché. Nous déployons les canaux d'acquisition calibrés pour le B2B : référencement naturel, campagnes ciblées, prospection structurée. Les prospects qualifiés arrivent de façon prévisible et mesurable.",
       services: [
-        "SEO technique et sémantique B2B",
-        "Campagnes LinkedIn Ads ciblées",
-        "Stratégie de contenu d'expertise",
-        "Account-Based Marketing",
+        "SEO et contenu organique",
+        "Campagnes LinkedIn, Google et Meta Ads",
+        "Cold outreach et prospection multi-canal",
+        "Suivi et optimisation continue",
       ],
     },
     {
       numero: "04",
-      surtitre: "AUTOMATISATION & IA",
-      titre: "Automatisation et intelligence artificielle",
+      surtitre: "ARMEZ VOS COMMERCIAUX",
+      titre: "Sales enablement et closing",
       description:
-        "Sur des cycles de vente de 3 à 18 mois, le suivi manuel est un gouffre de temps et de prospects perdus. Nous structurons et automatisons vos flux commerciaux : CRM configuré pour vos cycles longs, séquences de nurturing systématiques, scoring de leads automatisé, reporting unifié. L'IA accélère la qualification des contacts entrants et la personnalisation des approches. Vos équipes se concentrent sur la négociation et le closing.",
+        "Chaque commercial improvise son discours et les objections ne sont pas anticipées. Nous créons les outils qui transforment votre cycle de vente en processus reproductible : présentations par profil décideur, fiches concurrentielles, séquences de nurturing automatisées, workflows structurés.",
       services: [
-        "Structuration et automatisation CRM",
-        "Séquences de nurturing automatisées",
-        "Scoring et qualification IA",
-        "Reporting commercial unifié",
+        "Pitch decks et argumentaires",
+        "Battlecards et case studies",
+        "Lead nurturing automatisé",
+        "Workflows commerciaux",
       ],
     },
     {
       numero: "05",
-      surtitre: "CONTENUS D'AIDE À LA VENTE",
-      titre: "Contenus d'aide à la vente",
+      surtitre: "DIGITALISEZ VOTRE ENTREPRISE",
+      titre: "Site web, CRM et applications IA",
       description:
-        "Vos commerciaux utilisent la même présentation pour tous les interlocuteurs, du DSI au DAF. Les objections techniques sont traitées au cas par cas. Les relances dépendent de la mémoire de chacun. Nous créons un arsenal commercial complet : présentations par profil décideur, battle cards concurrence, réponses aux objections formalisées, séquences de relance chronométrées. Le cycle de vente B2B devient un processus reproductible, pas une improvisation.",
+        "Vos outils sont sous-exploités et vos processus restent manuels. Nous déployons les solutions digitales qui accélèrent votre activité : un site web qui convertit, un CRM structuré autour de votre cycle de vente, des applications IA qui libèrent du temps sur les tâches à forte valeur.",
       services: [
-        "Présentations par type de décideur",
-        "Battle cards concurrence",
-        "Guides d'appel et gestion d'objections",
-        "Séquences de relance structurées",
+        "Création ou refonte de site web",
+        "Déploiement et structuration CRM",
+        "Applications IA sur mesure",
+        "Audit de site web existant",
       ],
     },
   ],
@@ -155,29 +155,27 @@ export const b2bPiliers: PiliersContent = {
 // ============================================================================
 
 export const b2bLocalSEO: LocalSEOContent = {
-  surtitre: "[ IMPLANTATION ]",
-  h2: "Votre agence marketing B2B, basée à Toulouse",
-  h2Highlight: "Toulouse",
+  surtitre: "[ QUI SOMMES-NOUS ]",
+  h2: "Née à Toulouse, au service des entreprises B2B en France et en Europe",
+  h2Highlight: "France et en Europe",
   description:
-    "Vizion est implantée à Labège, au cœur de la technopole de Toulouse. Nous accompagnons des entreprises B2B dans toute la France, avec une proximité forte en Occitanie pour les ateliers en présentiel.",
+    "Vizion est née à Toulouse, au contact d'un écosystème B2B exigeant : aéronautique, SaaS, industrie, services. Aujourd'hui, nous accompagnons des entreprises B2B partout en France et en Europe, avec la même rigueur et la même proximité.",
   paragraphs: [
-    "Toulouse concentre un écosystème d'entreprises B2B parmi les plus dynamiques de France : aéronautique, spatial, éditeurs SaaS, santé, industrie. C'est dans cet environnement que Vizion a construit son expertise du marketing B2B complexe — au contact de cycles de vente longs, de décideurs techniques exigeants et d'offres à forte valeur ajoutée.",
-    "Notre intervention ne se limite pas à l'Occitanie. Nous accompagnons des entreprises B2B partout en France, avec un modèle hybride : ateliers stratégiques en présentiel quand c'est nécessaire, pilotage opérationnel à distance le reste du temps. La qualité de l'accompagnement ne dépend pas de la distance, mais de la rigueur du processus.",
+    "Notre approche s'est construite au contact de cycles de vente longs, de décideurs techniques et d'offres complexes à positionner. C'est cette exigence qui fait la différence : chaque mission Vizion repose sur un diagnostic approfondi, une feuille de route priorisée et un suivi opérationnel rigoureux.",
+    "Nous fonctionnons en modèle hybride : ateliers stratégiques en présentiel quand c'est utile, pilotage opérationnel à distance le reste du temps. La qualité de l'accompagnement ne dépend pas de la distance, mais de la rigueur du processus et de la relation de confiance que nous construisons avec chaque client.",
   ],
   preuveLocale: "Enseignant en stratégie LinkedIn à Toulouse School of Management (TSM)",
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.5!2d1.5102!3d43.5416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7552ff%3A0x40ae6168453a970!2sLab%C3%A8ge!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr",
   villes: [
     { name: "Toulouse", label: "Siège", href: "/" },
-    { name: "Montpellier", label: "Active", href: "/agence-marketing-montpellier" },
-    { name: "Albi", label: "Interventions", href: "/agence-marketing-albi" },
-    { name: "Auch", label: "Interventions", href: "/agence-marketing-auch" },
-    { name: "Agen", label: "Interventions", href: "/agence-marketing-agen" },
-    { name: "Castres", label: "Interventions", href: "/agence-marketing-castres" },
-    { name: "Rodez", label: "Interventions", href: "/agence-marketing-rodez" },
-    { name: "Mazamet", label: "Interventions", href: "/agence-marketing-communication-mazamet" },
+    { name: "Paris", label: "Clients actifs" },
+    { name: "Lyon", label: "Clients actifs" },
+    { name: "Bordeaux", label: "Clients actifs" },
+    { name: "Montpellier", label: "Clients actifs", href: "/agence-marketing-montpellier" },
+    { name: "Europe", label: "Remote" },
   ],
-  cta: { text: "Échanger sur votre enjeu B2B", href: "/contact" },
+  cta: { text: "Échanger sur vos enjeux de croissance", href: "/contact" },
 };
 
 // ============================================================================
@@ -185,10 +183,10 @@ export const b2bLocalSEO: LocalSEOContent = {
 // ============================================================================
 
 export const b2bBlog: BlogContent = {
-  surtitre: "[ RESSOURCES B2B ]",
-  h2: "Nos analyses pour les entreprises B2B",
-  h2Highlight: "entreprises B2B",
-  ctaText: "Voir tous les articles",
+  surtitre: "[ RESSOURCES ]",
+  h2: "Nos analyses pour accélérer votre croissance B2B",
+  h2Highlight: "votre croissance B2B",
+  ctaText: "Lire nos articles marketing B2B",
 };
 
 // ============================================================================
@@ -197,43 +195,43 @@ export const b2bBlog: BlogContent = {
 
 const faqQuestions = [
   {
-    question: "Qu'est-ce qu'une agence marketing B2B ?",
+    question: "Qu'est-ce qu'un partenaire de croissance B2B ?",
     answer:
-      "Une agence marketing B2B accompagne les entreprises qui vendent à d'autres entreprises. Contrairement au marketing grand public, le marketing B2B doit adresser des cycles de décision longs (3 à 18 mois), des comités d'achat composés de plusieurs profils (technique, financier, direction), et des offres souvent complexes à expliquer. L'agence intervient sur le positionnement de l'offre, la génération de prospects qualifiés, l'alignement marketing-ventes et la création d'outils qui accélèrent la décision d'achat.",
+      "Un partenaire de croissance B2B n'est pas un prestataire qui exécute des demandes. C'est un acteur qui prend la responsabilité de votre développement marketing et commercial. Chez Vizion, cela signifie un diagnostic de votre situation, une feuille de route priorisée, et un accompagnement opérationnel sur les 5 leviers de croissance : stratégie, crédibilité, acquisition, sales enablement et digitalisation. Un interlocuteur dédié pilote l'ensemble et mobilise les experts nécessaires.",
   },
   {
-    question: "Pourquoi le marketing B2B nécessite-t-il une approche spécialisée ?",
+    question: "Quels types d'entreprises B2B accompagnez-vous ?",
     answer:
-      "Parce que le parcours d'achat B2B n'a rien à voir avec le B2C. En B2B, un prospect ne passe pas de la publicité à l'achat en quelques minutes. Il compare des solutions, consulte des pairs, demande des démos, fait valider le budget. Chaque étape du cycle exige un contenu adapté et un message cohérent. Les agences généralistes produisent souvent du contenu B2C déguisé en B2B — beaucoup de visibilité, peu de pipeline commercial.",
+      "Nous accompagnons des PME et ETI B2B de 10 à 250 collaborateurs en France et en Europe. Éditeurs SaaS, industrie, services aux entreprises, ESN, cabinets de conseil, aéronautique, santé. Le dénominateur commun : une offre technique ou complexe, un cycle de vente long, et l'ambition d'accélérer la croissance de façon structurée.",
   },
   {
-    question: "Quels secteurs B2B Vizion accompagne-t-elle ?",
+    question: "Comment Vizion se distingue des autres agences marketing B2B ?",
     answer:
-      "Nous accompagnons des PME et ETI B2B de 10 à 250 collaborateurs dans tous les secteurs : éditeurs SaaS, industrie, services aux entreprises, ESN, cabinets de conseil, santé, aéronautique, agroalimentaire B2B. Le dénominateur commun de nos clients : une offre technique ou complexe, un cycle de vente long, et des décideurs multiples à convaincre.",
+      "Trois différences concrètes. Première : nous ne produisons rien sans avoir posé le diagnostic et la stratégie. Pas de campagne sans positionnement, pas de contenu sans feuille de route. Deuxième : nous couvrons l'ensemble du parcours de croissance, du positionnement à la digitalisation, avec des experts dédiés sur chaque pilier. Troisième : votre interlocuteur unique est un directeur marketing senior, pas un chef de projet junior qui relaie vos demandes.",
   },
   {
-    question: "Comment Vizion structure-t-elle un accompagnement marketing B2B ?",
+    question: "Comment se structure un accompagnement avec Vizion ?",
     answer:
-      "Chaque accompagnement démarre par un diagnostic : positionnement actuel, tunnel de vente, outils existants, discours commercial. À partir de ce diagnostic, nous construisons une feuille de route priorisée. Deux formats possibles : la mission ciblée (8 à 16 semaines sur un enjeu précis) ou l'accompagnement dans la durée (direction marketing externalisée, 6 mois minimum). Dans les deux cas, un directeur marketing senior est votre interlocuteur unique.",
+      "Deux formats possibles. La mission ciblée (8 à 16 semaines) intervient sur un enjeu précis : repositionnement, lancement produit, structuration du tunnel de vente. L'accompagnement dans la durée (6 mois minimum) : nous endossons le rôle de votre équipe marketing, avec un directeur dédié et l'accès à nos experts sur chaque pilier. Dans les deux cas, le point de départ est toujours un diagnostic.",
   },
   {
-    question: "Vizion remplace-t-elle l'équipe marketing interne ?",
+    question: "Vizion travaille-t-elle uniquement en France ?",
     answer:
-      "Pas nécessairement. Beaucoup de nos clients disposent déjà d'une équipe marketing. Nous intervenons alors en direction marketing externalisée ou sur des sujets spécifiques que l'équipe interne n'a pas le temps ou l'expertise de traiter : positionnement stratégique, architecture de message, automatisation CRM, IA appliquée. Le transfert de compétences fait partie de notre approche — l'objectif est que votre équipe soit plus autonome à la fin de la mission.",
+      "Non. Vizion est basée à Toulouse, mais accompagne des entreprises B2B partout en France et en Europe. Notre modèle hybride combine ateliers stratégiques en présentiel quand c'est pertinent et pilotage opérationnel à distance. La proximité géographique est un atout pour nos clients en Occitanie, mais la qualité de l'accompagnement repose sur le processus, pas sur la localisation.",
   },
   {
-    question: "Combien de temps pour voir des résultats en marketing B2B ?",
+    question: "En combien de temps voit-on des résultats ?",
     answer:
-      "Cela dépend de votre point de départ et de vos objectifs. Les premiers livrables (positionnement, supports commerciaux) sont opérationnels en 4 à 8 semaines. Les résultats d'acquisition (SEO, campagnes) se mesurent à partir de 3 à 6 mois. Sur un accompagnement de 6 mois, nos clients observent une amélioration mesurable du taux de conversion, une réduction du cycle de vente et une augmentation du pipeline qualifié. Nous cadrons des indicateurs concrets dès le départ.",
+      "Les délais dépendent de votre point de départ et des leviers activés. Les premiers livrables stratégiques (positionnement, feuille de route, supports commerciaux) sont opérationnels en 4 à 8 semaines. Les résultats d'acquisition (SEO, campagnes, prospection) se mesurent à partir de 3 à 6 mois. Nous cadrons des indicateurs concrets dès le départ pour mesurer l'avancement à chaque étape.",
   },
 ];
 
 export const b2bFAQ: FAQContent = {
   surtitre: "[ FAQ ]",
-  h2: "Questions fréquentes sur le marketing B2B",
-  h2Highlight: "marketing B2B",
+  h2: "Questions fréquentes sur notre accompagnement",
+  h2Highlight: "notre accompagnement",
   description:
-    "Voici les réponses aux questions que les dirigeants d'entreprises B2B nous posent le plus souvent avant de démarrer un accompagnement.",
+    "Voici les réponses aux questions que les dirigeants B2B nous posent le plus souvent avant de démarrer.",
   questions: faqQuestions,
   ctaText: "D'autres questions ?",
   ctaButton: { text: "Échangeons directement", href: "/contact" },
@@ -245,18 +243,18 @@ export const b2bFAQ: FAQContent = {
 
 export const b2bFinalCta = {
   trustBadge: "+70 entreprises B2B accompagnées",
-  h2: "Votre cycle de vente mérite un marketing à la hauteur",
-  h2Highlight: "à la hauteur",
+  h2: "Prêt à structurer votre prochain palier de croissance ?",
+  h2Highlight: "de croissance",
   description:
-    "Échangez 30 minutes avec un fondateur de Vizion. Nous analysons votre positionnement actuel, identifions les points de friction dans votre cycle de vente, et vous proposons un plan d'action concret. Sans engagement.",
+    "Échangez 30 minutes avec un fondateur de Vizion. Nous analysons votre situation actuelle, identifions vos freins de croissance, et vous proposons un plan d'action concret. Sans engagement.",
   cta: {
-    primary: { text: "Réserver un échange", href: "/contact" },
-    secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
+    primary: { text: "Réserver un diagnostic gratuit", href: "/contact" },
+    secondary: { text: "Voir nos résultats clients", href: "/cas-clients" },
   },
   trustElements: [
     "30 minutes avec un fondateur",
     "Sans engagement",
-    "Diagnostic B2B offert",
+    "Diagnostic offert",
   ],
 };
 
@@ -269,12 +267,12 @@ export const organizationSchema = {
   "@type": ["Organization", "ProfessionalService"],
   "@id": `${SITE_URL}/#organization`,
   name: "Vizion",
-  alternateName: "Vizion — Agence Marketing B2B",
+  alternateName: "Vizion, partenaire de croissance B2B",
   url: SITE_URL,
   logo: `${SITE_URL}/images/logo-vizion.avif`,
   image: `${SITE_URL}/hero-binoculars.avif`,
   description:
-    "Agence marketing B2B spécialisée dans les cycles de vente complexes. Positionnement, sales enablement, automatisation. Basée à Toulouse.",
+    "Vizion accompagne les entreprises B2B françaises et européennes dans leur croissance. Stratégie, acquisition, sales enablement, digitalisation. +70 entreprises accompagnées depuis 2021.",
   telephone: "+33750836543",
   email: "contact@by-vizion.com",
   foundingDate: "2021",

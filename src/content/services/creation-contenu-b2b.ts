@@ -8,9 +8,9 @@ export const creationContenuB2b: ServiceContent = {
   order: 6,
 
   // SEO
-  metaTitle: "Inbound Marketing B2B : Contenus qui Génèrent des Leads | Vizion",
+  metaTitle: "Inbound Marketing B2B : Contenus qui Génèrent des Leads",
   metaDescription:
-    "Agence spécialisée en inbound marketing B2B. Nous créons les contenus qui attirent vos cibles et alimentent votre cycle de vente : articles, livres blancs, case studies, newsletters.",
+    "Agence inbound marketing B2B. Contenus qui attirent vos cibles et alimentent votre cycle de vente : articles, livres blancs, case studies, newsletters.",
   keywords: [
     "inbound marketing B2B",
     "agence inbound marketing B2B",
@@ -71,8 +71,6 @@ export const creationContenuB2b: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Notre approche de l'inbound marketing B2B : des contenus qui servent chaque étape de votre cycle de vente",
-  solutionSubtitle:
-    "Pas de contenus décoratifs. Des actifs stratégiques alignés sur vos objectifs.",
   solutionImage: "/images/services/creation-contenu-b2b/solution.avif",
   solutionItems: [
     {
@@ -107,16 +105,7 @@ export const creationContenuB2b: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on produit\ndes contenus B2B...",
     adjectives: ["pertinents", "stratégiques", "et surtout utiles à la vente"],
-    showcaseImages: [
-      "/images/services/creation-contenu-b2b/screenshots/01.avif",
-      "/images/services/creation-contenu-b2b/screenshots/02.avif",
-      "/images/services/creation-contenu-b2b/screenshots/03.avif",
-      "/images/services/creation-contenu-b2b/screenshots/04.avif",
-      "/images/services/creation-contenu-b2b/screenshots/05.avif",
-      "/images/services/creation-contenu-b2b/screenshots/06.avif",
-      "/images/services/creation-contenu-b2b/screenshots/07.avif",
-      "/images/services/creation-contenu-b2b/screenshots/08.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

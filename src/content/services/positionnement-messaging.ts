@@ -8,9 +8,9 @@ export const positionnementMessaging: ServiceContent = {
   order: 5,
 
   // SEO
-  metaTitle: "Positionnement Marketing B2B : Clarifiez Votre Message | Vizion",
+  metaTitle: "Positionnement Marketing B2B : Clarifiez Votre Message",
   metaDescription:
-    "Positionnement marketing B2B et messaging par cible. Proposition de valeur, personas, argumentaires et guidelines. Résultats mesurables en 4 semaines. Devis gratuit.",
+    "Positionnement marketing B2B et messaging par cible. Proposition de valeur, personas, argumentaires et guidelines. Résultats mesurables en 4 semaines.",
   keywords: [
     "positionnement marketing",
     "positionnement marketing B2B",
@@ -71,8 +71,6 @@ export const positionnementMessaging: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Chez Vizion, nous clarifions votre positionnement marketing et architecturons vos messages pour chaque cible",
-  solutionSubtitle:
-    "Pas de slogans creux. Un cadre de messaging structuré, testable et déployable.",
   solutionImage: "/images/services/positionnement-messaging/solution.avif",
   solutionItems: [
     {
@@ -107,16 +105,7 @@ export const positionnementMessaging: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on construit\ndes messages...",
     adjectives: ["clairs", "différenciants", "et surtout vendeurs"],
-    showcaseImages: [
-      "/images/services/positionnement-messaging/screenshots/01.avif",
-      "/images/services/positionnement-messaging/screenshots/02.avif",
-      "/images/services/positionnement-messaging/screenshots/03.avif",
-      "/images/services/positionnement-messaging/screenshots/04.avif",
-      "/images/services/positionnement-messaging/screenshots/05.avif",
-      "/images/services/positionnement-messaging/screenshots/06.avif",
-      "/images/services/positionnement-messaging/screenshots/07.avif",
-      "/images/services/positionnement-messaging/screenshots/08.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

@@ -3,8 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { PortableText } from "@portabletext/react";
-import type { PortableTextComponents } from "@portabletext/react";
 import { ArrowUpRightIcon } from "@/components/icons";
 import {
   ArrowLeft,
@@ -38,8 +36,6 @@ import {
 import type { CaseStudy } from "../../../../../sanity/lib/types";
 import type { RelatedService } from "@/lib/sanity/services";
 import { resolveImageUrl } from "../../../../../sanity/lib/image";
-import { urlFor } from "../../../../../sanity/lib/image";
-import { calculateReadingTime } from "@/lib/portable-text-utils";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { sectorIconMap } from "@/lib/sectorIcons";
 import { DeliverablesGallery } from "@/components/sections/DeliverablesGallery";
@@ -62,173 +58,6 @@ function TrendIcon({ trend }: { trend: string }) {
   }
 }
 
-// ============================================================================
-// PORTABLE TEXT COMPONENTS (case-study-specific styling)
-// ============================================================================
-
-const caseStudyPTComponents: PortableTextComponents = {
-  block: {
-    h2: ({ children }) => (
-      <h2 className="font-heading font-normal text-2xl md:text-3xl tracking-tight text-black mt-16 mb-6 scroll-mt-24">{children}</h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="font-heading font-normal text-xl tracking-tight text-black mt-10 mb-4">{children}</h3>
-    ),
-    normal: ({ children }) => (
-      <p className="text-neutral-600 text-lg leading-relaxed mb-6 font-[var(--font-body)]">{children}</p>
-    ),
-    blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-black pl-6 py-4 my-8 bg-neutral-50 rounded-none">
-        <p className="text-xl font-medium text-black italic font-[var(--font-body)]">{children}</p>
-      </blockquote>
-    ),
-  },
-  marks: {
-    strong: ({ children }) => (
-      <strong className="font-bold text-black">{children}</strong>
-    ),
-    em: ({ children }) => <em>{children}</em>,
-    link: ({ value, children }) => {
-      const href = value?.href || "#";
-      const isExternal = href.startsWith("http");
-      if (isExternal) {
-        return (
-          <a href={href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-black transition-colors">
-            {children}
-          </a>
-        );
-      }
-      return (
-        <Link href={href} className="underline underline-offset-2 hover:text-black transition-colors">
-          {children}
-        </Link>
-      );
-    },
-    code: ({ children }) => (
-      <code className="bg-neutral-100 px-1.5 py-0.5 text-sm font-mono">{children}</code>
-    ),
-  },
-  list: {
-    bullet: ({ children }) => (
-      <ul className="space-y-3 mb-6">{children}</ul>
-    ),
-    number: ({ children }) => (
-      <ol className="space-y-3 mb-6 list-decimal list-inside">{children}</ol>
-    ),
-  },
-  listItem: {
-    bullet: ({ children }) => (
-      <li className="text-neutral-600 text-lg leading-relaxed font-[var(--font-body)] flex items-start gap-3">
-        <span className="w-1.5 h-1.5 bg-black rounded-none mt-3 shrink-0" />
-        <span>{children}</span>
-      </li>
-    ),
-    number: ({ children }) => (
-      <li className="text-neutral-600 text-lg leading-relaxed font-[var(--font-body)]">{children}</li>
-    ),
-  },
-  types: {
-    image: ({ value }) => {
-      if (!value?.asset) return null;
-      return (
-        <figure className="my-8">
-          <Image
-            src={urlFor(value).width(1200).url()}
-            alt={value.alt || ""}
-            width={1200}
-            height={675}
-            className="w-full h-auto rounded-none shadow-lg"
-          />
-          {value.caption && (
-            <figcaption className="mt-3 text-sm text-neutral-500 text-center font-medium">
-              {value.caption}
-            </figcaption>
-          )}
-        </figure>
-      );
-    },
-    figure: ({ value }) => {
-      if (!value?.image?.asset) return null;
-      const typeStyles: Record<string, string> = {
-        default: "bg-neutral-50 p-4",
-        mockup: "bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 md:p-10",
-        chart: "bg-white border border-neutral-200 p-4",
-        screenshot: "bg-neutral-100 p-2 shadow-lg",
-      };
-      const figType = value.type || "default";
-      return (
-        <figure className="my-10 md:my-14">
-          <div className={`${typeStyles[figType] || typeStyles.default} overflow-hidden`}>
-            <div className={figType === "mockup" ? "rounded-lg overflow-hidden shadow-2xl" : ""}>
-              <Image
-                src={urlFor(value.image).width(1200).url()}
-                alt={value.alt || ""}
-                width={1200}
-                height={675}
-                className="w-full h-auto"
-              />
-            </div>
-          </div>
-          {value.caption && (
-            <figcaption className="mt-3 text-sm text-neutral-500 text-center font-medium">
-              {value.caption}
-            </figcaption>
-          )}
-        </figure>
-      );
-    },
-    callout: ({ value }) => {
-      const styles: Record<string, { bg: string; icon: React.ReactNode; defaultTitle: string }> = {
-        insight: {
-          bg: "bg-accent/10 border-accent",
-          icon: <Zap className="w-5 h-5 text-black" />,
-          defaultTitle: "Point clé",
-        },
-        result: {
-          bg: "bg-emerald-50 border-emerald-500",
-          icon: <TrendingUp className="w-5 h-5 text-emerald-600" />,
-          defaultTitle: "Résultat",
-        },
-        warning: {
-          bg: "bg-amber-50 border-amber-500",
-          icon: <Target className="w-5 h-5 text-amber-600" />,
-          defaultTitle: "Attention",
-        },
-      };
-      const calloutType = value.type || "insight";
-      const style = styles[calloutType] || styles.insight;
-      return (
-        <div className={`my-8 p-6 border-l-4 ${style.bg}`}>
-          <div className="flex items-center gap-2 mb-3">
-            {style.icon}
-            <span className="text-sm font-bold tracking-wide text-black">
-              {value.title || style.defaultTitle}
-            </span>
-          </div>
-          <div className="text-neutral-700 leading-relaxed">{value.body}</div>
-        </div>
-      );
-    },
-    statHighlight: ({ value }) => (
-      <div className="my-10 p-6 md:p-8 bg-black text-white">
-        <div className="flex items-start gap-4">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="text-4xl md:text-5xl font-black tracking-tight">{value.value}</span>
-              {value.trend === "up" && <TrendingUp className="w-6 h-6 text-accent" />}
-              {value.trend === "down" && <TrendingDown className="w-6 h-6 text-accent" />}
-            </div>
-            <span className="text-lg font-semibold text-white/80">{value.label}</span>
-            {value.description && (
-              <p className="mt-3 text-sm text-white/60 leading-relaxed">{value.description}</p>
-            )}
-          </div>
-        </div>
-      </div>
-    ),
-  },
-};
-
 interface CaseStudyContentProps {
   caseStudy: CaseStudy;
   relatedCases: CaseStudy[];
@@ -238,10 +67,7 @@ interface CaseStudyContentProps {
 }
 
 export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, clientSlug, clientName }: CaseStudyContentProps) {
-  // Compute reading time from body
-  const readingTime = caseStudy.body
-    ? calculateReadingTime(caseStudy.body)
-    : "1 min de lecture";
+  const readingTime = "1 min de lecture";
 
   // Get sector icon
   const SectorIcon = sectorIconMap[caseStudy.sectorIcon] || Building2;
@@ -338,9 +164,9 @@ export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, cli
                 {caseStudy.title}
               </h1>
 
-              {/* Executive Summary */}
+              {/* Description */}
               <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-3xl mb-8">
-                {caseStudy.executiveSummary}
+                {caseStudy.description}
               </p>
 
               {/* Meta info */}
@@ -570,32 +396,11 @@ export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, cli
 
             {/* Main Content */}
             <div className="lg:col-span-8 order-1 lg:order-2">
-              {/* Portable Text Content */}
-              <div className="prose max-w-none">
-                {caseStudy.body && caseStudy.body.length > 0 && (
-                  <PortableText
-                    value={caseStudy.body}
-                    components={caseStudyPTComponents}
-                  />
-                )}
-              </div>
-
-              {/* Results Details */}
-              {caseStudy.resultsDetails && (
-                <motion.div
-                  variants={fadeInUp}
-                  initial="initial"
-                  whileInView="whileInView"
-                  viewport={{ once: true }}
-                  className="mt-16 p-8 bg-grey rounded-none"
-                >
-                  <h3 className="font-heading font-normal text-xl tracking-tight text-black mb-4">
-                    Impact & ROI
-                  </h3>
-                  <p className="text-neutral-600 text-lg leading-relaxed">
-                    {caseStudy.resultsDetails}
-                  </p>
-                </motion.div>
+              {/* Context */}
+              {caseStudy.context && (
+                <div className="prose max-w-none">
+                  <p className="text-neutral-600 text-lg leading-relaxed">{caseStudy.context}</p>
+                </div>
               )}
             </div>
           </div>

@@ -8,9 +8,9 @@ export const deploiementCrm: ServiceContent = {
   order: 14,
 
   // SEO
-  metaTitle: "Déploiement CRM : un outil adopté et rentable | Vizion",
+  metaTitle: "Déploiement CRM : un outil adopté et rentable",
   metaDescription:
-    "Le déploiement CRM ne se limite pas à installer un outil. Vizion configure HubSpot, Pipedrive ou Salesforce autour de votre cycle de vente B2B pour garantir l'adoption.",
+    "Déploiement CRM B2B : configuration de HubSpot, Pipedrive ou Salesforce autour de votre cycle de vente pour garantir adoption et rentabilité.",
   keywords: [
     "déploiement CRM",
     "déploiement CRM B2B",
@@ -71,8 +71,6 @@ export const deploiementCrm: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Notre approche du déploiement CRM : un outil adopté dès le premier mois",
-  solutionSubtitle:
-    "Pas de configuration standard. Un CRM taillé pour votre cycle de vente.",
   solutionImage: "/images/services/deploiement-crm/solution.avif",
   solutionItems: [
     {
@@ -107,17 +105,7 @@ export const deploiementCrm: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on déploie\ndes CRM...",
     adjectives: ["adoptés", "connectés", "et surtout rentables"],
-    showcaseImages: [
-      "/images/services/deploiement-crm/screenshots/01.avif",
-      "/images/services/deploiement-crm/screenshots/02.avif",
-      "/images/services/deploiement-crm/screenshots/03.avif",
-      "/images/services/deploiement-crm/screenshots/04.avif",
-      "/images/services/deploiement-crm/screenshots/05.avif",
-      "/images/services/deploiement-crm/screenshots/06.avif",
-      "/images/services/deploiement-crm/screenshots/07.avif",
-      "/images/services/deploiement-crm/screenshots/08.avif",
-      "/images/services/deploiement-crm/screenshots/09.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

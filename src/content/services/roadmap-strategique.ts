@@ -8,9 +8,9 @@ export const roadmapStrategique: ServiceContent = {
   order: 4,
 
   // SEO
-  metaTitle: "Plan Marketing B2B : Feuille de Route sur 12 Mois | Vizion",
+  metaTitle: "Plan Marketing B2B : Feuille de Route sur 12 Mois",
   metaDescription:
-    "Plan marketing B2B structuré sur 6 à 12 mois. Actions priorisées, budget canal par canal, KPIs et alignement marketing-ventes. Construisons votre feuille de route.",
+    "Plan marketing B2B structuré sur 6 à 12 mois. Actions priorisées, budget canal par canal, KPIs et alignement marketing-ventes. Devis gratuit.",
   keywords: [
     "plan marketing",
     "plan marketing B2B",
@@ -70,8 +70,6 @@ export const roadmapStrategique: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Chez Vizion, nous construisons votre plan marketing pour aligner vos actions sur vos objectifs",
-  solutionSubtitle:
-    "Pas de plan théorique. Une roadmap opérationnelle, chiffrée et partagée.",
   solutionImage: "/images/services/roadmap-strategique/solution.avif",
   solutionItems: [
     {
@@ -106,16 +104,7 @@ export const roadmapStrategique: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on construit\ndes roadmaps marketing...",
     adjectives: ["structurées", "actionnables", "et surtout alignées sur vos ventes"],
-    showcaseImages: [
-      "/images/services/roadmap-strategique/screenshots/01.avif",
-      "/images/services/roadmap-strategique/screenshots/02.avif",
-      "/images/services/roadmap-strategique/screenshots/03.avif",
-      "/images/services/roadmap-strategique/screenshots/04.avif",
-      "/images/services/roadmap-strategique/screenshots/05.avif",
-      "/images/services/roadmap-strategique/screenshots/06.avif",
-      "/images/services/roadmap-strategique/screenshots/07.avif",
-      "/images/services/roadmap-strategique/screenshots/08.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

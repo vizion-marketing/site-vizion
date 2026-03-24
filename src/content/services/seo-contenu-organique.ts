@@ -8,9 +8,9 @@ export const seoContenuOrganique: ServiceContent = {
   order: 7,
 
   // SEO
-  metaTitle: "Stratégie SEO B2B : Référencement Naturel Durable | Vizion",
+  metaTitle: "Stratégie SEO B2B : Référencement Naturel Durable",
   metaDescription:
-    "Stratégie SEO complète pour entreprises B2B : audit technique, recherche de mots-clés, production de contenu organique et netlinking. Trafic qualifié sans dépendre de la publicité.",
+    "Stratégie SEO B2B complète : audit technique, recherche de mots-clés, contenu organique et netlinking. Générez du trafic qualifié sans dépendre des ads.",
   keywords: [
     "stratégie SEO",
     "stratégie SEO B2B",
@@ -70,8 +70,6 @@ export const seoContenuOrganique: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Chez Vizion, nous construisons une machine à trafic organique qui travaille pour vous",
-  solutionSubtitle:
-    "Pas de tricks SEO. Une stratégie durable, mesurable et alignée sur vos ventes.",
   solutionImage: "/images/services/seo-contenu-organique/solution.avif",
   solutionItems: [
     {
@@ -106,15 +104,7 @@ export const seoContenuOrganique: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on construit\ndes stratégies SEO...",
     adjectives: ["solides", "durables", "et surtout rentables"],
-    showcaseImages: [
-      "/images/services/seo-contenu-organique/screenshots/01.avif",
-      "/images/services/seo-contenu-organique/screenshots/02.avif",
-      "/images/services/seo-contenu-organique/screenshots/03.avif",
-      "/images/services/seo-contenu-organique/screenshots/04.avif",
-      "/images/services/seo-contenu-organique/screenshots/05.avif",
-      "/images/services/seo-contenu-organique/screenshots/06.avif",
-      "/images/services/seo-contenu-organique/screenshots/07.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

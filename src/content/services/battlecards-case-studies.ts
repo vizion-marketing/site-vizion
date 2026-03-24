@@ -8,9 +8,9 @@ export const battlecardsCaseStudies: ServiceContent = {
   order: 13,
 
   // SEO
-  metaTitle: "Documentation Commerciale : Cas Clients et Battlecards | Vizion",
+  metaTitle: "Documentation Commerciale : Cas Clients et Battlecards",
   metaDescription:
-    "Cas clients et documentation commerciale sur mesure pour vos équipes B2B. Battlecards concurrentielles, études de cas chiffrées : donnez à vos commerciaux les preuves qui font signer.",
+    "Documentation commerciale B2B sur mesure. Battlecards concurrentielles et cas clients chiffrés pour donner à vos commerciaux les preuves qui signent.",
   keywords: [
     "cas clients et documentation commerciale",
     "battlecard concurrentielle",
@@ -71,8 +71,6 @@ export const battlecardsCaseStudies: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Cas clients et documentation commerciale : nous créons les preuves qui accélèrent chaque vente",
-  solutionSubtitle:
-    "Pas de documents génériques. Des outils de conviction calibrés pour votre marché.",
   solutionImage: "/images/services/battlecards-case-studies/solution.avif",
   solutionItems: [
     {
@@ -107,15 +105,7 @@ export const battlecardsCaseStudies: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on crée\ndes supports de conviction...",
     adjectives: ["factuels", "exploitables", "et surtout décisifs"],
-    showcaseImages: [
-      "/images/services/battlecards-case-studies/screenshots/01.avif",
-      "/images/services/battlecards-case-studies/screenshots/02.avif",
-      "/images/services/battlecards-case-studies/screenshots/03.avif",
-      "/images/services/battlecards-case-studies/screenshots/04.avif",
-      "/images/services/battlecards-case-studies/screenshots/05.avif",
-      "/images/services/battlecards-case-studies/screenshots/06.avif",
-      "/images/services/battlecards-case-studies/screenshots/07.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

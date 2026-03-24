@@ -8,9 +8,9 @@ export const campagnesPublicitaires: ServiceContent = {
   order: 9,
 
   // SEO
-  metaTitle: "Campagne Publicitaire B2B : Leads Qualifiés | Vizion",
+  metaTitle: "Campagne Publicitaire B2B : Leads Qualifiés",
   metaDescription:
-    "Vizion pilote votre campagne publicitaire B2B sur Google Ads, LinkedIn Ads et Meta Ads. Ciblage, créatives, landing pages et optimisation continue pour des leads qualifiés.",
+    "Campagne publicitaire B2B sur Google Ads, LinkedIn Ads et Meta Ads. Ciblage, créatives, landing pages et optimisation continue pour des leads qualifiés.",
   keywords: [
     "campagne publicitaire",
     "campagne publicitaire B2B",
@@ -70,8 +70,6 @@ export const campagnesPublicitaires: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Chaque campagne publicitaire devient un levier de pipeline commercial mesurable",
-  solutionSubtitle:
-    "Pas de campagnes en pilote automatique. Une stratégie calibrée, optimisée chaque semaine.",
   solutionImage: "/images/services/campagnes-publicitaires/solution.avif",
   solutionItems: [
     {
@@ -106,16 +104,7 @@ export const campagnesPublicitaires: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on pilote\ndes campagnes publicitaires...",
     adjectives: ["ciblées", "rentables", "et surtout mesurables"],
-    showcaseImages: [
-      "/images/services/campagnes-publicitaires/screenshots/01.avif",
-      "/images/services/campagnes-publicitaires/screenshots/02.avif",
-      "/images/services/campagnes-publicitaires/screenshots/03.avif",
-      "/images/services/campagnes-publicitaires/screenshots/04.avif",
-      "/images/services/campagnes-publicitaires/screenshots/05.avif",
-      "/images/services/campagnes-publicitaires/screenshots/06.avif",
-      "/images/services/campagnes-publicitaires/screenshots/07.avif",
-      "/images/services/campagnes-publicitaires/screenshots/08.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

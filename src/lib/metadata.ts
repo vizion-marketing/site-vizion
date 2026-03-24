@@ -15,16 +15,16 @@ export function createMetadata({
   image?: { url: string; alt: string };
 }): Metadata {
   const url = `${SITE_URL}${path}`;
-  const fullTitle = `${title} | ${SITE_NAME}`;
+  const ogTitle = `${title} | ${SITE_NAME}`;
   const ogImages = image
     ? [{ url: image.url.startsWith("/") ? `${SITE_URL}${image.url}` : image.url, width: 1200, height: 630, alt: image.alt }]
     : [];
 
   return {
-    title: fullTitle,
+    title,
     description,
     openGraph: {
-      title: fullTitle,
+      title: ogTitle,
       description,
       url,
       siteName: SITE_NAME,
@@ -34,7 +34,7 @@ export function createMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
+      title: ogTitle,
       description,
       ...(ogImages.length > 0 && { images: [ogImages[0].url] }),
     },

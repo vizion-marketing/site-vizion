@@ -3,6 +3,7 @@
 import type { ServiceContent } from "@/content/services";
 import {
   ServiceHero,
+  ServiceHeroV2,
   ServiceNarrative,
   SolutionSticky,
   WebScrollTitle,
@@ -26,7 +27,7 @@ export function ServiceDetailContent({
   return (
     <main>
       {/* 1. Hero (sombre) */}
-      <ServiceHero
+      <ServiceHeroV2
         category={service.category}
         title={service.heroTitle}
         subtitle={service.heroSubtitle}
@@ -34,7 +35,6 @@ export function ServiceDetailContent({
         imageUrl={service.heroImage}
         imageAlt={service.heroTitle}
         breadcrumbLabel={service.title}
-
       />
 
       {/* 2. Le constat (card) */}
@@ -44,7 +44,6 @@ export function ServiceDetailContent({
       {service.solutionItems.length > 0 && (
         <SolutionSticky
           title={service.solutionTitle}
-          subtitle={service.solutionSubtitle}
           image={service.solutionImage}
           items={service.solutionItems}
         />

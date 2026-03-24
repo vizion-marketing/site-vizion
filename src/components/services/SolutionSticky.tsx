@@ -11,14 +11,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface SolutionStickyProps {
   title: string;
-  subtitle?: string;
   image: string;
   items: SolutionItem[];
 }
 
 export function SolutionSticky({
   title,
-  subtitle,
   image,
   items,
 }: SolutionStickyProps) {
@@ -70,19 +68,6 @@ export function SolutionSticky({
         opacity: 0,
         y: 30,
         duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-
-      // Subtitle
-      gsap.from("[data-solution='subtitle']", {
-        opacity: 0,
-        y: 20,
-        duration: 0.7,
-        delay: 0.15,
         ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -212,14 +197,6 @@ export function SolutionSticky({
             >
               {title}
             </h2>
-            {subtitle && (
-              <p
-                data-solution="subtitle"
-                className="text-[14px] sm:text-[15px] text-white/60 leading-relaxed max-w-lg"
-              >
-                {subtitle}
-              </p>
-            )}
           </div>
 
           {/* Cards with progress bar */}

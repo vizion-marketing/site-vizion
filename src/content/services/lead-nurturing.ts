@@ -8,9 +8,9 @@ export const leadNurturing: ServiceContent = {
   order: 15,
 
   // SEO
-  metaTitle: "Lead Nurturing B2B : convertir vos prospects | Vizion",
+  metaTitle: "Lead Nurturing B2B : convertir vos prospects",
   metaDescription:
-    "Déployez une stratégie de lead nurturing B2B qui transforme vos prospects en clients. Séquences emailing personnalisées, scoring comportemental et optimisation continue du pipeline.",
+    "Stratégie de lead nurturing B2B pour transformer vos prospects en clients. Séquences emailing personnalisées, scoring comportemental et optimisation.",
   keywords: [
     "lead nurturing",
     "lead nurturing B2B",
@@ -71,8 +71,6 @@ export const leadNurturing: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Notre approche du lead nurturing : des séquences qui transforment vos leads en opportunités qualifiées",
-  solutionSubtitle:
-    "Pas d'envois massifs. Des parcours personnalisés, mesurés et optimisés.",
   solutionImage: "/images/services/lead-nurturing/solution.avif",
   solutionItems: [
     {
@@ -107,16 +105,7 @@ export const leadNurturing: ServiceContent = {
     hook: "Bref.",
     phrase: "Chez Vizion, on construit\ndes séquences de nurturing...",
     adjectives: ["ciblées", "personnalisées", "et surtout rentables"],
-    showcaseImages: [
-      "/images/services/lead-nurturing/screenshots/01.avif",
-      "/images/services/lead-nurturing/screenshots/02.avif",
-      "/images/services/lead-nurturing/screenshots/03.avif",
-      "/images/services/lead-nurturing/screenshots/04.avif",
-      "/images/services/lead-nurturing/screenshots/05.avif",
-      "/images/services/lead-nurturing/screenshots/06.avif",
-      "/images/services/lead-nurturing/screenshots/07.avif",
-      "/images/services/lead-nurturing/screenshots/08.avif",
-    ],
+    showcaseImages: [],
   },
 
   // Bento featured cards

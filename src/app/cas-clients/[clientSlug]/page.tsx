@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Client non trouvé" };
   }
 
-  const title = client.metaTitle || `${client.name} — Cas client Vizion`;
+  const title = client.metaTitle || `${client.name} | Cas client Vizion`;
   const description = client.metaDescription || client.description;
   const url = `${SITE_URL}${client.url}`;
   const imageUrl = resolveImageUrl(client.mainImage, 1200);

@@ -148,7 +148,6 @@ export interface ServiceContent {
 
   // Solution sticky
   solutionTitle: string;
-  solutionSubtitle?: string;
   solutionImage: string;
   solutionItems: SolutionItem[];
 

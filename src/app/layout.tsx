@@ -7,6 +7,7 @@ import { LazyCallWidget } from "@/components/LazyCallWidget";
 import { MotionProvider } from "@/components/MotionProvider";
 import SmoothScroller from "@/components/SmoothScroller";
 import { ComingSoonProvider } from "@/components/ComingSoonProvider";
+import { PageTransitionWrapper } from "@/components/PageTransitionWrapper";
 
 // DM Sans pour titres et corps
 const dmSans = DM_Sans({
@@ -106,7 +107,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <MotionProvider>
             <ComingSoonProvider>
               <HeaderServer />
-              <main>{children}</main>
+              <PageTransitionWrapper>
+                <main>{children}</main>
+              </PageTransitionWrapper>
               <Footer />
               <LazyCallWidget />
             </ComingSoonProvider>

@@ -15,15 +15,15 @@ import type { Client, CaseStudy } from "../../../sanity/lib/types";
 import { resolveImageUrl } from "../../../sanity/lib/image";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { fadeInUp, staggerContainer, cardVariant } from "@/lib/animations";
-import { sectors, sectorIconMap } from "@/lib/sectorIcons";
+import { companyTypes, sectorIconMap } from "@/lib/sectorIcons";
 
-// Map sector name → URL slug for SEO-friendly links
-const sectorSlugMap: Record<string, string> = {
+// Map company type → URL slug for SEO-friendly links
+const companyTypeSlugMap: Record<string, string> = {
   Franchise: "franchise",
-  "SaaS B2B": "saas-b2b",
-  "Services B2B": "services-b2b",
-  "Industrie B2B": "industrie-b2b",
-  "Business Local": "business-local",
+  PME: "pme",
+  ETI: "eti",
+  "Scale-up": "scale-up",
+  "Start-up": "start-up",
 };
 
 interface CasClientsContentProps {
@@ -36,10 +36,10 @@ interface CasClientsContentProps {
 export function CasClientsContent({ clients, caseStudies, featuredClient, initialSector }: CasClientsContentProps) {
   const [selectedSector, setSelectedSector] = useState(initialSector || "all");
 
-  // Filter clients by sector
+  // Filter clients by company type
   const filteredClients = selectedSector === "all"
     ? clients
-    : clients.filter((c) => c.sector === selectedSector);
+    : clients.filter((c) => c.companyType === selectedSector);
 
   // Count case studies per client
   function caseCountForClient(clientSlug: string): number {
@@ -150,7 +150,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
                       <div>
                         <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-[10px] font-bold tracking-widest text-white">
                           <Star size={12} className="fill-[var(--color-accent)] text-accent" />
-                          {featuredClient.sector}
+                          {featuredClient.companyType} &bull; {featuredClient.sector}
                         </span>
                       </div>
                       <div className="flex items-center gap-4">
@@ -176,7 +176,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
                   <div className="p-8 lg:p-12 flex flex-col justify-between">
                     <div>
                       <h2 className="font-[var(--font-body)] font-black text-2xl lg:text-3xl tracking-tight text-primary mb-4 group-hover:text-secondary transition-colors">
-                        {featuredClient.carouselTitle}
+                        {featuredClient.name}
                       </h2>
                       <p className="text-secondary text-base leading-relaxed mb-6">
                         {featuredClient.description}
@@ -187,18 +187,10 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
                       <div className="flex gap-4 mb-6">
                         <div className="bg-card border border-black/[0.06] px-5 py-4">
                           <span className="text-2xl font-black text-primary block">
-                            {(featuredClient.carouselStat as { value: string; label: string }).value}
-                          </span>
-                          <span className="text-[10px] font-medium text-muted">
-                            {(featuredClient.carouselStat as { value: string; label: string }).label}
-                          </span>
-                        </div>
-                        <div className="bg-card border border-black/[0.06] px-5 py-4">
-                          <span className="text-2xl font-black text-primary block">
                             {caseCountForClient(featuredClient.slug)}
                           </span>
                           <span className="text-[10px] font-medium text-muted">
-                            cas détaillés
+                            {caseCountForClient(featuredClient.slug) > 1 ? "cas détaillés" : "cas détaillé"}
                           </span>
                         </div>
                       </div>
@@ -245,13 +237,13 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
 
             {/* Filters — buttons for UX + hidden links for SEO */}
             <div className="flex flex-wrap gap-2">
-              {sectors.map((sector) => {
+              {companyTypes.map((sector) => {
                 const isActive = selectedSector === sector.id;
                 const IconComponent = sector.icon;
-                const sectorSlug = sectorSlugMap[sector.id];
+                const typeSlug = companyTypeSlugMap[sector.id];
                 const href = sector.id === "all"
                   ? "/cas-clients"
-                  : `/cas-clients/secteur/${sectorSlug}`;
+                  : `/cas-clients/secteur/${typeSlug}`;
                 return (
                   <Link
                     key={sector.id}
@@ -285,7 +277,6 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
               {filteredClients.map((client, idx) => {
                 const SectorIcon = sectorIconMap[client.sectorIcon] || Building2;
                 const casCount = caseCountForClient(client.slug);
-                const stat = client.carouselStat as { value: string; label: string };
 
                 return (
                   <motion.div
@@ -334,7 +325,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
                               <SectorIcon size={16} className="text-primary" />
                             </div>
                             <span className="text-[10px] font-bold tracking-widest text-muted">
-                              {client.sector}
+                              {client.companyType} &bull; {client.sector}
                             </span>
                           </div>
                           {client.featured && (
@@ -353,23 +344,13 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
 
                       {/* Stats */}
                       <div className="px-6 py-4 bg-card border-t border-black/[0.06]">
-                        <div className="grid grid-cols-2 gap-3">
-                          <div className="text-center">
-                            <span className="text-lg font-black text-primary block leading-tight">
-                              {stat.value}
-                            </span>
-                            <span className="text-[9px] font-medium text-muted leading-tight block">
-                              {stat.label}
-                            </span>
-                          </div>
-                          <div className="text-center">
-                            <span className="text-lg font-black text-primary block leading-tight">
-                              {casCount}
-                            </span>
-                            <span className="text-[9px] font-medium text-muted leading-tight block">
-                              {casCount > 1 ? "cas clients" : "cas client"}
-                            </span>
-                          </div>
+                        <div className="text-center">
+                          <span className="text-lg font-black text-primary block leading-tight">
+                            {casCount}
+                          </span>
+                          <span className="text-[9px] font-medium text-muted leading-tight block">
+                            {casCount > 1 ? "cas clients" : "cas client"}
+                          </span>
                         </div>
                       </div>
 

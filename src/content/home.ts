@@ -367,51 +367,51 @@ export const homeContent: HomeContent = {
   // 5 PILIERS (Tunnel de vente Vizion)
   // --------------------------------------------------------------------------
   piliers: {
-    surtitre: "Notre méthodologie",
-    h2: "Vizion, un partenaire stratégique, au service des entreprises occitanes",
-    description: "Vizion a développé des services structurants, conçus pour répondre aux enjeux concrets des entreprises : clarifier le positionnement, structurer l'acquisition, équiper les commerciaux, automatiser les processus. Pas de prestations gadgets, seulement ce qui génère un impact mesurable sur votre croissance.",
+    surtitre: "Notre approche",
+    h2: "5 leviers de croissance pour votre entreprise",
+    description: "Vizion accompagne les entreprises dans leur développement avec une approche structurée : comprendre vos freins, affirmer votre positionnement, générer du revenu, convertir plus vite, digitaliser vos processus.",
     badgeText: "Notre approche",
-    badgeStatus: "CONSEIL STRATÉGIQUE",
+    badgeStatus: "PARTENAIRE DE CROISSANCE",
     piliers: [
       {
         numero: "01",
-        surtitre: "Vous investissez sans savoir ce qui fonctionne vraiment",
-        titre: "Audit & stratégie marketing",
-        description: "Votre marketing ne génère pas de résultats mesurables et vous ne savez pas pourquoi. Nous auditons votre positionnement, vos canaux et vos outils, puis nous structurons la feuille de route et pilotons sa mise en place. Direction marketing externalisée ou renfort ponctuel : nous nous adaptons à votre organisation. Pour que chaque euro investi repose sur un diagnostic solide et une exécution pilotée, pas sur des intuitions.",
-        services: ["Audit marketing complet", "Analyse concurrentielle", "Diagnostic des canaux d'acquisition", "Feuille de route stratégique", "Direction marketing externalisée", "Cadrage budgétaire"],
+        surtitre: "PRENEZ LES BONNES DÉCISIONS",
+        titre: "Audit, stratégie et direction marketing",
+        description: "Vous investissez dans des actions marketing sans savoir lesquelles génèrent du résultat. Nous auditons votre positionnement, vos canaux et vos processus, puis nous construisons la feuille de route qui concentre vos ressources sur les leviers à plus fort impact. Direction marketing externalisée ou mission ciblée : nous nous adaptons à votre stade de croissance.",
+        services: ["Audit marketing complet", "Roadmap stratégique 6-12 mois", "Direction marketing externalisée", "Analyse concurrentielle", "Cadrage budgétaire"],
         cta: "DEMANDER UN AUDIT"
       },
       {
         numero: "02",
-        surtitre: "POSITIONNEMENT & NARRATIF PRODUIT",
-        titre: "Votre offre est trop complexe à expliquer en une phrase",
-        description: "Vos prospects ne comprennent pas ce qui vous distingue et vos commerciaux racontent chacun une version différente. Nous construisons un positionnement clair et un narratif produit structuré, adaptés à chaque segment de votre marché. Pour que vos clients idéaux comprennent instantanément votre valeur et vous choisissent face à la concurrence.",
-        services: ["Matrice de positionnement", "Proposition de valeur", "Architecture de message par segment", "Personas affinés", "Narratif produit", "Discours de marque"]
+        surtitre: "BÂTISSEZ VOTRE CRÉDIBILITÉ",
+        titre: "Positionnement, contenu et personal branding",
+        description: "Vos prospects vous comparent à vos concurrents sans percevoir la différence. Nous construisons un positionnement clair, un messaging adapté à chaque cible et les contenus qui installent votre expertise sur votre marché.",
+        services: ["Positionnement et messaging", "Création de contenu B2B", "Landing pages", "Stratégie de personal branding"]
       },
       {
         numero: "03",
-        surtitre: "TRAFIC & NOTORIÉTÉ",
-        titre: "Vous avez le bon produit, mais personne ne vous connaît",
-        description: "Votre offre mérite d'être vue, mais votre marché ne sait pas que vous existez. Nous déployons les canaux d'acquisition adaptés à votre cible : SEO, campagnes publicitaires, LinkedIn, contenu stratégique. Pour que les bons prospects vous trouvent avant vos concurrents et arrivent déjà convaincus par votre promesse.",
-        services: ["SEO & référencement", "Campagnes LinkedIn Ads", "Google Ads & Meta Ads", "Stratégie de contenu", "Notoriété dirigeant LinkedIn", "Suivi et optimisation continue"]
+        surtitre: "GÉNÉREZ DU REVENU",
+        titre: "SEO, campagnes publicitaires et prospection",
+        description: "Votre expertise est reconnue par vos clients existants, mais invisible pour le reste du marché. Nous déployons les canaux d'acquisition qui amènent des prospects qualifiés de façon prévisible et mesurable.",
+        services: ["SEO et contenu organique", "Campagnes LinkedIn, Google et Meta Ads", "Cold outreach et prospection", "Suivi et optimisation continue"]
       },
       {
         numero: "04",
-        surtitre: "AUTOMATISATION & INTELLIGENCE ARTIFICIELLE",
-        titre: "Vos équipes perdent du temps sur des tâches à faible valeur",
-        description: "Vos processus marketing et commerciaux sont manuels, chronophages et sujets aux erreurs. Nous déployons les automatisations et les outils d'IA adaptés à votre réalité opérationnelle. Pour que votre équipe se concentre sur ce qui génère vraiment du revenu : la stratégie et la relation client.",
-        services: ["Déploiement CRM", "Automatisations marketing", "Intégrations sur mesure", "Outils d'IA appliqués", "Tableaux de bord unifiés", "Qualification automatisée"]
+        surtitre: "ARMEZ VOS COMMERCIAUX",
+        titre: "Sales enablement et closing",
+        description: "Chaque commercial improvise son discours et les objections ne sont pas anticipées. Nous créons les outils qui transforment votre cycle de vente en processus reproductible, du premier rendez-vous à la signature.",
+        services: ["Pitch decks et argumentaires", "Battlecards et case studies", "Lead nurturing automatisé", "Workflows commerciaux"]
       },
       {
         numero: "05",
-        surtitre: "CONTENUS D'AIDE À LA VENTE",
-        titre: "Vos commerciaux improvisent à chaque rendez-vous",
-        description: "Chaque commercial raconte une histoire différente, les présentations sont obsolètes et les objections ne sont pas anticipées. Nous créons les supports alignés sur votre positionnement : présentations, fiches concurrentielles, guides d'appel. Pour que chaque interaction commerciale renforce la même promesse, du premier contact à la signature.",
-        services: ["Présentations commerciales alignées", "Fiches concurrentielles", "Guides et trames d'appel", "Gestion des objections", "Séquences de relance", "Propositions commerciales structurées"]
+        surtitre: "DIGITALISEZ VOTRE ENTREPRISE",
+        titre: "Site web, CRM et applications IA",
+        description: "Vos outils sont sous-exploités et vos processus restent manuels. Nous déployons les solutions digitales qui accélèrent votre activité : site web performant, CRM structuré, applications IA sur mesure.",
+        services: ["Création ou refonte de site web", "Déploiement et structuration CRM", "Applications IA sur mesure", "Audit de site web existant"]
       }
     ],
-    ctaText: "Rejoignez les 70+ entreprises qui ont aligné leur tunnel de vente avec Vizion.",
-    socialProofText: "+70 entreprises accompagnées à Toulouse et en France depuis 2021",
+    ctaText: "Rejoignez les 70+ entreprises qui accélèrent leur croissance avec Vizion.",
+    socialProofText: "+70 entreprises accompagnées en France et en Europe depuis 2021",
     cta: {
       secondary: { text: "Voir nos réalisations", href: "/cas-clients" },
       primary: { text: "Parlons de vos enjeux", href: "/contact" }

@@ -3,7 +3,7 @@
 import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Globe, Layout, Users, Presentation, FileText, Megaphone, Sparkles, Database } from "lucide-react";
-import { ComingSoonLink } from "@/components/ComingSoonLink";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLenis } from "@/components/SmoothScroller";
@@ -27,49 +27,57 @@ const TAB_CONTENT = {
     title: "Site web",
     description: "Votre site est la première impression. Nous construisons des sites où le visiteur comprend votre offre en 5 secondes. Pas des vitrines esthétiques que personne ne comprend.",
     image: "/images/pigment.avif",
-    link: "/services/site-web",
+    link: "/services/creation-refonte-site-web",
+    ctaLabel: "Création de site web B2B",
   },
   landingpages: {
     title: "Landing pages",
     description: "Des pages conçues pour un objectif : convertir. Structure testée, rédaction persuasive orientée problème, formulaire au bon moment.",
     image: "/images/landing-dashboard.avif",
-    link: "/services/landing-pages",
+    link: "/services/creation-landing-page",
+    ctaLabel: "Création de landing page",
   },
   casclients: {
     title: "Cas clients",
     description: "Vos prospects ont besoin de preuves. Nous transformons vos succès en études de cas structurées qui lèvent les objections et accélèrent la décision.",
     image: "/images/casclients-dashboard.avif",
-    link: "/services/cas-clients",
+    link: "/services/battlecards-case-studies",
+    ctaLabel: "Battlecards et case studies",
   },
   salesdeck: {
     title: "Présentation commerciale",
     description: "La présentation que vos commerciaux utilisent vraiment. Structure narrative, arguments alignés sur le positionnement, réponses aux objections intégrées.",
     image: "/images/salesdeck-dashboard.avif",
-    link: "/services/sales-deck",
+    link: "/services/pitch-decks-argumentaires",
+    ctaLabel: "Pitch decks et argumentaires",
   },
   leadmagnets: {
     title: "Contenus d'acquisition",
     description: "Guides, modèles, listes de contrôle : des contenus à forte valeur qui génèrent des prospects qualifiés et positionnent votre expertise sur votre marché.",
     image: "/images/leadmagnets-dashboard.avif",
-    link: "/services/lead-magnets",
+    link: "/services/creation-contenu-b2b",
+    ctaLabel: "Création de contenu B2B",
   },
   publicite: {
     title: "Publicité",
     description: "Campagnes LinkedIn Ads, Google Ads et Meta Ads. Ciblage précis, messages alignés sur le positionnement, optimisation continue.",
     image: "/images/publicite-dashboard.avif",
-    link: "/services/publicite",
+    link: "/services/campagnes-publicitaires",
+    ctaLabel: "Campagnes publicitaires B2B",
   },
   applicationsia: {
     title: "Applications IA",
     description: "Outils métier sur mesure propulsés par l'intelligence artificielle. Qualification automatisée, scoring de prospects, production de contenu accélérée. L'IA au service de votre croissance.",
     image: "/images/ia-highlight/outils-metier.png",
-    link: "/contact",
+    link: "/services/applications-ia",
+    ctaLabel: "Applications IA marketing",
   },
   crm: {
     title: "CRM",
     description: "Déploiement et structuration de votre CRM pour aligner marketing et ventes. Pipelines configurés, automatisations intégrées, données exploitables pour piloter votre croissance.",
     image: "/images/ia-highlight/tableaux-de-bord.png",
-    link: "/contact",
+    link: "/services/deploiement-crm",
+    ctaLabel: "Déploiement CRM B2B",
   },
 };
 
@@ -385,12 +393,12 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
                           <p className="text-white/75 text-[15px] lg:text-[16px] font-[var(--font-body)] leading-relaxed mb-8 max-w-lg">
                             {tabContent.description}
                           </p>
-                          <ComingSoonLink className="group inline-flex items-center gap-3">
+                          <Link href={tabContent.link} className="group inline-flex items-center gap-3">
                             <span className="bg-accent text-black px-6 py-3 text-[14px] font-[var(--font-body)] font-semibold transition-all duration-300 group-hover:bg-white">
-                              En savoir plus
+                              {tabContent.ctaLabel}
                             </span>
                             <ArrowUpRight size={18} className="text-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                          </ComingSoonLink>
+                          </Link>
                         </motion.div>
                       </AnimatePresence>
                     </div>
@@ -472,9 +480,13 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
                     <h3 className="font-heading font-medium text-[22px] leading-[1.1] tracking-[-0.02em] text-white mb-2" aria-hidden="true">
                       {tabContent.title}
                     </h3>
-                    <p className="text-white/70 text-[13px] font-[var(--font-body)] leading-relaxed line-clamp-3">
+                    <p className="text-white/70 text-[13px] font-[var(--font-body)] leading-relaxed line-clamp-3 mb-3">
                       {tabContent.description}
                     </p>
+                    <Link href={tabContent.link} className="inline-flex items-center gap-2 text-[12px] font-semibold text-accent">
+                      {tabContent.ctaLabel}
+                      <ArrowUpRight size={14} />
+                    </Link>
                   </div>
 
                   {/* Accent bar top edge */}

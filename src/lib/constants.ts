@@ -22,13 +22,15 @@ export interface ServiceMenuItem {
 export interface ServiceMenuCategory {
   title: string;
   icon: string; // Nom Lucide icon
+  href?: string; // Lien vers la page pilier
   items: ServiceMenuItem[];
 }
 
 export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
   {
-    title: "Audit & Stratégie",
+    title: "Prenez les bonnes décisions",
     icon: "Compass",
+    href: "/services/strategie-marketing",
     items: [
       {
         label: "Audit marketing",
@@ -42,23 +44,24 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
         icon: "Map",
         href: "/services/roadmap-strategique",
       },
+      {
+        label: "Direction marketing externalisée",
+        description: "Un directeur marketing dédié, sans les contraintes d'un recrutement",
+        icon: "UserCog",
+        href: "/services/direction-marketing-externalisee",
+      },
     ],
   },
   {
-    title: "Product Marketing",
+    title: "Bâtissez votre crédibilité",
     icon: "Rocket",
+    href: "/services/credibilite-positionnement",
     items: [
       {
         label: "Positionnement & Messaging",
         description: "Clarifiez votre valeur pour chaque cible",
         icon: "Target",
         href: "/services/positionnement-messaging",
-      },
-      {
-        label: "Création ou refonte de site web",
-        description: "Déployez une interface web qui sert votre croissance",
-        icon: "Globe",
-        href: "/services/creation-refonte-site-web",
       },
       {
         label: "Création de landing pages",
@@ -73,28 +76,23 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
         href: "/services/creation-contenu-b2b",
       },
       {
-        label: "Audit de site web",
-        description: "Identifiez ce qui freine les performances de votre site",
-        icon: "SearchCheck",
-        href: "/services/audit-site-web",
+        label: "Stratégie de personal branding",
+        description: "Faites de vos dirigeants des références sur leur marché",
+        icon: "User",
+        href: "/services/strategie-personal-branding",
       },
     ],
   },
   {
-    title: "Growth",
+    title: "Générez du revenu",
     icon: "TrendingUp",
+    href: "/services/acquisition-b2b",
     items: [
       {
         label: "SEO & contenu organique",
         description: "Devenez la référence sur les moteurs de recherche",
         icon: "Search",
         href: "/services/seo-contenu-organique",
-      },
-      {
-        label: "LinkedIn for growth",
-        description: "Atteignez les décideurs là où ils sont actifs",
-        icon: "Megaphone",
-        href: "/services/linkedin-for-growth",
       },
       {
         label: "Campagnes publicitaires",
@@ -108,17 +106,12 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
         icon: "Send",
         href: "/services/cold-outreach-prospection",
       },
-      {
-        label: "Constitution de bases de données",
-        description: "Cartographiez votre marché et identifiez les bons interlocuteurs",
-        icon: "Database",
-        href: "/services/constitution-bases-donnees",
-      },
     ],
   },
   {
-    title: "Sales Enablement",
+    title: "Armez vos commerciaux",
     icon: "Handshake",
+    href: "/services/sales-enablement",
     items: [
       {
         label: "Pitch decks & argumentaires",
@@ -132,18 +125,6 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
         icon: "Swords",
         href: "/services/battlecards-case-studies",
       },
-    ],
-  },
-  {
-    title: "Marketing Automation & IA",
-    icon: "Sparkles",
-    items: [
-      {
-        label: "Déploiement de CRM",
-        description: "Structurez votre pipe commercial de A à Z",
-        icon: "Settings",
-        href: "/services/deploiement-crm",
-      },
       {
         label: "Lead nurturing",
         description: "Restez dans la tête de vos prospects jusqu'au closing",
@@ -155,6 +136,25 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
         description: "Automatisez vos process sans rien laisser passer",
         icon: "Workflow",
         href: "/services/creation-workflows",
+      },
+    ],
+  },
+  {
+    title: "Digitalisez votre entreprise",
+    icon: "Monitor",
+    href: "/services/digitalisation",
+    items: [
+      {
+        label: "Création ou refonte de site web",
+        description: "Déployez une interface web qui sert votre croissance",
+        icon: "Globe",
+        href: "/services/creation-refonte-site-web",
+      },
+      {
+        label: "Déploiement de CRM",
+        description: "Structurez votre pipe commercial de A à Z",
+        icon: "Settings",
+        href: "/services/deploiement-crm",
       },
       {
         label: "Applications IA",

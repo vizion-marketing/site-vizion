@@ -8,9 +8,9 @@ export const auditMarketing: ServiceContent = {
   order: 3,
 
   // SEO
-  metaTitle: "Audit Commercial et Marketing B2B : Diagnostic Complet | Vizion",
+  metaTitle: "Audit Commercial et Marketing B2B : Diagnostic Complet",
   metaDescription:
-    "Audit commercial et marketing B2B : positionnement, acquisition, contenus, outils et conversion. Diagnostic personnalisé et plan d'action priorisé en 3 semaines.",
+    "Audit commercial et marketing B2B : positionnement, acquisition, contenus, outils et conversion. Diagnostic et plan d'action priorisé en 3 semaines.",
   keywords: [
     "audit commercial et marketing",
     "audit marketing B2B",
@@ -33,7 +33,7 @@ export const auditMarketing: ServiceContent = {
   heroSubtitle:
     "Vous investissez en marketing depuis des mois, mais les résultats stagnent ? Chez Vizion, nous réalisons un audit commercial et marketing complet de votre dispositif B2B (positionnement, acquisition, contenus, outils, conversion) pour identifier ce qui freine vos performances et vous livrer un plan d'action priorisé.",
   heroBadge: "+50 audits B2B réalisés",
-  heroImage: "/images/services/audit-marketing/hero.avif",
+  heroImage: "/images/services/audit-marketing/audit.png",
 
   // Narrative (Le constat)
   constat: {
@@ -70,8 +70,6 @@ export const auditMarketing: ServiceContent = {
   // Solution sticky
   solutionTitle:
     "Chez Vizion, nous auditons votre dispositif commercial et marketing pour révéler ce qui freine vos performances",
-  solutionSubtitle:
-    "Pas de rapport générique. Un diagnostic complet, structuré et actionnable.",
   solutionImage: "/images/services/audit-marketing/solution.avif",
   solutionItems: [
     {

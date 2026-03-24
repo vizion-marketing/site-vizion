@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Target, PenTool, TrendingUp, Presentation, Cog, CheckCircle2 } from "lucide-react";
+import { Compass, Rocket, TrendingUp, Handshake, Monitor, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { homeContent, type Pilier } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
@@ -18,59 +18,64 @@ interface ServicesSectionProps {
 const SERVICES = [
   {
     id: 1,
-    title: "Audit et stratégie marketing",
-    subtitle: "Diagnostic, feuille de route & direction marketing",
-    description: "Votre marketing ne génère pas de résultats mesurables et vous ne savez pas pourquoi. Nous auditons votre positionnement, vos canaux et vos outils, puis nous structurons la feuille de route et pilotons sa mise en place. Direction marketing externalisée ou renfort ponctuel : nous nous adaptons à votre organisation. Pour que chaque euro investi repose sur un diagnostic solide et une exécution pilotée, pas sur des intuitions.",
-    icon: Target,
+    title: "Prenez les bonnes décisions",
+    subtitle: "Audit, stratégie & direction marketing",
+    description: "Vous investissez dans des actions marketing sans savoir lesquelles génèrent du résultat. Nous auditons votre positionnement, vos canaux et vos processus, puis nous construisons la feuille de route qui concentre vos ressources sur les leviers à plus fort impact. Direction marketing externalisée ou mission ciblée : nous nous adaptons à votre stade de croissance.",
+    icon: Compass,
     image: "/images/services/product-marketing.avif",
-    tags: ["Audit marketing", "Feuille de route", "Direction externalisée", "Analyse concurrentielle"],
+    tags: ["Audit marketing", "Roadmap stratégique", "Direction externalisée"],
     span: "featured" as const,
     benefits: [
-      "Diagnostic complet de votre marketing actuel",
-      "Feuille de route structurée sur 6 à 12 mois",
-      "Direction marketing externalisée ou renfort stratégique",
+      "Diagnostic complet de votre marketing et de votre tunnel de vente",
+      "Feuille de route priorisée sur 6 à 12 mois",
+      "Un directeur marketing dédié comme interlocuteur unique",
     ],
-    href: "/services/marketing-produit",
+    href: "/services/strategie-marketing",
+    ctaLabel: "Stratégie et audit marketing B2B",
   },
   {
     id: 2,
-    title: "Positionnement et narratif produit",
-    subtitle: "Clarté & différenciation",
-    description: "Votre offre est techniquement solide, mais vos prospects ne comprennent pas ce qui vous distingue. Nous construisons un positionnement clair et un narratif produit qui rendent votre valeur évidente. Pour que vos clients idéaux vous choisissent sans hésiter face à la concurrence.",
-    icon: PenTool,
-    tags: ["Positionnement", "Discours de marque", "Proposition de valeur", "Personas"],
+    title: "Bâtissez votre crédibilité",
+    subtitle: "Positionnement, contenu & personal branding",
+    description: "Vos prospects vous comparent à vos concurrents sans percevoir la différence. Nous construisons le positionnement, le messaging et les contenus qui rendent votre valeur évidente pour chaque profil décideur.",
+    icon: Rocket,
+    tags: ["Positionnement", "Contenu B2B", "Landing pages", "Personal branding"],
     span: "normal" as const,
-    href: "/services/sales-enablement",
+    href: "/services/credibilite-positionnement",
+    ctaLabel: "Crédibilité et positionnement B2B",
   },
   {
     id: 3,
-    title: "Trafic et notoriété",
-    subtitle: "Visibilité & acquisition",
-    description: "Vous avez un bon produit, mais personne ne vous connaît sur votre marché. Nous déployons les canaux d'acquisition adaptés à votre cible : SEO, campagnes publicitaires, LinkedIn, contenu stratégique. Pour que les bons prospects vous trouvent avant vos concurrents.",
+    title: "Générez du revenu",
+    subtitle: "SEO, campagnes & prospection",
+    description: "Votre expertise est reconnue par vos clients existants, mais invisible pour le reste du marché. Nous déployons les canaux d'acquisition qui amènent des prospects qualifiés de façon prévisible et mesurable.",
     icon: TrendingUp,
-    tags: ["SEO", "LinkedIn Ads", "Google Ads", "Content marketing"],
+    tags: ["SEO", "Campagnes publicitaires", "Cold outreach"],
     span: "normal" as const,
     href: "/services/acquisition-b2b",
+    ctaLabel: "Acquisition clients B2B",
   },
   {
     id: 4,
-    title: "Automatisation et intelligence artificielle",
-    subtitle: "Efficacité & productivité",
-    description: "Vos équipes perdent du temps sur des tâches répétitives qui pourraient être automatisées. Nous déployons les automatisations et les outils d'IA adaptés à vos processus marketing et commerciaux. Pour que votre équipe se concentre sur ce qui génère vraiment du revenu.",
-    icon: Cog,
-    tags: ["CRM", "Workflows", "IA appliquée", "Intégrations"],
+    title: "Armez vos commerciaux",
+    subtitle: "Sales enablement & closing",
+    description: "Chaque commercial improvise son discours et les objections ne sont pas anticipées. Nous créons les outils qui transforment votre cycle de vente en processus reproductible, du premier rendez-vous à la signature.",
+    icon: Handshake,
+    tags: ["Pitch decks", "Battlecards", "Lead nurturing", "Workflows"],
     span: "normal" as const,
-    href: "/services/automatisation-crm",
+    href: "/services/sales-enablement",
+    ctaLabel: "Sales enablement B2B",
   },
   {
     id: 5,
-    title: "Contenus d'aide à la vente",
-    subtitle: "Outils commerciaux alignés",
-    description: "Vos commerciaux improvisent à chaque rendez-vous et chacun raconte une histoire différente. Nous créons les présentations, fiches concurrentielles et guides d'appel alignés sur votre positionnement. Pour que chaque interaction commerciale renforce la même promesse, du premier contact à la signature.",
-    icon: Presentation,
-    tags: ["Présentations", "Fiches concurrence", "Guides d'appel", "Objections"],
+    title: "Digitalisez votre entreprise",
+    subtitle: "Site web, CRM & IA",
+    description: "Vos outils sont sous-exploités et vos processus restent manuels. Nous déployons les solutions digitales qui accélèrent votre activité : site web performant, CRM structuré, applications IA sur mesure.",
+    icon: Monitor,
+    tags: ["Site web", "Déploiement CRM", "Applications IA"],
     span: "normal" as const,
-    href: "/services/sales-enablement",
+    href: "/services/digitalisation",
+    ctaLabel: "Digitalisation entreprise B2B",
   },
 ];
 
@@ -81,12 +86,13 @@ type Service = {
   title: string;
   subtitle: string;
   description: string;
-  icon: typeof Target;
+  icon: typeof Compass;
   image?: string;
   tags: string[];
   span: "featured" | "normal" | "wide";
   benefits?: string[];
   href: string;
+  ctaLabel: string;
 };
 
 interface ServiceCardProps {
@@ -183,7 +189,7 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
                 href={service.href}
                 className="inline-flex items-center gap-2 h-[44px] sm:h-[48px] px-5 sm:px-6 text-[12px] sm:text-[13px] font-semibold bg-accent text-primary hover:bg-white transition-all duration-300 group/btn shrink-0"
               >
-                {service.title}
+                {service.ctaLabel}
                 <ArrowUpRightIcon
                   className="shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
                   size={14}
@@ -297,7 +303,7 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
               className="inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-semibold text-primary group-hover:text-primary transition-colors duration-300 group/btn"
             >
               <span className="border-b border-black group-hover/btn:border-black transition-colors duration-300">
-                {service.title}
+                {service.ctaLabel}
               </span>
               <ArrowUpRightIcon
                 className="shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
@@ -381,7 +387,7 @@ export function ServicesSection({ surtitre, h2, description, piliers }: Services
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <span className="px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-bold tracking-wide text-white/90">
-                  CRM & Workflows
+                  CRM & Digitalisation
                 </span>
               </div>
             </div>
@@ -400,7 +406,7 @@ export function ServicesSection({ surtitre, h2, description, piliers }: Services
             href="/services"
             className="inline-flex items-center gap-2 h-[48px] sm:h-[52px] px-6 sm:px-8 text-[13px] sm:text-[14px] font-semibold bg-[var(--text-primary)] text-white hover:bg-black/90 hover:-translate-y-0.5 transition-all duration-300 group"
           >
-            Voir tous nos services
+            Tous nos services marketing B2B
             <ArrowUpRightIcon
               className="shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
               size={16}
