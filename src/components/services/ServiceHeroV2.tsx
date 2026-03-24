@@ -112,7 +112,7 @@ export function ServiceHeroV2({
     >
       {/* ===== MOBILE LAYOUT ===== */}
       <div className="lg:hidden grain-overlay relative px-4 sm:px-6 pt-28 sm:pt-32 pb-12 sm:pb-16 min-h-dvh flex flex-col justify-end">
-        {/* Mobile image — full width with bottom fade */}
+        {/* Mobile image — full width with edge fades */}
         <div className="relative overflow-hidden -mb-2 aspect-[3/4] max-h-[50vh]">
           <Image
             src={heroSrc}
@@ -121,22 +121,53 @@ export function ServiceHeroV2({
             priority
             className="object-cover object-top"
           />
+          {/* Bottom fade */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-x-0 bottom-0 h-[50%] pointer-events-none"
             style={{
-              background: "linear-gradient(to top, var(--bg-dark) 0%, var(--bg-dark) 5%, transparent 50%)",
+              background: "linear-gradient(to top, var(--bg-dark) 0%, var(--bg-dark) 5%, transparent 100%)",
+            }}
+          />
+          {/* Top fade */}
+          <div
+            className="absolute inset-x-0 top-0 h-24 pointer-events-none"
+            style={{
+              background: "linear-gradient(to bottom, var(--bg-dark) 0%, transparent 100%)",
+            }}
+          />
+          {/* Left fade */}
+          <div
+            className="absolute inset-y-0 left-0 w-16 pointer-events-none"
+            style={{
+              background: "linear-gradient(to right, var(--bg-dark) 0%, transparent 100%)",
+            }}
+          />
+          {/* Right fade */}
+          <div
+            className="absolute inset-y-0 right-0 w-16 pointer-events-none"
+            style={{
+              background: "linear-gradient(to left, var(--bg-dark) 0%, transparent 100%)",
             }}
           />
         </div>
 
         {/* Mobile text */}
         <div className="flex flex-col gap-5">
-          <div data-v2="surtitre" className="flex items-center gap-2.5">
-            <div className="w-2 h-2 bg-accent" />
-            <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] uppercase text-white/60">
-              {category}
-            </span>
-          </div>
+          {/* Breadcrumb */}
+          <nav
+            className="flex items-center gap-2 text-xs text-white/60"
+            aria-label="Breadcrumb"
+          >
+            <Link href="/" className="hover:text-white/80 transition-colors">
+              Accueil
+            </Link>
+            <span>/</span>
+            <Link href="/services" className="hover:text-white/80 transition-colors">
+              Services
+            </Link>
+            <span>/</span>
+            <span className="text-white/90">{breadcrumbLabel}</span>
+          </nav>
 
           <h1
             data-v2="title"
@@ -192,6 +223,13 @@ export function ServiceHeroV2({
               background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)",
             }}
           />
+          {/* Dégradé subtil en haut */}
+          <div
+            className="absolute inset-x-0 top-0 h-24 pointer-events-none"
+            style={{
+              background: "linear-gradient(to bottom, var(--bg-dark) 0%, transparent 100%)",
+            }}
+          />
         </div>
 
         {/* Lueur accent lime — côté gauche */}
@@ -232,17 +270,6 @@ export function ServiceHeroV2({
                 <span>/</span>
                 <span className="text-white/90">{breadcrumbLabel}</span>
               </nav>
-
-              {/* Surtitre */}
-              <div data-v2="surtitre" className="flex items-center gap-2.5 mb-6">
-                <div className="relative w-2 h-2">
-                  <div className="absolute inset-0 bg-accent" />
-                  <div data-v2="accent-square" className="absolute inset-0 bg-accent" />
-                </div>
-                <span className="text-[11px] font-light tracking-[0.12em] uppercase text-white/60">
-                  {category}
-                </span>
-              </div>
 
               {/* H1 */}
               <h1
