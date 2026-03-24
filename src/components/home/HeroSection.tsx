@@ -1,54 +1,15 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { homeContent, type HeroContent } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
 
-gsap.registerPlugin(useGSAP);
-
-const TESTIMONIALS = [
-  {
-    quote: "L'accompagnement d'Hugo et Lucas est vraiment qualitatif ! Compétents et très bons formateurs. Je recommande cette agence de Marketing digital à Toulouse !",
-    author: "Thomas Ensenat",
-    role: "Fondateur, Ensenat Coaching",
-    image: "/images/clients/ensenat.avif"
-  },
-  {
-    quote: "Je recommande fortement cette agence toulousaine ! Équipe professionnelle et répondant à tous types de besoins. Lucas est mon Directeur Marketing externalisé et j'en suis ravie.",
-    author: "Tamia",
-    role: "Fondatrice, Tatamia",
-    image: "/images/clients/tatamia.avif"
-  },
-  {
-    quote: "Nous avons confié la refonte de notre site web à Lucas et son équipe, nous en sommes très satisfaits bien que tout ait été fait à distance, depuis Toulouse jusqu'à Paris.",
-    author: "Barthélémy Delcampe",
-    role: "Responsable développement, Quai Liberté",
-    image: "/images/clients/quai-liberte.avif"
-  },
-  {
-    quote: "Hugo nous accompagne depuis un an maintenant pour restructurer tout notre CRM. Nous en sommes très satisfaits.",
-    author: "Olivier Mounié",
-    role: "Ojetables",
-    image: "/images/clients/placeholder.avif"
-  },
-  {
-    quote: "Vizion m'a accompagné dans le développement de mon image sur LinkedIn. Nous avons dépassé le million d'impressions en quelques mois, j'en suis très satisfait.",
-    author: "Olivier Bas",
-    role: "Vice-Président, Havas Paris",
-    image: "/images/clients/olivierbas.avif"
-  },
-  {
-    quote: "Nous externalisons une grosse partie de notre marketing auprès de Vizion : stratégie produit, aide à la vente, automatisation CRM, gestion de nos campagnes. Nous en sommes toujours très satisfaits, même deux ans après.",
-    author: "Clément Carrere",
-    role: "Co-fondateur, easyVirtual.tours",
-    image: "/images/clients/easyvirtual.avif"
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 interface HeroSectionProps {
   content?: HeroContent;
@@ -56,121 +17,55 @@ interface HeroSectionProps {
 
 export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
   const hero = contentProp ?? homeContent.hero;
-  const containerRef = useRef<HTMLElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
-  const h1Ref = useRef<HTMLHeadingElement>(null);
-  const baselineRef = useRef<HTMLParagraphElement>(null);
-  const badgesRef = useRef<HTMLDivElement>(null);
-  const ctasRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const scatterRef = useRef<HTMLDivElement>(null);
-  const socialProofRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const rafRef = useRef<number>(0);
-
-  // Rotate testimonials with auto-play that resets on manual navigation
-  const testimonialIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const startTestimonialAutoPlay = () => {
-    if (testimonialIntervalRef.current) clearInterval(testimonialIntervalRef.current);
-    testimonialIntervalRef.current = setInterval(() => {
-      setTestimonialIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 5000);
-  };
-
-  useEffect(() => {
-    startTestimonialAutoPlay();
-    return () => {
-      if (testimonialIntervalRef.current) clearInterval(testimonialIntervalRef.current);
-    };
-  }, []);
-
-  const goToTestimonial = (direction: "prev" | "next") => {
-    setTestimonialIndex((prev) =>
-      direction === "next"
-        ? (prev + 1) % TESTIMONIALS.length
-        : (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length
-    );
-    startTestimonialAutoPlay();
-  };
-
-  // Mouse parallax effect — throttled via rAF to avoid forced reflows
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (rafRef.current) return; // skip if a frame is already pending
-    const clientX = e.clientX;
-    const clientY = e.clientY;
-    rafRef.current = requestAnimationFrame(() => {
-      rafRef.current = 0;
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = (clientX - rect.left) / rect.width - 0.5;
-      const y = (clientY - rect.top) / rect.height - 0.5;
-      setMousePosition({ x, y });
-    });
-  };
-
+  // GSAP entrance animations
   useGSAP(
     () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      tl.fromTo(
-        badgeRef.current,
-        { opacity: 0, y: -12, scale: 0.9 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6 }
-      )
-        .fromTo(
-          h1Ref.current,
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.8 },
-          "-=0.3"
-        )
-        .fromTo(
-          baselineRef.current,
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.6 },
-          "-=0.5"
-        )
-        .fromTo(
-          badgesRef.current,
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.5 },
-          "-=0.3"
-        )
-        .fromTo(
-          ctasRef.current,
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.5 },
-          "-=0.2"
-        )
-        .fromTo(
-          statsRef.current,
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.5 },
-          "-=0.3"
-        )
-        .fromTo(
-          imageRef.current,
-          { opacity: 0, x: 40, scale: 0.95 },
-          { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: "back.out(1.2)" },
-          "-=0.9"
-        )
-        .fromTo(
-          scatterRef.current,
-          { opacity: 0, x: -20, scale: 0.8 },
-          { opacity: 1, x: 0, scale: 1, duration: 0.6, ease: "back.out(1.5)" },
-          "-=0.4"
-        )
-        .fromTo(
-          socialProofRef.current,
-          { opacity: 0, x: -20, scale: 0.8 },
-          { opacity: 1, x: 0, scale: 1, duration: 0.6, ease: "back.out(1.5)" },
-          "-=0.4"
-        );
+      tl.from("[data-hero='image']", {
+        scale: 1.08,
+        opacity: 0,
+        duration: 1.4,
+        ease: "expo.out",
+      }, 0);
+
+      tl.from("[data-hero='badge']", { opacity: 0, y: -12, scale: 0.9, duration: 0.6 }, 0.2);
+      tl.from("[data-hero='h1']", { opacity: 0, y: 24, duration: 0.8 }, 0.3);
+      tl.from("[data-hero='baseline']", { opacity: 0, y: 16, duration: 0.6 }, 0.45);
+      tl.from("[data-hero='ctas']", { opacity: 0, y: 12, duration: 0.5 }, 0.6);
+      tl.from("[data-hero='stats']", { opacity: 0, y: 12, duration: 0.5 }, 0.7);
     },
-    { scope: containerRef }
+    { scope: sectionRef }
+  );
+
+  // Scroll parallax
+  useGSAP(
+    () => {
+      gsap.to("[data-hero='image']", {
+        y: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.5,
+        },
+      });
+
+      gsap.to("[data-hero='text-col']", {
+        y: -50,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.5,
+        },
+      });
+    },
+    { scope: sectionRef }
   );
 
   // Parse h1 to add highlight
@@ -194,58 +89,33 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
 
   return (
     <section
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      className="dark-section relative pt-20 sm:pt-24 md:pt-28 lg:pt-36 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 flex items-center min-h-[100svh] overflow-hidden grain-overlay"
+      ref={sectionRef}
+      className="dark-section relative overflow-hidden"
       style={{ background: "var(--bg-dark)" }}
     >
-      {/* Base + radial gradients jaune Vizion animés */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div
-          className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
-          style={{
-            background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
-          }}
-        />
-        <div
-          className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
-          style={{
-            background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
-          }}
-        />
-        <div
-          className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
-          style={{
-            background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
-          }}
-        />
-        <div
-          className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
-          style={{
-            background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
-          }}
-        />
-        <div
-          className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
-          style={{
-            background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
-          }}
-        />
-      </div>
-
-      <div className="max-w-[82.5rem] mx-auto w-full relative z-10 lg:grid lg:grid-cols-2 lg:gap-6 lg:items-stretch">
-        {/* CONTENT AREA - mobile-first: moins de padding, gaps serrés */}
-        <div className="w-full px-0 py-2 sm:p-4 md:p-6 lg:p-8 relative z-10 flex flex-col justify-center gap-3 sm:gap-4">
-          {/* Premium Badge with Glassmorphism */}
+      {/* ===== MOBILE LAYOUT ===== */}
+      <div className="lg:hidden grain-overlay relative px-4 sm:px-6 pt-28 sm:pt-32 pb-12 sm:pb-16">
+        {/* Mobile image with bottom fade */}
+        <div className="relative overflow-hidden -mb-2 aspect-[3/4] max-h-[50vh]">
+          <Image
+            src="/images/hero-header.avif"
+            alt="Agence marketing B2B Vizion Toulouse"
+            fill
+            priority
+            className="object-cover object-top"
+          />
           <div
-            ref={badgeRef}
-            className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-fit opacity-0"
-          >
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: "linear-gradient(to top, var(--bg-dark) 0%, var(--bg-dark) 5%, transparent 50%)",
+            }}
+          />
+        </div>
+
+        {/* Mobile content */}
+        <div className="flex flex-col gap-3">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-fit">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-50"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/50 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]"></span>
@@ -258,10 +128,8 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             </span>
           </div>
 
-          {/* H1 with highlighted word */}
           <h1
-            ref={h1Ref}
-            className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[44px] md:text-[58px] lg:text-[80px] leading-[0.95] tracking-[-0.03em] opacity-0"
+            className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[44px] leading-[0.95] tracking-[-0.03em]"
             style={{
               backgroundImage:
                 "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
@@ -274,298 +142,186 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           </h1>
 
           <p
-            ref={baselineRef}
-            className="text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl opacity-0"
+            className="text-sm sm:text-base leading-relaxed max-w-2xl"
             style={{ color: "rgba(255,255,255,0.8)" }}
           >
             {hero.baseline}
           </p>
 
-          {hero.badges.length > 0 && (
-            <div
-              ref={badgesRef}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pb-3 sm:pb-4 border-b border-white/10 opacity-0"
-            >
-              {hero.badges.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-tight"
-                  style={{ color: "rgba(255,255,255,0.8)" }}
-                >
-                  <CheckCircle2 size={14} className="shrink-0" style={{ color: "var(--color-accent)" }} />
-                  {item}
-                </div>
-              ))}
-            </div>
-          )}
-
-          <div ref={ctasRef} className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 mt-4 opacity-0">
-            <Link
-              href={hero.cta.primary.href}
-              className="btn btn-primary group"
-            >
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 mt-4">
+            <Link href={hero.cta.primary.href} className="btn btn-primary group">
               {hero.cta.primary.text}{" "}
-              <ArrowUpRightIcon
-                className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform"
-                size={16}
-              />
+              <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
             </Link>
-            <Link
-              href={hero.cta.secondary.href}
-              className="btn btn-secondary group"
-            >
+            <Link href={hero.cta.secondary.href} className="btn btn-secondary group">
               {hero.cta.secondary.text}{" "}
-              <ArrowUpRightIcon
-                className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform"
-                size={16}
-              />
+              <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
             </Link>
           </div>
 
-          {/* Stats Bar - plus compact sur mobile */}
-          <div
-            ref={statsRef}
-            className="flex flex-wrap items-center gap-3 sm:gap-6 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-white/5 opacity-0"
-          >
+          {/* Stats */}
+          <div className="flex flex-wrap items-center gap-3 mt-3 pt-3 border-t border-white/5">
             <div className="flex items-center gap-2">
-              <span className="text-accent font-heading font-bold text-xl sm:text-2xl">70+</span>
-              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">clients<br/>accompagnés</span>
+              <span className="text-accent font-heading font-bold text-xl">70+</span>
+              <span className="text-white/50 text-[10px] leading-tight">clients<br/>accompagnés</span>
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-accent font-heading font-bold text-xl sm:text-2xl">5 ans</span>
-              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">d&apos;expertise</span>
+              <span className="text-accent font-heading font-bold text-xl">5 ans</span>
+              <span className="text-white/50 text-[10px] leading-tight">d&apos;expertise</span>
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
-              <span className="text-accent font-heading font-bold text-xl sm:text-2xl">+500</span>
-              <span className="text-white/50 text-[10px] sm:text-xs leading-tight">assets marketing<br/>déjà livrés</span>
+              <span className="text-accent font-heading font-bold text-xl">+500</span>
+              <span className="text-white/50 text-[10px] leading-tight">assets marketing<br/>déjà livrés</span>
             </div>
           </div>
 
-          {/* Mobile Testimonial */}
-          <div className="lg:hidden mt-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-4">
-            <div className="relative min-h-[140px]">
-              {TESTIMONIALS.map((testimonial, i) => (
-                <div
-                  key={i}
-                  className="absolute inset-0 flex items-start gap-3"
-                  style={{
-                    opacity: i === testimonialIndex ? 1 : 0,
-                    transform: `translateY(${i === testimonialIndex ? 0 : 10}px)`,
-                    transition: 'opacity 0.4s ease, transform 0.4s ease',
-                    pointerEvents: i === testimonialIndex ? 'auto' : 'none',
-                  }}
-                >
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.author}
-                    width={48}
-                    height={48}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    sizes="48px"
-                    className="w-12 h-12 rounded-full object-cover border-2 border-accent/40 shrink-0"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-0.5 mb-2">
-                      {[...Array(5)].map((_, starIndex) => (
-                        <svg key={starIndex} width="12" height="12" viewBox="0 0 24 24" fill="var(--color-accent)" aria-hidden="true">
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <p className="text-[12px] leading-relaxed text-white mb-2">
-                      &ldquo;{testimonial.quote}&rdquo;
-                    </p>
-                    <div className="flex items-center gap-1.5 mt-2">
-                      <span className="text-white text-[11px] font-semibold">{testimonial.author}</span>
-                      <span className="text-white/40 text-[11px]">•</span>
-                      <span className="text-white/60 text-[10px]">{testimonial.role}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-
-        {/* RIGHT IMAGE - masquée sur mobile, visible desktop */}
-        <div
-          ref={imageRef}
-          className="relative z-30 group overflow-visible hidden lg:block lg:aspect-auto lg:h-full lg:min-h-[420px] lg:my-0 opacity-0"
-        >
-          {/* Accent border frames */}
-          <div className="absolute -inset-2 sm:-inset-3 border border-accent/20 rounded-lg pointer-events-none hidden lg:block" />
-          <div className="absolute -inset-4 sm:-inset-6 border border-accent/10 rounded-xl pointer-events-none hidden lg:block" />
-
-          {/* Corner accents */}
-          <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent rounded-tr-lg hidden lg:block" />
-          <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-accent rounded-bl-lg hidden lg:block" />
-
-          <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
-            <Image
-              src="/hero-binoculars.avif"
-              alt="Agence marketing Toulouse Vizion - positionnement stratégique, sales enablement et tunnel de vente aligné pour PME et ETI"
-              fill
-              priority
-              sizes="(max-width: 1023px) 0px, 50vw"
-              className="object-contain object-center"
-            />
-          </div>
-
-          {/* 1. Scatter plot (top-left) with parallax */}
-          <div
-            ref={scatterRef}
-            className="hidden lg:block absolute top-10 left-12 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4 shadow-lg opacity-0 transition-transform duration-300"
-            style={{
-              transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * -15}px)`,
-            }}
-          >
-            <svg width="96" height="48" viewBox="0 0 96 48" fill="none">
-              <defs>
-                <linearGradient id="curveGrad" x1="0" y1="48" x2="96" y2="0">
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.2)" />
-                  <stop offset="100%" stopColor="var(--color-accent)" />
-                </linearGradient>
-                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="48">
-                  <stop offset="0%" stopColor="var(--color-accent)" stopOpacity="0.15" />
-                  <stop offset="100%" stopColor="var(--color-accent)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M0 42 C8 40, 16 38, 24 34 C32 30, 40 28, 48 24 C56 20, 60 16, 68 13 C76 10, 84 6, 96 2"
-                stroke="url(#curveGrad)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                fill="none"
-              />
-              <path
-                d="M0 42 C8 40, 16 38, 24 34 C32 30, 40 28, 48 24 C56 20, 60 16, 68 13 C76 10, 84 6, 96 2 L96 48 L0 48 Z"
-                fill="url(#areaGrad)"
-              />
-            </svg>
-            <div className="flex items-center justify-between mt-2">
-              <span className="text-white/60 text-[10px]">Performance</span>
-              <span className="text-accent text-xs font-bold">+127%</span>
-            </div>
-          </div>
-
-          {/* 2. Social proof with rotating testimonial (bottom-left) with parallax */}
-          <div
-            ref={socialProofRef}
-            className="hidden lg:block absolute bottom-12 left-5 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-6 py-5 shadow-lg opacity-0 transition-transform duration-300 w-[520px]"
-            style={{
-              transform: `translate(${mousePosition.x * -10}px, ${mousePosition.y * -10}px)`,
-            }}
-          >
-            {/* Rotating testimonial */}
-            <div className="relative h-[120px] overflow-hidden">
-              {TESTIMONIALS.map((testimonial, i) => (
-                <div
-                  key={i}
-                  className="absolute inset-0 flex items-start gap-4"
-                  style={{
-                    opacity: i === testimonialIndex ? 1 : 0,
-                    transform: `translateY(${i === testimonialIndex ? 0 : 10}px)`,
-                    transition: 'opacity 0.4s ease, transform 0.4s ease',
-                    pointerEvents: i === testimonialIndex ? 'auto' : 'none',
-                  }}
-                >
-                  {/* Client Photo */}
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.author}
-                    width={48}
-                    height={48}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    sizes="48px"
-                    className="w-12 h-12 rounded-full object-cover border-2 border-accent/40 shrink-0 mt-0.5"
-                  />
-
-                  <div className="flex-1 min-w-0">
-                    {/* 5 Yellow Stars */}
-                    <div className="flex items-center gap-0.5 mb-1.5">
-                      {[...Array(5)].map((_, starIndex) => (
-                        <svg
-                          key={starIndex}
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          fill="var(--color-accent)"
-                          aria-hidden="true"
-                        >
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                        </svg>
-                      ))}
-                    </div>
-
-                    {/* Testimonial Quote */}
-                    <p className="text-[12px] leading-snug mb-2" style={{ color: '#ffffff' }}>
-                      &ldquo;{testimonial.quote}&rdquo;
-                    </p>
-
-                    {/* Client Info */}
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-white text-[11px] font-semibold">
-                        {testimonial.author}
-                      </span>
-                      <span className="text-white/40">•</span>
-                      <span className="text-white/50 text-[10px]">{testimonial.role}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Navigation arrows — positioned on edges, vertically centered */}
-            <button
-              onClick={() => goToTestimonial("prev")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-colors z-10"
-              aria-label="Témoignage précédent"
-            >
-              <ChevronLeft size={14} className="text-white/70" />
-            </button>
-            <button
-              onClick={() => goToTestimonial("next")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-colors z-10"
-              aria-label="Témoignage suivant"
-            >
-              <ChevronRight size={14} className="text-white/70" />
-            </button>
-          </div>
-
-          {/* Google Rating Card (top-right) */}
-          <div
-            className="hidden lg:block absolute top-16 right-8 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4 shadow-lg transition-transform duration-300"
-            style={{
-              transform: `translate(${mousePosition.x * -8}px, ${mousePosition.y * -8}px)`,
-            }}
-          >
-            <div className="flex items-center gap-3">
-              {/* Google logo */}
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="shrink-0">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-              </svg>
-              <div>
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="#FBBF24" aria-hidden="true">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                  ))}
-                  <span className="text-white/80 text-xs font-bold ml-1">5/5</span>
-                </div>
-                <span className="text-white/50 text-[10px]">Note Google Business</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
+      {/* ===== DESKTOP LAYOUT — Image pleine hauteur à droite ===== */}
+      <div className="hidden lg:block relative min-h-screen">
+        <div className="grain-overlay absolute inset-0 z-0" style={{ background: "var(--bg-dark)" }} />
+
+        {/* Image — pleine hauteur, colonne droite */}
+        <div
+          data-hero="image"
+          className="absolute top-0 right-0 bottom-0 w-[45%] z-[1]"
+        >
+          <Image
+            src="/images/hero-header.avif"
+            alt="Agence marketing B2B Vizion Toulouse"
+            fill
+            priority
+            sizes="50vw"
+            className="object-cover object-[center_25%]"
+          />
+          {/* Gradient fade to left */}
+          <div
+            className="absolute -left-1 top-0 bottom-0 right-0 pointer-events-none"
+            style={{
+              background: "linear-gradient(to right, var(--bg-dark) 0%, rgba(12,12,10,0.7) 30%, rgba(12,12,10,0.2) 60%, transparent 100%)",
+            }}
+          />
+          {/* Bottom fade */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
+            style={{
+              background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)",
+            }}
+          />
+        </div>
+
+        {/* Accent lime glow — left side */}
+        <div className="absolute inset-0 pointer-events-none z-[2] overflow-hidden">
+          <div
+            className="absolute w-[60%] h-[80%] top-[10%] left-[-10%]"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 30% 50%, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute w-[40%] h-[50%] bottom-[5%] left-[5%]"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 100% at 40% 70%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 50%)",
+            }}
+          />
+        </div>
+
+        {/* Content — left column */}
+        <div className="relative z-10 max-w-[82.5rem] mx-auto min-h-screen px-6 md:px-12">
+          <div data-hero="text-col" className="relative z-10 w-[60%] flex flex-col justify-center min-h-screen py-20">
+            <div className="relative z-10">
+              {/* Badge */}
+              <div
+                data-hero="badge"
+                className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-fit mb-6"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-50"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-br from-[var(--color-accent)] via-[var(--color-accent)]/80 to-[var(--color-accent)]/50 shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.5)]"></span>
+                </span>
+                <span
+                  className="text-[10px] font-medium tracking-[0.08em] uppercase"
+                  style={{ color: "rgba(255,255,255,0.9)" }}
+                >
+                  {hero.badge}
+                </span>
+              </div>
+
+              {/* H1 */}
+              <h1
+                data-hero="h1"
+                className="font-heading font-normal text-[44px] lg:text-[58px] xl:text-[72px] leading-[0.92] tracking-[-0.04em] mb-6"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                {renderH1()}
+              </h1>
+
+              {/* Baseline */}
+              <p
+                data-hero="baseline"
+                className="text-base md:text-lg leading-relaxed max-w-xl mb-8"
+                style={{ color: "rgba(255,255,255,0.8)" }}
+              >
+                {hero.baseline}
+              </p>
+
+              {/* CTAs */}
+              <div data-hero="ctas" className="flex items-center gap-4 mb-8">
+                <Link href={hero.cta.primary.href} className="btn btn-primary group">
+                  {hero.cta.primary.text}{" "}
+                  <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
+                </Link>
+                <Link href={hero.cta.secondary.href} className="btn btn-secondary group">
+                  {hero.cta.secondary.text}{" "}
+                  <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
+                </Link>
+              </div>
+
+              {/* Stats Bar */}
+              <div
+                data-hero="stats"
+                className="flex items-center gap-6 pt-4 border-t border-white/5 mb-8"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-accent font-heading font-bold text-2xl">70+</span>
+                  <span className="text-white/50 text-xs leading-tight">clients<br/>accompagnés</span>
+                </div>
+                <div className="w-px h-8 bg-white/10" />
+                <div className="flex items-center gap-2">
+                  <span className="text-accent font-heading font-bold text-2xl">5 ans</span>
+                  <span className="text-white/50 text-xs leading-tight">d&apos;expertise</span>
+                </div>
+                <div className="w-px h-8 bg-white/10" />
+                <div className="flex items-center gap-2">
+                  <span className="text-accent font-heading font-bold text-2xl">+500</span>
+                  <span className="text-white/50 text-xs leading-tight">assets marketing<br/>déjà livrés</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Bottom gradient — transition vers la section suivante */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-40 pointer-events-none z-30"
+        style={{
+          background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)",
+        }}
+      />
     </section>
   );
 }
