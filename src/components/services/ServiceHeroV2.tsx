@@ -46,21 +46,9 @@ export function ServiceHeroV2({
       }, 0);
 
       tl.from("[data-v2='breadcrumb']", { opacity: 0, y: -15, duration: 0.6 }, 0.3);
-      tl.from("[data-v2='surtitre']", { opacity: 0, x: -20, duration: 0.6 }, 0.4);
       tl.from("[data-v2='title']", { opacity: 0, y: 40, duration: 0.9, ease: "expo.out" }, 0.45);
       tl.from("[data-v2='subtitle']", { opacity: 0, y: 30, duration: 0.7 }, 0.6);
       tl.from("[data-v2='ctas']", { opacity: 0, y: 25, duration: 0.6 }, 0.75);
-      tl.from("[data-v2='google-badge']", { opacity: 0, y: 20, scale: 0.9, duration: 0.6, ease: "back.out(1.4)" }, 0.9);
-
-      // Accent square pulse
-      gsap.to("[data-v2='accent-square']", {
-        scale: 1.3,
-        opacity: 0.6,
-        duration: 1.2,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
 
       // CTA shimmer
       gsap.fromTo("[data-v2='cta-shimmer']", {
@@ -188,6 +176,16 @@ export function ServiceHeroV2({
               Discuter de votre projet
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
+            <button
+              onClick={() => {
+                const el = document.getElementById("processus");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/[0.15] text-white font-medium hover:bg-white/[0.06] active:scale-[0.97] transition-all duration-200"
+            >
+              En savoir plus
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+            </button>
           </div>
         </div>
       </div>
@@ -312,7 +310,7 @@ export function ServiceHeroV2({
                   }}
                   className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/[0.15] text-white font-medium hover:bg-white/[0.06] active:scale-[0.97] transition-all duration-200"
                 >
-                  Découvrir
+                  En savoir plus
                   <ArrowRight
                     size={16}
                     className="group-hover:translate-x-1 transition-transform duration-200"
