@@ -2,138 +2,132 @@ import type { ServiceContent } from "./types";
 
 export const credibilitePositionnement: ServiceContent = {
   slug: "product-marketing",
-  title: "Crédibilité et positionnement B2B",
+  title: "Product Marketing B2B",
   icon: "Rocket",
   category: "Product Marketing",
   isPilier: true,
   order: 101,
 
-  metaTitle: "Positionnement B2B : crédibilité, contenu et personal branding | Vizion",
+  metaTitle: "Product Marketing B2B : positionnement, messaging et go-to-market | Vizion",
   metaDescription:
-    "Construisez la crédibilité de votre entreprise B2B. Positionnement, messaging, contenu d'expertise, landing pages, personal branding. Pour que votre valeur devienne évidente.",
+    "Faites de votre produit une évidence sur son marché. Positionnement, messaging, contenu d'expertise, go-to-market. Vizion structure le product marketing des entreprises B2B.",
   keywords: [
-    "positionnement B2B",
-    "crédibilité entreprise B2B",
-    "personal branding B2B",
-    "contenu B2B",
+    "product marketing B2B",
+    "product marketing",
+    "positionnement produit B2B",
     "messaging B2B",
+    "go-to-market B2B",
+    "stratégie product marketing",
     "proposition de valeur B2B",
-    "image de marque B2B",
+    "lancement produit B2B",
   ],
 
-  heroTitle: "Product Marketing : bâtissez votre crédibilité sur votre marché",
+  heroTitle: "Product Marketing : faites de votre produit une évidence sur son marché",
   heroSubtitle:
-    "Le product marketing traduit la valeur de votre offre en messages clairs pour chaque décideur. Positionnement, messaging, contenu d'expertise et personal branding : tout ce qui fait que vos prospects vous choisissent vous, plutot que vos concurrents.",
-  heroBadge: "CRÉDIBILITÉ & POSITIONNEMENT",
+    "Votre produit est solide. Mais vos prospects ne le perçoivent pas. Le product marketing traduit votre valeur en messages clairs, structure votre go-to-market et arme vos équipes pour chaque conversation commerciale. Pour que le choix devienne évident.",
+  heroBadge: "PRODUCT MARKETING B2B",
   heroImage: "/images/cas-clients/easyvirtual-mainimage.avif",
 
   constat: {
-    surtitre: "COMPRENDRE LE PRODUCT MARKETING",
-    title: "Le product marketing, c'est quoi ?",
+    surtitre: "LE CONSTAT",
+    title: "Votre produit est bon. Le problème, c'est que personne ne le comprend.",
     paragraphs: [
-      "Le product marketing traduit votre offre en messages que vos acheteurs comprennent et utilisent pour justifier leur décision en interne. Positionnement, messaging, contenu, landing pages : c'est ce qui fait la différence entre être shortlisté et être choisi.",
+      "Vos fonctionnalités sont solides, votre équipe technique est performante, vos clients existants sont satisfaits. Pourtant, vos prospects ne voient pas la différence avec vos concurrents. Vos commerciaux improvisent des pitchs différents à chaque rendez-vous. Votre site web décrit ce que vous faites, pas pourquoi vous choisir.",
+      "Le problème n'est pas votre produit. C'est l'absence de product marketing. Sans positionnement clair, sans messaging structuré, sans contenu qui éduque votre marché, votre offre reste une option parmi d'autres dans un tableur de comparaison.",
     ],
     statements: [
       {
         icon: "Target",
         headline: "Positionnement et messaging",
-        description: "Clarifier ce qui vous différencie et formuler une proposition de valeur par profil décideur.",
+        description: "Nous identifions ce qui vous différencie et formulons une proposition de valeur adaptée à chaque profil décideur.",
       },
       {
         icon: "FileText",
-        headline: "Contenu d'expertise",
-        description: "Produire les articles, guides et case studies qui éduquent votre marché et nourrissent votre pipeline.",
+        headline: "Contenu d'expertise et go-to-market",
+        description: "Nous produisons les contenus, les pages et les supports qui traduisent votre positionnement en preuves tangibles.",
       },
       {
         icon: "Rocket",
-        headline: "Stratégie go-to-market",
-        description: "Structurer le lancement de vos offres : ciblage, canaux, séquences de messages et activation commerciale.",
+        headline: "Activation commerciale",
+        description: "Nous armons vos équipes avec les bons messages, les bons arguments et les bons outils pour chaque étape du cycle de vente.",
       },
     ],
   },
 
-  solutionTitle: "Quatre leviers pour installer votre crédibilité",
+  solutionTitle: "Les quatre piliers du product marketing B2B",
   solutionImage: "/images/services/positionnement-messaging/hero.avif",
   solutionItems: [
     {
-      title: "Positionnement et messaging",
-      description: "Un positionnement clair, une proposition de valeur par persona, un discours de marque unifié. Pour que vos prospects comprennent instantanément pourquoi vous choisir.",
+      title: "Positionnement et proposition de valeur",
+      description: "Un positionnement clair par persona, une proposition de valeur que vos prospects comprennent en 10 secondes, un discours de marque que toute votre équipe utilise. Le socle de tout product marketing efficace.",
     },
     {
-      title: "Création de contenu B2B",
-      description: "Articles, livres blancs, newsletters, posts LinkedIn. Chaque format est calibré pour éduquer votre marché et faire avancer vos prospects dans le cycle de vente.",
+      title: "Messaging et narratif de vente",
+      description: "Le messaging traduit votre positionnement en arguments concrets pour chaque interlocuteur. Décideur, utilisateur, acheteur : chaque profil reçoit le message qui fait avancer sa décision.",
     },
     {
-      title: "Landing pages optimisées",
-      description: "Des pages conçues pour un objectif : convertir. Structure testée, copywriting orienté problème, formulaire au bon moment.",
+      title: "Contenu et assets go-to-market",
+      description: "Articles, cas clients, landing pages, livres blancs. Chaque contenu est calibré pour une étape du cycle de vente et un profil d'acheteur. Le product marketing transforme votre expertise en pipeline.",
     },
     {
-      title: "Stratégie de personal branding",
-      description: "Vos dirigeants deviennent des références sur leur marché. Stratégie LinkedIn, contenu d'expertise, prise de parole structurée.",
+      title: "Personal branding et thought leadership",
+      description: "Vos dirigeants deviennent des références sur leur marché. Stratégie LinkedIn, contenu d'expertise, prise de parole structurée. Les prospects arrivent convaincus avant le premier rendez-vous.",
     },
   ],
 
-  // Méthodologie macro (pilier)
+  // Méthodologie (pilier)
   pilierMethodology: {
     surtitre: "NOTRE APPROCHE",
     title: "Comment nous structurons votre product marketing",
-    subtitle: "Quatre phases pour passer d'une offre floue a une crédibilité installée. Chaque phase est activable indépendamment selon votre maturité.",
+    subtitle: "Quatre phases pour passer d'un produit mal compris à une offre qui s'impose. Chaque phase est activable indépendamment selon votre maturité.",
     steps: [
       {
-        title: "Diagnostic de perception",
-        description: "Nous analysons comment votre marché vous perçoit : entretiens décideurs, audit du discours commercial, benchmark concurrentiel. L'objectif : identifier l'écart entre ce que vous êtes et ce que vos prospects comprennent.",
+        title: "Diagnostic de perception marché",
+        description: "Nous analysons comment votre marché vous perçoit : entretiens avec vos clients et prospects, audit du discours commercial, benchmark concurrentiel. L'objectif : mesurer l'écart entre ce que vous êtes et ce que votre marché comprend.",
       },
       {
-        title: "Architecture de message",
-        description: "Nous construisons votre positionnement, vos propositions de valeur par persona et votre messaging framework. Un document de référence que toute votre équipe utilise.",
+        title: "Architecture de positionnement",
+        description: "Nous construisons votre positionnement, vos propositions de valeur par persona et votre messaging framework. Un document de référence que toute votre équipe utilise pour parler d'une seule voix.",
       },
       {
-        title: "Production et déploiement",
-        description: "Contenus, landing pages, personal branding : nous produisons les assets qui traduisent votre positionnement en preuves tangibles pour votre marché.",
+        title: "Production des assets product marketing",
+        description: "Contenus d'expertise, landing pages, cas clients, supports de vente, personal branding. Nous produisons les assets qui traduisent votre positionnement en preuves concrètes pour chaque étape du parcours d'achat.",
       },
       {
         title: "Mesure et itération",
-        description: "Taux de conversion, engagement contenu, pipeline généré. Nous mesurons l'impact de chaque levier et ajustons la stratégie chaque mois.",
+        description: "Taux de conversion, engagement contenu, pipeline généré, retours terrain des commerciaux. Nous mesurons l'impact de chaque levier product marketing et ajustons la stratégie chaque mois.",
       },
     ],
   },
 
   // Métriques sourcées
   pilierMetrics: {
-    surtitre: "POURQUOI INVESTIR",
+    surtitre: "POURQUOI LE PRODUCT MARKETING",
     title: "Ce que le product marketing change concrètement",
-    subtitle: "Des chiffres issus d'études sectorielles sur l'impact du positionnement, du contenu et du messaging en B2B.",
+    subtitle: "Des chiffres issus d'études sectorielles sur l'impact du positionnement, du messaging et du contenu en B2B.",
     metrics: [
       {
         value: 86,
         suffix: "%",
-        label: "des deals B2B stagnent sans messaging clair",
+        label: "des ventes B2B bloquent quand le message est flou",
         direction: "down" as const,
-        context: "Les acheteurs n'arrivent pas a justifier leur choix en interne (Forrester, State of Business Buying 2024)",
+        context: "Sans message clair, vos acheteurs ne savent pas comment défendre votre solution en interne. Forrester, 2024.",
         sourceUrl: "https://www.forrester.com/press-newsroom/forrester-predictions-2025-b2b-marketing-sales/",
       },
       {
         value: 41,
         suffix: "%",
-        label: "des acheteurs ont déja un favori avant l'évaluation",
+        label: "des acheteurs ont choisi leur favori avant de vous contacter",
         direction: "up" as const,
-        context: "Votre positionnement doit convaincre avant le premier contact commercial (Forrester Buyers Journey Survey, 2024)",
+        context: "Votre positionnement et vos contenus doivent convaincre bien avant le premier appel commercial. Forrester, 2024.",
         sourceUrl: "https://www.forrester.com/press-newsroom/forrester-predictions-2025-b2b-marketing-sales/",
       },
       {
         value: 61,
         suffix: "%",
-        label: "des acheteurs B2B préferent acheter sans commercial",
+        label: "des acheteurs B2B préfèrent décider sans parler a un commercial",
         direction: "up" as const,
-        context: "Ce qui rend votre site et vos contenus encore plus décisifs dans la décision d'achat (Gartner, 2025, 632 acheteurs)",
-        sourceUrl: "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-sales-survey-finds-61-percent-of-b2b-buyers-prefer-a-rep-free-buying-experience",
-      },
-      {
-        value: 69,
-        suffix: "%",
-        label: "trouvent des incohérences entre site et discours commercial",
-        direction: "down" as const,
-        context: "Le messaging non aligné détruit la confiance. Les acheteurs veulent de la cohérence (Gartner Sales Survey, 2025)",
+        context: "Votre site, vos contenus et vos landing pages doivent vendre a votre place. Le product marketing les structure pour ça. Gartner, 2025.",
         sourceUrl: "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-sales-survey-finds-61-percent-of-b2b-buyers-prefer-a-rep-free-buying-experience",
       },
     ],
@@ -148,7 +142,7 @@ export const credibilitePositionnement: ServiceContent = {
   testimonials: [
     {
       quote: "En 6 semaines, notre positionnement était clair pour la premiere fois en 3 ans.",
-      detail: "On perdait des deals parce que nos prospects ne comprenaient pas notre valeur. Vizion a structuré notre messaging et nos commerciaux sont enfin alignés.",
+      detail: "On perdait des deals parce que nos prospects ne comprenaient pas notre valeur. Vizion a structuré notre messaging et nos commerciaux sont enfin alignés sur un discours unique.",
       author: "Thomas Durand",
       role: "CEO",
       company: "SaaS industriel",
@@ -156,15 +150,15 @@ export const credibilitePositionnement: ServiceContent = {
     },
     {
       quote: "Le personal branding de notre fondateur génère aujourd'hui 30% de nos leads.",
-      detail: "On ne croyait pas au personal branding. Vizion nous a montré comment structurer une prise de parole LinkedIn qui attire des décideurs qualifiés.",
+      detail: "On ne croyait pas au personal branding. Vizion nous a montré comment structurer une prise de parole LinkedIn qui attire des décideurs qualifiés. C'est devenu notre premier canal d'acquisition.",
       author: "Marie Laurent",
       role: "Directrice Marketing",
       company: "Editeur SaaS RH",
       rating: 5,
     },
     {
-      quote: "Notre landing page convertit 3 fois mieux qu'avant le repositionnement.",
-      detail: "Le probleme n'était pas le trafic, c'était le message. Vizion a reécrit notre proposition de valeur et restructuré la page. Les résultats ont été immédiats.",
+      quote: "Notre landing page convertit 3 fois mieux depuis le repositionnement.",
+      detail: "Le probleme n'était pas le trafic, c'était le message. Vizion a reconstruit notre proposition de valeur et restructuré chaque page. Les résultats ont été immédiats.",
       author: "Julien Morel",
       role: "Head of Growth",
       company: "Scale-up B2B",
@@ -172,149 +166,152 @@ export const credibilitePositionnement: ServiceContent = {
     },
   ],
 
-  // Inline CTA avant FAQ
-  inlineCTAs: {
-    beforeFaq: {
-      text: "Votre positionnement mérite un regard extérieur ?",
-      buttonText: "Échanger avec un fondateur",
-      href: "/contact",
-    },
-  },
-
   faqTitle: "Questions fréquentes sur le product marketing B2B",
   faqs: [
     {
-      question: "Qu'est-ce que le product marketing en B2B ?",
-      answer: "Le product marketing est la discipline qui traduit la valeur de votre offre en messages compréhensibles pour chaque profil d'acheteur. Il couvre le positionnement, le messaging, la création de contenu, les landing pages et le personal branding. Son objectif : que vos prospects comprennent pourquoi vous choisir, sans effort.",
+      question: "Le product marketing, c'est quoi exactement ?",
+      answer: "Le product marketing est la discipline qui connecte votre produit à votre marché. Il structure le positionnement, formule le messaging pour chaque profil d'acheteur, produit les contenus qui éduquent vos prospects et arme vos commerciaux. Son objectif : que votre valeur devienne évidente sans effort pour ceux qui vous découvrent.",
     },
     {
-      question: "Pourquoi le positionnement est-il un prérequis avant toute action marketing ?",
-      answer: "Parce que sans positionnement clair, chaque action marketing porte un message différent. Vos publicités, votre site, vos commerciaux racontent des histoires incohérentes. Le positionnement unifie tout : c'est le socle sur lequel repose chaque prise de parole.",
+      question: "Quelle différence entre product marketing et content marketing ?",
+      answer: "Le content marketing produit des contenus pour attirer du trafic. Le product marketing va plus loin : il structure le positionnement, définit le messaging et aligne chaque contenu sur le cycle de vente. Le content marketing est un levier du product marketing, pas un substitut.",
     },
     {
-      question: "Quelle est la différence entre product marketing et content marketing ?",
-      answer: "Le content marketing produit des contenus pour attirer du trafic. Le product marketing va plus loin : il structure le message, positionne l'offre par rapport au marché et aligne chaque contenu sur le cycle de vente. Le content marketing est un levier du product marketing, pas un substitut.",
+      question: "Pourquoi le product marketing est-il un prérequis avant toute action marketing ?",
+      answer: "Parce que sans positionnement clair, chaque action marketing porte un message différent. Vos publicités, votre site, vos commerciaux racontent des histoires incohérentes. Le product marketing unifie tout : c'est le socle sur lequel repose chaque prise de parole, chaque contenu et chaque page de vente.",
     },
     {
-      question: "Le personal branding est-il vraiment utile en B2B ?",
-      answer: "En B2B, la décision d'achat implique de la confiance. Les acheteurs préferent travailler avec des experts qu'ils connaissent. Quand vos dirigeants sont visibles et reconnus sur LinkedIn, les prospects arrivent déja convaincus avant le premier rendez-vous.",
+      question: "Combien de temps pour structurer un product marketing efficace ?",
+      answer: "Le positionnement et le messaging sont opérationnels en 4 a 6 semaines. La production des premiers assets (landing pages, contenus, supports de vente) prend 4 a 8 semaines supplémentaires. L'impact sur la perception marché se mesure a partir de 3 mois. Le product marketing est un investissement structurant dont les effets se cumulent.",
     },
     {
-      question: "Combien de temps pour voir l'impact d'un repositionnement ?",
-      answer: "Le nouveau positionnement et le messaging sont opérationnels en 4 a 6 semaines. L'impact sur les contenus et la perception marché se mesure a partir de 3 mois. Le repositionnement est un investissement structurant dont les effets se cumulent dans le temps.",
+      question: "Le product marketing est-il réservé aux grandes entreprises ?",
+      answer: "Les PME et ETI B2B sont celles qui en bénéficient le plus. Contrairement aux grands groupes qui ont des équipes dédiées, les entreprises de 10 à 250 collaborateurs ont besoin d'un positionnement clair et de contenus percutants pour se différencier avec des ressources limitées. C'est exactement ce que le product marketing structure.",
     },
     {
-      question: "Le product marketing est-il adapté aux PME ou seulement aux grandes entreprises ?",
-      answer: "Les PME B2B sont celles qui en bénéficient le plus. Contrairement aux grands groupes qui ont des équipes dédiées, les PME ont besoin d'un positionnement clair et de contenus percutants pour se différencier avec des ressources limitées. C'est exactement ce que le product marketing structure.",
+      question: "Quel retour sur investissement attendre du product marketing ?",
+      answer: "Le ROI se mesure sur trois axes : le taux de conversion (nos clients constatent en moyenne +40%), la durée du cycle de vente (réduite grace à des contenus qui éduquent en amont) et la qualité des leads entrants (le personal branding et le contenu attirent des prospects déja qualifiés).",
     },
     {
-      question: "Quel est le retour sur investissement du product marketing ?",
-      answer: "Le ROI se mesure sur trois axes : le taux de conversion (nos clients constatent en moyenne +40%), la durée du cycle de vente (réduite grace a des contenus qui éduquent en amont) et la qualité des leads entrants (le personal branding et le contenu attirent des prospects déja qualifiés).",
+      question: "Le personal branding fait-il partie du product marketing ?",
+      answer: "En B2B, la décision d'achat repose sur la confiance. Quand vos dirigeants sont visibles et reconnus sur LinkedIn, les prospects arrivent convaincus avant le premier rendez-vous. Le personal branding est un accélérateur de crédibilité, donc un levier direct du product marketing.",
     },
     {
       question: "Comment se déroule un accompagnement product marketing avec Vizion ?",
-      answer: "Quatre phases : diagnostic de perception (2 semaines), architecture de message (2-3 semaines), production des assets (contenu, landing pages, personal branding), puis mesure et itération mensuelle. Un directeur marketing dédié est votre interlocuteur unique tout au long de l'accompagnement.",
+      answer: "Quatre phases : diagnostic de perception marché (2 semaines), architecture de positionnement (2-3 semaines), production des assets product marketing (contenu, landing pages, personal branding), puis mesure et itération mensuelle. Un directeur marketing dédié est votre interlocuteur unique tout au long de l'accompagnement.",
     },
   ],
 
   pilierTiming: {
     surtitre: "LE BON MOMENT",
-    title: "Quand s'intéresser au product marketing ?",
+    title: "Quand investir dans le product marketing ?",
     subtitle: "Certains signaux indiquent qu'il est temps de structurer votre product marketing. Si vous vous reconnaissez dans l'une de ces situations, c'est le moment d'agir.",
     items: [
       {
         icon: "Rocket",
-        title: "Vous lancez un nouveau produit ou service",
-        description: "Vous avez une offre solide mais pas encore de positionnement clair, de messaging structuré ni de contenus pour la faire connaitre sur votre marché.",
+        title: "Vous lancez un produit ou une nouvelle offre",
+        description: "Votre offre est prête mais vous n'avez pas de positionnement clair, de messaging structuré ni de contenu go-to-market pour la faire connaitre.",
       },
       {
         icon: "Users",
-        title: "Vos commerciaux peinent a expliquer votre valeur",
-        description: "Chaque commercial raconte une histoire différente. Les prospects ne comprennent pas ce qui vous distingue de vos concurrents.",
+        title: "Vos commerciaux improvisent à chaque rendez-vous",
+        description: "Chaque commercial raconte une histoire différente. Vos prospects ne comprennent pas ce qui vous distingue et les deals s'éternisent.",
       },
       {
         icon: "TrendingDown",
-        title: "Votre taux de conversion stagne",
-        description: "Le trafic arrive sur votre site mais ne convertit pas. Vos landing pages, vos contenus et votre proposition de valeur ne convainquent pas.",
+        title: "Votre taux de conversion stagne malgré le trafic",
+        description: "Les visiteurs arrivent sur votre site mais ne convertissent pas. Vos landing pages, vos contenus et votre proposition de valeur ne convainquent pas.",
       },
       {
         icon: "RefreshCw",
-        title: "Vous pivotez ou repositionnez votre offre",
-        description: "Votre marché évolue, vos cibles changent, ou vous montez en gamme. Votre communication actuelle ne reflète plus votre réalité.",
+        title: "Vous repositionnez votre offre ou montez en gamme",
+        description: "Votre marché évolue, vos cibles changent ou vous passez de la startup à la scale-up. Votre communication ne reflète plus votre réalité.",
       },
     ],
   },
 
   pilierTargets: {
-    surtitre: "LES CIBLES",
-    title: "A qui s'adresse le product marketing ?",
-    subtitle: "Le product marketing concerne toutes les entreprises B2B qui vendent une offre complexe a des décideurs multiples.",
+    surtitre: "A QUI S'ADRESSE LE PRODUCT MARKETING",
+    title: "Le product marketing pour chaque entreprise ou le digital intervient dans la vente.",
+    subtitle: "Que vous vendiez un logiciel, un service ou un produit technique, des que votre cycle de vente implique plusieurs décideurs et du contenu digital, le product marketing vous concerne.",
+    highlightWords: ["chaque entreprise"],
     items: [
       {
+        icon: "Rocket",
+        title: "Startups et scale-ups B2B",
+        description: "Vous avez trouvé votre product-market fit et devez structurer votre go-to-market pour accélérer. Le product marketing transforme votre traction initiale en croissance répétable.",
+      },
+      {
         icon: "Building2",
-        title: "PME et ETI B2B en croissance",
-        description: "Vous avez validé votre product-market fit mais votre communication ne suit pas votre ambition. Le product marketing structure votre montée en puissance.",
+        title: "PME et ETI en croissance",
+        description: "Votre offre est solide mais votre communication ne reflète pas votre valeur réelle. Le product marketing aligne votre positionnement sur votre ambition et structure votre montée en puissance commerciale.",
       },
       {
         icon: "Code",
         title: "Editeurs SaaS et entreprises tech",
-        description: "Votre produit est technique, votre valeur est difficile a vulgariser. Le product marketing traduit vos fonctionnalités en bénéfices business.",
+        description: "Votre produit est puissant mais difficile à vulgariser. Le product marketing traduit vos fonctionnalités techniques en bénéfices business que vos acheteurs comprennent et défendent en interne.",
+      },
+      {
+        icon: "Globe",
+        title: "Entreprises avec un cycle de vente digital",
+        description: "Des que le digital intervient dans votre parcours d'achat (site, contenus, démos, nurturing), le product marketing structure chaque point de contact pour convertir.",
       },
       {
         icon: "Factory",
-        title: "Industriels et services B2B",
-        description: "Vos cycles de vente sont longs, vos décideurs multiples. Le product marketing aligne votre communication sur chaque profil d'acheteur.",
+        title: "Industriels et fabricants",
+        description: "Votre expertise technique est reconnue, mais votre communication ne la met pas en valeur. Le product marketing structure vos arguments pour convaincre des acheteurs qui comparent.",
       },
       {
-        icon: "UserCheck",
-        title: "Dirigeants et fondateurs",
-        description: "Vous êtes le visage de votre entreprise mais manquez de temps pour structurer votre personal branding et votre prise de parole.",
+        icon: "Handshake",
+        title: "Sociétés de conseil et services B2B",
+        description: "Vous vendez de l'expertise immatérielle. Le product marketing rend votre valeur tangible avec du contenu, des cas clients et un positionnement qui vous distingue.",
       },
     ],
+    featuredIndex: 1,
   },
 
-  relatedServicesTitle: "Faire de votre produit une évidence",
-  relatedServicesSubtitle: "Nous avons conçu une gamme de services complémentaires pour structurer votre product marketing de A a Z. Chaque brique peut être activée indépendamment ou combinée dans un accompagnement global.",
+  relatedServicesTitle: "Les services de ce pilier",
+  relatedServicesSubtitle: "Chaque service peut être activé indépendamment ou combiné dans un accompagnement product marketing global.",
   relatedServices: [
     {
       slug: "positionnement-messaging",
       icon: "Target",
       title: "Positionnement et messaging",
-      description: "Nous construisons votre positionnement, vos propositions de valeur par persona et votre messaging framework. Le document de référence que toute votre équipe utilise pour parler d'une seule voix.",
+      description: "Nous construisons votre positionnement, vos propositions de valeur par persona et votre messaging framework.",
       href: "/services/positionnement-messaging",
     },
     {
       slug: "creation-contenu-b2b",
       icon: "FileText",
       title: "Stratégie éditoriale B2B",
-      description: "Newsletters, articles de blog, posts LinkedIn. Nous concevons et produisons les contenus récurrents qui positionnent votre expertise et maintiennent votre marque dans la tête de vos prospects.",
+      description: "Articles, newsletters, posts LinkedIn. Les contenus récurrents qui positionnent votre expertise et nourrissent votre pipeline.",
       href: "/services/creation-contenu-b2b",
     },
     {
       slug: "livres-blancs-lead-magnets",
       icon: "BookOpen",
       title: "Livres blancs et lead magnets",
-      description: "Guides, livres blancs, templates, checklists. Les contenus premium que vos prospects téléchargent en échange de leurs coordonnées. Chaque lead magnet est conçu pour qualifier et faire avancer dans le cycle de vente.",
+      description: "Les contenus premium que vos prospects téléchargent en échange de leurs coordonnées. Conçus pour qualifier et faire avancer.",
       href: "/services/livres-blancs-lead-magnets",
     },
     {
       slug: "creation-landing-page",
       icon: "LayoutTemplate",
       title: "Création de landing page",
-      description: "Des pages conçues pour un seul objectif : convertir. Structure testée, copywriting orienté problème, formulaire au bon moment. Chaque landing page est calibrée sur un persona et une étape du parcours d'achat.",
+      description: "Des pages conçues pour un seul objectif : convertir. Structure testée, copywriting orienté problème, formulaire au bon moment.",
       href: "/services/creation-landing-page",
     },
     {
       slug: "adn-marque-branding",
       icon: "Fingerprint",
       title: "ADN de marque et branding",
-      description: "Nous définissons votre identité de marque : mission, vision, ton de voix, univers visuel. Le socle qui garantit la cohérence de chaque prise de parole et installe la confiance des votre premier contact.",
+      description: "Mission, vision, ton de voix, univers visuel. Le socle qui garantit la cohérence de chaque prise de parole product marketing.",
       href: "/services/adn-marque-branding",
     },
   ],
 
-  ctaTitle: "Votre valeur mérite d'être comprise au premier regard",
-  ctaDescription: "Échangez 30 minutes avec un fondateur. Nous analysons votre positionnement actuel et identifions comment le rendre plus clair et plus différenciant.",
-  ctaButtonText: "Travailler votre positionnement",
+  ctaTitle: "Votre produit mérite d'être compris au premier regard",
+  ctaDescription: "Échangez 30 minutes avec un fondateur. Nous analysons votre positionnement actuel et identifions comment le product marketing peut accélérer votre croissance.",
+  ctaButtonText: "Structurer votre product marketing",
   ctaButtonLink: "/contact",
 };

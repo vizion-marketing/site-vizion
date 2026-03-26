@@ -35,6 +35,7 @@ export interface NarrativeStatement {
 export interface NarrativeBlock {
   surtitre: string;
   title: string;
+  definition?: string;
   paragraphs: string[];
   highlights?: string[];
   statements?: NarrativeStatement[];
@@ -172,7 +173,10 @@ export interface PilierTargets {
   surtitre: string;
   title: string;
   subtitle: string;
+  highlightWords?: string[];
   items: PilierTargetItem[];
+  /** Index de la carte mise en avant (fond accent). Par défaut : 1 (2e carte). */
+  featuredIndex?: number;
 }
 
 export interface RelatedService {
