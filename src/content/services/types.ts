@@ -27,6 +27,7 @@ export interface ServiceTestimonial {
 }
 
 export interface NarrativeStatement {
+  icon?: string;
   headline: string;
   description: string;
 }
@@ -115,6 +116,65 @@ export interface QualityGuaranteesContent {
   featureCard: QualityFeatureCard;
 }
 
+// Pilier — section "Notre approche / Méthodologie"
+export interface PilierMethodologyStep {
+  title: string;
+  description: string;
+}
+
+export interface PilierMethodology {
+  surtitre: string;
+  title: string;
+  subtitle: string;
+  steps: PilierMethodologyStep[];
+}
+
+// Pilier — section "Résultats / Métriques"
+export interface PilierMetric {
+  value: number;
+  suffix: string;
+  label: string;
+  direction: "up" | "down";
+  context?: string;
+  sourceUrl?: string;
+}
+
+export interface PilierMetricsContent {
+  surtitre: string;
+  title: string;
+  subtitle?: string;
+  metrics: PilierMetric[];
+  source?: string;
+}
+
+// Pilier — section "Quand est-ce le bon moment"
+export interface PilierTimingItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface PilierTiming {
+  surtitre: string;
+  title: string;
+  subtitle: string;
+  items: PilierTimingItem[];
+}
+
+// Pilier — section "Quelles sont les cibles"
+export interface PilierTargetItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface PilierTargets {
+  surtitre: string;
+  title: string;
+  subtitle: string;
+  items: PilierTargetItem[];
+}
+
 export interface RelatedService {
   slug: string;
   icon: string;
@@ -180,10 +240,17 @@ export interface ServiceContent {
   relatedServicesSubtitle?: string;
   relatedServices?: RelatedService[];
 
+  // Pilier — sections spécifiques
+  pilierMethodology?: PilierMethodology;
+  pilierMetrics?: PilierMetricsContent;
+  pilierTiming?: PilierTiming;
+  pilierTargets?: PilierTargets;
+
   // CTA intermédiaires (bandeaux inline entre les sections)
   inlineCTAs?: {
     afterTestimonials?: { text: string; buttonText: string; href: string };
     afterProcess?: { text: string; buttonText: string; href: string };
+    beforeFaq?: { text: string; buttonText: string; href: string };
   };
 
   // CTA final

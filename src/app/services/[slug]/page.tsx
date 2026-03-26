@@ -168,7 +168,7 @@ export default async function ServicePage({ params }: PageProps) {
         {
           "@type": "ListItem",
           position: 3,
-          name: service.title,
+          name: service.isPilier ? service.category : service.title,
           item: serviceUrl,
         },
       ],

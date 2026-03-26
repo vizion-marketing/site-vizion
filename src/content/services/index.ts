@@ -21,6 +21,14 @@ export type {
   QualityGuarantee,
   QualityFeatureCard,
   RelatedService,
+  PilierMethodology,
+  PilierMethodologyStep,
+  PilierMetricsContent,
+  PilierMetric,
+  PilierTiming,
+  PilierTimingItem,
+  PilierTargets,
+  PilierTargetItem,
 } from "./types";
 
 import type { ServiceContent } from "./types";

@@ -129,7 +129,7 @@ export function TestimonialShowcase({
                 Témoignages clients
               </span>
             </div>
-            <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
+            <h2 className="font-heading font-medium text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
               {sectionTitle || "Ce qu\u2019ils disent de nous"}
             </h2>
             <p className="text-[14px] sm:text-[15px] text-muted leading-relaxed mt-3">

@@ -113,6 +113,13 @@ export const acquisitionB2b: ServiceContent = {
       description: "Engagez vos prospects avec des séquences multi-canal personnalisées et automatisées.",
       href: "/services/cold-outreach-prospection",
     },
+    {
+      slug: "strategie-personal-branding",
+      icon: "User",
+      title: "Stratégie de personal branding",
+      description: "Faites de vos dirigeants des générateurs de leads via LinkedIn et la prise de parole.",
+      href: "/services/strategie-personal-branding",
+    },
   ],
 
   ctaTitle: "Votre pipeline ne devrait pas dépendre du hasard",

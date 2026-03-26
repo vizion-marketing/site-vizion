@@ -3,13 +3,27 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, X, MessageCircle, Calendar } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons";
 import Link from "next/link";
 
 export function CallWidget() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <>
+    {/* Mobile sticky CTA */}
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)" }}>
+      <Link
+        href="/contact"
+        className="flex items-center justify-center gap-2 w-full bg-accent text-black font-semibold py-3.5 text-[14px] active:scale-[0.98] transition-transform duration-150"
+      >
+        Nous contacter
+        <ArrowUpRightIcon size={16} className="shrink-0 inline-block" />
+      </Link>
+    </div>
+
+    {/* Desktop widget */}
+    <div className="hidden lg:flex fixed bottom-6 right-6 z-50 flex-col items-end gap-3">
       {/* Expanded Menu */}
       <AnimatePresence>
         {isExpanded && (
@@ -143,5 +157,6 @@ export function CallWidget() {
         </motion.button>
       </div>
     </div>
+    </>
   );
 }

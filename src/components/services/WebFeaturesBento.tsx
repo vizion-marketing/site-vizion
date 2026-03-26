@@ -148,7 +148,7 @@ export function WebFeaturesBento({ cards }: WebFeaturesBentoProps) {
         {/* Section title */}
         {cards.sectionTitle && (
           <div className="mb-10 sm:mb-14 max-w-3xl">
-            <h2 className="font-heading font-medium text-[clamp(32px,5vw,52px)] leading-[1.05] tracking-[-0.035em] text-primary">
+            <h2 className="font-heading font-medium text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[52px] leading-[1.05] tracking-[-0.035em] text-primary">
               {cards.sectionTitle}
             </h2>
             {cards.sectionDescription && (

@@ -193,7 +193,7 @@ export function SolutionSticky({
           <div className="mb-2">
             <h2
               data-solution="title"
-              className="font-heading font-medium text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-[1.1] tracking-[-0.02em] text-white mb-4"
+              className="font-heading font-medium text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-[44px] lg:text-[48px] leading-[1.05] tracking-[-0.02em] text-white mb-4"
             >
               {title}
             </h2>

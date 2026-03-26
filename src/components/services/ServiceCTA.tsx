@@ -102,7 +102,7 @@ export function ServiceCTA({
         {/* Title with word-by-word reveal */}
         <h2
           ref={titleRef}
-          className="text-3xl sm:text-4xl md:text-5xl text-white font-normal leading-tight flex flex-wrap justify-center gap-x-[0.3em]"
+          className="text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-5xl text-white font-normal leading-tight flex flex-wrap justify-center gap-x-[0.3em]"
         >
           {titleWords.map((word, i) => (
             <span key={i} className="overflow-hidden inline-block">

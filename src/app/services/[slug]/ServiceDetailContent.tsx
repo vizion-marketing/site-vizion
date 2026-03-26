@@ -2,7 +2,6 @@
 
 import type { ServiceContent } from "@/content/services";
 import {
-  ServiceHero,
   ServiceHeroV2,
   ServiceNarrative,
   SolutionSticky,

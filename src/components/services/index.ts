@@ -1,5 +1,7 @@
-export { ServiceHero } from "./ServiceHero";
 export { ServiceHeroV2 } from "./ServiceHeroV2";
+export { PilierHero } from "./PilierHero";
+export { PilierMethodology } from "./PilierMethodology";
+export { PilierMetrics } from "./PilierMetrics";
 export { ServiceNarrative } from "./ServiceNarrative";
 export { ProcessTimeline } from "./ProcessTimeline";
 export { TestimonialShowcase } from "./TestimonialShowcase";

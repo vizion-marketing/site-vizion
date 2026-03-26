@@ -80,7 +80,7 @@ export function QualityGuarantees({ content }: QualityGuaranteesProps) {
               {content.surtitre}
             </span>
           </div>
-          <h2 className="font-heading font-medium text-[28px] sm:text-[38px] md:text-[48px] leading-[1.05] tracking-[-0.035em] text-primary max-w-3xl">
+          <h2 className="font-heading font-medium text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-[48px] leading-[1.05] tracking-[-0.035em] text-primary max-w-3xl">
             {sectionTitleLines.map((line, i) => (
               <span key={i}>
                 {i > 0 && <br />}
@@ -109,7 +109,7 @@ export function QualityGuarantees({ content }: QualityGuaranteesProps) {
                   {content.cardSurtitre}
                 </span>
               </div>
-              <h2 className="font-heading font-medium text-[24px] sm:text-[34px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.02em] text-primary mb-4 sm:mb-6">
+              <h2 className="font-heading font-medium text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-[44px] lg:text-[46px] leading-[1.05] tracking-[-0.02em] text-primary mb-4 sm:mb-6">
                 {cardTitleLines.map((line, i) => (
                   <span key={i}>
                     {i > 0 && <br />}

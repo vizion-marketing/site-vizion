@@ -4,7 +4,7 @@ export const strategiePersonalBranding: ServiceContent = {
   slug: "strategie-personal-branding",
   title: "Stratégie de Personal Branding",
   icon: "User",
-  category: "Product Marketing",
+  category: "Growth Marketing",
   order: 20,
 
   // SEO

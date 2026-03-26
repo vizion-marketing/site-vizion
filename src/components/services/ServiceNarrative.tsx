@@ -159,7 +159,7 @@ export function ServiceNarrative({ constat }: { constat: NarrativeBlock }) {
 
               <h2
                 data-narrative="title"
-                className="font-heading font-medium text-[28px] sm:text-[38px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.03em] text-primary mb-4 sm:mb-6"
+                className="font-heading font-medium text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.03em] text-primary mb-4 sm:mb-6"
               >
                 {constat.title}
               </h2>

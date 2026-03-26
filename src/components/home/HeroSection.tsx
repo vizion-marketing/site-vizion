@@ -105,22 +105,6 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             }}
           />
         </div>
-        {/* Mobile image — floating */}
-        <div className="relative -mb-2 aspect-[3/4] max-h-[50vh] mx-auto max-w-[280px] sm:max-w-[320px]">
-          <Image
-            src="/images/hero-jumelles.avif"
-            alt="Agence marketing B2B Vizion Toulouse"
-            fill
-            priority
-            className="object-contain object-bottom"
-          />
-          <div
-            className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
-            style={{
-              background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)",
-            }}
-          />
-        </div>
 
         {/* Mobile content */}
         <div className="flex flex-col gap-3">
@@ -187,6 +171,23 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             </div>
           </div>
 
+        </div>
+
+        {/* Mobile image — floating, after CTAs */}
+        <div className="relative mt-6 -mb-2 aspect-[3/4] max-h-[50vh] mx-auto max-w-[280px] sm:max-w-[320px]">
+          <Image
+            src="/images/hero-jumelles.avif"
+            alt="Agence marketing B2B Vizion Toulouse"
+            fill
+            priority
+            className="object-contain object-bottom"
+          />
+          <div
+            className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
+            style={{
+              background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)",
+            }}
+          />
         </div>
       </div>
 

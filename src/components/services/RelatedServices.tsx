@@ -72,7 +72,7 @@ export function RelatedServices({
               Services complémentaires
             </span>
           </div>
-          <h2 className="font-heading font-normal text-[28px] sm:text-[36px] md:text-[44px] leading-[1.05] tracking-[-0.035em] text-primary">
+          <h2 className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-[44px] leading-[1.05] tracking-[-0.035em] text-primary">
             {title}
           </h2>
           {subtitle && (
