@@ -33,7 +33,7 @@ export const productMarketing: ServiceContent = {
   heroSubtitle:
     "Votre produit est solide. Mais vos prospects ne le perçoivent pas. Le product marketing traduit votre valeur en messages clairs, structure votre go-to-market et arme vos équipes pour chaque conversation commerciale. Pour que le choix devienne évident.",
   heroBadge: "PRODUCT MARKETING B2B",
-  heroImage: "/images/cas-clients/easyvirtual-mainimage.avif",
+  heroImage: "/images/piliers/product-marketing/hero.avif",
 
   constat: {
     surtitre: "LE PRODUCT MARKETING",
@@ -62,7 +62,7 @@ export const productMarketing: ServiceContent = {
   },
 
   solutionTitle: "Comment Vizion vous accompagne dans votre stratégie produit ?",
-  solutionImage: "/images/services/positionnement-messaging/hero.avif",
+  solutionImage: "/images/piliers/product-marketing/solution.avif",
   solutionItems: [
     {
       title: "Positionnement et proposition de valeur",

@@ -30,7 +30,7 @@ export const digitalisation: ServiceContent = {
   heroSubtitle:
     "Vos outils sont sous-exploités et vos processus restent manuels. La transformation digitale ne se résume pas a empiler des logiciels. Nous déployons les solutions qui accélèrent votre activité : un site web qui convertit, un CRM structuré autour de votre cycle de vente, des applications IA qui libèrent du temps sur les taches a faible valeur.",
   heroBadge: "TRANSFORMATION DIGITALE B2B",
-  heroImage: "/images/services/deploiement-crm/hero.avif",
+  heroImage: "/images/piliers/transformation-digitale/hero.avif",
 
   constat: {
     surtitre: "LA TRANSFORMATION DIGITALE",
@@ -59,7 +59,7 @@ export const digitalisation: ServiceContent = {
   },
 
   solutionTitle: "Comment Vizion vous accompagne dans votre transformation digitale ?",
-  solutionImage: "/images/services/site-web/solution.avif",
+  solutionImage: "/images/piliers/transformation-digitale/solution.avif",
   solutionItems: [
     {
       title: "Création ou refonte de site web",

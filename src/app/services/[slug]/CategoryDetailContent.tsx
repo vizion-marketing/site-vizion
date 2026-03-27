@@ -29,6 +29,35 @@ import { getServiceBySlug } from "@/content/services";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const SERVICE_ARTICLES: Record<string, string> = {
+  "creation-refonte-site-web": "la",
+  "creation-landing-page": "la",
+  "audit-marketing": "l'",
+  "roadmap-strategique": "la",
+  "positionnement-messaging": "le",
+  "creation-contenu-b2b": "la",
+  "seo-contenu-organique": "le",
+  "campagnes-publicitaires": "les",
+  "cold-outreach-prospection": "le",
+  "pitch-decks-argumentaires": "les",
+  "battlecards-case-studies": "les",
+  "deploiement-crm": "le",
+  "lead-nurturing": "le",
+  "creation-workflows": "la",
+  "applications-ia": "les",
+  "audit-site-web": "l'",
+  "direction-marketing-externalisee": "la",
+  "strategie-personal-branding": "la",
+  "stack-acquisition": "la",
+};
+
+function getServiceCTA(slug: string, title: string): string {
+  const article = SERVICE_ARTICLES[slug];
+  if (!article) return `En savoir plus sur ${title.toLowerCase()}`;
+  const separator = article.endsWith("'") ? "" : " ";
+  return `En savoir plus sur ${article}${separator}${title.toLowerCase()}`;
+}
+
 interface CategoryDetailContentProps {
   service: ServiceContent;
 }
@@ -742,7 +771,7 @@ function CategoryServices({ service }: { service: ServiceContent }) {
                             {rs.description}
                           </p>
                           <span className="inline-flex items-center gap-2 text-accent text-sm font-medium mt-3 group-hover:gap-3 transition-all duration-200">
-                            En savoir plus
+                            {getServiceCTA(rs.slug, rs.title)}
                             <ArrowRight size={14} />
                           </span>
                         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import type { ServiceContent } from "@/content/services";
+import type { RelatedService } from "@/content/services";
 import {
   ServiceHeroV2,
   ServiceNarrative,
@@ -15,6 +16,21 @@ import {
   ServiceCTA,
   InlineCTA,
 } from "@/components/services";
+import { SERVICE_MENU_CATEGORIES } from "@/lib/constants";
+
+function getPilierRelatedServices(category: string, currentSlug: string): RelatedService[] {
+  const pilier = SERVICE_MENU_CATEGORIES.find((c) => c.title === category);
+  if (!pilier) return [];
+  return pilier.items
+    .filter((item) => item.href && item.href !== `/services/${currentSlug}`)
+    .map((item) => ({
+      slug: item.href!.replace("/services/", ""),
+      icon: item.icon,
+      title: item.label,
+      description: item.description,
+      href: item.href!,
+    }));
+}
 
 interface ServiceDetailContentProps {
   service: ServiceContent;
@@ -23,6 +39,11 @@ interface ServiceDetailContentProps {
 export function ServiceDetailContent({
   service,
 }: ServiceDetailContentProps) {
+  const pilierRelated = getPilierRelatedServices(service.category, service.slug);
+  const relatedServices = pilierRelated.length > 0 ? pilierRelated : (service.relatedServices ?? []);
+  const relatedTitle = service.relatedServicesTitle ?? "Services complémentaires";
+  const relatedSubtitle = service.relatedServicesSubtitle ?? "Découvrez les autres services de ce pilier pour aller plus loin.";
+
   return (
     <main>
       {/* 1. Hero (sombre) */}
@@ -107,11 +128,11 @@ export function ServiceDetailContent({
       )}
 
       {/* 12. Services complémentaires (blanc) */}
-      {service.relatedServices && service.relatedServices.length > 0 && (
+      {relatedServices.length > 0 && (
         <RelatedServices
-          title={service.relatedServicesTitle}
-          subtitle={service.relatedServicesSubtitle}
-          services={service.relatedServices}
+          title={relatedTitle}
+          subtitle={relatedSubtitle}
+          services={relatedServices}
         />
       )}
 

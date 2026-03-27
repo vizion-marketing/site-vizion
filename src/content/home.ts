@@ -704,8 +704,7 @@ export const homeContent: HomeContent = {
     h2Highlight: "Toulouse",
     description: "Basés dans la ville rose, capitale de l'Occitanie, nous accompagnons les entreprises de la région et de toute la France. Proximité quand il faut, efficacité à distance quand c'est mieux.",
     paragraphs: [
-      "Installés à Labège dans la technopole de Toulouse, nous travaillons au quotidien avec des PME et ETI de l'aéronautique, de la tech, de l'industrie et des services. La capitale occitane concentre plus de 12 000 entreprises, et la plupart n'ont pas de stratégie marketing structurée.",
-      "Nos clients toulousains bénéficient d'ateliers stratégiques en présentiel. Pour les entreprises ailleurs en France, nous sommes tout aussi efficaces à distance, avec des déplacements ponctuels quand c'est utile."
+      "Basés à Labège dans la technopole de Toulouse, nous intervenons en présentiel pour nos clients occitans et à distance pour le reste de la France."
     ],
     preuveLocale: "Enseignant en stratégie LinkedIn à Toulouse School of Management (TSM)",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.5!2d1.5102!3d43.5416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb6fec7552ff%3A0x40ae6168453a970!2sLab%C3%A8ge!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr",

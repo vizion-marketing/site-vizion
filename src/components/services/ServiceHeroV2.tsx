@@ -179,12 +179,13 @@ export function ServiceHeroV2({
             );
           })()}
 
-          <h1
+          <p
+            aria-hidden="true"
             data-v2="title"
             className="font-heading font-normal !text-[28px] min-[400px]:!text-[32px] sm:!text-[40px] !leading-[0.95] !tracking-[-0.035em] text-white"
           >
             {title}
-          </h1>
+          </p>
 
           <p data-v2="subtitle" className="text-[13px] sm:text-[14px] leading-relaxed text-white/80">
             {subtitle}

@@ -25,11 +25,11 @@ export const strategieMarketing: ServiceContent = {
     "alignement marketing ventes",
   ],
 
-  heroTitle: "Prenez les bonnes décisions marketing",
+  heroTitle: "Stratégie Marketing B2B : Prenez les bonnes décisions marketing",
   heroSubtitle:
     "Vous investissez sans savoir ce qui fonctionne. Nous auditons votre marketing, construisons votre feuille de route et pilotons son exécution. Pour que chaque euro investi repose sur un diagnostic, pas sur une intuition.",
   heroBadge: "STRATÉGIE & AUDIT MARKETING B2B",
-  heroImage: "/images/services/product-marketing.avif",
+  heroImage: "/images/piliers/strategie/hero.avif",
 
   constat: {
     surtitre: "LA STRATÉGIE MARKETING",
@@ -58,7 +58,7 @@ export const strategieMarketing: ServiceContent = {
   },
 
   solutionTitle: "Comment Vizion vous accompagne dans votre stratégie marketing ?",
-  solutionImage: "/images/services/product-marketing.avif",
+  solutionImage: "/images/piliers/strategie/solution.avif",
   solutionItems: [
     {
       title: "Audit marketing complet",

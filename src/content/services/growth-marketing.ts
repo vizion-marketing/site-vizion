@@ -29,7 +29,7 @@ export const acquisitionB2b: ServiceContent = {
   heroSubtitle:
     "Votre expertise est reconnue par vos clients existants, mais invisible pour le reste du marche. Le growth marketing structure vos canaux d'acquisition pour generer un flux regulier de prospects qualifies. SEO, campagnes ciblees, prospection, personal branding : nous deplorons les leviers adaptes a votre marche et votre cycle de vente.",
   heroBadge: "GROWTH MARKETING B2B",
-  heroImage: "/images/services/seo-contenu-organique/hero.avif",
+  heroImage: "/images/piliers/growth-marketing/hero.avif",
 
   constat: {
     surtitre: "LE GROWTH MARKETING",
@@ -58,7 +58,7 @@ export const acquisitionB2b: ServiceContent = {
   },
 
   solutionTitle: "Comment Vizion vous accompagne dans votre strategie d'acquisition ?",
-  solutionImage: "/images/services/seo-contenu-organique/hero.avif",
+  solutionImage: "/images/piliers/growth-marketing/solution.avif",
   solutionItems: [
     {
       title: "SEO et contenu organique",

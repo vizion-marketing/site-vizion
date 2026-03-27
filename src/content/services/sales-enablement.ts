@@ -35,7 +35,7 @@ export const salesEnablement: ServiceContent = {
   heroSubtitle:
     "Chaque commercial improvise son discours, les objections ne sont pas anticipees, les relances dependent de la memoire de chacun. Le sales enablement transforme votre cycle de vente en processus reproductible. Pour que chaque opportunite avance vers la signature.",
   heroBadge: "SALES ENABLEMENT B2B",
-  heroImage: "/images/services/pitch-decks-argumentaires/hero.avif",
+  heroImage: "/images/piliers/sales-enablement/hero.avif",
 
   // ── Constat / Narrative ──
   constat: {
@@ -70,7 +70,7 @@ export const salesEnablement: ServiceContent = {
   // ── Solution ──
   solutionTitle:
     "Comment Vizion vous accompagne dans votre strategie de sales enablement ?",
-  solutionImage: "/images/services/pitch-decks-argumentaires/hero.avif",
+  solutionImage: "/images/piliers/sales-enablement/solution.avif",
   solutionItems: [
     {
       title: "Pitch decks et argumentaires par persona",

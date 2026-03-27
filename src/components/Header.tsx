@@ -105,25 +105,25 @@ function DesktopServicesMegaMenu({ onClose }: { onClose: () => void }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -4 }}
       transition={{ duration: 0.18, ease: "easeOut" }}
-      className="absolute top-full left-1/2 -translate-x-1/2 z-50 w-[1060px] bg-black/95 backdrop-blur-2xl border border-white/[0.08] shadow-2xl shadow-black/50"
+      className="absolute top-full left-1/2 -translate-x-1/2 z-50 w-[1060px] bg-white border border-black/[0.08] shadow-2xl shadow-black/10"
     >
       <div className="grid grid-cols-[1fr_1fr_1fr_240px]">
         {/* Col 1 — Audit & Stratégie + Growth */}
-        <div className="p-5 flex flex-col gap-4 border-r border-white/[0.06]">
+        <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
           {col1.map((category, i) => (
             <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
           ))}
         </div>
 
         {/* Col 2 — Product Marketing + Sales Enablement */}
-        <div className="p-5 flex flex-col gap-4 border-r border-white/[0.06]">
+        <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
           {col2.map((category, i) => (
             <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
           ))}
         </div>
 
         {/* Col 3 — Digitalisez + Automatisez */}
-        <div className="p-5 flex flex-col gap-4 border-r border-white/[0.06]">
+        <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
           {col3.map((category, i) => (
             <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
           ))}
@@ -186,19 +186,19 @@ function DesktopServicesMegaMenu({ onClose }: { onClose: () => void }) {
 
 function MegaMenuCategory({ category, onClose, isFirst = false }: { category: (typeof SERVICE_MENU_CATEGORIES)[number]; onClose: () => void; isFirst?: boolean }) {
   const titleContent = (
-    <div className="flex items-center gap-2 mb-3 px-2 py-1.5 bg-white/[0.04] -mx-1 group/cat">
-      <CategoryIcon name={category.icon} size={13} className="text-white/40" />
-      <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-white/60 group-hover/cat:text-accent transition-colors duration-200">
+    <div className="flex items-center gap-2 mb-3 px-2 py-1.5 bg-black/[0.03] -mx-1 group/cat">
+      <CategoryIcon name={category.icon} size={13} className="text-black/30" />
+      <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-black/50 group-hover/cat:text-black/80 transition-colors duration-200">
         {category.title}
       </span>
       {category.href && (
-        <ArrowRight size={10} className="text-white/50 group-hover/cat:text-accent transition-colors duration-200 ml-auto" />
+        <ArrowRight size={10} className="text-black/40 group-hover/cat:text-black/60 transition-colors duration-200 ml-auto" />
       )}
     </div>
   );
 
   return (
-    <div className={isFirst ? "" : "pt-4 border-t border-white/[0.04]"}>
+    <div className={isFirst ? "" : "pt-4 border-t border-black/[0.06]"}>
       {category.href ? (
         <Link href={category.href} onClick={onClose}>
           {titleContent}
@@ -217,11 +217,11 @@ function MegaMenuCategory({ category, onClose, isFirst = false }: { category: (t
 
 function MegaMenuServiceItem({ item, onClose }: { item: ServiceMenuItem; onClose: () => void }) {
   const content = (
-    <div className="relative py-2 px-2 -mx-1 hover:bg-white/[0.06] transition-all duration-200 cursor-pointer group/item">
-      <span className="text-[13px] font-medium text-white/90 leading-tight block group-hover/item:translate-x-0.5 group-hover/item:text-accent transition-all duration-200">
+    <div className="relative py-2 px-2 -mx-1 hover:bg-black/[0.04] transition-all duration-200 cursor-pointer group/item">
+      <span className="text-[13px] font-medium text-black/80 leading-tight block group-hover/item:translate-x-0.5 group-hover/item:font-semibold transition-all duration-200">
         {item.label}
       </span>
-      <span className="text-[11px] text-white/60 leading-snug block mt-0.5 group-hover/item:text-white/80 group-hover/item:translate-x-0.5 transition-all duration-200">
+      <span className="text-[11px] text-black/50 leading-snug block mt-0.5 group-hover/item:text-black/70 group-hover/item:translate-x-0.5 transition-all duration-200">
         {item.description}
       </span>
     </div>
@@ -252,21 +252,21 @@ function DesktopCasClientsMegaMenu({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -4 }}
       transition={{ duration: 0.18, ease: "easeOut" }}
-      className="absolute top-full left-1/2 -translate-x-1/2 z-50 w-[1060px] bg-black/95 backdrop-blur-2xl border border-white/[0.08] shadow-2xl shadow-black/50"
+      className="absolute top-full left-1/2 -translate-x-1/2 z-50 w-[1060px] bg-white border border-black/[0.08] shadow-2xl shadow-black/10"
     >
       <div className="grid grid-cols-[1fr_280px]">
         {/* Left — 3 dernières études de cas */}
-        <div className="p-5 border-r border-white/[0.06]">
+        <div className="p-5 border-r border-black/[0.06]">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2 px-2 py-1.5 bg-white/[0.04] -mx-1">
-              <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-white/60">
+            <div className="flex items-center gap-2 px-2 py-1.5 bg-black/[0.03] -mx-1">
+              <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-black/50">
                 Dernières études de cas
               </span>
             </div>
             <Link
               href="/cas-clients"
               onClick={onClose}
-              className="flex items-center gap-1.5 text-[12px] font-medium text-white/50 hover:text-accent transition-colors group/all"
+              className="flex items-center gap-1.5 text-[12px] font-medium text-black/40 hover:text-black/70 hover:font-semibold transition-all group/all"
             >
               Voir toutes
               <ArrowRight size={12} className="group-hover/all:translate-x-0.5 transition-transform" />
@@ -279,11 +279,11 @@ function DesktopCasClientsMegaMenu({
                 key={cs._id}
                 href={cs.url}
                 onClick={onClose}
-                className="group/card block border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.04] transition-all duration-300 overflow-hidden"
+                className="group/card block border border-black/[0.06] hover:border-black/[0.12] hover:bg-black/[0.02] transition-all duration-300 overflow-hidden"
               >
                 {/* Image */}
                 {cs.heroImageUrl ? (
-                  <div className="relative h-[120px] overflow-hidden bg-white/[0.04]">
+                  <div className="relative h-[120px] overflow-hidden bg-black/[0.04]">
                     <Image
                       src={cs.heroImageUrl}
                       alt={cs.title}
@@ -293,8 +293,8 @@ function DesktopCasClientsMegaMenu({
                     />
                   </div>
                 ) : (
-                  <div className="h-[120px] bg-white/[0.04] flex items-center justify-center">
-                    <Building2 size={24} className="text-white/20" />
+                  <div className="h-[120px] bg-black/[0.04] flex items-center justify-center">
+                    <Building2 size={24} className="text-black/20" />
                   </div>
                 )}
 
@@ -303,22 +303,22 @@ function DesktopCasClientsMegaMenu({
                   <span className="text-[10px] font-medium tracking-[0.08em] uppercase text-accent block mb-1">
                     {cs.sector}
                   </span>
-                  <span className="text-[13px] font-semibold text-white/90 leading-tight block mb-1 line-clamp-2">
+                  <span className="text-[13px] font-semibold text-black/80 leading-tight block mb-1 line-clamp-2">
                     {cs.title}
                   </span>
-                  <span className="text-[11px] text-white/40 block mb-2">
+                  <span className="text-[11px] text-black/40 block mb-2">
                     {cs.company}
                   </span>
 
                   {/* Metrics (max 2) */}
                   {cs.metrics && cs.metrics.length > 0 && (
-                    <div className="flex gap-3 pt-2 border-t border-white/[0.06]">
+                    <div className="flex gap-3 pt-2 border-t border-black/[0.06]">
                       {cs.metrics.slice(0, 2).map((m, i) => (
                         <div key={i} className="flex flex-col">
                           <span className="text-[13px] font-semibold text-accent leading-none">
                             {m.value}
                           </span>
-                          <span className="text-[9px] text-white/40 leading-tight mt-0.5">
+                          <span className="text-[9px] text-black/40 leading-tight mt-0.5">
                             {m.label}
                           </span>
                         </div>
@@ -333,9 +333,9 @@ function DesktopCasClientsMegaMenu({
 
         {/* Right — Liste des clients */}
         <div className="p-5 flex flex-col">
-          <div className="flex items-center gap-2 px-2 py-1.5 bg-white/[0.04] -mx-1 mb-3">
-            <Building2 size={13} className="text-white/40" />
-            <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-white/60">
+          <div className="flex items-center gap-2 px-2 py-1.5 bg-black/[0.03] -mx-1 mb-3">
+            <Building2 size={13} className="text-black/30" />
+            <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-black/50">
               Nos clients
             </span>
           </div>
@@ -346,34 +346,34 @@ function DesktopCasClientsMegaMenu({
                 key={client._id}
                 href={client.url}
                 onClick={onClose}
-                className="flex items-center gap-3 py-2 px-2 -mx-1 hover:bg-white/[0.06] transition-all duration-200 group/client"
+                className="flex items-center gap-3 py-2 px-2 -mx-1 hover:bg-black/[0.04] transition-all duration-200 group/client"
               >
                 {/* Logo ou initiale */}
                 {client.logoUrl ? (
-                  <div className="w-7 h-7 shrink-0 bg-white/10 border border-white/[0.08] flex items-center justify-center overflow-hidden">
+                  <div className="w-7 h-7 shrink-0 bg-black/[0.06] border border-black/[0.06] flex items-center justify-center overflow-hidden">
                     <Image
                       src={client.logoUrl}
                       alt={client.name}
                       width={28}
                       height={28}
-                      className="object-contain w-full h-full p-0.5 brightness-0 invert"
+                      className="object-contain w-full h-full p-0.5 brightness-0"
                     />
                   </div>
                 ) : (
-                  <div className="w-7 h-7 shrink-0 bg-white/[0.06] border border-white/[0.08] flex items-center justify-center">
-                    <span className="text-[11px] font-semibold text-white/70">
+                  <div className="w-7 h-7 shrink-0 bg-black/[0.04] border border-black/[0.06] flex items-center justify-center">
+                    <span className="text-[11px] font-semibold text-black/60">
                       {client.name.charAt(0)}
                     </span>
                   </div>
                 )}
 
                 <div className="flex-1 min-w-0">
-                  <span className="text-[13px] font-medium text-white/80 leading-tight block truncate group-hover/client:text-white group-hover/client:translate-x-0.5 transition-all duration-200">
+                  <span className="text-[13px] font-medium text-black/70 leading-tight block truncate group-hover/client:text-black group-hover/client:translate-x-0.5 transition-all duration-200">
                     {client.name}
                   </span>
                 </div>
 
-                <span className="text-[9px] font-medium tracking-[0.04em] uppercase px-1.5 py-0.5 bg-white/[0.06] border border-white/[0.08] text-white/40 shrink-0 whitespace-nowrap">
+                <span className="text-[9px] font-medium tracking-[0.04em] uppercase px-1.5 py-0.5 bg-black/[0.04] border border-black/[0.06] text-black/40 shrink-0 whitespace-nowrap">
                   {client.sector}
                 </span>
               </Link>
@@ -384,9 +384,9 @@ function DesktopCasClientsMegaMenu({
           <Link
             href="/cas-clients"
             onClick={onClose}
-            className="flex items-center justify-between mt-4 pt-4 border-t border-white/[0.06] group/cta"
+            className="flex items-center justify-between mt-4 pt-4 border-t border-black/[0.06] group/cta"
           >
-            <span className="text-[12px] font-semibold text-white/80">
+            <span className="text-[12px] font-semibold text-black/70">
               Tous les cas clients
             </span>
             <div className="w-6 h-6 flex items-center justify-center bg-accent text-black group-hover/cta:translate-x-0.5 transition-transform duration-200">
@@ -424,7 +424,7 @@ function DesktopMegaMenu({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 top-[80px] bg-black/40 z-40"
+            className="fixed inset-0 top-[80px] bg-black/20 z-40"
             onClick={onClose}
           />
 
@@ -490,7 +490,7 @@ function MobileMenu({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="lg:hidden bg-black/95 backdrop-blur-2xl border-b border-white/[0.08] max-h-[calc(100vh-80px)] overflow-y-auto"
+          className="lg:hidden bg-white border-b border-black/[0.08] max-h-[calc(100vh-80px)] overflow-y-auto"
         >
           <div className="px-4 sm:px-6 py-6 flex flex-col gap-2">
             {navItems.map((item) => {
@@ -500,14 +500,14 @@ function MobileMenu({
                   <div key={item.target}>
                     <button
                       onClick={() => handleClick(item)}
-                      className="flex items-center justify-between w-full py-3 border-b border-white/[0.06] text-left cursor-pointer"
+                      className="flex items-center justify-between w-full py-3 border-b border-black/[0.06] text-left cursor-pointer"
                     >
-                      <span className="text-[16px] font-semibold text-white">
+                      <span className="text-[16px] font-semibold text-black">
                         {item.label}
                       </span>
                       <ChevronDown
                         size={18}
-                        className={`text-white/50 transition-transform duration-200 ${
+                        className={`text-black/40 transition-transform duration-200 ${
                           servicesOpen ? "rotate-180" : ""
                         }`}
                       />
@@ -526,14 +526,14 @@ function MobileMenu({
                             {SERVICE_MENU_CATEGORIES.map((category) => (
                               <div key={category.title}>
                                 {category.href ? (
-                                  <Link href={category.href} onClick={onClose} className="surtitre text-white/50 mb-2 flex items-center gap-1.5 hover:text-accent transition-colors">
-                                    <CategoryIcon name={category.icon} size={13} className="text-white/30" />
+                                  <Link href={category.href} onClick={onClose} className="surtitre text-black/50 mb-2 flex items-center gap-1.5 hover:text-black/80 hover:font-semibold transition-all">
+                                    <CategoryIcon name={category.icon} size={13} className="text-black/30" />
                                     {category.title}
-                                    <ArrowRight size={10} className="text-white/30 ml-auto" />
+                                    <ArrowRight size={10} className="text-black/30 ml-auto" />
                                   </Link>
                                 ) : (
-                                  <p className="surtitre text-white/50 mb-2 flex items-center gap-1.5">
-                                    <CategoryIcon name={category.icon} size={13} className="text-white/30" />
+                                  <p className="surtitre text-black/50 mb-2 flex items-center gap-1.5">
+                                    <CategoryIcon name={category.icon} size={13} className="text-black/30" />
                                     {category.title}
                                   </p>
                                 )}
@@ -541,10 +541,10 @@ function MobileMenu({
                                   {category.items.map((sItem) => {
                                     const itemContent = (
                                       <div className="py-1.5 pl-2">
-                                        <span className="text-[14px] font-medium text-white/90 leading-tight block">
+                                        <span className="text-[14px] font-medium text-black/80 leading-tight block">
                                           {sItem.label}
                                         </span>
-                                        <span className="text-[12px] text-white/50 leading-snug block">
+                                        <span className="text-[12px] text-black/50 leading-snug block">
                                           {sItem.description}
                                         </span>
                                       </div>
@@ -591,14 +591,14 @@ function MobileMenu({
                   <div key={item.target}>
                     <button
                       onClick={() => handleClick(item)}
-                      className="flex items-center justify-between w-full py-3 border-b border-white/[0.06] text-left cursor-pointer"
+                      className="flex items-center justify-between w-full py-3 border-b border-black/[0.06] text-left cursor-pointer"
                     >
-                      <span className="text-[16px] font-semibold text-white">
+                      <span className="text-[16px] font-semibold text-black">
                         {item.label}
                       </span>
                       <ChevronDown
                         size={18}
-                        className={`text-white/50 transition-transform duration-200 ${
+                        className={`text-black/40 transition-transform duration-200 ${
                           casClientsOpen ? "rotate-180" : ""
                         }`}
                       />
@@ -617,17 +617,17 @@ function MobileMenu({
                             {/* Dernières études */}
                             {caseStudies.length > 0 && (
                               <div>
-                                <p className="surtitre text-white/50 mb-2">
+                                <p className="surtitre text-black/50 mb-2">
                                   Dernières études
                                 </p>
                                 <div className="flex flex-col gap-1">
                                   {caseStudies.map((cs) => (
                                     <Link key={cs._id} href={cs.url} onClick={onClose}>
                                       <div className="py-1.5 pl-2">
-                                        <span className="text-[14px] font-medium text-white/90 leading-tight block">
+                                        <span className="text-[14px] font-medium text-black/80 leading-tight block">
                                           {cs.title}
                                         </span>
-                                        <span className="text-[12px] text-white/50 leading-snug block">
+                                        <span className="text-[12px] text-black/50 leading-snug block">
                                           {cs.company} · {cs.sector}
                                         </span>
                                       </div>
@@ -640,8 +640,8 @@ function MobileMenu({
                             {/* Clients */}
                             {clients.length > 0 && (
                               <div>
-                                <p className="surtitre text-white/50 mb-2 flex items-center gap-1.5">
-                                  <Building2 size={13} className="text-white/30" />
+                                <p className="surtitre text-black/50 mb-2 flex items-center gap-1.5">
+                                  <Building2 size={13} className="text-black/30" />
                                   Nos clients
                                 </p>
                                 <div className="flex flex-col gap-1">
@@ -654,16 +654,16 @@ function MobileMenu({
                                             alt={client.name}
                                             width={20}
                                             height={20}
-                                            className="object-contain shrink-0 brightness-0 invert"
+                                            className="object-contain shrink-0 brightness-0"
                                           />
                                         ) : (
-                                          <div className="w-5 h-5 bg-white/[0.06] flex items-center justify-center shrink-0">
-                                            <span className="text-[9px] font-semibold text-white/70">
+                                          <div className="w-5 h-5 bg-black/[0.04] flex items-center justify-center shrink-0">
+                                            <span className="text-[9px] font-semibold text-black/60">
                                               {client.name.charAt(0)}
                                             </span>
                                           </div>
                                         )}
-                                        <span className="text-[14px] font-medium text-white/80 leading-tight">
+                                        <span className="text-[14px] font-medium text-black/70 leading-tight">
                                           {client.name}
                                         </span>
                                       </div>
@@ -697,9 +697,9 @@ function MobileMenu({
                 <button
                   key={item.target}
                   onClick={() => handleClick(item)}
-                  className="flex items-center py-3 border-b border-white/[0.06] text-left cursor-pointer"
+                  className="flex items-center py-3 border-b border-black/[0.06] text-left cursor-pointer"
                 >
-                  <span className="text-[16px] font-semibold text-white">
+                  <span className="text-[16px] font-semibold text-black">
                     {item.label}
                   </span>
                 </button>
@@ -708,9 +708,9 @@ function MobileMenu({
                   key={item.target}
                   href={item.href}
                   onClick={onClose}
-                  className="flex items-center py-3 border-b border-white/[0.06] text-left cursor-pointer"
+                  className="flex items-center py-3 border-b border-black/[0.06] text-left cursor-pointer"
                 >
-                  <span className="text-[16px] font-semibold text-white">
+                  <span className="text-[16px] font-semibold text-black">
                     {item.label}
                   </span>
                 </Link>
@@ -776,8 +776,8 @@ export function Header({ menuCaseStudies = [], menuClients = [] }: HeaderProps) 
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Main Bar */}
       <div
-        className={`w-full px-4 sm:px-6 md:px-8 pt-2 pb-3 sm:pt-2 sm:pb-4 transition-all duration-300 backdrop-blur-xl border-b border-white/[0.08] ${
-          scrolled ? "bg-black/95 shadow-lg shadow-black/20" : "bg-black/80"
+        className={`w-full px-4 sm:px-6 md:px-8 pt-2 pb-3 sm:pt-2 sm:pb-4 transition-all duration-300 backdrop-blur-xl border-b border-black/[0.08] ${
+          scrolled ? "bg-white shadow-lg shadow-black/[0.08]" : "bg-white"
         }`}
       >
         <div className="max-w-[82.5rem] mx-auto flex items-center justify-between">
@@ -808,7 +808,7 @@ export function Header({ menuCaseStudies = [], menuClients = [] }: HeaderProps) 
                     className="relative"
                   >
                     <button
-                      className="relative text-[14px] font-medium text-white/70 hover:text-white transition-colors duration-200 cursor-pointer group flex items-center gap-1"
+                      className="text-[14px] font-medium text-black/60 hover:text-black hover:font-semibold transition-all duration-200 cursor-pointer flex items-center gap-1"
                       onClick={() => setActiveMenu((prev) => prev === item.megaMenu ? null : item.megaMenu)}
                     >
                       {item.label}
@@ -816,15 +816,13 @@ export function Header({ menuCaseStudies = [], menuClients = [] }: HeaderProps) 
                         size={14}
                         className={`transition-transform duration-200 ${activeMenu === item.megaMenu ? "rotate-180" : ""}`}
                       />
-                      <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
                     </button>
                   </div>
                 );
               }
 
               const isAnchor = isHomePage && (item.href === "/" || item.href.startsWith("/#"));
-              const navClass = "relative text-[14px] font-medium text-white/70 hover:text-white transition-colors duration-200 cursor-pointer group";
-              const underlineClass = "absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full";
+              const navClass = "text-[14px] font-medium text-black/60 hover:text-black hover:font-semibold transition-all duration-200 cursor-pointer";
 
               return isAnchor ? (
                 <button
@@ -833,7 +831,6 @@ export function Header({ menuCaseStudies = [], menuClients = [] }: HeaderProps) 
                   className={navClass}
                 >
                   {item.label}
-                  <span className={underlineClass} />
                 </button>
               ) : (
                 <Link
@@ -842,7 +839,6 @@ export function Header({ menuCaseStudies = [], menuClients = [] }: HeaderProps) 
                   className={navClass}
                 >
                   {item.label}
-                  <span className={underlineClass} />
                 </Link>
               );
             })}
@@ -861,7 +857,7 @@ export function Header({ menuCaseStudies = [], menuClients = [] }: HeaderProps) 
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-white/80 hover:bg-white/10 rounded-none transition-colors"
+            className="lg:hidden p-2 text-black/70 hover:bg-black/[0.06] rounded-none transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
