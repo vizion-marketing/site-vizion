@@ -8,7 +8,7 @@ export const seoContenuOrganique: ServiceContent = {
   order: 7,
 
   // SEO
-  metaTitle: "Stratégie SEO B2B : Référencement Naturel Durable",
+  metaTitle: "SEO B2B | Attirez vos prospects avec un référencement durable",
   metaDescription:
     "Stratégie SEO B2B complète : audit technique, recherche de mots-clés, contenu organique et netlinking. Générez du trafic qualifié sans dépendre des ads.",
   keywords: [

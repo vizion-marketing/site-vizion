@@ -46,6 +46,16 @@ export const post = defineType({
       name: "category",
       title: "Categorie",
       type: "string",
+      options: {
+        list: [
+          { title: "Stratégie Marketing", value: "Stratégie Marketing" },
+          { title: "Product Marketing", value: "Product Marketing" },
+          { title: "Acquisition B2B", value: "Acquisition B2B" },
+          { title: "Sales Enablement", value: "Sales Enablement" },
+          { title: "Transformation Digitale", value: "Transformation Digitale" },
+        ],
+        layout: "dropdown",
+      },
       validation: (rule) => rule.required(),
     }),
     defineField({

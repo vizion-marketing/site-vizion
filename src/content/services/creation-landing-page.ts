@@ -8,7 +8,7 @@ export const creationLandingPage: ServiceContent = {
   order: 2,
 
   // SEO
-  metaTitle: "Création Landing Page : Pages B2B qui Convertissent",
+  metaTitle: "Création Landing Page B2B | Convertissez vos visiteurs en leads",
   metaDescription:
     "Création de landing page B2B optimisée pour la conversion. Copywriting, design et tracking inclus. Pages de vente et campagnes livrées en 3 semaines.",
   keywords: [
@@ -373,12 +373,12 @@ export const creationLandingPage: ServiceContent = {
     "Une landing page performante, c'est le point de départ. Ces services accélèrent vos résultats.",
   relatedServices: [
     {
-      slug: "creation-refonte-site-web",
-      icon: "Globe",
-      title: "Création ou Refonte de Site Web",
+      slug: "product-marketing",
+      icon: "Rocket",
+      title: "Product Marketing B2B",
       description:
-        "Votre landing page convertit, mais votre site principal ne suit pas ? Nous concevons des sites web B2B complets, pensés pour convertir vos visiteurs en leads sur l'ensemble de vos pages.",
-      href: "/services/creation-refonte-site-web",
+        "Une landing page performante s'appuie sur un positionnement clair. Découvrez comment nous structurons l'ensemble de votre product marketing B2B.",
+      href: "/services/product-marketing",
     },
     {
       slug: "seo-contenu-organique",

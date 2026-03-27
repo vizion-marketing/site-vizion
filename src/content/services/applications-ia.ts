@@ -8,7 +8,7 @@ export const applicationsIa: ServiceContent = {
   order: 17,
 
   // SEO
-  metaTitle: "Intelligence artificielle marketing B2B : applications",
+  metaTitle: "Applications IA Marketing | Automatisez ce que l'IA fait mieux que vous",
   metaDescription:
     "Intelligence artificielle appliquée au marketing B2B : chatbots, scoring prédictif, génération de contenu. Applications IA concrètes et mesurables.",
   keywords: [

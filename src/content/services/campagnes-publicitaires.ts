@@ -8,7 +8,7 @@ export const campagnesPublicitaires: ServiceContent = {
   order: 9,
 
   // SEO
-  metaTitle: "Campagne Publicitaire B2B : Leads Qualifiés",
+  metaTitle: "Campagnes Publicitaires B2B | Générez des leads qualifiés dès le 1er mois",
   metaDescription:
     "Campagne publicitaire B2B sur Google Ads, LinkedIn Ads et Meta Ads. Ciblage, créatives, landing pages et optimisation continue pour des leads qualifiés.",
   keywords: [

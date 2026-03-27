@@ -8,7 +8,7 @@ export const deploiementCrm: ServiceContent = {
   order: 14,
 
   // SEO
-  metaTitle: "Déploiement CRM : un outil adopté et rentable",
+  metaTitle: "Déploiement CRM B2B | Adoptez un CRM que vos équipes utilisent vraiment",
   metaDescription:
     "Déploiement CRM B2B : configuration de HubSpot, Pipedrive ou Salesforce autour de votre cycle de vente pour garantir adoption et rentabilité.",
   keywords: [

@@ -8,7 +8,7 @@ export const positionnementMessaging: ServiceContent = {
   order: 5,
 
   // SEO
-  metaTitle: "Positionnement Marketing B2B : Clarifiez Votre Message",
+  metaTitle: "Positionnement et Messaging B2B | Clarifiez votre message pour vendre plus",
   metaDescription:
     "Positionnement marketing B2B et messaging par cible. Proposition de valeur, personas, argumentaires et guidelines. Résultats mesurables en 4 semaines.",
   keywords: [
@@ -374,12 +374,12 @@ export const positionnementMessaging: ServiceContent = {
     "Le positionnement est la fondation. Ces services permettent de le décliner sur tous vos canaux de croissance.",
   relatedServices: [
     {
-      slug: "creation-refonte-site-web",
-      icon: "Globe",
-      title: "Création ou Refonte de Site Web",
+      slug: "product-marketing",
+      icon: "Rocket",
+      title: "Product Marketing B2B",
       description:
-        "Votre messaging est clair ? Il est temps de le déployer sur votre vitrine principale. Nous concevons des sites web B2B qui traduisent votre positionnement en parcours de conversion efficaces.",
-      href: "/services/creation-refonte-site-web",
+        "Le positionnement est la premiere brique du product marketing. Découvrez notre accompagnement complet : messaging, go-to-market, contenus et personal branding.",
+      href: "/services/product-marketing",
     },
     {
       slug: "creation-contenu-b2b",
@@ -387,7 +387,7 @@ export const positionnementMessaging: ServiceContent = {
       title: "Création de Contenu B2B",
       description:
         "Votre framework de messaging est en place. Nous le déclinons en contenus stratégiques (articles, cas clients, livres blancs) calibrés pour vos personas et vos canaux d'acquisition.",
-      href: "/services/positionnement-messaging",
+      href: "/services/creation-contenu-b2b",
     },
     {
       slug: "pitch-decks-argumentaires",

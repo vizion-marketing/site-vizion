@@ -108,7 +108,7 @@ export interface QuandCommencerScenario {
   title: string;
   subtitle: string;
   description: string;
-  image: string;
+  image?: string;
   whenToChoose: string[];
   deliverables: string[];
   duration: string;
@@ -437,40 +437,35 @@ export const homeContent: HomeContent = {
         description: "Lorsque les solutions du marché ne correspondent pas à vos processus métier, nous développons des outils dédiés qui s'intègrent à votre réalité opérationnelle. Cette approche évite les compromis coûteux avec des solutions génériques.",
         example: "Accompagnement d'un acteur industriel sur un processus de qualification manuel chronophage. Développement d'un outil de scoring automatisé permettant un gain de 15h hebdomadaires.",
         metric: "15h/sem gagnées",
-        tags: ["Développement", "Productivité", "Sur-mesure"],
-        image: "/images/ia-highlight/outils-metier.png"
+        tags: ["Développement", "Productivité", "Sur-mesure"]
       },
       {
         title: "Automatisation des processus",
         description: "Structuration et automatisation des workflows marketing et commerciaux. Nous connectons vos outils existants et industrialisons les tâches à faible valeur ajoutée pour libérer du temps sur les activités stratégiques.",
         example: "Automatisation de 80% du parcours d'accueil client pour une ETI, réduisant le délai de 2 semaines à 3 jours tout en améliorant la satisfaction.",
         metric: "-80% temps d'intégration",
-        tags: ["Automatisation", "CRM", "Efficacité"],
-        image: "/images/ia-highlight/automatisation.png"
+        tags: ["Automatisation", "CRM", "Efficacité"]
       },
       {
         title: "Production de contenu assistée",
         description: "Accélération de la production de contenu marketing grâce à l'intelligence artificielle, tout en maintenant la qualité et l'expertise métier. Chaque production est validée par nos experts avant publication.",
         example: "Un éditeur SaaS a multiplié par 5 sa production de contenu, générant une augmentation de 150% du trafic organique qualifié en 6 mois.",
         metric: "x5 production",
-        tags: ["Contenu", "SEO", "IA"],
-        image: "/images/ia-highlight/production-contenu.png"
+        tags: ["Contenu", "SEO", "IA"]
       },
       {
         title: "Qualification intelligente",
         description: "Utilisation de l'intelligence artificielle pour analyser les signaux d'intention d'achat et prioriser les comptes à fort potentiel. Vos équipes commerciales concentrent leur énergie sur les opportunités les plus qualifiées.",
         example: "Réduction de 60% du temps de qualification pour une ETI industrielle, permettant aux équipes commerciales de se concentrer sur les phases de signature.",
         metric: "-60% temps qualification",
-        tags: ["Qualification", "Ventes", "IA"],
-        image: "/images/ia-highlight/qualification.png"
+        tags: ["Qualification", "Ventes", "IA"]
       },
       {
         title: "Tableaux de bord unifiés",
         description: "Création de tableaux de bord sur mesure qui agrègent vos données en temps réel. Automatisation du reporting pour permettre aux équipes de se concentrer sur l'analyse et la décision plutôt que sur la compilation.",
         example: "Remplacement de 5 rapports manuels par un tableau de bord unifié avec alertes automatiques sur les indicateurs critiques.",
         metric: "5 rapports → 1 tableau de bord",
-        tags: ["Données", "Suivi", "Automatisation"],
-        image: "/images/ia-highlight/tableaux-de-bord.png"
+        tags: ["Données", "Suivi", "Automatisation"]
       }
     ]
   },
@@ -490,7 +485,6 @@ export const homeContent: HomeContent = {
         title: "Mission ciblée",
         subtitle: "Un enjeu défini : lancement, repositionnement, tunnel à aligner",
         description: "Vous traversez un moment critique : lancement de produit, restructuration, accélération. Nous intervenons sur un périmètre défini. Diagnostic, fondations (positionnement et discours de marque), activation sur le tunnel. Livrables stratégiques et opérationnels.",
-        image: "/images/methode/mission-ciblee.png",
         whenToChoose: [
           "Vous préparez un lancement de produit ou une innovation",
           "Votre positionnement nécessite une clarification",
@@ -508,7 +502,6 @@ export const homeContent: HomeContent = {
         title: "Partenariat dans la durée",
         subtitle: "Un partenaire marketing produit au quotidien",
         description: "Nous endossons le rôle de votre équipe marketing produit : positionnement, campagnes, supports commerciaux, optimisation continue. Un interlocuteur dédié pilote l'ensemble et mobilise nos spécialistes (pub, SEO, aide à la vente, LinkedIn) selon les besoins. Le message reste un, du clic à la signature.",
-        image: "/images/methode/partenariat-duree.png",
         whenToChoose: [
           "Vous n'avez pas d'équipe marketing produit en interne",
           "Vous voulez structurer sans recruter",

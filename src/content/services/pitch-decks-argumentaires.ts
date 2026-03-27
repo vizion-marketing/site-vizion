@@ -8,7 +8,7 @@ export const pitchDecksArgumentaires: ServiceContent = {
   order: 12,
 
   // SEO
-  metaTitle: "Pitch Deck B2B : convaincre dès le premier slide",
+  metaTitle: "Pitch Deck B2B | Convainquez dès le premier slide",
   metaDescription:
     "Pitch deck B2B et argumentaires de vente sur mesure. Supports commerciaux structurés pour convaincre vos prospects à chaque étape du cycle de vente.",
   keywords: [

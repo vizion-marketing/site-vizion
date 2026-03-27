@@ -8,7 +8,7 @@ export const creationRefonteSiteWeb: ServiceContent = {
   order: 1,
 
   // SEO
-  metaTitle: "Création Site Web B2B : Sites qui Convertissent",
+  metaTitle: "Création Site Web B2B | Lancez un site qui convertit vos visiteurs",
   metaDescription:
     "Création et refonte de site web B2B sur mesure. Sites vitrine et landing pages pensés pour convertir vos visiteurs en leads. Design, copywriting, SEO.",
   keywords: [

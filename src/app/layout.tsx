@@ -21,10 +21,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://by-vizion.com"),
-  title: {
-    default: "Vizion | Marketing stratégique pour PME et ETI B2B",
-    template: "%s | Vizion",
-  },
+  title: "Vizion | Marketing stratégique pour PME et ETI B2B",
   description:
     "Vizion transforme votre offre complexe en message clair qui déclenche la décision d'achat. Positionnement, sales enablement, tunnel aligné. +70 entreprises accompagnées. Sud-Ouest et Paris.",
   keywords: [

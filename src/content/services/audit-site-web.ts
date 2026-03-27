@@ -8,7 +8,7 @@ export const auditSiteWeb: ServiceContent = {
   order: 18,
 
   // SEO
-  metaTitle: "Audit de Site Web B2B : Diagnostic Complet",
+  metaTitle: "Audit Site Web B2B | Découvrez pourquoi votre site ne convertit pas",
   metaDescription:
     "Audit de site web B2B complet : performance, SEO, UX, conversion et contenu. Identifiez ce qui freine vos résultats avec un plan d'action concret.",
   keywords: [

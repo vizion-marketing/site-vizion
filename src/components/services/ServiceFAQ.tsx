@@ -10,14 +10,60 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface FAQLink {
+  text: string;
+  href: string;
+}
+
 interface FAQ {
   question: string;
   answer: string;
+  answerLinks?: FAQLink[];
 }
 
 interface ServiceFAQProps {
   title?: string;
   faqs: FAQ[];
+}
+
+/** Rend le texte de la reponse en remplacant les sous-chaines par des liens */
+function renderAnswer(answer: string, links?: FAQLink[]) {
+  if (!links || links.length === 0) return answer;
+
+  const parts: (string | { text: string; href: string })[] = [];
+  let remaining = answer;
+
+  // Trie les liens par position d'apparition dans le texte
+  const sorted = [...links].sort(
+    (a, b) => remaining.indexOf(a.text) - remaining.indexOf(b.text),
+  );
+
+  for (const link of sorted) {
+    const idx = remaining.indexOf(link.text);
+    if (idx === -1) continue;
+    if (idx > 0) parts.push(remaining.slice(0, idx));
+    parts.push({ text: link.text, href: link.href });
+    remaining = remaining.slice(idx + link.text.length);
+  }
+  if (remaining) parts.push(remaining);
+
+  return (
+    <>
+      {parts.map((part, i) =>
+        typeof part === "string" ? (
+          <span key={i}>{part}</span>
+        ) : (
+          <Link
+            key={i}
+            href={part.href}
+            className="underline decoration-accent decoration-1 underline-offset-2 hover:text-primary transition-colors"
+          >
+            {part.text}
+          </Link>
+        ),
+      )}
+    </>
+  );
 }
 
 export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
@@ -146,7 +192,7 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
                       className="overflow-hidden"
                     >
                       <p className="text-sm text-secondary leading-relaxed pb-5 pl-9">
-                        {faq.answer}
+                        {renderAnswer(faq.answer, faq.answerLinks)}
                       </p>
                     </motion.div>
                   )}

@@ -8,7 +8,7 @@ export const leadNurturing: ServiceContent = {
   order: 15,
 
   // SEO
-  metaTitle: "Lead Nurturing B2B : convertir vos prospects",
+  metaTitle: "Lead Nurturing B2B | Convertissez vos prospects en clients",
   metaDescription:
     "Stratégie de lead nurturing B2B pour transformer vos prospects en clients. Séquences emailing personnalisées, scoring comportemental et optimisation.",
   keywords: [

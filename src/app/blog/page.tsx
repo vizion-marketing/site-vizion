@@ -23,7 +23,7 @@ export default async function BlogPage() {
     category: p.category,
     readingTime: p.readingTime,
     featuredImage:
-      resolveImageUrl(p.featuredImage, 800) || p.featuredImageUrl || undefined,
+      resolveImageUrl(p.featuredImage, 800) || p.featuredImageUrl,
     tags: p.tags || [],
     url: p.url,
   }));

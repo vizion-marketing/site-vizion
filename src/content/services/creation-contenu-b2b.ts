@@ -8,7 +8,7 @@ export const creationContenuB2b: ServiceContent = {
   order: 6,
 
   // SEO
-  metaTitle: "Inbound Marketing B2B : Contenus qui Génèrent des Leads",
+  metaTitle: "Création de Contenu B2B | Produisez des contenus qui génèrent des leads",
   metaDescription:
     "Agence inbound marketing B2B. Contenus qui attirent vos cibles et alimentent votre cycle de vente : articles, livres blancs, case studies, newsletters.",
   keywords: [
@@ -370,19 +370,20 @@ export const creationContenuB2b: ServiceContent = {
     "Des contenus performants, c'est le socle. Ces services complémentaires amplifient vos résultats.",
   relatedServices: [
     {
+      slug: "product-marketing",
+      icon: "Rocket",
+      title: "Product Marketing B2B",
+      description:
+        "Le contenu B2B s'inscrit dans une stratégie product marketing globale. Découvrez comment nous structurons le positionnement, le messaging et le go-to-market de nos clients.",
+      href: "/services/product-marketing",
+    },
+    {
       slug: "seo-contenu-organique",
       icon: "TrendingUp",
       title: "SEO et Contenu Organique",
       description:
         "Vos contenus existent, mais ils ne remontent pas sur Google. Nous construisons une stratégie SEO complète pour que chaque article génère du trafic qualifié sur la durée.",
-      href: "/services/creation-contenu-b2b",},
-    {
-      slug: "creation-refonte-site-web",
-      icon: "Globe",
-      title: "Création ou Refonte de Site Web",
-      description:
-        "Vos contenus méritent un écrin à la hauteur. Nous concevons des sites web B2B performants qui mettent en valeur votre expertise et convertissent vos visiteurs en leads.",
-      href: "/services/creation-refonte-site-web",
+      href: "/services/seo-contenu-organique",
     },
     {
       slug: "positionnement-messaging",
@@ -390,7 +391,8 @@ export const creationContenuB2b: ServiceContent = {
       title: "Positionnement et Messaging",
       description:
         "Avant de produire du contenu, encore faut-il savoir quoi dire. Nous définissons votre positionnement et votre architecture de message pour que chaque contenu porte le même discours.",
-      href: "/services/creation-refonte-site-web",},
+      href: "/services/positionnement-messaging",
+    },
   ],
 
   // CTA intermédiaires

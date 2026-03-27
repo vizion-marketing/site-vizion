@@ -8,7 +8,7 @@ export const coldOutreachProspection: ServiceContent = {
   order: 10,
 
   // SEO
-  metaTitle: "Prospection commerciale B2B : plus de RDV qualifiés",
+  metaTitle: "Prospection B2B | Décrochez plus de rendez-vous qualifiés",
   metaDescription:
     "Externalisez votre prospection commerciale B2B. Séquences multi-canal (email, LinkedIn, téléphone) et rendez-vous qualifiés dès le premier mois.",
   keywords: [

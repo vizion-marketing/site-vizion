@@ -8,7 +8,7 @@ export const creationWorkflows: ServiceContent = {
   order: 16,
 
   // SEO
-  metaTitle: "Automatisation marketing : workflows sur mesure",
+  metaTitle: "Automatisation Marketing B2B | Créez des workflows qui vendent à votre place",
   metaDescription:
     "Automatisation marketing B2B : workflows sur mesure (Make, HubSpot, n8n) pour libérer vos équipes des tâches répétitives et accélérer vos ventes.",
   keywords: [

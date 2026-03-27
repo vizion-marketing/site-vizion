@@ -19,10 +19,13 @@ const DEFAULT_CTA = {
 };
 
 export function ArticleCTA({
-  title = DEFAULT_CTA.title,
-  description = DEFAULT_CTA.description,
-  link = DEFAULT_CTA.link,
+  title,
+  description,
+  link,
 }: ArticleCTAProps) {
+  const resolvedTitle = title || DEFAULT_CTA.title;
+  const resolvedDescription = description || DEFAULT_CTA.description;
+  const resolvedLink = link || DEFAULT_CTA.link;
   return (
     <section className="py-24 px-6 md:px-12 bg-grey">
       <div className="max-w-[82.5rem] mx-auto">
@@ -88,15 +91,15 @@ export function ArticleCTA({
             <h2 className="font-[var(--font-body)] font-[900] text-[32px] md:text-[48px] leading-[1.05] tracking-tight mb-6 text-white">
               <span className="relative inline-block">
                 <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[10px] bg-accent -z-10" />
-                {title}
+                {resolvedTitle}
               </span>
             </h2>
 
             <p className="text-white/70 text-lg md:text-xl mb-10 max-w-xl mx-auto font-[var(--font-body)]">
-              {description}
+              {resolvedDescription}
             </p>
 
-            <Link href={link} className="btn btn-primary group">
+            <Link href={resolvedLink} className="btn btn-primary group">
               Contactez-nous <ArrowUpRightIcon size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </Link>
 

@@ -15,10 +15,11 @@ export async function sanityFetch<T>(
 ): Promise<T> {
   const { tags, revalidate } = options;
 
-  // draftMode() throws when called outside a request scope (e.g. generateStaticParams)
+  // draftMode() may throw or return null outside a request scope (e.g. generateStaticParams, prerendering)
   let isDraft = false;
   try {
-    isDraft = (await draftMode()).isEnabled;
+    const dm = await draftMode();
+    isDraft = dm?.isEnabled ?? false;
   } catch {
     // Not in a request context — use published data
   }

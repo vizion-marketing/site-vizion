@@ -202,6 +202,17 @@ function CategoryIntro({ service }: { service: ServiceContent }) {
               {service.constat.title}
             </h2>
 
+            {/* Paragraphs */}
+            {service.constat.paragraphs && service.constat.paragraphs.length > 0 && (
+              <div className="flex flex-col gap-4 max-w-3xl mb-8 sm:mb-10">
+                {service.constat.paragraphs.map((p: string, i: number) => (
+                  <p key={i} className="text-secondary text-[15px] sm:text-[16px] leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            )}
+
             {/* Definition blockquote */}
             {service.constat.definition && (
               <blockquote className="border-l-2 border-accent pl-6 py-1 max-w-3xl">
@@ -279,7 +290,7 @@ function CategoryIntro({ service }: { service: ServiceContent }) {
                   <div className="bg-white border border-black/[0.06] hover:border-black/[0.12] hover:shadow-lg transition-all duration-300 h-[320px] sm:h-[380px] lg:h-[420px] p-7 sm:p-9 flex flex-col justify-between relative overflow-hidden">
                     <div>
                       <div className="w-12 h-12 bg-accent flex items-center justify-center text-primary mb-6 lg:mb-8">
-                        <DynamicIcon name={s.icon} size={24} />
+                        <DynamicIcon name={s.icon || "ArrowRight"} size={24} />
                       </div>
                       <h3 className="font-heading font-medium text-[22px] sm:text-[26px] lg:text-[30px] leading-[1.1] tracking-[-0.02em] text-primary">
                         {s.headline}
@@ -435,7 +446,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
       <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative z-10">
         {/* Left — Image with vignette */}
         <div className="hidden lg:flex items-center justify-center">
-          <div data-metric="image" className="relative w-full h-[65vh] max-h-[600px] overflow-hidden">
+          <div data-metric="image" className="relative w-full h-full min-h-[400px] overflow-hidden">
             <Image
               src={heroImage}
               alt={service.pilierMetrics?.title || service.title}
@@ -814,7 +825,7 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
   }, { scope: ref });
 
   const firstRow = timing.items.slice(0, 3);
-  const lastItem = timing.items[3];
+  const secondRow = timing.items.slice(3);
 
   return (
     <section
@@ -881,9 +892,10 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
             </div>
           ))}
 
-          {/* Row 2 — 1 carte standard + CTA sombre */}
-          {lastItem && (
+          {/* Row 2 — cartes restantes + CTA sombre */}
+          {secondRow.map((item, i) => (
             <div
+              key={i + 3}
               data-animate
               className="col-span-1 md:col-span-2 group"
             >
@@ -895,35 +907,37 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
                   {/* Icon */}
                   <div className="mb-5">
                     <div className="w-12 h-12 lg:w-14 lg:h-14 bg-[#f5f5f5] group-hover:bg-[var(--text-primary)] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
-                      <DynamicIcon name={lastItem.icon} size={24} className="text-primary group-hover:text-accent transition-colors duration-500" />
+                      <DynamicIcon name={item.icon} size={24} className="text-primary group-hover:text-accent transition-colors duration-500" />
                     </div>
                   </div>
 
                   {/* Title */}
                   <h3 className="font-heading font-medium text-[18px] sm:text-[20px] leading-[1.1] tracking-[-0.02em] text-primary mb-3 transition-colors duration-500">
-                    {lastItem.title}
+                    {item.title}
                   </h3>
 
                   {/* Description */}
                   <p className="text-muted group-hover:text-primary/80 text-[13px] lg:text-[14px] leading-relaxed transition-colors duration-500">
-                    {lastItem.description}
+                    {item.description}
                   </p>
 
                   <div className="flex-grow" />
 
                   {/* Number */}
                   <div className="pt-4 border-t border-black/10 group-hover:border-black/20 transition-colors duration-500 mt-5">
-                    <span className="text-primary/15 font-heading font-bold text-3xl lg:text-4xl">04</span>
+                    <span className="text-primary/15 font-heading font-bold text-3xl lg:text-4xl">
+                      {String(i + 4).padStart(2, "0")}
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
-          )}
+          ))}
 
-          {/* CTA sombre — 4 colonnes sur 6 */}
+          {/* CTA sombre — remplit les colonnes restantes */}
           <div
             data-animate
-            className="col-span-1 sm:col-span-2 md:col-span-4 group"
+            className={`col-span-1 sm:col-span-2 ${secondRow.length === 1 ? "md:col-span-4" : "md:col-span-2"} group`}
           >
             <div
               className="dark-section relative overflow-hidden h-full min-h-[260px] lg:min-h-[280px] flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-10 sm:py-14"
@@ -933,7 +947,7 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
               <div className="absolute -top-20 -left-20 w-64 h-64 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 60%)" }} />
               <div className="absolute -bottom-24 -right-16 w-72 h-72 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
 
-              <p className="relative z-10 text-white font-heading font-normal text-[28px] sm:text-[36px] lg:text-[42px] leading-[0.95] tracking-[-0.03em] mb-3">
+              <p className="relative z-10 text-white font-heading font-normal text-[20px] sm:text-[24px] lg:text-[28px] leading-[1.3] tracking-[-0.02em] mb-3">
                 Vous vous reconnaissez dans l&#39;une de ces situations ?
               </p>
               <p className="relative z-10 text-white/60 text-[14px] sm:text-[15px] leading-relaxed mb-8 max-w-lg">
@@ -1022,15 +1036,15 @@ function CategoryTargets({ targets }: { targets: PilierTargets }) {
           </p>
         </div>
 
-        {/* 3-column grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* 3-column grid — last row centered */}
+        <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
           {targets.items.map((item, i) => {
             const isFeatured = i === featuredIdx;
             return (
               <div
                 key={i}
                 data-animate
-                className={`group relative overflow-hidden transition-all duration-500 ${
+                className={`w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] group relative overflow-hidden transition-all duration-500 ${
                   isFeatured
                     ? "bg-accent shadow-xl"
                     : "bg-card border border-black/[0.06] hover:bg-accent hover:-translate-y-1"

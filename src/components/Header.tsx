@@ -90,13 +90,13 @@ function CategoryIcon({ name, size = 14, className }: { name: string; size?: num
 
 function DesktopServicesMegaMenu({ onClose }: { onClose: () => void }) {
   const col1 = SERVICE_MENU_CATEGORIES.filter((c) =>
-    ["Prenez les bonnes décisions", "Générez du revenu"].includes(c.title)
+    ["Stratégie marketing", "Growth Marketing"].includes(c.title)
   );
   const col2 = SERVICE_MENU_CATEGORIES.filter((c) =>
-    ["Bâtissez votre crédibilité", "Armez vos commerciaux"].includes(c.title)
+    ["Product Marketing", "Sales Enablement"].includes(c.title)
   );
   const col3 = SERVICE_MENU_CATEGORIES.filter((c) =>
-    ["Digitalisez votre entreprise"].includes(c.title)
+    ["Transformation Digitale"].includes(c.title)
   );
 
   return (

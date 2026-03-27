@@ -8,7 +8,7 @@ export const roadmapStrategique: ServiceContent = {
   order: 4,
 
   // SEO
-  metaTitle: "Plan Marketing B2B : Feuille de Route sur 12 Mois",
+  metaTitle: "Plan Marketing B2B | Obtenez votre feuille de route sur 12 mois",
   metaDescription:
     "Plan marketing B2B structuré sur 6 à 12 mois. Actions priorisées, budget canal par canal, KPIs et alignement marketing-ventes. Devis gratuit.",
   keywords: [

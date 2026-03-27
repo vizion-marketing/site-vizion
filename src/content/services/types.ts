@@ -10,9 +10,17 @@ export interface ServiceProcessStep {
   deliverables: string[];
 }
 
+export interface FAQLink {
+  /** Texte exact dans la reponse a transformer en lien */
+  text: string;
+  href: string;
+}
+
 export interface ServiceFAQ {
   question: string;
   answer: string;
+  /** Liens contextuels a rendre dans la reponse (le texte doit correspondre a une sous-chaine de answer) */
+  answerLinks?: FAQLink[];
 }
 
 export interface ServiceTestimonial {

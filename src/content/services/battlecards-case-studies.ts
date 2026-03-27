@@ -8,7 +8,7 @@ export const battlecardsCaseStudies: ServiceContent = {
   order: 13,
 
   // SEO
-  metaTitle: "Documentation Commerciale : Cas Clients et Battlecards",
+  metaTitle: "Battlecards et Cas Clients | Armez vos commerciaux face à la concurrence",
   metaDescription:
     "Documentation commerciale B2B sur mesure. Battlecards concurrentielles et cas clients chiffrés pour donner à vos commerciaux les preuves qui signent.",
   keywords: [

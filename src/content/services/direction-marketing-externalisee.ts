@@ -8,7 +8,7 @@ export const directionMarketingExternalisee: ServiceContent = {
   order: 19,
 
   // SEO
-  metaTitle: "Direction Marketing Externalisée B2B | Vizion",
+  metaTitle: "Direction Marketing Externalisée | Un directeur marketing dédié sans le CDI",
   metaDescription:
     "Direction marketing externalisée pour PME et ETI B2B. Un directeur marketing dédié, opérationnel dès le premier mois, sans les contraintes d'un recrutement.",
   keywords: [
@@ -34,7 +34,7 @@ export const directionMarketingExternalisee: ServiceContent = {
   heroSubtitle:
     "Vous avez besoin d'une vision stratégique et d'un pilotage marketing structuré, mais recruter un directeur marketing n'est pas viable aujourd'hui. Chez Vizion, nous mettons à votre disposition un directeur marketing dédié qui prend en main votre stratégie, coordonne les actions et rend des comptes chaque mois.",
   heroBadge: "+70 entreprises accompagnées",
-  heroImage: "/images/services/direction-marketing-externalisee/hero.png",
+  heroImage: "/images/services/direction-marketing-externalisee/hero.avif",
 
   // Narrative (Le constat)
   constat: {

@@ -7,6 +7,7 @@ export type {
   ServiceContent,
   ServiceProcessStep,
   ServiceFAQ,
+  FAQLink,
   ServiceTestimonial,
   NarrativeBlock,
   NarrativeStatement,
@@ -55,11 +56,11 @@ import { directionMarketingExternalisee } from "./direction-marketing-externalis
 import { strategiePersonalBranding } from "./strategie-personal-branding";
 
 // ── Pages piliers (hub) ──
-import { strategieMarketing } from "./strategie-marketing";
-import { credibilitePositionnement } from "./credibilite-positionnement";
-import { acquisitionB2b } from "./acquisition-b2b";
+import { strategieMarketing } from "./strategie";
+import { productMarketing } from "./product-marketing";
+import { acquisitionB2b } from "./growth-marketing";
 import { salesEnablement } from "./sales-enablement";
-import { digitalisation } from "./digitalisation";
+import { digitalisation } from "./transformation-digitale";
 
 // ── Registry ──
 export const allServices: ServiceContent[] = [
@@ -83,7 +84,7 @@ export const allServices: ServiceContent[] = [
   directionMarketingExternalisee,
   strategiePersonalBranding,
   strategieMarketing,
-  credibilitePositionnement,
+  productMarketing,
   acquisitionB2b,
   salesEnablement,
   digitalisation,

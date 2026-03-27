@@ -34,13 +34,14 @@ export interface BlogListPost {
   url?: string;
 }
 
-// Fixed categories for the blog
+// Blog categories aligned with service pillars
 const categories = [
   "Tous",
-  "Actualité",
-  "IA for Sales",
+  "Stratégie Marketing",
   "Product Marketing",
-  "Vente",
+  "Acquisition B2B",
+  "Sales Enablement",
+  "Transformation Digitale",
 ];
 
 // Format date

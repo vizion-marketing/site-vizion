@@ -8,7 +8,7 @@ export const strategiePersonalBranding: ServiceContent = {
   order: 20,
 
   // SEO
-  metaTitle: "Personal Branding B2B : Stratégie pour Dirigeants | Vizion",
+  metaTitle: "Personal Branding Dirigeant B2B | Devenez la référence de votre secteur",
   metaDescription:
     "Stratégie de personal branding pour dirigeants et experts B2B. Positionnez-vous comme référence sur votre marché grâce à LinkedIn et la création de contenu.",
   keywords: [

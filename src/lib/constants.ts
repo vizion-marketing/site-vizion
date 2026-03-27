@@ -28,7 +28,7 @@ export interface ServiceMenuCategory {
 
 export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
   {
-    title: "Prenez les bonnes décisions",
+    title: "Stratégie marketing",
     icon: "Compass",
     href: "/services/strategie",
     items: [
@@ -53,7 +53,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
     ],
   },
   {
-    title: "Bâtissez votre crédibilité",
+    title: "Product Marketing",
     icon: "Rocket",
     href: "/services/product-marketing",
     items: [
@@ -75,22 +75,10 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
         icon: "FileText",
         href: "/services/creation-contenu-b2b",
       },
-      {
-        label: "Livres blancs & lead magnets",
-        description: "Créez les contenus qui génèrent des leads qualifiés",
-        icon: "BookOpen",
-        href: "/services/livres-blancs-lead-magnets",
-      },
-      {
-        label: "ADN de marque et branding",
-        description: "Construisez une identité de marque qui installe la confiance",
-        icon: "Fingerprint",
-        href: "/services/adn-marque-branding",
-      },
     ],
   },
   {
-    title: "Générez du revenu",
+    title: "Growth Marketing",
     icon: "TrendingUp",
     href: "/services/growth-marketing",
     items: [
@@ -121,7 +109,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
     ],
   },
   {
-    title: "Armez vos commerciaux",
+    title: "Sales Enablement",
     icon: "Handshake",
     href: "/services/sales-enablement",
     items: [
@@ -152,7 +140,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
     ],
   },
   {
-    title: "Digitalisez votre entreprise",
+    title: "Transformation Digitale",
     icon: "Monitor",
     href: "/services/transformation-digitale",
     items: [
