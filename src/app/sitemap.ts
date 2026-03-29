@@ -23,6 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
     { route: "", priority: 1, changeFrequency: "weekly" as const },
     { route: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
+    { route: "/services", priority: 0.8, changeFrequency: "monthly" as const },
     { route: "/contact", priority: 0.8, changeFrequency: "monthly" as const },
     { route: "/cas-clients", priority: 0.7, changeFrequency: "monthly" as const },
     { route: "/mentions-legales", priority: 0.3, changeFrequency: "yearly" as const },
@@ -44,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // Client profile pages (pillar pages — higher priority)
+  // Client profile pages (pillar pages - higher priority)
   const clientPages = (data.clients || []).map((c) => ({
     url: `${baseUrl}${c.url}`,
     lastModified: new Date(),

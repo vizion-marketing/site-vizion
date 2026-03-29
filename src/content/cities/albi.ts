@@ -5,7 +5,7 @@ import {
 } from "./shared";
 
 // ============================================================================
-// ALBI — Angle : PME à offre technique, artisanat, patrimoine, tourisme
+// ALBI - Angle : PME à offre technique, artisanat, patrimoine, tourisme
 // Piliers : Positionnement (#02) + Sales enablement (#05)
 // ============================================================================
 
@@ -103,7 +103,7 @@ const content: CityPageData["content"] = {
         surtitre: "AUDIT & STRATÉGIE",
         titre: "Audit et stratégie marketing",
         description:
-          "Votre marketing fonctionne par à-coups, sans vision d'ensemble. Nous auditons votre positionnement actuel, vos canaux de prospection et vos outils, puis nous construisons une feuille de route adaptée à votre secteur — industrie, artisanat d'excellence, patrimoine ou services B2B. Direction marketing externalisée ou mission ciblée : chaque action repose sur un diagnostic factuel de votre situation dans le Tarn.",
+          "Votre marketing fonctionne par à-coups, sans vision d'ensemble. Nous auditons votre positionnement actuel, vos canaux de prospection et vos outils, puis nous construisons une feuille de route adaptée à votre secteur (industrie, artisanat d'excellence, patrimoine ou services B2B). Direction marketing externalisée ou mission ciblée : chaque action repose sur un diagnostic factuel de votre situation dans le Tarn.",
         services: [
           "Audit marketing complet",
           "Feuille de route priorisée",
@@ -117,7 +117,7 @@ const content: CityPageData["content"] = {
         surtitre: "POSITIONNEMENT & NARRATIF",
         titre: "Positionnement et narratif produit",
         description:
-          "Vos prospects comprennent que vous faites du bon travail, mais pas pourquoi ils devraient vous choisir plutôt qu'un autre. Le positionnement n'est pas un exercice de style : c'est la base sur laquelle repose tout votre tunnel de vente. Nous analysons votre marché, vos concurrents et vos segments cibles, puis nous formulons un message qui rend votre différence évidente — que vous soyez artisan d'excellence, sous-traitant industriel ou acteur du patrimoine tarnais.",
+          "Vos prospects comprennent que vous faites du bon travail, mais pas pourquoi ils devraient vous choisir plutôt qu'un autre. Le positionnement n'est pas un exercice de style : c'est la base sur laquelle repose tout votre tunnel de vente. Nous analysons votre marché, vos concurrents et vos segments cibles, puis nous formulons un message qui rend votre différence évidente, que vous soyez artisan d'excellence, sous-traitant industriel ou acteur du patrimoine tarnais.",
         services: [
           "Analyse concurrentielle terrain",
           "Positionnement par segment cible",

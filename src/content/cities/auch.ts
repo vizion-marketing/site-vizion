@@ -5,7 +5,7 @@ import {
 } from "./shared";
 
 // ============================================================================
-// AUCH — Angle : Agriculture, artisanat, entreprises traditionnelles
+// AUCH - Angle : Agriculture, artisanat, entreprises traditionnelles
 // Piliers : Audit & stratégie (#01) + Trafic & notoriété (#03)
 // ============================================================================
 
@@ -31,7 +31,7 @@ const faqQuestions = [
   {
     question: "Les entreprises du Gers ont-elles vraiment besoin de marketing digital ?",
     answer:
-      "Oui, et plus que jamais. Vos clients B2B recherchent en ligne avant de décrocher le téléphone. Si votre offre n'apparaît pas sur les requêtes de votre métier, vos concurrents captent ces contacts en premier. Le marketing digital pour une PME gersoise ne signifie pas devenir une entreprise tech — cela signifie être visible là où vos acheteurs cherchent.",
+      "Oui, et plus que jamais. Vos clients B2B recherchent en ligne avant de décrocher le téléphone. Si votre offre n'apparaît pas sur les requêtes de votre métier, vos concurrents captent ces contacts en premier. Le marketing digital pour une PME gersoise ne signifie pas devenir une entreprise tech, cela signifie être visible là où vos acheteurs cherchent.",
   },
   {
     question: "Quels résultats concrets pouvons-nous attendre ?",
@@ -98,7 +98,7 @@ const content: CityPageData["content"] = {
         surtitre: "AUDIT & STRATÉGIE",
         titre: "Audit et stratégie marketing",
         description:
-          "Vous sentez que votre marketing ne produit pas les résultats attendus, mais vous ne savez pas exactement pourquoi. Nous auditons votre positionnement actuel, vos canaux de prospection, votre présence en ligne et vos outils. Le diagnostic révèle les points de friction et les opportunités inexploitées. Ensuite nous construisons une feuille de route priorisée — adaptée à la réalité des PME gersoises, qu'elles soient dans l'agroalimentaire, l'artisanat ou les services.",
+          "Vous sentez que votre marketing ne produit pas les résultats attendus, mais vous ne savez pas exactement pourquoi. Nous auditons votre positionnement actuel, vos canaux de prospection, votre présence en ligne et vos outils. Le diagnostic révèle les points de friction et les opportunités inexploitées. Ensuite nous construisons une feuille de route priorisée, adaptée à la réalité des PME gersoises, qu'elles soient dans l'agroalimentaire, l'artisanat ou les services.",
         services: [
           "Audit marketing complet",
           "Diagnostic de positionnement",
@@ -112,7 +112,7 @@ const content: CityPageData["content"] = {
         surtitre: "POSITIONNEMENT & NARRATIF",
         titre: "Positionnement et narratif produit",
         description:
-          "Votre offre est solide, mais vos prospects ne perçoivent pas ce qui vous distingue de vos concurrents. Le bouche-à-oreille vous a porté jusqu'ici, mais pour grandir il faut un message clair et différenciant. Nous analysons votre marché, vos segments cibles et vos concurrents, puis nous formulons un positionnement qui rend votre valeur ajoutée évidente — que vous vendiez des produits agricoles transformés, des services B2B ou de l'artisanat d'excellence.",
+          "Votre offre est solide, mais vos prospects ne perçoivent pas ce qui vous distingue de vos concurrents. Le bouche-à-oreille vous a porté jusqu'ici, mais pour grandir il faut un message clair et différenciant. Nous analysons votre marché, vos segments cibles et vos concurrents, puis nous formulons un positionnement qui rend votre valeur ajoutée évidente, que vous vendiez des produits agricoles transformés, des services B2B ou de l'artisanat d'excellence.",
         services: [
           "Analyse concurrentielle terrain",
           "Positionnement par segment cible",

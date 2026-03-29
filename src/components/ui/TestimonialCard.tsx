@@ -112,7 +112,7 @@ export function TestimonialCard({
                 ${isPartner ? "text-white/60" : "text-muted"}
               `}
             >
-              {role} — {company}
+              {role}, {company}
             </div>
           </div>
 

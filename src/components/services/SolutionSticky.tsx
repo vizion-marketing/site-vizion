@@ -24,7 +24,7 @@ export function SolutionSticky({
   const [reachedIndex, setReachedIndex] = useState(-1);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Track highest reached card — once activated, stays activated
+  // Track highest reached card - once activated, stays activated
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
@@ -87,14 +87,14 @@ export function SolutionSticky({
         },
       });
 
-      // Chart container — fade in
+      // Chart container - fade in
       gsap.from("[data-solution='chart']", {
         opacity: 0, y: 20, duration: 0.6, delay: 0.4,
         ease: "power3.out",
         scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
       });
 
-      // Bars — grow from bottom with stagger
+      // Bars - grow from bottom with stagger
       gsap.from("[data-solution='bar']", {
         scaleY: 0, duration: 0.8, stagger: 0.1, delay: 0.6,
         ease: "elastic.out(1, 0.5)",
@@ -106,7 +106,7 @@ export function SolutionSticky({
         y: "-=8", duration: 3, ease: "sine.inOut", repeat: -1, yoyo: true,
       });
 
-      // Cards — slide in from right
+      // Cards - slide in from right
       gsap.fromTo(
         "[data-solution='card']",
         { opacity: 0, x: 80 },
@@ -145,7 +145,7 @@ export function SolutionSticky({
       </div>
 
       <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 relative z-10">
-        {/* Left — Image sticky with gradients + floating UI elements */}
+        {/* Left - Image sticky with gradients + floating UI elements */}
         <div className="lg:sticky lg:top-[100px] lg:self-start">
           <div
             data-solution="image"
@@ -158,12 +158,12 @@ export function SolutionSticky({
               className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            {/* Gradient bottom — black fade */}
+            {/* Gradient bottom - black fade */}
             <div
               className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
               style={{ background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)" }}
             />
-            {/* Gradient left — black fade */}
+            {/* Gradient left - black fade */}
             <div
               className="absolute inset-y-0 left-0 w-1/4 pointer-events-none"
               style={{ background: "linear-gradient(to right, var(--bg-dark) 0%, transparent 100%)" }}
@@ -187,7 +187,7 @@ export function SolutionSticky({
           </div>
         </div>
 
-        {/* Right — Titre + sous-titre + cards défilantes */}
+        {/* Right - Titre + sous-titre + cards défilantes */}
         <div data-solution="cards" className="flex flex-col gap-5 lg:gap-6">
           {/* Titre + sous-paragraphe */}
           <div className="mb-2">
@@ -242,7 +242,7 @@ export function SolutionSticky({
               </div>
             );
           })}
-          {/* Scroll progress bar — left edge of cards only */}
+          {/* Scroll progress bar - left edge of cards only */}
           <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-white/[0.08] hidden lg:block">
             <div
               className="w-full bg-accent origin-top transition-none"

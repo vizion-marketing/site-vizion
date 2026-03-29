@@ -1,5 +1,5 @@
 // ============================================================
-// Services — Types partagés
+// Services - Types partagés
 // ============================================================
 
 export interface ServiceProcessStep {
@@ -127,7 +127,7 @@ export interface QualityGuaranteesContent {
   featureCard: QualityFeatureCard;
 }
 
-// Pilier — section "Notre approche / Méthodologie"
+// Pilier - section "Notre approche / Méthodologie"
 export interface PilierMethodologyStep {
   title: string;
   description: string;
@@ -140,7 +140,7 @@ export interface PilierMethodology {
   steps: PilierMethodologyStep[];
 }
 
-// Pilier — section "Résultats / Métriques"
+// Pilier - section "Résultats / Métriques"
 export interface PilierMetric {
   value: number;
   suffix: string;
@@ -158,7 +158,7 @@ export interface PilierMetricsContent {
   source?: string;
 }
 
-// Pilier — section "Quand est-ce le bon moment"
+// Pilier - section "Quand est-ce le bon moment"
 export interface PilierTimingItem {
   icon: string;
   title: string;
@@ -172,7 +172,7 @@ export interface PilierTiming {
   items: PilierTimingItem[];
 }
 
-// Pilier — section "Quelles sont les cibles"
+// Pilier - section "Quelles sont les cibles"
 export interface PilierTargetItem {
   icon: string;
   title: string;
@@ -226,7 +226,7 @@ export interface ServiceContent {
   solutionImage: string;
   solutionItems: SolutionItem[];
 
-  /** Animated scroll interstitial. Web-specific — omit if not needed. */
+  /** Animated scroll interstitial. Web-specific - omit if not needed. */
   scrollTitle?: ScrollTitleContent;
 
   /** Web-specific bento grid. Other services should omit this field. */
@@ -254,7 +254,7 @@ export interface ServiceContent {
   relatedServicesSubtitle?: string;
   relatedServices?: RelatedService[];
 
-  // Pilier — sections spécifiques
+  // Pilier - sections spécifiques
   pilierMethodology?: PilierMethodology;
   pilierMetrics?: PilierMetricsContent;
   pilierTiming?: PilierTiming;

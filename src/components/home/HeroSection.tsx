@@ -173,7 +173,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
 
         </div>
 
-        {/* Mobile image — floating, after CTAs */}
+        {/* Mobile image - floating, after CTAs */}
         <div className="relative mt-6 -mb-2 aspect-[3/4] max-h-[50vh] mx-auto max-w-[280px] sm:max-w-[320px]">
           <Image
             src="/images/hero-jumelles.avif"
@@ -191,13 +191,13 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
         </div>
       </div>
 
-      {/* ===== DESKTOP LAYOUT — Image flottante avec effet nuages ===== */}
+      {/* ===== DESKTOP LAYOUT - Image flottante avec effet nuages ===== */}
       <div className="hidden lg:block relative min-h-screen">
         <div className="grain-overlay absolute inset-0 z-0" style={{ background: "var(--bg-dark)" }} />
 
         {/* Cloud / mist effect behind the photo */}
         <div className="absolute inset-0 pointer-events-none z-[2] overflow-hidden">
-          {/* Large cloud mass — behind person */}
+          {/* Large cloud mass - behind person */}
           <div
             className="absolute w-[60%] h-[80%] top-[5%] right-[0%]"
             style={{
@@ -213,7 +213,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
               filter: "blur(45px)",
             }}
           />
-          {/* Mid-level cloud — tighter behind shoulders */}
+          {/* Mid-level cloud - tighter behind shoulders */}
           <div
             className="absolute w-[35%] h-[45%] top-[20%] right-[10%]"
             style={{
@@ -221,7 +221,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
               filter: "blur(25px)",
             }}
           />
-          {/* Lower mist — fading down */}
+          {/* Lower mist - fading down */}
           <div
             className="absolute w-[50%] h-[40%] bottom-[8%] right-[2%]"
             style={{
@@ -239,7 +239,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           />
         </div>
 
-        {/* Accent lime glow — left side */}
+        {/* Accent lime glow - left side */}
         <div className="absolute inset-0 pointer-events-none z-[2] overflow-hidden">
           <div
             className="absolute w-[60%] h-[80%] top-[10%] left-[-10%]"
@@ -250,7 +250,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           />
         </div>
 
-        {/* Photo — floating, no edges */}
+        {/* Photo - floating, no edges */}
         <div
           data-hero="image"
           className="absolute bottom-0 right-[12%] z-[3] w-[44%] h-[92%]"
@@ -272,7 +272,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           />
         </div>
 
-        {/* Content — left column */}
+        {/* Content - left column */}
         <div className="relative z-10 max-w-[82.5rem] mx-auto min-h-screen px-6 md:px-12">
           <div data-hero="text-col" className="relative z-10 w-[55%] flex flex-col justify-center min-h-screen pt-28 pb-20">
             <div className="relative z-10">
@@ -334,7 +334,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           </div>
         </div>
 
-        {/* Stats cards — floating over the photo */}
+        {/* Stats cards - floating over the photo */}
         <div
           data-hero="stats"
           className="absolute bottom-[14%] right-[5%] z-[5] flex gap-3"
@@ -356,7 +356,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
 
       </div>
 
-      {/* Bottom gradient — transition vers la section suivante */}
+      {/* Bottom gradient - transition vers la section suivante */}
       <div
         className="absolute inset-x-0 bottom-0 h-40 pointer-events-none z-30"
         style={{

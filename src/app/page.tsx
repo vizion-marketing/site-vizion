@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: b2bSEO.ogImage,
         width: 1200,
         height: 630,
-        alt: "Vizion — Agence Marketing B2B",
+        alt: "Vizion, Agence Marketing B2B",
       },
     ],
     type: "website",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: b2bSEO.ogImage,
-        alt: "Vizion — Agence Marketing B2B",
+        alt: "Vizion, Agence Marketing B2B",
       },
     ],
   },
@@ -104,7 +104,7 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* JSON-LD schemas — rendered server-side */}
+      {/* JSON-LD schemas - rendered server-side */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

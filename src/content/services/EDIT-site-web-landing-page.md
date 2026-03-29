@@ -23,7 +23,7 @@
 
 ---
 
-## Narrative — Le constat
+## Narrative - Le constat
 
 - **Surtitre :** Notre constat
 - **Titre :** En B2B, votre site est le point de passage obligé de toute décision d'achat.
@@ -45,22 +45,22 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
 
 ---
 
-## Narrative — Les conséquences
+## Narrative - Les conséquences
 
 - **Surtitre :** Les conséquences
 - **Titre :** Ce que vous perdez chaque jour avec un site qui ne convertit pas
-- **Paragraphe :** Un site B2B qui ne convertit pas n'est pas neutre — il vous coûte activement des opportunités. Chaque visiteur qui repart sans agir est un prospect que votre concurrent va capter.
+- **Paragraphe :** Un site B2B qui ne convertit pas n'est pas neutre - il vous coûte activement des opportunités. Chaque visiteur qui repart sans agir est un prospect que votre concurrent va capter.
 
 ### Highlights
 
-1. Vos prospects ne comprennent pas ce que vous faites en 5 secondes — ils partent
+1. Vos prospects ne comprennent pas ce que vous faites en 5 secondes - ils partent
 2. Votre expertise réelle est invisible derrière un design daté et un message générique
 3. Vos concurrents avec un meilleur site captent le trafic organique que vous méritez
 4. Vos commerciaux compensent un site faible en sur-expliquant à chaque rendez-vous
 
 ---
 
-## Narrative — L'approche Vizion
+## Narrative - L'approche Vizion
 
 - **Surtitre :** L'approche Vizion
 - **Titre :** Faites de votre prochain site web un actif stratégique, qui sert (vraiment) votre croissance.
@@ -76,16 +76,16 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
 ### Items
 
 1. **Un positionnement avant un design**
-   Avant de toucher un pixel, on définit votre message, vos cibles et votre avantage concurrentiel. Le design vient servir la stratégie — pas l'inverse.
+   Avant de toucher un pixel, on définit votre message, vos cibles et votre avantage concurrentiel. Le design vient servir la stratégie - pas l'inverse.
 
 2. **Du copywriting qui vend, pas qui décrit**
-   Chaque titre, chaque paragraphe, chaque CTA est rédigé pour votre acheteur B2B. On ne remplit pas des pages — on construit des argumentaires de vente.
+   Chaque titre, chaque paragraphe, chaque CTA est rédigé pour votre acheteur B2B. On ne remplit pas des pages - on construit des argumentaires de vente.
 
 3. **Une architecture pensée pour la conversion**
    Chaque page a un objectif mesurable. Le parcours utilisateur est architecturé pour transformer un visiteur curieux en prospect qualifié.
 
 4. **Un SEO intégré dès la conception**
-   Structure sémantique, maillage interne, Core Web Vitals — le référencement n'est pas un add-on, c'est un pilier de chaque décision technique.
+   Structure sémantique, maillage interne, Core Web Vitals - le référencement n'est pas un add-on, c'est un pilier de chaque décision technique.
 
 5. **Un site que vous maîtrisez**
    CMS intuitif, formation incluse, documentation complète. Vous publiez, modifiez et faites évoluer votre site sans dépendre d'un développeur.
@@ -111,12 +111,12 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
 
 - **Valeur :** 95
 - **Label :** Score Google
-- **Description :** Performance, accessibilité, SEO — mesurés et maintenus dans la durée.
+- **Description :** Performance, accessibilité, SEO - mesurés et maintenus dans la durée.
 
 ### Carte SEO
 
 - **Titre :** SEO technique intégré dès la conception
-- **Description :** Schema.org, sitemap dynamique, Core Web Vitals, balises sémantiques — rien n'est laissé au hasard.
+- **Description :** Schema.org, sitemap dynamique, Core Web Vitals, balises sémantiques - rien n'est laissé au hasard.
 
 ### Carte Design
 
@@ -125,14 +125,14 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
 
 ### Carte IA
 
-- **Label :** Nouveau — Exclusif France
-- **Titre :** Vizion est la première agence en France à proposer des sites 100% générés par IA — sans compromis sur la qualité.
+- **Label :** Nouveau - Exclusif France
+- **Titre :** Vizion est la première agence en France à proposer des sites 100% générés par IA - sans compromis sur la qualité.
 - **Description :** En plus du développement traditionnel, nous proposons un nouveau format de sites plus agile et plus performant, développé en interne par nos développeurs IA. Même exigence. Délais réduits.
 
 ### Carte Intégrations
 
 - **Titre :** Intégrations CRM & outils
-- **Description :** HubSpot, Pipedrive, Notion, Zapier — votre site s'intègre à votre stack commerciale.
+- **Description :** HubSpot, Pipedrive, Notion, Zapier - votre site s'intègre à votre stack commerciale.
 
 ---
 
@@ -142,10 +142,10 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
 - **Sous-titre section :** Chaque page, chaque section, chaque CTA est conçu pour faire avancer le visiteur dans son parcours de décision.
 
 1. **Architecture de conversion** *(icône: Target)*
-   Chaque page suit un parcours psychologique précis : attirer l'attention, créer la confiance, lever les objections, déclencher l'action. Pas de design gratuit — chaque pixel a un rôle.
+   Chaque page suit un parcours psychologique précis : attirer l'attention, créer la confiance, lever les objections, déclencher l'action. Pas de design gratuit - chaque pixel a un rôle.
 
 2. **Copywriting stratégique** *(icône: Pencil)*
-   Les textes sont rédigés pour votre cible, pas pour vous. Messages de valeur, preuves sociales, CTAs contextuels — le contenu fait le travail commercial à votre place.
+   Les textes sont rédigés pour votre cible, pas pour vous. Messages de valeur, preuves sociales, CTAs contextuels - le contenu fait le travail commercial à votre place.
 
 3. **SEO technique et sémantique** *(icône: Search)*
    Structure technique irréprochable (Core Web Vitals, schema.org, sitemap) combinée à une stratégie de contenu ciblée sur vos requêtes business.
@@ -154,7 +154,7 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
    Plus de 60% du trafic B2B est mobile. Chaque interface est conçue et testée mobile d'abord, avec des temps de chargement inférieurs à 2 secondes.
 
 5. **Tracking et analytics intégrés** *(icône: BarChart3)*
-   Google Analytics 4, événements de conversion, heatmaps — vous savez exactement ce qui fonctionne et ce qui doit être optimisé.
+   Google Analytics 4, événements de conversion, heatmaps - vous savez exactement ce qui fonctionne et ce qui doit être optimisé.
 
 6. **CMS autonome** *(icône: Repeat)*
    Vous gardez le contrôle. Interface d'administration intuitive pour modifier vos contenus, publier des articles et gérer vos landing pages sans développeur.
@@ -166,25 +166,25 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
 - **Titre section :** De la stratégie au lancement en 4 étapes
 - **Sous-titre section :** Un processus éprouvé qui garantit un site aligné sur vos objectifs commerciaux, livré dans les délais.
 
-### Étape 1 — Stratégie et positionnement
+### Étape 1 - Stratégie et positionnement
 
 - **Durée :** 2 semaines
 - **Description :** Audit de votre marché, personas, parcours d'achat et concurrence. Définition de votre proposition de valeur, hiérarchie des arguments et architecture du site.
 - **Livrables :** Audit concurrentiel, Personas B2B, Proposition de valeur, Arborescence
 
-### Étape 2 — UX et design
+### Étape 2 - UX et design
 
 - **Durée :** 2 semaines
 - **Description :** Wireframes, parcours de conversion et direction artistique alignée sur votre positionnement. Design system complet pour garantir la cohérence visuelle.
 - **Livrables :** Wireframes desktop/mobile, Maquettes Figma, Design system
 
-### Étape 3 — Développement
+### Étape 3 - Développement
 
 - **Durée :** 3-4 semaines
 - **Description :** Intégration pixel-perfect, animations, SEO technique, performance et responsive. Tests cross-browser et cross-device.
 - **Livrables :** Site fonctionnel, CMS configuré, SEO technique, Analytics
 
-### Étape 4 — Lancement et optimisation
+### Étape 4 - Lancement et optimisation
 
 - **Durée :** 1 semaine
 - **Description :** Mise en production, redirections, soumission aux moteurs de recherche et suivi post-lancement. Accompagnement pendant 3 mois.
@@ -196,26 +196,26 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
 
 - **Surtitre section :** Nos engagements
 - **Titre section :** Pourquoi choisir Vizion\npour votre site web ?
-- **Description section :** Pas de promesses vagues — des engagements concrets, mesurables et documentés, valables sur chaque projet que nous livrons.
+- **Description section :** Pas de promesses vagues - des engagements concrets, mesurables et documentés, valables sur chaque projet que nous livrons.
 - **Surtitre carte :** Nos engagements
 - **Titre carte :** Nos garanties\nde qualité
-- **Description carte :** Chaque projet est piloté avec la même rigueur. Pas de promesses vagues — des engagements concrets, mesurables et documentés.
+- **Description carte :** Chaque projet est piloté avec la même rigueur. Pas de promesses vagues - des engagements concrets, mesurables et documentés.
 
 ### Garanties
 
-1. **Bilan livrable — 50 points d'optimisation** *(icône: ClipboardList)*
+1. **Bilan livrable - 50 points d'optimisation** *(icône: ClipboardList)*
    Checklist complète : sécurité, SEO technique, performance, accessibilité et bonnes pratiques.
 
 2. **3 mois de maintenance offerts** *(icône: Wrench)*
    Corrections, mises à jour et petites évolutions incluses pendant 3 mois après la livraison.
 
 3. **Score Google 90+ garanti** *(icône: Zap)*
-   Performance, accessibilité, SEO et bonnes pratiques — mesurés et validés avant chaque livraison.
+   Performance, accessibilité, SEO et bonnes pratiques - mesurés et validés avant chaque livraison.
 
 ### Feature card
 
 - **Titre :** Une coopération unique\nentre stratégie et technique
-- **Description :** Stratèges marketing et développeurs chevronnés travaillent ensemble sur chaque projet — pour que votre site serve vraiment vos objectifs commerciaux.
+- **Description :** Stratèges marketing et développeurs chevronnés travaillent ensemble sur chaque projet - pour que votre site serve vraiment vos objectifs commerciaux.
 - **Texte lien :** En savoir plus
 - **Lien :** /contact
 
@@ -223,17 +223,17 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
 
 ## Témoignages
 
-1. **Directeur commercial** — PME industrielle — Client Vizion *(5/5)*
-   > Vizion a transformé notre site en véritable machine à leads — le ROI est indiscutable.
+1. **Directeur commercial** - PME industrielle - Client Vizion *(5/5)*
+   > Vizion a transformé notre site en véritable machine à leads - le ROI est indiscutable.
 
    En 3 mois, nous avons triplé nos demandes de contact qualifiées. Le nouveau site fait le travail commercial avant même le premier appel. L'équipe a su comprendre nos enjeux B2B et traduire notre expertise en un parcours qui convertit.
 
-2. **CEO** — Éditeur SaaS B2B — Client Vizion *(5/5)*
-   > Un site qui parle enfin à nos vrais décideurs — pas juste une vitrine générique.
+2. **CEO** - Éditeur SaaS B2B - Client Vizion *(5/5)*
+   > Un site qui parle enfin à nos vrais décideurs - pas juste une vitrine générique.
 
    Avant Vizion, notre site ne reflétait pas notre niveau d'expertise. Aujourd'hui, les directeurs techniques et les DAF trouvent les réponses à leurs questions avant même de nous contacter. Le cycle de vente s'est raccourci de plusieurs semaines.
 
-3. **Directrice marketing** — ETI Services B2B — Client Vizion *(5/5)*
+3. **Directrice marketing** - ETI Services B2B - Client Vizion *(5/5)*
    > Notre trafic organique a doublé en 6 mois grâce au SEO intégré dès la conception.
 
    Le site précédent était beau mais invisible sur Google. Vizion a repensé toute l'architecture de contenu avec une stratégie SEO dès le brief initial. Les résultats sont concrets : +120% de trafic organique et des leads beaucoup plus qualifiés.
@@ -267,7 +267,7 @@ Votre site n'est pas qu'une vitrine. Il est un véritable outil pour votre équi
 ## CTA final
 
 - **Titre :** Votre site mérite de travailler pour vous
-- **Description :** Premier échange sans engagement — on analyse votre site actuel et vos objectifs.
+- **Description :** Premier échange sans engagement - on analyse votre site actuel et vos objectifs.
 - **Texte bouton :** Demander un audit gratuit
 - **Lien bouton :** /contact
 

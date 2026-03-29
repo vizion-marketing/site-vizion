@@ -1,5 +1,5 @@
 // ============================================================================
-// CONSTANTES PARTAGÉES — Pages villes
+// CONSTANTES PARTAGÉES - Pages villes
 // ============================================================================
 // Éléments communs à toutes les pages villes (badges villes, map, schemas).
 // Le contenu textuel reste 100% unique par ville.
@@ -33,7 +33,7 @@ export function buildOrganizationSchema(meta: CityMeta) {
     "@type": ["Organization", "LocalBusiness"],
     "@id": `${SITE_URL}/#organization`,
     name: "Vizion",
-    alternateName: `Vizion — Agence Marketing ${meta.city}`,
+    alternateName: `Vizion | Agence Marketing ${meta.city}`,
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo-vizion.avif`,
     image: `${SITE_URL}/hero-binoculars.avif`,

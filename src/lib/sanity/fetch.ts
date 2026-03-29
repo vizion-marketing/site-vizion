@@ -21,7 +21,7 @@ export async function sanityFetch<T>(
     const dm = await draftMode();
     isDraft = dm?.isEnabled ?? false;
   } catch {
-    // Not in a request context — use published data
+    // Not in a request context - use published data
   }
 
   return client.fetch<T>(query, params, {

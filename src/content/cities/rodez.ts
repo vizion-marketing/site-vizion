@@ -5,7 +5,7 @@ import {
 } from "./shared";
 
 // ============================================================================
-// RODEZ — Angle : Industrie, agro, mécanique, cycles longs
+// RODEZ - Angle : Industrie, agro, mécanique, cycles longs
 // Piliers : Audit & stratégie (#01) + Sales enablement (#05)
 // ============================================================================
 
@@ -31,7 +31,7 @@ const faqQuestions = [
   {
     question: "Notre site web date et ne génère aucun prospect. Par quoi commencer ?",
     answer:
-      "Le site web n'est qu'un symptôme. Avant de le refondre, nous vérifions les fondamentaux : votre positionnement est-il clair ? Votre offre est-elle bien formulée ? Vos pages répondent-elles aux questions que se posent vos acheteurs ? Nous commençons toujours par un audit qui identifie les vrais blocages. Parfois, une refonte complète n'est pas nécessaire — quelques ajustements stratégiques sur le contenu et la structure suffisent à relancer la génération de leads.",
+      "Le site web n'est qu'un symptôme. Avant de le refondre, nous vérifions les fondamentaux : votre positionnement est-il clair ? Votre offre est-elle bien formulée ? Vos pages répondent-elles aux questions que se posent vos acheteurs ? Nous commençons toujours par un audit qui identifie les vrais blocages. Parfois, une refonte complète n'est pas nécessaire. Quelques ajustements stratégiques sur le contenu et la structure suffisent à relancer la génération de leads.",
   },
   {
     question: "Quel est le profil type de vos clients en milieu industriel ?",
@@ -82,7 +82,7 @@ const content: CityPageData["content"] = {
     h2Highlight: "cycles de vente longs",
     paragraphs: [
       "L'Aveyron est un département industriel discret mais puissant : mécanique, agroalimentaire, coutellerie, bois, énergie. Les entreprises qui y opèrent vendent à des donneurs d'ordre nationaux et internationaux, dans des cycles de décision qui s'étalent sur des mois.",
-      "Sur ces cycles longs, chaque interaction compte. Un positionnement flou au premier rendez-vous, une présentation commerciale approximative, une relance oubliée — et c'est le concurrent mieux organisé qui l'emporte. Le marketing n'est pas un supplément pour ces entreprises : c'est le cadre qui structure tout le parcours d'achat.",
+      "Sur ces cycles longs, chaque interaction compte. Un positionnement flou au premier rendez-vous, une présentation commerciale approximative, une relance oubliée, et c'est le concurrent mieux organisé qui l'emporte. Le marketing n'est pas un supplément pour ces entreprises : c'est le cadre qui structure tout le parcours d'achat.",
       "Vizion intervient depuis Toulouse pour poser ce cadre : un audit qui identifie les vrais points de friction, et des outils de vente qui transforment chaque étape du cycle en opportunité de conviction. Sans jargon, avec pragmatisme.",
     ],
   },
@@ -112,7 +112,7 @@ const content: CityPageData["content"] = {
         surtitre: "POSITIONNEMENT & NARRATIF",
         titre: "Positionnement et narratif produit",
         description:
-          "Vos donneurs d'ordre comparent 4 ou 5 sous-traitants aux capacités similaires. La différence se joue dans la manière de formuler votre valeur. Nous construisons un positionnement qui met en lumière vos vrais différenciateurs — précision, réactivité, savoir-faire artisanal, capacité de production — et un discours structuré que vos commerciaux portent avec cohérence face aux acheteurs industriels nationaux et internationaux.",
+          "Vos donneurs d'ordre comparent 4 ou 5 sous-traitants aux capacités similaires. La différence se joue dans la manière de formuler votre valeur. Nous construisons un positionnement qui met en lumière vos vrais différenciateurs (précision, réactivité, savoir-faire artisanal, capacité de production) et un discours structuré que vos commerciaux portent avec cohérence face aux acheteurs industriels nationaux et internationaux.",
         services: [
           "Matrice de différenciation fournisseur",
           "Positionnement par segment industriel",
@@ -169,7 +169,7 @@ const content: CityPageData["content"] = {
     description:
       "Vizion est basée à Labège (Toulouse), à 2h de Rodez. Nous intervenons en Aveyron pour accompagner les entreprises industrielles du département.",
     paragraphs: [
-      "L'Aveyron combine un héritage industriel fort — coutellerie de Laguiole, mécanique de précision, filière bois — avec un réseau de PME qui exportent leur savoir-faire bien au-delà du département. Ces entreprises sont habituées à la rigueur et à l'exigence technique. Leur marketing doit refléter cette même exigence.",
+      "L'Aveyron combine un héritage industriel fort (coutellerie de Laguiole, mécanique de précision, filière bois) avec un réseau de PME qui exportent leur savoir-faire bien au-delà du département. Ces entreprises sont habituées à la rigueur et à l'exigence technique. Leur marketing doit refléter cette même exigence.",
       "Nous nous déplaçons à Rodez et dans le département pour les phases stratégiques : ateliers d'immersion, rencontres avec les équipes commerciales, observation du processus de vente. Cette proximité terrain est indispensable pour comprendre votre réalité et produire des livrables qui s'intègrent dans votre quotidien.",
     ],
     preuveLocale: "Enseignant en stratégie LinkedIn à Toulouse School of Management (TSM)",

@@ -31,7 +31,7 @@ const ITEMS = [
     tag: "Product Marketing",
     title: "Votre positionnement avant votre site",
     description:
-      "Persona, proposition de valeur, architecture de message — on structure votre discours commercial avant d'écrire la première ligne.",
+      "Persona, proposition de valeur, architecture de message : on structure votre discours commercial avant d'écrire la première ligne.",
     span: 2,
   },
   {
@@ -47,7 +47,7 @@ const ITEMS = [
     tag: "Copywriting",
     title: "Des textes écrits à la main",
     description:
-      "Chaque mot est rédigé par un stratège qui comprend votre marché. L'IA assiste — elle ne rédige jamais à votre place.",
+      "Chaque mot est rédigé par un stratège qui comprend votre marché. L'IA assiste, elle ne rédige jamais à votre place.",
     span: 1,
   },
   {
@@ -55,7 +55,7 @@ const ITEMS = [
     tag: "CMS",
     title: "CMS headless sur-mesure",
     description:
-      "Sanity, Contentlayer — le contrôle total sur votre contenu, sans dépendre de nous pour chaque modification.",
+      "Sanity, Contentlayer : le contrôle total sur votre contenu, sans dépendre de nous pour chaque modification.",
     span: 1,
   },
   {
@@ -204,7 +204,7 @@ export function MethodBento() {
             className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-8 border-t border-white/[0.08]"
           >
             <p className="text-[14px] sm:text-[15px] text-white/50">
-              Chaque projet est piloté avec la même rigueur — pas de promesses
+              Chaque projet est piloté avec la même rigueur, pas de promesses
               vagues.
             </p>
             <Link

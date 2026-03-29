@@ -95,7 +95,7 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
 
         // Separate ScrollTrigger for continuous parallax movement
         const colRefs = [col1Ref.current, col2Ref.current, col3Ref.current];
-        const speeds = [-15, 25, -20]; // % of movement — alternating directions
+        const speeds = [-15, 25, -20]; // % of movement - alternating directions
 
         colRefs.forEach((col, i) => {
           if (!col) return;
@@ -123,7 +123,7 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
         }, 0);
       }
 
-      // PHASE 1: Hook — zooms until it flies past you
+      // PHASE 1: Hook - zooms until it flies past you
       tl.fromTo(
         brefRef.current,
         { scale: 1, opacity: 1 },
@@ -145,7 +145,7 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
         ease: "power2.inOut",
       });
 
-      // PHASE 3: Adjectives — each with unique effect
+      // PHASE 3: Adjectives - each with unique effect
       const [w0, w1, w2] = wordRefs.current;
 
       // 1. bouncy scale from bottom
@@ -194,7 +194,7 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
         tl.to(w2, { opacity: 0, y: -40, duration: 0.5, ease: "power3.in" });
       }
 
-      // PHASE 4: Gallery reveal — full opacity, no blur
+      // PHASE 4: Gallery reveal - full opacity, no blur
       if (hasImages) {
         // Hide scroll hint before gallery reveal
         tl.to(scrollHintRef.current, {

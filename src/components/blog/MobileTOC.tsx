@@ -85,7 +85,7 @@ export function MobileTOC({ headings }: MobileTOCProps) {
 
   return (
     <>
-      {/* Floating button — only on mobile, hidden on lg+ */}
+      {/* Floating button - only on mobile, hidden on lg+ */}
       <AnimatePresence>
         {isVisible && (
           <motion.button

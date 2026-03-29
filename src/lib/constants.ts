@@ -176,7 +176,7 @@ export const PILIER_MAP: Record<string, { label: string; slug: string }> = {
 };
 
 export const SERVICE_MENU_BANNER = {
-  label: "Externalisation — Stratégie ou Production",
+  label: "Externalisation : Stratégie ou Production",
   description:
     "CMO à temps partagé · Exécution complète · Vous choisissez le niveau d'implication",
   href: "/contact",

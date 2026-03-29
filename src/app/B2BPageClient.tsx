@@ -3,11 +3,11 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-// Above-the-fold — eagerly loaded
+// Above-the-fold - eagerly loaded
 import { HeroSection } from "@/components/home/HeroSection";
 
 
-// Below-the-fold — lazy-loaded (SSR preserved, JS split into separate chunks)
+// Below-the-fold - lazy-loaded (SSR preserved, JS split into separate chunks)
 const IntroSection = dynamic(() => import("@/components/home/IntroSection"), { ssr: true });
 const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"), { ssr: true });
 const AssetsSection = dynamic(() => import("@/components/home/AssetsSection"), { ssr: true });
@@ -73,7 +73,7 @@ export default function B2BPageClient({ latestPosts, carouselClients }: B2BPageC
       {/* Hero */}
       <HeroSection content={b2bHero} />
 
-      {/* Intro — Pourquoi le B2B est différent */}
+      {/* Intro - Pourquoi le B2B est différent */}
       <IntroSection
         content={{
           title: b2bIntro.title,
@@ -82,7 +82,7 @@ export default function B2BPageClient({ latestPosts, carouselClients }: B2BPageC
         }}
       />
 
-      {/* Services — 5 piliers adaptés B2B */}
+      {/* Services - 5 piliers adaptés B2B */}
       <ServicesSection
         surtitre={b2bPiliers.surtitre}
         h2={b2bPiliers.h2}

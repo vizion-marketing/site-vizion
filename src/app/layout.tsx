@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Vizion — Agence Marketing Toulouse",
+        alt: "Vizion, Agence Marketing Toulouse",
       },
     ],
   },
@@ -54,12 +54,12 @@ export const metadata: Metadata = {
   },
 };
 
-// WebSite schema — enables Google sitelinks search box
+// WebSite schema - enables Google sitelinks search box
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://by-vizion.com/#website",
-  name: "Vizion — Agence Marketing B2B",
+  name: "Vizion | Agence Marketing B2B",
   url: "https://by-vizion.com",
   publisher: {
     "@id": "https://by-vizion.com/#organization",

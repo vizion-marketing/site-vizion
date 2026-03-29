@@ -5,7 +5,7 @@ import {
 } from "./shared";
 
 // ============================================================================
-// CASTRES — Angle : Pharma (Pierre Fabre), textile, industrie technique
+// CASTRES - Angle : Pharma (Pierre Fabre), textile, industrie technique
 // Piliers : Positionnement (#02) + IA/Automatisation (#04)
 // ============================================================================
 
@@ -103,7 +103,7 @@ const content: CityPageData["content"] = {
         surtitre: "AUDIT & STRATÉGIE",
         titre: "Audit et stratégie marketing",
         description:
-          "Votre marketing fonctionne en silo : un site qui ne reflète plus l'offre, des outils dispersés, une prospection qui repose sur l'intuition. Nous auditons l'ensemble — positionnement, canaux, processus commercial — et posons un diagnostic adapté à la réalité industrielle castraise : pharmaceutique, textile technique, mécanique de précision. La feuille de route qui en découle priorise les actions par impact et faisabilité, pas par effet de mode.",
+          "Votre marketing fonctionne en silo : un site qui ne reflète plus l'offre, des outils dispersés, une prospection qui repose sur l'intuition. Nous auditons l'ensemble (positionnement, canaux, processus commercial) et posons un diagnostic adapté à la réalité industrielle castraise : pharmaceutique, textile technique, mécanique de précision. La feuille de route qui en découle priorise les actions par impact et faisabilité, pas par effet de mode.",
         services: [
           "Audit marketing complet",
           "Feuille de route priorisée",
@@ -117,7 +117,7 @@ const content: CityPageData["content"] = {
         surtitre: "POSITIONNEMENT & NARRATIF",
         titre: "Positionnement et narratif produit",
         description:
-          "Dans la sous-traitance pharmaceutique ou l'industrie normée, les concurrents présentent des certifications et des capacités comparables. La différence se joue dans la manière de formuler votre valeur. Nous identifions vos vrais avantages compétitifs — réactivité, flexibilité, expertise réglementaire, proximité — et les structurons en un discours que vos commerciaux et vos réponses aux appels d'offres portent avec cohérence.",
+          "Dans la sous-traitance pharmaceutique ou l'industrie normée, les concurrents présentent des certifications et des capacités comparables. La différence se joue dans la manière de formuler votre valeur. Nous identifions vos vrais avantages compétitifs (réactivité, flexibilité, expertise réglementaire, proximité) et les structurons en un discours que vos commerciaux et vos réponses aux appels d'offres portent avec cohérence.",
         services: [
           "Cartographie des différenciateurs",
           "Positionnement concurrentiel industrie",
@@ -175,7 +175,7 @@ const content: CityPageData["content"] = {
       "Vizion est basée à Labège (Toulouse), à 1h15 de Castres. Nous intervenons régulièrement dans le bassin industriel du sud du Tarn.",
     paragraphs: [
       "Castres et la Montagne Noire forment un bassin industriel dense où coexistent grands groupes et un réseau de sous-traitants spécialisés. La proximité avec l'écosystème Pierre Fabre a créé un tissu d'entreprises habituées à des standards élevés de qualité et de processus.",
-      "Nous intervenons auprès de ces entreprises avec la même exigence. Chaque recommandation est fondée sur une analyse factuelle, chaque automatisation est testée avant déploiement, et chaque livrable stratégique est conçu pour être utilisé au quotidien — pas pour finir dans un tiroir.",
+      "Nous intervenons auprès de ces entreprises avec la même exigence. Chaque recommandation est fondée sur une analyse factuelle, chaque automatisation est testée avant déploiement, et chaque livrable stratégique est conçu pour être utilisé au quotidien, pas pour finir dans un tiroir.",
     ],
     preuveLocale: "Enseignant en stratégie LinkedIn à Toulouse School of Management (TSM)",
     mapEmbedUrl: "https://maps.google.com/maps?q=Castres,+Tarn,+France&t=&z=13&ie=UTF8&iwloc=&output=embed",

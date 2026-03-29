@@ -6,7 +6,7 @@ import { resolveImageUrl } from "../../../../sanity/lib/image";
 import { getCityData, CITY_SLUGS } from "@/content/cities";
 import CityPageClient from "@/app/CityPageClient";
 
-// Only pre-generated city slugs are valid — all others 404
+// Only pre-generated city slugs are valid - all others 404
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -34,7 +34,7 @@ export async function generateMetadata(
           url: content.seo.ogImage,
           width: 1200,
           height: 630,
-          alt: `Vizion — Agence marketing à ${meta.city}`,
+          alt: `Vizion, Agence marketing à ${meta.city}`,
         },
       ],
       type: "website",
@@ -48,7 +48,7 @@ export async function generateMetadata(
       images: [
         {
           url: content.seo.ogImage,
-          alt: `Vizion — Agence marketing à ${meta.city}`,
+          alt: `Vizion, Agence marketing à ${meta.city}`,
         },
       ],
     },

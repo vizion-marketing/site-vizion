@@ -5,7 +5,7 @@ import {
 } from "./shared";
 
 // ============================================================================
-// AGEN — Angle : Agro-alimentaire, logistique, PME industrielles
+// AGEN - Angle : Agro-alimentaire, logistique, PME industrielles
 // Piliers : Audit & stratégie (#01) + Positionnement (#02) + Sales enablement (#05)
 // ============================================================================
 
@@ -41,7 +41,7 @@ const faqQuestions = [
   {
     question: "Comment savoir si notre entreprise est prête pour un accompagnement marketing ?",
     answer:
-      "Si vous avez une offre solide mais que la croissance stagne, si vos commerciaux n'ont pas les bons outils, si votre positionnement n'est pas formalisé — vous êtes prêt. Nous travaillons avec des entreprises de 10 à 250 collaborateurs. L'audit initial est gratuit et vous donnera une vision claire de vos priorités.",
+      "Si vous avez une offre solide mais que la croissance stagne, si vos commerciaux n'ont pas les bons outils, si votre positionnement n'est pas formalisé, vous êtes prêt. Nous travaillons avec des entreprises de 10 à 250 collaborateurs. L'audit initial est gratuit et vous donnera une vision claire de vos priorités.",
   },
   {
     question: "Quelle est votre approche pour les entreprises agroalimentaires B2B ?",
@@ -103,7 +103,7 @@ const content: CityPageData["content"] = {
         surtitre: "AUDIT & STRATÉGIE",
         titre: "Audit et stratégie marketing",
         description:
-          "Votre marketing existe mais sans cohérence : un site qui ne reflète plus votre offre, des outils dispersés, une prospection qui repose sur l'intuition. Nous auditons l'ensemble — positionnement, canaux, outils, discours commercial — et posons un diagnostic factuel adapté à votre secteur, qu'il s'agisse d'agroalimentaire, de logistique ou d'industrie. La feuille de route qui en découle hiérarchise les actions par impact et faisabilité.",
+          "Votre marketing existe mais sans cohérence : un site qui ne reflète plus votre offre, des outils dispersés, une prospection qui repose sur l'intuition. Nous auditons l'ensemble (positionnement, canaux, outils, discours commercial) et posons un diagnostic factuel adapté à votre secteur, qu'il s'agisse d'agroalimentaire, de logistique ou d'industrie. La feuille de route qui en découle hiérarchise les actions par impact et faisabilité.",
         services: [
           "Audit de positionnement marché",
           "Diagnostic des canaux d'acquisition",
@@ -117,7 +117,7 @@ const content: CityPageData["content"] = {
         surtitre: "POSITIONNEMENT & NARRATIF",
         titre: "Positionnement et narratif produit",
         description:
-          "Vos acheteurs comparent 4 ou 5 fournisseurs sur des critères techniques similaires. Ce qui fait la différence, c'est la capacité à formuler clairement votre valeur ajoutée. Nous construisons un positionnement qui met en lumière vos vrais différenciateurs — expertise, origine, capacité de production, réactivité — et un discours structuré que toute votre équipe commerciale peut porter avec assurance.",
+          "Vos acheteurs comparent 4 ou 5 fournisseurs sur des critères techniques similaires. Ce qui fait la différence, c'est la capacité à formuler clairement votre valeur ajoutée. Nous construisons un positionnement qui met en lumière vos vrais différenciateurs (expertise, origine, capacité de production, réactivité) et un discours structuré que toute votre équipe commerciale peut porter avec assurance.",
         services: [
           "Matrice de différenciation fournisseur",
           "Proposition de valeur par segment",

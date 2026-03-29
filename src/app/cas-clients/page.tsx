@@ -5,12 +5,12 @@ import { createMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "Cas Clients — Résultats de notre agence marketing B2B",
+  title: "Cas Clients | Résultats de notre agence marketing B2B",
   description: "Études de cas de notre agence marketing B2B : franchise, SaaS, industrie, services. Résultats concrets et mesurables pour des PME et ETI accompagnées par Vizion.",
   path: "/cas-clients",
   image: {
     url: "/images/og-cas-clients.avif",
-    alt: "Cas clients B2B — Vizion agence marketing stratégique",
+    alt: "Cas clients B2B, Vizion agence marketing stratégique",
   },
 });
 

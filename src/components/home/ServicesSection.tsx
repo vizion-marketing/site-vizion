@@ -368,7 +368,7 @@ export function ServicesSection({ surtitre, h2, description, piliers }: Services
             <StandardCard key={service.id} service={service} index={index + 1} total={total} />
           ))}
 
-          {/* Image card — séparée de Automatisation */}
+          {/* Image card - séparée de Automatisation */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

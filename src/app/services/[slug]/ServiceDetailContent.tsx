@@ -60,7 +60,7 @@ export function ServiceDetailContent({
       {/* 2. Le constat (card) */}
       <ServiceNarrative constat={service.constat} />
 
-      {/* 3. Notre solution — sticky (sombre) */}
+      {/* 3. Notre solution - sticky (sombre) */}
       {service.solutionItems.length > 0 && (
         <SolutionSticky
           title={service.solutionTitle}
@@ -69,7 +69,7 @@ export function ServiceDetailContent({
         />
       )}
 
-      {/* 6. Titre animé au scroll (blanc — interstitial) */}
+      {/* 6. Titre animé au scroll (blanc - interstitial) */}
       {service.scrollTitle && (
         <WebScrollTitle content={service.scrollTitle} />
       )}
@@ -97,7 +97,7 @@ export function ServiceDetailContent({
         </div>
       )}
 
-      {/* 9. Process / Timeline (card) — ancre #processus */}
+      {/* 9. Process / Timeline (card) - ancre #processus */}
       {service.processSteps.length > 0 && (
         <ProcessTimeline
           title={service.processTitle}

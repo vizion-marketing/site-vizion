@@ -103,7 +103,7 @@ export function ServiceHeroV2({
     >
       {/* ===== MOBILE LAYOUT ===== */}
       <div className="lg:hidden grain-overlay relative px-4 sm:px-6 pt-28 sm:pt-32 pb-12 sm:pb-16 min-h-dvh flex flex-col justify-end">
-        {/* Mobile image — full width with edge fades */}
+        {/* Mobile image - full width with edge fades */}
         <div className="relative overflow-hidden -mb-2 aspect-[3/4] max-h-[50vh]">
           <Image
             src={heroSrc}
@@ -213,11 +213,11 @@ export function ServiceHeroV2({
         </div>
       </div>
 
-      {/* ===== DESKTOP LAYOUT — Image pleine hauteur à droite ===== */}
+      {/* ===== DESKTOP LAYOUT - Image pleine hauteur à droite ===== */}
       <div className="hidden lg:block relative min-h-dvh">
         <div className="grain-overlay absolute inset-0 z-0" style={{ background: "var(--bg-dark)" }} />
 
-        {/* Image — pleine hauteur, colonne droite */}
+        {/* Image - pleine hauteur, colonne droite */}
         <div
           data-v2="image"
           className="absolute top-0 right-0 bottom-0 w-[45%] z-[1]"
@@ -230,7 +230,7 @@ export function ServiceHeroV2({
             sizes="50vw"
             className="object-cover object-[center_25%]"
           />
-          {/* Dégradé noir fondu à gauche — -left-1 évite le trait blanc */}
+          {/* Dégradé noir fondu à gauche - -left-1 évite le trait blanc */}
           <div
             className="absolute -left-1 top-0 bottom-0 right-0 pointer-events-none"
             style={{
@@ -253,7 +253,7 @@ export function ServiceHeroV2({
           />
         </div>
 
-        {/* Lueur accent lime — côté gauche */}
+        {/* Lueur accent lime - côté gauche */}
         <div className="absolute inset-0 pointer-events-none z-[2] overflow-hidden">
           <div
             className="absolute w-[60%] h-[80%] top-[10%] left-[-10%]"
@@ -271,7 +271,7 @@ export function ServiceHeroV2({
           />
         </div>
 
-        {/* Content — colonne gauche */}
+        {/* Content - colonne gauche */}
         <div className="relative z-10 max-w-[82.5rem] mx-auto min-h-dvh px-6 md:px-12">
           <div data-v2="text-col" className="relative z-10 w-[55%] flex flex-col justify-center min-h-dvh">
             <div className="relative z-10">

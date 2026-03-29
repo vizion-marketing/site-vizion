@@ -266,7 +266,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
         </div>
       </div>
 
-      {/* Full-height accordion section — scroll-driven */}
+      {/* Full-height accordion section - scroll-driven */}
       <section
         id="assets"
         ref={sectionRef}
@@ -325,7 +325,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10" />
                   </div>
 
-                  {/* Collapsed panel — vertical title + number at bottom */}
+                  {/* Collapsed panel - vertical title + number at bottom */}
                   <div
                     className="absolute inset-0 flex flex-col items-center justify-end pb-8 transition-opacity duration-300"
                     style={{ opacity: isActive ? 0 : 1, pointerEvents: isActive ? "none" : "auto" }}
@@ -344,7 +344,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
                     </span>
                   </div>
 
-                  {/* Active panel content — overlaid on image */}
+                  {/* Active panel content - overlaid on image */}
                   <div
                     className="relative z-10 h-full flex flex-col justify-between p-8 lg:p-12 transition-opacity duration-500"
                     style={{ opacity: isActive ? 1 : 0, pointerEvents: isActive ? "auto" : "none" }}

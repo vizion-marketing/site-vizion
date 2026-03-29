@@ -311,7 +311,7 @@ export default function ContactPage() {
             <div className="relative h-full w-full rounded-none overflow-hidden transition-all duration-700 ease-out shadow-2xl">
               <Image
                 src="/images/contact.avif"
-                alt="Lucas Gonzalez — Directeur Commercial Vizion"
+                alt="Lucas Gonzalez, Directeur Commercial Vizion"
                 fill
                 className="object-cover"
                 priority

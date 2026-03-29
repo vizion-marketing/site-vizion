@@ -5,7 +5,7 @@ import {
 } from "./shared";
 
 // ============================================================================
-// TOULOUSE — Siège Vizion, technopole de Labège
+// TOULOUSE - Siège Vizion, technopole de Labège
 // Piliers : Audit & stratégie (#01) + Positionnement (#02) + Trafic (#03) + IA (#04) + Sales enablement (#05)
 // ============================================================================
 
@@ -64,7 +64,7 @@ const content: CityPageData["content"] = {
   },
 
   hero: {
-    badge: "AGENCE MARKETING — TOULOUSE",
+    badge: "AGENCE MARKETING | TOULOUSE",
     h1: "Votre agence marketing à Toulouse",
     h1Highlight: "Toulouse",
     baseline:

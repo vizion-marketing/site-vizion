@@ -137,7 +137,7 @@ export function TestimonialShowcase({
             </p>
           </div>
 
-          {/* Navigation — desktop */}
+          {/* Navigation - desktop */}
           <div
             data-testimonial="nav-desktop"
             className="hidden sm:flex items-center gap-3 flex-shrink-0"
@@ -198,7 +198,7 @@ export function TestimonialShowcase({
           </div>
         </div>
 
-        {/* Navigation — mobile */}
+        {/* Navigation - mobile */}
         <div
           data-testimonial="nav-mobile"
           className="flex sm:hidden items-center justify-center gap-3 mt-8"

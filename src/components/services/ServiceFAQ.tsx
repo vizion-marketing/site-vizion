@@ -113,7 +113,7 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
       className="bg-card py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12"
     >
       <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16">
-        {/* Left column — sticky on desktop */}
+        {/* Left column - sticky on desktop */}
         <div className="lg:sticky lg:top-32 lg:self-start">
           <div data-faq="left">
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
@@ -140,7 +140,7 @@ export function ServiceFAQ({ title, faqs }: ServiceFAQProps) {
           </div>
         </div>
 
-        {/* Right column — accordion */}
+        {/* Right column - accordion */}
         <div data-faq="accordion">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;

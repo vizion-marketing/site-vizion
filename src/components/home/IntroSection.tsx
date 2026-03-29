@@ -123,7 +123,7 @@ export function IntroSection({ content }: IntroSectionProps = {}) {
 
   return (
     <section className="relative py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden grain-overlay">
-      {/* Background — full-bleed light */}
+      {/* Background - full-bleed light */}
       <div
         className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[100vw] max-w-none bg-card"
         style={{ minWidth: "100vw" }}

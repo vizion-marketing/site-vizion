@@ -5,7 +5,7 @@ import {
 } from "./shared";
 
 // ============================================================================
-// MAZAMET — Angle : Textile historique en mutation, PME/artisans, communication
+// MAZAMET - Angle : Textile historique en mutation, PME/artisans, communication
 // Piliers : Positionnement (#02) + Trafic & Notoriété (#03)
 // ============================================================================
 
@@ -31,12 +31,12 @@ const faqQuestions = [
   {
     question: "Nous sommes une petite entreprise. Vizion travaille-t-elle avec des structures de notre taille ?",
     answer:
-      "Absolument. Nous accompagnons des PME de 10 à 250 collaborateurs, et nombre de nos clients ont démarré avec des équipes réduites. La taille ne détermine pas la qualité du marketing — c'est la clarté du positionnement qui fait la différence. Notre formule mission ciblée (8 à 16 semaines) est conçue pour des entreprises qui ont un enjeu précis à résoudre sans s'engager dans un accompagnement long.",
+      "Absolument. Nous accompagnons des PME de 10 à 250 collaborateurs, et nombre de nos clients ont démarré avec des équipes réduites. La taille ne détermine pas la qualité du marketing : c'est la clarté du positionnement qui fait la différence. Notre formule mission ciblée (8 à 16 semaines) est conçue pour des entreprises qui ont un enjeu précis à résoudre sans s'engager dans un accompagnement long.",
   },
   {
     question: "Comment le marketing peut-il aider une entreprise du textile ou du cuir à se repositionner ?",
     answer:
-      "Le savoir-faire textile et cuir de Mazamet est un atout considérable, mais il est souvent mal valorisé face aux marchés actuels. Nous travaillons sur le repositionnement de l'offre : identifier les segments porteurs (luxe, éco-responsable, technique), formuler une proposition de valeur qui résonne avec les acheteurs contemporains, et déployer les canaux qui touchent les bons décideurs. Le produit est excellent — c'est le message qui doit évoluer.",
+      "Le savoir-faire textile et cuir de Mazamet est un atout considérable, mais il est souvent mal valorisé face aux marchés actuels. Nous travaillons sur le repositionnement de l'offre : identifier les segments porteurs (luxe, éco-responsable, technique), formuler une proposition de valeur qui résonne avec les acheteurs contemporains, et déployer les canaux qui touchent les bons décideurs. Le produit est excellent, c'est le message qui doit évoluer.",
   },
   {
     question: "Pouvez-vous nous aider à développer notre visibilité en ligne depuis Mazamet ?",
@@ -81,8 +81,8 @@ const content: CityPageData["content"] = {
     h2: "Un savoir-faire industriel qui mérite un marketing à la hauteur",
     h2Highlight: "savoir-faire industriel",
     paragraphs: [
-      "Mazamet a été la capitale mondiale du délainage, et son tissu économique garde les traces de cette excellence industrielle. Cuir, textile technique, mécanique — les entreprises du territoire maîtrisent leur métier. Mais face à des marchés qui évoluent, la qualité du produit ne suffit plus : il faut un message clair et une stratégie de communication qui porte cette expertise auprès des bons interlocuteurs.",
-      "Or, beaucoup de PME mazamétaines fonctionnent encore sur le bouche-à-oreille et des supports vieillissants. Le site web date de cinq ans, la plaquette commerciale ne reflète plus l'offre réelle, et les commerciaux improvisent un discours différent à chaque rendez-vous. Le savoir-faire est là — c'est sa mise en marché qui manque de structure.",
+      "Mazamet a été la capitale mondiale du délainage, et son tissu économique garde les traces de cette excellence industrielle. Cuir, textile technique, mécanique. Les entreprises du territoire maîtrisent leur métier. Mais face à des marchés qui évoluent, la qualité du produit ne suffit plus : il faut un message clair et une stratégie de communication qui porte cette expertise auprès des bons interlocuteurs.",
+      "Or, beaucoup de PME mazamétaines fonctionnent encore sur le bouche-à-oreille et des supports vieillissants. Le site web date de cinq ans, la plaquette commerciale ne reflète plus l'offre réelle, et les commerciaux improvisent un discours différent à chaque rendez-vous. Le savoir-faire est là, c'est sa mise en marché qui manque de structure.",
       "Vizion intervient sur ce décalage. Nous posons le positionnement, structurons le message, puis déployons les canaux de communication et d'acquisition adaptés à votre marché. Depuis Toulouse, à 1h30 de Mazamet, avec des déplacements réguliers dans le Tarn.",
     ],
   },
@@ -98,7 +98,7 @@ const content: CityPageData["content"] = {
         surtitre: "AUDIT & STRATÉGIE",
         titre: "Audit et stratégie marketing",
         description:
-          "Votre entreprise mazamétainne fonctionne au bouche-à-oreille depuis des années, mais la croissance plafonne sans que vous sachiez exactement pourquoi. Nous auditons votre positionnement, vos canaux de prospection et vos outils, puis nous structurons une feuille de route adaptée à votre réalité — textile, cuir, artisanat ou services. Direction marketing externalisée ou mission ciblée : chaque euro investi repose sur un diagnostic factuel, pas sur des suppositions.",
+          "Votre entreprise mazamétainne fonctionne au bouche-à-oreille depuis des années, mais la croissance plafonne sans que vous sachiez exactement pourquoi. Nous auditons votre positionnement, vos canaux de prospection et vos outils, puis nous structurons une feuille de route adaptée à votre réalité (textile, cuir, artisanat ou services). Direction marketing externalisée ou mission ciblée : chaque euro investi repose sur un diagnostic factuel, pas sur des suppositions.",
         services: [
           "Audit marketing complet",
           "Feuille de route priorisée",
@@ -112,7 +112,7 @@ const content: CityPageData["content"] = {
         surtitre: "POSITIONNEMENT & NARRATIF",
         titre: "Positionnement et narratif produit",
         description:
-          "Vos prospects ne perçoivent pas ce qui vous distingue. Vos supports — site web, plaquettes, présentations — décrivent ce que vous faites mais pas pourquoi vous choisir. Le savoir-faire textile ou artisanal de Mazamet est un atout majeur, encore faut-il le traduire en proposition de valeur claire. Nous construisons un positionnement qui rend votre différence évidente, que vous vendiez du cuir premium, du textile technique ou un service B2B.",
+          "Vos prospects ne perçoivent pas ce qui vous distingue. Vos supports (site web, plaquettes, présentations) décrivent ce que vous faites mais pas pourquoi vous choisir. Le savoir-faire textile ou artisanal de Mazamet est un atout majeur, encore faut-il le traduire en proposition de valeur claire. Nous construisons un positionnement qui rend votre différence évidente, que vous vendiez du cuir premium, du textile technique ou un service B2B.",
         services: [
           "Positionnement et proposition de valeur",
           "Discours de marque structuré",
@@ -170,7 +170,7 @@ const content: CityPageData["content"] = {
       "Vizion est basée à Labège (Toulouse), à 1h30 de Mazamet. Nous intervenons régulièrement dans le Tarn pour accompagner les entreprises du bassin mazamétain.",
     paragraphs: [
       "Mazamet et la Montagne Noire forment un territoire au caractère industriel affirmé. Du délainage historique aux nouvelles filières (cuir premium, textile technique, éco-matériaux), les entreprises locales portent un savoir-faire qui rayonne bien au-delà du Tarn. Mais ce rayonnement commercial passe désormais par des canaux digitaux que beaucoup n'exploitent pas encore.",
-      "Vizion, c'est aussi une histoire de racines. Ses deux fondateurs sont des purs produits du Sud-Ouest : l'un né à Mazamet, l'autre près de Toulouse. Fiers de leur région et déterminés à faire rayonner les entreprises occitanes, ils ont créé une agence qui comprend le territoire parce qu'ils en viennent. Ateliers stratégiques en présentiel quand c'est nécessaire, suivi opérationnel à distance le reste du temps — avec la rigueur d'un partenaire qui connaît votre réalité.",
+      "Vizion, c'est aussi une histoire de racines. Ses deux fondateurs sont des purs produits du Sud-Ouest : l'un né à Mazamet, l'autre près de Toulouse. Fiers de leur région et déterminés à faire rayonner les entreprises occitanes, ils ont créé une agence qui comprend le territoire parce qu'ils en viennent. Ateliers stratégiques en présentiel quand c'est nécessaire, suivi opérationnel à distance le reste du temps, avec la rigueur d'un partenaire qui connaît votre réalité.",
     ],
     preuveLocale: "Enseignant en stratégie LinkedIn à Toulouse School of Management (TSM)",
     mapEmbedUrl: "https://maps.google.com/maps?q=Mazamet,+Tarn,+France&t=&z=13&ie=UTF8&iwloc=&output=embed",

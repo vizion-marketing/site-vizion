@@ -159,12 +159,12 @@ export function WebFeaturesBento({ cards }: WebFeaturesBentoProps) {
           </div>
         )}
 
-        {/* Bento grid — 3 columns */}
+        {/* Bento grid - 3 columns */}
         <div
           data-bento="grid"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
         >
-          {/* Row 1 — Technology dark (2/3) + Performance metric (1/3) */}
+          {/* Row 1 - Technology dark (2/3) + Performance metric (1/3) */}
           <div
             data-bento="cell"
             className="lg:col-span-2 dark-section grain-overlay p-8 sm:p-10 flex flex-col min-h-[280px] relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
@@ -189,7 +189,7 @@ export function WebFeaturesBento({ cards }: WebFeaturesBentoProps) {
               <p className="text-[14px] text-white/60 leading-relaxed max-w-lg">
                 {cards.technology.description}
               </p>
-              {/* Tech logos — dynamic from content */}
+              {/* Tech logos - dynamic from content */}
               {cards.technology.logos && cards.technology.logos.length > 0 && (
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-auto pt-6">
                   {cards.technology.logos.map((name, i) => (
@@ -229,7 +229,7 @@ export function WebFeaturesBento({ cards }: WebFeaturesBentoProps) {
             </div>
           </div>
 
-          {/* Row 2 — Photo (1/3) + No template (1/3) + Widgets (1/3) */}
+          {/* Row 2 - Photo (1/3) + No template (1/3) + Widgets (1/3) */}
           {cards.image && (
             <div
               data-bento="cell"
@@ -286,7 +286,7 @@ export function WebFeaturesBento({ cards }: WebFeaturesBentoProps) {
             </div>
           </div>
 
-          {/* Row 3 — Integrations with marquee (1/3) + Growth dark (2/3) */}
+          {/* Row 3 - Integrations with marquee (1/3) + Growth dark (2/3) */}
           {cards.integrations && (
             <div
               data-bento="cell"

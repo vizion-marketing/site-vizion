@@ -1,5 +1,5 @@
 // ============================================================
-// Services — Registry
+// Services - Registry
 // Un fichier par service, tout centralisé ici.
 // ============================================================
 

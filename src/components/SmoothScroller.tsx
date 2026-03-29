@@ -28,7 +28,7 @@ export default function SmoothScroller({ children }: SmoothScrollerProps) {
     let lenis: LenisInstance | null = null;
     let tickerCallback: ((time: number) => void) | null = null;
 
-    // Dynamic import — keeps Lenis + GSAP ScrollTrigger out of the initial bundle
+    // Dynamic import - keeps Lenis + GSAP ScrollTrigger out of the initial bundle
     Promise.all([
       import("lenis"),
       import("gsap"),

@@ -140,7 +140,7 @@ export function PilierMetrics({ metrics }: PilierMetricsProps) {
         >
           {metrics.metrics.map((metric, i) => (
             <div key={i} className="relative">
-              {/* Vertical separator — desktop only, not on first item */}
+              {/* Vertical separator - desktop only, not on first item */}
               {i > 0 && (
                 <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[calc(50%+1rem)] h-16 w-px bg-black/[0.08]" />
               )}

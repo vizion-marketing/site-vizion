@@ -82,7 +82,7 @@ export function PilierHero({
           className="object-cover object-center"
         />
 
-        {/* Base overlay — darken the whole image */}
+        {/* Base overlay - darken the whole image */}
         <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
         {/* Gradient: dark at top fading into image at bottom */}

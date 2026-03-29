@@ -1,5 +1,5 @@
 // ============================================================================
-// TYPES PAGES VILLES — Contenu 100% unique par ville
+// TYPES PAGES VILLES - Contenu 100% unique par ville
 // ============================================================================
 
 export interface CTA {

@@ -82,7 +82,7 @@ export function RelatedServices({
           )}
         </div>
 
-        {/* Cards grid — dark / accent alternating */}
+        {/* Cards grid - dark / accent alternating */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
           {services.map((service, i) => {
             const Icon = resolveIcon(service.icon);

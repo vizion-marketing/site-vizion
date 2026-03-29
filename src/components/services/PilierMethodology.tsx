@@ -46,7 +46,7 @@ export function PilierMethodology({ methodology }: PilierMethodologyProps) {
         },
       );
 
-      // Accent bars — scaleX reveal
+      // Accent bars - scaleX reveal
       gsap.fromTo(
         "[data-method='bar']",
         { scaleX: 0 },
@@ -107,7 +107,7 @@ export function PilierMethodology({ methodology }: PilierMethodologyProps) {
 
         {/* Grid 2x2 with connecting line */}
         <div data-method="grid" className="relative">
-          {/* Connecting line — desktop only */}
+          {/* Connecting line - desktop only */}
           <div
             data-method="line"
             className="hidden lg:block absolute top-1/2 left-[10%] right-[10%] h-[2px] bg-accent/20 -translate-y-1/2 origin-center pointer-events-none z-0"

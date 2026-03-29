@@ -57,7 +57,7 @@ function StepRow({
       data-process="row"
       className="border-t border-black/[0.08] hover:bg-white/80 transition-colors duration-300 group"
     >
-      {/* Desktop — 4 colonnes */}
+      {/* Desktop - 4 colonnes */}
       <div className="hidden md:grid md:grid-cols-[80px_40px_1fr_1.2fr] gap-6 lg:gap-8 py-7 lg:py-8 items-baseline">
         <span className="text-[28px] lg:text-[32px] font-extralight text-primary/30 leading-none tabular-nums group-hover:text-accent transition-colors duration-300">
           {String(index + 1).padStart(2, "0")}.
@@ -95,7 +95,7 @@ function StepRow({
         </div>
       </div>
 
-      {/* Mobile — empilé */}
+      {/* Mobile - empilé */}
       <div className="md:hidden py-6">
         <div className="flex items-center gap-3 mb-3">
           <span className="text-[24px] font-extralight text-primary/30 leading-none tabular-nums group-hover:text-accent transition-colors duration-300">
@@ -168,7 +168,7 @@ export function ProcessTimeline({
         },
       });
 
-      // Step rows — stagger
+      // Step rows - stagger
       gsap.fromTo(
         "[data-process='row']",
         { opacity: 0, y: 25 },
@@ -185,7 +185,7 @@ export function ProcessTimeline({
         },
       );
 
-      // Progress bar — scroll-linked
+      // Progress bar - scroll-linked
       gsap.fromTo(
         "[data-process='progress']",
         { height: "0%" },

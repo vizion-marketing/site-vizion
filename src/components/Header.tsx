@@ -85,7 +85,7 @@ function CategoryIcon({ name, size = 14, className }: { name: string; size?: num
 }
 
 // ============================================================================
-// DESKTOP MEGA MENU — SERVICES
+// DESKTOP MEGA MENU - SERVICES
 // ============================================================================
 
 function DesktopServicesMegaMenu({ onClose }: { onClose: () => void }) {
@@ -108,28 +108,28 @@ function DesktopServicesMegaMenu({ onClose }: { onClose: () => void }) {
       className="absolute top-full left-1/2 -translate-x-1/2 z-50 w-[1060px] bg-white border border-black/[0.08] shadow-2xl shadow-black/10"
     >
       <div className="grid grid-cols-[1fr_1fr_1fr_240px]">
-        {/* Col 1 — Audit & Stratégie + Growth */}
+        {/* Col 1 - Audit & Stratégie + Growth */}
         <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
           {col1.map((category, i) => (
             <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
           ))}
         </div>
 
-        {/* Col 2 — Product Marketing + Sales Enablement */}
+        {/* Col 2 - Product Marketing + Sales Enablement */}
         <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
           {col2.map((category, i) => (
             <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
           ))}
         </div>
 
-        {/* Col 3 — Digitalisez + Automatisez */}
+        {/* Col 3 - Digitalisez + Automatisez */}
         <div className="p-5 flex flex-col gap-4 border-r border-black/[0.06]">
           {col3.map((category, i) => (
             <MegaMenuCategory key={category.title} category={category} onClose={onClose} isFirst={i === 0} />
           ))}
         </div>
 
-        {/* Col 4 — CTA Externalisation */}
+        {/* Col 4 - CTA Externalisation */}
         <Link
           href={SERVICE_MENU_BANNER.href}
           onClick={onClose}
@@ -234,7 +234,7 @@ function MegaMenuServiceItem({ item, onClose }: { item: ServiceMenuItem; onClose
 }
 
 // ============================================================================
-// DESKTOP MEGA MENU — CAS CLIENTS
+// DESKTOP MEGA MENU - CAS CLIENTS
 // ============================================================================
 
 function DesktopCasClientsMegaMenu({
@@ -255,7 +255,7 @@ function DesktopCasClientsMegaMenu({
       className="absolute top-full left-1/2 -translate-x-1/2 z-50 w-[1060px] bg-white border border-black/[0.08] shadow-2xl shadow-black/10"
     >
       <div className="grid grid-cols-[1fr_280px]">
-        {/* Left — 3 dernières études de cas */}
+        {/* Left - 3 dernières études de cas */}
         <div className="p-5 border-r border-black/[0.06]">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2 px-2 py-1.5 bg-black/[0.03] -mx-1">
@@ -331,7 +331,7 @@ function DesktopCasClientsMegaMenu({
           </div>
         </div>
 
-        {/* Right — Liste des clients */}
+        {/* Right - Liste des clients */}
         <div className="p-5 flex flex-col">
           <div className="flex items-center gap-2 px-2 py-1.5 bg-black/[0.03] -mx-1 mb-3">
             <Building2 size={13} className="text-black/30" />

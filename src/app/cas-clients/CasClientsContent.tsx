@@ -139,7 +139,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
                     {resolveImageUrl(featuredClient.mainImage, 1200) && (
                     <Image
                       src={resolveImageUrl(featuredClient.mainImage, 1200)}
-                      alt={`${featuredClient.name} — cas client ${featuredClient.sector}`}
+                      alt={`${featuredClient.name}, cas client ${featuredClient.sector}`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 1024px) 100vw, 50vw"
@@ -235,7 +235,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
               </div>
             </div>
 
-            {/* Filters — buttons for UX + hidden links for SEO */}
+            {/* Filters - buttons for UX + hidden links for SEO */}
             <div className="flex flex-wrap gap-2">
               {companyTypes.map((sector) => {
                 const isActive = selectedSector === sector.id;
@@ -297,7 +297,7 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
                         {resolveImageUrl(client.mainImage, 800) && (
                         <Image
                           src={resolveImageUrl(client.mainImage, 800)}
-                          alt={`Cas client ${client.name} — ${client.sector}`}
+                          alt={`Cas client ${client.name}, ${client.sector}`}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

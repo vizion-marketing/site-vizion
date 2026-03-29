@@ -58,7 +58,7 @@ export default async function ServicePage({ params }: PageProps) {
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  // JSON-LD — Organization (réutilisé dans Service.provider)
+  // JSON-LD - Organization (réutilisé dans Service.provider)
   const serviceUrl = `${SITE_URL}/services/${service.slug}`;
 
   const organization = {
@@ -99,7 +99,7 @@ export default async function ServicePage({ params }: PageProps) {
   const hasReviews = reviews.length > 0;
 
   const jsonLd = [
-    // 1. WebPage — contexte de la page
+    // 1. WebPage - contexte de la page
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -111,7 +111,7 @@ export default async function ServicePage({ params }: PageProps) {
       about: { "@type": "Service", name: service.title },
       inLanguage: "fr-FR",
     },
-    // 2. Service — cœur du schema
+    // 2. Service - cœur du schema
     {
       "@context": "https://schema.org",
       "@type": "Service",

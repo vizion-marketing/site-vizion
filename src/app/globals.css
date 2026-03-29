@@ -400,7 +400,7 @@ h3, .h3 {
   transform: translateY(0) scale(0.98);
 }
 
-/* === PROSE STYLES (MDX content) — Mobile-first === */
+/* === PROSE STYLES (MDX content) - Mobile-first === */
 .prose {
   max-width: 68ch;
   color: var(--text-secondary);
@@ -834,7 +834,7 @@ h3, .h3 {
   }
 }
 
-/* Tables in prose — scrollable on mobile */
+/* Tables in prose - scrollable on mobile */
 .prose table {
   width: max-content;
   min-width: 100%;
@@ -1111,7 +1111,7 @@ h3, .h3 {
 }
 
 /* === BODY OVERFLOW FIX === */
-/* Prevent horizontal scroll — use clip instead of hidden to preserve position:sticky */
+/* Prevent horizontal scroll - use clip instead of hidden to preserve position:sticky */
 html, body {
   overflow-x: clip;
 }

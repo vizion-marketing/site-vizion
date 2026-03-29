@@ -30,14 +30,14 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
     <main className="min-h-screen bg-white font-[var(--font-body)]">
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 1 — HERO (full-screen background image)
+          SECTION 1 - HERO (full-screen background image)
       ═══════════════════════════════════════════════════════════ */}
       <section className="dark-section relative min-h-[85vh] flex flex-col justify-end overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <Image
             src={resolveImageUrl(client.mainImage, 1920)}
-            alt={`${client.name} — ${client.companyType} ${client.sector}`}
+            alt={`${client.name}, ${client.companyType} ${client.sector}`}
             fill
             className="object-cover"
             priority
@@ -70,7 +70,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
           </motion.nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-            {/* LEFT — Badge + H1 + description + CTAs */}
+            {/* LEFT - Badge + H1 + description + CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
               </div>
             </motion.div>
 
-            {/* RIGHT — Testimonial card */}
+            {/* RIGHT - Testimonial card */}
             {testimonial && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -213,7 +213,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 2 — BANDE CHIFFRES CLES
+          SECTION 2 - BANDE CHIFFRES CLES
       ═══════════════════════════════════════════════════════════ */}
       {client.highlightMetrics && client.highlightMetrics.length > 0 && (
         <section className="py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-12 bg-card border-b border-black/[0.06]">
@@ -248,7 +248,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
       )}
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 3 — GALERIE DE LIVRABLES
+          SECTION 3 - GALERIE DE LIVRABLES
       ═══════════════════════════════════════════════════════════ */}
       {client.galleryImages && client.galleryImages.length > 0 && (
         <DeliverablesGallery
@@ -258,7 +258,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
       )}
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 4 — CASE STUDIES COLLECTION
+          SECTION 4 - CASE STUDIES COLLECTION
       ═══════════════════════════════════════════════════════════ */}
       {caseStudies.length > 0 && (
         <section id="etudes-de-cas" className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 bg-white scroll-mt-20">
@@ -300,7 +300,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
                         {cs.heroImage ? (
                           <Image
                             src={resolveImageUrl(cs.heroImage, 600)}
-                            alt={`${cs.title} — etude de cas ${client.name}`}
+                            alt={`${cs.title}, etude de cas ${client.name}`}
                             width={600}
                             height={338}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -371,7 +371,7 @@ export function ClientProfileContent({ client, caseStudies }: ClientProfileConte
       )}
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 5 — CTA FINAL (dark background)
+          SECTION 5 - CTA FINAL (dark background)
       ═══════════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-white">
         <div className="max-w-[82.5rem] mx-auto">

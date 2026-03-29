@@ -79,7 +79,7 @@ export function ServiceNarrative({ constat }: { constat: NarrativeBlock }) {
         duration: 0.7,
       }, 0.2);
 
-      // Title — big reveal
+      // Title - big reveal
       tl.fromTo("[data-narrative='title']", {
         opacity: 0,
         y: 50,
@@ -90,7 +90,7 @@ export function ServiceNarrative({ constat }: { constat: NarrativeBlock }) {
         ease: "expo.out",
       }, 0.35);
 
-      // Cards — stagger from bottom with slight scale
+      // Cards - stagger from bottom with slight scale
       tl.fromTo(
         "[data-narrative='card']",
         { opacity: 0, y: 40, scale: 0.97 },
@@ -105,7 +105,7 @@ export function ServiceNarrative({ constat }: { constat: NarrativeBlock }) {
         0.3,
       );
 
-      // Card icons — pop in after cards
+      // Card icons - pop in after cards
       tl.fromTo(
         "[data-narrative='card-icon']",
         { opacity: 0, scale: 0, rotation: -15 },
@@ -130,7 +130,7 @@ export function ServiceNarrative({ constat }: { constat: NarrativeBlock }) {
     >
       <div className="max-w-[82.5rem] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-end">
-          {/* Gauche — Titre + description */}
+          {/* Gauche - Titre + description */}
           <div className="relative">
             {/* Ligne accent verticale animée */}
             <div
@@ -175,7 +175,7 @@ export function ServiceNarrative({ constat }: { constat: NarrativeBlock }) {
             </div>
           </div>
 
-          {/* Droite — Grille 2×2 de statements */}
+          {/* Droite - Grille 2×2 de statements */}
           <div
             data-narrative="cards-grid"
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"

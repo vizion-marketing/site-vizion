@@ -1,5 +1,5 @@
 // ============================================================================
-// CONTENU PAGE D'ACCUEIL — /
+// CONTENU PAGE D'ACCUEIL - /
 // ============================================================================
 // Angle : partenaire de croissance pour les entreprises B2B (France & Europe)
 // 5 piliers alignés sur le menu services
@@ -63,7 +63,7 @@ export const b2bIntro = {
 };
 
 // ============================================================================
-// 5 PILIERS — descriptions adaptées B2B
+// 5 PILIERS - descriptions adaptées B2B
 // ============================================================================
 
 export const b2bPiliers: PiliersContent = {
@@ -151,7 +151,7 @@ export const b2bPiliers: PiliersContent = {
 };
 
 // ============================================================================
-// ABOUT / LOCAL SEO — adapté B2B
+// ABOUT / LOCAL SEO - adapté B2B
 // ============================================================================
 
 export const b2bLocalSEO: LocalSEOContent = {

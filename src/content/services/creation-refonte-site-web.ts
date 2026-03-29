@@ -285,7 +285,7 @@ export const creationRefonteSiteWeb: ServiceContent = {
       suffix: "+",
       label: "Score Google",
       description:
-        "Votre performance est garantie. À la livraison, tous les indicateurs sont au vert — et nous veillons à ce qu'ils le restent.",
+        "Votre performance est garantie. À la livraison, tous les indicateurs sont au vert, et nous veillons à ce qu'ils le restent.",
     },
     noTemplate: {
       title: "Votre site est constitué à 100% sur-mesure par nos designers",
@@ -343,19 +343,19 @@ export const creationRefonteSiteWeb: ServiceContent = {
         icon: "ClipboardList",
         title: "Nous auditons 50 points avant de vous livrer",
         description:
-          "Sécurité, SEO technique, performance, accessibilité, bonnes pratiques — nous passons votre site au crible et vous livrons un rapport ultra-complet pour que vous partiez sur des bases solides.",
+          "Sécurité, SEO technique, performance, accessibilité, bonnes pratiques : nous passons votre site au crible et vous livrons un rapport ultra-complet pour que vous partiez sur des bases solides.",
       },
       {
         icon: "LineChart",
         title: "Nous vous livrons un tableau de bord en temps réel",
         description:
-          "Trafic, conversions, vitesse, SEO — vous gardez un œil sur la performance réelle de votre site à tout moment, sans nous demander un rapport.",
+          "Trafic, conversions, vitesse, SEO : vous gardez un œil sur la performance réelle de votre site à tout moment, sans nous demander un rapport.",
       },
       {
         icon: "Zap",
         title: "Nous vous garantissons un score Google 90+",
         description:
-          "Performance, accessibilité, SEO et bonnes pratiques — nous mesurons et validons chaque indicateur avant de vous remettre les clés.",
+          "Performance, accessibilité, SEO et bonnes pratiques : nous mesurons et validons chaque indicateur avant de vous remettre les clés.",
       },
     ],
     featureCard: {

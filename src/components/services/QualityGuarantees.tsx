@@ -38,7 +38,7 @@ export function QualityGuarantees({ content }: QualityGuaranteesProps) {
         },
       });
 
-      // Grid columns — stagger
+      // Grid columns - stagger
       gsap.fromTo(
         "[data-quality='column']",
         { opacity: 0, y: 30 },

@@ -4,11 +4,11 @@ import React from "react";
 import dynamic from "next/dynamic";
 import type { CityContent } from "@/content/cities/types";
 
-// Above-the-fold — eagerly loaded
+// Above-the-fold - eagerly loaded
 import { HeroSection } from "@/components/home/HeroSection";
 import { IndustriesMarquee } from "@/components/home/IndustriesMarquee";
 
-// Below-the-fold — lazy-loaded (SSR preserved, JS split into separate chunks)
+// Below-the-fold - lazy-loaded (SSR preserved, JS split into separate chunks)
 const IntroSection = dynamic(() => import("@/components/home/IntroSection"), { ssr: true });
 const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"), { ssr: true });
 const AssetsSection = dynamic(() => import("@/components/home/AssetsSection"), { ssr: true });
@@ -77,7 +77,7 @@ export default function CityPageClient({ content, latestPosts, carouselClients }
       {/* Bandeau industries défilant */}
       <IndustriesMarquee />
 
-      {/* Intro — Contexte local */}
+      {/* Intro - Contexte local */}
       <IntroSection
         content={{
           title: content.intro.h2,
@@ -85,7 +85,7 @@ export default function CityPageClient({ content, latestPosts, carouselClients }
         }}
       />
 
-      {/* Services — 5 piliers (même structure que homepage) */}
+      {/* Services - 5 piliers (même structure que homepage) */}
       <ServicesSection
         surtitre={content.piliers.surtitre}
         h2={content.piliers.h2}
@@ -105,7 +105,7 @@ export default function CityPageClient({ content, latestPosts, carouselClients }
       {/* Blog - Derniers articles */}
       <BlogSectionComponent articles={latestPosts} />
 
-      {/* FAQ — questions 100% locales */}
+      {/* FAQ - questions 100% locales */}
       <FAQSection
         content={{
           surtitre: content.faq.surtitre,

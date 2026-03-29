@@ -5,7 +5,7 @@ import {
 } from "./shared";
 
 // ============================================================================
-// MONTPELLIER — Angle : Tech, santé, startups en croissance rapide
+// MONTPELLIER - Angle : Tech, santé, startups en croissance rapide
 // Piliers : Positionnement (#02) + Trafic & notoriété (#03) + IA/Auto (#04)
 // ============================================================================
 
@@ -36,7 +36,7 @@ const faqQuestions = [
   {
     question: "En quoi Vizion se distingue des agences marketing installées à Montpellier ?",
     answer:
-      "Trois différences concrètes. D'abord, nous ne faisons pas d'exécution sans stratégie : chaque action repose sur un positionnement validé. Ensuite, nous intervenons jusqu'à la vente — supports commerciaux, objections, closing. Enfin, nous intégrons l'IA dans nos processus pour livrer plus vite sans sacrifier la qualité. La plupart des agences locales se concentrent sur la production de contenu ou la publicité, pas sur l'alignement complet marketing-ventes.",
+      "Trois différences concrètes. D'abord, nous ne faisons pas d'exécution sans stratégie : chaque action repose sur un positionnement validé. Ensuite, nous intervenons jusqu'à la vente : supports commerciaux, objections, closing. Enfin, nous intégrons l'IA dans nos processus pour livrer plus vite sans sacrifier la qualité. La plupart des agences locales se concentrent sur la production de contenu ou la publicité, pas sur l'alignement complet marketing-ventes.",
   },
   {
     question: "Pouvez-vous intervenir en complément d'une équipe marketing interne ?",
@@ -86,7 +86,7 @@ const content: CityPageData["content"] = {
     h2: "Le marketing des entreprises tech ne se limite pas à générer du trafic",
     h2Highlight: "entreprises tech",
     paragraphs: [
-      "Montpellier concentre un vivier d'entreprises innovantes — SaaS, healthtech, biotech, services numériques — qui partagent un défi commun : rendre une offre techniquement avancée compréhensible pour des acheteurs non techniques. La sophistication du produit devient un frein quand le message manque de clarté.",
+      "Montpellier concentre un vivier d'entreprises innovantes (SaaS, healthtech, biotech, services numériques) qui partagent un défi commun : rendre une offre techniquement avancée compréhensible pour des acheteurs non techniques. La sophistication du produit devient un frein quand le message manque de clarté.",
       "Vizion intervient en amont de la production de contenu ou de la publicité. Nous posons d'abord les fondations stratégiques : qui sont vos acheteurs, ce qu'ils comparent, ce qui déclenche leur décision. Ensuite nous construisons le dispositif d'acquisition et les outils de vente qui portent ce positionnement de bout en bout.",
       "Depuis Toulouse, nous accompagnons les entreprises montpelliéraines en présentiel pour les phases stratégiques et en continu à distance. Deux heures de route, zéro compromis sur la rigueur.",
     ],

@@ -13,31 +13,31 @@ const TYPE_META: Record<
 > = {
   franchise: {
     name: "Franchise",
-    title: "Cas Clients Franchise — Marketing B2B pour reseaux de franchise",
+    title: "Cas Clients Franchise | Marketing B2B pour reseaux de franchise",
     description:
       "Decouvrez nos etudes de cas en marketing B2B pour les reseaux de franchise : developpement reseau, generation de candidats franchises, strategie de marque.",
   },
   pme: {
     name: "PME",
-    title: "Cas Clients PME — Marketing B2B pour PME",
+    title: "Cas Clients PME | Marketing B2B pour PME",
     description:
       "Etudes de cas marketing pour PME B2B : positionnement, generation de leads, alignement marketing-ventes, strategie de croissance.",
   },
   eti: {
     name: "ETI",
-    title: "Cas Clients ETI — Marketing B2B pour ETI",
+    title: "Cas Clients ETI | Marketing B2B pour ETI",
     description:
       "Nos cas clients en marketing B2B pour les ETI : transformation digitale, strategie commerciale, positionnement et lead generation.",
   },
   "scale-up": {
     name: "Scale-up",
-    title: "Cas Clients Scale-up — Marketing B2B pour scale-ups",
+    title: "Cas Clients Scale-up | Marketing B2B pour scale-ups",
     description:
       "Etudes de cas marketing pour scale-ups B2B : acceleration, acquisition, positionnement produit, growth marketing.",
   },
   "start-up": {
     name: "Start-up",
-    title: "Cas Clients Start-up — Marketing B2B pour start-ups",
+    title: "Cas Clients Start-up | Marketing B2B pour start-ups",
     description:
       "Nos cas clients en marketing pour les start-ups B2B : go-to-market, positionnement, generation de leads, sales enablement.",
   },
@@ -81,7 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       locale: "fr_FR",
       ...(ogImageUrl && {
-        images: [{ url: ogImageUrl, width: 1200, height: 630, alt: `Cas clients ${meta.name} — Vizion` }],
+        images: [{ url: ogImageUrl, width: 1200, height: 630, alt: `Cas clients ${meta.name} | Vizion` }],
       }),
     },
     twitter: {

@@ -71,7 +71,7 @@ function DynamicIcon({ name, size = 24, className }: { name: string; size?: numb
 }
 
 /* ════════════════════════════════════════════════════════════════
-   Section 2 — CategoryIntro (bg-card) — Carousel + progress in cards
+   Section 2 - CategoryIntro (bg-card) - Carousel + progress in cards
    ════════════════════════════════════════════════════════════════ */
 const AUTOPLAY_DELAY = 5000;
 
@@ -356,7 +356,7 @@ function CategoryIntro({ service }: { service: ServiceContent }) {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   Section 2b — CategoryMetrics (dark-section) — Split stats + image
+   Section 2b - CategoryMetrics (dark-section) - Split stats + image
    ════════════════════════════════════════════════════════════════ */
 function CategoryMetrics({ service }: { service: ServiceContent }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -369,7 +369,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
 
     const trigger = { trigger: ref.current, start: "top 75%", once: true };
 
-    // Image reveal — clip from left
+    // Image reveal - clip from left
     const img = ref.current.querySelector("[data-metric='image']");
     if (img) {
       gsap.set(img, { clipPath: "inset(0 100% 0 0)" });
@@ -394,7 +394,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
       });
     }
 
-    // Metric rows — staggered slide from right
+    // Metric rows - staggered slide from right
     const rows = ref.current.querySelectorAll("[data-metric='row']");
     gsap.set(rows, { opacity: 0, x: 60 });
     gsap.to(rows, {
@@ -407,7 +407,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
       scrollTrigger: trigger,
     });
 
-    // CountUp — starts after row appears
+    // CountUp - starts after row appears
     metrics.forEach((metric, i) => {
       const el = metricRefs.current[i];
       if (!el) return;
@@ -428,7 +428,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
       });
     });
 
-    // Progress bars — grow after rows land
+    // Progress bars - grow after rows land
     const bars = ref.current.querySelectorAll("[data-metric='bar']");
     gsap.set(bars, { scaleX: 0 });
     gsap.to(bars, {
@@ -440,7 +440,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
       scrollTrigger: trigger,
     });
 
-    // Source buttons — pop in last
+    // Source buttons - pop in last
     const btns = ref.current.querySelectorAll("[data-metric='source']");
     gsap.set(btns, { opacity: 0, scale: 0.8 });
     gsap.to(btns, {
@@ -473,7 +473,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
       </div>
 
       <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative z-10">
-        {/* Left — Image with vignette */}
+        {/* Left - Image with vignette */}
         <div className="hidden lg:flex items-center justify-center">
           <div data-metric="image" className="relative w-full h-full min-h-[400px] overflow-hidden">
             <Image
@@ -503,7 +503,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
           </div>
         </div>
 
-        {/* Right — Title + Stats */}
+        {/* Right - Title + Stats */}
         <div className="flex flex-col justify-center">
           <div data-metric="header" className="mb-10 sm:mb-12">
             <div className="flex items-center gap-2.5 mb-4">
@@ -582,7 +582,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   Section 3 — CategoryServices / Sticky scroll (dark-section)
+   Section 3 - CategoryServices / Sticky scroll (dark-section)
    Image alignée avec la 1re carte, pinnée au centre vertical
    ════════════════════════════════════════════════════════════════ */
 function CategoryServices({ service }: { service: ServiceContent }) {
@@ -661,7 +661,7 @@ function CategoryServices({ service }: { service: ServiceContent }) {
       },
     );
 
-    // Pin the image while cards scroll — only on desktop
+    // Pin the image while cards scroll - only on desktop
     const mm = gsap.matchMedia();
     mm.add("(min-width: 1024px)", () => {
       if (!imageWrapRef.current || !cardsContainerRef.current) return;
@@ -710,7 +710,7 @@ function CategoryServices({ service }: { service: ServiceContent }) {
       </div>
 
       <div className="max-w-[82.5rem] mx-auto relative z-10">
-        {/* Header — full width above the grid */}
+        {/* Header - full width above the grid */}
         <div data-hub="title" className="mb-10 sm:mb-14 max-w-2xl">
           <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
             <div className="w-2 h-2 bg-accent" />
@@ -728,9 +728,9 @@ function CategoryServices({ service }: { service: ServiceContent }) {
           )}
         </div>
 
-        {/* Grid: cards left, image right — image aligned with first card */}
+        {/* Grid: cards left, image right - image aligned with first card */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16">
-          {/* Left — scrolling service cards */}
+          {/* Left - scrolling service cards */}
           <div ref={cardsContainerRef} data-hub="cards">
             <div className="relative lg:pl-5 flex flex-col gap-4 sm:gap-5">
               {relatedServices.map((rs, i) => {
@@ -791,7 +791,7 @@ function CategoryServices({ service }: { service: ServiceContent }) {
             </div>
           </div>
 
-          {/* Right — Pinned image (aligned with first card) */}
+          {/* Right - Pinned image (aligned with first card) */}
           <div className="hidden lg:block">
             <div
               ref={imageWrapRef}
@@ -834,7 +834,7 @@ function CategoryServices({ service }: { service: ServiceContent }) {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   Section 6 — CategoryTiming (bg-card) — Bento Grid
+   Section 6 - CategoryTiming (bg-card) - Bento Grid
    ════════════════════════════════════════════════════════════════ */
 function CategoryTiming({ timing }: { timing: PilierTiming }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -876,10 +876,10 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
           </p>
         </div>
 
-        {/* Bento Grid — 6 colonnes */}
+        {/* Bento Grid - 6 colonnes */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 sm:gap-5 lg:gap-6">
 
-          {/* Row 1 — 3 cartes standard */}
+          {/* Row 1 - 3 cartes standard */}
           {firstRow.map((item, i) => (
             <div
               key={i}
@@ -921,7 +921,7 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
             </div>
           ))}
 
-          {/* Row 2 — cartes restantes + CTA sombre */}
+          {/* Row 2 - cartes restantes + CTA sombre */}
           {secondRow.map((item, i) => (
             <div
               key={i + 3}
@@ -963,7 +963,7 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
             </div>
           ))}
 
-          {/* CTA sombre — remplit les colonnes restantes */}
+          {/* CTA sombre - remplit les colonnes restantes */}
           <div
             data-animate
             className={`col-span-1 sm:col-span-2 ${secondRow.length === 1 ? "md:col-span-4" : "md:col-span-2"} group`}
@@ -1001,7 +1001,7 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   Section 7 — CategoryTargets (bg-white) — Grid avec hover amélioré
+   Section 7 - CategoryTargets (bg-white) - Grid avec hover amélioré
    ════════════════════════════════════════════════════════════════ */
 function CategoryTargets({ targets }: { targets: PilierTargets }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -1051,7 +1051,7 @@ function CategoryTargets({ targets }: { targets: PilierTargets }) {
       className="bg-white py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12"
     >
       <div className="max-w-[82.5rem] mx-auto">
-        {/* Header — centered */}
+        {/* Header - centered */}
         <div className="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
           <span data-animate className="inline-flex items-center gap-2 text-[11px] font-light tracking-[0.12em] uppercase text-muted mb-6">
             <span className="w-1.5 h-1.5 bg-accent inline-block" />
@@ -1065,7 +1065,7 @@ function CategoryTargets({ targets }: { targets: PilierTargets }) {
           </p>
         </div>
 
-        {/* 3-column grid — last row centered */}
+        {/* 3-column grid - last row centered */}
         <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
           {targets.items.map((item, i) => {
             const isFeatured = i === featuredIdx;
@@ -1126,7 +1126,7 @@ function CategoryTargets({ targets }: { targets: PilierTargets }) {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   Page pilier complète — 11 sections
+   Page pilier complète - 11 sections
    ════════════════════════════════════════════════════════════════ */
 export function CategoryDetailContent({ service }: CategoryDetailContentProps) {
   return (
@@ -1141,21 +1141,21 @@ export function CategoryDetailContent({ service }: CategoryDetailContentProps) {
         breadcrumbLabel={service.category}
       />
 
-      {/* 2. Intro / Constat (bg-card) — split asymétrique */}
+      {/* 2. Intro / Constat (bg-card) - split asymétrique */}
       <CategoryIntro service={service} />
 
-      {/* 3. Services Hub (dark-section) — bento grid */}
+      {/* 3. Services Hub (dark-section) - bento grid */}
       <CategoryServices service={service} />
 
-      {/* 5. Timing (bg-card) — grid desktop / carousel mobile */}
+      {/* 5. Timing (bg-card) - grid desktop / carousel mobile */}
       {service.pilierTiming && (
         <CategoryTiming timing={service.pilierTiming} />
       )}
 
-      {/* 5b. Metrics (dark-section) — split stats + image */}
+      {/* 5b. Metrics (dark-section) - split stats + image */}
       <CategoryMetrics service={service} />
 
-      {/* 7. Targets (bg-white) — grid avec hover amélioré */}
+      {/* 7. Targets (bg-white) - grid avec hover amélioré */}
       {service.pilierTargets && (
         <CategoryTargets targets={service.pilierTargets} />
       )}
