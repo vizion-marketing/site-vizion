@@ -28,7 +28,7 @@ export const digitalisation: ServiceContent = {
 
   heroTitle: "Transformation digitale : déployez les outils qui servent vraiment votre croissance",
   heroSubtitle:
-    "Vos outils sont sous-exploités et vos processus restent manuels. La transformation digitale ne se résume pas a empiler des logiciels. Nous déployons les solutions qui accélèrent votre activité : un site web qui convertit, un CRM structuré autour de votre cycle de vente, des applications IA qui libèrent du temps sur les taches a faible valeur.",
+    "Vos outils sont sous-exploités et vos processus restent manuels. La transformation digitale ne se résume pas a empiler des logiciels. Nous déployons les solutions qui accélèrent votre activité : un site web qui convertit, un CRM structuré autour de votre cycle de vente, des applications boostées a l'intelligence artificielle qui libèrent du temps sur les taches a faible valeur.",
   heroBadge: "TRANSFORMATION DIGITALE B2B",
   heroImage: "/images/piliers/transformation-digitale/hero.avif",
 
@@ -44,16 +44,19 @@ export const digitalisation: ServiceContent = {
         icon: "Globe",
         headline: "Un site web conçu comme un outil commercial",
         description: "Deployez un site architecturé pour le parcours acheteur B2B, avec un copywriting orienté problème, un SEO technique intégré et des performances optimisées pour la conversion.",
+        image: "/images/piliers/transformation-digitale/site.avif",
       },
       {
         icon: "Settings",
         headline: "Un CRM structuré autour de votre cycle de vente",
         description: "Configurez votre pipeline commercial, vos automatisations et vos reportings pour que chaque donnée soit exploitable et que vos équipes adoptent l'outil au quotidien.",
+        image: "/images/piliers/transformation-digitale/crm.avif",
       },
       {
         icon: "Sparkles",
-        headline: "Des applications IA au service de votre productivité",
+        headline: "Des applications boostées a l'intelligence artificielle",
         description: "Déployez l'intelligence artificielle la ou elle a un impact mesurable : qualification automatisée des leads, production de contenu accélérée, scoring de prospects.",
+        image: "/images/piliers/transformation-digitale/applications-ia.avif",
       },
     ],
   },
@@ -70,7 +73,7 @@ export const digitalisation: ServiceContent = {
       description: "Nous configurons HubSpot, Pipedrive ou Salesforce autour de votre cycle de vente. Pipeline commercial, automatisations, reporting, formation des équipes : nous structurons tout pour que l'outil soit adopté.",
     },
     {
-      title: "Applications IA sur mesure",
+      title: "Applications boostées a l'intelligence artificielle",
       description: "Nous développons des outils métier propulsés par l'intelligence artificielle. Qualification automatisée, scoring de prospects, production de contenu accélérée. L'IA au service de votre productivité, pas de la mode.",
     },
     {
@@ -94,7 +97,7 @@ export const digitalisation: ServiceContent = {
       },
       {
         title: "Déploiement et intégration",
-        description: "Nous déployons les solutions retenues : site web, CRM, automatisations, applications IA. Chaque outil est configuré, intégré a votre stack existante et documenté pour vos équipes.",
+        description: "Nous déployons les solutions retenues : site web, CRM, automatisations, applications IA sur mesure. Chaque outil est configuré, intégré a votre stack existante et documenté pour vos équipes.",
       },
       {
         title: "Formation, adoption et itération",

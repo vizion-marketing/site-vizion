@@ -56,7 +56,13 @@
       "Bash(npm ls dotenv)",
       "Bash(node scripts/migrate-to-sanity.mjs)",
       "Bash(node scripts/upload-images-to-sanity.mjs)",
-      "Bash(npx sanity documents query '*[_type == \"\"client\"\"]{_id, name, \"\"slug\"\": slug.current, headline}' --apiVersion 2024-01-01)"
+      "Bash(npx sanity documents query '*[_type == \"\"client\"\"]{_id, name, \"\"slug\"\": slug.current, headline}' --apiVersion 2024-01-01)",
+      "Bash(grep -E \"\\\\.tsx$\")",
+      "Bash(grep -n \"CategoryTargets\\\\|pilierTargets\" /c/Users/Lucas Gonzalez/OneDrive/Bureau/Apps/site-vizion/src/app/services/[slug]/CategoryDetailContent.tsx)",
+      "Bash(grep -r \"product\\\\|PM\\\\|Product\" /c/Users/Lucas Gonzalez/OneDrive/Bureau/Apps/site-vizion/src/content/services/ --include=*.ts)",
+      "Bash(grep -E \"\\\\.ts$\")",
+      "Bash(find /c/Users/Lucas Gonzalez/OneDrive/Bureau/Apps/site-vizion -name favicon* -o -name icon*)",
+      "Bash(grep -rn \"localhost\\\\|http://\" /c/Users/Lucas Gonzalez/OneDrive/Bureau/Apps/site-vizion/src --include=*.ts --include=*.tsx)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Lucas Gonzalez\\OneDrive\\Bureau\\Apps\\site-vizion"

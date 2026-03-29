@@ -51,18 +51,21 @@ export const salesEnablement: ServiceContent = {
         headline: "Des supports de vente alignes sur le positionnement",
         description:
           "Equipez chaque commercial avec des presentations par profil decideur, des argumentaires structures et une proposition de valeur formulee pour convaincre en 10 secondes. Alignez tout le monde sur le meme message.",
+        image: "/images/piliers/sales-enablement/supports.avif",
       },
       {
         icon: "Swords",
         headline: "Des reponses aux objections formalisees et accessibles",
         description:
           "Anticipez chaque objection concurrentielle avec des battlecards detaillees, des cas clients adaptes et des guides d'appel. Vos equipes ne seront plus jamais prises au depourvu face a un concurrent.",
+        image: "/images/piliers/sales-enablement/objections.avif",
       },
       {
         icon: "Workflow",
         headline: "Des sequences de relance automatisees et personnalisees",
         description:
           "Maintenez le contact avec vos prospects sur des cycles de 3 a 18 mois grace a des sequences de nurturing automatisees. Les relances ne dependent plus de la memoire de chacun.",
+        image: "/images/piliers/sales-enablement/sequences-automatisees.avif",
       },
     ],
   },

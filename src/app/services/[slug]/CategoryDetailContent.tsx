@@ -93,15 +93,15 @@ function CategoryIntro({ service }: { service: ServiceContent }) {
   const startTime = useRef(Date.now());
   const isPaused = useRef(false);
 
-  const heroImage = service.solutionImage || service.heroImage || "/images/services/default-hero.png";
+  const fallbackImage = service.solutionImage || service.heroImage || "/images/services/default-hero.png";
   const statements = service.constat.statements || [];
 
-  // Build slides: strict alternation text / image
+  // Build slides: strict alternation text / image (per-statement image if available)
   type Slide = { type: "text"; index: number } | { type: "image"; src: string };
   const slides: Slide[] = [];
-  statements.forEach((_, i) => {
+  statements.forEach((s, i) => {
     slides.push({ type: "text", index: i });
-    slides.push({ type: "image", src: heroImage });
+    slides.push({ type: "image", src: s.image || fallbackImage });
   });
 
   const resetProgress = useCallback(() => {
@@ -480,24 +480,24 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
               src={heroImage}
               alt={service.pilierMetrics?.title || service.title}
               fill
-              className="object-cover"
+              className="object-cover object-top"
               sizes="50vw"
             />
             {/* Vignette on all 4 sides */}
             <div
-              className="absolute inset-x-0 top-0 h-1/4 pointer-events-none z-10"
+              className="absolute inset-x-0 top-0 h-1/6 pointer-events-none z-10"
               style={{ background: "linear-gradient(to bottom, var(--bg-dark) 0%, transparent 100%)" }}
             />
             <div
-              className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none z-10"
+              className="absolute inset-x-0 bottom-0 h-1/5 pointer-events-none z-10"
               style={{ background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)" }}
             />
             <div
-              className="absolute inset-y-0 left-0 w-1/4 pointer-events-none z-10"
+              className="absolute inset-y-0 left-0 w-1/6 pointer-events-none z-10"
               style={{ background: "linear-gradient(to right, var(--bg-dark) 0%, transparent 100%)" }}
             />
             <div
-              className="absolute inset-y-0 right-0 w-1/4 pointer-events-none z-10"
+              className="absolute inset-y-0 right-0 w-1/6 pointer-events-none z-10"
               style={{ background: "linear-gradient(to left, var(--bg-dark) 0%, transparent 100%)" }}
             />
           </div>
@@ -969,14 +969,14 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
             className={`col-span-1 sm:col-span-2 ${secondRow.length === 1 ? "md:col-span-4" : "md:col-span-2"} group`}
           >
             <div
-              className="dark-section relative overflow-hidden h-full min-h-[260px] lg:min-h-[280px] flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-10 sm:py-14"
+              className="dark-section grain-overlay relative overflow-hidden h-full min-h-[260px] lg:min-h-[280px] flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-10 sm:py-14"
               style={{ background: "var(--bg-dark)" }}
             >
               {/* Lueurs accent */}
-              <div className="absolute -top-20 -left-20 w-64 h-64 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 60%)" }} />
-              <div className="absolute -bottom-24 -right-16 w-72 h-72 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)" }} />
+              <div className="absolute -top-20 -left-20 w-80 h-80 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)" }} />
+              <div className="absolute -bottom-24 -right-16 w-96 h-96 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 50%)" }} />
 
-              <p className="relative z-10 text-white font-heading font-normal text-[20px] sm:text-[24px] lg:text-[28px] leading-[1.3] tracking-[-0.02em] mb-3">
+              <p className="relative z-10 text-white font-heading font-normal text-[20px] sm:text-[24px] lg:text-[28px] leading-[1.05] tracking-[-0.02em] mb-3">
                 Vous vous reconnaissez dans l&#39;une de ces situations ?
               </p>
               <p className="relative z-10 text-white/60 text-[14px] sm:text-[15px] leading-relaxed mb-8 max-w-lg">

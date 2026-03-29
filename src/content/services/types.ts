@@ -38,6 +38,8 @@ export interface NarrativeStatement {
   icon?: string;
   headline: string;
   description: string;
+  /** Image affichée dans le carousel après cette carte texte. */
+  image?: string;
 }
 
 export interface NarrativeBlock {
