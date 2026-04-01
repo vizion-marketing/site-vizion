@@ -183,9 +183,11 @@ export interface CaseStudy {
   challenges: string[];
   approachPhases: ApproachPhase[];
   metrics: Metric[];
+  resultsDescription?: string;
   testimonial?: Testimonial;
   deliverables?: Deliverable[];
   galleryImages?: GalleryImage[];
+  projectLinks?: { label: string; url: string; icon?: string }[];
   publishedAt: string;
   dateModified?: string;
   featured: boolean;
@@ -195,6 +197,21 @@ export interface CaseStudy {
   metaDescription?: string;
   // Computed
   url?: string;
+}
+
+export interface ServiceCaseStudy {
+  _id: string;
+  title: string;
+  slug: string;
+  company: string;
+  companyType: string;
+  sector: string;
+  sectorIcon: string;
+  clientSlug: string;
+  heroImageUrl?: string;
+  metrics: Metric[];
+  resultsDescription?: string;
+  url: string;
 }
 
 export interface Service {
@@ -247,9 +264,53 @@ export interface Service {
   url?: string;
 }
 
+export interface FormationModule {
+  module?: string;
+  title: string;
+  description?: string;
+  points?: string[];
+}
+
+export interface Formation {
+  _id: string;
+  _type: "formation";
+  title: string;
+  slug: string;
+  draft: boolean;
+  description: string;
+  theme: string;
+  targets?: string[];
+  format?: string;
+  duration?: string;
+  maxParticipants?: number;
+  level?: string;
+  objectives?: string[];
+  programme?: FormationModule[];
+  prerequisites?: string;
+  formateur?: string;
+  testimonials?: Testimonial[];
+  faqs?: FAQ[];
+  featured: boolean;
+  order: number;
+  metaTitle?: string;
+  metaDescription?: string;
+  url?: string;
+}
+
 // ============================================================
 // Menu types (lightweight projections for header mega menu)
 // ============================================================
+
+export interface MenuPost {
+  _id: string;
+  title: string;
+  slug: string;
+  description: string;
+  category: string;
+  date: string;
+  featuredImageUrl?: string;
+  url: string;
+}
 
 export interface MenuCaseStudy {
   _id: string;

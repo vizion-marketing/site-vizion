@@ -147,9 +147,22 @@ export const MENU_CASE_STUDIES_QUERY = groq`
     "companyType": client->companyType,
     "sector": client->sector,
     "clientSlug": client->slug.current,
-    "heroImageUrl": heroImage.asset->url,
+    "heroImageUrl": coalesce(heroImage.asset->url, client->mainImage.asset->url),
     metrics[0...2],
     "url": "/cas-clients/" + client->slug.current + "/" + slug.current
+  }
+`;
+
+export const MENU_POSTS_QUERY = groq`
+  *[_type == "post" && !draft] | order(date desc) [0...3] {
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+    category,
+    date,
+    "featuredImageUrl": coalesce(featuredImage.asset->url, featuredImageUrl),
+    "url": "/blog/" + slug.current
   }
 `;
 
@@ -238,9 +251,11 @@ export const CASE_STUDY_BY_SLUG_QUERY = groq`
     challenges,
     approachPhases,
     metrics,
+    resultsDescription,
     testimonial,
     deliverables,
     galleryImages[] { _key, asset, hotspot, crop, title, caption },
+    projectLinks[] { label, url, icon },
     publishedAt,
     dateModified,
     featured,
@@ -255,6 +270,23 @@ export const ALL_CASE_STUDY_PARAMS_QUERY = groq`
   *[_type == "caseStudy" && !draft] {
     "caseSlug": slug.current,
     "clientSlug": client->slug.current
+  }
+`;
+
+export const CASE_STUDIES_FOR_SERVICE_QUERY = groq`
+  *[_type == "caseStudy" && !draft && $serviceSlug in relatedServiceSlugs] | order(order asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    "company": client->name,
+    "companyType": client->companyType,
+    "sector": client->sector,
+    "sectorIcon": client->sectorIcon,
+    "clientSlug": client->slug.current,
+    "heroImageUrl": heroImage.asset->url,
+    metrics,
+    resultsDescription,
+    "url": "/cas-clients/" + client->slug.current + "/" + slug.current
   }
 `;
 
@@ -316,6 +348,61 @@ export const SERVICE_BY_SLUG_QUERY = groq`
 `;
 
 // ============================================================
+// Formations
+// ============================================================
+
+export const ALL_FORMATIONS_QUERY = groq`
+  *[_type == "formation" && !draft] | order(order asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+    theme,
+    targets,
+    format,
+    duration,
+    maxParticipants,
+    level,
+    objectives,
+    featured,
+    order,
+    metaTitle,
+    metaDescription,
+    "url": "/formations/" + slug.current
+  }
+`;
+
+export const FORMATION_BY_SLUG_QUERY = groq`
+  *[_type == "formation" && slug.current == $slug && !draft][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+    theme,
+    targets,
+    format,
+    duration,
+    maxParticipants,
+    level,
+    objectives,
+    programme,
+    prerequisites,
+    formateur,
+    testimonials,
+    faqs,
+    featured,
+    order,
+    metaTitle,
+    metaDescription,
+    "url": "/formations/" + slug.current
+  }
+`;
+
+export const ALL_FORMATION_SLUGS_QUERY = groq`
+  *[_type == "formation" && !draft].slug.current
+`;
+
+// ============================================================
 // Sitemap
 // ============================================================
 
@@ -335,6 +422,9 @@ export const SITEMAP_QUERY = groq`
     "services": *[_type == "service"] {
       "url": "/services/" + slug.current,
       "lastModified": publishedAt
+    },
+    "formations": *[_type == "formation" && !draft] {
+      "url": "/formations/" + slug.current
     }
   }
 `;
