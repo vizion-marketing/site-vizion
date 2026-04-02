@@ -85,7 +85,7 @@ export const b2bIntro = {
 
 export const b2bPiliers: PiliersContent = {
   surtitre: "[ LA MÉTHODE ]",
-  h2: "Notre expertise repose sur 5 piliers stratégiques, adaptés aux enjeux des entreprises B2B.",
+  h2: "Des services stratégiques, pensés pour les entreprises qui vendent aux entreprises.",
   description:
     "Stratégie, positionnement, acquisition, activation commerciale, digitalisation : nous déployons des infrastructures solides pensées pour soutenir votre développement commercial et marketing, quel que soit votre enjeu, votre secteur ou vos objectifs.",
   badgeText: "",
