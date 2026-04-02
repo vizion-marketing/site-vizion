@@ -18,6 +18,16 @@ export function resolveImageUrl(
 ): string {
   if (!source) return "";
   if (typeof source === "string") return source;
-  const img = builder.image(source);
-  return width ? img.width(width).url() : img.url();
+  // Guard against Sanity image objects with null/missing asset reference
+  if (
+    typeof source === "object" &&
+    "asset" in source &&
+    !(source as { asset?: unknown }).asset
+  ) return "";
+  try {
+    const img = builder.image(source);
+    return width ? img.width(width).url() : img.url();
+  } catch {
+    return "";
+  }
 }
