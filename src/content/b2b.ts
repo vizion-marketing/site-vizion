@@ -44,8 +44,8 @@ export const b2bHero: HeroContent = {
   baseline: "Notre agence spécialiste du Marketing B2B intervient aux moments les plus stratégiques de votre entreprise : lancement de produit, restructuration, accélération, pour déployer une machine marketing et commerciale adaptée à vos objectifs, même les plus fous.",
   badges: [],
   cta: {
-    primary: { text: "Parler à un fondateur", href: "/contact" },
-    secondary: { text: "Voir les résultats clients", href: "/cas-clients" },
+    primary: { text: "Nous contacter", href: "/contact" },
+    secondary: { text: "Découvrez nos cas clients", href: "/cas-clients" },
   },
   socialProof: "PME, ETI, START-UPS B2B | FRANCE ET EUROPE | DEPUIS 2021",
 };
