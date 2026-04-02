@@ -53,7 +53,7 @@ const fadeInUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.5, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
   }),
 };
 
@@ -69,7 +69,7 @@ export function UseCasesSection() {
               <span className="text-[11px] font-light tracking-[0.12em] text-secondary uppercase">Vos enjeux</span>
             </div>
             <h2 className="font-heading font-normal text-[clamp(28px,4vw,48px)] leading-[1.05] tracking-[-0.035em] text-primary max-w-2xl">
-              Dans quelle situation est-on le match idéal ?
+              Un partenaire qui intervient aux moments les plus stratégiques de votre histoire.
             </h2>
           </div>
           <Link

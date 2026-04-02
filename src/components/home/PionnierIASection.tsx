@@ -63,17 +63,6 @@ export function PionnierIASection() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            {/* Badge surtitre */}
-            <motion.div variants={itemVariants} className="flex items-center gap-4 mb-8">
-              <span className="bg-accent text-black px-3 py-1 text-[11px] font-bold tracking-[0.12em] uppercase">
-                Pionnier IA
-              </span>
-              <div className="h-[1px] w-12 bg-white/20" />
-              <span className="text-white/40 text-[11px] font-medium tracking-[0.08em] uppercase">
-                Depuis 2021
-              </span>
-            </motion.div>
-
             {/* Titre */}
             <motion.h2
               variants={itemVariants}
@@ -96,26 +85,15 @@ export function PionnierIASection() {
               Commerciale.
             </motion.p>
 
-            {/* CTA + stats */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
+            {/* CTA */}
+            <motion.div variants={itemVariants}>
               <Link
                 href="/contact"
-                className="group bg-accent text-black px-8 py-4 text-[14px] font-bold hover:bg-white transition-all duration-300 flex items-center gap-2"
+                className="group inline-flex items-center justify-center gap-3 bg-white text-black font-semibold px-8 py-4 border border-black/[0.12] hover:bg-white/90 active:scale-[0.97] transition-all duration-200"
               >
-                <span className="uppercase tracking-wider">Contactez-nous</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                Contactez-nous
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
-
-              <div className="flex gap-4">
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 px-4 py-2 flex flex-col">
-                  <span className="text-accent font-bold text-xl leading-none">+70</span>
-                  <span className="text-white/40 text-[9px] uppercase tracking-widest mt-1">Clients</span>
-                </div>
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 px-4 py-2 flex flex-col">
-                  <span className="text-white font-bold text-xl leading-none">IA</span>
-                  <span className="text-white/40 text-[9px] uppercase tracking-widest mt-1">Appliquée</span>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
 
@@ -124,7 +102,7 @@ export function PionnierIASection() {
             className="lg:col-span-5 xl:col-span-6 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[45vw] h-[400px] lg:h-auto overflow-hidden group"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             viewport={{ once: true }}
           >
             <Image

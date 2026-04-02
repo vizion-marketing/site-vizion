@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
@@ -22,65 +22,6 @@ interface MeetTheTeamSectionProps {
   clientLogos?: ClientLogo[];
 }
 
-function SEOTooltip() {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLSpanElement>(null);
-
-  const close = useCallback(() => setOpen(false), []);
-
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) close();
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [open, close]);
-
-  return (
-    <span ref={ref} className="relative inline-block align-middle ml-1.5">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
-        aria-label="Pourquoi le mot agence ?"
-        className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-black/[0.06] hover:bg-accent hover:text-black border border-black/[0.1] hover:border-transparent text-primary text-[11px] font-medium tracking-wide transition-all duration-200 cursor-help select-none"
-      >
-        <span className="text-[10px] font-bold leading-none">?</span>
-        <span className="hidden sm:inline">Pourquoi ce mot ?</span>
-      </button>
-
-      <AnimatePresence>
-        {open && (
-          <motion.span
-            initial={{ opacity: 0, y: 6, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 4, scale: 0.97 }}
-            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute bottom-full left-0 mb-3 w-72 z-50 pointer-events-none"
-            style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.18))" }}
-          >
-            <span
-              className="block px-4 py-3 border border-black/[0.08] text-[13px] leading-relaxed text-secondary bg-white"
-            >
-              <span className="block text-[10px] uppercase tracking-[0.1em] font-medium text-muted mb-1.5">Note éditoriale</span>
-              Pour des raisons évidentes de référencement, nous utilisons le mot "agence" sur ce site. La réalité est plus nuancée.
-            </span>
-            <span
-              className="absolute top-full left-5 w-0 h-0"
-              style={{ borderLeft: "6px solid transparent", borderRight: "6px solid transparent", borderTop: "6px solid rgba(0,0,0,0.08)" }}
-            />
-            <span
-              className="absolute top-full left-[21px] w-0 h-0"
-              style={{ borderLeft: "5px solid transparent", borderRight: "5px solid transparent", borderTop: "5px solid white" }}
-            />
-          </motion.span>
-        )}
-      </AnimatePresence>
-    </span>
-  );
-}
 
 export function MeetTheTeamSection({ clientLogos = [] }: MeetTheTeamSectionProps) {
   const [wordIndex, setWordIndex] = useState(0);
@@ -147,7 +88,7 @@ export function MeetTheTeamSection({ clientLogos = [] }: MeetTheTeamSectionProps
                     initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: "0%", opacity: 1 }}
                     exit={{ y: "-100%", opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                     className="text-accent absolute inset-0 flex items-end"
                   >
                     {ROTATING_WORDS[wordIndex]}
@@ -159,7 +100,6 @@ export function MeetTheTeamSection({ clientLogos = [] }: MeetTheTeamSectionProps
 
             <p data-meet="body" className="text-secondary text-[16px] leading-relaxed mb-8 max-w-xl">
               Il faut qu'on vous avoue un truc : on n'est toujours pas arrivé à savoir si nous sommes une agence, un cabinet de conseil, ou des freelances qui rêvent d'être une agence.
-              <SEOTooltip />
             </p>
 
             <p data-meet="label" className="text-muted text-[13px] uppercase tracking-[0.1em] font-light mb-4">

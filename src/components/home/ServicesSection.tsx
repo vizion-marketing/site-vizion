@@ -131,7 +131,7 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] }}
       className="col-span-1 md:col-span-2 md:row-span-2 relative overflow-hidden group"
     >
       <div className="relative h-full min-h-[400px] md:min-h-[500px] lg:min-h-[520px] bg-accent flex flex-col">
@@ -240,7 +240,7 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] }}
       className={`${isWide ? "col-span-1 md:col-span-2" : "col-span-1"} group`}
     >
       <div className={`relative h-full min-h-[220px] md:min-h-[260px] bg-card border border-black/[0.06] overflow-hidden transition-all duration-500 hover:bg-accent hover:-translate-y-1 ${isWide ? "flex flex-col md:flex-row" : "flex flex-col"}`}>
@@ -398,7 +398,7 @@ export function ServicesSection({ surtitre, h2, description, piliers }: Services
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.5, ease: [0.19, 1, 0.22, 1] }}
+            transition={{ duration: 0.6, delay: 0.5, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] }}
             className="col-span-1 relative overflow-hidden group"
           >
             <div className="relative h-full min-h-[280px] lg:min-h-[260px]">
