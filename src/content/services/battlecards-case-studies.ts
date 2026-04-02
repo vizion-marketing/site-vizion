@@ -4,7 +4,7 @@ export const battlecardsCaseStudies: ServiceContent = {
   slug: "battlecards-case-studies",
   title: "Battlecards et Case Studies",
   icon: "Shield",
-  category: "Sales Enablement",
+  category: "Activation des Ventes",
   order: 13,
 
   // SEO
@@ -16,7 +16,7 @@ export const battlecardsCaseStudies: ServiceContent = {
     "battlecard concurrentielle",
     "étude de cas client B2B",
     "documentation commerciale B2B",
-    "cas client sales enablement",
+    "cas client activation des ventes",
     "battlecard concurrent",
     "créer une étude de cas client",
     "support de vente B2B",
@@ -114,7 +114,7 @@ export const battlecardsCaseStudies: ServiceContent = {
     sectionDescription:
       "Nous ne livrons pas des documents formatés à la chaîne. Chaque battlecard et chaque étude de cas est un outil de vente stratégique, conçu pour donner à vos commerciaux un avantage concret face à la concurrence et face aux objections de leurs prospects.",
     image: {
-      src: "/images/services/battlecards-case-studies/bento.avif",
+      src: "/images/services/pitch-decks-argumentaires/hero.avif",
       alt: "Création de battlecards et case studies Vizion",
     },
     technology: {
@@ -137,7 +137,7 @@ export const battlecardsCaseStudies: ServiceContent = {
       suffix: "+",
       label: "Battlecards et case studies livrés",
       description:
-        "Chaque projet s'appuie sur notre expérience de plus de 80 documents de sales enablement livrés pour des entreprises B2B de toutes tailles.",
+        "Chaque projet s'appuie sur notre expérience de plus de 80 documents de activation des ventes livrés pour des entreprises B2B de toutes tailles.",
     },
     noTemplate: {
       title: "Chaque document est conçu sur mesure pour votre marché",
@@ -240,6 +240,7 @@ export const battlecardsCaseStudies: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/audit-marketing/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour créer vos battlecards et case studies ?",
@@ -325,7 +326,7 @@ export const battlecardsCaseStudies: ServiceContent = {
     {
       question: "Combien coûte la création de cas clients et documentation commerciale ?",
       answer:
-        "Une battlecard concurrentielle se situe entre 800 et 1 500 euros par concurrent. Une étude de cas client complète entre 1 500 et 3 000 euros (interview, rédaction, design). Un kit complet (5 battlecards et 3 case studies) se situe généralement entre 8 000 et 15 000 euros. Le devis est ajusté après le brief initial.",
+        "Le périmètre d'un projet de documentation commerciale varie selon le nombre de supports, la complexité de l'offre et les intégrations nécessaires. Nous construisons une proposition sur mesure après un premier échange de 30 minutes, sans engagement.",
     },
     {
       question: "Quel est le délai de livraison ?",
@@ -350,7 +351,7 @@ export const battlecardsCaseStudies: ServiceContent = {
     {
       question: "Comment diffusez-vous la documentation commerciale aux équipes de vente ?",
       answer:
-        "Nous intégrons les documents directement dans vos outils : CRM (HubSpot, Salesforce, Pipedrive), base de connaissances (Notion, Confluence), drive partagé ou plateforme de sales enablement (Seismic, Highspot). Chaque commercial accède au bon document depuis son environnement de travail habituel.",
+        "Nous intégrons les documents directement dans vos outils : CRM (HubSpot, Salesforce, Pipedrive), base de connaissances (Notion, Confluence), drive partagé ou plateforme de activation des ventes (Seismic, Highspot). Chaque commercial accède au bon document depuis son environnement de travail habituel.",
     },
     {
       question: "Quelle est la différence entre une battlecard et un comparatif ?",
@@ -365,12 +366,20 @@ export const battlecardsCaseStudies: ServiceContent = {
     "Des preuves solides, c'est essentiel. Ces services complémentaires renforcent l'ensemble de votre dispositif commercial.",
   relatedServices: [
     {
+      slug: "sales-enablement",
+      icon: "Handshake",
+      title: "Activation des Ventes B2B",
+      description:
+        "Les battlecards et case studies font partie d'un kit de vente complet. Découvrez comment Vizion structure l'ensemble de l'activation commerciale pour que vos équipes closent plus vite.",
+      href: "/services/sales-enablement",
+    },
+    {
       slug: "pitch-decks-argumentaires",
       icon: "Rocket",
       title: "Pitch Decks et Argumentaires",
       description:
         "Complétez vos battlecards avec des présentations commerciales structurées. Vos commerciaux disposent d'un kit complet pour chaque rendez-vous, du premier contact à la négociation finale.",
-      href: "/services/battlecards-case-studies",
+      href: "/services/pitch-decks-argumentaires",
     },
     {
       slug: "positionnement-messaging",
@@ -379,14 +388,6 @@ export const battlecardsCaseStudies: ServiceContent = {
       description:
         "Vos battlecards et case studies seront encore plus percutantes si votre positionnement est clair. Nous clarifions ce qui vous différencie pour que chaque argument porte juste.",
       href: "/services/positionnement-messaging",
-    },
-    {
-      slug: "creation-contenu-b2b",
-      icon: "FileText",
-      title: "Création de contenu B2B",
-      description:
-        "Transformez vos case studies en articles de blog, en posts LinkedIn et en ressources téléchargeables. Vos succès clients deviennent des moteurs d'acquisition et de notoriété.",
-      href: "/services/creation-contenu-b2b",
     },
   ],
 

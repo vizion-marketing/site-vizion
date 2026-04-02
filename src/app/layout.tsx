@@ -75,6 +75,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

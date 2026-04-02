@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRightIcon } from "@/components/icons";
 import {
-  ArrowLeft,
   CheckCircle2,
   Quote,
   Clock,
@@ -38,7 +37,6 @@ import type { RelatedService } from "@/lib/sanity/services";
 import { resolveImageUrl } from "../../../../../sanity/lib/image";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { sectorIconMap } from "@/lib/sectorIcons";
-import { DeliverablesGallery } from "@/components/sections/DeliverablesGallery";
 
 // Icon mapping
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -64,9 +62,11 @@ interface CaseStudyContentProps {
   relatedServices?: RelatedService[];
   clientSlug: string;
   clientName?: string;
+  clientHeadline?: string;
+  clientDescription?: string;
 }
 
-export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, clientSlug, clientName }: CaseStudyContentProps) {
+export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, clientSlug, clientName, clientHeadline, clientDescription }: CaseStudyContentProps) {
   const readingTime = "1 min de lecture";
 
   // Get sector icon
@@ -76,45 +76,60 @@ export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, cli
     <main className="min-h-screen bg-white font-[var(--font-body)]">
 
       {/* HERO SECTION */}
-      <section className="relative pt-[120px] pb-[60px] md:pt-[140px] md:pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "var(--bg-dark)" }}>
-        {/* Base + radial gradients jaune Vizion animés */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div
-            className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
-            }}
-          />
-          <div
-            className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
-            }}
-          />
-          <div
-            className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
-            }}
-          />
-          <div
-            className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
-            }}
-          />
-          <div
-            className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
-            style={{
-              background:
-                "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
-            }}
-          />
-        </div>
+      <section className="relative min-h-[72vh] flex flex-col justify-end pt-[120px] pb-[60px] md:pt-[140px] md:pb-[80px] px-6 md:px-12 overflow-hidden grain-overlay dark-section" style={{ background: "var(--bg-dark)" }}>
+        {/* Background : image hero si disponible, sinon blobs animés */}
+        {caseStudy.heroImage ? (
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={resolveImageUrl(caseStudy.heroImage, 1920)}
+              alt={caseStudy.title}
+              fill
+              className="object-cover object-center"
+              priority
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/25" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
+          </div>
+        ) : (
+          <div className="absolute inset-0 pointer-events-none z-0">
+            <div
+              className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
+              style={{
+                background:
+                  "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
+              }}
+            />
+            <div
+              className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
+              style={{
+                background:
+                  "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
+              }}
+            />
+            <div
+              className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
+              style={{
+                background:
+                  "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
+              }}
+            />
+            <div
+              className="absolute w-[50%] h-[50%] bottom-[5%] right-[-15%] animate-gradient-float-4"
+              style={{
+                background:
+                  "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 55%)",
+              }}
+            />
+            <div
+              className="absolute w-[45%] h-[45%] top-[20%] left-[-10%] animate-gradient-float-5"
+              style={{
+                background:
+                  "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
+              }}
+            />
+          </div>
+        )}
 
         <div className="max-w-[82.5rem] mx-auto relative z-10">
           {/* Breadcrumb */}
@@ -198,169 +213,66 @@ export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, cli
         <div className="max-w-[82.5rem] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
 
-            {/* Sidebar - Table of contents & Info */}
+            {/* LEFT COLUMN — Client summary */}
             <aside className="lg:col-span-4 order-2 lg:order-1">
-              <div className="lg:sticky lg:top-32 space-y-8">
+              <div className="lg:sticky lg:top-32 space-y-6">
 
-                {/* Context Card */}
+                {/* Client Card */}
                 <motion.div
                   variants={fadeInUp}
                   initial="initial"
                   whileInView="whileInView"
                   viewport={{ once: true }}
-                  className="bg-grey rounded-none p-6"
+                  className="bg-card border border-black/[0.06] p-8"
                 >
-                  <h3 className="font-heading font-normal text-sm tracking-wider text-black mb-4">
-                    En bref
+                  {/* Type / Sector badge */}
+                  <div className="flex items-center gap-2 mb-5">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-black">
+                      <SectorIcon size={11} className="text-white" />
+                      <span className="text-[10px] font-bold tracking-widest text-white uppercase">{caseStudy.sector}</span>
+                    </div>
+                    {caseStudy.companyType && (
+                      <span className="text-[10px] font-medium tracking-wider text-neutral-400 uppercase">{caseStudy.companyType}</span>
+                    )}
+                  </div>
+
+                  {/* Client name */}
+                  <h3 className="font-heading font-normal text-2xl tracking-tight text-black mb-5">
+                    {clientName || caseStudy.company}
                   </h3>
-                  <p className="text-neutral-600 text-sm leading-relaxed">
-                    {caseStudy.context}
-                  </p>
-                </motion.div>
 
-                {/* Challenges */}
-                <motion.div
-                  variants={fadeInUp}
-                  initial="initial"
-                  whileInView="whileInView"
-                  viewport={{ once: true }}
-                  className="bg-white border border-neutral-100 rounded-none p-6 shadow-sm"
-                >
-                  <h3 className="font-heading font-normal text-sm tracking-wider text-black mb-4">
-                    Enjeux clés
-                  </h3>
-                  <ul className="space-y-3">
-                    {caseStudy.challenges.map((challenge, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm text-neutral-600">
-                        <span className="w-5 h-5 bg-black text-white rounded-none flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
-                          {idx + 1}
-                        </span>
-                        {challenge}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-
-                {/* Deliverables */}
-                {caseStudy.deliverables && caseStudy.deliverables.length > 0 && (
-                  <motion.div
-                    variants={fadeInUp}
-                    initial="initial"
-                    whileInView="whileInView"
-                    viewport={{ once: true }}
-                    className="rounded-none p-6 relative overflow-hidden grain-overlay dark-section"
-                    style={{ background: "var(--bg-dark)" }}
-                  >
-                    {/* Base + radial gradients jaune Vizion animés */}
-                    <div className="absolute inset-0 pointer-events-none z-0">
-                      <div
-                        className="absolute w-[80%] h-[60%] top-[10%] left-[-20%] animate-gradient-float-1"
-                        style={{
-                          background:
-                            "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%)",
-                        }}
-                      />
-                      <div
-                        className="absolute w-[70%] h-[50%] top-[-10%] right-[-10%] animate-gradient-float-2"
-                        style={{
-                          background:
-                            "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 55%)",
-                        }}
-                      />
-                      <div
-                        className="absolute w-[60%] h-[70%] bottom-[-15%] left-[15%] animate-gradient-float-3"
-                        style={{
-                          background:
-                            "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 55%)",
-                        }}
-                      />
-                    </div>
-                    <div className="relative z-10">
-                      <h3 className="font-heading font-normal text-sm tracking-wider text-white mb-4">
-                        Livrables clés
-                      </h3>
-                      <ul className="space-y-4">
-                        {caseStudy.deliverables.map((deliverable, idx) => {
-                          const IconComponent = iconMap[deliverable.icon || ""] || FileText;
-                          return (
-                            <li key={idx} className="flex items-start gap-3">
-                              <div className="w-8 h-8 bg-white/10 rounded-none flex items-center justify-center shrink-0">
-                                <IconComponent size={16} className="text-white" />
-                              </div>
-                              <div>
-                                <span className="text-sm font-bold text-white block">{deliverable.title}</span>
-                                <span className="text-xs text-white/60">{deliverable.description}</span>
-                              </div>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Metrics */}
-                {caseStudy.metrics && caseStudy.metrics.length > 0 && (
-                  <motion.div
-                    variants={fadeInUp}
-                    initial="initial"
-                    whileInView="whileInView"
-                    viewport={{ once: true }}
-                    className="bg-black rounded-none p-6 dark-section"
-                  >
-                    <h3 className="font-heading font-normal text-sm tracking-wider text-white mb-4">
-                      Chiffres clés
-                    </h3>
-                    <div className="grid grid-cols-2 gap-4">
-                      {caseStudy.metrics.map((metric, idx) => (
-                        <div key={idx} className="text-center">
-                          <div className="flex items-center justify-center gap-1 mb-1">
-                            <span className="text-2xl font-black text-white">{metric.value}</span>
-                            <TrendIcon trend={metric.trend || "neutral"} />
-                          </div>
-                          <span className="text-[10px] text-white/60 font-medium leading-tight block">{metric.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Testimonial Mini */}
-                {caseStudy.testimonial && (
-                  <motion.div
-                    variants={fadeInUp}
-                    initial="initial"
-                    whileInView="whileInView"
-                    viewport={{ once: true }}
-                    className="bg-white border border-neutral-100 rounded-none p-6 shadow-sm"
-                  >
-                    <Quote size={24} className="text-neutral-200 mb-3" />
-                    <p className="text-sm text-neutral-600 italic leading-relaxed mb-4 line-clamp-4">
-                      &quot;{caseStudy.testimonial.quote}&quot;
+                  {/* Headline with accent border */}
+                  {clientHeadline && (
+                    <p className="border-l-2 border-accent pl-4 text-base leading-relaxed text-neutral-700 mb-5">
+                      {clientHeadline}
                     </p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-none bg-grey overflow-hidden shrink-0">
-                        {caseStudy.testimonial.photo ? (
-                          <Image
-                            src={resolveImageUrl(caseStudy.testimonial.photo)}
-                            alt={caseStudy.testimonial.author}
-                            width={40}
-                            height={40}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center">
-                            <User size={16} className="text-neutral-400" />
-                          </div>
-                        )}
-                      </div>
-                      <div>
-                        <span className="text-xs font-bold text-black block">{caseStudy.testimonial.author}</span>
-                        <span className="text-[10px] text-neutral-500">{caseStudy.testimonial.role}</span>
+                  )}
+
+                  {/* Description */}
+                  {clientDescription && (
+                    <p className="text-sm text-neutral-500 leading-relaxed">
+                      {clientDescription}
+                    </p>
+                  )}
+
+                  {/* Mission meta */}
+                  <div className="border-t border-black/[0.06] mt-6 pt-6 grid grid-cols-2 gap-4">
+                    <div>
+                      <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase block mb-1">Durée</span>
+                      <div className="flex items-center gap-1.5">
+                        <Clock size={13} className="text-neutral-400" />
+                        <span className="text-sm font-medium text-black">{caseStudy.projectDuration}</span>
                       </div>
                     </div>
-                  </motion.div>
-                )}
+                    <div>
+                      <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase block mb-1">Année</span>
+                      <div className="flex items-center gap-1.5">
+                        <Calendar size={13} className="text-neutral-400" />
+                        <span className="text-sm font-medium text-black">{caseStudy.projectYear}</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
 
                 {/* Related Services */}
                 {relatedServices && relatedServices.length > 0 && (
@@ -369,20 +281,20 @@ export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, cli
                     initial="initial"
                     whileInView="whileInView"
                     viewport={{ once: true }}
-                    className="bg-white border border-neutral-100 rounded-none p-6 shadow-sm"
+                    className="bg-white border border-black/[0.06] p-6"
                   >
-                    <h3 className="font-heading font-normal text-sm tracking-wider text-black mb-4">
+                    <h4 className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase mb-4">
                       Services associés
-                    </h3>
-                    <ul className="space-y-3">
+                    </h4>
+                    <ul className="space-y-2">
                       {relatedServices.map((service) => (
                         <li key={service._id}>
                           <Link
                             href={service.url}
                             className="flex items-center gap-3 text-sm text-neutral-600 hover:text-black transition-colors group"
                           >
-                            <div className="w-8 h-8 bg-grey rounded-none flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors">
-                              <ChevronRight size={14} className="text-black" />
+                            <div className="w-7 h-7 bg-card flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors">
+                              <ChevronRight size={12} className="text-black" />
                             </div>
                             <span className="font-medium">{service.title}</span>
                           </Link>
@@ -394,26 +306,234 @@ export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, cli
               </div>
             </aside>
 
-            {/* Main Content */}
-            <div className="lg:col-span-8 order-1 lg:order-2">
-              {/* Context */}
+            {/* RIGHT COLUMN — Narrative content */}
+            <div className="lg:col-span-8 order-1 lg:order-2 space-y-16">
+
+              {/* 1. Contexte */}
               {caseStudy.context && (
-                <div className="prose max-w-none">
-                  <p className="text-neutral-600 text-lg leading-relaxed">{caseStudy.context}</p>
-                </div>
+                <motion.div
+                  variants={fadeInUp}
+                  initial="initial"
+                  whileInView="whileInView"
+                  viewport={{ once: true }}
+                >
+                  <span className="text-[10px] font-bold tracking-[0.4em] text-neutral-400 uppercase block mb-3">
+                    Contexte
+                  </span>
+                  <p className="text-neutral-700 text-lg leading-relaxed">
+                    {caseStudy.context}
+                  </p>
+                </motion.div>
               )}
+
+              {/* 2. Enjeux clés */}
+              {caseStudy.challenges && caseStudy.challenges.length > 0 && (
+                <motion.div
+                  variants={fadeInUp}
+                  initial="initial"
+                  whileInView="whileInView"
+                  viewport={{ once: true }}
+                >
+                  <span className="text-[10px] font-bold tracking-[0.4em] text-neutral-400 uppercase block mb-3">
+                    Enjeux
+                  </span>
+                  <h2 className="font-heading font-normal text-2xl md:text-3xl tracking-tight text-black mb-8">
+                    Les enjeux de la mission
+                  </h2>
+                  <div className="space-y-3">
+                    {caseStudy.challenges.map((challenge, idx) => (
+                      <div key={idx} className="flex gap-5 items-start border-b border-black/[0.06] pb-5">
+                        <span className="text-[40px] font-black text-black/[0.06] leading-none shrink-0 select-none">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <p className="text-neutral-700 text-base leading-relaxed pt-2">{challenge}</p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* 3. Ce qu'on a mis en place */}
+              {caseStudy.approachPhases && caseStudy.approachPhases.length > 0 && (
+                <motion.div
+                  variants={fadeInUp}
+                  initial="initial"
+                  whileInView="whileInView"
+                  viewport={{ once: true }}
+                >
+                  <span className="text-[10px] font-bold tracking-[0.4em] text-neutral-400 uppercase block mb-3">
+                    Notre approche
+                  </span>
+                  <h2 className="font-heading font-normal text-2xl md:text-3xl tracking-tight text-black mb-10">
+                    Ce qu&apos;on a mis en place
+                  </h2>
+
+                  <div className="space-y-6">
+                    {caseStudy.approachPhases.map((phase, idx) => (
+                      <motion.div
+                        key={idx}
+                        variants={fadeInUp}
+                        initial="initial"
+                        whileInView="whileInView"
+                        viewport={{ once: true }}
+                        className="bg-card border border-black/[0.06] p-6 md:p-8"
+                      >
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="w-9 h-9 bg-black flex items-center justify-center shrink-0">
+                            <span className="text-[11px] font-black text-white">{String(idx + 1).padStart(2, "0")}</span>
+                          </div>
+                          <div>
+                            {phase.phase && (
+                              <span className="text-[10px] font-bold tracking-[0.3em] text-neutral-400 uppercase block mb-1">
+                                Phase {phase.phase}
+                              </span>
+                            )}
+                            <h3 className="font-heading font-normal text-xl tracking-tight text-black">
+                              {phase.title}
+                            </h3>
+                          </div>
+                        </div>
+                        <p className="text-neutral-600 text-base leading-relaxed mb-5">
+                          {phase.description}
+                        </p>
+
+                        {phase.deliverables && phase.deliverables.length > 0 && (
+                          <div className="border-t border-black/[0.06] pt-5 ml-0">
+                            <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase block mb-3">
+                              Livrables
+                            </span>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                              {phase.deliverables.map((deliverable, dIdx) => (
+                                <li key={dIdx} className="flex items-start gap-2 text-sm text-neutral-600">
+                                  <CheckCircle2 size={14} className="text-black shrink-0 mt-0.5" />
+                                  <span>{deliverable}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Gallery photos */}
+                  {caseStudy.galleryImages && caseStudy.galleryImages.length > 0 && (
+                    <div className="mt-8">
+                      <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase block mb-4">
+                        Visuels des livrables
+                      </span>
+                      <div className="grid grid-cols-2 gap-3">
+                        {caseStudy.galleryImages.map((img, idx) => (
+                          <motion.div
+                            key={img._key}
+                            variants={fadeInUp}
+                            initial="initial"
+                            whileInView="whileInView"
+                            viewport={{ once: true }}
+                            className={`relative overflow-hidden bg-card ${idx === 0 && caseStudy.galleryImages!.length % 2 !== 0 ? "col-span-2" : ""}`}
+                          >
+                            <div className="relative aspect-[16/10]">
+                              <Image
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                src={resolveImageUrl(img as any, 900)}
+                                alt={img.title || img.caption || `Livrable ${idx + 1}`}
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                              />
+                            </div>
+                            {(img.title || img.caption) && (
+                              <div className="px-3 py-2 bg-card border-t border-black/[0.06]">
+                                <p className="text-[11px] text-neutral-500 font-medium">{img.title || img.caption}</p>
+                              </div>
+                            )}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Project Links */}
+                  {caseStudy.projectLinks && caseStudy.projectLinks.length > 0 && (
+                    <div className="mt-8 p-6 bg-black dark-section">
+                      <span className="text-[10px] font-bold tracking-widest text-white/60 uppercase block mb-4">
+                        Liens du projet
+                      </span>
+                      <div className="flex flex-wrap gap-3">
+                        {caseStudy.projectLinks.map((link, idx) => {
+                          const IconComponent = iconMap[link.icon || ""] || Globe;
+                          return (
+                            <a
+                              key={idx}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-accent hover:text-black border border-white/20 hover:border-accent text-white text-sm font-medium transition-all duration-200 group"
+                            >
+                              <IconComponent size={14} />
+                              <span>{link.label}</span>
+                              <ArrowUpRightIcon size={12} className="opacity-60 group-hover:opacity-100" />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+
+              {/* 4. Résultats */}
+              <motion.div
+                variants={fadeInUp}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+              >
+                <span className="text-[10px] font-bold tracking-[0.4em] text-neutral-400 uppercase block mb-3">
+                  Résultats
+                </span>
+                <h2 className="font-heading font-normal text-2xl md:text-3xl tracking-tight text-black mb-8">
+                  Les résultats obtenus
+                </h2>
+
+                {caseStudy.resultsDescription && (
+                  <p className="text-neutral-700 text-base md:text-lg leading-relaxed mb-10 border-l-2 border-accent pl-5">
+                    {caseStudy.resultsDescription}
+                  </p>
+                )}
+
+                {caseStudy.metrics && caseStudy.metrics.length > 0 && (
+                  <motion.div
+                    variants={staggerContainer}
+                    initial="initial"
+                    whileInView="whileInView"
+                    viewport={{ once: true }}
+                    className="grid grid-cols-2 md:grid-cols-3 gap-px bg-black/[0.06]"
+                  >
+                    {caseStudy.metrics.map((metric, idx) => (
+                      <motion.div
+                        key={idx}
+                        variants={fadeInUp}
+                        className="bg-white p-6 md:p-8"
+                      >
+                        <div className="flex items-start gap-2 mb-2">
+                          <span className="font-heading font-normal text-[42px] md:text-[52px] leading-none tracking-tighter text-black">
+                            {metric.value}
+                          </span>
+                          <TrendIcon trend={metric.trend || "neutral"} />
+                        </div>
+                        <p className="text-sm text-neutral-500 leading-snug font-medium">{metric.label}</p>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
+              </motion.div>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* DELIVERABLES GALLERY */}
-      {caseStudy.galleryImages && caseStudy.galleryImages.length > 0 && (
-        <DeliverablesGallery
-          images={caseStudy.galleryImages}
-          clientName={caseStudy.company}
-        />
-      )}
 
       {/* TESTIMONIAL SECTION */}
       {caseStudy.testimonial && (
@@ -500,43 +620,61 @@ export function CaseStudyContent({ caseStudy, relatedCases, relatedServices, cli
             >
               {relatedCases.map((relatedCase, idx) => {
                 const RelatedSectorIcon = sectorIconMap[relatedCase.sectorIcon] || Building2;
+                const relatedHeroUrl = relatedCase.heroImage
+                  ? resolveImageUrl(relatedCase.heroImage, 800)
+                  : null;
                 return (
                   <motion.div key={idx} variants={fadeInUp}>
                     <Link
                       href={relatedCase.url || "#"}
-                      className="block bg-white border border-neutral-100 rounded-none p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full"
+                      className="block hover:-translate-y-1 transition-all duration-300 group h-full overflow-hidden"
                     >
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className="w-8 h-8 bg-grey rounded-none flex items-center justify-center">
-                          <RelatedSectorIcon size={16} className="text-black" />
+                      {/* Hero image background */}
+                      <div className="relative h-48 overflow-hidden dark-section" style={{ background: "var(--bg-dark)" }}>
+                        {relatedHeroUrl && (
+                          <Image
+                            src={relatedHeroUrl}
+                            alt={relatedCase.title}
+                            fill
+                            className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                          />
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+                        {/* Sector badge */}
+                        <div className="absolute bottom-4 left-4 flex items-center gap-1.5">
+                          <RelatedSectorIcon size={12} className="text-white/70" />
+                          <span className="text-[10px] font-bold tracking-widest text-white/70 uppercase">
+                            {relatedCase.sector}
+                          </span>
                         </div>
-                        <span className="text-[10px] font-bold tracking-widest text-neutral-400">
-                          {relatedCase.sector}
+                      </div>
+
+                      {/* Card body */}
+                      <div className="bg-white border border-black/[0.06] border-t-0 p-5">
+                        <p className="text-[11px] font-bold tracking-widest text-neutral-400 uppercase mb-2">
+                          {relatedCase.company}
+                        </p>
+                        <h3 className="font-heading font-normal text-base tracking-tight text-black mb-3 line-clamp-2 group-hover:text-neutral-600 transition-colors">
+                          {relatedCase.title}
+                        </h3>
+
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {relatedCase.metrics.slice(0, 2).map((metric, mIdx) => (
+                            <span
+                              key={mIdx}
+                              className="px-2 py-1 bg-card text-[10px] font-bold text-black"
+                            >
+                              {metric.value} {metric.label}
+                            </span>
+                          ))}
+                        </div>
+
+                        <span className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-black group-hover:gap-3 transition-all">
+                          Lire l&apos;étude <ChevronRight size={12} />
                         </span>
                       </div>
-
-                      <h3 className="font-heading font-normal text-lg tracking-tight text-black mb-3 group-hover:text-neutral-600 transition-colors line-clamp-2">
-                        {relatedCase.title}
-                      </h3>
-
-                      <p className="text-neutral-500 text-sm leading-relaxed mb-4 line-clamp-2">
-                        {relatedCase.description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {relatedCase.metrics.slice(0, 2).map((metric, mIdx) => (
-                          <span
-                            key={mIdx}
-                            className="px-2 py-1 bg-grey text-[10px] font-bold text-black rounded-none"
-                          >
-                            {metric.value} {metric.label}
-                          </span>
-                        ))}
-                      </div>
-
-                      <span className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-black group-hover:gap-3 transition-all">
-                        Lire l&apos;étude <ChevronRight size={14} />
-                      </span>
                     </Link>
                   </motion.div>
                 );

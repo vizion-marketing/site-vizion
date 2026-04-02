@@ -4,7 +4,7 @@ export const leadNurturing: ServiceContent = {
   slug: "lead-nurturing",
   title: "Lead Nurturing",
   icon: "Mail",
-  category: "Sales Enablement",
+  category: "Activation des Ventes",
   order: 15,
 
   // SEO
@@ -42,7 +42,7 @@ export const leadNurturing: ServiceContent = {
     title:
       "Vous générez des leads, mais la majorité ne se transforme jamais en clients.",
     paragraphs: [
-      "Salon, webinaire, téléchargement de livre blanc. Vos leads arrivent, mais ensuite ? Sans séquence de nurturing structurée, la plupart de vos prospects vous oublient avant même d'être prêts à acheter.",
+      "Vous générez des leads, vous les capturez, et ensuite ils restent là, sans suite structurée. Vos commerciaux n'appellent que ceux qu'ils connaissent déjà, et les autres mûrissent lentement, seuls, jusqu'à signer chez un concurrent qui, lui, a maintenu le contact.",
     ],
     statements: [
       {
@@ -114,7 +114,7 @@ export const leadNurturing: ServiceContent = {
     sectionDescription:
       "Nous ne déployons pas des emails en masse. Chaque séquence de nurturing est un dispositif complet : segmentation, rédaction, automatisation, scoring et mesure de performance. Tout est construit pour accélérer votre pipeline.",
     image: {
-      src: "/images/services/lead-nurturing/bento.avif",
+      src: "/images/services/cold-outreach-prospection/hero.avif",
       alt: "Séquence de lead nurturing B2B Vizion",
     },
     technology: {
@@ -238,6 +238,7 @@ export const leadNurturing: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/audit-marketing/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour votre stratégie de lead nurturing ?",
@@ -328,7 +329,7 @@ export const leadNurturing: ServiceContent = {
     {
       question: "Combien coûte une stratégie de lead nurturing B2B ?",
       answer:
-        "Un dispositif complet (audit, segmentation, rédaction, configuration, scoring) se situe entre 3 000 € et 8 000 € selon la complexité de votre cycle de vente et le nombre de segments. L'accompagnement mensuel d'optimisation est facturé en complément. Nous établissons un devis précis après le brief initial.",
+        "Le budget d'un dispositif de lead nurturing dépend de la complexité de votre cycle de vente, du nombre de segments et des outils en place. Nous n'appliquons pas de tarif catalogue : la proposition est définie sur mesure lors d'un premier échange de 30 minutes, sans engagement.",
     },
     {
       question: "Quels outils recommandez-vous pour le lead nurturing B2B ?",
@@ -363,19 +364,20 @@ export const leadNurturing: ServiceContent = {
     "Le nurturing est un levier puissant. Ces services complémentaires accélèrent vos résultats commerciaux.",
   relatedServices: [
     {
+      slug: "transformation-digitale",
+      icon: "Monitor",
+      title: "Transformation Digitale B2B",
+      description:
+        "Le lead nurturing s'intègre dans une transformation digitale plus large. Découvrez comment Vizion structure l'ensemble de vos outils pour convertir plus de leads en clients.",
+      href: "/services/transformation-digitale",
+    },
+    {
       slug: "deploiement-crm",
       icon: "Settings",
       title: "Déploiement CRM",
       description:
         "Vos séquences de nurturing alimentent un pipeline structuré. Nous déployons et configurons votre CRM pour que chaque lead qualifié soit suivi, attribué et relancé au bon moment par vos commerciaux.",
       href: "/services/lead-nurturing",},
-    {
-      slug: "creation-contenu-b2b",
-      icon: "FileText",
-      title: "Création de contenu B2B",
-      description:
-        "Vos séquences ont besoin de contenu à forte valeur ajoutée : livres blancs, études de cas, articles. Nous créons les ressources qui nourrissent vos emails et crédibilisent votre expertise.",
-      href: "/services/creation-contenu-b2b",},
     {
       slug: "creation-workflows",
       icon: "Repeat",

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
+import { ChevronLeft, ChevronRight, Linkedin, Star } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -63,28 +63,24 @@ export function TestimonialShowcase({
         },
       });
 
-      // Header: surtitre + title + description
       tl.from("[data-testimonial='header']", {
         opacity: 0,
         y: 30,
         duration: 0.8,
       });
 
-      // Navigation desktop
       tl.from(
         "[data-testimonial='nav-desktop']",
         { opacity: 0, y: 20, duration: 0.6 },
         "-=0.5",
       );
 
-      // Carousel
       tl.from(
         "[data-testimonial='carousel']",
         { opacity: 0, y: 25, duration: 0.8 },
         "-=0.4",
       );
 
-      // Mobile navigation
       tl.from(
         "[data-testimonial='nav-mobile']",
         { opacity: 0, duration: 0.5 },
@@ -120,124 +116,226 @@ export function TestimonialShowcase({
         }}
       />
       <div className="max-w-[82.5rem] mx-auto relative">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 sm:gap-8 mb-10 sm:mb-14">
-          <div data-testimonial="header" className="max-w-xl">
-            <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
-              <div className="w-2 h-2 bg-accent" />
-              <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
-                Témoignages clients
-              </span>
-            </div>
-            <h2 className="font-heading font-medium text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
-              {sectionTitle || "Ce qu\u2019ils disent de nous"}
-            </h2>
-            <p className="text-[14px] sm:text-[15px] text-muted leading-relaxed mt-3">
-              {sectionSubtitle || "Découvrez les retours de nos clients sur leur collaboration avec Vizion."}
-            </p>
-          </div>
-
-          {/* Navigation - desktop */}
-          <div
-            data-testimonial="nav-desktop"
-            className="hidden sm:flex items-center gap-3 flex-shrink-0"
-          >
-            <button
-              onClick={scrollPrev}
-              className="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white/5 hover:border-accent/40 active:scale-95 transition-all duration-200 cursor-pointer"
-              aria-label="Précédent"
-            >
-              <ChevronLeft size={18} className="text-primary" />
-            </button>
-
-            {/* Progress dots */}
-            <div className="flex items-center gap-1.5">
-              {slides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => scrollTo(i)}
-                  className={`h-[3px] transition-all duration-300 cursor-pointer ${
-                    i === selectedIndex
-                      ? "bg-primary w-6"
-                      : "w-[6px] bg-white/30 hover:bg-white/50"
-                  }`}
-                  aria-label={`Slide ${i + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={scrollNext}
-              className="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white/5 hover:border-accent/40 active:scale-95 transition-all duration-200 cursor-pointer"
-              aria-label="Suivant"
-            >
-              <ChevronRight size={18} className="text-primary" />
-            </button>
-          </div>
-        </div>
-
-        {/* Carousel */}
-        <div
-          data-testimonial="carousel"
-          ref={emblaRef}
-          className="overflow-hidden"
-        >
-          <div className="flex">
-            {slides.map((slide, i) => (
+        {testimonials.length === 1 ? (
+          <div data-testimonial="carousel" className="py-4 md:py-8">
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 flex flex-col md:flex-row overflow-hidden relative">
+              {/* Decorative Accent Background */}
               <div
-                key={`${slide.type}-${i}`}
-                className="flex-none w-[75vw] min-[480px]:w-[55vw] sm:w-[290px] lg:w-[320px] pr-4 sm:pr-5"
-              >
-                {slide.type === "photo" ? (
-                  <PhotoCard testimonial={slide.testimonial} />
-                ) : (
-                  <TextCard testimonial={slide.testimonial} />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Navigation - mobile */}
-        <div
-          data-testimonial="nav-mobile"
-          className="flex sm:hidden items-center justify-center gap-3 mt-8"
-        >
-          <button
-            onClick={scrollPrev}
-            className="w-10 h-10 border border-white/20 flex items-center justify-center active:scale-95 transition-all cursor-pointer"
-            aria-label="Précédent"
-          >
-            <ChevronLeft size={18} className="text-primary" />
-          </button>
-          <div className="flex items-center gap-1.5">
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => scrollTo(i)}
-                className={`h-[3px] transition-all duration-300 cursor-pointer ${
-                  i === selectedIndex
-                    ? "bg-primary w-5"
-                    : "w-[6px] bg-white/30"
-                }`}
-                aria-label={`Slide ${i + 1}`}
+                className="absolute inset-0 pointer-events-none opacity-50"
+                style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.04) 0%, transparent 65%)" }}
               />
-            ))}
+
+              {/* Left Panel: Photo & Social Proof */}
+              <div className="w-full md:w-[42%] relative min-h-[400px] md:min-h-[600px] bg-white/[0.02]">
+                {testimonials[0].photo ? (
+                  <Image
+                    src={testimonials[0].photo}
+                    alt={testimonials[0].author}
+                    fill
+                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    sizes="(max-width: 768px) 100vw, 42vw"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-accent text-6xl font-light uppercase">
+                    {testimonials[0].author?.charAt(0)}
+                  </div>
+                )}
+
+                {/* Social Proof Badge Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                  <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 p-4 w-fit">
+                    <div className="flex -space-x-2">
+                      <div className="w-8 h-8 bg-accent flex items-center justify-center text-[10px] font-bold flex-shrink-0" style={{ color: "var(--bg-dark)" }}>JD</div>
+                      <div className="w-8 h-8 bg-white/20 backdrop-blur text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">MS</div>
+                      <div className="w-8 h-8 bg-black/40 text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">+12</div>
+                    </div>
+                    <span className="text-white text-[11px] font-light uppercase tracking-[0.12em] leading-tight">
+                      Nos clients recommandent <br />Vizion à 98%
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Panel: Content */}
+              <div className="w-full md:w-[58%] p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-center border-t border-white/10 md:border-t-0 md:border-l md:border-white/10 relative z-10">
+                {/* Stars Rating */}
+                <div className="flex gap-1.5 mb-8">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-[#EAB308] text-[#EAB308]" />
+                  ))}
+                </div>
+
+                {/* Impactful Quote */}
+                <blockquote className="mb-6">
+                  <p className="text-[28px] sm:text-[34px] md:text-[42px] leading-[1.05] tracking-[-0.035em] text-primary italic font-light">
+                    "{testimonials[0].quote}"
+                  </p>
+                </blockquote>
+
+                {/* Detail/Supporting Text */}
+                {testimonials[0].detail && (
+                  <p className="text-muted text-base md:text-lg leading-relaxed mb-10 max-w-xl">
+                    {testimonials[0].detail}
+                  </p>
+                )}
+
+                {/* Author Attribution */}
+                <div className="mb-10 pt-10 border-t border-white/[0.08]">
+                  <div className="text-primary font-medium text-xl tracking-tight leading-none mb-2">
+                    {testimonials[0].author}
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-muted text-[11px] font-light tracking-[0.12em] uppercase">
+                      {testimonials[0].role}
+                    </span>
+                    {testimonials[0].company && (
+                      <>
+                        <div className="w-1 h-1 bg-accent" />
+                        <span className="text-muted text-[11px] font-light tracking-[0.12em] uppercase">
+                          {testimonials[0].company}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* Industry Sector Tags */}
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  <span className="px-3 py-1.5 bg-white/10 text-white/70 text-[10px] font-medium uppercase tracking-widest border border-white/10 hover:border-white/20 transition-colors">
+                    SaaS B2B
+                  </span>
+                  <span className="px-3 py-1.5 bg-white/10 text-white/70 text-[10px] font-medium uppercase tracking-widest border border-white/10 hover:border-white/20 transition-colors">
+                    Transformation commerciale
+                  </span>
+                  <span className="px-3 py-1.5 bg-white/10 text-white/70 text-[10px] font-medium uppercase tracking-widest border border-white/10 hover:border-white/20 transition-colors">
+                    Marketing stratégique
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
-          <button
-            onClick={scrollNext}
-            className="w-10 h-10 border border-white/20 flex items-center justify-center active:scale-95 transition-all cursor-pointer"
-            aria-label="Suivant"
-          >
-            <ChevronRight size={18} className="text-primary" />
-          </button>
-        </div>
+        ) : (
+          <>
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 sm:gap-8 mb-10 sm:mb-14">
+              <div data-testimonial="header" className="max-w-xl">
+                <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
+                  <div className="w-2 h-2 bg-accent" />
+                  <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
+                    Témoignages clients
+                  </span>
+                </div>
+                <h2 className="font-heading font-medium text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
+                  {sectionTitle || "Ce qu\u2019ils disent de nous"}
+                </h2>
+                <p className="text-[14px] sm:text-[15px] text-muted leading-relaxed mt-3">
+                  {sectionSubtitle || "Découvrez les retours de nos clients sur leur collaboration avec Vizion."}
+                </p>
+              </div>
+
+              {/* Navigation - desktop */}
+              <div
+                data-testimonial="nav-desktop"
+                className="hidden sm:flex items-center gap-3 flex-shrink-0"
+              >
+                <button
+                  onClick={scrollPrev}
+                  className="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white/5 hover:border-accent/40 active:scale-95 transition-all duration-200 cursor-pointer"
+                  aria-label="Précédent"
+                >
+                  <ChevronLeft size={18} className="text-primary" />
+                </button>
+
+                {/* Progress dots */}
+                <div className="flex items-center gap-1.5">
+                  {slides.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => scrollTo(i)}
+                      className={`h-[3px] transition-all duration-300 cursor-pointer ${
+                        i === selectedIndex
+                          ? "bg-primary w-6"
+                          : "w-[6px] bg-white/30 hover:bg-white/50"
+                      }`}
+                      aria-label={`Slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  onClick={scrollNext}
+                  className="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white/5 hover:border-accent/40 active:scale-95 transition-all duration-200 cursor-pointer"
+                  aria-label="Suivant"
+                >
+                  <ChevronRight size={18} className="text-primary" />
+                </button>
+              </div>
+            </div>
+
+            {/* Carousel */}
+            <div
+              data-testimonial="carousel"
+              ref={emblaRef}
+              className="overflow-hidden"
+            >
+              <div className="flex">
+                {slides.map((slide, i) => (
+                  <div
+                    key={`${slide.type}-${i}`}
+                    className="flex-none w-[75vw] min-[480px]:w-[55vw] sm:w-[290px] lg:w-[320px] pr-4 sm:pr-5"
+                  >
+                    {slide.type === "photo" ? (
+                      <PhotoCard testimonial={slide.testimonial} />
+                    ) : (
+                      <TextCard testimonial={slide.testimonial} />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation - mobile */}
+            <div
+              data-testimonial="nav-mobile"
+              className="flex sm:hidden items-center justify-center gap-3 mt-8"
+            >
+              <button
+                onClick={scrollPrev}
+                className="w-10 h-10 border border-white/20 flex items-center justify-center active:scale-95 transition-all cursor-pointer"
+                aria-label="Précédent"
+              >
+                <ChevronLeft size={18} className="text-primary" />
+              </button>
+              <div className="flex items-center gap-1.5">
+                {slides.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => scrollTo(i)}
+                    className={`h-[3px] transition-all duration-300 cursor-pointer ${
+                      i === selectedIndex
+                        ? "bg-primary w-5"
+                        : "w-[6px] bg-white/30"
+                    }`}
+                    aria-label={`Slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={scrollNext}
+                className="w-10 h-10 border border-white/20 flex items-center justify-center active:scale-95 transition-all cursor-pointer"
+                aria-label="Suivant"
+              >
+                <ChevronRight size={18} className="text-primary" />
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
 }
 
-/* ── Photo Card ── */
+/* -- Photo Card -- */
 function PhotoCard({ testimonial }: { testimonial: ServiceTestimonial }) {
   return (
     <div className="relative overflow-hidden aspect-[4/5] sm:aspect-[3/4] group">
@@ -255,7 +353,7 @@ function PhotoCard({ testimonial }: { testimonial: ServiceTestimonial }) {
             {testimonial.author}
           </p>
           <p className="text-white/60 text-[12px] mt-0.5">
-            {testimonial.role} &mdash; {testimonial.company}
+            {testimonial.role}, {testimonial.company}
           </p>
         </div>
         {testimonial.linkedin && (
@@ -273,7 +371,7 @@ function PhotoCard({ testimonial }: { testimonial: ServiceTestimonial }) {
   );
 }
 
-/* ── Text Card ── */
+/* -- Text Card -- */
 function TextCard({ testimonial }: { testimonial: ServiceTestimonial }) {
   return (
     <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 sm:p-6 lg:p-7 flex flex-col justify-between aspect-[4/5] sm:aspect-[3/4] relative overflow-hidden group hover:border-white/20 transition-all duration-300">
@@ -326,7 +424,7 @@ function TextCard({ testimonial }: { testimonial: ServiceTestimonial }) {
             {testimonial.author}
           </p>
           <p className="text-[12px] text-muted mt-0.5">
-            {testimonial.role} &mdash; {testimonial.company}
+            {testimonial.role}, {testimonial.company}
           </p>
         </div>
         {testimonial.linkedin && (

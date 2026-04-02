@@ -4,7 +4,7 @@ export const creationWorkflows: ServiceContent = {
   slug: "creation-workflows",
   title: "Création de Workflows",
   icon: "Repeat",
-  category: "Sales Enablement",
+  category: "Activation des Ventes",
   order: 16,
 
   // SEO
@@ -42,7 +42,7 @@ export const creationWorkflows: ServiceContent = {
     title:
       "Vos équipes passent plus de temps à gérer des process qu'à vendre.",
     paragraphs: [
-      "Copier-coller entre outils, relances manuelles, reporting à la main. Vos équipes marketing et commerciales sont englouties par des tâches à faible valeur ajoutée. Ce n'est pas un problème de compétences. C'est un problème de système.",
+      "Vos commerciaux savent vendre. Vos marketeurs savent créer. Le problème, c'est qu'une partie de leur journée disparaît dans des tâches que vos outils pourraient gérer seuls : saisies en double, relances oubliées, reporting à la main. Ce temps perdu ne reviendra pas, mais il peut être récupéré.",
     ],
     statements: [
       {
@@ -114,7 +114,7 @@ export const creationWorkflows: ServiceContent = {
     sectionDescription:
       "Nous ne déployons pas des automatisations pour le plaisir. Chaque workflow est conçu pour résoudre un problème concret, mesurer son impact et faire gagner du temps à vos équipes au quotidien.",
     image: {
-      src: "/images/services/creation-workflows/bento.avif",
+      src: "/images/services/applications-ia/hero.avif",
       alt: "Workflows d'automatisation marketing Vizion",
     },
     technology: {
@@ -238,6 +238,7 @@ export const creationWorkflows: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/cold-outreach-prospection/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour votre automatisation marketing ?",
@@ -328,7 +329,7 @@ export const creationWorkflows: ServiceContent = {
     {
       question: "Combien coûte un projet d'automatisation marketing ?",
       answer:
-        "Un projet d'automatisation se situe entre 2 500 € et 10 000 € selon le nombre de workflows, la complexité des intégrations et le niveau de personnalisation. L'accompagnement mensuel de monitoring et d'optimisation est facturé en complément. Nous établissons un devis précis après l'audit initial.",
+        "Chaque projet d'automatisation est dimensionné selon votre stack actuelle, le nombre de workflows à construire et vos priorités opérationnelles. Pas de forfait fixe : nous cadrons le périmètre et le budget ensemble, lors d'un premier échange de 30 minutes sans engagement.",
     },
     {
       question: "Quels outils d'automatisation marketing utilisez-vous ?",
@@ -362,6 +363,14 @@ export const creationWorkflows: ServiceContent = {
   relatedServicesSubtitle:
     "Les workflows sont le socle. Ces services complémentaires maximisent leur impact sur vos résultats.",
   relatedServices: [
+    {
+      slug: "transformation-digitale",
+      icon: "Monitor",
+      title: "Transformation Digitale B2B",
+      description:
+        "Les workflows s'inscrivent dans une transformation digitale globale. Découvrez comment Vizion connecte vos outils et automatise vos process pour gagner en efficacité à chaque étape.",
+      href: "/services/transformation-digitale",
+    },
     {
       slug: "deploiement-crm",
       icon: "Settings",

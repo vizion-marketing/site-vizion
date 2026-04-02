@@ -5,22 +5,42 @@ import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
 const footerLinks = {
-  entreprise: [
-    { name: 'Blog', href: '/blog' },
-    { name: 'Cas clients', href: '/cas-clients' },
+  navigation: [
+    { name: 'Accueil', href: '/' },
+    { name: 'Nos services', href: '/services' },
+    { name: 'Pour qui ?', href: '/enjeux' },
+    { name: 'Nos formations', href: '/formations' },
+    { name: 'Nos ressources', href: '/blog' },
+    { name: 'Nos cas clients', href: '/cas-clients' },
+    { name: 'Notre équipe', href: '/equipe' },
     { name: 'Contact', href: '/contact' },
+  ],
+  services: [
+    { name: 'Stratégie marketing B2B', href: '/services/strategie' },
+    { name: 'Product marketing B2B', href: '/services/product-marketing' },
+    { name: 'Growth marketing B2B', href: '/services/growth-marketing' },
+    { name: 'Sales enablement B2B', href: '/services/sales-enablement' },
+    { name: 'Transformation digitale B2B', href: '/services/transformation-digitale' },
+  ],
+  enjeux: [
+    { name: 'Vous lancez un nouveau produit ou service', href: '/enjeux/lancement-produit' },
+    { name: 'Vous restructurez votre organisation commerciale', href: '/enjeux/restructuration-commerciale' },
+    { name: 'Vous changez de cap ou pivotez', href: '/enjeux/changement-de-cap' },
+    { name: 'Vous voulez accélérer votre croissance', href: '/enjeux/acceleration-croissance' },
+    { name: 'Vous traversez un post-rachat ou une intégration', href: '/enjeux/post-rachat' },
+    { name: "Vous voulez challenger l'existant", href: '/enjeux/challenger-l-existant' },
   ],
 };
 
 const implantations = [
-  { name: 'Toulouse', href: '/agence-marketing-toulouse', label: 'Siège' },
-  { name: 'Montpellier', href: '/agence-marketing-montpellier' },
-  { name: 'Albi', href: '/agence-marketing-albi' },
-  { name: 'Auch', href: '/agence-marketing-auch' },
-  { name: 'Agen', href: '/agence-marketing-agen' },
-  { name: 'Castres', href: '/agence-marketing-castres' },
-  { name: 'Mazamet', href: '/agence-marketing-communication-mazamet' },
-  { name: 'Rodez', href: '/agence-marketing-rodez' },
+  { name: 'Agence marketing Toulouse', href: '/agence-marketing-toulouse', label: 'Siège' },
+  { name: 'Agence marketing Montpellier', href: '/agence-marketing-montpellier' },
+  { name: 'Agence marketing Albi', href: '/agence-marketing-albi' },
+  { name: 'Agence marketing Auch', href: '/agence-marketing-auch' },
+  { name: 'Agence marketing Agen', href: '/agence-marketing-agen' },
+  { name: 'Agence marketing Castres', href: '/agence-marketing-castres' },
+  { name: 'Agence marketing Mazamet', href: '/agence-marketing-communication-mazamet' },
+  { name: 'Agence marketing Rodez', href: '/agence-marketing-rodez' },
 ];
 
 export function Footer() {
@@ -29,15 +49,15 @@ export function Footer() {
   return (
     <footer className="bg-grey pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-10 md:pb-12">
       <div className="container-wide px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 md:gap-16 mb-12 sm:mb-16 md:mb-24">
-          <div className="lg:col-span-4 flex flex-col gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr_2fr] gap-10 sm:gap-12 md:gap-16 mb-12 sm:mb-16 md:mb-24">
+          <div className="flex flex-col gap-10">
             <Link href="/" className="block">
               <Image
                 src="/images/logo-vizion.avif"
                 alt="Vizion - Agence Marketing B2B"
                 width={120}
                 height={32}
-                className="h-8 w-auto brightness-0"
+                className="h-8 w-auto"
               />
             </Link>
 
@@ -75,11 +95,11 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-2">
+          <div>
             <div className="flex flex-col gap-6">
               <h4 className="surtitre text-black">Navigation</h4>
               <ul className="flex flex-col gap-3">
-                {footerLinks.entreprise.map((link) => (
+                {footerLinks.navigation.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
                       {link.name}
@@ -90,7 +110,37 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-2">
+          <div>
+            <div className="flex flex-col gap-6">
+              <h4 className="surtitre text-black">Services</h4>
+              <ul className="flex flex-col gap-3">
+                {footerLinks.services.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div className="flex flex-col gap-6">
+              <h4 className="surtitre text-black">Pour qui ?</h4>
+              <ul className="flex flex-col gap-3">
+                {footerLinks.enjeux.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="font-[var(--font-body)] text-sm text-black/60 hover:text-black transition-colors">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
             <div className="flex flex-col gap-6">
               <h4 className="surtitre text-black">Implantations</h4>
               <ul className="flex flex-col gap-3">
@@ -108,7 +158,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-3">
+          <div>
             <div className="card-white p-8 flex flex-col gap-6 shadow-sm">
               <div className="flex flex-col gap-2">
                 <h4 className="surtitre text-black">Une question ?</h4>

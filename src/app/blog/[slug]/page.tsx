@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const imageUrl = resolveImageUrl(post.featuredImage, 1200) || post.featuredImageUrl;
 
   return {
-    title: `${post.title} | Blog ${SITE_NAME}`,
+    title: `${post.title} | ${SITE_NAME}`,
     description: post.description,
     keywords: [post.category, ...(post.tags || [])],
     authors: [{ name: post.author || "Lucas Gonzalez" }],
@@ -211,7 +211,6 @@ export default async function BlogPostPage({ params }: Props) {
     author: {
       "@type": "Person",
       name: post.author || "Lucas Gonzalez",
-      url: `${SITE_URL}/equipe/${(post.author || "lucas-gonzalez").toLowerCase().replace(/ /g, "-")}`,
       jobTitle: "Expert Marketing Produit & Fondateur",
       worksFor: {
         "@type": "Organization",

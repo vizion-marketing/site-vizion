@@ -24,57 +24,57 @@ const TABS = [
 
 const TAB_CONTENT = {
   siteweb: {
-    title: "Site web",
-    description: "Votre site est la première impression. Nous construisons des sites où le visiteur comprend votre offre en 5 secondes. Pas des vitrines esthétiques que personne ne comprend.",
+    title: "Des sites web stratégiques, architecturés pour vendre.",
+    description: "Peu importe comment vos prospects ont entendu parler de vous, leur premier réflexe est toujours le même : ils vont sur votre site. C'est pourquoi nous ne construisons pas de simples vitrines : UX/UI, copywriting, SEO et performance, tout est pensé pour faire de votre prochain site web un véritable outil stratégique que vos clients adorent et qui facilite le travail de vos commerciaux.",
     image: "/images/pigment.avif",
     link: "/services/creation-refonte-site-web",
     ctaLabel: "Création de site web B2B",
   },
   landingpages: {
-    title: "Landing pages",
-    description: "Des pages conçues pour un objectif : convertir. Structure testée, rédaction persuasive orientée problème, formulaire au bon moment.",
+    title: "Des landing pages pensées pour convertir, pas pour expliquer.",
+    description: "Votre page d'accueil n'est pas une page de conversion. Un visiteur qui arrive via une campagne a besoin d'un message ciblé, d'un parcours clair et d'un seul appel à l'action. Nous concevons des landing pages B2B avec un seul objectif : transformer vos visiteurs en leads qualifiés.",
     image: "/images/landing-dashboard.avif",
     link: "/services/creation-landing-page",
     ctaLabel: "Création de landing page",
   },
   casclients: {
-    title: "Cas clients",
-    description: "Vos prospects ont besoin de preuves. Nous transformons vos succès en études de cas structurées qui lèvent les objections et accélèrent la décision.",
+    title: "De la documentation commerciale qui lève les objections.",
+    description: "Vos prospects comparent, hésitent, demandent des références. Vous avez des dizaines de projets réussis, mais aucun n'est documenté de manière exploitable. Nous transformons vos succès en études de cas structurées que vos commerciaux utilisent à chaque étape du cycle de vente.",
     image: "/images/casclients-dashboard.avif",
     link: "/services/battlecards-case-studies",
     ctaLabel: "Battlecards et case studies",
   },
   salesdeck: {
-    title: "Présentation commerciale",
-    description: "La présentation que vos commerciaux utilisent vraiment. Structure narrative, arguments alignés sur le positionnement, réponses aux objections intégrées.",
+    title: "Des decks de ventes qui transforment vos rendez-vous en signatures.",
+    description: "Vos équipes de vente méritent mieux qu'un PowerPoint bricolé en interne. Nous concevons des pitch decks calibrés pour chaque profil décideur : message aligné sur leur problème, objections anticipées, structure narrative qui mène vers la signature.",
     image: "/images/salesdeck-dashboard.avif",
     link: "/services/pitch-decks-argumentaires",
     ctaLabel: "Pitch decks et argumentaires",
   },
   leadmagnets: {
-    title: "Contenus d'acquisition",
-    description: "Guides, modèles, listes de contrôle : des contenus à forte valeur qui génèrent des prospects qualifiés et positionnent votre expertise sur votre marché.",
+    title: "Du contenu organique qui attire des prospects qualifiés, durablement.",
+    description: "Vous dépendez de la publicité pour générer des leads ? Nous construisons votre stratégie de contenu SEO de A à Z : audit technique, mots-clés à fort intent, articles qui répondent aux vraies questions de vos prospects. Un canal d'acquisition qui travaille sans budget media.",
     image: "/images/leadmagnets-dashboard.avif",
-    link: "/services/creation-contenu-b2b",
-    ctaLabel: "Création de contenu B2B",
+    link: "/services/seo-contenu-organique",
+    ctaLabel: "SEO & Contenu organique",
   },
   publicite: {
-    title: "Publicité",
-    description: "Campagnes LinkedIn Ads, Google Ads et Meta Ads. Ciblage précis, messages alignés sur le positionnement, optimisation continue.",
+    title: "Des campagnes publicitaires B2B pilotées pour un coût par lead maîtrisé.",
+    description: "Votre budget part vite, les clics coûtent cher, et vous ne savez pas pourquoi. Nous pilotons vos campagnes Google Ads, LinkedIn Ads et Meta Ads avec un seul objectif : des leads qualifiés à un coût prévisible. Ciblage, créatives, landing pages et optimisation continue.",
     image: "/images/publicite-dashboard.avif",
     link: "/services/campagnes-publicitaires",
     ctaLabel: "Campagnes publicitaires B2B",
   },
   applicationsia: {
-    title: "Applications IA",
-    description: "Outils métier sur mesure propulsés par l'intelligence artificielle. Qualification automatisée, scoring de prospects, production de contenu accélérée. L'IA au service de votre croissance.",
+    title: "Des applications IA concrètes, là où elles apportent une valeur mesurable.",
+    description: "Pas de gadgets, pas de promesses creuses. Nous intégrons l'IA là où elle change vraiment les résultats : qualification automatisée, scoring prédictif, personnalisation à l'échelle. Des cas d'usage priorisés sur votre cycle de vente, connectés à vos outils existants.",
     image: "/images/ia-highlight/outils-metier.png",
     link: "/services/applications-ia",
     ctaLabel: "Applications IA marketing",
   },
   crm: {
-    title: "CRM",
-    description: "Déploiement et structuration de votre CRM pour aligner marketing et ventes. Pipelines configurés, automatisations intégrées, données exploitables pour piloter votre croissance.",
+    title: "Un CRM configuré autour de votre cycle de vente, que vos équipes utilisent vraiment.",
+    description: "Votre pipeline commercial est un angle mort. Vos commerciaux passent plus de temps à saisir qu'à vendre. Nous déployons et structurons HubSpot, Pipedrive ou Salesforce autour de votre réalité terrain : pipeline, automatisations, reporting et formation inclus.",
     image: "/images/ia-highlight/tableaux-de-bord.png",
     link: "/services/deploiement-crm",
     ctaLabel: "Déploiement CRM B2B",
@@ -257,10 +257,10 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
             className="max-w-3xl"
           >
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary mb-4">
-              {headerContent?.h2 ?? "Des livrables d'excellence, conçus pour vous aider à vendre, pas pour rester au fond d'un drive."}
+              {headerContent?.h2 ?? "Chaque livrable est conçu avec exigence, pour vous aider à vendre, pas pour rester au fond d'un drive."}
             </h2>
             <p className="text-muted text-base font-[var(--font-body)] leading-relaxed">
-              {headerContent?.description ?? "Chaque support que nous créons a une raison stratégique d'exister. Il s'inscrit dans le tunnel de vente et porte le même message, de la première impression au closing."}
+              {headerContent?.description ?? "Nous concevons et déployons des livrables de haute qualité, pensés pour rassurer et convaincre des décideurs exigeants, quel que soit l'étape du cycle de vente."}
             </p>
           </motion.div>
         </div>
@@ -275,7 +275,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
       >
         <div
           ref={triggerRef}
-          className={`relative ${!reducedMotion ? "h-[90vh]" : ""}`}
+          className={`relative ${!reducedMotion ? "h-screen" : ""}`}
         >
           {/* ─── Desktop / Tablet: Horizontal Accordion ─── */}
           <div className="hidden md:flex h-full">
@@ -315,15 +315,28 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
                       src={tabContent.image}
                       alt={tabContent.title}
                       fill
-                      className="object-cover"
+                      className="object-cover brightness-[0.6] saturate-[0.7]"
                       sizes="80vw"
                       priority={index === 0}
                       loading={index === 0 ? "eager" : "lazy"}
                     />
-                    {/* Overlay gradients for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10" />
                   </div>
+
+                  {/* Overlay gradient directionnel — couche premium */}
+                  <div
+                    className="absolute inset-0 z-[5] pointer-events-none transition-opacity duration-500"
+                    style={{
+                      opacity: isActive ? 1 : 0,
+                      background: "linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.80) 25%, rgba(0,0,0,0.55) 55%, transparent 80%)",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0 z-[5] pointer-events-none transition-opacity duration-500"
+                    style={{
+                      opacity: isActive ? 1 : 0,
+                      background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)",
+                    }}
+                  />
 
                   {/* Collapsed panel - vertical title + number at bottom */}
                   <div
@@ -334,7 +347,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
                       className="relative z-10 mb-6"
                       style={{ writingMode: "vertical-rl" }}
                     >
-                      <h3 className="text-white/60 text-[clamp(18px,2vw,24px)] font-heading font-medium tracking-[-0.02em] rotate-180 whitespace-nowrap select-none leading-none">
+                      <h3 className="text-white/60 text-[clamp(18px,2vw,24px)] font-heading font-medium tracking-[-0.02em] rotate-180 whitespace-nowrap select-none leading-tight">
                         {tab.label}
                       </h3>
                     </div>
@@ -415,7 +428,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
           </div>
 
           {/* ─── Mobile: Vertical Accordion ─── */}
-          <div className="flex md:hidden flex-col h-[90vh]">
+          <div className="flex md:hidden flex-col h-screen min-h-[620px]">
             {TABS.map((tab, index) => {
               const isActive = activeTab === tab.id;
               const tabContent = TAB_CONTENT[tab.id as keyof typeof TAB_CONTENT];
@@ -437,7 +450,7 @@ export function AssetsSection({ content: headerContent }: AssetsSectionProps = {
                     index < TABS.length - 1 ? "border-b border-white/[0.08]" : ""
                   }`}
                   style={{
-                    flex: isActive ? "1 0 0px" : "0 0 48px",
+                    flex: isActive ? "1 0 0px" : "0 0 44px",
                     transition: "flex 500ms cubic-bezier(0.65, 0, 0.35, 1)",
                   }}
                 >

@@ -79,6 +79,13 @@ export const caseStudy = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "resultsDescription",
+      title: "Résultats (texte rédigé)",
+      type: "text",
+      rows: 4,
+      description: "Paragraphe narratif qui contextualise les chiffres clés.",
+    }),
+    defineField({
       name: "testimonial",
       title: "Temoignage",
       type: "testimonial",
@@ -115,6 +122,38 @@ export const caseStudy = defineType({
           ],
         },
       ],
+    }),
+    defineField({
+      name: "projectLinks",
+      title: "Liens du projet",
+      description: "Liens vers les livrables en ligne (landing page, site, démo, etc.)",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "label", title: "Label", type: "string", description: 'Ex: "Voir la landing page"' },
+            { name: "url", title: "URL", type: "url" },
+            {
+              name: "icon",
+              title: "Icône",
+              type: "string",
+              description: 'Nom Lucide (Globe, ExternalLink, Monitor, BarChart2…)',
+            },
+          ],
+          preview: { select: { title: "label", subtitle: "url" } },
+        },
+      ],
+    }),
+    defineField({
+      name: "relatedServiceSlugs",
+      title: "Services liés",
+      type: "array",
+      description: "Slugs des services Vizion illustrés par cette étude de cas (ex: applications-ia, campagnes-publicitaires). Permet d'afficher ce cas client sur les pages service correspondantes.",
+      of: [{ type: "string" }],
+      options: {
+        layout: "tags",
+      },
     }),
     defineField({
       name: "publishedAt",

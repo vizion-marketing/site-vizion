@@ -15,10 +15,16 @@ const DEFAULT_MANIFESTO_PARAGRAPHS = [
 
 const DEFAULT_MISSION_STATEMENT = "Alors on s'est donné une mission : faire de votre produit une évidence.";
 
+export interface IntroSectionSituation {
+  trigger: string;
+  description: string;
+}
+
 export interface IntroSectionContent {
   title: string;
   paragraphs: string[];
   mission?: string;
+  situations?: IntroSectionSituation[];
 }
 
 /** Split text into lines for line-by-line scroll animation */
@@ -50,6 +56,7 @@ export function IntroSection({ content }: IntroSectionProps = {}) {
   const title = content?.title ?? DEFAULT_MANIFESTO_TITLE;
   const paragraphs = content?.paragraphs ?? DEFAULT_MANIFESTO_PARAGRAPHS;
   const mission = content?.mission ?? DEFAULT_MISSION_STATEMENT;
+  const situations = content?.situations;
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -188,6 +195,28 @@ export function IntroSection({ content }: IntroSectionProps = {}) {
               className="manifesto-block text-[15px] sm:text-[17px] md:text-[19px] lg:text-[21px] leading-[1.65] font-light"
             />
           ))}
+
+          {/* Situations */}
+          {situations && situations.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4"
+            >
+              {situations.map((s, i) => (
+                <div key={i} className="bg-white border border-black/[0.06] p-5">
+                  <p className="font-heading font-medium text-[15px] sm:text-[16px] text-primary mb-2 leading-tight">
+                    {s.trigger}
+                  </p>
+                  <p className="text-[13px] sm:text-[14px] text-secondary leading-relaxed font-light">
+                    {s.description}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          )}
 
           {/* Mission Statement */}
           <motion.div

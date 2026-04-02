@@ -13,3 +13,4 @@ export { QualityGuarantees } from "./QualityGuarantees";
 export { RelatedServices } from "./RelatedServices";
 export { ServiceCTA } from "./ServiceCTA";
 export { InlineCTA } from "./InlineCTA";
+export { RelatedCaseStudies } from "./RelatedCaseStudies";

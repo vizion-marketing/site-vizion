@@ -41,7 +41,7 @@ export const creationRefonteSiteWeb: ServiceContent = {
     surtitre: "Le problème",
     title: "Votre site web est au cœur de votre stratégie digitale. Pourtant…",
     paragraphs: [
-      "LinkedIn, salon, bouche-à-oreille. Peu importe comment vos prospects entendent parler de vous. Le réflexe est toujours le même : ils cherchent votre nom et finissent sur votre site.",
+      "Peu importe comment vos prospects ont entendu parler de vous, leur premier réflexe est toujours le même : ils cherchent votre nom sur Google et finissent sur votre site. Ce moment compte plus que vous ne le pensez.",
     ],
     statements: [
       {
@@ -202,7 +202,7 @@ export const creationRefonteSiteWeb: ServiceContent = {
     {
       question: "Combien coûte la création d'un site web B2B ?",
       answer:
-        "Un site vitrine B2B complet (5-8 pages) se situe généralement entre 8 000 € et 20 000 €. Une landing page seule entre 2 000 € et 5 000 €. Le budget dépend de la complexité, du nombre de pages et des fonctionnalités spécifiques. Nous établissons un devis précis après le brief initial.",
+        "Chaque site est conçu selon votre positionnement, le volume de pages, les fonctionnalités et vos objectifs commerciaux. Il n'y a pas de forfait standard : nous établissons une proposition adaptée après un premier échange de 30 minutes, sans engagement.",
     },
     {
       question: "Quel est le délai de livraison ?",
@@ -260,7 +260,7 @@ export const creationRefonteSiteWeb: ServiceContent = {
     sectionDescription:
       "Nous ne sommes pas une agence web généraliste. Chaque site que nous livrons est pensé pour servir votre stratégie commerciale, du choix technologique jusqu'au dernier pixel de tracking.",
     image: {
-      src: "/images/services/site-web/bento.avif",
+      src: "/images/services/audit-site-web/hero.avif",
       alt: "L'équipe Vizion au travail",
     },
     technology: {
@@ -330,6 +330,7 @@ export const creationRefonteSiteWeb: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/battlecards-case-studies/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle: "Pourquoi choisir Vizion\npour créer ou refondre votre site web ?",
     sectionDescription:
@@ -374,20 +375,20 @@ export const creationRefonteSiteWeb: ServiceContent = {
     "Un site performant, c'est le socle. Ces services complémentaires accélèrent vos résultats.",
   relatedServices: [
     {
+      slug: "growth-marketing",
+      icon: "TrendingUp",
+      title: "Growth Marketing B2B",
+      description:
+        "Un site performant est le socle de toute stratégie d'acquisition. Découvrez comment Vizion combine site, SEO, publicité et prospection pour générer une croissance prévisible.",
+      href: "/services/growth-marketing",
+    },
+    {
       slug: "seo-contenu-organique",
       icon: "TrendingUp",
       title: "SEO et Contenu Organique",
       description:
         "Votre site est en ligne, mais vos prospects ne vous trouvent pas. Nous construisons une stratégie SEO complète (technique, contenu, backlinks) pour que Google travaille pour vous.",
       href: "/services/seo-contenu-organique",
-    },
-    {
-      slug: "creation-contenu-b2b",
-      icon: "PenTool",
-      title: "Création de Contenu B2B",
-      description:
-        "Un site sans contenu est un commercial muet. Nous créons les articles, les landing pages et les ressources qui attirent vos cibles et les font avancer dans leur parcours d'achat.",
-      href: "/services/creation-contenu-b2b",
     },
     {
       slug: "deploiement-crm",

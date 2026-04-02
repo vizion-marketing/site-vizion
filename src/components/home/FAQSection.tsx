@@ -1,24 +1,22 @@
 "use client";
 
 import { FAQAccordion } from "@/components/sections";
-import { homeContent, type FAQContent } from "@/content/home";
+import type { FAQContent } from "@/content/home";
 
 interface FAQSectionProps {
   content?: FAQContent;
 }
 
 export function FAQSection({ content }: FAQSectionProps = {}) {
-  const faq = content ?? homeContent.faq;
-
   return (
     <FAQAccordion
-      surtitre={faq.surtitre}
-      title={faq.h2}
-      titleHighlight={faq.h2Highlight}
-      description={faq.description}
-      ctaText={faq.ctaText}
-      ctaHref={faq.ctaButton.href}
-      faqs={faq.questions}
+      surtitre={content!.surtitre}
+      title={content!.h2}
+      titleHighlight={content!.h2Highlight}
+      description={content!.description}
+      ctaText={content!.ctaText}
+      ctaHref={content!.ctaButton.href}
+      faqs={content!.questions}
     />
   );
 }

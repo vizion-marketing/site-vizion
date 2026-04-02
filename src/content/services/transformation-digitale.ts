@@ -36,8 +36,8 @@ export const digitalisation: ServiceContent = {
     surtitre: "LA TRANSFORMATION DIGITALE",
     title: "La transformation digitale : qu'est-ce que c'est et pourquoi elle échoue si souvent ?",
     paragraphs: [
-      "Vous avez un site web. Un CRM. Peut-être même quelques automatisations. Pourtant, vos équipes passent encore des heures sur des taches manuelles, votre CRM ressemble a un tableur glorifié et votre site ne génère aucun lead. Les outils sont la, mais ils ne produisent rien.",
-      "La transformation digitale, ce n'est pas acheter des licences logicielles. C'est repenser vos processus commerciaux et marketing pour que chaque outil serve un objectif mesurable : générer des leads, raccourcir le cycle de vente, libérer du temps. Cette discipline repose sur trois piliers :",
+      "Votre stack digitale existe. Site web, CRM, peut-être quelques automatisations. Pourtant, vos équipes passent encore des heures sur des taches manuelles, votre CRM ressemble a un tableur glorifié et votre site ne génère aucun lead. Les outils sont là, mais ils ne produisent rien.",
+      "La transformation digitale, ce n'est pas acheter des licences logicielles. C'est repenser vos processus commerciaux et marketing pour que chaque outil serve un objectif mesurable : générer des leads, raccourcir le cycle de vente, libérer du temps. Trois chantiers concentrent l'essentiel de la valeur :",
     ],
     statements: [
       {

@@ -2,13 +2,13 @@ import type { ServiceContent } from "./types";
 
 export const auditMarketing: ServiceContent = {
   slug: "audit-marketing",
-  title: "Audit Marketing",
+  title: "Audit Marketing et Commercial",
   icon: "Search",
   category: "Stratégie",
   order: 3,
 
   // SEO
-  metaTitle: "Audit Marketing B2B | Identifiez ce qui freine votre croissance",
+  metaTitle: "Audit Marketing et Commercial B2B | Identifiez ce qui freine votre croissance",
   metaDescription:
     "Audit commercial et marketing B2B : positionnement, acquisition, contenus, outils et conversion. Diagnostic et plan d'action priorisé en 3 semaines.",
   keywords: [
@@ -41,7 +41,7 @@ export const auditMarketing: ServiceContent = {
     title:
       "Vous produisez du marketing, mais vous ne savez pas ce qui fonctionne.",
     paragraphs: [
-      "Articles de blog, campagnes LinkedIn, refonte du site, emailings. Les actions s'accumulent, mais les leads qualifiés ne suivent pas. Le problème n'est pas le volume d'efforts. C'est l'absence de diagnostic clair.",
+      "Votre équipe marketing est active : des contenus publiés, des campagnes lancées, un site retravaillé. Mais quand vient le moment de défendre le budget ou d'arbitrer entre deux actions, personne ne peut dire avec certitude ce qui génère vraiment des leads qualifiés. Vous pilotez à l'intuition dans un domaine qui mérite des données.",
     ],
     statements: [
       {
@@ -118,11 +118,11 @@ export const auditMarketing: ServiceContent = {
 
   // Bento featured cards
   bentoCards: {
-    sectionTitle: "Les spécificités de notre audit marketing B2B",
+    sectionTitle: "Les spécificités de notre audit marketing et commercial B2B",
     sectionDescription:
       "Nous ne livrons pas un simple rapport. Chaque audit est un diagnostic complet de votre dispositif marketing : positionnement, acquisition, contenus, outils et conversion. Tout est analysé avec méthode pour déboucher sur des actions concrètes.",
     image: {
-      src: "/images/services/audit-marketing/bento.avif",
+      src: "/images/services/direction-marketing-externalisee/hero.avif",
       alt: "Tableau de bord d'audit marketing Vizion",
     },
     technology: {
@@ -257,6 +257,7 @@ export const auditMarketing: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/cold-outreach-prospection/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour votre audit marketing ?",
@@ -297,7 +298,7 @@ export const auditMarketing: ServiceContent = {
   },
 
   // Testimonials
-  testimonialsTitle: "Ils nous ont confié l'audit de leur marketing",
+  testimonialsTitle: "Ils nous ont confié l'audit de leur marketing et de leur commercial",
   testimonialsSubtitle:
     "Consultez les retours d'expérience de dirigeants et responsables marketing qui ont fait appel à Vizion pour diagnostiquer et restructurer leur dispositif marketing B2B.",
   testimonials: [
@@ -337,7 +338,7 @@ export const auditMarketing: ServiceContent = {
   ],
 
   // FAQ
-  faqTitle: "Des questions sur l'audit commercial et marketing ?",
+  faqTitle: "Des questions sur notre audit marketing et commercial ?",
   faqs: [
     {
       question: "Combien coûte un audit commercial et marketing ?",
@@ -382,6 +383,14 @@ export const auditMarketing: ServiceContent = {
     "L'audit révèle les priorités. Ces services permettent de passer à l'action sur les axes identifiés.",
   relatedServices: [
     {
+      slug: "strategie",
+      icon: "Compass",
+      title: "Stratégie Marketing B2B",
+      description:
+        "L'audit est la première étape d'une stratégie marketing structurée. Découvrez comment Vizion pilote la transformation marketing et commerciale des entreprises B2B.",
+      href: "/services/strategie",
+    },
+    {
       slug: "creation-refonte-site-web",
       icon: "Globe",
       title: "Création ou Refonte de Site Web",
@@ -395,7 +404,7 @@ export const auditMarketing: ServiceContent = {
       title: "SEO et Contenu Organique",
       description:
         "Votre référencement naturel est sous-exploité ? Nous construisons une stratégie SEO complète pour générer du trafic qualifié sans dépendre uniquement de la publicité payante.",
-      href: "/services/audit-marketing",
+      href: "/services/seo-contenu-organique",
     },
     {
       slug: "roadmap-strategique",
@@ -425,6 +434,6 @@ export const auditMarketing: ServiceContent = {
   ctaTitle: "Votre marketing mérite mieux que des suppositions",
   ctaDescription:
     "Premier échange sans engagement. Nous cadrons ensemble le périmètre de l'audit et les objectifs attendus.",
-  ctaButtonText: "Demander votre audit marketing",
+  ctaButtonText: "Demander votre audit marketing et commercial",
   ctaButtonLink: "/contact",
 };

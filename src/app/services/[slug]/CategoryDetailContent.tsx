@@ -11,14 +11,13 @@ import {
   PilierMethodology,
   PilierMetrics,
   TestimonialShowcase,
-  InlineCTA,
   ServiceFAQ,
   ServiceCTA,
 } from "@/components/services";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { useRef, useState, useCallback, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
@@ -35,7 +34,6 @@ const SERVICE_ARTICLES: Record<string, string> = {
   "audit-marketing": "l'",
   "roadmap-strategique": "la",
   "positionnement-messaging": "le",
-  "creation-contenu-b2b": "la",
   "seo-contenu-organique": "le",
   "campagnes-publicitaires": "les",
   "cold-outreach-prospection": "le",
@@ -561,7 +559,7 @@ function CategoryMetrics({ service }: { service: ServiceContent }) {
                         className="inline-flex items-center gap-1.5 bg-accent text-black text-[11px] font-medium px-3 py-1.5 shrink-0 hover:bg-accent/90 transition-colors group"
                       >
                         Source
-                        <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                        <ArrowUpRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
                       </a>
                     )}
                   </div>
@@ -772,7 +770,7 @@ function CategoryServices({ service }: { service: ServiceContent }) {
                           </p>
                           <span className="inline-flex items-center gap-2 text-accent text-sm font-medium mt-3 group-hover:gap-3 transition-all duration-200">
                             {getServiceCTA(rs.slug, rs.title)}
-                            <ArrowRight size={14} />
+                            <ArrowUpRight size={14} />
                           </span>
                         </div>
                       </div>
@@ -988,7 +986,7 @@ function CategoryTiming({ timing }: { timing: PilierTiming }) {
                   className="group/btn inline-flex items-center gap-2 bg-accent text-black font-medium px-7 py-3.5 hover:scale-[1.02] active:scale-[0.97] transition-all duration-200 whitespace-nowrap"
                 >
                   Discuter de votre situation
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>

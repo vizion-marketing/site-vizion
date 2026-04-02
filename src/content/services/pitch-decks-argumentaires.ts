@@ -4,7 +4,7 @@ export const pitchDecksArgumentaires: ServiceContent = {
   slug: "pitch-decks-argumentaires",
   title: "Pitch Decks et Argumentaires",
   icon: "Rocket",
-  category: "Sales Enablement",
+  category: "Activation des Ventes",
   order: 12,
 
   // SEO
@@ -114,7 +114,7 @@ export const pitchDecksArgumentaires: ServiceContent = {
     sectionDescription:
       "Nous ne livrons pas un fichier PowerPoint isolé. Chaque support de vente est un outil stratégique : argumentaire structuré, design de marque, déclinaison par persona et suivi d'utilisation. Tout est pensé pour vos équipes commerciales.",
     image: {
-      src: "/images/services/pitch-decks-argumentaires/bento.avif",
+      src: "/images/services/battlecards-case-studies/hero.avif",
       alt: "Conception d'un pitch deck Vizion",
     },
     technology: {
@@ -238,6 +238,7 @@ export const pitchDecksArgumentaires: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/direction-marketing-externalisee/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour créer votre pitch deck ?",
@@ -309,8 +310,8 @@ export const pitchDecksArgumentaires: ServiceContent = {
         "Enfin des supports cohérents que toute l'équipe commerciale utilise.",
       detail:
         "Avant Vizion, chaque commercial avait sa propre version du pitch. Le message variait d'un rendez-vous à l'autre. Aujourd'hui, nous avons un kit complet, structuré par persona, accessible dans notre CRM. La qualité perçue par nos prospects a fait un bond.",
-      author: "Responsable sales enablement",
-      role: "Responsable sales enablement",
+      author: "Responsable activation des ventes",
+      role: "Responsable activation des ventes",
       company: "Client Vizion",
       photo: "/images/services/pitch-decks-argumentaires/testimonials/03.avif",
       rating: 5,
@@ -323,7 +324,7 @@ export const pitchDecksArgumentaires: ServiceContent = {
     {
       question: "Combien coûte la création d'un pitch deck B2B ?",
       answer:
-        "Un pitch deck complet (30-50 slides) se situe généralement entre 3 000 et 8 000 euros selon la complexité de l'offre, le nombre de personas et les déclinaisons nécessaires. Ce budget inclut l'audit, le copywriting, le design et les templates éditables. Un one-pager seul se situe entre 800 et 2 000 euros.",
+        "Le périmètre d'un pitch deck varie selon la complexité de votre offre, le nombre de personas et les supports nécessaires. Nous construisons une proposition sur mesure après un premier échange de 30 minutes, sans engagement de votre part.",
     },
     {
       question: "Quel est le délai pour créer un pitch deck B2B complet ?",
@@ -362,6 +363,14 @@ export const pitchDecksArgumentaires: ServiceContent = {
   relatedServicesSubtitle:
     "Des supports percutants, c'est le socle. Ces services complémentaires renforcent l'impact de vos équipes commerciales.",
   relatedServices: [
+    {
+      slug: "sales-enablement",
+      icon: "Handshake",
+      title: "Activation des Ventes B2B",
+      description:
+        "Les pitch decks s'inscrivent dans une stratégie d'activation des ventes complète. Découvrez comment Vizion arme vos commerciaux à chaque étape du cycle de vente B2B.",
+      href: "/services/sales-enablement",
+    },
     {
       slug: "positionnement-messaging",
       icon: "Crosshair",

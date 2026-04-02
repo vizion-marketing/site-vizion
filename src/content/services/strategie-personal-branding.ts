@@ -116,7 +116,7 @@ export const strategiePersonalBranding: ServiceContent = {
     sectionDescription:
       "Nous ne gérons pas vos réseaux sociaux. Nous construisons une stratégie de positionnement personnel qui fait de vous la référence de votre marché, avec des résultats mesurables sur votre pipeline commercial.",
     image: {
-      src: "/images/services/strategie-personal-branding/bento.avif",
+      src: "/images/services/positionnement-messaging/hero.avif",
       alt: "Stratégie de personal branding Vizion",
     },
     technology: {
@@ -255,6 +255,7 @@ export const strategiePersonalBranding: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/cold-outreach-prospection/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour votre personal branding ?",
@@ -397,14 +398,6 @@ export const strategiePersonalBranding: ServiceContent = {
       description:
         "Avant de prendre la parole, il faut savoir quoi dire. Le positionnement clarifie votre valeur unique et structure les messages qui résonnent avec vos cibles.",
       href: "/services/positionnement-messaging",
-    },
-    {
-      slug: "creation-contenu-b2b",
-      icon: "PenTool",
-      title: "Création de Contenu B2B",
-      description:
-        "Votre personal branding attire l'attention. Le contenu B2B (articles, cas clients, livres blancs) transforme cette attention en confiance et en leads qualifiés.",
-      href: "/services/creation-contenu-b2b",
     },
     {
       slug: "cold-outreach-prospection",

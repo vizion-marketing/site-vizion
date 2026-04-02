@@ -3,7 +3,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Blog | Stratégies Marketing B2B & Conseils",
   description:
-    "Le blog de Vizion, agence marketing B2B. Articles sur le positionnement produit, le sales enablement et la croissance commerciale des PME et ETI.",
+    "Le blog de Vizion, agence marketing B2B. Articles sur le positionnement produit, le activation des ventes et la croissance commerciale des PME et ETI.",
   path: "/blog",
 });
 
@@ -11,10 +11,10 @@ const blogSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "@id": "https://by-vizion.com/blog",
-  name: "Blog Vizion | Marketing B2B & Sales Enablement",
+  name: "Blog Vizion | Marketing B2B & Activation des Ventes",
   url: "https://by-vizion.com/blog",
   description:
-    "Articles et ressources sur le marketing B2B, le positionnement produit et le sales enablement.",
+    "Articles et ressources sur le marketing B2B, le positionnement produit et le activation des ventes.",
   publisher: {
     "@type": "Organization",
     "@id": "https://by-vizion.com/#organization",

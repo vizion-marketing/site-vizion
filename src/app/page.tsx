@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getLatestPosts } from "@/lib/sanity/posts";
 import { getFeaturedClients } from "@/lib/sanity/clients";
+import { getAllCaseStudies } from "@/lib/sanity/caseStudies";
 import { resolveImageUrl } from "../../sanity/lib/image";
 import {
   b2bSEO,
@@ -66,9 +67,10 @@ export const metadata: Metadata = {
 // ============================================================================
 
 export default async function HomePage() {
-  const [rawPosts, featuredClients] = await Promise.all([
+  const [rawPosts, featuredClients, allCaseStudies] = await Promise.all([
     getLatestPosts(3),
     getFeaturedClients(),
+    getAllCaseStudies(),
   ]);
 
   // Serialize posts for client component
@@ -102,6 +104,13 @@ export default async function HomePage() {
     href: client.url,
   }));
 
+  const clientLogos = featuredClients
+    .map((client) => ({
+      name: client.name,
+      logoUrl: resolveImageUrl(client.logo) || undefined,
+    }))
+    .filter((c) => c.logoUrl);
+
   return (
     <>
       {/* JSON-LD schemas - rendered server-side */}
@@ -117,7 +126,22 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <B2BPageClient latestPosts={latestPosts} carouselClients={carouselClients} />
+      <B2BPageClient
+        latestPosts={latestPosts}
+        clientLogos={clientLogos}
+        carouselClients={carouselClients}
+        caseStudies={allCaseStudies
+          .map((cs) => ({
+            title: cs.title,
+            company: cs.company,
+            sector: cs.sector,
+            href: cs.clientSlug ? `/cas-clients/${cs.clientSlug}/${cs.slug}` : "/cas-clients",
+            image: resolveImageUrl(cs.heroImage, 800) || undefined,
+            _sort: Math.random(),
+          }))
+          .sort((a, b) => a._sort - b._sort)
+          .map(({ _sort, ...cs }) => cs)}
+      />
     </>
   );
 }

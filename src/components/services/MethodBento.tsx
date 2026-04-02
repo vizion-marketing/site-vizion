@@ -12,7 +12,7 @@ import {
   Target,
   UserCheck,
   Clock,
-  ArrowRight,
+  ArrowUpRight,
 } from "lucide-react";
 
 const fadeUp = {
@@ -28,7 +28,7 @@ const stagger = {
 const ITEMS = [
   {
     icon: Target,
-    tag: "Product Marketing",
+    tag: "Marketing Produit",
     title: "Votre positionnement avant votre site",
     description:
       "Persona, proposition de valeur, architecture de message : on structure votre discours commercial avant d'écrire la première ligne.",
@@ -212,7 +212,7 @@ export function MethodBento() {
               className="inline-flex items-center gap-2.5 text-[13px] sm:text-[14px] font-semibold text-white group shrink-0"
             >
               Discuter de votre projet
-              <ArrowRight
+              <ArrowUpRight
                 size={15}
                 className="group-hover:translate-x-1 transition-transform"
               />

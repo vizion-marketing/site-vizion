@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, Lightbulb } from "lucide-react";
+import { ArrowUpRight, Clock, Lightbulb } from "lucide-react";
 import type { SuggestedArticle } from "@/lib/internal-linking";
 
 interface RelatedInlineCardProps {
@@ -81,7 +81,7 @@ export function RelatedInlineCard({ article, index = 0 }: RelatedInlineCardProps
 
                 <div className="inline-flex items-center gap-1.5 text-sm font-semibold text-black group-hover:gap-2.5 transition-all">
                   Lire l&apos;article
-                  <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </div>
             </div>

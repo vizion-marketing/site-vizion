@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { SolutionItem } from "@/content/services";
+import { SolutionIllustration, hasIllustration } from "./SolutionIllustrations";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,12 +14,14 @@ interface SolutionStickyProps {
   title: string;
   image: string;
   items: SolutionItem[];
+  slug?: string;
 }
 
 export function SolutionSticky({
   title,
   image,
   items,
+  slug,
 }: SolutionStickyProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const [reachedIndex, setReachedIndex] = useState(-1);
@@ -145,46 +148,51 @@ export function SolutionSticky({
       </div>
 
       <div className="max-w-[82.5rem] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 relative z-10">
-        {/* Left - Image sticky with gradients + floating UI elements */}
+        {/* Left - Illustration custom ou image sticky */}
         <div className="lg:sticky lg:top-[100px] lg:self-start">
-          <div
-            data-solution="image"
-            className="relative overflow-hidden aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:h-[70vh] group"
-          >
-            <Image
-              src={image}
-              alt="Mockup site web Vizion"
-              fill
-              className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            {/* Gradient bottom - black fade */}
+          {slug && hasIllustration(slug) ? (
             <div
-              className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
-              style={{ background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)" }}
-            />
-            {/* Gradient left - black fade */}
-            <div
-              className="absolute inset-y-0 left-0 w-1/4 pointer-events-none"
-              style={{ background: "linear-gradient(to right, var(--bg-dark) 0%, transparent 100%)" }}
-            />
-
-            {/* Floating bar chart */}
-            <div
-              data-solution="chart"
-              className="absolute bottom-[28%] left-[6%] bg-white/[0.08] backdrop-blur-md border border-white/15 p-4"
+              data-solution="image"
+              className="relative lg:h-[70vh] flex items-center justify-center p-4 sm:p-6 lg:p-8"
             >
-              <div className="flex items-end gap-[6px] h-[80px]">
-                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "35%" }} />
-                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "55%" }} />
-                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "40%" }} />
-                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "75%" }} />
-                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "60%" }} />
-                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "90%" }} />
-                <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "70%" }} />
+              <SolutionIllustration slug={slug} />
+            </div>
+          ) : (
+            <div
+              data-solution="image"
+              className="relative overflow-hidden aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:h-[70vh] group"
+            >
+              <Image
+                src={image}
+                alt="Mockup site web Vizion"
+                fill
+                className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div
+                className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+                style={{ background: "linear-gradient(to top, var(--bg-dark) 0%, transparent 100%)" }}
+              />
+              <div
+                className="absolute inset-y-0 left-0 w-1/4 pointer-events-none"
+                style={{ background: "linear-gradient(to right, var(--bg-dark) 0%, transparent 100%)" }}
+              />
+              <div
+                data-solution="chart"
+                className="absolute bottom-[28%] left-[6%] bg-white/[0.08] backdrop-blur-md border border-white/15 p-4"
+              >
+                <div className="flex items-end gap-[6px] h-[80px]">
+                  <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "35%" }} />
+                  <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "55%" }} />
+                  <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "40%" }} />
+                  <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "75%" }} />
+                  <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "60%" }} />
+                  <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "90%" }} />
+                  <div data-solution="bar" className="w-[10px] bg-accent origin-bottom" style={{ height: "70%" }} />
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Right - Titre + sous-titre + cards défilantes */}

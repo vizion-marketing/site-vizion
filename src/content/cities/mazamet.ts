@@ -1,4 +1,4 @@
-import type { CityPageData } from "./types";
+﻿import type { CityPageData } from "./types";
 import {
   SITE_URL, MAP_EMBED_URL, VILLES_BADGES,
   buildOrganizationSchema, buildFaqSchema, buildBreadcrumbSchema,
@@ -70,7 +70,7 @@ const content: CityPageData["content"] = {
     baseline:
       "Mazamet porte un héritage industriel rare, mais les entreprises du territoire peinent à le valoriser sur les marchés actuels. Vizion aide les PME mazamétaines à clarifier leur positionnement et à déployer une communication qui génère du résultat, pas juste de la visibilité.",
     cta: {
-      primary: { text: "Échanger avec un fondateur", href: "/contact" },
+      primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",

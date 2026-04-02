@@ -1,4 +1,4 @@
-import type { CityPageData } from "./types";
+﻿import type { CityPageData } from "./types";
 import {
   SITE_URL, MAP_EMBED_URL, VILLES_BADGES,
   buildOrganizationSchema, buildFaqSchema, buildBreadcrumbSchema,
@@ -75,7 +75,7 @@ const content: CityPageData["content"] = {
     baseline:
       "L'écosystème tech montpelliérain bouillonne, mais la concurrence aussi. Votre solution est performante, vos prospects ne le savent pas encore. Vizion structure le positionnement, l'acquisition et les outils de vente des entreprises innovantes de l'Hérault. Pour que votre offre devienne le choix évident de votre marché.",
     cta: {
-      primary: { text: "Échanger avec un fondateur", href: "/contact" },
+      primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",

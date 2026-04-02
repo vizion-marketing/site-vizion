@@ -2,101 +2,99 @@ import type { ServiceContent } from "./types";
 
 export const coldOutreachProspection: ServiceContent = {
   slug: "cold-outreach-prospection",
-  title: "Cold Outreach et Prospection",
+  title: "Prospection Multicanal",
   icon: "Mail",
   category: "Growth Marketing",
   order: 10,
 
   // SEO
-  metaTitle: "Prospection B2B | Décrochez plus de rendez-vous qualifiés",
+  metaTitle: "Prospection Multicanal B2B | Rendez-vous qualifiés | Vizion",
   metaDescription:
-    "Externalisez votre prospection commerciale B2B. Séquences multi-canal (email, LinkedIn, téléphone) et rendez-vous qualifiés dès le premier mois.",
+    "Vizion construit et pilote votre prospection multicanal B2B : email, LinkedIn, téléphone. Des séquences personnalisées pour générer des rendez-vous qualifiés chaque semaine.",
   keywords: [
-    "prospection commerciale",
+    "prospection multicanal B2B",
     "prospection commerciale B2B",
     "prospection commerciale externalisée",
-    "cold outreach B2B",
-    "prospection outbound",
     "cold emailing B2B",
-    "séquences de prospection automatisées",
+    "prospection LinkedIn B2B",
+    "séquences de prospection",
     "génération de leads B2B",
-    "prospection LinkedIn",
-    "prospection multicanale",
+    "rendez-vous qualifiés B2B",
+    "outreach B2B",
     "agence prospection commerciale",
-    "externaliser sa prospection commerciale",
-    "prise de rendez-vous qualifiés",
-    "automatisation prospection commerciale",
+    "externaliser sa prospection",
+    "automatisation prospection",
+    "prospection outbound",
+    "pipeline commercial B2B",
     "prospection commerciale efficace",
   ],
 
   // Hero
-  heroTitle: "Prospection commerciale B2B : des rendez-vous qualifiés chaque semaine",
+  heroTitle: "Prospection multicanal B2B : un système qui génère des rendez-vous qualifiés",
   heroSubtitle:
-    "Votre prospection commerciale mobilise vos équipes sans remplir le pipeline ? Chez Vizion, nous construisons et pilotons des séquences de prospection multi-canal (email, LinkedIn, téléphone) qui génèrent des rendez-vous qualifiés. Personnalisation, automatisation, mesure : chaque message est calibré pour ouvrir une conversation.",
+    "Votre pipeline commercial ne devrait pas dépendre du temps libre de vos commerciaux. Chez Vizion, nous construisons des systèmes de prospection multicanal (email, LinkedIn, téléphone) qui tournent en continu, génèrent des rendez-vous qualifiés et libèrent vos équipes pour ce qui compte : vendre.",
   heroBadge: "+10 000 prospects contactés",
   heroImage: "/images/services/cold-outreach-prospection/hero.avif",
 
   // Narrative (Le constat)
   constat: {
-    surtitre: "Le problème",
-    title:
-      "Vos commerciaux prospectent beaucoup, mais remplissent peu le pipeline.",
+    surtitre: "Le constat",
+    title: "Votre prospection repose sur les bonnes volontés. Pas sur un système.",
     paragraphs: [
-      "Messages LinkedIn ignorés, emails sans réponse, appels qui tombent dans le vide. La prospection mange du temps, use les équipes et ne produit pas assez de rendez-vous qualifiés. Le problème n'est pas le volume, c'est la méthode.",
+      "Vos commerciaux prospectent quand ils ont le temps, avec les méthodes qu'ils connaissent, vers les contacts qu'ils trouvent. Résultat : un pipeline irrégulier, des cycles de vente longs et une dépendance aux performances individuelles.",
     ],
     statements: [
       {
-        headline: "Vos messages de prospection ressemblent à tous les autres",
+        headline: "Chaque commercial invente sa propre méthode",
         description:
-          "Messages génériques, templates recyclés, pitch centré sur votre offre. Vos prospects reçoivent des dizaines de sollicitations par semaine. Si votre message ne se distingue pas dès la première ligne, il finit dans la corbeille sans être lu.",
+          "Un envoie des emails, un autre passe par LinkedIn, un troisième appelle directement. Pas de séquence commune, pas de copywriting testé, pas de relances coordonnées. Le résultat varie d'un commercial à l'autre, et personne ne sait ce qui fonctionne vraiment.",
       },
       {
-        headline: "Vous prospectez sans séquence ni cadence structurée",
+        headline: "Les messages partent sans vraiment cibler",
         description:
-          "Un email par-ci, un message LinkedIn par-là, une relance oubliée. Sans séquence multi-canal avec des relances programmées, vous perdez la majorité de vos opportunités. La plupart des réponses arrivent après le troisième ou quatrième point de contact.",
+          "Listes LinkedIn exportées à la va-vite, emails copiés sur un template, pitch centré sur votre offre plutôt que sur les problèmes de votre cible. Vos prospects reçoivent des dizaines de sollicitations par semaine. Si le message ne parle pas directement à leur situation, il finit ignoré.",
       },
       {
-        headline: "Vos commerciaux passent 60% de leur temps à chercher des contacts",
+        headline: "La prospection s'arrête dès que le pipeline est plein",
         description:
-          "Recherche manuelle sur LinkedIn, copier-coller dans un tableur, vérification des emails un par un. Ce temps devrait être consacré aux conversations commerciales. La prospection artisanale ne passe pas à l'échelle.",
+          "Quand les commerciaux ont des deals à traiter, la prospection passe en second plan. Puis le pipeline se vide, et il faut repartir de zéro. Ce cycle creux-plein-creux est le principal frein à la croissance commerciale prévisible.",
       },
       {
-        headline: "Vous n'avez aucune visibilité sur ce qui fonctionne ou pas",
+        headline: "Personne ne sait ce qui a fonctionné ni pourquoi",
         description:
-          "Pas de suivi des taux d'ouverture, de réponse ou de conversion. Vous ne savez pas quels messages performent, quels canaux convertissent, ni à quel moment relancer. Sans données, chaque campagne repart de zéro.",
+          "Pas de suivi des taux d'ouverture, pas d'analyse des canaux, pas de test de messages. Chaque trimestre repart de zéro. Sans données, impossible d'améliorer ce qu'on ne mesure pas.",
       },
     ],
   },
 
   // Solution sticky
-  solutionTitle:
-    "Nous structurons votre prospection commerciale pour générer des rendez-vous réguliers",
+  solutionTitle: "Nous construisons votre machine de prospection multicanal, de A à Z",
   solutionImage: "/images/services/cold-outreach-prospection/solution.avif",
   solutionItems: [
     {
-      title: "Nous définissons vos cibles avec la précision d'un sniper, pas d'un arrosoir.",
+      title: "Ciblage précis : on contacte les bons décideurs, pas tout le monde.",
       description:
-        "Avant d'écrire le moindre message, nous identifions vos personas prioritaires : poste, secteur, taille d'entreprise, signaux d'achat. La base de prospects est construite ou enrichie pour ne contacter que des décideurs pertinents, pas des contacts au hasard.",
+        "Avant d'écrire le moindre message, nous définissons vos personas prioritaires : poste, secteur, taille d'entreprise, signaux d'achat. La base de prospects est construite ou enrichie pour ne contacter que des interlocuteurs pertinents, vérifiés et à jour.",
     },
     {
-      title: "Nous rédigeons des messages qui déclenchent des réponses, pas des désabonnements.",
+      title: "Copywriting calibré pour déclencher une réponse, pas un désabonnement.",
       description:
-        "Chaque message est écrit pour votre cible spécifique. Accroche personnalisée, problème identifié, proposition de valeur claire, appel à l'action simple. Nous testons plusieurs variantes et gardons celles qui génèrent le meilleur taux de réponse.",
+        "Chaque message est rédigé pour une cible précise. Accroche personnalisée, angle problème, proposition de valeur courte, appel à l'action simple. Nous testons plusieurs variantes et conservons celles qui génèrent les meilleures réponses.",
     },
     {
-      title: "Nous orchestrons des séquences multi-canal avec des relances calibrées.",
+      title: "Séquences multicanal : email, LinkedIn, téléphone, au bon moment.",
       description:
-        "Email, LinkedIn, téléphone. Chaque canal est activé au bon moment dans la séquence. Les relances sont espacées et contextualisées pour maintenir la pression sans agacer. L'ensemble est automatisé, mais chaque point de contact reste humain.",
+        "Chaque canal est activé dans le bon ordre, avec la bonne cadence. Email d'introduction, visite de profil LinkedIn, message court, relance contextualisée, appel de suivi. L'ensemble est automatisé sans sacrifier le registre humain de chaque message.",
     },
     {
-      title: "Nous configurons les outils pour que tout tourne sans intervention manuelle.",
+      title: "Infrastructure technique configurée pour protéger votre délivrabilité.",
       description:
-        "Lemlist, La Growth Machine, Apollo, Instantly : nous maîtrisons les outils de prospection automatisée. Configuration technique (domaines, warm-up, délivrabilité), intégration CRM, synchronisation des réponses. Vos commerciaux reçoivent des leads chauds, pas des tâches techniques.",
+        "Domaines d'envoi dédiés, warm-up progressif, vérification des emails, monitoring des rebonds. Nous configurons les outils (Lemlist, La Growth Machine, Apollo, Instantly) et les intégrons à votre CRM. Vos commerciaux reçoivent des leads chauds directement dans leur pipeline.",
     },
     {
-      title: "Nous mesurons chaque étape et optimisons semaine après semaine.",
+      title: "Pilotage continu : on optimise chaque semaine ce qui ne performe pas.",
       description:
-        "Taux d'ouverture, taux de réponse, taux de conversion en rendez-vous. Chaque métrique est suivie pour identifier ce qui fonctionne et ajuster ce qui ne performe pas. L'objectif est d'améliorer la machine en continu, pas de lancer et oublier.",
+        "Taux d'ouverture, taux de réponse, taux de conversion en rendez-vous. Chaque indicateur est suivi pour identifier les leviers et corriger ce qui freine. L'objectif est d'améliorer la machine en continu, pas de lancer une campagne et attendre.",
     },
   ],
 
@@ -104,23 +102,23 @@ export const coldOutreachProspection: ServiceContent = {
   scrollTitle: {
     hook: "Bref.",
     phrase: "Chez Vizion, on construit\ndes systèmes de prospection...",
-    adjectives: ["personnalisés", "automatisés", "et surtout rentables"],
+    adjectives: ["ciblés", "multicanal", "et mesurables"],
     showcaseImages: [],
   },
 
   // Bento featured cards
   bentoCards: {
-    sectionTitle: "Les spécificités de notre approche en prospection commerciale",
+    sectionTitle: "Ce qui différencie notre approche de la prospection classique",
     sectionDescription:
-      "Nous ne faisons pas de l'envoi en masse. Chaque campagne de prospection est un système complet : ciblage, copywriting, séquences multi-canal, automatisation et mesure de performance. L'objectif est de générer des conversations, pas du volume.",
+      "Nous ne faisons pas de l'envoi en masse. Chaque dispositif de prospection est un système complet : ciblage, copywriting, séquences multicanal, infrastructure technique, pilotage des résultats. L'objectif est d'ouvrir des conversations qualifiées, pas de remplir une boîte d'envoi.",
     image: {
-      src: "/images/services/cold-outreach-prospection/bento.avif",
-      alt: "Séquence de prospection multi-canal Vizion",
+      src: "/images/services/lead-nurturing/hero.avif",
+      alt: "Séquence de prospection multicanal Vizion",
     },
     technology: {
       title: "Les meilleurs outils d'outreach\nau service de votre pipeline.",
       description:
-        "Lemlist pour les séquences email personnalisées à l'échelle. La Growth Machine pour l'orchestration multi-canal. Apollo pour l'enrichissement de données. Instantly pour les campagnes à fort volume. Nous sélectionnons et configurons les outils adaptés à votre marché et à votre cible.",
+        "Lemlist pour les séquences email personnalisées. La Growth Machine pour l'orchestration multicanal. Apollo pour l'enrichissement de données. Instantly pour les campagnes à fort volume. Nous sélectionnons et configurons les outils adaptés à votre marché, votre cible et vos intégrations existantes.",
       logos: [
         "Lemlist",
         "La Growth Machine",
@@ -139,29 +137,29 @@ export const coldOutreachProspection: ServiceContent = {
       suffix: "%",
       label: "Taux de réponse moyen",
       description:
-        "Nos séquences de prospection B2B obtiennent en moyenne 8% de taux de réponse positif. Bien au-dessus des 1 à 2% des campagnes non personnalisées.",
+        "Nos séquences de prospection B2B obtiennent en moyenne 8% de taux de réponse positif, bien au-dessus des 1 à 2% des approches non personnalisées.",
     },
     noTemplate: {
-      title: "Chaque séquence est rédigée sur mesure, sans template copier-coller",
+      title: "Chaque séquence est rédigée sur mesure, sans copier-coller",
       description:
-        "Pas de messages génériques envoyés à 10 000 contacts. Chaque accroche, chaque relance est écrite pour votre cible spécifique. La personnalisation est le levier principal du taux de réponse.",
+        "Pas de templates envoyés à 10 000 contacts. Chaque accroche est écrite pour un segment précis. La personnalisation à l'échelle reste le levier principal du taux de réponse.",
     },
     widgets: {
-      title: "Des approches adaptées à chaque segment de votre cible",
+      title: "Un mix de canaux adapté à chaque segment",
       description:
-        "Chaque canal et chaque format est choisi en fonction du persona ciblé et de son comportement habituel de communication.",
+        "Email, LinkedIn, téléphone, vidéo personnalisée : le bon canal pour le bon interlocuteur, au bon moment dans la séquence.",
       tags: [
         "Cold email",
         "LinkedIn outreach",
         "Relance téléphonique",
-        "Séquence multi-canal",
-        "Message vocal",
+        "Séquence multicanal",
+        "Vidéo personnalisée",
       ],
     },
     integrations: {
-      title: "Votre prospection est connectée à votre CRM et à vos commerciaux",
+      title: "Votre prospection connectée à votre CRM et vos commerciaux",
       description:
-        "Chaque réponse positive, chaque rendez-vous pris remonte automatiquement dans votre CRM. Vos commerciaux reçoivent les leads qualifiés sans intervention manuelle.",
+        "Chaque réponse positive remonte automatiquement dans votre CRM. Vos commerciaux reçoivent les leads qualifiés sans intervention manuelle, prêts à engager la conversation commerciale.",
       logos: [
         "HubSpot",
         "Salesforce",
@@ -175,27 +173,26 @@ export const coldOutreachProspection: ServiceContent = {
       ],
     },
     growth: {
-      title: "Vous suivez chaque indicateur de votre machine de prospection",
+      title: "Chaque indicateur suivi pour optimiser en continu",
       description:
-        "Taux d'ouverture, taux de réponse, taux de conversion en rendez-vous, nombre de leads qualifiés par semaine. Chaque métrique est suivie pour optimiser vos séquences en continu.",
+        "Taux d'ouverture, taux de réponse, taux de conversion en rendez-vous, volume de leads qualifiés par semaine. On mesure pour améliorer, pas pour rapporter.",
     },
   },
 
   // Process
-  processTitle:
-    "Une prospection commerciale avec Vizion : comment ça se passe ?",
+  processTitle: "Comment on construit votre dispositif de prospection multicanal",
   processSubtitle:
-    "Un processus en 5 étapes pour construire une machine de prospection qui génère des rendez-vous qualifiés chaque semaine, sans mobiliser vos commerciaux sur les tâches répétitives.",
+    "Cinq étapes pour passer d'une prospection artisanale à un système qui génère des rendez-vous qualifiés chaque semaine, sans mobiliser vos commerciaux sur les tâches répétitives.",
   processSteps: [
     {
-      title: "Ciblage et constitution de la base de prospects",
+      title: "Cadrage stratégique et ciblage",
       description:
-        "Nous définissons vos personas prioritaires et construisons (ou enrichissons) votre base de prospects qualifiés. Poste, secteur, taille d'entreprise, signaux d'achat : chaque critère est validé avec vous. La base est nettoyée, dédupliquée et vérifiée avant le moindre envoi.",
+        "Nous définissons avec vous les personas prioritaires et les critères de ciblage : poste, secteur, taille d'entreprise, signaux d'achat, zone géographique. La base de prospects est construite ou enrichie, nettoyée, dédupliquée et vérifiée avant le premier envoi.",
       duration: "1 semaine",
       deliverables: [
-        "Personas et critères de ciblage",
+        "Personas et critères de ciblage validés",
         "Base de prospects qualifiés",
-        "Vérification des emails",
+        "Vérification et enrichissement des emails",
         "Segmentation par priorité",
         "Import dans l'outil d'outreach",
       ],
@@ -203,10 +200,10 @@ export const coldOutreachProspection: ServiceContent = {
     {
       title: "Copywriting des séquences et configuration technique",
       description:
-        "Nous rédigeons les séquences de prospection : accroches personnalisées, corps de message, relances, appels à l'action. En parallèle, nous configurons l'infrastructure technique : domaines d'envoi, warm-up, délivrabilité, intégration CRM. Tout est prêt pour un lancement propre.",
+        "Nous rédigeons les séquences de prospection : accroches personnalisées, corps de message, relances, appels à l'action. En parallèle, nous configurons l'infrastructure : domaines d'envoi, warm-up, délivrabilité, intégration CRM. Tout est prêt pour un lancement sans risque.",
       duration: "1 semaine",
       deliverables: [
-        "Séquences email rédigées",
+        "Séquences email rédigées et validées",
         "Messages LinkedIn rédigés",
         "Scripts d'appel téléphonique",
         "Configuration domaines et warm-up",
@@ -214,9 +211,9 @@ export const coldOutreachProspection: ServiceContent = {
       ],
     },
     {
-      title: "Lancement et premiers envois",
+      title: "Lancement et premiers résultats",
       description:
-        "Les séquences sont lancées progressivement pour protéger la délivrabilité. Nous surveillons les taux d'ouverture, de réponse et de rebond quotidiennement. Les premières réponses sont qualifiées et transmises à vos commerciaux pour prise de rendez-vous.",
+        "Les séquences sont activées progressivement pour protéger la délivrabilité. Nous surveillons les métriques quotidiennement et qualifions les premières réponses avant transmission à vos commerciaux.",
       duration: "2 semaines",
       deliverables: [
         "Séquences activées",
@@ -226,9 +223,9 @@ export const coldOutreachProspection: ServiceContent = {
       ],
     },
     {
-      title: "Optimisation des messages et des séquences",
+      title: "Analyse et optimisation",
       description:
-        "Analyse des premiers résultats : quels messages performent, quels segments répondent, quels canaux convertissent. Nous ajustons le copywriting, la cadence des relances et le ciblage pour améliorer le taux de réponse et la qualité des rendez-vous obtenus.",
+        "Nous analysons les premiers résultats : quels messages performent, quels segments répondent, quels canaux convertissent. Copywriting, cadence, ciblage : tout est ajusté pour améliorer le taux de réponse et la qualité des rendez-vous.",
       duration: "2 semaines",
       deliverables: [
         "Tests A/B sur les accroches",
@@ -241,13 +238,13 @@ export const coldOutreachProspection: ServiceContent = {
     {
       title: "Scaling et pilotage continu",
       description:
-        "Les séquences qui fonctionnent sont déployées à plus grande échelle. Nouveaux segments, nouveaux messages, nouveaux canaux. Nous pilotons la machine de prospection en continu pour maintenir un flux régulier de rendez-vous qualifiés dans votre pipeline.",
+        "Les séquences validées sont déployées à plus grande échelle : nouveaux segments, nouveaux angles, nouveaux canaux. Nous pilotons le dispositif en continu pour maintenir un flux régulier de rendez-vous qualifiés dans votre pipeline.",
       duration: "Continu",
       deliverables: [
         "Extension à de nouveaux segments",
         "Nouveaux messages et variantes",
         "Rapport mensuel de performance",
-        "Réunion de pilotage",
+        "Réunion de pilotage mensuelle",
         "Recommandations stratégiques",
       ],
     },
@@ -255,55 +252,55 @@ export const coldOutreachProspection: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/battlecards-case-studies/hero.avif",
     surtitre: "Nos engagements",
-    sectionTitle:
-      "Pourquoi choisir Vizion\npour votre prospection commerciale ?",
+    sectionTitle: "Pourquoi confier votre prospection à Vizion",
     sectionDescription:
-      "Nous ne faisons pas de l'envoi en masse. Chaque séquence est personnalisée, chaque prospect est qualifié, et chaque résultat est mesuré. L'objectif est de remplir votre pipeline, pas votre boîte d'envoi.",
+      "Nous ne faisons pas de volume pour le volume. Chaque campagne est conçue pour générer des conversations utiles, avec les bons interlocuteurs, dans le bon registre.",
     cardSurtitre: "Ce que nous garantissons",
-    cardTitle: "Des engagements\ncentrés sur les rendez-vous qualifiés",
+    cardTitle: "Des engagements centrés sur la qualité des rendez-vous",
     cardDescription:
-      "Chaque campagne de prospection est pilotée avec rigueur. Pas de volume pour le volume, des conversations qui débouchent sur du business.",
+      "Chaque dispositif est piloté avec rigueur. Pas de spam, pas de mass mailing, des conversations qui débouchent sur du business.",
     guarantees: [
       {
         icon: "UserCheck",
-        title: "Des messages personnalisés, jamais de templates envoyés en masse",
+        title: "Des messages personnalisés, jamais des templates recyclés",
         description:
-          "Chaque accroche est écrite pour un segment précis. Nous personnalisons à l'échelle sans sacrifier la qualité du message. Vos prospects sentent qu'on leur parle, pas qu'on leur vend.",
+          "Chaque accroche est écrite pour un segment précis. Nous personnalisons à l'échelle sans sacrifier la qualité. Vos prospects sentent qu'on leur parle, pas qu'on leur vend.",
       },
       {
         icon: "Shield",
         title: "Une délivrabilité protégée et surveillée en permanence",
         description:
-          "Domaines dédiés, warm-up progressif, monitoring des taux de rebond. Nous protégeons votre réputation d'envoi pour que vos messages arrivent en boîte de réception, pas en spam.",
+          "Domaines dédiés, warm-up progressif, monitoring des taux de rebond. Nous protégeons votre réputation d'envoi pour que vos messages arrivent en boîte de réception.",
       },
       {
         icon: "Handshake",
         title: "Des leads qualifiés transmis à vos commerciaux, pas des contacts froids",
         description:
-          "Chaque réponse positive est qualifiée avant d'être transmise. Vos commerciaux reçoivent des prospects intéressés et informés, prêts pour une conversation commerciale.",
+          "Chaque réponse positive est qualifiée avant transmission. Vos commerciaux reçoivent des prospects intéressés, informés et prêts pour une conversation commerciale.",
       },
     ],
     featureCard: {
-      surtitre: "Notre vraie différence ?",
-      title: "Une prospection qui respecte\nvos prospects et votre marque",
+      surtitre: "Notre vraie différence",
+      title: "Une prospection qui respecte vos prospects et votre marque",
       description:
-        "Stratèges commerciaux et experts en copywriting travaillent ensemble pour que chaque message génère de la valeur, pas de l'agacement.",
+        "Chaque message est conçu pour créer de la valeur dès le premier contact. Pas d'agacement, pas de pression excessive : une approche qui ouvre des conversations durables.",
       linkText: "Discuter de votre prospection",
       linkHref: "/contact",
     },
   },
 
   // Testimonials
-  testimonialsTitle: "Ils nous ont confié leur prospection outbound",
+  testimonialsTitle: "Ils nous ont confié leur prospection commerciale",
   testimonialsSubtitle:
-    "Consultez les retours d'expérience de dirigeants et responsables commerciaux qui ont fait appel à Vizion pour structurer et piloter leur prospection B2B.",
+    "Retours d'expérience de dirigeants et responsables commerciaux qui ont fait appel à Vizion pour structurer et piloter leur prospection B2B.",
   testimonials: [
     {
       quote:
         "12 rendez-vous qualifiés le premier mois, sans mobiliser nos commerciaux.",
       detail:
-        "Vizion a construit nos séquences de prospection de A à Z : ciblage, copywriting, automatisation. Nos commerciaux ont reçu des rendez-vous qualifiés dans leur agenda sans passer une heure sur la recherche de contacts ou la rédaction de messages.",
+        "Vizion a construit nos séquences de prospection de A à Z : ciblage, copywriting, automatisation. Nos commerciaux ont reçu des rendez-vous dans leur agenda sans passer une heure sur la recherche de contacts ou la rédaction de messages.",
       author: "Directeur commercial",
       role: "Directeur commercial",
       company: "Client Vizion",
@@ -314,7 +311,7 @@ export const coldOutreachProspection: ServiceContent = {
       quote:
         "Un taux de réponse de 11% sur LinkedIn, bien au-dessus de nos précédentes tentatives.",
       detail:
-        "Nous avions essayé la prospection LinkedIn en interne avec des résultats décevants. Vizion a repensé notre approche : messages courts, personnalisés, avec un angle problème. Les réponses ont suivi, et la qualité des conversations a changé.",
+        "Nous avions essayé la prospection LinkedIn en interne avec des résultats décevants. Vizion a repensé notre approche : messages courts, personnalisés, angle problème. Les réponses ont suivi et la qualité des conversations a changé.",
       author: "CEO",
       role: "Dirigeant",
       company: "Client Vizion",
@@ -322,10 +319,9 @@ export const coldOutreachProspection: ServiceContent = {
       rating: 5,
     },
     {
-      quote:
-        "La machine tourne toute seule, nous n'avons qu'à prendre les rendez-vous.",
+      quote: "La machine tourne, on n'a plus qu'à prendre les rendez-vous.",
       detail:
-        "Ce que j'apprécie chez Vizion, c'est que tout est automatisé et propre. Les séquences tournent, les relances partent au bon moment, et les réponses arrivent directement dans notre CRM. On se concentre sur la vente, pas sur la logistique.",
+        "Les séquences tournent, les relances partent au bon moment, les réponses arrivent directement dans notre CRM. On se concentre sur la vente, pas sur la logistique de prospection.",
       author: "Responsable développement",
       role: "Responsable développement",
       company: "Client Vizion",
@@ -335,85 +331,101 @@ export const coldOutreachProspection: ServiceContent = {
   ],
 
   // FAQ
-  faqTitle: "Des questions sur la prospection commerciale B2B ?",
+  faqTitle: "Questions fréquentes sur la prospection multicanal B2B",
   faqs: [
     {
-      question: "Est-ce que le cold emailing est légal en B2B ?",
+      question: "Le cold emailing est-il légal en B2B ?",
       answer:
-        "Oui. En B2B, le cold emailing est autorisé sous certaines conditions. Le RGPD impose un intérêt légitime, une transparence sur l'identité de l'expéditeur et un lien de désinscription fonctionnel. Nous respectons scrupuleusement ces règles et configurons chaque campagne pour être conforme, y compris la gestion des opt-out.",
+        "Oui, en B2B. Le RGPD autorise la prospection commerciale par email sous conditions d'intérêt légitime, de transparence sur l'expéditeur et de lien de désinscription fonctionnel. Nous respectons ces règles sur chaque campagne et configurons la gestion des opt-out dès le départ.",
     },
     {
-      question: "Combien de rendez-vous une prospection commerciale B2B peut-elle générer par mois ?",
+      question: "Combien de rendez-vous peut-on générer chaque mois ?",
       answer:
-        "Le volume dépend de votre marché, de votre cible et de votre offre. En moyenne, nos campagnes génèrent entre 8 et 20 rendez-vous qualifiés par mois pour un segment de 500 à 1 000 prospects contactés. Les premiers résultats arrivent dès les deux premières semaines, mais la machine atteint son rythme optimal après 4 à 6 semaines.",
+        "Cela dépend de votre marché, de votre cible et de votre offre. En moyenne, nos campagnes génèrent entre 8 et 20 rendez-vous qualifiés par mois pour un segment de 500 à 1 000 prospects contactés. Les premiers résultats apparaissent dans les deux premières semaines, la cadence s'installe après 4 à 6 semaines.",
     },
     {
-      question: "Quels outils utilisez-vous pour la prospection commerciale ?",
+      question: "Faut-il avoir une base de prospects ou vous la construisez ?",
       answer:
-        "Nous utilisons principalement Lemlist, La Growth Machine, Apollo et Instantly pour les séquences d'envoi. LinkedIn Sales Navigator et Pharow pour le ciblage. Dropcontact pour l'enrichissement et la vérification des emails. Le choix des outils dépend de votre cible, de votre budget et de vos intégrations existantes.",
-    },
-    {
-      question: "Faut-il fournir une base de prospects ou vous la construisez ?",
-      answer:
-        "Nous pouvons travailler avec votre base existante (après nettoyage et enrichissement) ou construire une base complète depuis zéro. Dans les deux cas, nous vérifions chaque contact : validité de l'email, pertinence du poste, conformité avec vos critères de ciblage. La qualité de la base conditionne tout le reste.",
+        "Les deux sont possibles. Nous pouvons enrichir et nettoyer votre base existante, ou en construire une depuis zéro selon vos critères de ciblage. Dans tous les cas, chaque contact est vérifié : validité de l'email, pertinence du poste, conformité avec vos personas.",
     },
     {
       question: "Comment protégez-vous la réputation de notre domaine d'envoi ?",
       answer:
-        "Nous utilisons des domaines d'envoi dédiés (séparés de votre domaine principal) avec un warm-up progressif de 2 à 3 semaines. Les volumes d'envoi sont montés graduellement, les taux de rebond surveillés quotidiennement, et les listes nettoyées en continu. Votre domaine principal n'est jamais exposé.",
+        "Nous utilisons des domaines dédiés séparés de votre domaine principal, avec un warm-up progressif de 2 à 3 semaines. Les volumes montent graduellement, les taux de rebond sont surveillés quotidiennement et les listes nettoyées en continu. Votre domaine principal n'est jamais exposé.",
     },
     {
-      question: "Quelle est la différence entre votre prospection commerciale et du mass mailing ?",
+      question: "Quelle est la différence entre prospection multicanal et mass mailing ?",
       answer:
-        "Un outil de mass mailing envoie le même message à des milliers de contacts. Notre approche combine ciblage fin, personnalisation à l'échelle, séquences multi-canal (email, LinkedIn, téléphone) et optimisation continue. Le résultat : des taux de réponse 4 à 5 fois supérieurs et des rendez-vous avec les bons interlocuteurs.",
+        "Un outil de mass mailing envoie le même message à des milliers de contacts. Notre approche combine ciblage fin, personnalisation à l'échelle, séquences multicanal (email, LinkedIn, téléphone) et optimisation continue. Les taux de réponse sont 4 à 5 fois supérieurs, et les rendez-vous sont avec les bons interlocuteurs.",
     },
     {
-      question: "Peut-on combiner le cold outreach avec nos campagnes publicitaires ?",
+      question: "Peut-on combiner la prospection multicanal avec de la publicité ?",
       answer:
-        "Absolument. C'est même recommandé. La publicité chauffe votre audience (notoriété, retargeting), et le cold outreach ouvre la conversation directe. Un prospect qui a vu votre contenu LinkedIn Ads avant de recevoir un email personnalisé est beaucoup plus réceptif. Nous coordonnons les deux canaux pour maximiser l'impact.",
+        "Oui, et c'est même recommandé. La publicité installe la notoriété et chauffe l'audience. La prospection ouvre la conversation directe. Un prospect qui a vu votre contenu LinkedIn Ads avant de recevoir un message personnalisé est beaucoup plus réceptif. Nous coordonnons les deux canaux pour maximiser l'impact.",
+    },
+    {
+      question: "Quels outils utilisez-vous pour la prospection ?",
+      answer:
+        "Lemlist et Instantly pour les séquences email. La Growth Machine pour l'orchestration multicanal. Apollo, Pharow et Clay pour le ciblage et l'enrichissement. Dropcontact pour la vérification des emails. LinkedIn Sales Navigator pour le ciblage. Le choix dépend de votre cible, votre budget et vos intégrations existantes.",
     },
   ],
 
   // Related services
-  relatedServicesTitle: "Vous voulez aller plus loin que la prospection outbound ?",
+  relatedServicesTitle: "Pour aller plus loin que la prospection outbound",
   relatedServicesSubtitle:
-    "Le cold outreach remplit votre pipeline. Ces services complètent le dispositif pour convertir plus et mieux.",
+    "La prospection multicanal remplit votre pipeline. Ces services complètent le dispositif pour convertir plus et mieux.",
   relatedServices: [
+    {
+      slug: "growth-marketing",
+      icon: "TrendingUp",
+      title: "Growth Marketing B2B",
+      description:
+        "La prospection outbound est l'un des canaux d'acquisition que nous activons. Découvrez comment Vizion combine les leviers pour générer une acquisition prévisible et multi-canaux.",
+      href: "/services/growth-marketing",
+    },
+    {
+      slug: "sales-enablement",
+      icon: "Handshake",
+      title: "Activation des Ventes B2B",
+      description:
+        "La prospection ouvre les portes. L'activation des ventes arme vos commerciaux pour convertir chaque opportunité en client. Découvrez notre approche complète du closing B2B.",
+      href: "/services/sales-enablement",
+    },
     {
       slug: "deploiement-crm",
       icon: "Database",
-      title: "Deploiement CRM",
-      description:
-        "La qualite de votre prospection depend de la qualite de vos outils. Nous deploiement et configurons votre CRM pour centraliser vos contacts et piloter votre pipeline commercial.",
-      href: "/services/deploiement-crm",
-    },
-    {
-      slug: "linkedin-for-growth",
-      icon: "Users",
-      title: "LinkedIn for Growth",
-      description:
-        "Le cold outreach ouvre des conversations. Une présence LinkedIn forte installe votre crédibilité auprès de vos cibles avant même le premier message. Les deux approches se renforcent mutuellement.",
-      href: "/services/linkedin-for-growth",
-    },
-    {
-      slug: "deploiement-crm",
-      icon: "Settings",
       title: "Déploiement CRM",
       description:
-        "Vos leads de prospection arrivent. Encore faut-il les suivre, les relancer et les convertir. Nous déployons et configurons votre CRM pour que chaque opportunité soit tracée du premier contact au closing.",
+        "Vos leads de prospection arrivent. Encore faut-il les suivre, les relancer et les convertir. Nous déployons votre CRM pour que chaque opportunité soit tracée du premier contact au closing.",
       href: "/services/deploiement-crm",
+    },
+    {
+      slug: "strategie-personal-branding",
+      icon: "User",
+      title: "Stratégie de Personal Branding",
+      description:
+        "La prospection ouvre des conversations. Une présence LinkedIn forte installe votre crédibilité avant même le premier message. Les deux approches se renforcent mutuellement.",
+      href: "/services/strategie-personal-branding",
+    },
+    {
+      slug: "campagnes-publicitaires",
+      icon: "Zap",
+      title: "Campagnes publicitaires",
+      description:
+        "Combinez prospection directe et publicité pour multiplier les points de contact avec vos cibles. La notoriété générée par les ads augmente les taux de réponse de votre outreach.",
+      href: "/services/campagnes-publicitaires",
     },
   ],
 
   // CTA intermédiaires
   inlineCTAs: {
     afterTestimonials: {
-      text: "Vous voulez remplir votre pipeline sans mobiliser vos commerciaux ?",
+      text: "Vous voulez un pipeline qui ne dépend plus des bonnes volontés ?",
       buttonText: "Discuter de votre prospection",
       href: "/contact",
     },
     afterProcess: {
-      text: "Prêt à lancer une machine de prospection qui tourne chaque semaine ?",
+      text: "Prêt à construire un système de prospection qui tourne chaque semaine ?",
       buttonText: "Lancer votre projet",
       href: "/contact",
     },
@@ -422,7 +434,7 @@ export const coldOutreachProspection: ServiceContent = {
   // CTA final
   ctaTitle: "Votre pipeline commercial ne devrait pas dépendre du hasard",
   ctaDescription:
-    "Premier échange sans engagement. Nous analysons votre cible et vous proposons une stratégie de prospection sur mesure.",
+    "Premier échange sans engagement. Nous analysons votre cible et construisons une stratégie de prospection multicanal adaptée à votre marché.",
   ctaButtonText: "Discuter de votre prospection",
   ctaButtonLink: "/contact",
 };

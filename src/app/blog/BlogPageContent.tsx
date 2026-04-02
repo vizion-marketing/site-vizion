@@ -38,9 +38,9 @@ export interface BlogListPost {
 const categories = [
   "Tous",
   "Stratégie Marketing",
-  "Product Marketing",
+  "Marketing Produit",
   "Acquisition B2B",
-  "Sales Enablement",
+  "Activation des Ventes",
   "Transformation Digitale",
 ];
 
@@ -146,7 +146,7 @@ export function BlogPageContent({ posts }: BlogPageContentProps) {
                   </span>
                 </div>
 
-                <h1 className="font-[var(--font-body)] font-[900] text-[56px] md:text-[80px] lg:text-[100px] leading-[0.9] tracking-tight text-white mb-4">
+                <h1 className="font-[var(--font-body)] font-[900] text-[56px] md:text-[80px] lg:text-[100px] leading-[0.95] tracking-tight text-white mb-4">
                   <span className="relative inline-block">
                     <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[14px] bg-accent -z-10"></span>
                     Blog

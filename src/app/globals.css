@@ -950,6 +950,23 @@ h3, .h3 {
   animation-play-state: paused;
 }
 
+@keyframes scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-scroll-up {
+  animation: scroll-up 18s linear infinite;
+}
+
+.animate-scroll-up-slow {
+  animation: scroll-up 24s linear infinite;
+}
+
+.animate-scroll-up-fast {
+  animation: scroll-up 13s linear infinite;
+}
+
 /* Bar chart grow animation */
 @keyframes bar-grow {
   0% {
@@ -1198,6 +1215,10 @@ html, body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.animate-moon-rotate {
+  animation: rotate-glow 90s linear infinite;
 }
 
 .glow-border-container {

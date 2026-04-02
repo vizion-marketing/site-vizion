@@ -3,8 +3,9 @@ import {
   ALL_POSTS_QUERY,
   POST_BY_SLUG_QUERY,
   ALL_POST_SLUGS_QUERY,
+  MENU_POSTS_QUERY,
 } from "../../../sanity/lib/queries";
-import type { Post } from "../../../sanity/lib/types";
+import type { Post, MenuPost } from "../../../sanity/lib/types";
 import { calculateReadingTime } from "../portable-text-utils";
 
 function enrichPost(post: Post): Post {
@@ -39,6 +40,10 @@ export async function getAllPostSlugs(): Promise<string[]> {
 export async function getLatestPosts(limit: number = 3): Promise<Post[]> {
   const posts = await getAllPosts();
   return posts.slice(0, limit);
+}
+
+export async function getMenuPosts(): Promise<MenuPost[]> {
+  return sanityFetch<MenuPost[]>(MENU_POSTS_QUERY, {}, { tags: ["posts"] });
 }
 
 export async function getPostsByTags(

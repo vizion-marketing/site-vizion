@@ -1,4 +1,4 @@
-import type { CityPageData } from "./types";
+﻿import type { CityPageData } from "./types";
 import {
   SITE_URL, MAP_EMBED_URL, VILLES_BADGES,
   buildOrganizationSchema, buildFaqSchema, buildBreadcrumbSchema,
@@ -70,7 +70,7 @@ const content: CityPageData["content"] = {
     baseline:
       "Les entreprises industrielles de l'Aveyron vendent sur des cycles longs à des acheteurs exigeants. Leur marketing doit être à la hauteur de cette complexité. Vizion structure l'audit stratégique et les outils de vente des PME aveyronnaises pour raccourcir les cycles et augmenter le taux de conversion.",
     cta: {
-      primary: { text: "Échanger avec un fondateur", href: "/contact" },
+      primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",

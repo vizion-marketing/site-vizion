@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock } from "lucide-react";
-import { homeContent } from "@/content/home";
+import { ArrowUpRight, Clock } from "lucide-react";
 
 interface BlogSectionProps {
   articles: Array<{
@@ -49,12 +48,12 @@ export function BlogSection({ articles, surtitre, h2, description, ctaText }: Bl
             <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
               <div className="w-2 h-2 rounded-full bg-accent" />
               <span className="text-[10px] sm:text-[11px] font-light tracking-[0.12em] text-muted uppercase">
-                {surtitre ?? homeContent.blog.surtitre}
+                {surtitre ?? "Ressources"}
               </span>
             </div>
 
             <h2 className="font-heading font-medium text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-primary">
-              {h2 ?? homeContent.blog.h2}
+              {h2 ?? "Nos analyses marketing"}
             </h2>
 
             <p className="text-muted text-[15px] sm:text-base font-[var(--font-body)] leading-relaxed mt-4 sm:mt-5">
@@ -72,8 +71,8 @@ export function BlogSection({ articles, surtitre, h2, description, ctaText }: Bl
               href="/blog"
               className="group inline-flex items-center gap-2 text-[14px] font-[var(--font-body)] font-semibold text-primary hover:text-primary transition-colors"
             >
-              {ctaText ?? homeContent.blog.ctaText}
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              {ctaText ?? "Lire nos articles marketing B2B"}
+              <ArrowUpRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>

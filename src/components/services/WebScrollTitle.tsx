@@ -290,7 +290,7 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
           {/* Phase 1: Hook */}
           <span
             ref={brefRef}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-medium text-[80px] sm:text-[120px] lg:text-[180px] leading-none tracking-[-0.04em] text-primary select-none"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-medium text-[80px] sm:text-[120px] lg:text-[180px] leading-[1.05] tracking-[-0.04em] text-primary select-none"
           >
             {content.hook}
           </span>
@@ -317,7 +317,7 @@ export function WebScrollTitle({ content }: WebScrollTitleProps) {
               ref={(el) => {
                 wordRefs.current[i] = el;
               }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-normal text-[44px] sm:text-[68px] lg:text-[96px] leading-none tracking-[-0.04em] bg-accent text-black px-6 sm:px-8 py-2 sm:py-3 whitespace-nowrap"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 font-heading font-normal text-[44px] sm:text-[68px] lg:text-[96px] leading-[1.05] tracking-[-0.04em] bg-accent text-black px-6 sm:px-8 py-2 sm:py-3 whitespace-nowrap"
               style={{ opacity: 0 }}
             >
               {word}

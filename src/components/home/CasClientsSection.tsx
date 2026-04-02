@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, Quote, Play, Pause } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Quote, Play, Pause } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -288,7 +288,7 @@ export function CasClientsSection({ cases, surtitreText, titleText }: CasClients
                 )}
                 {currentCase.href && (
                   <Link href={currentCase.href} className="inline-flex items-center gap-2 text-primary text-[14px] sm:text-[15px] font-semibold font-[var(--font-body)] hover:gap-3 transition-all">
-                    Découvrir {currentCase.company} <ArrowRight size={16} />
+                    Découvrir {currentCase.company} <ArrowUpRight size={16} />
                   </Link>
                 )}
               </div>

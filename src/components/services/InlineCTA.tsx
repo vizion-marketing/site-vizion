@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface InlineCTAProps {
@@ -31,7 +31,7 @@ export function InlineCTA({
         className="group inline-flex items-center gap-2 bg-accent text-black font-medium px-6 py-3 hover:bg-accent/90 hover:scale-[1.02] active:scale-[0.97] transition-all duration-200 whitespace-nowrap shrink-0"
       >
         {buttonText}
-        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
       </Link>
     </motion.div>
   );

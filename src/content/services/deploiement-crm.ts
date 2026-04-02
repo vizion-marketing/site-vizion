@@ -42,7 +42,7 @@ export const deploiementCrm: ServiceContent = {
     title:
       "Votre CRM devrait être votre meilleur outil de pilotage. En réalité, personne ne l'utilise.",
     paragraphs: [
-      "Vous avez investi dans un CRM. Vos équipes l'ouvrent par obligation, remplissent le minimum et retournent à leurs tableurs Excel. Le problème n'est pas l'outil. C'est la façon dont il a été déployé.",
+      "Vos commerciaux ouvrent le CRM par obligation, remplissent le minimum requis et retournent à leurs tableurs Excel. Votre pipeline est vide ou peu fiable. Vos prévisions reposent sur l'instinct de chaque commercial, pas sur des données. Un outil installé n'est pas un outil déployé.",
     ],
     statements: [
       {
@@ -114,7 +114,7 @@ export const deploiementCrm: ServiceContent = {
     sectionDescription:
       "Nous ne vendons pas de licences et nous ne sommes pas revendeurs. Nous configurons votre CRM pour qu'il serve votre stratégie commerciale, avec une expertise terrain qui fait la différence entre un outil déployé et un outil adopté.",
     image: {
-      src: "/images/services/deploiement-crm/bento.avif",
+      src: "/images/services/creation-workflows/hero.avif",
       alt: "Configuration CRM par Vizion",
     },
     technology: {
@@ -255,6 +255,7 @@ export const deploiementCrm: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/pitch-decks-argumentaires/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour déployer votre CRM ?",
@@ -340,7 +341,7 @@ export const deploiementCrm: ServiceContent = {
     {
       question: "Combien coûte le déploiement d'un CRM B2B ?",
       answer:
-        "Un déploiement complet (audit, configuration, intégrations, formation) se situe généralement entre 5 000 et 15 000 euros selon la complexité de votre cycle de vente, le nombre d'utilisateurs et les intégrations nécessaires. Ce budget n'inclut pas la licence du CRM lui-même. Nous établissons un devis précis après l'audit initial.",
+        "Le budget d'un déploiement CRM varie selon la complexité de votre cycle de vente, le nombre d'utilisateurs et les intégrations à réaliser. Nous construisons une proposition sur mesure après un premier échange de 30 minutes, sans engagement de votre part.",
     },
     {
       question: "Quel CRM recommandez-vous pour une PME B2B ?",
@@ -379,6 +380,14 @@ export const deploiementCrm: ServiceContent = {
   relatedServicesSubtitle:
     "Un CRM bien déployé, c'est la fondation. Ces services complémentaires maximisent le retour sur investissement de votre outil.",
   relatedServices: [
+    {
+      slug: "transformation-digitale",
+      icon: "Monitor",
+      title: "Transformation Digitale B2B",
+      description:
+        "Le CRM est le pilier de votre transformation digitale. Découvrez comment Vizion déploie l'ensemble des outils (CRM, workflows, IA) pour structurer et accélérer votre activité.",
+      href: "/services/transformation-digitale",
+    },
     {
       slug: "lead-nurturing",
       icon: "Mail",

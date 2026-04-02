@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { Zap, Ban, Blocks, Plug, BarChart3, ArrowRight } from "lucide-react";
+import { Zap, Ban, Blocks, Plug, BarChart3, ArrowUpRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -339,7 +339,7 @@ export function WebFeaturesBento({ cards }: WebFeaturesBentoProps) {
                     className="inline-flex items-center gap-2 text-[13px] sm:text-[14px] font-medium text-accent hover:text-white transition-colors duration-300 group/cta mt-auto"
                   >
                     Discuter de votre projet
-                    <ArrowRight size={14} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
+                    <ArrowUpRight size={14} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
                   </a>
                 </div>
                 {/* Bar chart UI */}

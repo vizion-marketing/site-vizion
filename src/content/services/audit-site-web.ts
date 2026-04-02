@@ -41,7 +41,7 @@ export const auditSiteWeb: ServiceContent = {
     title:
       "Votre site est en ligne depuis des mois. Mais les résultats ne suivent pas.",
     paragraphs: [
-      "Vous avez investi dans un site web, parfois plusieurs fois. Pourtant, le trafic stagne, les leads sont rares et vos commerciaux ne s'en servent pas. Le problème n'est pas votre offre, c'est que personne n'a pris le temps de diagnostiquer ce qui ne fonctionne pas.",
+      "Votre site existe, il est en ligne, vos équipes l'ont validé. Mais le trafic stagne, les leads sont rares et vos commerciaux ne savent même pas quoi en faire. Sans diagnostic précis, chaque nouvelle action ne fait que s'ajouter à un socle qui ne fonctionne pas.",
     ],
     statements: [
       {
@@ -113,7 +113,7 @@ export const auditSiteWeb: ServiceContent = {
     sectionDescription:
       "Nous ne livrons pas un rapport automatisé de 200 pages. Chaque audit est réalisé manuellement par nos experts, contextualisé à votre marché et priorisé selon vos objectifs commerciaux.",
     image: {
-      src: "/images/services/audit-site-web/bento.avif",
+      src: "/images/services/site-web/hero.avif",
       alt: "Audit de site web Vizion",
     },
     technology: {
@@ -247,6 +247,7 @@ export const auditSiteWeb: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/pitch-decks-argumentaires/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour auditer votre site web ?",
@@ -332,7 +333,7 @@ export const auditSiteWeb: ServiceContent = {
     {
       question: "Combien coûte un audit de site web B2B ?",
       answer:
-        "Un audit complet (5 dimensions) se situe entre 3 000 € et 6 000 € selon la taille du site et la profondeur d'analyse souhaitée. Un audit ciblé sur une seule dimension (SEO ou UX par exemple) démarre à 1 500 €. Le périmètre exact est défini après un premier échange.",
+        "Le périmètre d'un audit dépend de la taille de votre site, des dimensions à analyser et de vos priorités. Nous n'appliquons pas de tarif fixe : la proposition est construite sur mesure après un premier échange de 30 minutes, sans engagement.",
     },
     {
       question: "Quel est le délai pour réaliser un audit de site web ?",
@@ -371,6 +372,14 @@ export const auditSiteWeb: ServiceContent = {
   relatedServicesSubtitle:
     "L'audit identifie les problèmes. Ces services les résolvent.",
   relatedServices: [
+    {
+      slug: "strategie",
+      icon: "Compass",
+      title: "Stratégie Marketing B2B",
+      description:
+        "L'audit de votre site s'inscrit dans une démarche stratégique globale. Découvrez comment Vizion structure la croissance marketing et commerciale des entreprises B2B.",
+      href: "/services/strategie",
+    },
     {
       slug: "creation-refonte-site-web",
       icon: "Globe",

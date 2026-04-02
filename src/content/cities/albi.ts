@@ -1,4 +1,4 @@
-import type { CityPageData } from "./types";
+﻿import type { CityPageData } from "./types";
 import {
   SITE_URL, MAP_EMBED_URL, VILLES_BADGES,
   buildOrganizationSchema, buildFaqSchema, buildBreadcrumbSchema,
@@ -75,7 +75,7 @@ const content: CityPageData["content"] = {
     baseline:
       "Votre savoir-faire est reconnu dans le Tarn, mais vos commerciaux peinent à le traduire en arguments qui déclenchent la signature. Vizion structure le positionnement et les outils de vente des PME tarnaises pour que chaque interaction commerciale porte le même message, du premier contact au closing.",
     cta: {
-      primary: { text: "Échanger avec un fondateur", href: "/contact" },
+      primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",

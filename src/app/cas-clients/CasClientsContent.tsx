@@ -101,13 +101,20 @@ export function CasClientsContent({ clients, caseStudies, featuredClient, initia
               </p>
 
               <div className="flex flex-wrap gap-3">
-                {["Franchise", "SaaS B2B", "Services B2B", "Industrie B2B", "Business Local"].map((sector) => (
-                  <span
-                    key={sector}
-                    className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-[11px] font-medium text-white/80"
+                {[
+                  { label: "Franchise", href: "/cas-clients/secteur/franchise" },
+                  { label: "SaaS B2B", href: "/cas-clients/secteur/saas-b2b" },
+                  { label: "Services B2B", href: "/cas-clients/secteur/services-b2b" },
+                  { label: "Industrie B2B", href: "/cas-clients/secteur/industrie-b2b" },
+                  { label: "Business Local", href: "/cas-clients/secteur/business-local" },
+                ].map((sector) => (
+                  <Link
+                    key={sector.label}
+                    href={sector.href}
+                    className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-[11px] font-medium text-white/80 hover:bg-white/20 hover:border-white/30 transition-all duration-200"
                   >
-                    {sector}
-                  </span>
+                    {sector.label}
+                  </Link>
                 ))}
               </div>
             </motion.div>

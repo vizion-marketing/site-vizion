@@ -1,4 +1,4 @@
-import type { CityPageData } from "./types";
+﻿import type { CityPageData } from "./types";
 import {
   SITE_URL, MAP_EMBED_URL, VILLES_BADGES,
   buildOrganizationSchema, buildFaqSchema, buildBreadcrumbSchema,
@@ -70,7 +70,7 @@ const content: CityPageData["content"] = {
     baseline:
       "Votre entreprise gersoise a un savoir-faire solide, mais elle reste invisible en dehors de son réseau habituel. Vizion structure la stratégie marketing et la visibilité digitale des PME du Gers pour qu'elles atteignent les acheteurs qui ne les connaissent pas encore.",
     cta: {
-      primary: { text: "Échanger avec un fondateur", href: "/contact" },
+      primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",

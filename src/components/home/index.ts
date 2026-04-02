@@ -1,4 +1,5 @@
 export { HeroSection } from "./HeroSection";
+export { ShootingStars } from "./ShootingStars";
 export { IntroSection } from "./IntroSection";
 export { ServicesSection } from "./ServicesSection";
 export { AssetsSection } from "./AssetsSection";
@@ -7,3 +8,5 @@ export { CasClientsSection } from "./CasClientsSection";
 export { FinalCTASection } from "./FinalCTASection";
 export { BlogSection } from "./BlogSection";
 export { FAQSection } from "./FAQSection";
+export { WhyVizionSection } from "./WhyVizionSection";
+export { UseCasesSection } from "./UseCasesSection";

@@ -3,20 +3,20 @@ import type { ServiceContent } from "./types";
 export const salesEnablement: ServiceContent = {
   // ── Identité ──
   slug: "sales-enablement",
-  title: "Sales Enablement B2B",
+  title: "Activation des Ventes B2B",
   icon: "Handshake",
-  category: "Sales Enablement",
+  category: "Activation des Ventes",
   isPilier: true,
   order: 103,
 
   // ── SEO ──
   metaTitle:
-    "Sales Enablement B2B : armez vos commerciaux pour closer | Vizion",
+    "Activation des Ventes B2B : armez vos commerciaux pour closer | Vizion",
   metaDescription:
     "Structurez votre cycle de vente B2B avec les bons outils. Pitch decks, battlecards, nurturing, workflows. Vizion cree l'arsenal commercial qui accelere le closing.",
   keywords: [
-    "sales enablement B2B",
-    "sales enablement",
+    "activation des ventes B2B",
+    "activation des ventes",
     "aide a la vente B2B",
     "outils commerciaux B2B",
     "pitch deck B2B",
@@ -31,19 +31,19 @@ export const salesEnablement: ServiceContent = {
 
   // ── Hero ──
   heroTitle:
-    "Sales Enablement : donnez a vos commerciaux les outils pour closer",
+    "Activation des Ventes : donnez a vos commerciaux les outils pour closer",
   heroSubtitle:
-    "Chaque commercial improvise son discours, les objections ne sont pas anticipees, les relances dependent de la memoire de chacun. Le sales enablement transforme votre cycle de vente en processus reproductible. Pour que chaque opportunite avance vers la signature.",
+    "Chaque commercial improvise son discours, les objections ne sont pas anticipees, les relances dependent de la memoire de chacun. Le activation des ventes transforme votre cycle de vente en processus reproductible. Pour que chaque opportunite avance vers la signature.",
   heroBadge: "SALES ENABLEMENT B2B",
   heroImage: "/images/piliers/sales-enablement/hero.avif",
 
   // ── Constat / Narrative ──
   constat: {
     surtitre: "LE SALES ENABLEMENT",
-    title: "Le Sales Enablement : qu'est-ce que c'est et pourquoi c'est critique ?",
+    title: "L'Activation des Ventes : qu'est-ce que c'est et pourquoi c'est critique ?",
     paragraphs: [
       "Vos commerciaux sont bons. Experimentes, motives, capables de closer des deals complexes. Le probleme ? Ils passent plus de temps a chercher la bonne presentation, a reformuler les arguments ou a relancer manuellement qu'a vendre. Le cycle s'allonge, les opportunites se perdent en route, et chaque vente reste une improvisation.",
-      "Le sales enablement est ne pour resoudre ce probleme : fournir aux equipes commerciales les bons outils, les bons contenus et les bons processus au bon moment du cycle de vente. De la premiere prise de contact jusqu'a la signature, cette discipline repose sur trois piliers :",
+      "Le activation des ventes est ne pour resoudre ce probleme : fournir aux equipes commerciales les bons outils, les bons contenus et les bons processus au bon moment du cycle de vente. De la premiere prise de contact jusqu'a la signature, l'arsenal s'organise autour de trois priorites :",
     ],
     statements: [
       {
@@ -72,7 +72,7 @@ export const salesEnablement: ServiceContent = {
 
   // ── Solution ──
   solutionTitle:
-    "Comment Vizion vous accompagne dans votre strategie de sales enablement ?",
+    "Comment Vizion vous accompagne dans votre strategie de activation des ventes ?",
   solutionImage: "/images/piliers/sales-enablement/solution.avif",
   solutionItems: [
     {
@@ -100,7 +100,7 @@ export const salesEnablement: ServiceContent = {
   // ── Methodologie (pilier) ──
   pilierMethodology: {
     surtitre: "NOTRE APPROCHE",
-    title: "Comment nous structurons votre sales enablement",
+    title: "Comment nous structurons votre activation des ventes",
     subtitle:
       "Quatre phases pour passer d'une equipe qui improvise a un processus de vente reproductible. Chaque phase est activable independamment selon votre maturite commerciale.",
     steps: [
@@ -130,9 +130,9 @@ export const salesEnablement: ServiceContent = {
   // ── Metriques sourcees ──
   pilierMetrics: {
     surtitre: "POURQUOI LE SALES ENABLEMENT",
-    title: "Ce que le sales enablement change concretement",
+    title: "Ce que le activation des ventes change concretement",
     subtitle:
-      "Des chiffres issus d'etudes sectorielles sur l'impact des programmes de sales enablement en B2B.",
+      "Des chiffres issus d'etudes sectorielles sur l'impact des programmes de activation des ventes en B2B.",
     metrics: [
       {
         value: 49,
@@ -140,7 +140,7 @@ export const salesEnablement: ServiceContent = {
         label: "de taux de closing pour les entreprises avec un programme structure",
         direction: "up" as const,
         context:
-          "Les organisations dotees d'un programme de sales enablement mature atteignent 49% de closing sur les deals en forecast, contre 42,5% sans. CSO Insights, 2019.",
+          "Les organisations dotees d'un programme de activation des ventes mature atteignent 49% de closing sur les deals en forecast, contre 42,5% sans. CSO Insights, 2019.",
         sourceUrl:
           "https://www.highspot.com/resource/fifth-annual-sales-enablement-study/",
       },
@@ -161,7 +161,7 @@ export const salesEnablement: ServiceContent = {
         label: "de taux de closing superieur avec un enablement formel",
         direction: "up" as const,
         context:
-          "Les organisations avec un sales enablement formel et mature affichent un taux de closing 17,9% superieur a la moyenne de l'etude. CSO Insights, 2019.",
+          "Les organisations avec un activation des ventes formel et mature affichent un taux de closing 17,9% superieur a la moyenne de l'etude. CSO Insights, 2019.",
         sourceUrl:
           "https://salesenablement.pro/assets/2019/10/CSO-Insights-5th-Annual-Sales-Enablement-Study.pdf",
       },
@@ -171,7 +171,7 @@ export const salesEnablement: ServiceContent = {
   // ── Timing (bento grid) ──
   pilierTiming: {
     surtitre: "LE BON MOMENT",
-    title: "Quand investir dans le sales enablement ?",
+    title: "Quand investir dans le activation des ventes ?",
     subtitle:
       "Certains signaux indiquent qu'il est temps de structurer vos outils commerciaux. Si vous vous reconnaissez dans l'une de ces situations, c'est le moment d'agir.",
     items: [
@@ -212,40 +212,40 @@ export const salesEnablement: ServiceContent = {
   pilierTargets: {
     surtitre: "A QUI S'ADRESSE LE SALES ENABLEMENT",
     title:
-      "Le sales enablement, une discipline pensée pour toutes les entreprises ou le closing repose sur l'humain.",
+      "Le activation des ventes, une discipline pensée pour toutes les entreprises ou le closing repose sur l'humain.",
     subtitle:
-      "Des que votre cycle de vente implique plusieurs etapes, plusieurs decideurs et un effort de conviction, le sales enablement vous concerne. Voici les profils qui en tirent le plus de valeur.",
+      "Des que votre cycle de vente implique plusieurs etapes, plusieurs decideurs et un effort de conviction, le activation des ventes vous concerne. Voici les profils qui en tirent le plus de valeur.",
     highlightWords: ["le closing repose sur l'humain"],
     items: [
       {
         icon: "Rocket",
         title: "Startups et scale-ups B2B",
         description:
-          "Vous passez de 3 a 15 commerciaux et le discours se dilue. Le sales enablement standardise les outils et accelere l'onboarding pour que chaque recrue soit productive plus vite.",
+          "Vous passez de 3 a 15 commerciaux et le discours se dilue. Le activation des ventes standardise les outils et accelere l'onboarding pour que chaque recrue soit productive plus vite.",
       },
       {
         icon: "Building2",
         title: "PME et ETI en croissance",
         description:
-          "Votre force commerciale est experimentee mais manque de supports structures. Le sales enablement formalise les bonnes pratiques et equipe chaque commercial avec les outils qui lui manquent.",
+          "Votre force commerciale est experimentee mais manque de supports structures. Le activation des ventes formalise les bonnes pratiques et equipe chaque commercial avec les outils qui lui manquent.",
       },
       {
         icon: "Code",
         title: "Editeurs SaaS et entreprises tech",
         description:
-          "Votre produit est technique et difficile a expliquer. Le sales enablement traduit la complexite en arguments business que vos acheteurs comprennent et defendent en interne.",
+          "Votre produit est technique et difficile a expliquer. Le activation des ventes traduit la complexite en arguments business que vos acheteurs comprennent et defendent en interne.",
       },
       {
         icon: "Factory",
         title: "Industriels et fabricants",
         description:
-          "Vos cycles de vente sont longs, les interlocuteurs multiples et les enjeux financiers importants. Le sales enablement structure chaque etape pour maintenir la dynamique jusqu'a la signature.",
+          "Vos cycles de vente sont longs, les interlocuteurs multiples et les enjeux financiers importants. Le activation des ventes structure chaque etape pour maintenir la dynamique jusqu'a la signature.",
       },
       {
         icon: "Briefcase",
         title: "Societes de conseil et services B2B",
         description:
-          "Vous vendez de l'expertise immaterielle a des decideurs exigeants. Le sales enablement rend votre valeur tangible avec des cas clients, des battlecards et des presentations calibrees.",
+          "Vous vendez de l'expertise immaterielle a des decideurs exigeants. Le activation des ventes rend votre valeur tangible avec des cas clients, des battlecards et des presentations calibrees.",
       },
     ],
     featuredIndex: 1,
@@ -259,7 +259,7 @@ export const salesEnablement: ServiceContent = {
   // ── Testimonials ──
   testimonialsTitle: "Ce que nos clients en disent",
   testimonialsSubtitle:
-    "Des dirigeants et directeurs commerciaux B2B qui ont structure leur sales enablement avec Vizion.",
+    "Des dirigeants et directeurs commerciaux B2B qui ont structure leur activation des ventes avec Vizion.",
   testimonials: [
     {
       quote:
@@ -294,23 +294,23 @@ export const salesEnablement: ServiceContent = {
   ],
 
   // ── FAQ ──
-  faqTitle: "Questions frequentes sur le sales enablement B2B",
+  faqTitle: "Questions frequentes sur le activation des ventes B2B",
   faqs: [
     {
-      question: "Le sales enablement, c'est quoi concretement ?",
+      question: "Le activation des ventes, c'est quoi concretement ?",
       answer:
         "C'est l'ensemble des outils, contenus et processus qui permettent a vos commerciaux de vendre plus efficacement. Presentations par profil decideur, fiches concurrentielles, sequences de relance, guides d'appel : tout ce qui transforme votre cycle de vente en processus reproductible au lieu d'une improvisation quotidienne.",
     },
     {
       question:
-        "Quelle difference entre sales enablement et formation commerciale ?",
+        "Quelle difference entre activation des ventes et formation commerciale ?",
       answer:
-        "La formation developpe les competences individuelles de vos commerciaux. Le sales enablement leur fournit les outils concrets pour appliquer ces competences : presentations, battlecards, sequences de nurturing, workflows. L'un porte sur le savoir-faire, l'autre sur les moyens d'action. Les deux sont complementaires.",
+        "La formation developpe les competences individuelles de vos commerciaux. Le activation des ventes leur fournit les outils concrets pour appliquer ces competences : presentations, battlecards, sequences de nurturing, workflows. L'un porte sur le savoir-faire, l'autre sur les moyens d'action. Les deux sont complementaires.",
     },
     {
-      question: "Pourquoi commencer par le sales enablement avant d'autres actions ?",
+      question: "Pourquoi commencer par le activation des ventes avant d'autres actions ?",
       answer:
-        "Si vos commerciaux n'ont pas les bons outils, chaque euro investi en generation de leads est partiellement gaspille. Les prospects arrivent, mais le cycle patine faute de contenus adaptes, de reponses aux objections ou de relances structurees. Le sales enablement maximise le rendement de tout ce que vous faites en amont.",
+        "Si vos commerciaux n'ont pas les bons outils, chaque euro investi en generation de leads est partiellement gaspille. Les prospects arrivent, mais le cycle patine faute de contenus adaptes, de reponses aux objections ou de relances structurees. Le activation des ventes maximise le rendement de tout ce que vous faites en amont.",
       answerLinks: [
         {
           text: "generation de leads",
@@ -335,14 +335,14 @@ export const salesEnablement: ServiceContent = {
     },
     {
       question:
-        "Le sales enablement est-il reserve aux grandes equipes commerciales ?",
+        "Le activation des ventes est-il reserve aux grandes equipes commerciales ?",
       answer:
         "Non. Les equipes de 3 a 5 commerciaux sont souvent celles qui en tirent le plus de valeur, justement parce que chaque personne a un impact direct sur le chiffre d'affaires. Avec une petite equipe, il est d'autant plus important que chaque rendez-vous soit prepare et que chaque relance soit automatisee.",
     },
     {
       question: "Quel retour sur investissement peut-on attendre ?",
       answer:
-        "Le sales enablement agit sur trois leviers : la qualite des rendez-vous (ce qui ameliore le taux de closing), la regularite des relances (ce qui raccourcit le cycle) et la coherence du discours (ce qui renforce la confiance). Les resultats varient selon votre point de depart, votre marche et la maturite de votre equipe.",
+        "Le activation des ventes agit sur trois leviers : la qualite des rendez-vous (ce qui ameliore le taux de closing), la regularite des relances (ce qui raccourcit le cycle) et la coherence du discours (ce qui renforce la confiance). Les resultats varient selon votre point de depart, votre marche et la maturite de votre equipe.",
     },
     {
       question: "Comment se deroule l'accompagnement avec Vizion ?",

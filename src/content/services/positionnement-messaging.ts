@@ -4,7 +4,7 @@ export const positionnementMessaging: ServiceContent = {
   slug: "positionnement-messaging",
   title: "Positionnement et Messaging",
   icon: "Crosshair",
-  category: "Product Marketing",
+  category: "Marketing Produit",
   order: 5,
 
   // SEO
@@ -42,7 +42,7 @@ export const positionnementMessaging: ServiceContent = {
     title:
       "Votre offre est bonne, mais votre message ne passe pas.",
     paragraphs: [
-      "Vos prospects vous comparent à vos concurrents sans voir la différence. Vos commerciaux improvisent leur pitch. Votre site, vos contenus et vos présentations racontent des histoires différentes. Le problème n'est pas ce que vous faites. C'est ce que vous en dites.",
+      "Vos prospects vous comparent à vos concurrents sans voir la différence. Vos commerciaux improvisent leur pitch. Votre site, vos contenus et vos présentations racontent des histoires différentes. Et quand tout le monde dit quelque chose de légèrement différent, personne ne retient quoi que ce soit.",
     ],
     statements: [
       {
@@ -114,13 +114,13 @@ export const positionnementMessaging: ServiceContent = {
     sectionDescription:
       "Nous ne livrons pas un document de marque. Chaque mission de positionnement produit un cadre opérationnel complet : proposition de valeur validée, messages par persona, argumentaires de vente et guidelines de déploiement. Du stratégique à l'actionnable.",
     image: {
-      src: "/images/services/positionnement-messaging/bento.avif",
+      src: "/images/services/roadmap-strategique/hero.avif",
       alt: "Framework de messaging Vizion",
     },
     technology: {
       title: "Des méthodes éprouvées,\npas des intuitions créatives.",
       description:
-        "Nous utilisons des frameworks reconnus en product marketing pour structurer le travail de positionnement. Chaque étape suit une méthodologie précise, de l'analyse concurrentielle à la rédaction des messages. Le résultat est un cadre de messaging fondé sur des données et des retours terrain, pas sur des préférences subjectives.",
+        "Nous utilisons des frameworks reconnus en marketing produit pour structurer le travail de positionnement. Chaque étape suit une méthodologie précise, de l'analyse concurrentielle à la rédaction des messages. Le résultat est un cadre de messaging fondé sur des données et des retours terrain, pas sur des préférences subjectives.",
       logos: [
         "Jobs-to-be-done",
         "Value Proposition Canvas",
@@ -249,6 +249,7 @@ export const positionnementMessaging: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/cold-outreach-prospection/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour votre positionnement marketing ?",
@@ -374,20 +375,20 @@ export const positionnementMessaging: ServiceContent = {
     "Le positionnement est la fondation. Ces services permettent de le décliner sur tous vos canaux de croissance.",
   relatedServices: [
     {
-      slug: "product-marketing",
-      icon: "Rocket",
-      title: "Product Marketing B2B",
+      slug: "sales-enablement",
+      icon: "Handshake",
+      title: "Activation des Ventes B2B",
       description:
-        "Le positionnement est la premiere brique du product marketing. Découvrez notre accompagnement complet : messaging, go-to-market, contenus et personal branding.",
-      href: "/services/product-marketing",
+        "Un messaging fort est la base de tout kit de vente efficace. Découvrez comment Vizion arme vos commerciaux avec les bons outils pour convaincre et closer à chaque étape.",
+      href: "/services/sales-enablement",
     },
     {
-      slug: "creation-contenu-b2b",
-      icon: "Pencil",
-      title: "Création de Contenu B2B",
+      slug: "product-marketing",
+      icon: "Rocket",
+      title: "Marketing Produit B2B",
       description:
-        "Votre framework de messaging est en place. Nous le déclinons en contenus stratégiques (articles, cas clients, livres blancs) calibrés pour vos personas et vos canaux d'acquisition.",
-      href: "/services/creation-contenu-b2b",
+        "Le positionnement est la premiere brique du marketing produit. Découvrez notre accompagnement complet : messaging, go-to-market, contenus et personal branding.",
+      href: "/services/product-marketing",
     },
     {
       slug: "pitch-decks-argumentaires",

@@ -28,7 +28,7 @@ export interface ServiceMenuCategory {
 
 export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
   {
-    title: "Stratégie marketing",
+    title: "Stratégie",
     icon: "Compass",
     href: "/services/strategie",
     items: [
@@ -53,7 +53,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
     ],
   },
   {
-    title: "Product Marketing",
+    title: "Marketing Produit",
     icon: "Rocket",
     href: "/services/product-marketing",
     items: [
@@ -68,12 +68,6 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
         description: "Créez des pages d'atterrissage premium",
         icon: "LayoutTemplate",
         href: "/services/creation-landing-page",
-      },
-      {
-        label: "Stratégie éditoriale B2B",
-        description: "Newsletters, articles, posts LinkedIn : alimentez votre pipeline",
-        icon: "FileText",
-        href: "/services/creation-contenu-b2b",
       },
     ],
   },
@@ -95,7 +89,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
         href: "/services/campagnes-publicitaires",
       },
       {
-        label: "Cold outreach & prospection",
+        label: "Prospection Multicanal",
         description: "Engagez vos prospects avant vos concurrents",
         icon: "Send",
         href: "/services/cold-outreach-prospection",
@@ -109,7 +103,7 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
     ],
   },
   {
-    title: "Sales Enablement",
+    title: "Activation des Ventes",
     icon: "Handshake",
     href: "/services/sales-enablement",
     items: [
@@ -162,6 +156,12 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
         icon: "Sparkles",
         href: "/services/applications-ia",
       },
+      {
+        label: "Stack d'acquisition complète",
+        description: "Connectez tous vos outils pour une acquisition cohérente",
+        icon: "Layers",
+        href: "/services/stack-acquisition",
+      },
     ],
   },
 ];
@@ -169,9 +169,9 @@ export const SERVICE_MENU_CATEGORIES: ServiceMenuCategory[] = [
 // --- Mapping catégorie → page pilier (pour breadcrumbs) ---
 export const PILIER_MAP: Record<string, { label: string; slug: string }> = {
   "Stratégie": { label: "Stratégie", slug: "strategie" },
-  "Product Marketing": { label: "Product Marketing", slug: "product-marketing" },
+  "Marketing Produit": { label: "Marketing Produit", slug: "product-marketing" },
   "Growth Marketing": { label: "Growth Marketing", slug: "growth-marketing" },
-  "Sales Enablement": { label: "Sales Enablement", slug: "sales-enablement" },
+  "Activation des Ventes": { label: "Activation des Ventes", slug: "sales-enablement" },
   "Transformation Digitale": { label: "Transformation Digitale", slug: "transformation-digitale" },
 };
 

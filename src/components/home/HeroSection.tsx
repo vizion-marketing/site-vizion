@@ -1,13 +1,15 @@
 "use client";
 
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-import { homeContent, type HeroContent } from "@/content/home";
+import type { HeroContent } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
+import { ShootingStars } from "./ShootingStars";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +18,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
-  const hero = contentProp ?? homeContent.hero;
+  const hero = contentProp!;
   const sectionRef = useRef<HTMLElement>(null);
 
   // GSAP entrance animations
@@ -31,11 +33,13 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
         ease: "expo.out",
       }, 0);
 
-      tl.from("[data-hero='badge']", { opacity: 0, y: -12, scale: 0.9, duration: 0.6 }, 0.2);
-      tl.from("[data-hero='h1']", { opacity: 0, y: 24, duration: 0.8 }, 0.3);
-      tl.from("[data-hero='baseline']", { opacity: 0, y: 16, duration: 0.6 }, 0.45);
-      tl.from("[data-hero='ctas']", { opacity: 0, y: 12, duration: 0.5 }, 0.6);
-      tl.from("[data-hero='stats']", { opacity: 0, y: 12, duration: 0.5 }, 0.7);
+      tl.from("[data-hero='moon']",    { opacity: 0, scale: 0.88, duration: 1.6, ease: "expo.out" }, 0.05);
+      tl.from("[data-hero='clouds']",  { opacity: 0, duration: 1.8, ease: "power2.out" }, 0.1);
+      tl.from("[data-hero='badge']",   { opacity: 0, y: -12, scale: 0.9, duration: 0.6 }, 0.35);
+      tl.from("[data-hero='h1']",      { opacity: 0, y: 28, duration: 0.8 }, 0.45);
+      tl.from("[data-hero='baseline']",{ opacity: 0, y: 16, duration: 0.6 }, 0.6);
+      tl.from("[data-hero='ctas']",    { opacity: 0, y: 12, duration: 0.5 }, 0.75);
+
     },
     { scope: sectionRef }
   );
@@ -74,14 +78,15 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
     const highlightWord = hero.h1Highlight;
     if (!highlightWord || !text.includes(highlightWord)) return text;
     const hlIdx = text.indexOf(highlightWord);
+    // Split highlight: first word white, rest lime
+    const firstSpace = highlightWord.indexOf(" ");
+    const whitePart = firstSpace !== -1 ? highlightWord.slice(0, firstSpace) : highlightWord;
+    const limePart = firstSpace !== -1 ? highlightWord.slice(firstSpace) : "";
     return [
       text.slice(0, hlIdx),
-      <span key="highlight" className="relative inline-block">
-        <span className="relative z-10 text-accent">{highlightWord}</span>
-        <span
-          className="absolute bottom-2 left-0 w-full h-3 bg-accent/20 -z-0"
-          style={{ transform: 'skewX(-3deg)' }}
-        />
+      <span key="highlight">
+        <span className="text-white">{whitePart}</span>
+        {limePart && <span className="text-accent">{limePart}</span>}
       </span>,
       text.slice(hlIdx + highlightWord.length),
     ];
@@ -94,7 +99,8 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
       style={{ background: "var(--bg-dark)" }}
     >
       {/* ===== MOBILE LAYOUT ===== */}
-      <div className="lg:hidden grain-overlay relative px-4 sm:px-6 pt-28 sm:pt-32 pb-12 sm:pb-16">
+      <div className="lg:hidden grain-overlay relative px-4 sm:px-6 pt-24 sm:pt-28 pb-10 sm:pb-16">
+        <ShootingStars count={8} />
         {/* Mobile cloud effect */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
@@ -123,7 +129,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           </div>
 
           <h1
-            className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[40px] leading-[0.95] tracking-[-0.035em]"
+            className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[40px] leading-[1.05] tracking-[-0.035em]"
             style={{
               backgroundImage:
                 "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
@@ -135,51 +141,43 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
             {renderH1()}
           </h1>
 
-          <p
-            className="text-sm sm:text-base leading-relaxed max-w-2xl"
-            style={{ color: "rgba(255,255,255,0.8)" }}
-          >
-            {hero.baseline}
-          </p>
+          {hero.baseline && (
+            <p
+              className="text-sm sm:text-base leading-relaxed max-w-2xl"
+              style={{ color: "rgba(255,255,255,0.8)" }}
+            >
+              {hero.baseline}
+            </p>
+          )}
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 mt-4">
-            <Link href={hero.cta.primary.href} className="btn btn-primary group">
-              {hero.cta.primary.text}{" "}
-              <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-4">
+            <Link
+              href={hero.cta.primary.href}
+              className="group inline-flex items-center justify-center gap-3 bg-accent text-black font-semibold px-8 py-4 hover:bg-accent/90 active:scale-[0.97] transition-all duration-200"
+            >
+              {hero.cta.primary.text}
+              <ArrowUpRightIcon className="shrink-0 group-hover:translate-x-0.5 transition-transform" size={16} />
             </Link>
-            <Link href={hero.cta.secondary.href} className="btn btn-secondary group">
-              {hero.cta.secondary.text}{" "}
-              <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
+            <Link
+              href={hero.cta.secondary.href}
+              className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/[0.15] text-white font-medium hover:bg-white/[0.06] active:scale-[0.97] transition-all duration-200"
+            >
+              {hero.cta.secondary.text}
+              <ArrowUpRightIcon className="shrink-0 group-hover:translate-x-0.5 transition-transform" size={16} />
             </Link>
           </div>
 
-          {/* Stats */}
-          <div className="flex flex-wrap items-center gap-3 mt-3 pt-3 border-t border-white/5">
-            <div className="flex items-center gap-2">
-              <span className="text-accent font-heading font-bold text-xl">70+</span>
-              <span className="text-white/50 text-[10px] leading-tight">clients<br/>accompagnés</span>
-            </div>
-            <div className="w-px h-8 bg-white/10 hidden sm:block" />
-            <div className="flex items-center gap-2">
-              <span className="text-accent font-heading font-bold text-xl">5 ans</span>
-              <span className="text-white/50 text-[10px] leading-tight">d&apos;expertise</span>
-            </div>
-            <div className="w-px h-8 bg-white/10 hidden sm:block" />
-            <div className="flex items-center gap-2">
-              <span className="text-accent font-heading font-bold text-xl">+500</span>
-              <span className="text-white/50 text-[10px] leading-tight">assets marketing<br/>déjà livrés</span>
-            </div>
-          </div>
 
         </div>
 
         {/* Mobile image - floating, after CTAs */}
-        <div className="relative mt-6 -mb-2 aspect-[3/4] max-h-[50vh] mx-auto max-w-[280px] sm:max-w-[320px]">
+        <div className="relative mt-6 -mb-2 aspect-[3/4] max-h-[55vh] w-full">
           <Image
             src="/images/hero-jumelles.avif"
             alt="Agence marketing B2B Vizion Toulouse"
             fill
             priority
+            sizes="100vw"
             className="object-contain object-bottom"
           />
           <div
@@ -194,9 +192,10 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
       {/* ===== DESKTOP LAYOUT - Image flottante avec effet nuages ===== */}
       <div className="hidden lg:block relative min-h-screen">
         <div className="grain-overlay absolute inset-0 z-0" style={{ background: "var(--bg-dark)" }} />
+        <ShootingStars count={14} />
 
         {/* Cloud / mist effect behind the photo */}
-        <div className="absolute inset-0 pointer-events-none z-[2] overflow-hidden">
+        <div data-hero="clouds" className="absolute inset-0 pointer-events-none z-[2] overflow-hidden">
           {/* Large cloud mass - behind person */}
           <div
             className="absolute w-[60%] h-[80%] top-[5%] right-[0%]"
@@ -250,17 +249,59 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           />
         </div>
 
+        {/* Moon image - behind woman, rotating */}
+        <div
+          data-hero="moon"
+          className="absolute pointer-events-none z-[20]"
+          style={{
+            right: "8%",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "clamp(500px, 56vw, 750px)",
+            height: "clamp(500px, 56vw, 750px)",
+          }}
+        >
+          {/* Orbit rings - static */}
+          <div
+            className="absolute inset-0 rounded-full pointer-events-none"
+            style={{ border: "1.5px dashed rgba(255,255,255,0.22)" }}
+          />
+          <div
+            className="absolute rounded-full pointer-events-none"
+            style={{ inset: "-28px", border: "1px dashed rgba(255,255,255,0.12)" }}
+          />
+          <div
+            className="absolute rounded-full pointer-events-none"
+            style={{ inset: "-58px", border: "1px dashed rgba(255,255,255,0.06)" }}
+          />
+
+          <div
+            className="w-full h-full relative"
+            style={{ animation: "moonSpin 260s linear infinite" }}
+          >
+            <Image
+              src="/images/moon.avif"
+              alt=""
+              fill
+              sizes="(min-width: 1280px) 750px, 56vw"
+              className="object-contain"
+            />
+          </div>
+          <style>{`@keyframes moonSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+        </div>
+
         {/* Photo - floating, no edges */}
         <div
           data-hero="image"
-          className="absolute bottom-0 right-[12%] z-[3] w-[44%] h-[92%]"
+          className="absolute bottom-0 z-[25] w-[48%] h-[92%] pointer-events-none"
+          style={{ right: 0 }}
         >
           <Image
             src="/images/hero-jumelles.avif"
             alt="Agence marketing B2B Vizion Toulouse"
             fill
             priority
-            sizes="40vw"
+            sizes="(min-width: 1280px) 50vw, 100vw"
             className="object-contain object-bottom"
           />
           {/* Soft bottom fade into background */}
@@ -274,12 +315,12 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
 
         {/* Content - left column */}
         <div className="relative z-10 max-w-[82.5rem] mx-auto min-h-screen px-6 md:px-12">
-          <div data-hero="text-col" className="relative z-10 w-[55%] flex flex-col justify-center min-h-screen pt-28 pb-20">
+          <div data-hero="text-col" className="relative z-10 w-[55%] flex flex-col justify-center min-h-screen pt-24 pb-16">
             <div className="relative z-10">
               {/* Badge */}
               <div
                 data-hero="badge"
-                className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-fit mb-6"
+                className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-fit mb-5"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-50"></span>
@@ -296,7 +337,7 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
               {/* H1 */}
               <h1
                 data-hero="h1"
-                className="font-heading font-normal text-[36px] lg:text-[44px] xl:text-[48px] leading-[0.95] tracking-[-0.035em] mb-6"
+                className="font-heading font-normal text-[36px] lg:text-[44px] xl:text-[48px] leading-[1.05] tracking-[-0.035em] mb-5"
                 style={{
                   backgroundImage:
                     "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
@@ -309,23 +350,31 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
               </h1>
 
               {/* Baseline */}
-              <p
-                data-hero="baseline"
-                className="text-base md:text-lg leading-relaxed max-w-xl mb-8"
-                style={{ color: "rgba(255,255,255,0.8)" }}
-              >
-                {hero.baseline}
-              </p>
+              {hero.baseline && (
+                <p
+                  data-hero="baseline"
+                  className="text-base md:text-lg leading-relaxed max-w-xl mb-8"
+                  style={{ color: "rgba(255,255,255,0.8)" }}
+                >
+                  {hero.baseline}
+                </p>
+              )}
 
               {/* CTAs */}
-              <div data-hero="ctas" className="flex items-center gap-4 mb-8">
-                <Link href={hero.cta.primary.href} className="btn btn-primary group">
-                  {hero.cta.primary.text}{" "}
-                  <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
+              <div data-hero="ctas" className="flex flex-wrap items-center gap-4 mb-8">
+                <Link
+                  href={hero.cta.primary.href}
+                  className="group inline-flex items-center justify-center gap-3 bg-accent text-black font-semibold px-8 py-4 hover:bg-accent/90 active:scale-[0.97] transition-all duration-200"
+                >
+                  {hero.cta.primary.text}
+                  <ArrowUpRightIcon className="shrink-0 group-hover:translate-x-0.5 transition-transform" size={16} />
                 </Link>
-                <Link href={hero.cta.secondary.href} className="btn btn-secondary group">
-                  {hero.cta.secondary.text}{" "}
-                  <ArrowUpRightIcon className="shrink-0 inline-block group-hover:translate-x-0.5 transition-transform" size={16} />
+                <Link
+                  href={hero.cta.secondary.href}
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/[0.15] text-white font-medium hover:bg-white/[0.06] active:scale-[0.97] transition-all duration-200"
+                >
+                  {hero.cta.secondary.text}
+                  <ArrowUpRightIcon className="shrink-0 group-hover:translate-x-0.5 transition-transform" size={16} />
                 </Link>
               </div>
 
@@ -334,25 +383,6 @@ export function HeroSection({ content: contentProp }: HeroSectionProps = {}) {
           </div>
         </div>
 
-        {/* Stats cards - floating over the photo */}
-        <div
-          data-hero="stats"
-          className="absolute bottom-[14%] right-[5%] z-[5] flex gap-3"
-        >
-          {[
-            { value: "70+", label: "clients\naccompagnés" },
-            { value: "5 ans", label: "d'expertise" },
-            { value: "+500", label: "assets marketing\ndéjà livrés" },
-          ].map((stat) => (
-            <div
-              key={stat.value}
-              className="bg-white/5 backdrop-blur-md border border-white/10 px-5 py-3 flex items-center gap-3"
-            >
-              <span className="text-accent font-heading font-bold text-xl">{stat.value}</span>
-              <span className="text-white/60 text-[11px] leading-tight whitespace-pre-line">{stat.label}</span>
-            </div>
-          ))}
-        </div>
 
       </div>
 

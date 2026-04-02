@@ -42,7 +42,7 @@ export const applicationsIa: ServiceContent = {
     title:
       "Vous savez que l'IA peut vous aider, mais vous ne savez pas par où commencer.",
     paragraphs: [
-      "ChatGPT, Claude, Midjourney. Vos équipes testent des outils à droite et à gauche, mais rien n'est structuré. L'IA reste un jouet ponctuel au lieu de devenir un levier de productivité intégré à vos process.",
+      "Vos équipes ont commencé à utiliser l'IA, chacun dans son coin, avec les outils qu'ils ont trouvés. Mais aucun process commun, aucune intégration avec vos systèmes, aucune mesure de l'impact réel. L'IA existe dans votre entreprise, elle ne travaille pas encore pour elle.",
     ],
     statements: [
       {
@@ -114,7 +114,7 @@ export const applicationsIa: ServiceContent = {
     sectionDescription:
       "Nous ne vendons pas de la technologie. Nous déployons des applications IA concrètes, intégrées à vos outils existants, encadrées par des process de qualité et mesurées par leur impact réel sur vos résultats.",
     image: {
-      src: "/images/services/applications-ia/bento.avif",
+      src: "/images/services/creation-workflows/hero.avif",
       alt: "Applications IA pour le marketing B2B Vizion",
     },
     technology: {
@@ -241,6 +241,7 @@ export const applicationsIa: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/battlecards-case-studies/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour intégrer l'IA dans votre entreprise ?",
@@ -331,7 +332,7 @@ export const applicationsIa: ServiceContent = {
     {
       question: "Quel budget prévoir pour un projet d'intelligence artificielle marketing ?",
       answer:
-        "Un premier projet IA (chatbot, génération de contenu ou scoring) se situe entre 3 000 € et 12 000 € selon la complexité et les intégrations nécessaires. Un programme complet couvrant plusieurs cas d'usage se construit progressivement. Nous établissons un devis précis après l'audit initial.",
+        "Chaque projet IA est dimensionné selon vos cas d'usage, votre infrastructure existante et vos priorités de croissance. Nous ne proposons pas de tarif fixe : le périmètre et le budget se définissent lors d'un premier échange de 30 minutes, sans engagement de votre part.",
     },
     {
       question: "L'intelligence artificielle marketing va-t-elle remplacer mes équipes ?",
@@ -366,12 +367,21 @@ export const applicationsIa: ServiceContent = {
     "L'IA est un accélérateur. Ces services complémentaires maximisent son impact sur vos résultats commerciaux.",
   relatedServices: [
     {
+      slug: "transformation-digitale",
+      icon: "Monitor",
+      title: "Transformation Digitale B2B",
+      description:
+        "L'IA s'intègre dans une démarche de transformation digitale plus large. Découvrez comment Vizion déploie les bons outils pour accélérer votre activité B2B.",
+      href: "/services/transformation-digitale",
+    },
+    {
       slug: "creation-workflows",
       icon: "Repeat",
       title: "Création de Workflows",
       description:
         "L'IA est plus puissante quand elle est intégrée dans des workflows automatisés. Nous connectons vos applications IA à l'ensemble de vos process pour que les gains se multiplient sans intervention manuelle.",
-      href: "/services/applications-ia",},
+      href: "/services/creation-workflows",
+    },
     {
       slug: "deploiement-crm",
       icon: "Settings",
@@ -379,13 +389,6 @@ export const applicationsIa: ServiceContent = {
       description:
         "Un CRM structuré est le socle indispensable pour exploiter l'IA. Scoring prédictif, personnalisation, qualification automatique. Tout repose sur des données fiables et bien organisées dans votre CRM.",
       href: "/services/deploiement-crm",},
-    {
-      slug: "creation-contenu-b2b",
-      icon: "FileText",
-      title: "Création de contenu B2B",
-      description:
-        "L'IA accélère la production, mais la stratégie de contenu reste humaine. Nous définissons la ligne éditoriale, les sujets prioritaires et le calendrier. L'IA assiste la rédaction, vos experts valident.",
-      href: "/services/creation-contenu-b2b",},
   ],
 
   // CTA intermédiaires

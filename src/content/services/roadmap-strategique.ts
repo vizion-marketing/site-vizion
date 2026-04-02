@@ -41,7 +41,7 @@ export const roadmapStrategique: ServiceContent = {
     title:
       "Vous faites du marketing au fil de l'eau, sans vision d'ensemble.",
     paragraphs: [
-      "Un article ici, une campagne là, un salon prévu dans deux mois. Les actions s'enchaînent sans cohérence, sans priorisation et sans lien clair avec vos objectifs de vente. Résultat : du budget consommé, peu de résultats prévisibles.",
+      "Vos décisions marketing se prennent au fil des opportunités : un sujet qui paraît pertinent, un canal qu'on n'a pas encore testé, une action copiée sur un concurrent. Résultat : des efforts dispersés, un budget difficile à justifier et des objectifs commerciaux qui restent flous pour tout le monde.",
     ],
     statements: [
       {
@@ -113,7 +113,7 @@ export const roadmapStrategique: ServiceContent = {
     sectionDescription:
       "Nous ne livrons pas un document PowerPoint. Chaque roadmap est un plan opérationnel complet : objectifs chiffrés, actions priorisées, budget alloué, KPIs définis et jalons de pilotage. Tout est conçu pour être exécuté, pas rangé dans un tiroir.",
     image: {
-      src: "/images/services/roadmap-strategique/bento.avif",
+      src: "/images/services/positionnement-messaging/hero.avif",
       alt: "Feuille de route marketing Vizion",
     },
     technology: {
@@ -248,6 +248,7 @@ export const roadmapStrategique: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/battlecards-case-studies/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour votre roadmap stratégique ?",
@@ -372,6 +373,14 @@ export const roadmapStrategique: ServiceContent = {
   relatedServicesSubtitle:
     "La roadmap donne la direction. Ces services permettent d'exécuter les priorités identifiées.",
   relatedServices: [
+    {
+      slug: "strategie",
+      icon: "Compass",
+      title: "Stratégie Marketing B2B",
+      description:
+        "La roadmap s'inscrit dans un cadre stratégique plus large. Découvrez comment Vizion pilote la transformation marketing et commerciale des entreprises B2B sur le long terme.",
+      href: "/services/strategie",
+    },
     {
       slug: "audit-marketing",
       icon: "Search",

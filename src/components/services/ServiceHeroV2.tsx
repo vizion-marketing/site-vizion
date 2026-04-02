@@ -182,7 +182,13 @@ export function ServiceHeroV2({
           <p
             aria-hidden="true"
             data-v2="title"
-            className="font-heading font-normal !text-[28px] min-[400px]:!text-[32px] sm:!text-[40px] !leading-[0.95] !tracking-[-0.035em] text-white"
+            className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[40px] leading-[1.05] tracking-[-0.035em]"
+            style={{
+              backgroundImage: "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
           >
             {title}
           </p>
@@ -314,7 +320,13 @@ export function ServiceHeroV2({
               {/* H1 */}
               <h1
                 data-v2="title"
-                className="font-heading font-normal !text-[36px] lg:!text-[44px] xl:!text-[48px] !leading-[0.95] !tracking-[-0.035em] mb-6 text-white"
+                className="font-heading font-normal text-[36px] lg:text-[44px] xl:text-[48px] leading-[1.05] tracking-[-0.035em] mb-6"
+                style={{
+                  backgroundImage: "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  color: "transparent",
+                }}
               >
                 {title}
               </h1>

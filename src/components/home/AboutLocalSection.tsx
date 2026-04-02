@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 import { MapPin, Clock } from "lucide-react";
 import Link from "next/link";
-import { homeContent, type LocalSEOContent } from "@/content/home";
+import type { LocalSEOContent } from "@/content/home";
 
 interface AboutLocalSectionProps {
   content?: LocalSEOContent;
 }
 
 export function AboutLocalSection({ content }: AboutLocalSectionProps = {}) {
-  const localData = content ?? homeContent.localSEO;
+  const localData = content!;
 
   return (
     <section

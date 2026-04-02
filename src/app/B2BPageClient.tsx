@@ -5,22 +5,25 @@ import dynamic from "next/dynamic";
 
 // Above-the-fold - eagerly loaded
 import { HeroSection } from "@/components/home/HeroSection";
-
+import { ProjectsMarquee } from "@/components/home/ProjectsMarquee";
 
 // Below-the-fold - lazy-loaded (SSR preserved, JS split into separate chunks)
-const IntroSection = dynamic(() => import("@/components/home/IntroSection"), { ssr: true });
+const MeetTheTeamSection = dynamic(() => import("@/components/home/MeetTheTeamSection").then(m => ({ default: m.MeetTheTeamSection })), { ssr: true });
 const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"), { ssr: true });
 const AssetsSection = dynamic(() => import("@/components/home/AssetsSection"), { ssr: true });
 const CasClientsSection = dynamic(() => import("@/components/home/CasClientsSection"), { ssr: true });
+const WhyVizionSection = dynamic(() => import("@/components/home/WhyVizionSection"), { ssr: true });
+const UseCasesSection = dynamic(() => import("@/components/home/UseCasesSection"), { ssr: true });
 const AboutLocalSection = dynamic(() => import("@/components/home/AboutLocalSection"), { ssr: true });
 const BlogSectionComponent = dynamic(() => import("@/components/home/BlogSection"), { ssr: true });
+const PionnierIASection = dynamic(() => import("@/components/home/PionnierIASection").then(m => ({ default: m.PionnierIASection })), { ssr: true });
 const FAQSection = dynamic(() => import("@/components/home/FAQSection"), { ssr: true });
 const FinalCTASection = dynamic(() => import("@/components/home/FinalCTASection"), { ssr: true });
 
 // Content
 import {
   b2bHero,
-  b2bIntro,
+  b2bMeetTeamText,
   b2bPiliers,
   b2bLocalSEO,
   b2bBlog,
@@ -59,28 +62,48 @@ interface CarouselClient {
   href?: string;
 }
 
+interface CaseStudyItem {
+  title: string;
+  company: string;
+  sector: string;
+  href: string;
+  image?: string;
+}
+
+interface ClientLogo {
+  name: string;
+  logoUrl?: string;
+}
+
 interface B2BPageClientProps {
   latestPosts: Post[];
+  clientLogos?: ClientLogo[];
   carouselClients?: CarouselClient[];
+  caseStudies?: CaseStudyItem[];
 }
 
 // =============================================================================
 // MAIN COMPONENT
 // =============================================================================
-export default function B2BPageClient({ latestPosts, carouselClients }: B2BPageClientProps) {
+export default function B2BPageClient({ latestPosts, clientLogos, carouselClients, caseStudies }: B2BPageClientProps) {
   return (
     <main>
       {/* Hero */}
       <HeroSection content={b2bHero} />
 
-      {/* Intro - Pourquoi le B2B est différent */}
-      <IntroSection
-        content={{
-          title: b2bIntro.title,
-          paragraphs: b2bIntro.paragraphs,
-          mission: b2bIntro.mission,
-        }}
+      {/* Marquee projets */}
+      <ProjectsMarquee
+        projects={(caseStudies ?? []).map((cs) => ({
+          company: cs.title,
+          client: cs.company,
+          sector: cs.sector,
+          href: cs.href,
+          image: cs.image,
+        }))}
       />
+
+      {/* Rencontrez les équipes */}
+      <MeetTheTeamSection clientLogos={clientLogos ?? []} />
 
       {/* Services - 5 piliers adaptés B2B */}
       <ServicesSection
@@ -93,8 +116,17 @@ export default function B2BPageClient({ latestPosts, carouselClients }: B2BPageC
       {/* Assets Section */}
       <AssetsSection />
 
+      {/* Use Cases */}
+      <UseCasesSection />
+
+      {/* Pourquoi Vizion */}
+      <WhyVizionSection />
+
       {/* Cas Clients */}
       <CasClientsSection cases={carouselClients} />
+
+      {/* Pionnier IA */}
+      <PionnierIASection />
 
       {/* À propos + Localisation */}
       <AboutLocalSection content={b2bLocalSEO} />

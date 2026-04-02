@@ -36,7 +36,7 @@ export const acquisitionB2b: ServiceContent = {
     title: "Le Growth Marketing : qu'est-ce que c'est et pourquoi c'est indispensable en B2B ?",
     paragraphs: [
       "Vos meilleurs clients viennent de recommandations. Votre reseau fonctionne, le bouche-a-oreille aussi. Le probleme ? Quand le fondateur n'a plus le temps de prospecter ou quand le reseau s'epuise, le pipeline se tarit. Votre croissance repose sur des aleas que vous ne controlez pas.",
-      "Le growth marketing est ne pour resoudre cette equation : construire des canaux d'acquisition systematiques qui generent un flux regulier de prospects qualifies, independamment de votre reseau personnel. De la strategie SEO aux campagnes publicitaires ciblees, cette discipline repose sur trois piliers :",
+      "Le growth marketing est ne pour resoudre cette equation : construire des canaux d'acquisition systematiques qui generent un flux regulier de prospects qualifies, independamment de votre reseau personnel. De la strategie SEO aux campagnes publicitaires ciblees, il active trois canaux selon votre marche et votre cycle de vente :",
     ],
     statements: [
       {

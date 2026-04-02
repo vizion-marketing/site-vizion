@@ -40,7 +40,6 @@ import { creationLandingPage } from "./creation-landing-page";
 import { auditMarketing } from "./audit-marketing";
 import { roadmapStrategique } from "./roadmap-strategique";
 import { positionnementMessaging } from "./positionnement-messaging";
-import { creationContenuB2b } from "./creation-contenu-b2b";
 import { seoContenuOrganique } from "./seo-contenu-organique";
 import { campagnesPublicitaires } from "./campagnes-publicitaires";
 import { coldOutreachProspection } from "./cold-outreach-prospection";
@@ -54,6 +53,7 @@ import { applicationsIa } from "./applications-ia";
 import { auditSiteWeb } from "./audit-site-web";
 import { directionMarketingExternalisee } from "./direction-marketing-externalisee";
 import { strategiePersonalBranding } from "./strategie-personal-branding";
+import { stackAcquisition } from "./stack-acquisition";
 
 // ── Pages piliers (hub) ──
 import { strategieMarketing } from "./strategie";
@@ -69,7 +69,6 @@ export const allServices: ServiceContent[] = [
   auditMarketing,
   roadmapStrategique,
   positionnementMessaging,
-  creationContenuB2b,
   seoContenuOrganique,
   campagnesPublicitaires,
   coldOutreachProspection,
@@ -83,6 +82,7 @@ export const allServices: ServiceContent[] = [
   auditSiteWeb,
   directionMarketingExternalisee,
   strategiePersonalBranding,
+  stackAcquisition,
   strategieMarketing,
   productMarketing,
   acquisitionB2b,

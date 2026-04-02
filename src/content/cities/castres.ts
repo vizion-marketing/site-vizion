@@ -1,4 +1,4 @@
-import type { CityPageData } from "./types";
+﻿import type { CityPageData } from "./types";
 import {
   SITE_URL, MAP_EMBED_URL, VILLES_BADGES,
   buildOrganizationSchema, buildFaqSchema, buildBreadcrumbSchema,
@@ -75,7 +75,7 @@ const content: CityPageData["content"] = {
     baseline:
       "Le bassin industriel castrais regorge d'expertises techniques, mais les processus marketing et commerciaux restent souvent artisanaux. Vizion structure le positionnement et automatise les flux des entreprises de Castres pour gagner en efficacité sans sacrifier la rigueur.",
     cta: {
-      primary: { text: "Échanger avec un fondateur", href: "/contact" },
+      primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",

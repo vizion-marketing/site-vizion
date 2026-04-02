@@ -6,6 +6,7 @@ import {
 } from "@/content/services";
 import { createMetadata } from "@/lib/metadata";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
+import { getCaseStudiesForService } from "@/lib/sanity/caseStudies";
 import { ServiceDetailContent } from "./ServiceDetailContent";
 import { CategoryDetailContent } from "./CategoryDetailContent";
 
@@ -57,6 +58,8 @@ export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) notFound();
+
+  const relatedCaseStudies = await getCaseStudiesForService(slug);
 
   // JSON-LD - Organization (réutilisé dans Service.provider)
   const serviceUrl = `${SITE_URL}/services/${service.slug}`;
@@ -204,7 +207,7 @@ export default async function ServicePage({ params }: PageProps) {
       {service.isPilier ? (
         <CategoryDetailContent service={service} />
       ) : (
-        <ServiceDetailContent service={service} />
+        <ServiceDetailContent service={service} relatedCaseStudies={relatedCaseStudies} />
       )}
     </>
   );

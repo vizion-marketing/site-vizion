@@ -3,6 +3,7 @@ import { post } from "./post";
 import { clientSchema } from "./client";
 import { caseStudy } from "./caseStudy";
 import { service } from "./service";
+import { formation } from "./formation";
 import { page } from "./page";
 
 // Object schemas
@@ -24,6 +25,7 @@ export const schemaTypes = [
   clientSchema,
   caseStudy,
   service,
+  formation,
   page,
   // Objects
   testimonial,

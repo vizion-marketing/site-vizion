@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import type { ServiceContent } from "@/content/services";
 import { SERVICE_MENU_CATEGORIES } from "@/lib/constants";
 
@@ -35,7 +35,7 @@ export function ServicesPageContent({
               <span className="inline-block w-1.5 h-1.5 bg-accent" />
               Nos services
             </p>
-            <h1 className="text-primary font-normal leading-[0.92] tracking-[-0.04em] text-[clamp(48px,8vw,72px)] mb-6">
+            <h1 className="text-primary font-normal leading-[0.95] tracking-[-0.04em] text-[clamp(48px,8vw,72px)] mb-6">
               Marketing B2B sur mesure
             </h1>
             <p className="text-secondary text-lg sm:text-xl leading-relaxed max-w-2xl">
@@ -87,7 +87,7 @@ export function ServicesPageContent({
                       <h3 className="text-primary font-normal leading-[1.15] tracking-[-0.02em] text-[clamp(20px,3vw,28px)]">
                         {pilier.category}
                       </h3>
-                      <ArrowRight className="w-5 h-5 text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-1" />
+                      <ArrowUpRight className="w-5 h-5 text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-1" />
                     </div>
                     <p className="text-secondary text-sm leading-relaxed mb-6">
                       {pilier.heroSubtitle}
@@ -134,7 +134,7 @@ export function ServicesPageContent({
                       <h4 className="text-primary font-normal text-base">
                         {item.label}
                       </h4>
-                      <ArrowRight className="w-4 h-4 text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-0.5" />
+                      <ArrowUpRight className="w-4 h-4 text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-0.5" />
                     </div>
                     <p className="text-secondary text-sm leading-relaxed">
                       {item.description}
@@ -166,7 +166,7 @@ export function ServicesPageContent({
               className="btn-primary inline-flex items-center gap-2"
             >
               Prendre rendez-vous
-              <ArrowRight className="w-4 h-4" />
+              <ArrowUpRight className="w-4 h-4" />
             </Link>
           </motion.div>
         </div>

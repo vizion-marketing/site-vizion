@@ -17,6 +17,8 @@ interface PilierHeroProps {
   imageUrl?: string;
   imageAlt?: string;
   breadcrumbLabel: string;
+  breadcrumbParentLabel?: string;
+  breadcrumbParentHref?: string;
 }
 
 const FALLBACK_IMAGE = "/images/services/default-hero.png";
@@ -28,6 +30,8 @@ export function PilierHero({
   imageUrl,
   imageAlt,
   breadcrumbLabel,
+  breadcrumbParentLabel = "Services",
+  breadcrumbParentHref = "/services",
 }: PilierHeroProps) {
   const heroSrc = imageUrl || FALLBACK_IMAGE;
   const sectionRef = useRef<HTMLElement>(null);
@@ -110,8 +114,8 @@ export function PilierHero({
               Accueil
             </Link>
             <span>/</span>
-            <Link href="/services" className="hover:text-white transition-colors">
-              Services
+            <Link href={breadcrumbParentHref} className="hover:text-white transition-colors">
+              {breadcrumbParentLabel}
             </Link>
             <span>/</span>
             <span className="text-white">{breadcrumbLabel}</span>
@@ -120,7 +124,13 @@ export function PilierHero({
           {/* Title */}
           <h1
             data-v2="title"
-            className="font-heading font-normal text-[clamp(36px,7vw,72px)] leading-[0.92] tracking-[-0.04em] text-white max-w-4xl mb-6 sm:mb-8"
+            className="font-heading font-normal text-[28px] min-[400px]:text-[32px] sm:text-[40px] lg:text-[44px] xl:text-[48px] leading-[1.05] tracking-[-0.035em] max-w-4xl mb-6 sm:mb-8"
+            style={{
+              backgroundImage: "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.88) 100%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
           >
             {title}
           </h1>

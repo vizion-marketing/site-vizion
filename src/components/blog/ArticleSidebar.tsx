@@ -37,7 +37,7 @@ export function ArticleSidebar({ headings }: ArticleSidebarProps) {
               Accès Privé
             </span>
           </div>
-          <h3 className="font-heading font-normal text-xl leading-[0.9] text-primary tracking-tight">
+          <h3 className="font-heading font-normal text-xl leading-[0.95] text-primary tracking-tight">
             Propulsez votre vision créative
           </h3>
           <p className="font-[var(--font-body)] text-xs text-primary/70 leading-relaxed max-w-[220px]">

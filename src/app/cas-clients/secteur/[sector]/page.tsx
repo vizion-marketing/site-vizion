@@ -41,6 +41,30 @@ const TYPE_META: Record<
     description:
       "Nos cas clients en marketing pour les start-ups B2B : go-to-market, positionnement, generation de leads, sales enablement.",
   },
+  "saas-b2b": {
+    name: "SaaS B2B",
+    title: "Cas Clients SaaS B2B | Marketing et growth pour editeurs SaaS",
+    description:
+      "Etudes de cas marketing pour les editeurs SaaS B2B : positionnement produit, acquisition, onboarding, sales enablement et strategie de croissance.",
+  },
+  "services-b2b": {
+    name: "Services B2B",
+    title: "Cas Clients Services B2B | Marketing pour societes de services",
+    description:
+      "Nos cas clients en marketing pour les societes de services B2B : generation de leads, positionnement, content marketing et strategie commerciale.",
+  },
+  "industrie-b2b": {
+    name: "Industrie B2B",
+    title: "Cas Clients Industrie B2B | Marketing pour entreprises industrielles",
+    description:
+      "Etudes de cas marketing pour les entreprises industrielles B2B : modernisation commerciale, lead generation, contenu technique et transformation digitale.",
+  },
+  "business-local": {
+    name: "Business Local",
+    title: "Cas Clients Business Local | Marketing B2B pour entreprises locales",
+    description:
+      "Nos cas clients en marketing pour les entreprises B2B a ancrage local : visibilite locale, generation de leads, strategie digitale et developpement commercial.",
+  },
 };
 
 // Map type slug to Sanity value

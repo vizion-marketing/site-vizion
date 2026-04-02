@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TestimonialsMarquee } from "@/components/home/TestimonialsMarquee";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,7 +66,7 @@ export function ServiceCTA({
   return (
     <section
       ref={sectionRef}
-      className="dark-section grain-overlay relative overflow-hidden py-24 sm:py-32 md:py-40 px-4 sm:px-6 md:px-12"
+      className="dark-section grain-overlay relative overflow-hidden pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-12"
       style={{ background: "var(--bg-dark)" }}
     >
       {/* Primary glow - center */}
@@ -98,37 +99,47 @@ export function ServiceCTA({
       <div className="absolute bottom-1/3 left-[10%] w-2 h-2 bg-accent/20 animate-gradient-float-4 pointer-events-none" />
       <div className="absolute top-[60%] right-[8%] w-1.5 h-1.5 bg-white/10 animate-gradient-float-3 pointer-events-none" />
 
-      <div className="text-center max-w-[40rem] mx-auto relative z-10">
-        {/* Title with word-by-word reveal */}
-        <h2
-          ref={titleRef}
-          className="text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-5xl text-white font-normal leading-tight flex flex-wrap justify-center gap-x-[0.3em]"
-        >
-          {titleWords.map((word, i) => (
-            <span key={i} className="overflow-hidden inline-block">
-              <span className="cta-word inline-block">{word}</span>
-            </span>
-          ))}
-        </h2>
+      <div className="relative z-10 max-w-[82.5rem] mx-auto">
+        {/* Title + CTA buttons — centré sur max 40rem */}
+        <div className="text-center max-w-[40rem] mx-auto">
+          <h2
+            ref={titleRef}
+            className="text-[28px] min-[400px]:text-[32px] sm:text-[40px] md:text-5xl text-white font-normal leading-tight flex flex-wrap justify-center gap-x-[0.3em]"
+          >
+            {titleWords.map((word, i) => (
+              <span key={i} className="overflow-hidden inline-block py-[0.15em]">
+                <span className="cta-word inline-block">{word}</span>
+              </span>
+            ))}
+          </h2>
 
-        {/* Description + buttons */}
-        <div ref={contentRef}>
-          <p className="text-lg text-white/70 mt-4 mb-10">{description}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href={buttonLink}
-              className="inline-flex items-center justify-center gap-3 bg-accent text-black font-medium px-10 py-4 hover:bg-accent/90 hover:scale-[1.02] active:scale-[0.97] transition-all duration-200"
-            >
-              <span className="w-2 h-2 bg-black animate-[accent-pulse_2s_ease-in-out_infinite]" />
-              {buttonText}
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center border border-white/20 text-white px-10 py-4 hover:border-accent/40 hover:bg-white/5 active:scale-[0.97] transition-all duration-300"
-            >
-              Découvrir nos services
-            </Link>
+          <div ref={contentRef}>
+            <p className="text-lg text-white/70 mt-4 mb-10">{description}</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href={buttonLink}
+                onClick={() => window.scrollTo({ top: 0 })}
+                className="inline-flex items-center justify-center gap-3 bg-accent text-black font-medium px-10 py-4 hover:bg-accent/90 hover:scale-[1.02] active:scale-[0.97] transition-all duration-200"
+              >
+                <span className="w-2 h-2 bg-black animate-[accent-pulse_2s_ease-in-out_infinite]" />
+                {buttonText}
+              </Link>
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center border border-white/20 text-white px-10 py-4 hover:border-accent/40 hover:bg-white/5 active:scale-[0.97] transition-all duration-300"
+              >
+                Tous nos services marketing B2B
+              </Link>
+            </div>
           </div>
+        </div>
+
+        {/* Témoignages marquee — E-E-A-T social proof */}
+        <div className="mt-28">
+          <p className="text-center text-[11px] font-light tracking-[0.12em] uppercase text-white/40 mb-8">
+            Ils nous font confiance
+          </p>
+          <TestimonialsMarquee />
         </div>
       </div>
     </section>

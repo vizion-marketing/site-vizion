@@ -118,7 +118,7 @@ export const directionMarketingExternalisee: ServiceContent = {
     sectionDescription:
       "Nous ne fournissons pas un consultant qui rédige des rapports. Nous mettons à votre disposition un directeur marketing opérationnel, intégré à vos équipes, qui prend des décisions et rend des comptes chaque mois.",
     image: {
-      src: "/images/services/direction-marketing-externalisee/bento.avif",
+      src: "/images/services/audit-marketing/hero.avif",
       alt: "Directeur marketing Vizion en réunion stratégique",
     },
     technology: {
@@ -258,6 +258,7 @@ export const directionMarketingExternalisee: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/battlecards-case-studies/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour externaliser votre direction marketing ?",
@@ -348,7 +349,7 @@ export const directionMarketingExternalisee: ServiceContent = {
       question:
         "Combien coûte une direction marketing externalisée ?",
       answer:
-        "Le budget dépend du volume d'intervention : comptez entre 2 500 et 8 000 euros par mois pour un accompagnement structuré. C'est 3 à 5 fois moins qu'un recrutement interne en CDI (salaire, charges, management, outils). Le budget exact est défini après un premier échange pour cadrer vos besoins.",
+        "Le volume d'intervention et le budget associé dépendent de votre stade de croissance, de votre équipe en place et de vos priorités marketing. Nous n'avons pas de forfait standard : tout se cadre lors d'un premier échange de 30 minutes avec un fondateur, sans engagement.",
     },
     {
       question:
@@ -394,6 +395,14 @@ export const directionMarketingExternalisee: ServiceContent = {
     "La direction marketing pose le cadre stratégique. Ces services opérationnels complètent le dispositif.",
   relatedServices: [
     {
+      slug: "strategie",
+      icon: "Compass",
+      title: "Stratégie Marketing B2B",
+      description:
+        "La direction marketing externalisée s'appuie sur un cadre stratégique solide. Découvrez comment Vizion pilote la transformation marketing et commerciale des entreprises B2B.",
+      href: "/services/strategie",
+    },
+    {
       slug: "roadmap-strategique",
       icon: "CalendarCheck",
       title: "Roadmap Stratégique",
@@ -408,14 +417,6 @@ export const directionMarketingExternalisee: ServiceContent = {
       description:
         "Avant de piloter, il faut diagnostiquer. L'audit marketing analyse votre dispositif actuel pour identifier ce qui freine vos performances et définir les priorités d'action.",
       href: "/services/audit-marketing",
-    },
-    {
-      slug: "creation-contenu-b2b",
-      icon: "PenTool",
-      title: "Création de Contenu B2B",
-      description:
-        "Votre directeur marketing définit la stratégie éditoriale. L'équipe contenu produit les articles, les cas clients et les ressources qui alimentent votre pipeline commercial.",
-      href: "/services/creation-contenu-b2b",
     },
   ],
 

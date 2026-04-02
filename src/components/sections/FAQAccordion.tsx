@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Plus, ArrowRight } from "lucide-react";
+import { Plus, ArrowUpRight } from "lucide-react";
 
 export interface FAQItem {
   question: string;
@@ -115,7 +115,7 @@ export function FAQAccordion({
                   whileHover={{ x: 3 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <ArrowRight size={16} />
+                  <ArrowUpRight size={16} />
                 </motion.span>
               </Link>
             )}

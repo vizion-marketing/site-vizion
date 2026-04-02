@@ -41,7 +41,7 @@ export const seoContenuOrganique: ServiceContent = {
     title:
       "Vous investissez en publicité, mais Google ne vous connaît toujours pas.",
     paragraphs: [
-      "Google Ads, LinkedIn Ads, sponsoring. Vous payez pour chaque clic, chaque visite, chaque lead. Le jour où vous coupez le budget, le trafic s'arrête. Et vos concurrents, eux, captent le trafic gratuit que vous laissez sur la table.",
+      "Votre acquisition repose entièrement sur des budgets publicitaires. Ça fonctionne tant que vous payez, et s'arrête le jour où vous coupez. Pendant ce temps, vos concurrents construisent un actif qui travaille pour eux en permanence : un contenu bien positionné génère des leads pendant des années, sans coût supplémentaire.",
     ],
     statements: [
       {
@@ -113,7 +113,7 @@ export const seoContenuOrganique: ServiceContent = {
     sectionDescription:
       "Nous ne faisons pas du SEO généraliste. Chaque stratégie est construite pour les cycles de vente longs du B2B, avec des outils professionnels, une production de contenu experte et une mesure rigoureuse de la performance.",
     image: {
-      src: "/images/services/seo-contenu-organique/bento.avif",
+      src: "/images/services/campagnes-publicitaires/hero.avif",
       alt: "Tableau de bord SEO et analytics Vizion",
     },
     technology: {
@@ -251,6 +251,7 @@ export const seoContenuOrganique: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/audit-marketing/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour votre stratégie SEO B2B ?",
@@ -336,7 +337,7 @@ export const seoContenuOrganique: ServiceContent = {
     {
       question: "Combien coûte une stratégie SEO B2B avec Vizion ?",
       answer:
-        "Un accompagnement SEO complet (audit, corrections techniques, production de contenu, netlinking) se situe généralement entre 2 500 € et 8 000 € par mois selon l'ambition et la concurrence sur votre marché. L'audit initial peut être réalisé en prestation ponctuelle à partir de 3 000 €. Nous établissons un devis précis après analyse de votre situation.",
+        "Le budget SEO dépend de votre secteur, du niveau de concurrence sur vos mots-clés cibles et de l'ambition editoriale souhaitée. Nous n'avons pas de tarif catalogue : tout se construit sur mesure à partir d'un premier échange de 30 minutes, sans engagement.",
     },
     {
       question: "En combien de temps une stratégie SEO produit-elle des résultats ?",
@@ -376,6 +377,14 @@ export const seoContenuOrganique: ServiceContent = {
     "Un bon référencement, c'est le socle. Ces services complémentaires accélèrent votre croissance organique.",
   relatedServices: [
     {
+      slug: "growth-marketing",
+      icon: "TrendingUp",
+      title: "Growth Marketing B2B",
+      description:
+        "Le SEO est l'un des canaux d'acquisition que nous activons dans notre approche growth marketing. Découvrez comment Vizion génère une acquisition prévisible pour les entreprises B2B.",
+      href: "/services/growth-marketing",
+    },
+    {
       slug: "creation-refonte-site-web",
       icon: "Globe",
       title: "Création ou Refonte de Site Web",
@@ -383,13 +392,6 @@ export const seoContenuOrganique: ServiceContent = {
         "Votre SEO ne peut pas performer sur un site aux fondations fragiles. Nous concevons des sites web B2B rapides, bien structurés et pensés pour le référencement naturel dès la conception.",
       href: "/services/creation-refonte-site-web",
     },
-    {
-      slug: "creation-contenu-b2b",
-      icon: "PenTool",
-      title: "Création de Contenu B2B",
-      description:
-        "Le SEO attire le trafic, le contenu le convertit. Nous produisons des articles, livres blancs et case studies qui se positionnent sur Google et font avancer vos prospects dans le cycle de vente.",
-      href: "/services/seo-contenu-organique",},
     {
       slug: "audit-marketing",
       icon: "ClipboardList",

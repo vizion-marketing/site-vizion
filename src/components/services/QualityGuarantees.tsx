@@ -154,7 +154,7 @@ export function QualityGuarantees({ content }: QualityGuaranteesProps) {
             className="border border-white/10 overflow-hidden relative min-h-[320px] md:min-h-0 group"
           >
             <Image
-              src="/images/portrait-lucas.png"
+              src={content.portraitImage || "/images/portrait-lucas.png"}
               alt="Lucas Gonzalez, Fondateur de Vizion"
               fill
               className="object-cover object-top group-hover:scale-105 transition-transform duration-700"

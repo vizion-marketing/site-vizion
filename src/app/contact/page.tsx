@@ -1,15 +1,10 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
-import { ArrowUpRightIcon } from "@/components/icons";
 import {
-  Mail,
-  Phone,
-  MapPin,
   Clock,
   ShieldCheck,
   Users,
@@ -296,65 +291,64 @@ export default function ContactPage() {
             </div>
           </motion.div>
 
-          {/* COLONNE DROITE - PHOTO (45%) */}
-          <motion.div 
+          {/* COLONNE DROITE - PROCESSUS (45%) */}
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-4 relative group hidden lg:block"
+            className="lg:col-span-4 h-full hidden lg:block"
           >
-            {/* Decorative Corners */}
-            <div className="absolute top-[-12px] right-[-12px] w-20 h-20 border-t-2 border-r-2 border-accent/40 z-30 transition-all duration-500 group-hover:w-24 group-hover:h-24" />
-            <div className="absolute bottom-[-12px] left-[-12px] w-16 h-16 border-b-2 border-l-2 border-white/40 z-30 transition-all duration-500 group-hover:w-20 group-hover:h-20" />
+            <div className="h-full bg-white/5 backdrop-blur-md border border-white/10 p-10 lg:p-12 flex flex-col justify-between relative overflow-hidden group">
+              {/* Background Accent Glow */}
+              <div className="absolute top-0 right-0 w-64 h-64 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 60%)", filter: "blur(100px)" }} />
 
-            {/* Main Image Container */}
-            <div className="relative h-full w-full rounded-none overflow-hidden transition-all duration-700 ease-out shadow-2xl">
-              <Image
-                src="/images/contact.avif"
-                alt="Lucas Gonzalez, Directeur Commercial Vizion"
-                fill
-                className="object-cover"
-                priority
-              />
-              {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
-
-              {/* Floating Contact Card */}
-              <div className="absolute bottom-6 inset-x-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-none space-y-4">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="text-white font-heading font-normal text-lg tracking-tight leading-tight">Lucas Gonzalez</h3>
-                    <p className="text-accent text-[10px] font-light tracking-[0.12em]">Directeur Commercial</p>
-                  </div>
-                  <div className="bg-accent text-black text-[9px] font-black px-2.5 py-1 rounded-none tracking-tight flex items-center gap-1.5">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-black opacity-75"></span>
-                      <span className="relative inline-flex rounded-none h-1.5 w-1.5 bg-black"></span>
-                    </span>
-                    Réponse 24h
-                  </div>
+              <div className="relative z-10 space-y-12">
+                <div>
+                  <span className="text-[11px] font-light tracking-[0.12em] text-accent uppercase block mb-4">Processus</span>
+                  <h2 className="text-3xl font-normal text-white leading-tight tracking-tight">Comment ça se passe ?</h2>
                 </div>
 
-                <div className="space-y-2.5 pt-2 border-t border-white/10">
-                  <a href="mailto:contact@by-vizion.com" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
-                    <div className="w-8 h-8 rounded-none bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
-                      <Mail className="w-3.5 h-3.5" />
+                <div className="space-y-0">
+                  {/* Step 1 */}
+                  <div className="relative flex gap-6 pb-12">
+                    <div className="absolute left-[19px] top-10 bottom-0 w-px bg-white/10" />
+                    <div className="relative z-10 flex-shrink-0 w-10 h-10 bg-dark border border-white/20 flex items-center justify-center text-accent text-sm font-medium">
+                      01
                     </div>
-                    <span className="text-sm">contact@by-vizion.com</span>
-                  </a>
-                  <a href="tel:+33750836543" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group/link">
-                    <div className="w-8 h-8 rounded-none bg-white/5 flex items-center justify-center border border-white/5 group-hover/link:border-white/20 group-hover/link:bg-white/10 transition-all">
-                      <Phone className="w-3.5 h-3.5" />
+                    <div className="space-y-2 pt-1">
+                      <h3 className="text-white font-medium text-lg tracking-tight">Remplissage du formulaire</h3>
+                      <p className="text-white/60 text-sm leading-relaxed max-w-[280px]">Décrivez votre situation actuelle et les enjeux que vous souhaitez adresser.</p>
                     </div>
-                    <span className="text-sm">07 50 83 65 43</span>
-                  </a>
-                  <div className="flex items-center gap-3 text-white/80">
-                    <div className="w-8 h-8 rounded-none bg-white/5 flex items-center justify-center border border-white/5">
-                      <MapPin className="w-3.5 h-3.5" />
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="relative flex gap-6 pb-12">
+                    <div className="absolute left-[19px] top-10 bottom-0 w-px bg-white/10" />
+                    <div className="relative z-10 flex-shrink-0 w-10 h-10 bg-dark border border-white/20 flex items-center justify-center text-accent text-sm font-medium">
+                      02
                     </div>
-                    <span className="text-sm">815 La Pyrénéenne, 31670 Labège</span>
+                    <div className="space-y-2 pt-1">
+                      <h3 className="text-white font-medium text-lg tracking-tight">Premier rendez-vous</h3>
+                      <p className="text-white/60 text-sm leading-relaxed max-w-[280px]">30 min d&apos;échange stratégique avec un fondateur, sans engagement, pour qualifier vos besoins.</p>
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="relative flex gap-6">
+                    <div className="relative z-10 flex-shrink-0 w-10 h-10 bg-dark border border-white/20 flex items-center justify-center text-accent text-sm font-medium">
+                      03
+                    </div>
+                    <div className="space-y-2 pt-1">
+                      <h3 className="text-white font-medium text-lg tracking-tight">Présentation sur mesure</h3>
+                      <p className="text-white/60 text-sm leading-relaxed max-w-[280px]">Réception d&apos;une feuille de route concrète et chiffrée, adaptée précisément à vos objectifs.</p>
+                    </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Bottom Info */}
+              <div className="relative z-10 pt-8 border-t border-white/5 flex items-center gap-4">
+                <p className="text-[12px] text-white/40 font-light">Plus de 70 entreprises B2B accompagnées depuis 2021.</p>
               </div>
             </div>
           </motion.div>

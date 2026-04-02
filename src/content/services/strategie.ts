@@ -35,8 +35,8 @@ export const strategieMarketing: ServiceContent = {
     surtitre: "LA STRATÉGIE MARKETING",
     title: "La stratégie marketing B2B : qu'est-ce que c'est et pourquoi c'est le socle de tout ?",
     paragraphs: [
-      "Un article ici, une campagne là, un salon dans deux mois. Les actions marketing s'enchainent sans cohérence, sans priorisation et sans lien clair avec les objectifs de vente. Le budget est consommé, le pipeline ne se remplit pas, et personne ne sait pourquoi. Le problème ? Ce n'est pas un manque d'actions, c'est un manque de cap.",
-      "La stratégie marketing B2B existe pour combler ce vide entre l'ambition commerciale et les actions terrain : diagnostiquer ce qui fonctionne et ce qui bloque, définir une feuille de route priorisée par impact, et piloter l'exécution avec des indicateurs clairs. Cette discipline repose sur trois piliers :",
+      "Votre équipe lance des actions. Des contenus, des campagnes, des rendez-vous salons. Le budget part, la charge augmente, mais le pipeline ne suit pas. Quand personne ne peut expliquer pourquoi, ce n'est pas un problème d'exécution. C'est un problème de cap.",
+      "La stratégie marketing B2B existe pour combler ce vide entre l'ambition commerciale et les actions terrain : diagnostiquer ce qui fonctionne et ce qui bloque, définir une feuille de route priorisée par impact, et piloter l'exécution avec des indicateurs clairs. Elle s'articule autour de trois leviers complémentaires :",
     ],
     statements: [
       {
@@ -248,7 +248,6 @@ export const strategieMarketing: ServiceContent = {
       question: "Quelle différence entre stratégie marketing et exécution marketing ?",
       answer: "L'exécution, c'est produire des contenus, lancer des campagnes, gérer les réseaux sociaux. La stratégie, c'est décider quoi faire, dans quel ordre, avec quel budget et pour quel objectif. L'une sans l'autre produit soit de l'activité sans résultat, soit un plan brillant qui reste dans un tiroir.",
       answerLinks: [
-        { text: "produire des contenus", href: "/services/creation-contenu-b2b" },
         { text: "lancer des campagnes", href: "/services/campagnes-publicitaires" },
       ],
     },

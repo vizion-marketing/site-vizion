@@ -184,6 +184,8 @@ export default async function CaseStudyPage({ params }: Props) {
         relatedServices={relatedServices}
         clientSlug={clientSlug}
         clientName={client?.name}
+        clientHeadline={client?.headline}
+        clientDescription={client?.description}
       />
     </>
   );

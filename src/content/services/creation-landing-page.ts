@@ -4,7 +4,7 @@ export const creationLandingPage: ServiceContent = {
   slug: "creation-landing-page",
   title: "Création de Landing Page",
   icon: "Layout",
-  category: "Product Marketing",
+  category: "Marketing Produit",
   order: 2,
 
   // SEO
@@ -41,7 +41,7 @@ export const creationLandingPage: ServiceContent = {
     title:
       "Vous investissez dans des campagnes, mais vos pages ne convertissent pas.",
     paragraphs: [
-      "Publicité, emailing, LinkedIn Ads. Vous générez du trafic, mais les visiteurs repartent sans agir. Le problème n'est pas votre offre. C'est la page sur laquelle ils atterrissent.",
+      "Vous investissez pour amener des visiteurs sur votre site. Ils arrivent, regardent, et repartent. Pas parce que votre offre ne tient pas la route, mais parce qu'une page d'accueil n'est pas une page de conversion. Elle n'a pas été conçue pour répondre à une intention précise, guider un regard et déclencher une seule action.",
     ],
     statements: [
       {
@@ -123,7 +123,7 @@ export const creationLandingPage: ServiceContent = {
     sectionDescription:
       "Nous ne livrons pas une page isolée. Chaque landing page est un dispositif complet : stratégie de message, design de conversion, intégration technique et mesure de performance. Tout est pensé pour votre campagne.",
     image: {
-      src: "/images/services/creation-landing-page/bento.avif",
+      src: "/images/services/site-web/hero.avif",
       alt: "Conception d'une landing page Vizion",
     },
     technology: {
@@ -247,6 +247,7 @@ export const creationLandingPage: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/audit-marketing/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour créer votre landing page ?",
@@ -333,7 +334,7 @@ export const creationLandingPage: ServiceContent = {
     {
       question: "Combien coûte la création d'une landing page B2B ?",
       answer:
-        "Une landing page B2B sur mesure se situe généralement entre 2 000 € et 6 000 € selon la complexité (nombre de sections, fonctionnalités interactives, intégrations CRM). Ce budget inclut le copywriting, le design, le développement et la configuration du tracking. Nous établissons un devis précis après le brief initial.",
+        "Le budget d'une landing page dépend de votre objectif de conversion, du niveau de personnalisation et des intégrations requises. Nous n'avons pas de tarif catalogue : tout se construit sur mesure à partir d'un premier échange de 30 minutes, sans engagement.",
     },
     {
       question: "Quel est le délai de livraison d'une landing page ?",
@@ -373,11 +374,19 @@ export const creationLandingPage: ServiceContent = {
     "Une landing page performante, c'est le point de départ. Ces services accélèrent vos résultats.",
   relatedServices: [
     {
+      slug: "growth-marketing",
+      icon: "TrendingUp",
+      title: "Growth Marketing B2B",
+      description:
+        "La landing page est l'un des piliers de votre acquisition. Découvrez comment Vizion combine les canaux pour générer un flux de leads qualifiés de façon prévisible.",
+      href: "/services/growth-marketing",
+    },
+    {
       slug: "product-marketing",
       icon: "Rocket",
-      title: "Product Marketing B2B",
+      title: "Marketing Produit B2B",
       description:
-        "Une landing page performante s'appuie sur un positionnement clair. Découvrez comment nous structurons l'ensemble de votre product marketing B2B.",
+        "Une landing page performante s'appuie sur un positionnement clair. Découvrez comment nous structurons l'ensemble de votre marketing produit B2B.",
       href: "/services/product-marketing",
     },
     {
@@ -387,14 +396,6 @@ export const creationLandingPage: ServiceContent = {
       description:
         "Votre landing page capte le trafic payant. Le SEO capte le trafic organique. Nous construisons une stratégie de référencement pour générer des leads sans dépendre uniquement de la publicité.",
       href: "/services/seo-contenu-organique",
-    },
-    {
-      slug: "creation-contenu-b2b",
-      icon: "PenTool",
-      title: "Création de Contenu B2B",
-      description:
-        "Votre landing page ne vit pas seule. Nous créons les contenus qui alimentent vos campagnes et nourrissent vos prospects tout au long de leur parcours d'achat.",
-      href: "/services/creation-contenu-b2b",
     },
   ],
 

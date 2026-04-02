@@ -1,4 +1,4 @@
-import type { CityPageData } from "./types";
+﻿import type { CityPageData } from "./types";
 import {
   SITE_URL, MAP_EMBED_URL, VILLES_BADGES,
   buildOrganizationSchema, buildFaqSchema, buildBreadcrumbSchema,
@@ -75,7 +75,7 @@ const content: CityPageData["content"] = {
     baseline:
       "Les PME du Lot-et-Garonne maîtrisent leur métier, mais leur marketing ne suit pas. Positionnement flou, supports obsolètes, prospection au fil de l'eau. Vizion structure l'ensemble pour que votre expertise industrielle ou agroalimentaire devienne un avantage commercial mesurable.",
     cta: {
-      primary: { text: "Échanger avec un fondateur", href: "/contact" },
+      primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES EN OCCITANIE ET EN FRANCE DEPUIS 2021",

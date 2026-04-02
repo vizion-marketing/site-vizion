@@ -14,8 +14,9 @@ import {
   ServiceFAQ,
   RelatedServices,
   ServiceCTA,
-  InlineCTA,
+  RelatedCaseStudies,
 } from "@/components/services";
+import type { ServiceCaseStudy } from "../../../../sanity/lib/types";
 import { SERVICE_MENU_CATEGORIES } from "@/lib/constants";
 
 function getPilierRelatedServices(category: string, currentSlug: string): RelatedService[] {
@@ -34,10 +35,12 @@ function getPilierRelatedServices(category: string, currentSlug: string): Relate
 
 interface ServiceDetailContentProps {
   service: ServiceContent;
+  relatedCaseStudies?: ServiceCaseStudy[];
 }
 
 export function ServiceDetailContent({
   service,
+  relatedCaseStudies = [],
 }: ServiceDetailContentProps) {
   const pilierRelated = getPilierRelatedServices(service.category, service.slug);
   const relatedServices = pilierRelated.length > 0 ? pilierRelated : (service.relatedServices ?? []);
@@ -66,6 +69,7 @@ export function ServiceDetailContent({
           title={service.solutionTitle}
           image={service.solutionImage}
           items={service.solutionItems}
+          slug={service.slug}
         />
       )}
 
@@ -80,21 +84,10 @@ export function ServiceDetailContent({
       {/* 8. Témoignages (sombre) */}
       {service.testimonials.length > 0 && (
         <TestimonialShowcase
-          testimonials={service.testimonials}
+          testimonials={service.testimonials.slice(0, 1)}
           sectionTitle={service.testimonialsTitle}
           sectionSubtitle={service.testimonialsSubtitle}
         />
-      )}
-
-      {/* CTA intermédiaire après témoignages */}
-      {service.inlineCTAs?.afterTestimonials && (
-        <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-12 bg-white">
-          <InlineCTA
-            text={service.inlineCTAs.afterTestimonials.text}
-            buttonText={service.inlineCTAs.afterTestimonials.buttonText}
-            href={service.inlineCTAs.afterTestimonials.href}
-          />
-        </div>
       )}
 
       {/* 9. Process / Timeline (card) - ancre #processus */}
@@ -106,23 +99,15 @@ export function ServiceDetailContent({
         />
       )}
 
-      {/* CTA intermédiaire après process */}
-      {service.inlineCTAs?.afterProcess && (
-        <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-12 bg-white">
-          <InlineCTA
-            text={service.inlineCTAs.afterProcess.text}
-            buttonText={service.inlineCTAs.afterProcess.buttonText}
-            href={service.inlineCTAs.afterProcess.href}
-          />
-        </div>
-      )}
-
       {/* 10. Garanties de qualité (sombre) */}
       {service.qualityGuarantees && (
         <QualityGuarantees content={service.qualityGuarantees} />
       )}
 
-      {/* 11. FAQ (card) */}
+      {/* 11. Cas clients liés (card) — uniquement si disponibles */}
+      <RelatedCaseStudies caseStudies={relatedCaseStudies} />
+
+      {/* 12. FAQ (card) */}
       {service.faqs.length > 0 && (
         <ServiceFAQ title={service.faqTitle} faqs={service.faqs} />
       )}

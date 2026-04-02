@@ -41,7 +41,7 @@ export const campagnesPublicitaires: ServiceContent = {
     title:
       "Vous dépensez du budget publicitaire sans savoir ce que ça rapporte vraiment.",
     paragraphs: [
-      "Google Ads activé, LinkedIn Ads lancé, Meta Ads en test. Les clics arrivent, mais les leads qualifiés, eux, se font rares. Le problème n'est pas le canal. C'est la stratégie derrière.",
+      "Du budget part chaque mois. Les tableaux de bord affichent des clics, des impressions, des taux de clic. Mais quand on cherche combien de leads qualifiés ça a généré, combien de rendez-vous, combien de deals ouverts : personne ne sait vraiment répondre. Ce n'est pas un problème de canal, c'est un problème de pilotage.",
     ],
     statements: [
       {
@@ -113,7 +113,7 @@ export const campagnesPublicitaires: ServiceContent = {
     sectionDescription:
       "Nous ne gérons pas des clics. Nous pilotons un système complet : stratégie d'acquisition, créatives sur mesure, ciblage avancé, landing pages dédiées et reporting bout en bout. Chaque campagne est un levier commercial mesurable.",
     image: {
-      src: "/images/services/campagnes-publicitaires/bento.avif",
+      src: "/images/services/seo-contenu-organique/hero.avif",
       alt: "Tableau de bord de campagnes publicitaires Vizion",
     },
     technology: {
@@ -252,6 +252,7 @@ export const campagnesPublicitaires: ServiceContent = {
 
   // Quality guarantees
   qualityGuarantees: {
+    portraitImage: "/images/services/direction-marketing-externalisee/hero.avif",
     surtitre: "Nos engagements",
     sectionTitle:
       "Pourquoi choisir Vizion\npour piloter vos campagnes publicitaires ?",
@@ -337,7 +338,7 @@ export const campagnesPublicitaires: ServiceContent = {
     {
       question: "Quel budget minimum pour lancer une campagne publicitaire B2B ?",
       answer:
-        "Nous recommandons un budget publicitaire minimum de 2 000 euros par mois par canal pour obtenir des résultats significatifs en B2B. En dessous, les volumes de données sont insuffisants pour optimiser correctement les campagnes. Le budget est défini ensemble en fonction de vos objectifs de leads et de votre coût par acquisition cible.",
+        "Le budget publicitaire et les honoraires d'accompagnement dépendent de vos objectifs de leads, des canaux retenus et de la maturité de votre audience. Nous définissons ces paramètres ensemble lors d'un premier échange de 30 minutes, sans engagement.",
     },
     {
       question: "Quels canaux publicitaires utilisez-vous pour le B2B ?",
@@ -377,6 +378,14 @@ export const campagnesPublicitaires: ServiceContent = {
     "Les campagnes publicitaires génèrent des leads. Ces services accélèrent la conversion et le volume.",
   relatedServices: [
     {
+      slug: "growth-marketing",
+      icon: "TrendingUp",
+      title: "Growth Marketing B2B",
+      description:
+        "Les campagnes publicitaires s'intègrent dans une stratégie d'acquisition multi-canaux. Découvrez comment Vizion combine les leviers pour générer une croissance prévisible.",
+      href: "/services/growth-marketing",
+    },
+    {
       slug: "creation-landing-page",
       icon: "Layout",
       title: "Création de Landing Page",
@@ -393,12 +402,12 @@ export const campagnesPublicitaires: ServiceContent = {
       href: "/services/campagnes-publicitaires",
     },
     {
-      slug: "linkedin-for-growth",
-      icon: "Users",
-      title: "LinkedIn for Growth",
+      slug: "strategie-personal-branding",
+      icon: "User",
+      title: "Stratégie de Personal Branding",
       description:
         "Vos campagnes LinkedIn Ads touchent vos cibles. Une stratégie LinkedIn organique complète le dispositif en installant votre crédibilité et en générant des conversations commerciales directes.",
-      href: "/services/linkedin-for-growth",
+      href: "/services/strategie-personal-branding",
     },
   ],
 

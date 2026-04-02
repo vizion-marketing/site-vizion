@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Linkedin, ChevronRight } from "lucide-react";
 import { SOCIAL_LINKS } from "@/lib/constants";
 
@@ -39,9 +40,12 @@ export function AuthorBio() {
           />
         </div>
         <div>
-          <p className="font-black text-sm leading-tight font-[var(--font-body)]">
+          <Link
+            href="/equipe/lucas-gonzalez"
+            className="font-black text-sm leading-tight font-[var(--font-body)] hover:underline"
+          >
             {AUTHOR_CONFIG.name}
-          </p>
+          </Link>
           <p className="text-xs text-zinc-500 mt-1 font-[var(--font-body)]">
             {AUTHOR_CONFIG.role}
           </p>

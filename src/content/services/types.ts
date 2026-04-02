@@ -125,6 +125,7 @@ export interface QualityGuaranteesContent {
   cardDescription: string;
   guarantees: QualityGuarantee[];
   featureCard: QualityFeatureCard;
+  portraitImage?: string;
 }
 
 // Pilier - section "Notre approche / Méthodologie"

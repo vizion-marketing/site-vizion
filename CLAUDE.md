@@ -11,7 +11,9 @@
 
 ### Qui est Vizion ?
 
-Agence de marketing stratégique B2B basée à Toulouse, pionnière de l'IA appliquée au marketing et aux ventes. Vizion accompagne les entreprises dans leurs moments de transformation : lancement de produit, innovation, restructuration, accélération.
+Vizion pilote la transformation marketing et commerciale de start-up, PME et ETI B2B aux moments où ça compte le plus : lancement de produit, restructuration commerciale, changement de cap ou accélération de la croissance.
+
+Basée à Toulouse, pionnière de l'IA appliquée au marketing et aux ventes. +70 entreprises accompagnées depuis 2021.
 
 **Fondateurs :**
 - **Lucas Gonzalez** — Stratégie, positionnement, architecture de message. Top 300 personnalités LinkedIn France.
@@ -21,6 +23,8 @@ Agence de marketing stratégique B2B basée à Toulouse, pionnière de l'IA appl
 
 ### Positionnement
 
+- **Tagline officielle :** "Chez Vizion, on pilote la transformation marketing et commerciale de start-up, PME et ETI B2B aux moments où ça compte le plus : lancement de produit, restructuration commerciale, changement de cap ou accélération de la croissance."
+- On intervient aux moments de transformation, pas en mode agence d'exécution permanente.
 - Le marketing doit servir la vente, pas produire du contenu pour produire.
 - Intervention tout au long du cycle commercial, y compris négociation et closing.
 - IA utilisée là où elle apporte une valeur mesurable (lead magnets, tri de prospection, personnalisation).
@@ -593,3 +597,48 @@ npm run lint         # ESLint
 
 1. Si l'UI existe déjà et nécessite un restyle → `modify_frontend`, PAS `snippet_frontend`
 2. Les tâches mixtes (logique + UI) doivent être séparées mentalement : logique soi-même, UI déléguée à Gemini
+
+---
+
+## 14. Niveau d'Ambition Design — OBLIGATOIRE
+
+> **Règle absolue :** Toute création de section, template de page ou composant visuel doit viser le niveau des meilleurs sites SaaS B2B (Linear, Vercel, Stripe, Raycast). Les sections basiques (listes simples, grilles génériques, texte + bouton) sont INACCEPTABLES sans traitement créatif.
+
+### Processus obligatoire pour toute nouvelle section
+
+1. **Inspecter d'abord** les composants existants du projet pour repérer les patterns ambitieux déjà en place (voir références ci-dessous)
+2. **Choisir un layout créatif** parmi les patterns autorisés (voir liste)
+3. **Toujours utiliser Gemini Design MCP** — ne jamais écrire du code UI sans passer par Gemini
+4. **Proposer sans demander de référence externe** — s'inspirer des patterns ci-dessous, pas de Pinterest
+
+### Layouts créatifs disponibles (choisir selon le contenu)
+
+| Pattern | Usage | Exemple dans le projet |
+|---------|-------|----------------------|
+| **Bento Grid** | Features, méthode, avantages | `MethodBento.tsx`, `WebFeaturesBento.tsx` |
+| **Sticky Scroll** | Étapes, solutions, processus | `SolutionSticky.tsx` |
+| **Hero split typographique** | Hero de page avec stat/badge flottant | `PilierHero.tsx`, `ServiceHeroV2.tsx` |
+| **Scroll horizontal titres** | Divider animé entre sections | `WebScrollTitle.tsx` |
+| **Glassmorphism cards** | Témoignages, stats, highlights sur fond sombre | `AssetsSection.tsx` |
+| **Timeline verticale** | Process, étapes chronologiques | `ProcessTimeline.tsx` |
+| **Marquee / scroll infini** | Logos, témoignages courts, industries | `TestimonialsMarquee.tsx`, `IndustriesMarquee.tsx` |
+| **Illustration inline HTML/Tailwind** | Remplace les images par du code visuel | `SolutionIllustrations.tsx` |
+| **Stats accent + contexte** | Preuves sociales, métriques clés | Patterns dans `PilierMetrics.tsx` |
+| **Card interactive hover** | Services, cas clients — hover accent + slide | `ServicesSection.tsx` |
+
+### Principes créatifs à appliquer systématiquement
+
+- **Typographie comme élément de design** : tailles mixtes (clamp énorme / texte normal), tracking large sur surtitres
+- **Accent lime utilisé avec parcimonie** : 1 à 2 éléments max par section (pas de fond entier lime sauf CTA final)
+- **Asymétrie intentionnelle** : éviter les grilles parfaitement symétriques, jouer sur les décalages
+- **Micro-animations Framer Motion** : fadeInUp + stagger sur chaque entrée d'élément, viewport once
+- **Pas de padding timide** : toujours `py-24 md:py-32 lg:py-40` minimum pour les sections majeures
+- **Chaque section a un ancrage visuel fort** : un élément qui attire l'oeil immédiatement (grand chiffre, image pleine largeur, card featured, typo oversized)
+
+### Ce qui est interdit
+
+- Liste `<ul>` basique sans traitement visuel
+- Grille 3 colonnes égales avec icône + titre + texte (pattern "features génériques")
+- Bouton centré seul sous un texte
+- Section sans hiérarchie visuelle claire
+- Copier-coller d'un layout déjà utilisé dans la même page

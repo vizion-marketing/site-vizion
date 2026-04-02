@@ -20,6 +20,10 @@ export const deskStructure = (S: StructureBuilder) =>
         .title("Services")
         .schemaType("service")
         .child(S.documentTypeList("service").title("Services")),
+      S.listItem()
+        .title("Formations")
+        .schemaType("formation")
+        .child(S.documentTypeList("formation").title("Formations")),
       S.divider(),
       S.listItem()
         .title("Pages")

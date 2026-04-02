@@ -3,7 +3,7 @@
 import { Clock, Shield, User } from "lucide-react";
 import { CTASection } from "@/components/sections";
 import { TestimonialsMarquee } from "@/components/home/TestimonialsMarquee";
-import { homeContent, type FinalCTAContent } from "@/content/home";
+import type { FinalCTAContent } from "@/content/home";
 
 const TRUST_ELEMENTS = [
   { icon: Clock, text: "30 minutes" },
@@ -16,16 +16,14 @@ interface FinalCTASectionProps {
 }
 
 export function FinalCTASection({ content }: FinalCTASectionProps = {}) {
-  const data = content ?? homeContent.finalCta;
-
   return (
     <CTASection
-      badge={data.trustBadge}
-      title={data.h2.replace(data.h2Highlight, "").trim()}
-      titleHighlight={data.h2Highlight}
-      description={data.description}
-      primaryCta={data.cta.primary}
-      secondaryCta={data.cta.secondary}
+      badge={content!.trustBadge}
+      title={content!.h2.replace(content!.h2Highlight, "").trim()}
+      titleHighlight={content!.h2Highlight}
+      description={content!.description}
+      primaryCta={content!.cta.primary}
+      secondaryCta={content!.cta.secondary}
       trustElements={TRUST_ELEMENTS}
     >
       <div className="mt-12 sm:mt-16">

@@ -1,4 +1,4 @@
-import type { CityPageData } from "./types";
+﻿import type { CityPageData } from "./types";
 import {
   SITE_URL, MAP_EMBED_URL, VILLES_BADGES,
   buildOrganizationSchema, buildFaqSchema, buildBreadcrumbSchema,
@@ -70,7 +70,7 @@ const content: CityPageData["content"] = {
     baseline:
       "Vos prospects ne font pas la différence entre vous et vos concurrents ? Vos commerciaux improvisent ? Vous n'arrivez pas à poser une stratégie ? Découvrez Vizion, une agence marketing exigeante, basée à Toulouse, spécialisée dans les cycles de ventes longs.",
     cta: {
-      primary: { text: "Échanger avec un fondateur", href: "/contact" },
+      primary: { text: "Nous contacter", href: "/contact" },
       secondary: { text: "Voir nos cas clients", href: "/cas-clients" },
     },
     socialProof: "+70 ENTREPRISES ACCOMPAGNÉES À TOULOUSE ET EN FRANCE DEPUIS 2021",

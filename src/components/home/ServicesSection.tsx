@@ -2,9 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Compass, Rocket, TrendingUp, Handshake, Monitor, CheckCircle2 } from "lucide-react";
+import { Compass, Rocket, TrendingUp, Handshake, Monitor, CheckCircle2, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { homeContent, type Pilier } from "@/content/home";
+import type { Pilier } from "@/content/home";
 import { ArrowUpRightIcon } from "@/components/icons";
 import Image from "next/image";
 
@@ -18,12 +18,16 @@ interface ServicesSectionProps {
 const SERVICES = [
   {
     id: 1,
-    title: "Prenez les bonnes décisions",
-    subtitle: "Audit, stratégie & direction marketing",
+    title: "Audit, stratégie & direction marketing",
+    subtitle: "Stratégie marketing et commerciale",
     description: "Vous investissez dans des actions marketing sans savoir lesquelles génèrent du résultat. Nous auditons votre positionnement, vos canaux et vos processus, puis nous construisons la feuille de route qui concentre vos ressources sur les leviers à plus fort impact. Direction marketing externalisée ou mission ciblée : nous nous adaptons à votre stade de croissance.",
     icon: Compass,
-    image: "/images/services/product-marketing.avif",
-    tags: ["Audit marketing", "Roadmap stratégique", "Direction externalisée"],
+    image: "/images/home-audit.avif",
+    tags: [
+      { label: "Audit marketing", href: "/services/audit-marketing" },
+      { label: "Roadmap stratégique", href: "/services/roadmap-strategique" },
+      { label: "Direction externalisée", href: "/services/direction-marketing-externalisee" },
+    ],
     span: "featured" as const,
     benefits: [
       "Diagnostic complet de votre marketing et de votre tunnel de vente",
@@ -35,51 +39,68 @@ const SERVICES = [
   },
   {
     id: 2,
-    title: "Bâtissez votre crédibilité",
-    subtitle: "Positionnement, contenu & personal branding",
+    title: "Positionnement, contenu & personal branding",
+    subtitle: "Marketing produit",
     description: "Vos prospects vous comparent à vos concurrents sans percevoir la différence. Nous construisons le positionnement, le messaging et les contenus qui rendent votre valeur évidente pour chaque profil décideur.",
     icon: Rocket,
-    tags: ["Positionnement", "Contenu B2B", "Landing pages", "Personal branding"],
+    tags: [
+      { label: "Positionnement & messaging", href: "/services/positionnement-messaging" },
+      { label: "Landing pages", href: "/services/creation-landing-page" },
+      { label: "Personal branding", href: "/services/strategie-personal-branding" },
+    ],
     span: "normal" as const,
     href: "/services/product-marketing",
     ctaLabel: "Crédibilité et positionnement B2B",
   },
   {
     id: 3,
-    title: "Générez du revenu",
-    subtitle: "SEO, campagnes & prospection",
+    title: "SEO, campagnes & prospection",
+    subtitle: "Growth Marketing",
     description: "Votre expertise est reconnue par vos clients existants, mais invisible pour le reste du marché. Nous déployons les canaux d'acquisition qui amènent des prospects qualifiés de façon prévisible et mesurable.",
     icon: TrendingUp,
-    tags: ["SEO", "Campagnes publicitaires", "Cold outreach"],
+    tags: [
+      { label: "SEO & contenu organique", href: "/services/seo-contenu-organique" },
+      { label: "Campagnes publicitaires", href: "/services/campagnes-publicitaires" },
+      { label: "Cold outreach", href: "/services/cold-outreach-prospection" },
+    ],
     span: "normal" as const,
     href: "/services/growth-marketing",
     ctaLabel: "Acquisition clients B2B",
   },
   {
     id: 4,
-    title: "Armez vos commerciaux",
-    subtitle: "Sales enablement & closing",
+    title: "Decks de ventes, cas clients & lead nurturing",
+    subtitle: "Activation des ventes",
     description: "Chaque commercial improvise son discours et les objections ne sont pas anticipées. Nous créons les outils qui transforment votre cycle de vente en processus reproductible, du premier rendez-vous à la signature.",
     icon: Handshake,
-    tags: ["Pitch decks", "Battlecards", "Lead nurturing", "Workflows"],
+    tags: [
+      { label: "Pitch decks", href: "/services/pitch-decks-argumentaires" },
+      { label: "Battlecards & cas clients", href: "/services/battlecards-case-studies" },
+      { label: "Lead nurturing", href: "/services/lead-nurturing" },
+      { label: "Workflows commerciaux", href: "/services/creation-workflows" },
+    ],
     span: "normal" as const,
     href: "/services/sales-enablement",
     ctaLabel: "Sales enablement B2B",
   },
   {
     id: 5,
-    title: "Digitalisez votre entreprise",
-    subtitle: "Site web, CRM & IA",
+    title: "Sites web, CRM & Intelligence Artificielle",
+    subtitle: "Transformation digitale",
     description: "Vos outils sont sous-exploités et vos processus restent manuels. Nous déployons les solutions digitales qui accélèrent votre activité : site web performant, CRM structuré, applications IA sur mesure.",
     icon: Monitor,
-    tags: ["Site web", "Déploiement CRM", "Applications IA"],
+    tags: [
+      { label: "Création de site web", href: "/services/creation-refonte-site-web" },
+      { label: "Déploiement CRM", href: "/services/deploiement-crm" },
+      { label: "Applications IA", href: "/services/applications-ia" },
+    ],
     span: "normal" as const,
     href: "/services/transformation-digitale",
     ctaLabel: "Digitalisation entreprise B2B",
   },
 ];
 
-const AUTOMATION_IMAGE = "/images/services/automatisation.avif";
+const AUTOMATION_IMAGE = "/images/services/direction-marketing-externalisee/hero.avif";
 
 type Service = {
   id: number;
@@ -88,7 +109,7 @@ type Service = {
   description: string;
   icon: typeof Compass;
   image?: string;
-  tags: string[];
+  tags: { label: string; href: string }[];
   span: "featured" | "normal" | "wide";
   benefits?: string[];
   href: string;
@@ -113,7 +134,7 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
       className="col-span-1 md:col-span-2 md:row-span-2 relative overflow-hidden group"
     >
-      <div className="relative h-full min-h-[480px] md:min-h-[500px] lg:min-h-[520px] bg-accent flex flex-col">
+      <div className="relative h-full min-h-[400px] md:min-h-[500px] lg:min-h-[520px] bg-accent flex flex-col">
         {/* Top Content - sur fond lime */}
         <div className="relative z-10 p-6 sm:p-8 lg:p-10 pb-0">
           {/* Header: Icon + Number */}
@@ -137,13 +158,13 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
           </h3>
 
           {/* Description */}
-          <p className="text-primary/80 text-[14px] lg:text-[16px] leading-relaxed mb-5 max-w-[90%]">
+          <p className="text-primary/80 text-[14px] lg:text-[16px] leading-relaxed mb-5 max-w-[90%] line-clamp-3 sm:line-clamp-none">
             {service.description}
           </p>
 
           {/* Benefits list */}
           {service.benefits && (
-            <ul className="space-y-2">
+            <ul className="hidden sm:block space-y-2">
               {service.benefits.map((benefit, i) => (
                 <li key={i} className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
@@ -161,7 +182,7 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
             src={service.image!}
             alt={service.title}
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
 
@@ -175,12 +196,14 @@ function FeaturedCard({ service, index, total }: ServiceCardProps) {
               {/* Tags */}
               <div className="flex flex-row flex-wrap gap-2">
                 {service.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1.5 bg-white/20 backdrop-blur-sm text-white text-[11px] lg:text-[12px] font-medium"
+                  <Link
+                    key={tag.label}
+                    href={tag.href}
+                    onClick={(e) => e.stopPropagation()}
+                    className="px-3 py-1.5 bg-white/20 backdrop-blur-sm text-white text-[11px] lg:text-[12px] font-medium hover:bg-white/40 transition-colors duration-200"
                   >
-                    {tag}
-                  </span>
+                    {tag.label}
+                  </Link>
                 ))}
               </div>
 
@@ -220,7 +243,7 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
       className={`${isWide ? "col-span-1 md:col-span-2" : "col-span-1"} group`}
     >
-      <div className={`relative h-full min-h-[280px] lg:min-h-[260px] bg-card border border-black/[0.06] overflow-hidden transition-all duration-500 hover:bg-accent hover:-translate-y-1 ${isWide ? "flex flex-col md:flex-row" : "flex flex-col"}`}>
+      <div className={`relative h-full min-h-[220px] md:min-h-[260px] bg-card border border-black/[0.06] overflow-hidden transition-all duration-500 hover:bg-accent hover:-translate-y-1 ${isWide ? "flex flex-col md:flex-row" : "flex flex-col"}`}>
         {/* Accent line bottom - animates on hover */}
         <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[var(--text-primary)] group-hover:w-full transition-all duration-500" />
 
@@ -272,7 +295,7 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
           </h3>
 
           {/* Description */}
-          <p className="text-muted group-hover:text-primary/80 text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-500">
+          <p className="text-muted group-hover:text-primary/80 text-[13px] lg:text-[14px] leading-relaxed mb-5 transition-colors duration-500 line-clamp-3 md:line-clamp-none">
             {service.description}
           </p>
 
@@ -282,12 +305,14 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
           {/* Tags */}
           <div className="flex flex-wrap gap-1.5 mb-4">
             {service.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-2.5 py-1 bg-[#f5f5f5] group-hover:bg-[var(--text-primary)]/10 text-primary text-[10px] lg:text-[11px] font-medium transition-colors duration-500"
+              <Link
+                key={tag.label}
+                href={tag.href}
+                onClick={(e) => e.stopPropagation()}
+                className="px-2.5 py-1 bg-[#f5f5f5] group-hover:bg-[var(--text-primary)]/10 text-primary text-[10px] lg:text-[11px] font-medium transition-colors duration-500 hover:underline underline-offset-2"
               >
-                {tag}
-              </span>
+                {tag.label}
+              </Link>
             ))}
           </div>
 
@@ -318,9 +343,9 @@ function StandardCard({ service, index, total }: ServiceCardProps) {
 }
 
 export function ServicesSection({ surtitre, h2, description, piliers }: ServicesSectionProps = {}) {
-  const piliersSurtitre = surtitre ?? homeContent.piliers.surtitre;
-  const piliersH2 = h2 ?? homeContent.piliers.h2;
-  const piliersDescription = description ?? homeContent.piliers.description;
+  const piliersSurtitre = surtitre ?? "Notre approche";
+  const piliersH2 = h2 ?? "5 leviers de croissance pour les entreprises B2B";
+  const piliersDescription = description ?? "";
 
   // Override service descriptions from city-specific piliers when provided
   const services: Service[] = piliers
@@ -359,8 +384,8 @@ export function ServicesSection({ surtitre, h2, description, piliers }: Services
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
-          {/* Featured Card - Product Marketing */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 overflow-hidden">
+          {/* Featured Card - Marketing Produit */}
           <FeaturedCard service={featuredService} index={0} total={total} />
 
           {/* Other Services */}
