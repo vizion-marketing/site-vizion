@@ -39,7 +39,7 @@ export const b2bMeetTeamText =
 
 export const b2bHero: HeroContent = {
   badge: "Bienvenue sur le site de Vizion",
-  h1: "Notre mission : Faire de vous une évidence sur votre marché.",
+  h1: "Notre mission : Faire de votre produit une évidence sur votre marché.",
   h1Highlight: "une évidence sur votre marché.",
   baseline: "Notre agence spécialiste du Marketing B2B intervient aux moments les plus stratégiques de votre entreprise : lancement de produit, restructuration, accélération, pour déployer une machine marketing et commerciale adaptée à vos objectifs, même les plus fous.",
   badges: [],
