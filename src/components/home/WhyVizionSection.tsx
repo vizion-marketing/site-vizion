@@ -239,7 +239,7 @@ export function WhyVizionSection() {
                     className="h-full flex flex-col gap-4 p-7 border border-white/[0.08] hover:bg-white/[0.04] hover:border-white/[0.14] transition-all duration-300"
                   >
                     <span className="text-accent text-[13px] font-medium tracking-wide">{arg.num}</span>
-                    <h3 className="text-[16px] sm:text-[17px] font-semibold text-white leading-snug">
+                    <h3 className="text-[13px] sm:text-[14px] font-semibold text-white leading-snug">
                       {arg.title}
                     </h3>
                     <p className="text-[13px] sm:text-[14px] text-white/55 leading-relaxed">
